@@ -1,0 +1,164 @@
+.btn-primary {
+    color: #fff;
+    background-color: #2196F3;
+    border-color: #2196F3;
+    height: 34px;
+}
+:host::ng-deep .ui-dropdown {
+    width: 100%;
+}
+:host::ng-deep.ui-inputtext{
+    width: 100%;
+}
+/* table */
+:host::ng-deep .ui-paginator .ui-paginator-current {
+    float: right;
+    font-weight: 600;
+    font-size: 11px;
+    color: #2196F3;
+}
+
+:host::ng-deep  .ui-paginator .ui-dropdown {
+    display: none;
+}
+:host::ng-deep  .ui-paginator {
+   border-radius: 0px 0px 10px 10px;
+}
+:host::ng-deep .ui-paginator .ui-paginator-icon {
+    font-size: 11px;
+    font-weight: 600;
+}
+:host::ng-deep  .ui-paginator .ui-paginator-pages .ui-paginator-page {
+    font-size: 10px;
+    margin-top: 5px;
+}
+:host::ng-deep  .ui-paginator .ui-paginator-pages {
+    float: left;
+}
+:host::ng-deep .ui-paginator a.ui-state-disabled {
+    float: left;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-first{
+   
+    float: left !important;
+}
+:host::ng-deep  .ui-paginator .ui-paginator-prev {
+   
+    float: left !important;
+}
+:host::ng-deep  .ui-paginator .ui-paginator-next{
+   
+    float: left !important;
+}
+:host::ng-deep   .ui-paginator .ui-paginator-last {
+   
+    float: left !important;
+}
+:host::ng-deep.ui-paginator .ui-paginator-pages .ui-paginator-page:focus {
+    box-shadow: none !important;
+}
+.thhead th{
+    color: #ffffff;
+    background: #2196f3;
+}
+.tdrow {
+    display: table-row;
+    background: #fff;
+}
+.tdrow:hover {
+    background-color: #ececff;
+    cursor: pointer;
+}
+.tdrow td {
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.2;
+    font-weight: unset !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f2f2f2;
+}
+:host::ng-deep .ui-table {
+    border-radius: 10px;
+    overflow: hidden;
+    border: none !important;
+}
+:host::ng-deep .ui-table .ui-paginator-bottom {
+    border-top: 1px solid #eee;
+    background-color: #fff;
+    padding: 10px 0px;
+}
+.th-1{
+    width: 50px;
+}
+.act i{
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 17px;
+}
+
+:host::ng-deep  .ui-table .ui-table-thead > tr > th {
+    padding: 15px 8px !important;
+}
+/* table */
+
+.title{
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;;
+}
+
+.card-box {
+    padding: 20px 30px 0px 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px 0px #d5d2d2;
+    margin-bottom: 35px;
+}
+.form-lable{
+    font-size: 14px;
+    font-weight: 500;
+    color: #777777;
+}
+.search-hero{
+    margin-bottom: 10px;
+    width: 300px;
+}
+.btn-primary.focus, .btn-primary:focus {
+    outline: none !important;
+}
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    padding: 0.429em;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: #fff ;
+    border:1px solid #a6a6a6;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+:host::ng-deep .ui-inputtext {
+    font-size: 14px;
+    color: #333333;
+    background: #ffffff;
+    padding: 0.429em;
+    border: 1px solid #dcdcdc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+:host::ng-deep .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label {
+    padding-right: 4em;
+    border: none;
+}
+:host::ng-deep .ui-dropdown {
+    border: 1px solid #dcdcdc;
+}

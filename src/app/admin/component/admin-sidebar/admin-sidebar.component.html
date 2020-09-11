@@ -1,0 +1,129 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer class="side" mode="side" opened>
+        <mat-nav-list>
+            <mat-list-item routerLink="dashboard" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-tachometer" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Dashboard</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Pet_type" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-paw" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Pet type management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Pet_Breed_Type" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Pet Breed management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Pet_Health_Checkup" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-heartbeat" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Pet health checkup type management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Service_Type" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-cogs" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Service Type management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Customer_Management" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-users" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Customer Management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Vendor_Management" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Vendor Management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Service_Provider_Management" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-wrench" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Service Provider Management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Category_Management" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-bars" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Category Management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Sub_Category_Management" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-list-ul" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Sub-Category Management</h5>
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="Product_Management" routerLinkActive="active">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-archive" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Product Management</h5>
+                </div>
+            </mat-list-item>
+            <!-- <mat-list-item  routerLinkActive="active" (click)="expand = !expand">
+                <mat-icon style="color: #fff !important;" mat-list-icon>
+                    <i class="fa fa-user-md" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Doctor Details</h5>
+                </div>
+                <div class="sb-sidenav-collapse-arrow">
+                    <i *ngIf="!expand" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand" class="fa fa-chevron-up" aria-hidden="true"></i>
+                </div>
+            </mat-list-item>
+            <mat-nav-list style="background: #4d4c4c;" *ngIf="expand">
+                <div class="sub-menu">
+                    <mat-list-item routerLink="create_doctors" routerLinkActive="active">
+                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user-plus" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Create Doctor</h5>
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item routerLink="List_doctors" routerLinkActive="active">
+                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-list-ul" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">List Doctor</h5>
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item routerLink="live_doctors_list" routerLinkActive="active">
+                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-star" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">List Live Doctor</h5>
+                        </div>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list> -->
+
+           
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <section style="padding:25px;">
+            <router-outlet></router-outlet>
+        </section>
+
+    </mat-drawer-content>
+</mat-drawer-container>

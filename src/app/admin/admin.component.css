@@ -1,0 +1,13 @@
+.example-container {
+    width: 400px;
+    height: 100%;
+    margin: 10px;
+    border: 1px solid #555;
+}
+:host::ng-deep .mat-drawer-content{
+    background-color:transparent !important;
+}
+
+:host::ng-deep .mat-drawer-container{
+    background-color:transparent !important;
+}
