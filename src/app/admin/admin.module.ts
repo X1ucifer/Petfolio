@@ -44,7 +44,8 @@ import { ProductManagementComponent } from './pages/product-management/product-m
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {TableModule} from 'primeng/table';
-
+import {FileUploadModule} from 'primeng/fileupload';
+import {TooltipModule} from 'primeng/tooltip';
 @NgModule({
   declarations: [AdminHeaderComponent, AdminSidebarComponent, DashboardComponent, PettypeComponent, PetBreedTypeComponent, PetHealthCheckupComponent, ServiceTypeComponent, CustomerManagementComponent, VendorManagementComponent, ServiceProviderManagementComponent, CategoryManagementComponent, SubCategoryManagementComponent, ProductManagementComponent,
   ],
@@ -67,7 +68,9 @@ import {TableModule} from 'primeng/table';
     InputTextModule,
     CalendarModule,
     Ng2SearchPipeModule,
-    TableModule],
+    TableModule,
+    FileUploadModule,
+    TooltipModule],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA

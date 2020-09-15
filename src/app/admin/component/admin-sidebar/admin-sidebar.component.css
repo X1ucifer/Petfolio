@@ -7,6 +7,7 @@
 
 .side {
     width: 220px;
+    transition: all 0.5s;
 }
 
 .side .sidenav-item h5 {
@@ -17,11 +18,11 @@
 }
 
 .mat-drawer {
-    background: #0d4775;
+    background: #019377;
 }
 
 .active {
-    background:#03A9F4 !important
+    background:#005f4d !important
 }
 
 :host::ng-deep .mat-list-base {
@@ -48,4 +49,19 @@
 }
 :host::ng-deep .mat-typography h5 {
     font-family: 'Roboto', sans-serif !important;
+}
+:host::ng-deep  .menuslider .side{
+    width: 39px !important;
+    transition: all 0.5s;
+}
+
+:host::ng-deep  .menuslider .mat-drawer-content{
+    margin-left: 39px !important;
+    transition: all 0.5s;
+}
+:host::ng-deep  .mat-nav-list .mat-list-item:hover {
+    background: rgb(0 0 0 / 22%) !important;
+}
+:host::ng-deep  .menuslider mat-drawer h5{
+    display: none !important;
 }

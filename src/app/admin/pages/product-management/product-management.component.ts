@@ -11,6 +11,8 @@ export class ProductManagementComponent implements OnInit {
   value1:any;
   selectedtype:any;
   type:any=[];
+  
+  uploadedFiles: any[] = [];
   constructor() { }
 
   ngOnInit(): void {
@@ -28,4 +30,12 @@ export class ProductManagementComponent implements OnInit {
     { type: "Cat", name: "cat1" }]
     
   }
+  onUpload(event) {
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+        console.log(this.uploadedFiles)
+    }
+
+    // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+}
 }

@@ -11,6 +11,7 @@ import { ServiceProviderManagementComponent } from './pages/service-provider-man
 import { CategoryManagementComponent } from './pages/category-management/category-management.component';
 import { SubCategoryManagementComponent } from './pages/sub-category-management/sub-category-management.component';
 import { ProductManagementComponent } from './pages/product-management/product-management.component';
+
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },

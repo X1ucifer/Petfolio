@@ -14,6 +14,7 @@ export class AdminSidebarComponent implements OnInit {
   expand: boolean = false;
   expanding: boolean = false;
   expand_c: boolean = false;
+  menu_slider: boolean = false;
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private router: Router,
@@ -34,5 +35,8 @@ export class AdminSidebarComponent implements OnInit {
 
   getFromLocal(key): any {
     return this.storage.get(key);
+  }
+  menuslide() {
+    this.menu_slider = !this.menu_slider;
   }
 }

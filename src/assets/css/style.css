@@ -1,8 +1,10 @@
 .btn-primary {
     color: #fff;
-    background-color: #2196F3;
-    border-color: #2196F3;
+    background-color: #099279;
+    border-color: #099279;
     height: 34px;
+    min-width: 80px;
+    font-size: 14px;
 }
 :host::ng-deep .ui-dropdown {
     width: 100%;
@@ -60,7 +62,7 @@
 }
 .thhead th{
     color: #ffffff;
-    background: #2196f3;
+    background: #049076fa;
 }
 .tdrow {
     display: table-row;
@@ -81,7 +83,7 @@
     border-bottom: 1px solid #f2f2f2;
 }
 :host::ng-deep .ui-table {
-    border-radius: 10px;
+    /* border-radius: 10px; */
     overflow: hidden;
     border: none !important;
 }
@@ -114,7 +116,7 @@
     padding: 20px 30px 0px 30px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0px 3px 3px 0px #d5d2d2;
+    box-shadow:0px 3px 3px 0px #01937726;
     margin-bottom: 35px;
 }
 .form-lable{
@@ -124,7 +126,10 @@
 }
 .search-hero{
     margin-bottom: 10px;
-    width: 300px;
+}
+.search-hero input {
+    padding: 15px;
+    border-radius: 17px;
 }
 .btn-primary.focus, .btn-primary:focus {
     outline: none !important;
@@ -161,4 +166,7 @@
 }
 :host::ng-deep .ui-dropdown {
     border: 1px solid #dcdcdc;
+}
+:host::ng-deep button:focus {
+    outline: none !important;
 }

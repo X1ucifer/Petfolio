@@ -4,20 +4,30 @@
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-4" style="margin-bottom: 15px;">
             <h5 class="form-lable">Category:</h5>
-           <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
+            <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select a City" optionLabel="name"
+                [showClear]="true"></p-dropdown>
 
         </div>
         <div class="col-md-4" style="margin-bottom: 15px;">
             <h5 class="form-lable">Sub-Category:</h5>
-            <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
+            <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select a City" optionLabel="name"
+                [showClear]="true"></p-dropdown>
         </div>
         <div class="col-md-4" style="margin-bottom: 15px;">
             <h5 class="form-lable">Product Name:</h5>
             <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Product Name">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-8">
             <h5 class="form-lable">Product image:</h5>
-            <input type="file" pInputText [(ngModel)]="value1">
+            <!-- <input type="file" pInputText [(ngModel)]="value1"> -->
+            <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" multiple="multiple"
+                accept="image/*" maxFileSize="1000000">
+                <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                    </ul>
+                </ng-template>
+            </p-fileUpload>
         </div>
         <div class="col-md-4">
             <h5 class="form-lable">Product Code:</h5>
@@ -26,7 +36,7 @@
         <div class="col-md-4">
             <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 30px;">Add</button>
         </div>
-       
+
     </div>
 </div>
 <div class="search-hero">
@@ -58,20 +68,20 @@
             <th class="th-1">
                 S.No
             </th>
-            <th>
-                Product Image
+            <th pSortableColumn="code">
+                Product Image <p-sortIcon field="code"></p-sortIcon>
             </th>
-            <th>
-                Product Name
+            <th pSortableColumn="code">
+                Product Name <p-sortIcon field="code"></p-sortIcon>
             </th>
-            <th>
-                Product Code
+            <th pSortableColumn="code">
+                Product Code <p-sortIcon field="code"></p-sortIcon>
             </th>
-            <th>
-                Category
+            <th pSortableColumn="code">
+                Category <p-sortIcon field="code"></p-sortIcon>
             </th>
-            <th>
-                Sub-Category
+            <th pSortableColumn="code">
+                Sub-Category <p-sortIcon field="code"></p-sortIcon>
             </th>
             <th style="width: 163px;text-align:center">
                 Action
@@ -81,7 +91,8 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td><img src="https://www.flaticon.com/svg/static/icons/svg/81/81960.svg" style="width: 40px;height: 40px;border-radius: 50%;"></td>
+            <td><img src="https://www.flaticon.com/svg/static/icons/svg/81/81960.svg"
+                    style="width: 40px;height: 40px;border-radius: 50%;"></td>
             <td>Product-1</td>
             <td>Category-1</td>
             <td>Sub-Category-1</td>

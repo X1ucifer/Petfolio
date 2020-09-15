@@ -1,6 +1,9 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="example-container" [ngClass]="{'menuslider' : menu_slider}">
     <mat-drawer class="side" mode="side" opened>
         <mat-nav-list>
+            <mat-list-item (click)="menuslide()">
+                <mat-icon style="color: #fff;"> notes</mat-icon>
+            </mat-list-item>
             <mat-list-item routerLink="dashboard" routerLinkActive="active">
                 <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-tachometer" aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
                 <div fxFlex="10"></div>
