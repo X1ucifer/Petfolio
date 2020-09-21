@@ -36,7 +36,7 @@
 }
 
 .sb-sidenav-collapse-arrow i {
-    color: #797676;
+    color: #ffffff;
 }
 
 .mat-drawer.mat-drawer-side {
@@ -72,3 +72,14 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+:host::ng-deep .mat-list-base::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 5px;
+}
+:host::ng-deep .mat-list-base::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

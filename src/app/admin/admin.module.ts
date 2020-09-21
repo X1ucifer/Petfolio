@@ -52,6 +52,7 @@ import { VendorFormComponent } from './pages/vendor-management/vendor-form/vendo
 import { ServiceProviderFormComponent } from './pages/service-provider-management/service-provider-form/service-provider-form.component';
 import { CustomerFormComponent } from './pages/customer-management/customer-form/customer-form.component';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { PetlistComponent } from './pages/customer-management/petlist/petlist.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -71,7 +72,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     DoctorFormComponent,
     VendorFormComponent,
     ServiceProviderFormComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    PetlistComponent
   ],
   imports: [
     CommonModule,

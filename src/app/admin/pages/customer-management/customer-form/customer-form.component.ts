@@ -35,6 +35,6 @@ export class CustomerFormComponent implements OnInit {
    
   }
   cancel() {
-    this.router.navigateByUrl('/admin_panel/Customer_Management')
+    this.router.navigateByUrl('/admin_panel/Pet_list')
   }
 }

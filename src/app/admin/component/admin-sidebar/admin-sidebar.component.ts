@@ -12,8 +12,11 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 export class AdminSidebarComponent implements OnInit {
   expanded: boolean = false;
   expand: boolean = false;
-  expanding: boolean = false;
-  expand_c: boolean = false;
+  expand1: boolean = false;
+  expand2: boolean = false;
+  expand3: boolean = false;
+  expand4: boolean = false;
+  expand5: boolean = false;
   menu_slider: boolean = false;
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,

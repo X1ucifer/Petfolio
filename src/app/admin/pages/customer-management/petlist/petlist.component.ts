@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router'; 
 @Component({
-  selector: 'app-customer-management',
-  templateUrl: './customer-management.component.html',
-  styleUrls: ['./customer-management.component.css']
+  selector: 'app-petlist',
+  templateUrl: './petlist.component.html',
+  styleUrls: ['./petlist.component.css']
 })
-export class CustomerManagementComponent implements OnInit {
+export class PetlistComponent implements OnInit {
   rows = [];
   searchQR:any;
   value1:any;
@@ -28,7 +28,10 @@ export class CustomerManagementComponent implements OnInit {
     { type: "Cat", name: "cat1" }]
     
   }
-  pet_view() {
-    this.router.navigateByUrl('/admin_panel/Pet_list')
+service_form() {
+    this.router.navigateByUrl('/admin_panel/Customer_form')
+  }
+  back(){
+    this.router.navigateByUrl('/admin_panel/Customer_Management')
   }
 }

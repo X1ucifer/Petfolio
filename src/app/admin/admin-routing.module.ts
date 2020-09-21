@@ -16,8 +16,9 @@ import { DoctorFormComponent } from './pages/doctor/doctor-form/doctor-form.comp
 import { VendorFormComponent } from './pages/vendor-management/vendor-form/vendor-form.component';
 import { ServiceProviderFormComponent } from './pages/service-provider-management/service-provider-form/service-provider-form.component';
 import { CustomerFormComponent } from './pages/customer-management/customer-form/customer-form.component';
+import { PetlistComponent } from './pages/customer-management/petlist/petlist.component';
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },
   { path: 'Pet_Breed_Type', component: PetBreedTypeComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'Vendor_form', component: VendorFormComponent },
   { path: 'Service_Provider_form', component: ServiceProviderFormComponent },
   { path: 'Customer_form', component: CustomerFormComponent },
+  { path: 'Pet_list', component: PetlistComponent },
 ];
 
 @NgModule({
