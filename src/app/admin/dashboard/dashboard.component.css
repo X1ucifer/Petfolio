@@ -1,31 +1,58 @@
+@import "../../../assets/css/style.css";
 .card-text h3 {
     text-align: left;
     font-weight: 500;
-    font-size: 24px
+    font-size: 24px;
+    margin-top: 12px;
 }
 
-.card-text p {
+
+.card-box p {
     margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #989898;
 }
 
-.card-i i {
-    font-size: 25px;
-    padding: 8px;
-    background: #eee;
-    border-radius: 8px;
+.card-i img {
+    width: 100%;
+    max-width: 100px;
+    margin-top: 8px;
 }
 
 .card-box {
-    padding: 20px 30px 0px 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* padding: 15px 15px 0px 15px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0px 3px 3px 0px #d5d2d2;
+    box-shadow: 0px 2px 1px 3px #019377;
+    height: 116px; */
+    padding: 0px;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0px 3px 3px 0px #01937726;
+    margin-bottom: 35px;
+    height: 100px;
+    overflow: hidden;
 }
 
 .card-i {
-    height: 78px;
-    padding: 7px 0px 3px;
-    text-align: center;
+    flex-basis: 30%;
+    padding: 10px;
+    background: #2196F3;
+    /* height: 78px;
+    padding: 0px 0px 3px;
+    text-align: center; */
+}
+.card-text {
+    flex-basis: 70%;
+    padding: 10px;
+    /* text-align: left;
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 12px; */
 }
 
 .card-box-1 {
@@ -67,7 +94,8 @@
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 5px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    color:#3F51B5;
 }
 
 .head-text span {
@@ -75,4 +103,24 @@
     font-size: 13px;
     padding-right: 14px;
     color: #007ad9;
+}
+.act i{
+    padding: 3px 3px;
+}
+.title-h3{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-current {
+    display: none;
+}
+.bg-org{
+    background: #FF5722 !important;
+}
+.bg-green{
+    background: #019377 !important;
+}
+.bg-blue{
+    background: #3F51B5 !important;;
 }

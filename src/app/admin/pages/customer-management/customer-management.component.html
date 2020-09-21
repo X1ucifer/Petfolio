@@ -1,55 +1,59 @@
 <h4 class="title">Customer Management</h4>
-
-<!-- <div class="card-box">
-    <div class="row" style="padding: 0px 0px 23px 10px;">
-        <div class="col-md-4">
-            <h5 class="form-lable">Service Type:</h5>
-            <input type="text" pInputText [(ngModel)]="value1">
-        </div>
-        <div class="col-md-4">
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 30px;">Add</button>
+<div class="row">
+    <div class="col-md-4">
+        <div class="search-hero">
+            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
+    <div class="col-md-8 text-right">
+        <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button>
+    </div>
 </div>
-<div class="search-hero">
-    <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;" [(ngModel)]="searchQR"
-        autocomplete="off" placeholder="&#xf002; Search...">
-</div> -->
-
+<div class="doc-table">
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-    <!-- <ng-template pTemplate="caption">
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-            <div fxFlex="50">
-                <h5 style="color:#fff;">Entry Type List</h5>
-            </div>
-            <div fxFlex="50">
-                <div class="ui-table-globalfilter-container">
-                    <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                    <input type="text" pInputText size="50" (input)="tt.filterGlobal($event.target.value, 'contains')"
-                        placeholder="Entry Type">
-                </div>
-            </div>
-
-        </div>
-
-    </ng-template> -->
+   
     <ng-template pTemplate="header" >
         <tr class="thhead">
             <th class="th-1">
                 S.No
             </th>
             <th>
-                Name
+                Pet Photo
             </th>
             <th>
-                Email
+                Pet name
             </th>
             <th>
-                Phone
+                Pet Type 
             </th>
-
+            <th>
+                Pet Breed 
+            </th>
+            <th>
+                Pet Gender
+            </th>
+            <th>
+                Pet color
+            </th>
+            <th>
+                Pet weight
+            </th>
+            <th>
+                Pet age 
+            </th>
+            <th>
+                Vaccinated
+            </th>
+            <th>
+                Last Vaccinated date
+            </th>
+            <th>Created by</th>
+            <th>Modified by</th>
+            <th>Created at</th>
+            <th>Modified at</th>
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -58,13 +62,36 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex" >
         <tr  class="tdrow">
             <td>{{i+1}}</td>
-            <td>Vignesh</td>
-            <td>Test@gmail.com</td>
-            <td>7373387504</td>
+            <td>
+                <div class="card-box-i">
+                    <img src="assets/images/007.png" alt="">
+                </div>
+            </td>
+            <td>Dommy</td>
+            <td>Dog</td>
+            <td>Breed-1</td>
+            <td>Male</td>
+            <td>White</td>
+            <td>15kg</td>
+            <td>3 years</td>
+            <td>Yes</td>
+            <td>16-09-2020</td>
+            <td>
+                User
+            </td>
+            <td>
+                Admin
+            </td>
+            <td>
+                16-09-2020
+            </td>
+            <td>
+                17-09-2020
+            </td>
             <td class="act">
-                <i style="background-color: #2196f3;color: #fff;" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                <i style="background-color: #fd2c3a;color: #fff;" class="fa fa-trash" aria-hidden="true"></i>
-                <i style="background-color: #4CAF50;color: #fff;" class="fa fa-info-circle" aria-hidden="true"></i>
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
             </td>
         </tr>
     </ng-template>

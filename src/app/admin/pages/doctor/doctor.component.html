@@ -1,4 +1,4 @@
-<h4 class="title">Service Provider Management</h4>
+<h4 class="title">Doctor</h4>
 <div class="row">
     <div class="col-md-4">
         <div class="search-hero">
@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="col-md-8 text-right">
-        <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button>
+        <button type="button" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
     </div>
 </div>
 <div class="doc-table">
@@ -31,17 +31,24 @@
         </div>
 
     </ng-template> -->
-    <ng-template pTemplate="header" >
+    <ng-template pTemplate="header">
         <tr class="thhead">
             <th class="th-1">
                 S.No
             </th>
             <th>
-                Type of services 
+                Name
             </th>
             <th>
-                Specialization
+                Education
             </th>
+            <th>
+                Year of completion
+            </th>
+            <th>Experience </th>
+            <th>Specialization </th>
+            <th>Pets handled</th>
+            <th>Clinic address</th>
             <th>Certificate</th>
             <th>Govt ID proof </th>
             <th>Photo ID proof</th>
@@ -49,19 +56,26 @@
             <th>Modified by</th>
             <th>Created at</th>
             <th>Modified at</th>
-            <th style="width: 163px;text-align:center">
+            <th style="width: 110px;text-align:center">
                 Action
             </th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-item let-i="rowIndex" >
-        <tr  class="tdrow">
+    <ng-template pTemplate="body" let-item let-i="rowIndex">
+        <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td>services-1</td>
-            <td>Specialization-1</td>
+            <td>Vignesh</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+
+            <td>Lorem ipsum.</td>
             <td class="act"><i class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i></td>
             <td class="act"><i class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i></td>
             <td class="act"><i class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i></td>
+            <!-- <td>7373387504</td> -->
             <td>
                 User
             </td>
@@ -74,14 +88,13 @@
             <td>
                 17-09-2020
             </td>
-           
             <td class="act">
                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
                 <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
-                <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"  pTooltip="Approve"></i>
-                <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"  pTooltip="Reject"></i>
+                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
             </td>
         </tr>
     </ng-template>
 </p-table>
+
+</div>

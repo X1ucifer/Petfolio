@@ -5,6 +5,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'admin', },
   { path: 'admin', component:LoginComponent, },

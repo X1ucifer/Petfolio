@@ -5,12 +5,14 @@
     height: 34px;
     min-width: 80px;
     font-size: 14px;
+    margin-right: 10px;
 }
 :host::ng-deep .ui-dropdown {
     width: 100%;
 }
-:host::ng-deep.ui-inputtext{
+:host::ng-deep .ui-inputtext{
     width: 100%;
+    margin-bottom: 20px;
 }
 /* table */
 :host::ng-deep .ui-paginator .ui-paginator-current {
@@ -96,8 +98,8 @@
     width: 50px;
 }
 .act i{
-    padding: 5px 10px;
-    margin: 5px;
+    padding: 3px 3px;
+    margin: 3px;
     font-size: 17px;
 }
 
@@ -122,7 +124,8 @@
 .form-lable{
     font-size: 14px;
     font-weight: 500;
-    color: #777777;
+    color: #1b1b1b !important;
+    margin-bottom: 5px;
 }
 .search-hero{
     margin-bottom: 10px;
@@ -166,7 +169,61 @@
 }
 :host::ng-deep .ui-dropdown {
     border: 1px solid #dcdcdc;
+    margin-bottom: 20px;
 }
 :host::ng-deep button:focus {
     outline: none !important;
+}
+::-webkit-scrollbar {
+    display: none !important;
+}
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar {
+    display: block !important;
+}
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 5px;
+}
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+.mt-20{
+    margin-top: 20px;
+}
+.btn-bg-blue{
+    background-color: #2196F3 !important;
+    border-color: #2196F3 !important;
+}
+textarea {
+    overflow: auto;
+    resize: vertical;
+    width: 100%;
+    border: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+}
+:host::ng-deep .ui-dropdown-label {
+    padding-right: 4em;
+    border: none;
+    margin-bottom: 0;
+}
+:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0 none;
+    width: 80%;
+}
+.mr-0{
+    margin-right: 0px !important;
+}
+:host::ng-deep .ui-multiselect {
+    width: 100%;
+    margin-bottom: 20px;
+}
+:host::ng-deep .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-inputtext {
+    padding: 0.429em;
+    padding-right: 2em;
+    margin-bottom: 0px;
 }

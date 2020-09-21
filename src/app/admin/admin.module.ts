@@ -25,12 +25,12 @@ import { DatePipe } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import {DialogModule} from 'primeng/dialog';
-import {RadioButtonModule} from 'primeng/radiobutton';
-import {DropdownModule} from 'primeng/dropdown';
-import {ButtonModule} from 'primeng/button';
-import {InputTextModule} from 'primeng/inputtext';
-import {CalendarModule} from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
 import { PettypeComponent } from './pages/pettype/pettype.component';
 import { PetBreedTypeComponent } from './pages/pet-breed-type/pet-breed-type.component';
 import { PetHealthCheckupComponent } from './pages/pet-health-checkup/pet-health-checkup.component';
@@ -43,11 +43,35 @@ import { SubCategoryManagementComponent } from './pages/sub-category-management/
 import { ProductManagementComponent } from './pages/product-management/product-management.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import {TableModule} from 'primeng/table';
-import {FileUploadModule} from 'primeng/fileupload';
-import {TooltipModule} from 'primeng/tooltip';
+import { TableModule } from 'primeng/table';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TooltipModule } from 'primeng/tooltip';
+import { DoctorComponent } from './pages/doctor/doctor.component';
+import { DoctorFormComponent } from './pages/doctor/doctor-form/doctor-form.component';
+import { VendorFormComponent } from './pages/vendor-management/vendor-form/vendor-form.component';
+import { ServiceProviderFormComponent } from './pages/service-provider-management/service-provider-form/service-provider-form.component';
+import { CustomerFormComponent } from './pages/customer-management/customer-form/customer-form.component';
+import {MultiSelectModule} from 'primeng/multiselect';
+
 @NgModule({
-  declarations: [AdminHeaderComponent, AdminSidebarComponent, DashboardComponent, PettypeComponent, PetBreedTypeComponent, PetHealthCheckupComponent, ServiceTypeComponent, CustomerManagementComponent, VendorManagementComponent, ServiceProviderManagementComponent, CategoryManagementComponent, SubCategoryManagementComponent, ProductManagementComponent,
+  declarations: [AdminHeaderComponent,
+    AdminSidebarComponent,
+    DashboardComponent,
+    PettypeComponent,
+    PetBreedTypeComponent,
+    PetHealthCheckupComponent,
+    ServiceTypeComponent,
+    CustomerManagementComponent,
+    VendorManagementComponent,
+    ServiceProviderManagementComponent,
+    CategoryManagementComponent,
+    SubCategoryManagementComponent,
+    ProductManagementComponent,
+    DoctorComponent,
+    DoctorFormComponent,
+    VendorFormComponent,
+    ServiceProviderFormComponent,
+    CustomerFormComponent
   ],
   imports: [
     CommonModule,
@@ -70,7 +94,8 @@ import {TooltipModule} from 'primeng/tooltip';
     Ng2SearchPipeModule,
     TableModule,
     FileUploadModule,
-    TooltipModule],
+    TooltipModule,
+    MultiSelectModule],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
@@ -84,3 +109,4 @@ import {TooltipModule} from 'primeng/tooltip';
   ]
 })
 export class AdminModule { }
+ 

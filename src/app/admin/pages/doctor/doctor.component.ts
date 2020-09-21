@@ -1,14 +1,15 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 @Component({
-  selector: 'app-service-provider-management',
-  templateUrl: './service-provider-management.component.html',
-  styleUrls: ['./service-provider-management.component.css']
+  selector: 'app-doctor',
+  templateUrl: './doctor.component.html',
+  styleUrls: ['./doctor.component.css']
 })
-export class ServiceProviderManagementComponent implements OnInit {
+export class DoctorComponent implements OnInit {
   rows = [];
-  searchQR:any;
-  value1:any;
+  searchQR: any;
+  value1: any;
   constructor(
     private router: Router
   ) { }
@@ -26,9 +27,9 @@ export class ServiceProviderManagementComponent implements OnInit {
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" }]
-    
+
   }
-service_form() {
-    this.router.navigateByUrl('/admin_panel/Service_Provider_form')
+  doc_form() {
+    this.router.navigateByUrl('/admin_panel/Doctor_form')
   }
 }

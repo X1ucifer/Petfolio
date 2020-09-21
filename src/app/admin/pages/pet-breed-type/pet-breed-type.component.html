@@ -2,26 +2,29 @@
 
 <div class="card-box">
     <div class="row" style="padding: 0px 0px 23px 10px;">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <h5 class="form-lable">Pet Type:</h5>
-           <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select a City" optionLabel="name" [showClear]="true"></p-dropdown>
+           <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select Pet Type " optionLabel="name" [showClear]="true"></p-dropdown>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <h5 class="form-lable">Pet Breed:</h5>
             <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Pet Breed" >
         </div>
-        <div class="col-md-4">
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 30px;">Add</button>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
         </div>
        
     </div>
 </div>
-<div class="search-hero">
-    <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;" [(ngModel)]="searchQR"
-        autocomplete="off" placeholder="&#xf002; Search...">
+<div class="row">
+    <div class="col-md-4">
+        <div class="search-hero">
+            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+        </div>
+    </div>
 </div>
-
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
@@ -52,6 +55,10 @@
             <th>
                 Breed
             </th>
+            <th>Created by</th>
+            <th>Modified by</th>
+            <th>Created at</th>
+            <th>Modified at</th>
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -60,12 +67,24 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td>{{item.type}}</td>
-            <td>{{item.name}}</td>
+            <td> Pet Type-1</td>
+            <td>Breed</td>
+            <td>
+                User
+            </td>
+            <td>
+                Admin
+            </td>
+            <td>
+                16-09-2020
+            </td>
+            <td>
+                17-09-2020
+            </td>
             <td class="act">
-                <i style="background-color: #2196f3;color: #fff;" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                <i style="background-color: #fd2c3a;color: #fff;" class="fa fa-trash" aria-hidden="true"></i>
-                <i style="background-color: #4CAF50;color: #fff;" class="fa fa-info-circle" aria-hidden="true"></i>
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
             </td>
         </tr>
     </ng-template>
