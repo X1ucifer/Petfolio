@@ -22,7 +22,8 @@
 }
 
 .active {
-    background:#005f4d !important
+    background: #3f51b5  !important;
+
 }
 
 :host::ng-deep .mat-list-base {
@@ -78,8 +79,8 @@
     width: 7px;
     height: 5px;
 }
-:host::ng-deep .mat-list-base::-webkit-scrollbar-thumb {
+/* :host::ng-deep .mat-list-base::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
+} */

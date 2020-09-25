@@ -53,7 +53,13 @@ import { ServiceProviderFormComponent } from './pages/service-provider-managemen
 import { CustomerFormComponent } from './pages/customer-management/customer-form/customer-form.component';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { PetlistComponent } from './pages/customer-management/petlist/petlist.component';
-
+import { EcommerceOrderComponent } from './pages/ecommerce-order/ecommerce-order.component';
+import { PetCareAppointmentComponent } from './pages/pet-care-appointment/pet-care-appointment.component';
+import { PetServiceAppointmentComponent } from './pages/pet-service-appointment/pet-service-appointment.component';
+import { MarketPlaceComponent } from './pages/market-place/market-place.component';
+import { ViewOrderComponent } from './pages/ecommerce-order/view-order/view-order.component';
+import { ProductViewComponent } from './pages/market-place/product-view/product-view.component';
+import {TabViewModule} from 'primeng/tabview';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -73,7 +79,13 @@ import { PetlistComponent } from './pages/customer-management/petlist/petlist.co
     VendorFormComponent,
     ServiceProviderFormComponent,
     CustomerFormComponent,
-    PetlistComponent
+    PetlistComponent,
+    EcommerceOrderComponent,
+    PetCareAppointmentComponent,
+    PetServiceAppointmentComponent,
+    MarketPlaceComponent,
+    ViewOrderComponent,
+    ProductViewComponent
   ],
   imports: [
     CommonModule,
@@ -97,7 +109,8 @@ import { PetlistComponent } from './pages/customer-management/petlist/petlist.co
     TableModule,
     FileUploadModule,
     TooltipModule,
-    MultiSelectModule],
+    MultiSelectModule,
+    TabViewModule],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA

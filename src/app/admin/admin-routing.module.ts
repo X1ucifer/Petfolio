@@ -17,6 +17,12 @@ import { VendorFormComponent } from './pages/vendor-management/vendor-form/vendo
 import { ServiceProviderFormComponent } from './pages/service-provider-management/service-provider-form/service-provider-form.component';
 import { CustomerFormComponent } from './pages/customer-management/customer-form/customer-form.component';
 import { PetlistComponent } from './pages/customer-management/petlist/petlist.component';
+import { EcommerceOrderComponent } from './pages/ecommerce-order/ecommerce-order.component';
+import { PetCareAppointmentComponent } from './pages/pet-care-appointment/pet-care-appointment.component';
+import { PetServiceAppointmentComponent } from './pages/pet-service-appointment/pet-service-appointment.component';
+import { MarketPlaceComponent } from './pages/market-place/market-place.component';
+import { ViewOrderComponent } from './pages/ecommerce-order/view-order/view-order.component';
+import { ProductViewComponent } from './pages/market-place/product-view/product-view.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
@@ -37,6 +43,12 @@ const routes: Routes = [
   { path: 'Service_Provider_form', component: ServiceProviderFormComponent },
   { path: 'Customer_form', component: CustomerFormComponent },
   { path: 'Pet_list', component: PetlistComponent },
+  { path: 'Ecommerce_order', component: EcommerceOrderComponent },
+  { path: 'Pet_care_appointment', component: PetCareAppointmentComponent },
+  { path: 'Pet_Service_appointment', component: PetServiceAppointmentComponent },
+  { path: 'Market_place', component: MarketPlaceComponent },
+  { path: 'View_order', component: ViewOrderComponent },
+  { path: 'View_Product', component: ProductViewComponent },
 ];
 
 @NgModule({
