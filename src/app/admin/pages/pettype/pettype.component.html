@@ -2,13 +2,17 @@
 
 
 <div class="row" style="padding: 0px 0px 23px 10px;">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-12">
         <div class="card-box">
             <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <h5 class="form-lable">Pet Type:</h5>
                 <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Pet Type">
             </div>
+            <div class="col-md-4">
+              <h5 class="form-lable">Pet Icon:</h5>
+              <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Type">
+          </div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
             </div>
@@ -23,6 +27,16 @@
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+      <h5 class="form-lable">Start Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
+  <div class="col-md-2">
+      <h5 class="form-lable">End Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
 </div>
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
@@ -51,6 +65,9 @@
             <th>
                 Type
             </th>
+            <th>
+              Icon
+            </th>
             <th>Created by</th>
             <th>Modified by</th>
             <th>Created at</th>
@@ -63,7 +80,11 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
+
             <td>Type-1</td>
+            <td>
+              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
+          </td>
             <td>
                 User
             </td>

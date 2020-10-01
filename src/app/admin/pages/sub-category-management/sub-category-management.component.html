@@ -16,9 +16,13 @@
             <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter sub-Category Code">
         </div>
         <div class="col-md-4">
+          <h5 class="form-lable">sub-Category Icon:</h5>
+          <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter sub-Category Code">
+      </div>
+        <div class="col-md-4">
             <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 30px;">Add</button>
         </div>
-       
+
     </div>
 </div>
 <div class="row">
@@ -28,6 +32,16 @@
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+      <h5 class="form-lable">Start Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
+  <div class="col-md-2">
+      <h5 class="form-lable">End Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
 </div>
 
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -63,6 +77,9 @@
             <th>
                 Sub-Category Code
             </th>
+            <th>
+              Sub-Category Icon
+          </th>
             <th>Created by</th>
             <th>Modified by</th>
             <th>Created at</th>
@@ -78,6 +95,9 @@
             <td>Category-1</td>
             <td>Sub-Category-1</td>
             <td>789456</td>
+            <td>
+              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
+            </td>
             <td>
                 User
             </td>

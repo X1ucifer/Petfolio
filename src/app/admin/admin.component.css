@@ -5,9 +5,9 @@
     border: 1px solid #555;
 }
 :host::ng-deep .mat-drawer-content{
-    background-color:transparent !important;
+    background-color: white;
 }
 
 :host::ng-deep .mat-drawer-container{
-    background-color:transparent !important;
+    background-color: white;
 }

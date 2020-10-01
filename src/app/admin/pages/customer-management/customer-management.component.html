@@ -6,15 +6,27 @@
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
+
     <div class="col-md-8 text-right">
         <!-- <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button> -->
     </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+      <h5 class="form-lable">Start Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
+  <div class="col-md-2">
+      <h5 class="form-lable">End Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
 </div>
 <div class="doc-table">
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-   
+
     <ng-template pTemplate="header" >
         <tr class="thhead">
             <th class="th-1">
@@ -61,7 +73,7 @@
                 <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i>
                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
                 <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-           
+
             </td>
         </tr>
     </ng-template>

@@ -2,14 +2,18 @@
 
 <div class="card-box">
     <div class="row" style="padding: 0px 0px 23px 10px;">
-        <div class="col-md-5">
+        <div class="col-md-3">
             <h5 class="form-lable">Category:</h5>
             <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Category">
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3">
             <h5 class="form-lable">Category Code:</h5>
             <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Category Code">
         </div>
+        <div class="col-md-3">
+          <h5 class="form-lable">Category Icon:</h5>
+          <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Breed" >
+      </div>
         <div class="col-md-2">
             <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
         </div>
@@ -23,6 +27,16 @@
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+      <h5 class="form-lable">Start Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
+  <div class="col-md-2">
+      <h5 class="form-lable">End Date</h5>
+      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+  </div>
 </div>
 
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -55,6 +69,9 @@
             <th>
                 Category Code
             </th>
+            <th>
+              Category Icon
+          </th>
             <th>Created by</th>
             <th>Modified by</th>
             <th>Created at</th>
@@ -69,6 +86,9 @@
             <td>{{i+1}}</td>
             <td>Category-1</td>
             <td>789456</td>
+            <td>
+              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
+          </td>
             <td>
                 User
             </td>
