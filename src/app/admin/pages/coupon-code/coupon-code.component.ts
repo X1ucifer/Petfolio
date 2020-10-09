@@ -30,6 +30,11 @@ export class CouponCodeComponent implements OnInit {
   Password: any;
   valid: boolean = false;
   selectedItems:any;
+
+  rows = [];
+  searchQR:any;
+  value1:any;
+ 
   constructor(
     private route: Router,
   ) { }
@@ -44,6 +49,18 @@ export class CouponCodeComponent implements OnInit {
       itemsShowLimit: 1,
       allowSearchFilter: true
     };
+    this.rows = [{ type: "Dog", name: "dog1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" },
+    { type: "Cat", name: "cat1" }]
   }
   onItemSelect(item: any) {
 

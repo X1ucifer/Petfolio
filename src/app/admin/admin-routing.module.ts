@@ -32,7 +32,7 @@ import { PetcarebannerComponent } from './pages/master/petcarebanner/petcarebann
 import { PetservicebannerComponent } from './pages/master/petservicebanner/petservicebanner.component';
 import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.component';
 import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
-
+import { SplashScreenComponent } from './pages/master/splash-screen/splash-screen.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
@@ -69,7 +69,7 @@ const routes: Routes = [
    { path: 'master/banner/petservicebanner', component: PetservicebannerComponent },
    { path: 'master/banner/ecombanner', component: EcombannerComponent },
    { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
-
+   { path: 'master/banner/splashscreen', component: SplashScreenComponent },
 
 ];
 

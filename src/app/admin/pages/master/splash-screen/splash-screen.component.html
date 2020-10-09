@@ -1,4 +1,4 @@
-<h4 class="title">Pet Service Banner</h4>
+<h4 class="title">Splash Screen Banner</h4>
 
 
 <div class="row" style="padding: 0px 0px 23px 10px;">
@@ -6,7 +6,7 @@
         <div class="card-box">
             <div class="row">
             <div class="col-md-4">
-              <h5 class="form-lable">Pet Service Banner :</h5>
+              <h5 class="form-lable">Splash Screen Banner :</h5>
               <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Type">
           </div>
             <div class="col-md-4">
@@ -24,7 +24,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-4">
       <h5 class="form-lable">Start Date</h5>
       <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
@@ -33,7 +33,7 @@
       <h5 class="form-lable">End Date</h5>
       <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
   </div>
-</div>
+</div> -->
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
@@ -59,7 +59,7 @@
                 S.No
             </th>
             <th>
-              Pet Service Banner
+              Splash Screen Banner
             </th>
             <th>Created by</th>
             <th>Modified by</th>

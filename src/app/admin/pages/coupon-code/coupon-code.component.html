@@ -69,16 +69,89 @@
 
 
 
-<div>
-    <div fxLayout="row" fxLayoutAlign="space-around center">
-        <div fxFlex="60" class="box-1">
-            <div class="mobile-ad-fil">
-                <div class="row ad-filter-1" style="padding: 10px 15px;">
-                    <ng-container>
-                        
-                    </ng-container>
+
+<p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+    [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+    <!-- <ng-template pTemplate="caption">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div fxFlex="50">
+                <h5 style="color:#fff;">Entry Type List</h5>
+            </div>
+            <div fxFlex="50">
+                <div class="ui-table-globalfilter-container">
+                    <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" (input)="tt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Entry Type">
                 </div>
             </div>
+
         </div>
-    </div>
-</div>
+
+    </ng-template> -->
+    <ng-template pTemplate="header">
+        <tr class="thhead">
+            <th class="th-1">
+                S.No
+            </th>
+            <th>
+                Discount %
+            </th>
+            <th>Max discount amount</th>
+            <th>Min billing amount</th>
+            <th>Coupon code</th>
+            <th>Category</th>
+            <th>Vendors</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Max time</th>
+            <th>Applicable on </th>
+            <th>Modified by</th>
+            <th>Created at</th>
+            <th>Modified at</th>
+            <th style="width: 163px;text-align:center">
+                Action
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-i="rowIndex">
+        <tr class="tdrow">
+            <td>{{i+1}}</td>
+            <td>
+              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
+          </td>
+            <td>
+                5
+            </td>
+            <td>
+                200
+            </td>
+            <td>
+                100
+            </td>
+            <td>
+                ASDFGHJKL
+            </td>
+            <td>
+                Pet Services
+            </td>
+            <td>
+                12-9-2020
+            </td>
+            <td>
+                20-10-2020
+            </td>
+            <td>
+                2
+            </td>
+            <td>
+                Week days
+            </td>
+            <td class="act">
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
