@@ -179,6 +179,15 @@
                             </mat-list-item>
                         </div>
                     </mat-nav-list>
+
+                    <mat-list-item routerLink="Coupon_Code" routerLinkActive="active">
+                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-file-text-o" aria-hidden="true"
+                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Coupon Code</h5>
+                        </div>
+                    </mat-list-item>
                 </div>
             </mat-nav-list>
             <mat-list-item routerLink="Customer_Management" routerLinkActive="active">
@@ -278,6 +287,43 @@
                 </div>
             </mat-list-item>
 
+
+
+            <mat-list-item routerLinkActive="active" (click)="expand5 = !expand5">
+                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user-circle-o"
+                        aria-hidden="true"
+                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Admin Management</h5>
+                </div>
+                <div class="sb-sidenav-collapse-arrow">
+                    <i *ngIf="!expand5" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand5" class="fa fa-chevron-up" aria-hidden="true"></i>
+                </div>
+            </mat-list-item>
+            <mat-nav-list style="background: #273a36;" *ngIf="expand5">
+                <div class="sub-menu">
+                    <mat-list-item routerLink="Create_Employee" routerLinkActive="active">
+                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-globe" aria-hidden="true"
+                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Employee Creation</h5>
+                        </div>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
+
+
+
+
+
+
+
+
+
+           
 
         </mat-nav-list>
     </mat-drawer>

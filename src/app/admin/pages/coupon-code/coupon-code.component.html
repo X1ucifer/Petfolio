@@ -1,0 +1,84 @@
+<h4 class="title">Coupon Code Create</h4>
+
+<div class="card-box">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-4">
+            <h5 class="form-lable">Discount %:</h5>
+            <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Discount" class="skill-in">
+        </div>
+       
+        <div class="col-md-4">
+            <h5 class="form-lable">Max discount amount:</h5>
+            <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Max discount amount" class="skill-in">
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Min billing amount:</h5>
+            <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Min billing amount" class="skill-in">
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Coupon code:</h5>
+            <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Coupon code" class="skill-in">
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Category:</h5>
+
+            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Category" [(ngModel)]="selectedItems">
+            </ng-multiselect-dropdown>
+          
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Vendors:</h5>
+
+            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Vendors" [(ngModel)]="selectedItems">
+            </ng-multiselect-dropdown>
+            
+        </div>      
+        <div class="col-md-4">
+            <h5 class="form-lable">Start Date</h5>
+            <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">End Date</h5>
+            <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Max time</h5>
+            <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Max time" class="skill-in">
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Applicable on </h5>
+            <input   type="checkbox" id="week"  style="margin-right: 8px;"> <label for="week" style="margin-right: 15px;"> week days</label>
+            <input   type="checkbox"  id="weekd"  style="margin-right: 8px;"> <label for="weekd"> weekends</label>
+        </div>
+        <!-- <div class="col-md-6 pad-10px" style="padding-top: 35px;">
+            <button  class="fil-btn-ad " type="button">Create</button>
+            <button  style="color: #fff;background-color: #333;margin-left: 15px;"
+                class="fil-btn-ad " type="button">Clear</button>
+        </div> -->
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Create</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div fxFlex="60" class="box-1">
+            <div class="mobile-ad-fil">
+                <div class="row ad-filter-1" style="padding: 10px 15px;">
+                    <ng-container>
+                        
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

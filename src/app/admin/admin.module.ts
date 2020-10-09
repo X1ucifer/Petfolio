@@ -60,6 +60,9 @@ import { MarketPlaceComponent } from './pages/market-place/market-place.componen
 import { ViewOrderComponent } from './pages/ecommerce-order/view-order/view-order.component';
 import { ProductViewComponent } from './pages/market-place/product-view/product-view.component';
 import {TabViewModule} from 'primeng/tabview';
+import { CreateEmpComponent } from './pages/create-emp/create-emp.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CouponCodeComponent } from './pages/coupon-code/coupon-code.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -85,7 +88,9 @@ import {TabViewModule} from 'primeng/tabview';
     PetServiceAppointmentComponent,
     MarketPlaceComponent,
     ViewOrderComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    CreateEmpComponent,
+    CouponCodeComponent
   ],
   imports: [
     CommonModule,
@@ -110,7 +115,8 @@ import {TabViewModule} from 'primeng/tabview';
     FileUploadModule,
     TooltipModule,
     MultiSelectModule,
-    TabViewModule],
+    TabViewModule,
+    NgMultiSelectDropDownModule.forRoot()],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA

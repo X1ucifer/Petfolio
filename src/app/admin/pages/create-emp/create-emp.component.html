@@ -1,0 +1,74 @@
+<h4 class="title">Create Employee</h4>
+
+<div class="card-box">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-4">
+            <h5 class="form-lable">User Name:</h5>
+            <input type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6" placeholder="Name"
+                class="skill-in">
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Email:</h5>
+            <input type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                (ngModelChange)="emailChange($event)" placeholder="Email" class="skill-in">
+            <span class="err" *ngIf="emailError">{{emailErrorMsg}}</span>
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Phone:</h5>
+            <input type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                (keypress)=_keyPress($event) (ngModelChange)="phonechange()" placeholder="Phone" class="skill-in">
+            <span class="err" *ngIf="phoneError">Enter valid phone number</span>
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Password:</h5>
+            <input type="password" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Password" class="skill-in">
+        </div>
+        <!-- <div class="col-md-4">
+            <h5 class="form-lable">Password:</h5>
+            <input  [(ngModel)]="Designation" type="password" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Designation" class="skill-in">
+        </div> -->
+        <div class="col-md-4">
+            <h5 class="form-lable">Designation:</h5>
+            <input type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
+                placeholder="Designation" class="skill-in">
+        </div>
+
+        <div class="col-md-4">
+            <h5 class="form-lable">Access:</h5>
+
+            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Industry" [(ngModel)]="selectedItems">
+            </ng-multiselect-dropdown>
+            <!-- <ng-multiselect-dropdown [placeholder]="'Choose'" [data]="Industry" [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown> -->
+        </div>
+
+        <!-- <div class="col-md-6 pad-10px" style="padding-top: 35px;">
+            <button  class="fil-btn-ad " type="button">Create</button>
+            <button  style="color: #fff;background-color: #333;margin-left: 15px;"
+                class="fil-btn-ad " type="button">Clear</button>
+        </div> -->
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Create</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div fxFlex="60" class="box-1">
+            <div class="mobile-ad-fil">
+                <div class="row ad-filter-1" style="padding: 10px 15px;">
+                    <ng-container>
+
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

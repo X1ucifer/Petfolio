@@ -23,6 +23,8 @@ import { PetServiceAppointmentComponent } from './pages/pet-service-appointment/
 import { MarketPlaceComponent } from './pages/market-place/market-place.component';
 import { ViewOrderComponent } from './pages/ecommerce-order/view-order/view-order.component';
 import { ProductViewComponent } from './pages/market-place/product-view/product-view.component';
+import { CreateEmpComponent } from './pages/create-emp/create-emp.component';
+import { CouponCodeComponent } from './pages/coupon-code/coupon-code.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
@@ -49,6 +51,8 @@ const routes: Routes = [
   { path: 'Market_place', component: MarketPlaceComponent },
   { path: 'View_order', component: ViewOrderComponent },
   { path: 'View_Product', component: ProductViewComponent },
+  { path: 'Create_Employee', component: CreateEmpComponent },
+  { path: 'Coupon_Code', component: CouponCodeComponent },
 ];
 
 @NgModule({

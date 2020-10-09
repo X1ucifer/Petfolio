@@ -22,7 +22,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 
     AdminComponent,
     HomepageComponent,
-    LoginComponent
+    LoginComponent,
    ],
   imports: [
     BrowserModule,
