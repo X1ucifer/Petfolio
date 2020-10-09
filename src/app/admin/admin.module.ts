@@ -69,6 +69,7 @@ import { PetservicebannerComponent } from './pages/master/petservicebanner/petse
 import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.component';
 import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
 import { SplashScreenComponent } from './pages/master/splash-screen/splash-screen.component';
+import { LocationsComponent } from './Pages/master/locations/locations.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -102,7 +103,8 @@ import { SplashScreenComponent } from './pages/master/splash-screen/splash-scree
     PetservicebannerComponent,
     EcombannerComponent,
     MarketplacebannerComponent,
-    SplashScreenComponent
+    SplashScreenComponent,
+    LocationsComponent
   ],
   imports: [
     CommonModule,

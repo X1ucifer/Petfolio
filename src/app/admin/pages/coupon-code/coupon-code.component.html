@@ -38,6 +38,11 @@
 
         </div>
         <div class="col-md-4">
+          <h5 class="form-lable">Location:</h5>
+          <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Locations" [(ngModel)]="selectedItems1">
+          </ng-multiselect-dropdown>
+      </div>
+        <div class="col-md-4">
             <h5 class="form-lable">Start Date</h5>
             <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
         </div>
