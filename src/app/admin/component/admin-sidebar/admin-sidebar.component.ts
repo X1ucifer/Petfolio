@@ -17,6 +17,7 @@ export class AdminSidebarComponent implements OnInit {
   expand3: boolean = false;
   expand4: boolean = false;
   expand5: boolean = false;
+  expand9: boolean = false;
   menu_slider: boolean = false;
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,

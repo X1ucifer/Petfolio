@@ -70,7 +70,9 @@ const routes: Routes = [
    { path: 'master/banner/ecombanner', component: EcombannerComponent },
    { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
    { path: 'master/banner/splashscreen', component: SplashScreenComponent },
-
+  
+   { path: 'Coupon_Code', component: CouponCodeComponent },
+   { path: 'Create_Employee', component: CreateEmpComponent },
 ];
 
 @NgModule({
