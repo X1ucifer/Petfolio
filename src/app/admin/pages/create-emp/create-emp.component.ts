@@ -16,15 +16,16 @@ export class CreateEmpComponent implements OnInit {
   selectaccess: any;
   dropdownSettings: IDropdownSettings = {};
   Industry: any = [
-    { label: "Activity Log", value: "Activity Log" },
-    { label: "Bulkemail", value: "Bulkemail" },
-    { label: "Create User", value: "Create User" },
-    { label: "Candidate List", value: "Candidate List" },
-    { label: "Company List", value: "Company List" },
-    { label: "Dashboard", value: "Dashboard" },
-    { label: "Job List", value: "Job List" },
-    { label: "Master", value: "Master" },
-    { label: "Users List", value: "Users List" },
+    { label: "App Features", value:"App Features"},
+    { label: "Customer Mng", value: "Customer Mng" },
+    { label: "Doctor", value: "Doctor" },
+    { label: "Veterinarians", value: "Veterinarians" },
+    { label: "Vendors Mng", value: "Vendors Mng" },
+    { label: "Service Provider", value: "Service Provider" },
+    { label: "Job Ecommerce order", value: "Job Ecommerce order" },
+    { label: "Service Appointment", value: "Service Appointment" },
+    { label: "Market Place", value: "Market Place" },
+    { label: "Employee Creation", value:"Employee Creation" },
   ];
   emailError: boolean = false;
   emailErrorMsg: any;
@@ -35,7 +36,7 @@ export class CreateEmpComponent implements OnInit {
   rows = [];
   searchQR:any;
   value1:any;
- 
+
   constructor(
     private route: Router,
   ) { }
@@ -70,7 +71,7 @@ export class CreateEmpComponent implements OnInit {
 
   }
   create() {
-   
+
   };
   refresh() {
     this.Name = undefined;
