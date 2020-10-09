@@ -25,6 +25,14 @@ import { ViewOrderComponent } from './pages/ecommerce-order/view-order/view-orde
 import { ProductViewComponent } from './pages/market-place/product-view/product-view.component';
 import { CreateEmpComponent } from './pages/create-emp/create-emp.component';
 import { CouponCodeComponent } from './pages/coupon-code/coupon-code.component';
+
+///Banner//
+import { HomebannerComponent } from './pages/master/homebanner/homebanner.component';
+import { PetcarebannerComponent } from './pages/master/petcarebanner/petcarebanner.component';
+import { PetservicebannerComponent } from './pages/master/petservicebanner/petservicebanner.component';
+import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.component';
+import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
@@ -51,8 +59,18 @@ const routes: Routes = [
   { path: 'Market_place', component: MarketPlaceComponent },
   { path: 'View_order', component: ViewOrderComponent },
   { path: 'View_Product', component: ProductViewComponent },
-  { path: 'Create_Employee', component: CreateEmpComponent },
-  { path: 'Coupon_Code', component: CouponCodeComponent },
+
+
+
+  ///Master ////
+   /////////Banners//////
+   { path: 'master/banner/homebanner', component: HomebannerComponent },
+   { path: 'master/banner/petcarebanner', component: PetcarebannerComponent },
+   { path: 'master/banner/petservicebanner', component: PetservicebannerComponent },
+   { path: 'master/banner/ecombanner', component: EcombannerComponent },
+   { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
+
+
 ];
 
 @NgModule({

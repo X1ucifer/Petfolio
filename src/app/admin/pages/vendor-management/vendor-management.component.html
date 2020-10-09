@@ -50,6 +50,9 @@
                     <th>Modified by</th>
                     <th>Created at</th>
                     <th>Modified at</th>
+                    <th>Approve / Reject</th>
+                    <th>Live / Block</th>
+
                     <th style="width: 163px;text-align:center">
                         Action
                     </th>
@@ -79,13 +82,21 @@
                         17-09-2020
                     </td>
                     <td class="act">
+                      <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
+                      pTooltip="Approve"></i>
+                  <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
+                      pTooltip="Reject"></i>
+                  </td>
+                  <td class="act">
+                    <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
+                    pTooltip="Live"></i>
+                <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
+                    pTooltip="Block"></i>
+                </td>
+                    <td class="act">
                         <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
                         <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
                         <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
-                        <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
-                            pTooltip="Approve"></i>
-                        <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
-                            pTooltip="Reject"></i>
                     </td>
                 </tr>
             </ng-template>

@@ -63,6 +63,11 @@ import {TabViewModule} from 'primeng/tabview';
 import { CreateEmpComponent } from './pages/create-emp/create-emp.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CouponCodeComponent } from './pages/coupon-code/coupon-code.component';
+import { HomebannerComponent } from './pages/master/homebanner/homebanner.component';
+import { PetcarebannerComponent } from './pages/master/petcarebanner/petcarebanner.component';
+import { PetservicebannerComponent } from './pages/master/petservicebanner/petservicebanner.component';
+import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.component';
+import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -90,7 +95,12 @@ import { CouponCodeComponent } from './pages/coupon-code/coupon-code.component';
     ViewOrderComponent,
     ProductViewComponent,
     CreateEmpComponent,
-    CouponCodeComponent
+    CouponCodeComponent,
+    HomebannerComponent,
+    PetcarebannerComponent,
+    PetservicebannerComponent,
+    EcombannerComponent,
+    MarketplacebannerComponent
   ],
   imports: [
     CommonModule,
