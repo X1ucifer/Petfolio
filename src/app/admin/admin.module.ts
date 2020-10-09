@@ -60,6 +60,11 @@ import { MarketPlaceComponent } from './pages/market-place/market-place.componen
 import { ViewOrderComponent } from './pages/ecommerce-order/view-order/view-order.component';
 import { ProductViewComponent } from './pages/market-place/product-view/product-view.component';
 import {TabViewModule} from 'primeng/tabview';
+import { HomebannerComponent } from './pages/master/homebanner/homebanner.component';
+import { PetcarebannerComponent } from './pages/master/petcarebanner/petcarebanner.component';
+import { PetservicebannerComponent } from './pages/master/petservicebanner/petservicebanner.component';
+import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.component';
+import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -85,7 +90,12 @@ import {TabViewModule} from 'primeng/tabview';
     PetServiceAppointmentComponent,
     MarketPlaceComponent,
     ViewOrderComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    HomebannerComponent,
+    PetcarebannerComponent,
+    PetservicebannerComponent,
+    EcombannerComponent,
+    MarketplacebannerComponent
   ],
   imports: [
     CommonModule,
