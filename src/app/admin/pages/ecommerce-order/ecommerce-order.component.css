@@ -1,7 +1,7 @@
 @import "../../../../assets/css/style.css";
 
 :host::ng-deep .doc-table .ui-table table {
-    width:1700px !important;
+    width:1200px !important;
 }
 :host::ng-deep .ui-table-wrapper{
 overflow-x: scroll;
