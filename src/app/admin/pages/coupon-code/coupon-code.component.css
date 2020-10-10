@@ -1,1 +1,10 @@
-@import "../../../../assets/css/style.css"
+@import "../../../../assets/css/style.css";
+
+:host::ng-deep .ui-table table {
+    border-collapse: collapse;
+    width: 1500px !important;
+}
+
+:host::ng-deep .ui-table-wrapper{
+overflow: auto;
+}
