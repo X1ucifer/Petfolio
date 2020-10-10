@@ -7,7 +7,7 @@
             <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
                 placeholder="Discount" class="skill-in">
         </div>
-       
+
         <div class="col-md-4">
             <h5 class="form-lable">Max discount amount:</h5>
             <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
@@ -28,15 +28,20 @@
 
             <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Category" [(ngModel)]="selectedItems">
             </ng-multiselect-dropdown>
-          
+
         </div>
         <div class="col-md-4">
             <h5 class="form-lable">Vendors:</h5>
 
             <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Vendors" [(ngModel)]="selectedItems">
             </ng-multiselect-dropdown>
-            
-        </div>      
+
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Location:</h5>
+          <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="Locations" [(ngModel)]="selectedItems1">
+          </ng-multiselect-dropdown>
+      </div>
         <div class="col-md-4">
             <h5 class="form-lable">Start Date</h5>
             <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
@@ -46,7 +51,7 @@
             <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
         </div>
         <div class="col-md-4">
-            <h5 class="form-lable">Max time</h5>
+            <h5 class="form-lable">Max Usage</h5>
             <input   type="text" size="30" pInputText style="width: 100%; border: 1px solid #a6a6a6"
                 placeholder="Max time" class="skill-in">
         </div>
@@ -104,7 +109,7 @@
             <th>Vendors</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Max time</th>
+            <th>Max Usage</th>
             <th>Applicable on </th>
             <th>Modified by</th>
             <th>Created at</th>

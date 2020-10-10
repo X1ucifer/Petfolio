@@ -13,6 +13,7 @@ export class CouponCodeComponent implements OnInit {
   Phone: string = '';
   Access: any;
   selectaccess: any;
+  selectedItems1 : any;
   dropdownSettings: IDropdownSettings = {};
   Category : any = [
     { label: "E-Commerce", value: "E-Commerce" },
@@ -24,6 +25,11 @@ export class CouponCodeComponent implements OnInit {
     { label: "Pet care", value: "Pet care" },
     { label: "Pet services", value: "Pet services" }
   ];
+  Locations : any = [
+    { label: "Chennai", value: "Chennai" },
+    { label: "Madurai", value: "Madurai" },
+    { label: "Trichy", value:  "Trichy" }
+  ];
   emailError: boolean = false;
   emailErrorMsg: any;
   phoneError: any;
@@ -34,7 +40,7 @@ export class CouponCodeComponent implements OnInit {
   rows = [];
   searchQR:any;
   value1:any;
- 
+
   constructor(
     private route: Router,
   ) { }
@@ -69,7 +75,7 @@ export class CouponCodeComponent implements OnInit {
 
   }
   create() {
-   
+
   };
   refresh() {
     this.Name = undefined;

@@ -33,6 +33,7 @@ import { PetservicebannerComponent } from './pages/master/petservicebanner/petse
 import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.component';
 import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
 import { SplashScreenComponent } from './pages/master/splash-screen/splash-screen.component';
+import { LocationsComponent } from './Pages/master/locations/locations.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
@@ -70,7 +71,9 @@ const routes: Routes = [
    { path: 'master/banner/ecombanner', component: EcombannerComponent },
    { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
    { path: 'master/banner/splashscreen', component: SplashScreenComponent },
-  
+   { path: 'master/locations/addlocation', component: LocationsComponent },
+
+
    { path: 'Coupon_Code', component: CouponCodeComponent },
    { path: 'Create_Employee', component: CreateEmpComponent },
 ];
