@@ -34,6 +34,12 @@ import { EcombannerComponent } from './pages/master/ecombanner/ecombanner.compon
 import { MarketplacebannerComponent } from './pages/master/marketplacebanner/marketplacebanner.component';
 import { SplashScreenComponent } from './pages/master/splash-screen/splash-screen.component';
 import { LocationsComponent } from './Pages/master/locations/locations.component';
+import { UserTypeComponent } from './pages/user-type/user-type.component';
+import { DemoPageComponent } from './pages/demo-page/demo-page.component';
+import { DocSpecializationComponent } from './pages/doc-specialization/doc-specialization.component';
+import { DocPetHandledComponent } from './pages/doc-pet-handled/doc-pet-handled.component';
+import { ActivityLogComponent } from './pages/activity-log/activity-log.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
@@ -76,6 +82,10 @@ const routes: Routes = [
 
    { path: 'Coupon_Code', component: CouponCodeComponent },
    { path: 'Create_Employee', component: CreateEmpComponent },
+   { path: 'user_type', component: UserTypeComponent },
+   { path: 'demo_page', component: DemoPageComponent },
+   { path: 'doc_specialization', component: DocSpecializationComponent },
+   { path: 'Activity', component: ActivityLogComponent },
 ];
 
 @NgModule({
