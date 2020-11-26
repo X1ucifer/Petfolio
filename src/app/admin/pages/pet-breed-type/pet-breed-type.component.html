@@ -4,20 +4,21 @@
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-3">
             <h5 class="form-lable">Pet Type:</h5>
-           <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select Pet Type " optionLabel="name" [showClear]="true"></p-dropdown>
+           <p-dropdown [options]="rows1" [(ngModel)]="pet_type_name" (ngModelChange)="saverange()"  placeholder="Select Pet Type " optionLabel="pet_type_title" [showClear]="true"></p-dropdown>
 
         </div>
         <div class="col-md-3">
             <h5 class="form-lable">Pet Breed:</h5>
-            <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Pet Breed" >
+            <input type="text" pInputText [(ngModel)]="pet_breed" name="pet_breed" placeholder="Enter Pet Breed" >
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <h5 class="form-lable">Pet Breed Icon:</h5>
           <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Breed" >
+      </div> -->
+      <div class="col-md-4">
+        <button *ngIf="update_button == true" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"  (click)="Insert_pet_breed_details()">Add</button>
+        <button *ngIf="update_button == false" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"  (click)="Edit_pet_breed_details()">Update</button>
       </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
-        </div>
 
     </div>
 </div>
@@ -69,13 +70,13 @@
             <th>
                 Breed
             </th>
-            <th>
+            <!-- <th>
               Pet Breed Icon
-          </th>
+          </th> -->
             <th>Created by</th>
-            <th>Modified by</th>
+            <!-- <th>Modified by</th> -->
             <th>Created at</th>
-            <th>Modified at</th>
+            <!-- <th>Modified at</th> -->
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -84,27 +85,27 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td> Pet Type-1</td>
-            <td>Breed</td>
-            <td>
+            <td>{{item.pet_type_id.pet_type_title}}</td>
+            <td>{{item.pet_breed}}</td>
+            <!-- <td>
               <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
-          </td>
-            <td>
+          </td> -->
+            <!-- <td>
                 User
-            </td>
+            </td> -->
             <td>
                 Admin
             </td>
-            <td>
+            <!-- <td>
                 16-09-2020
-            </td>
+            </td> -->
             <td>
-                17-09-2020
+                {{item.date_and_time}}
             </td>
             <td class="act">
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+                <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i> -->
             </td>
         </tr>
     </ng-template>

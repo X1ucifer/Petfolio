@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },
+  { path: 'Pet_handle', component: DocPetHandledComponent },
   { path: 'Pet_Breed_Type', component: PetBreedTypeComponent },
   { path: 'Pet_Health_Checkup', component: PetHealthCheckupComponent },
   { path: 'Service_Type', component: ServiceTypeComponent },

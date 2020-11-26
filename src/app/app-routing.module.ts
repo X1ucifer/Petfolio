@@ -7,10 +7,10 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'admin_panel', },
-  { path: 'admin', component:LoginComponent, },
+  { path: '', pathMatch: 'full', redirectTo: 'login', },
+  { path: 'login', component: LoginComponent, },
   {
-    path: 'admin_panel', component: AdminComponent,
+    path: 'admin', component: AdminComponent,
     children: [
       {
         path: '',
