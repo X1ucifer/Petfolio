@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="col-md-8 text-right">
-        <button type="button" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
+        <!-- <button type="button" class="btn btn-primary mr-0" (click)="doc_form()">Add</button> -->
     </div>
 </div>
 <div class="row">
@@ -47,13 +47,13 @@
                 S.No
             </th>
             <th>
+              Image
+          </th>
+            <th>
                 Name
             </th>
             <th>
-                Education
-            </th>
-            <th>
-                Year of completion
+                Education / Year of completion
             </th>
             <th>Experience </th>
             <th>Specialization </th>
@@ -63,11 +63,9 @@
             <th>Govt ID proof </th>
             <th>Photo ID proof</th>
             <th>Created by</th>
-            <th>Modified by</th>
             <th>Created at</th>
-            <th>Modified at</th>
             <th>Approve / Reject</th>
-            <th>Live / Block</th>
+            <th>Profile Stauts</th>
             <th style="width: 110px;text-align:center">
                 Action
             </th>
@@ -76,47 +74,66 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td>Vignesh</td>
-            <td>Lorem ipsum.</td>
-            <td>Lorem ipsum.</td>
-            <td>Lorem ipsum.</td>
-            <td>Lorem ipsum.</td>
-            <td>Lorem ipsum.</td>
-
-            <td>Lorem ipsum.</td>
-            <td class="act"><i class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i></td>
-            <td class="act"><i class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i></td>
-            <td class="act"><i class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i></td>
-            <!-- <td>7373387504</td> -->
             <td>
-                User
+              <img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;">
+            </td>
+            <td>{{item.dr_title}}.{{item.dr_name}}</td>
+            <td>
+              <ng-container  *ngFor="let edu of item.education_details">
+                 {{edu.education}}-{{edu.year}} ,
+              </ng-container>
+            </td>
+            <td><ng-container  *ngFor="let exp of item.experience_details">
+              {{exp.company}}({{exp.from}}-{{exp.to}}) ,
+           </ng-container></td>
+           <td><ng-container  *ngFor="let spec of item.specialization">
+            {{spec.specialization}} ,
+         </ng-container></td>
+         <td><ng-container  *ngFor="let pet_handle of item.pet_handled">
+          {{pet_handle.pet_handled}} ,
+       </ng-container></td>
+            <td>{{item.clinic_loc}}</td>
+            <td class="act">
+              <ng-container  *ngFor="let govt_id_pic of item.govt_id_pic">
+                <i (click)="goToLink1(govt_id_pic.govt_id_pic)" class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+             </ng-container>
+            </td>
+            <td class="act">
+              <ng-container  *ngFor="let certificate_pic of item.certificate_pic">
+                <i (click)="goToLink1(certificate_pic.certificate_pic)" class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+             </ng-container>
+            </td>
+            <td class="act">
+              <ng-container  *ngFor="let photo_id_pic of item.photo_id_pic">
+                <i (click)="goToLink1(photo_id_pic.photo_id_pic)" class="fa fa-file-text" style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+             </ng-container>
             </td>
             <td>
                 Admin
             </td>
             <td>
-                16-09-2020
+                {{item.user_id.date_of_reg}}
             </td>
             <td>
-                17-09-2020
-            </td>
+              {{item.profile_status}}
+          </td>
             <td class="act">
-              <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
+              <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' " (click)="verify('Verified',item._id)" aria-hidden="true" style="color: rgb(2, 187, 57);"
               pTooltip="Approve"></i>
-          <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
+          <i class="fa fa-times-circle-o" *ngIf="item.profile_verification_status == 'Verified' " (click)="verify('Not verified',item._id)" aria-hidden="true" style="color: rgb(223, 26, 26);"
               pTooltip="Reject"></i>
           </td>
-          <td class="act">
+          <!-- <td class="act">
             <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
             pTooltip="Live"></i>
         <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
             pTooltip="Block"></i>
-        </td>
+        </td> -->
             <td class="act">
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
-            </td>
+              <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
+              <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+              <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
+          </td>
         </tr>
     </ng-template>
 </p-table>

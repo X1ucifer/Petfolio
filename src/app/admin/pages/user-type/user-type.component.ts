@@ -169,7 +169,7 @@ export class UserTypeComponent implements OnInit {
           let width = img.width;
           let height = img.height;
           console.log(width,height);
-          if(width !== 500 && height !== 500){
+          if(width == 80  && height == 80){
             let d = this.selectedimgae.size / 100000 ;
             if(d < 10){
             this.addfiles1();
@@ -179,7 +179,7 @@ export class UserTypeComponent implements OnInit {
            }
           }
           else{
-            alert('Please upload the file size 500 * 500');
+            alert('Please upload the file size 80 * 80');
             this.imgType.nativeElement.value = "";
           }
         };
@@ -193,7 +193,7 @@ export class UserTypeComponent implements OnInit {
     addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://18.237.123.253:3000/upload', fd)
+    this.http.post('http://52.25.163.13:3000/upload', fd)
       .subscribe((res: any) => {
         console.log(res);
         this.user_type_img = res.Data;

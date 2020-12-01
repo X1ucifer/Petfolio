@@ -7,15 +7,16 @@
             <div class="row">
             <div class="col-md-4">
                 <h5 class="form-lable">Specialization:</h5>
-                <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Pet Type">
+                <input type="text" pInputText [(ngModel)]="specialzation" name="specialzation" placeholder="Enter Specialization">
             </div>
             <!-- <div class="col-md-4">
               <h5 class="form-lable">Pet Icon:</h5>
               <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Type">
           </div> -->
-            <div class="col-md-4">
-                <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
-            </div>
+          <div class="col-md-4">
+            <button *ngIf="update_button == true" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"  (click)="Insert_pet_type_details()">Add</button>
+            <button *ngIf="update_button == false" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"  (click)="Edit_pet_type_details()">Update</button>
+        </div>
         </div>
         </div>
     </div>
@@ -69,9 +70,7 @@
               Icon
             </th> -->
             <th>Created by</th>
-            <th>Modified by</th>
             <th>Created at</th>
-            <th>Modified at</th>
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -80,28 +79,18 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-
-            <td>Type-1</td>
-            <!-- <td>
-              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
-          </td> -->
-            <td>
-                User
-            </td>
+            <td>{{item.specialzation}}</td>
             <td>
                 Admin
             </td>
             <td>
-                16-09-2020
-            </td>
-            <td>
-                17-09-2020
-            </td>
-            <td class="act">
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
-            </td>
+              {{item.date_and_time}}
+             </td>
+             <td class="act">
+                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
+                 <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+             </td>
         </tr>
     </ng-template>
 </p-table>

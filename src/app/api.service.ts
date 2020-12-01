@@ -70,6 +70,55 @@ export class ApiService {
      //////////////
 
 
+       ////pet lover home banner API//////
+    homebanner_list() {
+      return this.http.get(this.apiUrl + 'homebanner/getlist');
+     }
+     homebanner_insert(data) {
+      return this.http.post(this.apiUrl + 'homebanner/create', data);
+     }
+     homebanner_edit(data) {
+      return this.http.post(this.apiUrl + 'homebanner/edit', data);
+     }
+     homebanner_delete(data) {
+      return this.http.post(this.apiUrl + 'homebanner/delete', data);
+     }
+     //////////////
+
+
+    ////doctor_spec_API//////
+    doctor_spec_list() {
+      return this.http.get(this.apiUrl + 'doctor_spec/getlist');
+     }
+     doctor_spec_insert(data) {
+      return this.http.post(this.apiUrl + 'doctor_spec/create', data);
+     }
+     doctor_spec_edit(data) {
+      return this.http.post(this.apiUrl + 'doctor_spec/edit', data);
+     }
+     doctor_spec_delete(data) {
+      return this.http.post(this.apiUrl + 'doctor_spec/delete', data);
+     }
+     //////////////
+
+
+
+      ////doctor_spec_API//////
+    doctor_details_list() {
+      return this.http.get(this.apiUrl + 'doctordetails/admin/getlist');
+     }
+     doctor_details_insert(data) {
+      return this.http.post(this.apiUrl + 'doctordetails/create', data);
+     }
+     doctor_details_edit(data) {
+      return this.http.post(this.apiUrl + 'doctordetails/edit', data);
+     }
+     doctor_details_delete(data) {
+      return this.http.post(this.apiUrl + 'doctordetails/delete', data);
+     }
+     //////////////
+
+
 
 
 
