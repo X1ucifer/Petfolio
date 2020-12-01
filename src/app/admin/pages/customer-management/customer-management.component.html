@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="doc-table">
-<p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+<p-table [value]="user_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
 
@@ -35,7 +35,7 @@
             <th>
                 Name
             </th>
-            <th>
+            <th  style="width: 200px;">
                 Email
             </th>
             <th>
@@ -58,18 +58,18 @@
                     <img src="assets/images/007.png" alt="">
                 </div>
             </td> -->
-            <td>Owner name-1</td>
-            <td>test@gmail.com</td>
-            <td>9876543210</td>
+            <td>{{item.first_name}} {{item.last_name}}</td>
+            <td>{{item.user_email}}</td>
+            <td>{{item.user_phone}}</td>
             <td>
-                16-09-2020
+                
             </td>
             <td>
-                17-09-2020
+                
             </td>
             <td class="act">
                 <i style="color: #4CAF50;" class="fa fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view()"></i>
-                <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View Details"></i>
+                <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
                 <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i>
                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
                 <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>

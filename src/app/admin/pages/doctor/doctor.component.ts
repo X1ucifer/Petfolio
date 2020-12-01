@@ -148,7 +148,11 @@ goToLink1(url: string){
     window.open(url, "_blank");
 }
 
-
+view_details(item) {
+  this.saveInLocal('view_detail', 'Doctor');
+  this.saveInLocal('view_detail_data', item);
+  this.router.navigateByUrl('/admin/View_details')
+}
 
 
 
@@ -206,7 +210,13 @@ goToLink1(url: string){
 
 
 
-
+    saveInLocal(key, val): void {
+      this.storage.set(key, val);
+    }
+  
+    getFromLocal(key): any {
+      return this.storage.get(key);
+    }
 
 
 }

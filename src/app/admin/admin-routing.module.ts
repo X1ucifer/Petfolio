@@ -39,6 +39,8 @@ import { DemoPageComponent } from './pages/demo-page/demo-page.component';
 import { DocSpecializationComponent } from './pages/doc-specialization/doc-specialization.component';
 import { DocPetHandledComponent } from './pages/doc-pet-handled/doc-pet-handled.component';
 import { ActivityLogComponent } from './pages/activity-log/activity-log.component';
+import { DetailViewComponent } from './pages/detail-view/detail-view.component';
+import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-care-payment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -67,7 +69,7 @@ const routes: Routes = [
   { path: 'Market_place', component: MarketPlaceComponent },
   { path: 'View_order', component: ViewOrderComponent },
   { path: 'View_Product', component: ProductViewComponent },
-
+  { path: 'View_Product', component: ProductViewComponent },
 
 
   ///Master ////
@@ -87,6 +89,7 @@ const routes: Routes = [
    { path: 'demo_page', component: DemoPageComponent },
    { path: 'doc_specialization', component: DocSpecializationComponent },
    { path: 'Activity', component: ActivityLogComponent },
+   { path: 'View_details', component: DetailViewComponent },
 ];
 
 @NgModule({

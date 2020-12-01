@@ -22,103 +22,111 @@ export class ApiService {
 
   /////Petfolio Admin API Start///////
 
-    ////User type API//////
-    user_type_list() {
-      return this.http.get(this.apiUrl + 'usertype/admin/getlist');
-     }
-     user_type_insert(data) {
-      return this.http.post(this.apiUrl + 'usertype/create', data);
-     }
-     user_type_edit(data) {
-      return this.http.post(this.apiUrl + 'usertype/edit', data);
-     }
-     user_type_delete(data) {
-      return this.http.post(this.apiUrl + 'usertype/delete', data);
-     }
-     //////////////
+  ////User type API//////
+  user_type_list() {
+    return this.http.get(this.apiUrl + 'usertype/admin/getlist');
+  }
+  user_type_insert(data) {
+    return this.http.post(this.apiUrl + 'usertype/create', data);
+  }
+  user_type_edit(data) {
+    return this.http.post(this.apiUrl + 'usertype/edit', data);
+  }
+  user_type_delete(data) {
+    return this.http.post(this.apiUrl + 'usertype/delete', data);
+  }
+  //////////////
 
 
-    ////Pet type API//////
-    pet_type_list() {
-      return this.http.get(this.apiUrl + 'pettype/getlist');
-     }
-     pet_type_insert(data) {
-      return this.http.post(this.apiUrl + 'pettype/create', data);
-     }
-     pet_type_edit(data) {
-      return this.http.post(this.apiUrl + 'pettype/edit', data);
-     }
-     pet_type_delete(data) {
-      return this.http.post(this.apiUrl + 'pettype/delete', data);
-     }
-     //////////////
+  ////Pet type API//////
+  pet_type_list() {
+    return this.http.get(this.apiUrl + 'pettype/getlist');
+  }
+  pet_type_insert(data) {
+    return this.http.post(this.apiUrl + 'pettype/create', data);
+  }
+  pet_type_edit(data) {
+    return this.http.post(this.apiUrl + 'pettype/edit', data);
+  }
+  pet_type_delete(data) {
+    return this.http.post(this.apiUrl + 'pettype/delete', data);
+  }
+  //////////////
 
 
-      ////Pet breed API//////
-    pet_breed_list() {
-      return this.http.get(this.apiUrl + 'breedtype/admin/getlist_id');
-     }
-     pet_breed_insert(data) {
-      return this.http.post(this.apiUrl + 'breedtype/create', data);
-     }
-     pet_breed_edit(data) {
-      return this.http.post(this.apiUrl + 'breedtype/edit', data);
-     }
-     pet_breed_delete(data) {
-      return this.http.post(this.apiUrl + 'breedtype/delete', data);
-     }
-     //////////////
+  ////Pet breed API//////
+  pet_breed_list() {
+    return this.http.get(this.apiUrl + 'breedtype/admin/getlist_id');
+  }
+  pet_breed_insert(data) {
+    return this.http.post(this.apiUrl + 'breedtype/create', data);
+  }
+  pet_breed_edit(data) {
+    return this.http.post(this.apiUrl + 'breedtype/edit', data);
+  }
+  pet_breed_delete(data) {
+    return this.http.post(this.apiUrl + 'breedtype/delete', data);
+  }
+  //////////////
 
 
-       ////pet lover home banner API//////
-    homebanner_list() {
-      return this.http.get(this.apiUrl + 'homebanner/getlist');
-     }
-     homebanner_insert(data) {
-      return this.http.post(this.apiUrl + 'homebanner/create', data);
-     }
-     homebanner_edit(data) {
-      return this.http.post(this.apiUrl + 'homebanner/edit', data);
-     }
-     homebanner_delete(data) {
-      return this.http.post(this.apiUrl + 'homebanner/delete', data);
-     }
-     //////////////
+  ////pet lover home banner API//////
+  homebanner_list() {
+    return this.http.get(this.apiUrl + 'homebanner/getlist');
+  }
+  homebanner_insert(data) {
+    return this.http.post(this.apiUrl + 'homebanner/create', data);
+  }
+  homebanner_edit(data) {
+    return this.http.post(this.apiUrl + 'homebanner/edit', data);
+  }
+  homebanner_delete(data) {
+    return this.http.post(this.apiUrl + 'homebanner/delete', data);
+  }
+  //////////////
 
 
-    ////doctor_spec_API//////
-    doctor_spec_list() {
-      return this.http.get(this.apiUrl + 'doctor_spec/getlist');
-     }
-     doctor_spec_insert(data) {
-      return this.http.post(this.apiUrl + 'doctor_spec/create', data);
-     }
-     doctor_spec_edit(data) {
-      return this.http.post(this.apiUrl + 'doctor_spec/edit', data);
-     }
-     doctor_spec_delete(data) {
-      return this.http.post(this.apiUrl + 'doctor_spec/delete', data);
-     }
-     //////////////
+  ////doctor_spec_API//////
+  doctor_spec_list() {
+    return this.http.get(this.apiUrl + 'doctor_spec/getlist');
+  }
+  doctor_spec_insert(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/create', data);
+  }
+  doctor_spec_edit(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/edit', data);
+  }
+  doctor_spec_delete(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/delete', data);
+  }
+  //////////////
 
 
 
-      ////doctor_spec_API//////
-    doctor_details_list() {
-      return this.http.get(this.apiUrl + 'doctordetails/admin/getlist');
-     }
-     doctor_details_insert(data) {
-      return this.http.post(this.apiUrl + 'doctordetails/create', data);
-     }
-     doctor_details_edit(data) {
-      return this.http.post(this.apiUrl + 'doctordetails/edit', data);
-     }
-     doctor_details_delete(data) {
-      return this.http.post(this.apiUrl + 'doctordetails/delete', data);
-     }
-     //////////////
+  ////doctor_spec_API//////
+  doctor_details_list() {
+    return this.http.get(this.apiUrl + 'doctordetails/admin/getlist');
+  }
+  doctor_details_insert(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/create', data);
+  }
+  doctor_details_edit(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/edit', data);
+  }
+  doctor_details_delete(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/delete', data);
+  }
+  //////////////
 
-
+  dashboard_count() {
+    return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
+  }
+  user_list(){
+    return this.http.get(this.apiUrl + 'userdetails/getlist');
+  }
+  single_user_detail(data) {
+    return this.http.post(this.apiUrl + 'userdetails/fetch_all_details', data);
+  }
 
 
 

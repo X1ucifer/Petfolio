@@ -75,6 +75,8 @@ import { DemoPageComponent } from './pages/demo-page/demo-page.component';
 import { DocSpecializationComponent } from './pages/doc-specialization/doc-specialization.component';
 import { DocPetHandledComponent } from './pages/doc-pet-handled/doc-pet-handled.component';
 import { ActivityLogComponent } from './pages/activity-log/activity-log.component';
+import { DetailViewComponent } from './pages/detail-view/detail-view.component';
+import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-care-payment.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -114,7 +116,9 @@ import { ActivityLogComponent } from './pages/activity-log/activity-log.componen
     DemoPageComponent,
     DocSpecializationComponent,
     DocPetHandledComponent,
-    ActivityLogComponent
+    ActivityLogComponent,
+    DetailViewComponent,
+    PetCarePaymentComponent
   ],
   imports: [
     CommonModule,
