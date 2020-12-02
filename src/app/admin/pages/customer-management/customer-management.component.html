@@ -44,7 +44,8 @@
             <!-- <th>Created by</th>
             <th>Modified by</th> -->
             <th>Created Date</th>
-            <th>Last Login Date</th>
+            <!-- <th>Last Login Date</th> -->
+            <th>Mobile Type</th>
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -62,17 +63,17 @@
             <td>{{item.user_email}}</td>
             <td>{{item.user_phone}}</td>
             <td>
-                
+                {{item.date_of_reg}}
             </td>
             <td>
-                
+                {{item.mobile_type}}
             </td>
             <td class="act">
-                <i style="color: #4CAF50;" class="fa fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view()"></i>
+                <i style="color: #4CAF50;" class="fa fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i>
                 <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
                 <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i>
                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
 
             </td>
         </tr>

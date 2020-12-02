@@ -127,6 +127,13 @@ export class ApiService {
   single_user_detail(data) {
     return this.http.post(this.apiUrl + 'userdetails/fetch_all_details', data);
   }
+  user_delete(data) {
+    return this.http.post(this.apiUrl + 'userdetails/delete', data);
+  }
+  
+  appointment_list(){
+    return this.http.get(this.apiUrl + 'appointments/getlist');
+  }
 
 
 

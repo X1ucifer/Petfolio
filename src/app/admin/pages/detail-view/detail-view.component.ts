@@ -11,20 +11,6 @@ import { ApiService } from '../../../api.service';
 export class DetailViewComponent implements OnInit {
   view_detail: any;
   view_detail_data:any;
-  rows = [{ type: "Dog", name: "dog1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" },
-  { type: "Cat", name: "cat1" }]
-
-
   constructor(
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -32,6 +18,7 @@ export class DetailViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     console.log(this.view_detail_data);

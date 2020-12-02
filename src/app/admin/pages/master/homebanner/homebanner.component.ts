@@ -187,7 +187,7 @@ export class HomebannerComponent implements OnInit {
            }
           }
           else{
-            alert('Please upload the file size 80 * 80');
+            alert('Please upload the file size 400 * 800');
             this.imgType.nativeElement.value = "";
           }
         };

@@ -178,31 +178,29 @@
         <p (click)="back()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back </p>
         <div class="card-box">
             <div class="row" style="padding: 0px 0px 23px 10px;">
-                <div class="col-md-3">
-                    <img src="" class="pro-pic">
-                </div>
-                <div class="col-md-9" style="padding-left: 20px;">
-                    <h1 style="margin-bottom: 0px;">{{view_detail_data.userdetailsModels[0].first_name}}
-                        {{view_detail_data.userdetailsModels[0].last_name}}</h1>
-                    <!-- <p class="title">data.Qualifications</p> -->
-                    <p><i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        {{view_detail_data.userdetailsModels[0].user_email}} - <i class="fa fa-phone"
-                            aria-hidden="true"></i> {{view_detail_data.userdetailsModels[0].user_phone}}</p>
-                    <!-- <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase" aria-hidden="true"></i>
-                        data.Experience </p> -->
-                    <!-- <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
-                            style="font-weight: 400;">Live</span></p> -->
-                    <!-- <div class="p-field p-col-12 p-md-4">
-                        <label (click)="doc_cal()">Doctor Calendar <i class="fa fa-calendar"
-                                aria-hidden="true"></i></label>
-                    </div> -->
-
-                    <!-- <button type="button" class="btn btn-primary"
-                        style="margin-left: 10px;margin-top: 24px; width: 110px;height: auto;background-color: #1E88E5;font-size: 12px;">Approve</button>
-                    <button type="button" class="btn btn-danger"
-                        style="margin-left: 10px;margin-top: 24px; width: 110px;font-size: 12px;">Reject</button> -->
-
-                </div>
+                <table>
+                    <tr class="thhead">
+    
+                        <!-- <th style="color:#fff">Image</th> -->
+                        <th style="color:#fff">Name </th>
+                        <th style="color:#fff">Email ID</th>
+                        <th style="color:#fff">Phone Number</th>
+                    </tr>
+                    <tr class="tdrow">
+                        <!-- <td class="act">
+                            <img src="assets/images/005.png" style="width: 50px;height: 50px;">
+                        </td> -->
+                        <td class="act">
+                            {{view_detail_data.userdetailsModels[0].first_name}} {{view_detail_data.userdetailsModels[0].last_name}}
+                        </td>
+                        <td class="act">
+                            {{view_detail_data.userdetailsModels[0].user_email}}
+                        </td>
+                         <td class="act">
+                            {{view_detail_data.userdetailsModels[0].user_phone}}
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="card-box">
@@ -254,13 +252,13 @@
                                         <th>
                                             Last Vaccinated date
                                         </th>
-                                        <th>Created by</th>
-                                        <th>Modified by</th>
+                                        <!-- <th>Created by</th>
+                                        <th>Modified by</th> -->
                                         <th>Created at</th>
-                                        <th>Modified at</th>
-                                        <th style="width: 163px;text-align:center">
+                                        <!-- <th>Modified at</th> -->
+                                        <!-- <th style="width: 163px;text-align:center">
                                             Action
-                                        </th>
+                                        </th> -->
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-item let-i="rowIndex">
@@ -280,6 +278,7 @@
                                         <td>{{item.pet_age}} Year</td>
                                         <td>{{item.vaccinated}}</td>
                                         <td>{{item.last_vaccination_date}}</td>
+                                        <td>{{item.date_and_time}}</td>
                                         <!-- <td>
                                             User
                                         </td>
@@ -342,6 +341,7 @@
                                         <th>
                                             Pin
                                         </th>
+                                        <th>Created at</th>
                                         <!--  <th>
                                             Pet Breed
                                         </th>
@@ -385,7 +385,7 @@
                                         <td>{{item.location_state}}</td>
                                         <td>{{item.location_city}}</td>
                                         <td>{{item.location_pin}}</td>
-
+                                        <td>{{item.date_and_time}}</td>
                                         <!-- <td>Male</td>
                                         <td>White</td>
                                         <td>15kg</td>
@@ -441,9 +441,6 @@
                                             S.No
                                         </th>
                                         <th>
-                                            Attachments
-                                        </th>
-                                        <th>
                                             Appointment Type
                                         </th>
                                         <th>
@@ -455,6 +452,14 @@
                                         <th>
                                             Start Appointment Status
                                         </th>
+                                        <th>
+                                            End Appointment Status
+                                        </th>
+                                        <th>
+                                            Attachments
+                                        </th>
+                                        <th>Mobile Type</th>
+                                        <th>Amount</th>
                                         <!-- <th>
                                             Pet weight
                                         </th>
@@ -484,6 +489,16 @@
                                                 <img src="assets/images/007.png" alt="">
                                             </div>
                                         </td> -->
+
+                                        <td>{{item.appointment_types}}</td>
+                                        <td>{{item.appoinment_status}}</td>
+                                        <td>{{item.booking_date_time}}</td>
+                                        <td>
+                                            {{item.start_appointment_status}}
+                                        </td>
+                                        <td>
+                                            {{item.end_appointment_status}}
+                                        </td>
                                         <td class="act">
                                             <ng-container *ngFor="let photo_id_pic of item.doc_attched">
                                                 <i (click)="goToLink1(photo_id_pic.file)" class="fa fa-file-text"
@@ -491,12 +506,8 @@
                                                     aria-hidden="true"></i>
                                             </ng-container>
                                         </td>
-                                        <td>{{item.appointment_types}}</td>
-                                        <td>{{item.appoinment_status}}</td>
-                                        <td>{{item.booking_date_time}}</td>
-                                        <td>
-                                            {{item.start_appointment_status}}
-                                        </td>
+                                        <td>{{item.mobile_type}}</td>
+                                        <td>{{item.amount}}</td>
                                         <!-- <td class="act">
                                             <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true"
                                                 pTooltip="Edit"></i>
@@ -533,16 +544,14 @@
                                 <th> <label for="f-user"> Doctor Name </label> </th>
 
                                 <td class="desc">
-                                    <ng-container>
-                                        i+1.spe<br />
-                                    </ng-container>
+                                    {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
                                 </td>
                             </tr>
                             <tr>
                                 <th> <label for="f-user"> Appointment Date & Time </label> </th>
 
                                 <td class="desc">
-                                    9/15/2020 1:45 PM
+                                    {{view_detail_data.booking_date_time}}
                                 </td>
                             </tr>
                             <!-- <tr>
@@ -553,19 +562,73 @@
                             <tr>
                                 <th> <label for="f-pass2">Appointment Type </label> </th>
 
-                                <td class="desc">Online</td>
+                                <td class="desc">{{view_detail_data.appointment_types}}</td>
                             </tr>
                             <tr>
                                 <th> <label for="f-dispname">Status </label> </th>
 
-                                <td class="desc"> </td>
+                                <td class="desc"> {{view_detail_data.appoinment_status}}</td>
                             </tr>
                             <tr>
-                                <th> <label for="f-dispname"> Booking Date & Time</label> </th>
+                                <th> <label for="f-dispname">Booking Date & Time</label> </th>
 
-                                <td class="desc">9/15/2020 1:45 PM</td>
+                                <td class="desc">{{view_detail_data.booking_date_time}}</td>
                             </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Start Appointment Status</label> </th>
 
+                                <td class="desc">{{view_detail_data.start_appointment_status}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">End Appointment Status</label> </th>
+
+                                <td class="desc">{{view_detail_data.end_appointment_status}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Communication Type</label> </th>
+
+                                <td class="desc">{{view_detail_data.communication_type}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Mobile Type</label> </th>
+
+                                <td class="desc">{{view_detail_data.mobile_type}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Payment Method</label> </th>
+
+                                <td class="desc">{{view_detail_data.payment_method}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Amount</label> </th>
+
+                                <td class="desc">{{view_detail_data.amount}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Prescription Details</label> </th>
+
+                                <td class="desc">{{view_detail_data.prescription_details}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Doctor Feedback</label> </th>
+
+                                <td class="desc">{{view_detail_data.doc_feedback}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Customer Feedback</label> </th>
+
+                                <td class="desc">{{view_detail_data.user_feedback}}</td>
+                            </tr>
+                            <tr>
+                                <th> <label for="f-dispname">Attachments</label> </th>
+
+                                <td class="act desc">
+                                    <ng-container *ngFor="let photo_id_pic of view_detail_data.doc_attched">
+                                        <i (click)="goToLink1(photo_id_pic.file)" class="fa fa-file-text"
+                                            style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+                                    </ng-container>
+                                </td>
+                            </tr>
                             <!-- <tr>
                                 <th> <label for="f-tos">Available Hours </label> </th>
 
@@ -585,10 +648,10 @@
                                 <th><label for="f-tos"> Live Status</label></th>
                                 <td class="desc"> data.Live_Status </td>
                             </tr> -->
-                            <tr>
+                            <!-- <tr>
                                 <th><label for="f-tos"> Current Location</label></th>
-                                <td class="desc"> data.Current_location </td>
-                            </tr>
+                                <td class="desc"> {{view_detail_data.booking_date_time}}</td>
+                            </tr> -->
 
                             <!-- <tr>
                                 <th><label for="f-tos">Doctor Brife</label></th>
@@ -611,7 +674,6 @@
 
 
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -619,31 +681,32 @@
                 <div class="spec">
                     <h4> <label style="color: #007adb;">User Details</label> </h4>
                 </div>
-                <div class="card-box">
+                 <div class="card-box">
+                   
                     <div class="row" style="padding: 0px 0px 23px 10px;">
-                        <div class="col-md-3">
-                            <img src="" class="pro-pic">
-                        </div>
-                        <div class="col-md-9" style="padding-left: 20px;">
-                            <h1 style="margin-bottom: 0px;">data.Name</h1>
-                            <!-- <p class="title">data.Qualifications</p> -->
-                            <p><i class="fa fa-envelope-o" aria-hidden="true"></i> data.Email - <i class="fa fa-phone"
-                                    aria-hidden="true"></i> data.Phone</p>
-                            <!-- <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase" aria-hidden="true"></i>
-                                data.Experience </p>
-                            <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
-                                    style="font-weight: 400;">Live</span></p> -->
-                            <!-- <div class="p-field p-col-12 p-md-4">
-                                <label (click)="doc_cal()">Doctor Calendar <i class="fa fa-calendar"
-                                        aria-hidden="true"></i></label>
-                            </div> -->
-
-                            <!-- <button type="button" class="btn btn-primary"
-                                style="margin-left: 10px;margin-top: 24px; width: 110px;height: auto;background-color: #1E88E5;font-size: 12px;">Approve</button>
-                            <button type="button" class="btn btn-danger"
-                                style="margin-left: 10px;margin-top: 24px; width: 110px;font-size: 12px;">Reject</button>
-         -->
-                        </div>
+                        <table>
+                            <tr class="thhead">
+            
+                                <!-- <th style="color:#fff">Image</th> -->
+                                <th style="color:#fff">Name </th>
+                                <th style="color:#fff">Email ID</th>
+                                <th style="color:#fff">Phone Number</th>
+                            </tr>
+                            <tr class="tdrow">
+                                <!-- <td class="act">
+                                    <img src="assets/images/005.png" style="width: 50px;height: 50px;">
+                                </td> -->
+                                <td class="act">
+                                    {{view_detail_data.user_id.first_name}} {{view_detail_data.user_id.last_name}}
+                                </td>
+                                <td class="act">
+                                    {{view_detail_data.user_id.user_email}}
+                                </td>
+                                 <td class="act">
+                                    {{view_detail_data.user_id.user_phone}}
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -654,28 +717,88 @@
                 <div class="card-box">
                     <div class="row" style="padding: 0px 0px 23px 10px;">
                         <div class="col-md-3">
-                            <img src="" class="pro-pic">
+                            <img src="{{view_detail_data.doc_business_info[0].clinic_pic[0].clinic_pic}}" class="pro-pic">
                         </div>
                         <div class="col-md-9" style="padding-left: 20px;">
-                            <h1 style="margin-bottom: 0px;">data.Name</h1>
-                            <p class="title">data.Qualifications</p>
-                            <p><i class="fa fa-envelope-o" aria-hidden="true"></i> data.Email - <i class="fa fa-phone"
-                                    aria-hidden="true"></i> data.Phone</p>
-                            <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase"
-                                    aria-hidden="true"></i>
-                                data.Experience </p>
-                            <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
-                                    style="font-weight: 400;">Live</span></p>
+                            <h1 style="margin-bottom: 0px;">{{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}</h1>
+                            <p class="title">
+                                <ng-container *ngFor="let edu of view_detail_data.doc_business_info[0].education_details">
+                                    {{edu.education}}-{{edu.year}} ,
+                                </ng-container>
+                            </p>
+                            <p><i class="fa fa-envelope-o" aria-hidden="true"></i> {{view_detail_data.doctor_id.user_email}} - <i
+                                    class="fa fa-phone" aria-hidden="true"></i> {{view_detail_data.doctor_id.user_phone}}</p>
+                            <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                                <ng-container *ngFor="let exp of view_detail_data.doc_business_info[0].experience_details">
+                                    {{exp.company}}({{exp.from}}-{{exp.to}}) ,
+                                </ng-container>
+                            </p>
+                            <!-- <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
+                                    style="font-weight: 400;">{{view_detail_data.doc_business_info[0].profile_status}}</span></p> -->
                             <!-- <div class="p-field p-col-12 p-md-4">
                                 <label (click)="doc_cal()">Doctor Calendar <i class="fa fa-calendar"
                                         aria-hidden="true"></i></label>
                             </div> -->
-
-                            <!-- <button type="button" class="btn btn-primary"
-                                style="margin-left: 10px;margin-top: 24px; width: 110px;height: auto;background-color: #1E88E5;font-size: 12px;">Approve</button>
-                            <button type="button" class="btn btn-danger"
-                                style="margin-left: 10px;margin-top: 24px; width: 110px;font-size: 12px;">Reject</button> -->
-
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 25px;">
+                <div class="spec">
+                    <h4> <label style="color: #007adb;">Pet Details</label> </h4>
+                </div>
+                <div class="card-box">
+                    <div class="row" style="padding: 0px 0px 23px 10px;">
+                        <div class="col-md-3">
+                            <img src="{{view_detail_data.pet_id.pet_img}}" class="pro-pic">
+                        </div>
+                        <div class="col-md-9 app-i" style="padding-left: 20px;">
+                            <table cellpadding="5" cellspacing="0">
+                                <tr>
+                                    <th> <label for="f-user">Pet Name</label> </th>
+    
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_name}} </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Breed</label> </th>
+    
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_breed}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Type</label> </th>
+    
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_type}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Color</label> </th>
+    
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_color}}
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <th> <label for="f-user">Pet Gender</label> </th>
+    
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_gender}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th> <label for="f-user">Pet Weight</label> </th>
+    
+                                    <td class="desc">
+                                        {{view_detail_data.pet_id.pet_weight}}
+                                    </td>
+                                </tr>
+                               
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -47,10 +47,23 @@ export class CustomerManagementComponent implements OnInit {
       }
     );
   }
-  pet_view() {
-    this.router.navigateByUrl('/admin/Pet_list')
+  pet_view(item) {
+    window.scrollTo(0, 0);
+    let a = {
+      'user_id': item._id
+    };
+    this._api.single_user_detail(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.saveInLocal('pet_list', response.Data);
+        this.router.navigateByUrl('/admin/Pet_list')
+      }
+    );
+
+
   }
   view_details(item) {
+    window.scrollTo(0, 0);
     let a = {
       'user_id': item._id
     };
@@ -58,12 +71,25 @@ export class CustomerManagementComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         this.saveInLocal('view_detail_data', response.Data);
+        this.saveInLocal('view_detail', 'User');
+        this.router.navigateByUrl('/admin/View_details')
       }
     );
-    this.saveInLocal('view_detail', 'User');
 
-    this.router.navigateByUrl('/admin/View_details')
 
+  }
+  Delete(data) {
+    let a = {
+      '_id': data
+    };
+    console.log(a);
+    this._api.user_delete(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        alert('Deleted Successfully');
+        this.ngOnInit();
+      }
+    );
   }
 
 
