@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-md-8 text-right">
-        <!-- <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button> -->
+        <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button>
     </div>
 </div>
 
@@ -71,8 +71,8 @@
             <td class="act">
                 <i style="color: #4CAF50;" class="fa fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i>
                 <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
-                <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i>
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+                <!-- <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i> -->
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
                 <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
 
             </td>

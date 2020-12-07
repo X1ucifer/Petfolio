@@ -51,4 +51,51 @@ export class DetailViewComponent implements OnInit {
     }
   );
 }
+
+delete_pet(data) {
+  let a = {
+    '_id': data
+  };
+  console.log(a);
+  this._api.pet_detail_delete(a).subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      alert('Deleted Successfully');
+      let b = {
+        'user_id': this.view_detail_data.userdetailsModels[0]._id
+      };
+      console.log(b);
+      this._api.single_user_detail(b).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.view_detail_data = response.Data;
+          console.log(this.view_detail_data);
+        }
+      );
+    }
+  );
+}
+delete_loc(data) {
+  let a = {
+    '_id': data
+  };
+  console.log(a);
+  this._api.customer_location_delete(a).subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      alert('Deleted Successfully');
+      let b = {
+        'user_id': this.view_detail_data.userdetailsModels[0]._id
+      };
+      console.log(b);
+      this._api.single_user_detail(b).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.view_detail_data = response.Data;
+          console.log(this.view_detail_data);
+        }
+      );
+    }
+  );
+}
 }

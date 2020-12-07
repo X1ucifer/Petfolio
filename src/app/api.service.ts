@@ -121,7 +121,7 @@ export class ApiService {
   dashboard_count() {
     return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
   }
-  user_list(){
+  user_list() {
     return this.http.get(this.apiUrl + 'userdetails/getlist');
   }
   single_user_detail(data) {
@@ -130,10 +130,43 @@ export class ApiService {
   user_delete(data) {
     return this.http.post(this.apiUrl + 'userdetails/delete', data);
   }
-  
-  appointment_list(){
+  user_create(data) {
+    return this.http.post(this.apiUrl + 'userdetails/create', data);
+  }
+  appointment_list() {
     return this.http.get(this.apiUrl + 'appointments/getlist');
   }
+  pet_detail_delete(data) {
+    return this.http.post(this.apiUrl + 'petdetails/delete', data);
+  }
+  customer_location_delete(data) {
+    return this.http.post(this.apiUrl + 'locationdetails/delete', data);
+  }
+
+  pet_create(data) {
+    return this.http.post(this.apiUrl + 'petdetails/create', data);
+  }
+
+  demoscreen_create(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/create', data);
+  }
+  demoscreen_delete(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/delete', data);
+  }
+  demoscreen_list() {
+    return this.http.get(this.apiUrl + 'demoscreen/getlist');
+  }
+
+  splashscreen_create(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/create', data);
+  }
+  splashscreen_delete(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/delete', data);
+  }
+  splashscreen_list() {
+    return this.http.get(this.apiUrl + 'splashscreen/getlist');
+  }
+
 
 
 

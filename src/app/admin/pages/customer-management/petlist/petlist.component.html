@@ -10,7 +10,7 @@
         <button type="button" class="btn btn-primary"
             style="color: #FFF;background-color: #fc4652;border: none;margin-right: 10px;"
             (click)="back()">Back</button>
-        <!-- <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button> -->
+        <button type="button" class="btn btn-primary mr-0" (click)="service_form()">Add</button>
     </div>
 </div>
 <div class="row">
@@ -74,9 +74,9 @@
                             <th>Modified by</th> -->
                             <th>Created at</th>
                             <!-- <th>Modified at</th> -->
-                            <!-- <th style="width: 163px;text-align:center">
+                            <th style="width: 100px;text-align:center">
                                 Action
-                            </th> -->
+                            </th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-item let-i="rowIndex">
@@ -109,14 +109,14 @@
                             <td>
                                 17-09-2020
                             </td> -->
-                            <!-- <td class="act">
-                                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true"
-                                    pTooltip="Edit"></i>
-                                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
-                                    pTooltip="Delete"></i>
-                                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"
-                                    pTooltip="View"></i>
-                            </td> -->
+                            <td class="act" style="text-align: center;">
+                                <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true"
+                                    pTooltip="Edit"></i> -->
+                                    <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                    pTooltip="Delete" (click)="delete_pet(item._id)"></i>
+                                <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"
+                                    pTooltip="View"></i> -->
+                            </td>
                         </tr>
                     </ng-template>
                 </p-table>

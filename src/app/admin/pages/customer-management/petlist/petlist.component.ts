@@ -13,6 +13,7 @@ export class PetlistComponent implements OnInit {
   searchQR:any;
   value1:any;
   pet_list:any;
+  view_detail_data:any;
   constructor(
     private router: Router,
     private location: Location,
@@ -37,7 +38,7 @@ export class PetlistComponent implements OnInit {
     
   }
 service_form() {
-    this.router.navigateByUrl('/admin_panel/Customer_form')
+    this.router.navigateByUrl('/admin/Customer_form')
   }
   back(){
    this.location.back();
@@ -50,5 +51,28 @@ service_form() {
 
   getFromLocal(key): any {
     return this.storage.get(key);
+  }
+  delete_pet(data) {
+    let a = {
+      '_id': data
+    };
+    console.log(a);
+    this._api.pet_detail_delete(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        alert('Deleted Successfully');
+        let b = {
+          'user_id': this.pet_list.userdetailsModels[0]._id
+        };
+        console.log(b);
+        this._api.single_user_detail(b).subscribe(
+          (response: any) => {
+            console.log(response.Data);
+            this.pet_list = response.Data;
+            console.log(this.pet_list);
+          }
+        );
+      }
+    );
   }
 }

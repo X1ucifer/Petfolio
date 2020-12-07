@@ -41,6 +41,7 @@ import { DocPetHandledComponent } from './pages/doc-pet-handled/doc-pet-handled.
 import { ActivityLogComponent } from './pages/activity-log/activity-log.component';
 import { DetailViewComponent } from './pages/detail-view/detail-view.component';
 import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-care-payment.component';
+import { CustomerCreateComponent } from './pages/customer-management/customer-create/customer-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -90,6 +91,7 @@ const routes: Routes = [
    { path: 'doc_specialization', component: DocSpecializationComponent },
    { path: 'Activity', component: ActivityLogComponent },
    { path: 'View_details', component: DetailViewComponent },
+   { path: 'Customer_create', component: CustomerCreateComponent },
 ];
 
 @NgModule({

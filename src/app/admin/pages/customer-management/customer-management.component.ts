@@ -52,6 +52,7 @@ export class CustomerManagementComponent implements OnInit {
     let a = {
       'user_id': item._id
     };
+    console.log(a)
     this._api.single_user_detail(a).subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -63,6 +64,7 @@ export class CustomerManagementComponent implements OnInit {
 
   }
   view_details(item) {
+    this.saveInLocal('fun_type', 'create');
     window.scrollTo(0, 0);
     let a = {
       'user_id': item._id
@@ -100,4 +102,17 @@ export class CustomerManagementComponent implements OnInit {
   getFromLocal(key): any {
     return this.storage.get(key);
   }
+  service_form() {
+    this.saveInLocal('fun_type', 'create');
+    this.router.navigateByUrl('/admin/Customer_create')
+  }
+
+  edit_details(item) {
+    this.saveInLocal('view_detail_data', item);
+    this.saveInLocal('fun_type', 'edit');
+    this.router.navigateByUrl('/admin/Customer_create')
+
+  }
+
+
 }

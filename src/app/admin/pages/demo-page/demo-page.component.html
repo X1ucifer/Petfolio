@@ -4,18 +4,24 @@
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-3">
             <h5 class="form-lable">Tittle:</h5>
-            <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Tittle" >
+            <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Tittle">
         </div>
         <div class="col-md-3">
             <h5 class="form-lable">Description:</h5>
-            <textarea pInputTextarea [(ngModel)]="value1"></textarea>
+            <textarea pInputTextarea [(ngModel)]="Description"></textarea>
         </div>
         <div class="col-md-3">
-          <h5 class="form-lable">Image:</h5>
-          <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Breed" >
-      </div>
+            <h5 class="form-lable">Image:</h5>
+            <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
+                class="form-control" id="city" placeholder="User type icon">
+            <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
+                100 * 100 (Max 200 kB)</div>
+            <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+
+        </div>
         <div class="col-md-2">
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+                (click)="create()">Add</button>
         </div>
 
     </div>
@@ -29,16 +35,16 @@
     </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
-      <h5 class="form-lable">Start Date</h5>
-      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
-  </div>
-  <div class="col-md-4">
-      <h5 class="form-lable">End Date</h5>
-      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
-  </div>
+    <div class="col-md-4">
+        <h5 class="form-lable">Start Date</h5>
+        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-4">
+        <h5 class="form-lable">End Date</h5>
+        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
 </div>
-<p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+<p-table [value]="list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
     <!-- <ng-template pTemplate="caption">
@@ -63,18 +69,18 @@
                 S.No
             </th>
             <th>
-                Pet Type
+                Image
             </th>
             <th>
-                Breed
+                Tittle
             </th>
             <th>
-              Pet Breed Icon
-          </th>
+                Description
+            </th>
             <th>Created by</th>
-            <th>Modified by</th>
-            <th>Created at</th>
-            <th>Modified at</th>
+            <!-- <th>Modified by</th>
+            <th>Created at</th> -->
+            <!-- <th>Modified at</th> -->
             <th style="width: 163px;text-align:center">
                 Action
             </th>
@@ -83,27 +89,22 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td> Pet Type-1</td>
-            <td>Breed</td>
             <td>
-              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
-          </td>
-            <td>
-                User
+                <img src="{{item.img_path}}" alt=""style="width: 50px;height:50px">
             </td>
             <td>
-                Admin
+                {{item.img_title}}
             </td>
             <td>
-                16-09-2020
+                {{item.img_describ}}
             </td>
             <td>
-                17-09-2020
+                {{item.date_and_time}}
             </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="delete(item._id)"></i>
+                <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>
         </tr>
     </ng-template>
