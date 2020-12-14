@@ -36,7 +36,8 @@ export class CustomerFormComponent implements OnInit {
   Validation: any;
   selectedimgae: any;
   img_path: string = undefined;
-
+  type: any;
+  detail: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
@@ -47,6 +48,22 @@ export class CustomerFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.type = this.getFromLocal('fun_type');
+    if (this.type == 'edit') {
+      this.detail = this.getFromLocal('view_detail_data');
+      console.log(this.detail)
+      this.img_path = this.detail.pet_img;
+      this.Pet_Name = this.detail.pet_name;
+      this.Pet_Type = { "pet_type_title": this.detail.pet_type };
+      this.Pet_Breed = { "pet_breed": this.detail.pet_breed };
+      this.Pet_Gender = { "y": this.detail.pet_gender };
+      this.Pet_Color = this.detail.pet_color;
+      this.Pet_Weight = this.detail.pet_weight;
+      this.Pet_Age = this.detail.pet_age;
+      this.Vaccinated_date = new Date(this.detail.last_vaccination_date);
+      this.Vaccinated = { "y": ""+this.detail.vaccinated }
+    }
+
     this.Detail = this.getFromLocal('pet_list');
     this.listpetbreed();
     this.listpettype();
@@ -56,7 +73,10 @@ export class CustomerFormComponent implements OnInit {
     this._api.pet_type_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.type_array = response.Data;
+        for(let i=0; i< response.Data.length; i++){
+          this.type_array.push({"pet_type_title": response.Data[i].pet_type_title})
+        }
+        console.log(this.type_array);
       }
     );
   }
@@ -65,7 +85,11 @@ export class CustomerFormComponent implements OnInit {
     this._api.pet_breed_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.breed_array = response.Data;
+        for(let i=0; i< response.Data.length; i++){
+          this.breed_array.push({"pet_breed": response.Data[i].pet_breed})
+        }
+        console.log(this.breed_array);
+        
       }
     );
   }
@@ -125,6 +149,50 @@ export class CustomerFormComponent implements OnInit {
           console.log(response);
           if (response.Code === 200) {
             alert('Added Successfully');
+            this.pet_view();
+          } else {
+            alert(response.Message);
+          }
+        }
+      );
+    }
+  }
+
+  update() {
+    this.validation();
+    if (this.Validation == false) {
+      alert("Please enter valid inputs")
+    } else {
+      let vac;
+      if (this.Vaccinated.y == "true") {
+        vac = true;
+      }
+      else {
+        vac = false
+      }
+      let a = {
+        "_id": this.detail._id,
+        "user_id": this.Detail.userdetailsModels[0]._id,
+        "pet_img": this.img_path,
+        "pet_name": this.Pet_Name,
+        "pet_type": this.Pet_Type.pet_type_title,
+        "pet_breed": this.Pet_Breed.pet_breed,
+        "pet_gender": this.Pet_Gender.y,
+        "pet_color": this.Pet_Color,
+        "pet_weight": +this.Pet_Weight,
+        "pet_age": +this.Pet_Age,
+        "vaccinated": vac,
+        "last_vaccination_date": "" + this.Vaccinated_date,
+        "default_status": true,
+        "date_and_time": "" + new Date(),
+        "mobile_type": "Admin"
+      };
+      console.log(a);
+      this._api.pet_edit(a).subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.Code === 200) {
+            alert('Update Successfully');
             this.pet_view();
           } else {
             alert(response.Message);

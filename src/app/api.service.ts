@@ -113,6 +113,9 @@ export class ApiService {
   doctor_details_edit(data) {
     return this.http.post(this.apiUrl + 'doctordetails/edit', data);
   }
+  doctor_details_create(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/create', data);
+  }
   doctor_details_delete(data) {
     return this.http.post(this.apiUrl + 'doctordetails/delete', data);
   }
@@ -133,8 +136,14 @@ export class ApiService {
   user_create(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
   }
+  user_edit(data) {
+    return this.http.post(this.apiUrl + 'userdetails/edit', data);
+  }
   appointment_list() {
     return this.http.get(this.apiUrl + 'appointments/getlist');
+  }
+  appointment_delete(data) {
+    return this.http.post(this.apiUrl + 'appointments/delete', data);
   }
   pet_detail_delete(data) {
     return this.http.post(this.apiUrl + 'petdetails/delete', data);
@@ -146,9 +155,14 @@ export class ApiService {
   pet_create(data) {
     return this.http.post(this.apiUrl + 'petdetails/create', data);
   }
-
+  pet_edit(data) {
+    return this.http.post(this.apiUrl + 'petdetails/edit', data);
+  }
   demoscreen_create(data) {
     return this.http.post(this.apiUrl + 'demoscreen/create', data);
+  }
+  demoscreen_edit(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/edit', data);
   }
   demoscreen_delete(data) {
     return this.http.post(this.apiUrl + 'demoscreen/delete', data);
@@ -159,6 +173,9 @@ export class ApiService {
 
   splashscreen_create(data) {
     return this.http.post(this.apiUrl + 'splashscreen/create', data);
+  }
+  splashscreen_edit(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/edit', data);
   }
   splashscreen_delete(data) {
     return this.http.post(this.apiUrl + 'splashscreen/delete', data);

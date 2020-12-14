@@ -16,8 +16,10 @@
 
         </div>
         <div class="col-md-2">
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            <button type="button" *ngIf="edit_t == false" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
                 (click)="create()">Add</button>
+                <button *ngIf="edit_t == true" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+                (click)="update()">Update</button>
         </div>
 
     </div>
@@ -92,7 +94,7 @@
                 {{item.date_and_time}}
             </td>
             <td class="act">
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit" (click)="edit(item)"></i>
                 <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="delete(item._id)"></i>
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>

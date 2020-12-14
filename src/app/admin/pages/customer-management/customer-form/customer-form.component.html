@@ -1,6 +1,6 @@
-<h4 class="title">Pet Create</h4>
-
-<div class="card-box">
+<h4 class="title" *ngIf="type == 'create'">Pet Create</h4>
+<h4 class="title" *ngIf="type == 'edit'">Update Pet Details</h4>
+<div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0">
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-12">
             <h4 class="form-lable" style="margin-bottom: 20px;">Owner name: <span style="color: #019377;padding-left: 7px;margin-bottom: 20px;"> {{Detail.userdetailsModels[0].first_name}} {{Detail.userdetailsModels[0].last_name}}</span></h4>
@@ -68,7 +68,8 @@
         </div>
 
         <div class="col-md-12 mt-20">
-            <button type="button" class="btn btn-primary" (click)="create()">Create</button>
+            <button type="button" class="btn btn-primary"  *ngIf="type == 'create'" (click)="create()">Create</button>
+            <button type="button" class="btn btn-primary"  *ngIf="type == 'edit'" (click)="update()">Update</button>
             <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button>
         </div>
 

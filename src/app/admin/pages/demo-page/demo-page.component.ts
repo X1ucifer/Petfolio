@@ -21,6 +21,8 @@ export class DemoPageComponent implements OnInit {
   selectedimgae: any;
   img_path: string = undefined;
   list: any;
+  edit_t: boolean = false;
+  id: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
@@ -74,6 +76,7 @@ export class DemoPageComponent implements OnInit {
           console.log(response);
           if (response.Code === 200) {
             alert('Added Successfully');
+            this.ngOnInit();
           } else {
             alert(response.Message);
           }
@@ -137,6 +140,48 @@ export class DemoPageComponent implements OnInit {
         this.ngOnInit();
       }
     );
+  }
+
+  Edit(item) {
+    this.edit_t = true;
+    this.id = item._id
+    this.img_path = item.img_path;
+    this.Tittle = item.img_title;
+    this.Description = item.img_describ;
+  }
+  update() {
+    this.validation();
+    if (this.Validation == false) {
+      alert("Please enter valid inputs")
+    } else {
+      let a = {
+        "_id": this.id,
+        "img_path": this.img_path,
+        "img_title": this.Tittle,
+        "img_describ": this.Description,
+        "img_index": 4,
+        "show_status": true,
+        "date_and_time": "" + new Date(),
+
+      }
+      console.log(a);
+      this._api.demoscreen_edit(a).subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.Code === 200) {
+            alert('Updated Successfully');
+            this.ngOnInit();
+            this.edit_t = false;
+            this.id = undefined;
+            this.img_path = undefined;
+            this.Tittle = undefined;
+            this.Description = undefined;
+          } else {
+            alert(response.Message);
+          }
+        }
+      );
+    }
   }
 }
 

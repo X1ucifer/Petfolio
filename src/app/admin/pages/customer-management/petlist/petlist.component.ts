@@ -38,6 +38,7 @@ export class PetlistComponent implements OnInit {
     
   }
 service_form() {
+  this.saveInLocal('fun_type', 'create');
     this.router.navigateByUrl('/admin/Customer_form')
   }
   back(){
@@ -74,5 +75,11 @@ service_form() {
         );
       }
     );
+  }
+  edit_details(item) {
+    this.saveInLocal('view_detail_data', item);
+    this.saveInLocal('fun_type', 'edit');
+    this.router.navigateByUrl('/admin/Customer_form')
+
   }
 }

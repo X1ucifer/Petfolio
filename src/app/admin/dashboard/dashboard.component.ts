@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" }];
     searchQR:any;
-
+    doctor_list:any;
     
   constructor(
     private _api: ApiService,
@@ -31,7 +31,15 @@ export class DashboardComponent implements OnInit {
     this._api.dashboard_count().subscribe((res:any)=>{
       console.log(res)
       this.counts = res.Data;
-    })
+    });
+    this._api.doctor_details_list().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.rows = response.Data;
+        this.doctor_list = response.Data;
+        console.log(this.doctor_list);
+      }
+    );
   }
 
 }

@@ -81,4 +81,17 @@ export class PetCareAppointmentComponent implements OnInit {
     }
 
   }
+  Delete(id){
+    let a ={
+      "_id": id
+    }
+    this._api.appointment_delete(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        alert('Deleted Successfully');
+        this.ngOnInit();
+      }
+    );
+  }
+  
 }

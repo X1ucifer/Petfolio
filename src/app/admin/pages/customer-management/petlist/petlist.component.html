@@ -30,8 +30,9 @@
             <h4> <label>Pet List</label> </h4>
 
             <div class="doc-table">
-                <p-table [value]="pet_list.petdetailsModels " styleClass="ui-table-customers" #tt [paginator]="true"
-                    [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                <p-table [value]="pet_list.petdetailsModels | filter:searchQR" styleClass="ui-table-customers" #tt
+                    [paginator]="true" [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
+                    [showCurrentPageReport]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [globalFilterFields]="['type']">
 
@@ -110,10 +111,10 @@
                                 17-09-2020
                             </td> -->
                             <td class="act" style="text-align: center;">
-                                <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true"
-                                    pTooltip="Edit"></i> -->
-                                    <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
-                                    pTooltip="Delete" (click)="delete_pet(item._id)"></i>
+                                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true"  (click)="edit_details(item)"
+                                    pTooltip="Edit"></i>
+                                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                    (click)="delete_pet(item._id)"></i>
                                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"
                                     pTooltip="View"></i> -->
                             </td>

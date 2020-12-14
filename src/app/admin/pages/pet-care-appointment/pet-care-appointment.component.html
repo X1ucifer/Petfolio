@@ -21,8 +21,8 @@
     </div>
     <div class="col-md-6 text-right">
         <button (click)="Filter('Completed')" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 25px;">Completed</button>
-        <button (click)="Filter('Incompleted')" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 25px;">Incomplete</button>
-        <button (click)="Filter('Missed')" type="button" style="margin-top: 25px;margin-right: 10px;" class="btn btn-primary">Missed</button>
+        <button (click)="Filter('Incompleted')" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 25px;">Booked</button>
+        <button (click)="Filter('Missed')" type="button" style="margin-top: 25px;margin-right: 10px;" class="btn btn-primary">Cancelled</button>
         <button (click)="Filter('All')" type="button" class="btn btn-primary" style=" margin-top: 25px;">All</button>
 
     </div>
@@ -122,6 +122,7 @@
                     <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
                     <i style="color: #4CAF50;" class="fa  fa-clock-o" aria-hidden="true" pTooltip="Reschedule"></i>
                     <i style="color: #fd2c3a;" class="fa fa-ban" aria-hidden="true" pTooltip="Disable"></i> -->
+                    <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
                     <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"
                         pTooltip="View Details"></i>
 

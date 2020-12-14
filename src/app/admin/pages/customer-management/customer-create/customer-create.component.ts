@@ -97,7 +97,34 @@ export class CustomerCreateComponent implements OnInit {
     }
   }
   edit() {
-   
+    this.validation();
+    if (this.Validation == false) {
+      alert("Please enter valid inputs")
+    } else {
+      let a = {
+        "_id":  this.detail._id,
+        "first_name": this.Fname,
+        "last_name": this.Lname,
+        "user_email": this.Email,
+        "user_phone": this.Phone,
+        "user_type": 1,
+        "date_of_reg": new Date(),
+        "mobile_type": 'Admin',
+        "user_status" : "complete"
+      };
+      console.log(a);
+      this._api.user_edit(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          if (response.Code === 200) {
+            alert('updated Successfully');
+            this.router.navigateByUrl('/admin/Customer_Management')
+          } else {
+            alert(response.Message);
+          }
+        }
+      );
+    }
   }
 
   
