@@ -29,14 +29,20 @@
     </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
-      <h5 class="form-lable">Start Date</h5>
-      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
-  </div>
-  <div class="col-md-4">
-      <h5 class="form-lable">End Date</h5>
-      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
-  </div>
+    <div class="col-md-4">
+        <h5 class="form-lable">Start Date</h5>
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-4">
+        <h5 class="form-lable">End Date</h5>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="filter_date()">Search</button>
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="refersh()">Refresh</button>
+    </div>
 </div>
 <!-- <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"

@@ -1,37 +1,44 @@
 <h4 class="title">Doctor</h4>
+
 <div class="row">
     <div class="col-md-4">
         <div class="search-hero">
-            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+            <input class="form-control" type="text" name="search2" style="margin-top: 25px;font-family: FontAwesome;"
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
     <div class="col-md-3">
-        <h5 class="form-lable" style="margin-top: -27px;">Start Date</h5>
-        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+        <h5 class="form-lable">Start Date</h5>
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
     </div>
     <div class="col-md-3">
-        <h5 class="form-lable" style="margin-top: -27px;">End Date</h5>
-        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+        <h5 class="form-lable">End Date</h5>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon"></p-calendar>
     </div>
-   
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="filter_date()">Search</button>
+        <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="refersh()">Refresh</button> -->
+    </div>
 </div>
 <div class="row">
 
     <div class="col-md-4">
         <h5 class="form-lable">Specialization:</h5>
-        <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select" optionLabel="specialzation"
-                [showClear]="true"></p-dropdown>
+        <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select"
+            optionLabel="specialzation" [showClear]="true"></p-dropdown>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <button *ngIf="update_button == true" type="button" class="btn btn-primary"
             style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()">Filter</button>
-            <button *ngIf="update_button == true" type="button" class="btn btn-primary"
-            style="margin-top: 24px;" (click)="Refresh()">Refresh</button>
+        
 
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-md-4 text-right">
+        <button *ngIf="update_button == true" type="button" class="btn btn-primary" style="margin-top: 24px;"
+            (click)="refersh()">Refresh</button>
         <button type="button" style="margin-top: 24px;" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
     </div>
 </div>

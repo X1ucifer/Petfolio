@@ -20,10 +20,10 @@
 
         </div>
         <div class="col-md-2">
-            <button *ngIf="edit_t == false" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                (click)="create()">Add</button>
-                <button *ngIf="edit_t == true" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                (click)="update()">Update</button>
+            <button *ngIf="edit_t == false" type="button" class="btn btn-primary"
+                style="margin-left: 10px;margin-top: 24px;" (click)="create()">Add</button>
+            <button *ngIf="edit_t == true" type="button" class="btn btn-primary"
+                style="margin-left: 10px;margin-top: 24px;" (click)="update()">Update</button>
         </div>
 
     </div>
@@ -39,11 +39,17 @@
 <div class="row">
     <div class="col-md-4">
         <h5 class="form-lable">Start Date</h5>
-        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
     </div>
     <div class="col-md-4">
         <h5 class="form-lable">End Date</h5>
-        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="demoscreen_filter_date()">Search</button>
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="refersh()">Refresh</button>
     </div>
 </div>
 <p-table [value]="list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -92,7 +98,7 @@
         <tr class="tdrow">
             <td>{{i+1}}</td>
             <td>
-                <img src="{{item.img_path}}" alt=""style="width: 50px;height:50px">
+                <img src="{{item.img_path}}" alt="" style="width: 50px;height:50px">
             </td>
             <td>
                 {{item.img_title}}
@@ -104,8 +110,10 @@
                 {{item.date_and_time}}
             </td>
             <td class="act">
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="Edit(item)" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="delete(item._id)"></i>
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="Edit(item)"
+                    pTooltip="Edit"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                    (click)="delete(item._id)"></i>
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>
         </tr>

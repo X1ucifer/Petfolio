@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-customer-management',
@@ -13,10 +14,13 @@ export class CustomerManagementComponent implements OnInit {
   searchQR: any;
   value1: any;
   user_list: any;
+  S_Date: any;
+  E_Date: any;
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
+    private datePipe: DatePipe,
 
   ) { }
 
@@ -114,5 +118,30 @@ export class CustomerManagementComponent implements OnInit {
 
   }
 
+  filter_date() {
+    if ( this.E_Date != undefined && this.S_Date != undefined) {
+      // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+
+      let a = {
+        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+        }
+      console.log(a);
+      this._api.user_filter_date(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.user_list = response.Data;
+        }
+      );
+    }
+    else{
+      alert('Please select the startdate and enddate');
+    }
+   
+  }
+  refersh(){
+    this.list();
+  }
 
 }

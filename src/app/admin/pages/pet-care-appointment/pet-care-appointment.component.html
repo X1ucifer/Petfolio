@@ -2,28 +2,31 @@
 <div class="row">
     <div class="col-md-4">
         <div class="search-hero">
-            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+            <input class="form-control" type="text" name="search2" style="margin-top: 25px;font-family: FontAwesome;"
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
         </div>
     </div>
-    <!-- <div class="col-md-8 text-right">
-        <button type="button" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
-    </div> -->
-</div>
-<div class="row">
     <div class="col-md-3">
         <h5 class="form-lable">Start Date</h5>
-        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
     </div>
     <div class="col-md-3">
         <h5 class="form-lable">End Date</h5>
-        <p-calendar [showIcon]="true" inputId="icon"></p-calendar>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon"></p-calendar>
     </div>
-    <div class="col-md-6 text-right">
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="filter_date()">Search</button>
+            <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="refersh()">Refresh</button> -->
+    </div>
+</div>
+<div class="row">
+   <div class="col-md-12 text-right">
         <button (click)="Filter('Completed')" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 25px;">Completed</button>
         <button (click)="Filter('Incompleted')" type="button" class="btn btn-primary" style="margin-right: 10px; margin-top: 25px;">Booked</button>
         <button (click)="Filter('Missed')" type="button" style="margin-top: 25px;margin-right: 10px;" class="btn btn-primary">Cancelled</button>
-        <button (click)="Filter('All')" type="button" class="btn btn-primary" style=" margin-top: 25px;">All</button>
+        <button (click)="refersh()" type="button" class="btn btn-primary" style=" margin-top: 25px;margin-right: 0px;">Refersh</button>
 
     </div>
 </div>

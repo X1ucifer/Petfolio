@@ -35,6 +35,10 @@ export class ApiService {
   user_type_delete(data) {
     return this.http.post(this.apiUrl + 'usertype/delete', data);
   }
+  user_type_filter_date(data) {
+    return this.http.post(this.apiUrl + 'usertype/filter_date', data);
+  }
+
   //////////////
 
 
@@ -50,6 +54,9 @@ export class ApiService {
   }
   pet_type_delete(data) {
     return this.http.post(this.apiUrl + 'pettype/delete', data);
+  }
+  pet_type_filter_date(data) {
+    return this.http.post(this.apiUrl + 'pettype/filter_date', data);
   }
   //////////////
 
@@ -67,6 +74,9 @@ export class ApiService {
   pet_breed_delete(data) {
     return this.http.post(this.apiUrl + 'breedtype/delete', data);
   }
+  pet_breed_filter_date(data) {
+    return this.http.post(this.apiUrl + 'breedtype/filter_date', data);
+  }
   //////////////
 
 
@@ -83,6 +93,9 @@ export class ApiService {
   homebanner_delete(data) {
     return this.http.post(this.apiUrl + 'homebanner/delete', data);
   }
+  homebanner_filter_date(data) {
+    return this.http.post(this.apiUrl + 'homebanner/filter_date', data);
+  }
   //////////////
 
 
@@ -98,6 +111,9 @@ export class ApiService {
   }
   doctor_spec_delete(data) {
     return this.http.post(this.apiUrl + 'doctor_spec/delete', data);
+  }
+  doctor_spec_filter_date(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/filter_date', data);
   }
   //////////////
 
@@ -119,13 +135,39 @@ export class ApiService {
   doctor_details_delete(data) {
     return this.http.post(this.apiUrl + 'doctordetails/delete', data);
   }
+  doctor_detailsfilter_date(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/filter_date', data);
+  }
   //////////////
+  service_provider_list() {
+    return this.http.get(this.apiUrl + 'service_provider/getlist');
+  }
+  service_provider_insert(data) {
+    return this.http.post(this.apiUrl + 'service_provider/create', data);
+  }
+  service_provider_edit(data) {
+    return this.http.post(this.apiUrl + 'service_provider/edit', data);
+  }
+  service_provider_create(data) {
+    return this.http.post(this.apiUrl + 'service_provider/create', data);
+  }
+  service_provider_delete(data) {
+    return this.http.post(this.apiUrl + 'service_provider/delete', data);
+  }
+  service_providerfilter_date(data) {
+    return this.http.post(this.apiUrl + 'service_provider/filter_date', data);
+  }
+
+
 
   dashboard_count() {
     return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
   }
   user_list() {
     return this.http.get(this.apiUrl + 'userdetails/getlist');
+  }
+  user_filter_date(data) {
+    return this.http.post(this.apiUrl + 'userdetails/filter_date', data);
   }
   single_user_detail(data) {
     return this.http.post(this.apiUrl + 'userdetails/fetch_all_details', data);
@@ -141,6 +183,9 @@ export class ApiService {
   }
   appointment_list() {
     return this.http.get(this.apiUrl + 'appointments/getlist');
+  }
+  appointment_filter_date(data) {
+    return this.http.post(this.apiUrl + 'appointments/filter_date', data);
   }
   appointment_delete(data) {
     return this.http.post(this.apiUrl + 'appointments/delete', data);
@@ -170,6 +215,9 @@ export class ApiService {
   demoscreen_list() {
     return this.http.get(this.apiUrl + 'demoscreen/getlist');
   }
+  demoscreen_filter_date(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/filter_date', data);
+  }
 
   splashscreen_create(data) {
     return this.http.post(this.apiUrl + 'splashscreen/create', data);
@@ -182,6 +230,26 @@ export class ApiService {
   }
   splashscreen_list() {
     return this.http.get(this.apiUrl + 'splashscreen/getlist');
+  }
+  splashscreen_filter_date(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/filter_date', data);
+  }
+
+
+  SP_services_create(data) {
+    return this.http.post(this.apiUrl + 'SP_services/create', data);
+  }
+  SP_services_edit(data) {
+    return this.http.post(this.apiUrl + 'SP_services/edit', data);
+  }
+  SP_services_delete(data) {
+    return this.http.post(this.apiUrl + 'SP_services/delete', data);
+  }
+  SP_services_list() {
+    return this.http.get(this.apiUrl + 'SP_services/getlist');
+  }
+  SP_services_filter_date(data) {
+    return this.http.post(this.apiUrl + 'SP_services/filter_date', data);
   }
 
 

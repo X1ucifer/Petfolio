@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Router, RouterModule } from '@angular/router';
 import { ApiService } from '../../../api.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-pet-care-appointment',
   templateUrl: './pet-care-appointment.component.html',
@@ -12,6 +13,8 @@ export class PetCareAppointmentComponent implements OnInit {
   appointment_list: any;
   Main_list: any;
   filter_type: any;
+  S_Date: any;
+  E_Date: any;
   rows: any = [{ type: "Dog", name: "dog1" },
   { type: "Cat", name: "cat1" },
   { type: "Cat", name: "cat1" },
@@ -30,6 +33,7 @@ export class PetCareAppointmentComponent implements OnInit {
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -93,5 +97,29 @@ export class PetCareAppointmentComponent implements OnInit {
       }
     );
   }
-  
+  filter_date() {
+    if ( this.E_Date != undefined && this.S_Date != undefined) {
+      // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+
+      let a = {
+        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+        }
+      console.log(a);
+      this._api.appointment_filter_date(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.appointment_list = response.Data;
+        }
+      );
+    }
+    else{
+      alert('Please select the startdate and enddate');
+    }
+   
+  }
+  refersh(){
+    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  }
 }

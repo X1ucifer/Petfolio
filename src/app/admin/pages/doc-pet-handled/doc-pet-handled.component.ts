@@ -3,6 +3,7 @@ import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class DocPetHandledComponent implements OnInit {
   searchQR:any;
   value1:any;
 
-
+  S_Date: any;
+  E_Date: any;
   pet_type_title : string = '';
   user_type_value : string = '';
   date_and_time : string = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
@@ -32,7 +34,8 @@ export class DocPetHandledComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -192,7 +195,31 @@ export class DocPetHandledComponent implements OnInit {
     //  }
 
 
-
+    filter_date() {
+      if ( this.E_Date != undefined && this.S_Date != undefined) {
+        // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+        let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+  
+        let a = {
+          "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+          "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+          }
+        console.log(a);
+        this._api.pet_type_filter_date(a).subscribe(
+          (response: any) => {
+            console.log(response.Data);
+            this.rows = response.Data;
+          }
+        );
+      }
+      else{
+        alert('Please select the startdate and enddate');
+      }
+     
+    }
+    refersh(){
+      this.listpettype();
+    }
 
 
 

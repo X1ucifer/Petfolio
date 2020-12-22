@@ -3,7 +3,7 @@ import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
@@ -19,7 +19,8 @@ export class DoctorComponent implements OnInit {
   date_and_time: string = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   pet_type_list: any = [];
   pet_type_id: string = '';
-
+  S_Date: any;
+  E_Date: any;
   update_button: boolean;
   selectedimgae: any;
   specialzation_list: any;
@@ -32,7 +33,8 @@ export class DoctorComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -247,5 +249,31 @@ export class DoctorComponent implements OnInit {
   doc_form() {
     this.router.navigateByUrl('/admin/Doctor_form')
     this.saveInLocal('fun_type', 'create');
+  }
+
+  filter_date() {
+    if ( this.E_Date != undefined && this.S_Date != undefined) {
+      // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+
+      let a = {
+        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+        }
+      console.log(a);
+      this._api.doctor_detailsfilter_date(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.rows = response.Data;
+        }
+      );
+    }
+    else{
+      alert('Please select the startdate and enddate');
+    }
+   
+  }
+  refersh(){
+    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
   }
 }

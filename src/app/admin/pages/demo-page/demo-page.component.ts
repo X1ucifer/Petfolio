@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-demo-page',
   templateUrl: './demo-page.component.html',
@@ -23,6 +25,8 @@ export class DemoPageComponent implements OnInit {
   list: any;
   edit_t: boolean = false;
   id: any;
+  S_Date: any;
+  E_Date: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private router: Router,
@@ -30,6 +34,7 @@ export class DemoPageComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private http: HttpClient,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -182,6 +187,31 @@ export class DemoPageComponent implements OnInit {
         }
       );
     }
+  }
+  demoscreen_filter_date() {
+    if ( this.E_Date != undefined && this.S_Date != undefined) {
+      // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+
+      let a = {
+        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+        }
+      console.log(a);
+      this._api.demoscreen_filter_date(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.list = response.Data;
+        }
+      );
+    }
+    else{
+      alert('Please select the startdate and enddate');
+    }
+   
+  }
+  refersh(){
+    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
   }
 }
 

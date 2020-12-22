@@ -3,7 +3,7 @@ import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pet-breed-type',
@@ -15,7 +15,8 @@ export class PetBreedTypeComponent implements OnInit {
   rows1 = [];
   searchQR: any;
   value1: any;
-
+  S_Date: any;
+  E_Date: any;
   pet_type_name: any;
   pet_type_id: string = '';
   pet_breed: string = '';
@@ -35,7 +36,8 @@ export class PetBreedTypeComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    private datePipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ export class PetBreedTypeComponent implements OnInit {
   listpettype() {
     this._api.pet_type_list().subscribe(
       (response: any) => {
+        console.log("response.Data");
         console.log(response.Data);
         this.rows1 = response.Data;
         this.pet_type_name = this.rows1[0];
@@ -65,6 +68,7 @@ export class PetBreedTypeComponent implements OnInit {
   listpetbreed() {
     this._api.pet_breed_list().subscribe(
       (response: any) => {
+        console.log("breed list");
         console.log(response.Data);
         this.rows = response.Data;
       }
@@ -215,7 +219,31 @@ export class PetBreedTypeComponent implements OnInit {
 
 
 
+  filter_date() {
+    if ( this.E_Date != undefined && this.S_Date != undefined) {
+      // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
 
+      let a = {
+        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+        }
+      console.log(a);
+      this._api.pet_breed_filter_date(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.rows = response.Data;
+        }
+      );
+    }
+    else{
+      alert('Please select the startdate and enddate');
+    }
+   
+  }
+  refersh(){
+    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  }
 
 
 }

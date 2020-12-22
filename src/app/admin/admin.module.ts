@@ -78,6 +78,7 @@ import { ActivityLogComponent } from './pages/activity-log/activity-log.componen
 import { DetailViewComponent } from './pages/detail-view/detail-view.component';
 import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-care-payment.component';
 import { CustomerCreateComponent } from './pages/customer-management/customer-create/customer-create.component';
+import { ServiceProviderSpecializationComponent } from './pages/service-provider-management/service-provider-specialization/service-provider-specialization.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -120,7 +121,8 @@ import { CustomerCreateComponent } from './pages/customer-management/customer-cr
     ActivityLogComponent,
     DetailViewComponent,
     PetCarePaymentComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    ServiceProviderSpecializationComponent
   ],
   imports: [
     CommonModule,

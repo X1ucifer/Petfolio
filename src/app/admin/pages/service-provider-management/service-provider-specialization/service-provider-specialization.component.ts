@@ -6,11 +6,11 @@ import { ApiService } from '../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 @Component({
-  selector: 'app-splash-screen',
-  templateUrl: './splash-screen.component.html',
-  styleUrls: ['./splash-screen.component.css']
+  selector: 'app-service-provider-specialization',
+  templateUrl: './service-provider-specialization.component.html',
+  styleUrls: ['./service-provider-specialization.component.css']
 })
-export class SplashScreenComponent implements OnInit {
+export class ServiceProviderSpecializationComponent implements OnInit {
   rows = [];
   searchQR: any;
   Tittle: any;
@@ -40,7 +40,7 @@ export class SplashScreenComponent implements OnInit {
   }
   listpettype() {
     console.log("list");
-    this._api.splashscreen_list().subscribe(
+    this._api.SP_services_list().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.list = response.Data;
@@ -74,7 +74,7 @@ export class SplashScreenComponent implements OnInit {
 
       }
       console.log(a);
-      this._api.splashscreen_create(a).subscribe(
+      this._api.SP_services_create(a).subscribe(
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
@@ -136,7 +136,7 @@ export class SplashScreenComponent implements OnInit {
       '_id': data
     };
     console.log(a);
-    this._api.splashscreen_delete(a).subscribe(
+    this._api.SP_services_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         alert('Deleted Successfully');
@@ -166,7 +166,7 @@ export class SplashScreenComponent implements OnInit {
 
       }
       console.log(a);
-      this._api.splashscreen_edit(a).subscribe(
+      this._api.SP_services_edit(a).subscribe(
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
@@ -195,7 +195,7 @@ export class SplashScreenComponent implements OnInit {
         "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
         }
       console.log(a);
-      this._api.splashscreen_filter_date(a).subscribe(
+      this._api.SP_services_filter_date(a).subscribe(
         (response: any) => {
           console.log(response.Data);
           this.list = response.Data;
