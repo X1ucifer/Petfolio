@@ -246,7 +246,7 @@ export class ServiceProviderManagementComponent implements OnInit {
   }
 
   doc_form() {
-    this.router.navigateByUrl('/admin/Doctor_form')
+    this.router.navigateByUrl('/admin/Service_Provider_form')
     this.saveInLocal('fun_type', 'create');
   }
 

@@ -1,9 +1,12 @@
 <h4 class="title">Service Provider Management</h4>
+<button type="button" style="margin-top: -24px;float:right;" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
+
 <div class="row">
     <div class="col-md-3">
         <div class="search-hero">
             <input class="form-control" type="text" name="search2" style="margin-top: 25px;font-family: FontAwesome;"
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+
         </div>
     </div>
     <div class="col-md-3">
@@ -18,8 +21,7 @@
         <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
             (click)="filter_date()">Search</button>
         <button type="button" class="btn btn-primary" style="margin-top: 24px;" (click)="refersh()">Refresh</button>
-        <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-            (click)="refersh()">Refresh</button> -->
+      
     </div>
 </div>
 <div class="doc-table">
