@@ -2,25 +2,34 @@
 
 <div class="card-box">
     <div class="row" style="padding: 0px 0px 23px 10px;">
-        <div class="col-md-4">
+        <div class="col-md-3" style="margin-bottom: 15px;">
             <h5 class="form-lable">Category:</h5>
-           <p-dropdown [options]="rows" [(ngModel)]="selectedtype" placeholder="Select Category" optionLabel="name" [showClear]="true"></p-dropdown>
+            <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category"
+                optionLabel="product_cate" [showClear]="true"></p-dropdown>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h5 class="form-lable">Sub-Category:</h5>
-            <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Sub-Category">
+            <input type="text" pInputText [(ngModel)]="Sub_Category" placeholder="Enter Sub-Category">
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <h5 class="form-lable">sub-Category Code:</h5>
             <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter sub-Category Code">
+        </div> -->
+        <div class="col-md-4">
+            <h5 class="form-lable">Category Icon:</h5>
+            <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
+                class="form-control" id="city" placeholder="User type icon">
+            <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
+                100 * 100 (Max 200 kB)</div>
+            <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+
         </div>
-        <div class="col-md-4">
-          <h5 class="form-lable">sub-Category Icon:</h5>
-          <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter sub-Category Code">
-      </div>
-        <div class="col-md-4">
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 30px;">Add</button>
+        <div class="col-md-2">
+            <button type="button" *ngIf="edit_t == false" class="btn btn-primary"
+                style="margin-left: 10px;margin-top: 24px;" (click)="create()">Add</button>
+            <button *ngIf="edit_t == true" type="button" class="btn btn-primary"
+                style="margin-left: 10px;margin-top: 24px;" (click)="update()">Update</button>
         </div>
 
     </div>
@@ -34,14 +43,20 @@
     </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
-      <h5 class="form-lable">Start Date</h5>
-      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
-  </div>
-  <div class="col-md-4">
-      <h5 class="form-lable">End Date</h5>
-      <p-calendar  [showIcon]="true" inputId="icon"></p-calendar>
-  </div>
+    <div class="col-md-4">
+        <h5 class="form-lable">Start Date</h5>
+        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-4">
+        <h5 class="form-lable">End Date</h5>
+        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon"></p-calendar>
+    </div>
+    <div class="col-md-4">
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="filter_date()">Search</button>
+        <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
+            (click)="refersh()">Refresh</button>
+    </div>
 </div>
 
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -69,19 +84,16 @@
                 S.No
             </th>
             <th>
+                Sub-Category Icon
+            </th>
+            <th>
                 Category
             </th>
             <th>
                 Sub-Category
             </th>
-            <th>
-                Sub-Category Code
-            </th>
-            <th>
-              Sub-Category Icon
-          </th>
-            <th>Created by</th>
-            <th>Modified by</th>
+            <!-- <th>Created by</th>
+            <th>Modified by</th> -->
             <th>Created at</th>
             <th>Modified at</th>
             <th style="width: 163px;text-align:center">
@@ -92,28 +104,21 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td>Category-1</td>
-            <td>Sub-Category-1</td>
-            <td>789456</td>
             <td>
-              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
+                <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="Denim Jeans" style="width: 40px;height: 40px;">
+            </td>
+            <td>{{item.product_categ}}</td>
+            <td>{{item.product_sub_cate}}</td>
+            <td> {{item.createdAt}}
             </td>
             <td>
-                User
-            </td>
-            <td>
-                Admin
-            </td>
-            <td>
-                16-09-2020
-            </td>
-            <td>
-                17-09-2020
+                {{item.updatedAt}}
             </td>
             <td class="act">
-                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
+                <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"
+                    (click)="edit(item)"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                    (click)="delete(item._id)"></i>
             </td>
         </tr>
     </ng-template>

@@ -61,7 +61,7 @@ export class ServiceProviderManagementComponent implements OnInit {
         console.log(response.Data);
         this.rows = response.Data;
         this.Main_list = response.Data;
-        console.log(this.pet_type_list);
+        console.log(this.Main_list);
       }
     );
   }

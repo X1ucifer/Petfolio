@@ -79,6 +79,7 @@ import { DetailViewComponent } from './pages/detail-view/detail-view.component';
 import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-care-payment.component';
 import { CustomerCreateComponent } from './pages/customer-management/customer-create/customer-create.component';
 import { ServiceProviderSpecializationComponent } from './pages/service-provider-management/service-provider-specialization/service-provider-specialization.component';
+import { CreateTimeComponent } from './pages/create-time/create-time.component';
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -122,7 +123,8 @@ import { ServiceProviderSpecializationComponent } from './pages/service-provider
     DetailViewComponent,
     PetCarePaymentComponent,
     CustomerCreateComponent,
-    ServiceProviderSpecializationComponent
+    ServiceProviderSpecializationComponent,
+    CreateTimeComponent
   ],
   imports: [
     CommonModule,

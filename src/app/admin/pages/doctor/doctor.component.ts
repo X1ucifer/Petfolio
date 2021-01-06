@@ -115,12 +115,38 @@ export class DoctorComponent implements OnInit {
     }
   }
 
-
-
-  verify(status, id) {
+  insert_live_doctor(item) {
     let a = {
-      '_id': id,
-      'profile_verification_status': status,
+      '_id': item._id,
+      "first_name": item.first_name,
+      "last_name": item.last_name,
+      "user_email": item.user_email,
+      "user_phone": item.user_phone,
+      "user_type": item.user_type,
+      "date_of_reg": item.date_of_reg,
+      "mobile_type": item.mobile_type,
+      "user_status": item.user_status,
+      "user_id": item.user_id,
+      "dr_title": item.dr_title,
+      "dr_name": item.dr_name,
+      "clinic_name": item.clinic_name,
+      "clinic_loc": item.clinic_loc,
+      "clinic_lat": item.clinic_lat,
+      "clinic_long": item.clinic_long,
+      "education_details": item.education_details,
+      "experience_details": item.experience_details,
+      "specialization": item.specialization,
+      "pet_handled": item.pet_handled,
+      "clinic_pic": item.clinic_pic,
+      "certificate_pic": item.certificate_pic,
+      "govt_id_pic": item.govt_id_pic,
+      "photo_id_pic": item.photo_id_pic,
+      "profile_status": item.profile_status,
+      "profile_verification_status": item.profile_verification_status,
+      "date_and_time": item.date_and_time,
+      "live_by": "",
+      "live_status": "Not Live"
+
     };
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
@@ -131,7 +157,35 @@ export class DoctorComponent implements OnInit {
     );
   }
 
+  verify(status, id,item) {
+    this.insert_live_doctor(item);
+    let a = {
+      '_id': id,
+      'profile_verification_status': status,
+    };
+    this._api.doctor_details_edit(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        // alert("Updated Successfully");
+        // this.ngOnInit();
+      }
+    );
+  }
 
+  live_status_change(status, id) {
+    let a = {
+      '_id': id,
+      "live_by": "Super Admin",
+      "live_status": status
+    };
+    this._api.doctor_details_edit(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        alert("Updated Successfully");
+        this.ngOnInit();
+      }
+    );
+  }
   Deletecompanydetails(data) {
     let a = {
       '_id': data
@@ -184,7 +238,7 @@ export class DoctorComponent implements OnInit {
     console.log(this.rows)
 
   }
-  Refresh(){
+  Refresh() {
     this.specialzation_f = undefined;
     this.rows = this.Main_list;
   }
@@ -252,14 +306,14 @@ export class DoctorComponent implements OnInit {
   }
 
   filter_date() {
-    if ( this.E_Date != undefined && this.S_Date != undefined) {
+    if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
-      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+      let yourDate = this.E_Date.setDate(this.E_Date.getDate() + 1);
 
       let a = {
-        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
-        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
-        }
+        "fromdate": this.datePipe.transform(new Date(this.S_Date), 'yyyy-MM-dd'),
+        "todate": this.datePipe.transform(new Date(yourDate), 'yyyy-MM-dd')
+      }
       console.log(a);
       this._api.doctor_detailsfilter_date(a).subscribe(
         (response: any) => {
@@ -268,12 +322,12 @@ export class DoctorComponent implements OnInit {
         }
       );
     }
-    else{
+    else {
       alert('Please select the startdate and enddate');
     }
-   
+
   }
-  refersh(){
-    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  refersh() {
+    this.listpettype(); this.E_Date = undefined; this.S_Date = undefined;
   }
 }

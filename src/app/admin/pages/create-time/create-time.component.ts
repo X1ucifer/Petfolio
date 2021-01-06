@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Inject,  ViewChild, AfterViewInit, ElementRef } from '@angular/core';import { Router } from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
@@ -6,17 +7,17 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-doc-specialization',
-  templateUrl: './doc-specialization.component.html',
-  styleUrls: ['./doc-specialization.component.css']
+  selector: 'app-create-time',
+  templateUrl: './create-time.component.html',
+  styleUrls: ['./create-time.component.css']
 })
-export class DocSpecializationComponent implements OnInit {
+export class CreateTimeComponent implements OnInit {
   rows = [];
   searchQR:any;
   value1:any;
 
 
-  specialzation : string = '';
+  Time : string = '';
   date_and_time : string = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
   pet_type_list : any = [];
   pet_type_id : string = '';
@@ -38,7 +39,7 @@ export class DocSpecializationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.specialzation = '';
+    this.Time = '';
     // this.user_type_img = 'http://18.237.123.253:3000/api/uploads/template.jpg';
     this.pet_type_id = '';
     this.update_button = true;
@@ -57,19 +58,16 @@ export class DocSpecializationComponent implements OnInit {
       }
     );
   }
-
-
-
-  ////// Inserting Data
+////// Inserting Data
 
   Insert_pet_type_details() {
 
 
-    if(this.specialzation == ''){
+    if(this.Time == ''){
       alert("Please enter the pet type")
     }else{
     let a = {
-      'specialzation' : this.specialzation,
+      'Time' : this.Time,
       'date_and_time' : new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}),
       };
     console.log(a);
@@ -89,12 +87,12 @@ export class DocSpecializationComponent implements OnInit {
 
 
   Edit_pet_type_details(){
-    if(this.specialzation == ''){
+    if(this.Time == ''){
       alert("Please enter the pet type")
     }else{
     let a = {
       '_id' : this.pet_type_id,
-      'specialzation' : this.specialzation,
+      'Time' : this.Time,
      };
     this._api.doctor_spec_edit(a).subscribe(
     (response: any) => {
@@ -126,7 +124,7 @@ export class DocSpecializationComponent implements OnInit {
   Editcompanydetailsdata(data) {
     this.update_button = false;
     this.pet_type_id = data._id;
-    this.specialzation = data.specialzation ;
+    this.Time = data.Time ;
   }
 
 
@@ -154,5 +152,13 @@ export class DocSpecializationComponent implements OnInit {
     }
     refersh(){
       this.listpettype();
+    }
+    _keyPress(event: any) {
+      const pattern = /[0-9\ ]/;
+      let inputChar = String.fromCharCode(event.charCode);
+      if (!pattern.test(inputChar)) {
+        event.preventDefault();
+  
+      }
     }
 }

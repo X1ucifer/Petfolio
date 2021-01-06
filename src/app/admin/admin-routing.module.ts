@@ -43,6 +43,7 @@ import { DetailViewComponent } from './pages/detail-view/detail-view.component';
 import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-care-payment.component';
 import { CustomerCreateComponent } from './pages/customer-management/customer-create/customer-create.component';
 import { ServiceProviderSpecializationComponent } from './pages/service-provider-management/service-provider-specialization/service-provider-specialization.component';
+import { CreateTimeComponent } from './pages/create-time/create-time.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -93,7 +94,8 @@ const routes: Routes = [
    { path: 'Activity', component: ActivityLogComponent },
    { path: 'View_details', component: DetailViewComponent },
    { path: 'Customer_create', component: CustomerCreateComponent },
-   { path: 'Service_provider_specialization', component: ServiceProviderSpecializationComponent }
+   { path: 'Service_provider_specialization', component: ServiceProviderSpecializationComponent },
+   { path: 'Time_create', component: CreateTimeComponent },
 ];
 
 @NgModule({

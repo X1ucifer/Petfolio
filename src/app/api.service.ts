@@ -138,6 +138,19 @@ export class ApiService {
   doctor_detailsfilter_date(data) {
     return this.http.post(this.apiUrl + 'doctordetails/filter_date', data);
   }
+
+  vendor_details_list() {
+    return this.http.get(this.apiUrl + 'product_vendor/getlist');
+  }
+  vendor_details_edit(data) {
+    return this.http.post(this.apiUrl + 'product_vendor/edit', data);
+  }
+  vendor_detailsfilter_date(data) {
+    return this.http.post(this.apiUrl + 'product_vendor/filter_date', data);
+  }
+  vendor_delete(data) {
+    return this.http.post(this.apiUrl + 'product_vendor/delete', data);
+  }
   //////////////
   service_provider_list() {
     return this.http.get(this.apiUrl + 'service_provider/getlist');
@@ -255,7 +268,60 @@ export class ApiService {
 
 
 
+ 
 
+
+  product_cate_create(data) {
+    return this.http.post(this.apiUrl + 'product_cate/create', data);
+  }
+  product_cate_edit(data) {
+    return this.http.post(this.apiUrl + 'product_cate/edit', data);
+  }
+  product_cate_delete(data) {
+    return this.http.post(this.apiUrl + 'product_cate/delete', data);
+  }
+  product_cate_list() {
+    return this.http.get(this.apiUrl + 'product_cate/getlist');
+  }
+  product_cate_filter_date(data) {
+    return this.http.post(this.apiUrl + 'product_cate/filter_date', data);
+  }
+  
+
+  product_subcat_create(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/create', data);
+  }
+  product_subcat_edit(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/edit', data);
+  }
+  product_subcat_delete(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/delete', data);
+  }
+  product_subcat_list() {
+    return this.http.get(this.apiUrl + 'product_subcat/getlist');
+  }
+  product_subcat_filter_date(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/filter_date', data);
+  }
+  product_subcat_by_id(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/getlist_id', data);
+  }
+
+  product_details_create(data) {
+    return this.http.post(this.apiUrl + 'product_details/create', data);
+  }
+  product_details_edit(data) {
+    return this.http.post(this.apiUrl + 'product_details/edit', data);
+  }
+  product_details_delete(data) {
+    return this.http.post(this.apiUrl + 'product_details/delete', data);
+  }
+  product_details_list() {
+    return this.http.get(this.apiUrl + 'product_details/getlist');
+  }
+  product_details_filter_date(data) {
+    return this.http.post(this.apiUrl + 'product_details/filter_date', data);
+  }
 
 
 

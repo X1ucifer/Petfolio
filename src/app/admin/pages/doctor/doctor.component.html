@@ -33,7 +33,7 @@
     <div class="col-md-4">
         <button *ngIf="update_button == true" type="button" class="btn btn-primary"
             style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()">Filter</button>
-        
+
 
     </div>
     <div class="col-md-4 text-right">
@@ -89,6 +89,9 @@
                 <th>Approve / Reject</th>
                 <th>Mobile Type</th>
                 <th>Profile Stauts</th>
+                <th>Live Stauts</th>
+                <th>Live Updated By</th>
+                <th>Live Update</th>
                 <th style="width: 110px;text-align:center">
                     Action
                 </th>
@@ -144,7 +147,7 @@
                     Admin
                 </td>
                 <td>
-                    {{item.user_id.date_of_reg}}
+                    {{item.user_id.date_and_time}}
                 </td>
                 <td>
                     {{item.profile_status}}
@@ -152,21 +155,28 @@
                 <td>{{item.user_id.mobile_type}}</td>
                 <td class="act">
                     <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' "
-                        (click)="verify('Verified',item._id)" aria-hidden="true" style="color: rgb(2, 187, 57);"
+                        (click)="verify('Verified',item._id,item)" aria-hidden="true" style="color: rgb(2, 187, 57);"
                         pTooltip="Approve"></i>
                     <i class="fa fa-times-circle-o" *ngIf="item.profile_verification_status == 'Verified' "
-                        (click)="verify('Not verified',item._id)" aria-hidden="true" style="color: rgb(223, 26, 26);"
-                        pTooltip="Reject"></i>
+                        (click)="verify('Not verified',item._id,item)" aria-hidden="true"
+                        style="color: rgb(223, 26, 26);" pTooltip="Reject"></i>
                 </td>
+                <td>{{item.live_status}}</td>
+                <td>{{item.live_by}}</td>
                 <!-- <td class="act">
             <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
             pTooltip="Live"></i>
         <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
             pTooltip="Block"></i>
         </td> -->
-
                 <td class="act">
-                    <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit(item)"
+                    <a *ngIf="item.live_status == 'Not Live' " (click)="live_status_change('Live',item._id)"
+                        aria-hidden="true" style="color: rgb(2, 187, 57);" pTooltip="Make Live">Make Live</a>
+                    <a *ngIf="item.live_status == 'Live'" (click)="live_status_change('Not Live',item._id)"
+                        aria-hidden="true" style="color: rgb(223, 26, 26);" pTooltip="Un Live">Un Live</a>
+                </td>
+                <td class="act">
+                  <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit(item)"
                         pTooltip="Edit"></i>
                     <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
                         (click)="Deletecompanydetails(item._id)"></i>
