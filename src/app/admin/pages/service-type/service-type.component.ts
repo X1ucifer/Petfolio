@@ -14,6 +14,8 @@ export class ServiceTypeComponent implements OnInit {
   rows = [];
   searchQR: any;
   Tittle: any;
+  subtitle : any;
+  banner_img : any;
   Description: any;
   selectedtype: any;
   type: any = [];
@@ -67,6 +69,8 @@ export class ServiceTypeComponent implements OnInit {
       let a = {
         "img_path": this.img_path,
         "img_title": this.Tittle,
+        "img_subtitle" : this.subtitle,
+        "img_banner" : this.banner_img,
         "img_describ": this.Description,
         "img_index": 4,
         "show_status": true,
@@ -120,6 +124,48 @@ export class ServiceTypeComponent implements OnInit {
   }
 
 
+  fileupload1(event) {
+    console.log("this.width")
+    this.selectedimgae = event.target.files[0];
+    console.log(this.selectedimgae.size / 100000);
+    let fr = new FileReader();
+    fr.onload = () => { // when file has loaded
+      var img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        console.log(width, height);
+        if (width == 150 && height == 300) {
+          let d = this.selectedimgae.size / 100000;
+          if (d < 10) {
+            this.addfiles2();
+          } else {
+            alert('Please upload the file below 1 MB');
+            this.imgType.nativeElement.value = "";
+          }
+        }
+        else {
+          alert('Please upload the file size 100 * 100');
+          this.imgType.nativeElement.value = "";
+        }
+      };
+      img.src = fr.result as string; // The data URL
+    };
+    fr.readAsDataURL(this.selectedimgae);
+    // clear the value after upload
+  }
+
+  addfiles2() {
+    const fd = new FormData();
+    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+    this.http.post('http://52.25.163.13:3000/upload', fd)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.banner_img = res.Data;
+      });
+  }
+
+
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
@@ -159,6 +205,8 @@ export class ServiceTypeComponent implements OnInit {
         "_id": this.id,
         "img_path": this.img_path,
         "img_title": this.Tittle,
+        "img_subtitle" : this.subtitle,
+        "img_banner" : this.banner_img,
         "img_describ": this.Description,
         "img_index": 4,
         "show_status": true,

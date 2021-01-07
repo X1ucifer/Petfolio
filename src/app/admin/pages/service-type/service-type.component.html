@@ -7,14 +7,30 @@
             <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Service Type">
         </div>
         <div class="col-md-3">
-            <h5 class="form-lable">Image:</h5>
-            <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
-                class="form-control" id="city" placeholder="User type icon">
-            <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-                100 * 100 (Max 200 kB)</div>
-            <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+          <h5 class="form-lable">Sub_title:</h5>
+          <input type="text" pInputText [(ngModel)]="subtitle" placeholder="Enter Service subtitle">
+      </div>
 
-        </div>
+      <div class="col-md-3">
+        <h5 class="form-lable">Icon Image:</h5>
+        <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
+            class="form-control" id="city" placeholder="User type icon">
+        <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
+            100 * 100 (Max 200 kB)</div>
+        <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+    </div>
+
+    <div class="col-md-3">
+      <h5 class="form-lable">Banner Image:</h5>
+      <input type="file" #imgType (change)="fileupload1($event)" id="imgfile" accept=".png, .jpg, .jpeg"
+          class="form-control" id="city" placeholder="User type icon">
+      <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
+          100 * 100 (Max 200 kB)</div>
+      <img *ngIf="img_path != undefined" src="{{banner_img}}" style="width: 20px;">
+
+  </div>
+
+
         <div class="col-md-2">
             <button type="button" *ngIf="edit_t == false" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
                 (click)="create()">Add</button>
@@ -76,8 +92,14 @@
                 Image
             </th>
             <th>
+              Banner
+          </th>
+            <th>
                 Service Type
             </th>
+            <th>
+              Service sub title 
+          </th>
             <th>Created by</th>
             <!-- <th>Modified by</th>
             <th>Created at</th> -->
@@ -94,8 +116,14 @@
                 <img src="{{item.img_path}}" alt=""style="width: 50px;height:50px">
             </td>
             <td>
+              <img src="{{item.img_banner}}" alt=""style="width: 50px;height:50px">
+          </td>
+            <td>
                 {{item.img_title}}
             </td>
+            <td>
+              {{item.img_subtitle}}
+          </td>
             <td>
                 {{item.date_and_time}}
             </td>
