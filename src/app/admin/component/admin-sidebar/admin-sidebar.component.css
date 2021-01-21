@@ -12,9 +12,9 @@
 
 .side .sidenav-item h5 {
     margin: 0px 0px 0px !important;
-    font-size: 13px;
+    font-size: 14px;
     color: #fff;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .mat-drawer {
@@ -22,9 +22,13 @@
 }
 
 .active {
-    background: #3f51b5  !important;
-
+    background: #ebf7ea  !important;
 }
+mat-icon {color: #fff;}
+.active mat-icon{color:#019377 !important}
+mat-icon.menuBar { font-size: 20px !important;}
+mat-icon { font-size: 18px !important;}
+.side .active .sidenav-item h5 {color:#019377 !important}
 
 :host::ng-deep .mat-list-base {
     padding-top: 0px !important;

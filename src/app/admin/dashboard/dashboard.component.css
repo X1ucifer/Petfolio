@@ -1,4 +1,9 @@
 @import "../../../assets/css/style.css";
+
+/* new css */
+
+
+/* end new css */
 .card-text h3 {
     text-align: left;
     font-weight: 500;
@@ -92,10 +97,12 @@
 
 .head-text {
     font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 5px;
-    /* padding-left: 10px; */
-    color:#3F51B5;
+    color: #1d212f;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: .2px;
 }
 
 .head-text span {

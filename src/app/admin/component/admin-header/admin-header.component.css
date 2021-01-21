@@ -9,7 +9,7 @@
 
 :host::ng-deep .mat-toolbar.mat-primary {
     /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important; */
-    box-shadow: 0px 0px 28px 0px rgb(82 63 105 / 45%);
+    box-shadow: -9.829px 11.607px 20px 0 rgba(144,143,160,.09);
     color: white;
     /* border-bottom: 2px solid #007ad9; */
     position: fixed;

@@ -2,11 +2,11 @@
     <mat-drawer class="side" mode="side" opened>
         <mat-nav-list>
             <mat-list-item (click)="menuslide()">
-                <mat-icon style="color: #fff;"> notes</mat-icon>
+                <mat-icon class="menuBar"> notes</mat-icon>
             </mat-list-item>
             <mat-list-item routerLink="dashboard" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-tachometer" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-tachometer" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Dashboard</h5>
@@ -14,9 +14,9 @@
             </mat-list-item>
 
             <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1">
-                <mat-icon style="color: #fff !important;" mat-list-icon>
+                <mat-icon  mat-list-icon>
                     <i class="fa fa-android" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">App Features</h5>
@@ -30,8 +30,8 @@
                 <div class="sub-menu">
 
                     <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user" aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        <mat-icon  mat-list-icon><i class="fa fa-user" aria-hidden="true"
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Master</h5>
@@ -44,9 +44,9 @@
                     <mat-nav-list style="background: #273a36;" *ngIf="expand2">
                         <div class="sub-menu">
                             <mat-list-item style="padding-left: 5px;" routerLink="user_type" routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user"
+                                <mat-icon  mat-list-icon><i class="fa fa-user"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -54,9 +54,9 @@
                                 </div>
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="demo_page" routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-desktop"
+                                <mat-icon  mat-list-icon><i class="fa fa-desktop"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -65,9 +65,9 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="doc_specialization"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user-md"
+                                <mat-icon  mat-list-icon><i class="fa fa-user-md"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -75,9 +75,9 @@
                                 </div>
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_handle" routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user-md"
+                                <mat-icon  mat-list-icon><i class="fa fa-user-md"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -85,9 +85,9 @@
                                 </div>
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_type" routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-paw"
+                                <mat-icon  mat-list-icon><i class="fa fa-paw"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -96,9 +96,9 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_Breed_Type"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -109,9 +109,9 @@
                             <!-- //Banner/// -->
                             <mat-list-item style="padding-left: 5px;" routerLink="master/banner/homebanner"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -120,9 +120,9 @@
                             </mat-list-item>
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/banner/petcarebanner"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -131,9 +131,9 @@
                             </mat-list-item> -->
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/banner/petservicebanner"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -142,9 +142,9 @@
                             </mat-list-item> -->
                             <mat-list-item style="padding-left: 5px;" routerLink="master/banner/ecombanner"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -154,9 +154,9 @@
 
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/banner/marketplacebanner"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -165,9 +165,9 @@
                             </mat-list-item> -->
                             <mat-list-item style="padding-left: 5px;" routerLink="master/banner/splashscreen"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -175,9 +175,9 @@
                                 </div>
                             </mat-list-item>
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="Time_create" routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-clock-o"
+                                <mat-icon  mat-list-icon><i class="fa fa-clock-o"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -185,9 +185,9 @@
                                 </div>
                             </mat-list-item> -->
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/locations/addlocation" routerLinkActive="active">
-                  <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-sitemap"
+                  <mat-icon  mat-list-icon><i class="fa fa-sitemap"
                           aria-hidden="true"
-                          style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                          ></i>
                   </mat-icon>
                   <div fxFlex="10"></div>
                   <div class="sidenav-item">
@@ -198,9 +198,9 @@
                     </mat-nav-list>
 
                     <mat-list-item routerLinkActive="active" (click)="expand3 = !expand3">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-shopping-cart"
+                        <mat-icon  mat-list-icon><i class="fa fa-shopping-cart"
                                 aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Ecommerce</h5>
@@ -214,9 +214,9 @@
                         <div class="sub-menu">
                             <mat-list-item style="padding-left: 5px;" routerLink="Category_Management"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-bars"
+                                <mat-icon  mat-list-icon><i class="fa fa-bars"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -225,9 +225,9 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Sub_Category_Management"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-list-ul"
+                                <mat-icon  mat-list-icon><i class="fa fa-list-ul"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -236,9 +236,9 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Product_Management"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-archive"
+                                <mat-icon  mat-list-icon><i class="fa fa-archive"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -251,9 +251,9 @@
 
 
                     <!-- <mat-list-item routerLinkActive="active" (click)="expand4 = !expand4">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-medkit"
+                        <mat-icon  mat-list-icon><i class="fa fa-medkit"
                                 aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Pet Care</h5>
@@ -269,9 +269,9 @@
 
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_Health_Checkup"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-heartbeat"
+                                <mat-icon  mat-list-icon><i class="fa fa-heartbeat"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -283,8 +283,8 @@
 
 
                     <mat-list-item routerLinkActive="active" (click)="expand5 = !expand5">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-cogs" aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        <mat-icon  mat-list-icon><i class="fa fa-cogs" aria-hidden="true"
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Pet Services</h5>
@@ -298,9 +298,9 @@
                         <div class="sub-menu">
                             <mat-list-item style="padding-left: 5px;" routerLink="Service_Type"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-cogs"
+                                <mat-icon  mat-list-icon><i class="fa fa-cogs"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -309,9 +309,9 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Service_provider_specialization"
                                 routerLinkActive="active">
-                                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-cogs"
+                                <mat-icon  mat-list-icon><i class="fa fa-cogs"
                                         aria-hidden="true"
-                                        style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                        ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -322,9 +322,9 @@
                     </mat-nav-list>
 
                     <!-- <mat-list-item routerLink="Coupon_Code" routerLinkActive="active">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-file-text-o"
+                        <mat-icon  mat-list-icon><i class="fa fa-file-text-o"
                                 aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Coupon Code</h5>
@@ -333,8 +333,8 @@
                 </div>
             </mat-nav-list>
             <mat-list-item routerLink="Customer_Management" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-users" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-users" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Customer Management</h5>
@@ -343,8 +343,8 @@
 
 
             <mat-list-item routerLink="Doctor" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user-md" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-user-md" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Doctor/Veterinarians</h5>
@@ -353,8 +353,8 @@
 
 
             <mat-list-item routerLink="Vendor_Management" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-user" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Vendor Management</h5>
@@ -362,8 +362,8 @@
             </mat-list-item>
 
             <mat-list-item routerLink="Service_Provider_Management" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-wrench" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-wrench" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Service Provider Management</h5>
@@ -371,8 +371,8 @@
             </mat-list-item>
 
             <!-- <mat-list-item routerLink="Ecommerce_order" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-shopping-cart"
-                        aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                <mat-icon  mat-list-icon><i class="fa fa-shopping-cart"
+                        aria-hidden="true" ></i>
                 </mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -381,9 +381,9 @@
             </mat-list-item> -->
 
             <mat-list-item routerLinkActive="active" (click)="expand = !expand">
-                <mat-icon style="color: #fff !important;" mat-list-icon>
+                <mat-icon  mat-list-icon>
                     <i class="fa fa-cog" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Service Appointments</h5>
@@ -396,18 +396,18 @@
             <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand">
                 <div class="sub-menu">
                     <mat-list-item routerLink="Pet_care_appointment" routerLinkActive="active">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-medkit"
+                        <mat-icon  mat-list-icon><i class="fa fa-medkit"
                                 aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Pet Care</h5>
                         </div>
                     </mat-list-item>
                     <mat-list-item routerLink="Pet_Service_appointment" routerLinkActive="active">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-wrench"
+                        <mat-icon  mat-list-icon><i class="fa fa-wrench"
                                 aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                                ></i>
                         </mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
@@ -421,8 +421,8 @@
 
 
             <!-- <mat-list-item routerLink="Market_place" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-globe" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-globe" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Market Place</h5>
@@ -432,8 +432,8 @@
 
 
             <!-- <mat-list-item routerLinkActive="active" (click)="expand9 = !expand9">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-user-circle-o"
-                        aria-hidden="true" style="position: absolute;color: #fff !important;font-size: 20px;"></i>
+                <mat-icon  mat-list-icon><i class="fa fa-user-circle-o"
+                        aria-hidden="true" ></i>
                 </mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -447,9 +447,9 @@
             <mat-nav-list style="background: #273a36;" *ngIf="expand9">
                 <div class="sub-menu">
                     <mat-list-item routerLink="Create_Employee" routerLinkActive="active">
-                        <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-globe"
+                        <mat-icon  mat-list-icon><i class="fa fa-globe"
                                 aria-hidden="true"
-                                style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                                ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Employee Creation</h5>
@@ -459,8 +459,8 @@
             </mat-nav-list> -->
 
             <!-- <mat-list-item routerLink="Activity" routerLinkActive="active">
-                <mat-icon style="color: #fff !important;" mat-list-icon><i class="fa fa-clock-o" aria-hidden="true"
-                        style="position: absolute;color: #fff !important;font-size: 20px;"></i></mat-icon>
+                <mat-icon  mat-list-icon><i class="fa fa-clock-o" aria-hidden="true"
+                        ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Activity Log</h5>

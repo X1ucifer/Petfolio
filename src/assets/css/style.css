@@ -1,232 +1,96 @@
-.btn-primary {
-    color: #fff;
-    background-color: #099279;
-    border-color: #099279;
-    height: 34px;
-    min-width: 80px;
-    font-size: 12px;
-    margin-right: 10px;
+/* New PetFolio CSS */
+.page-header {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 1.5rem;
+    justify-content: space-between;
+    min-height: 50px;
+    border-radius: 7px;
 }
-:host::ng-deep .ui-dropdown {
-    width: 100%;
-}
-:host::ng-deep .ui-inputtext{
-    width: 100%;
-    margin-bottom: 20px;
-}
-/* table */
-:host::ng-deep .ui-paginator .ui-paginator-current {
-    float: right;
-    font-weight: 600;
-    font-size: 11px;
-    color: #2196F3;
-}
-
-:host::ng-deep  .ui-paginator .ui-dropdown {
-    display: none;
-}
-:host::ng-deep  .ui-paginator {
-   border-radius: 0px 0px 10px 10px;
-}
-:host::ng-deep .ui-paginator .ui-paginator-icon {
-    font-size: 11px;
-    font-weight: 600;
-}
-:host::ng-deep  .ui-paginator .ui-paginator-pages .ui-paginator-page {
-    font-size: 10px;
-    margin-top: 5px;
-}
-:host::ng-deep  .ui-paginator .ui-paginator-pages {
-    float: left;
-}
-:host::ng-deep .ui-paginator a.ui-state-disabled {
-    float: left;
-}
-
-:host::ng-deep .ui-paginator .ui-paginator-first{
-   
-    float: left !important;
-}
-:host::ng-deep  .ui-paginator .ui-paginator-prev {
-   
-    float: left !important;
-}
-:host::ng-deep  .ui-paginator .ui-paginator-next{
-   
-    float: left !important;
-}
-:host::ng-deep   .ui-paginator .ui-paginator-last {
-   
-    float: left !important;
-}
-:host::ng-deep.ui-paginator .ui-paginator-pages .ui-paginator-page:focus {
-    box-shadow: none !important;
-}
-.thhead th{
-    color: #ffffff;
-    background: #049076fa;
-}
-.tdrow {
-    display: table-row;
-    background: #fff;
-}
-.tdrow:hover {
-    background-color: #ececff;
-    cursor: pointer;
-}
-.tdrow td {
-    font-family: Poppins-Regular;
-    font-size: 12px;
-    color: #666666;
-    line-height: 1.2;
-    font-weight: unset !important;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid #f2f2f2;
-}
-:host::ng-deep .ui-table {
-    /* border-radius: 10px; */
-    overflow: hidden;
-    border: none !important;
-}
-:host::ng-deep .ui-table .ui-paginator-bottom {
-    border-top: 1px solid #eee;
-    background-color: #fff;
-    padding: 10px 0px;
-}
-.th-1{
-    width: 50px;
-}
-.act i{
-    padding: 3px 3px;
-    margin: 3px;
-    font-size: 17px;
-}
-
-:host::ng-deep  .ui-table .ui-table-thead > tr > th {
-    padding: 1px 5px !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-}
-
-/* table */
-
-.title{
-    font-size: 17px;
-    font-weight: 500;
-    color: #000000;;
-}
-
-.card-box {
-    padding: 20px 30px 0px 30px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow:0px 3px 3px 0px #01937726;
-    margin-bottom: 35px;
-}
-.form-lable{
-    font-size: 12px;
-    font-weight: 500;
-    color: #1b1b1b !important;
-    margin-bottom: 5px;
-}
-.search-hero{
-    margin-bottom: 10px;
-}
-.search-hero input {
-    padding: 15px;
-    border-radius: 17px;
-}
-.btn-primary.focus, .btn-primary:focus {
-    outline: none !important;
-}
-.custom-select {
-    display: inline-block;
-    width: 100%;
-    padding: 0.429em;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    vertical-align: middle;
-    background: #fff ;
-    border:1px solid #a6a6a6;
-    border-radius: .25rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-:host::ng-deep .ui-inputtext {
-    font-size: 14px;
-    color: #333333;
-    background: #ffffff;
-    padding: 0.429em;
-    border: 1px solid #dcdcdc;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-:host::ng-deep .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label {
-    padding-right: 4em;
-    border: none;
-}
-:host::ng-deep .ui-dropdown {
-    border: 1px solid #dcdcdc;
-    margin-bottom: 20px;
-}
-:host::ng-deep button:focus {
-    outline: none !important;
-}
-::-webkit-scrollbar {
-    display: none !important;
-}
-:host::ng-deep .ui-table-wrapper::-webkit-scrollbar {
-    display: block !important;
-}
-:host::ng-deep .ui-table-wrapper::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
-    height: 5px;
-}
-:host::ng-deep .ui-table-wrapper::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
-.mt-20{
-    margin-top: 20px;
-}
-.btn-bg-blue{
-    background-color: #2196F3 !important;
-    border-color: #2196F3 !important;
-}
-textarea {
-    overflow: auto;
-    resize: vertical;
-    width: 100%;
-    border: 1px solid #dcdcdc;
-    margin-bottom: 20px;
-}
-:host::ng-deep .ui-dropdown-label {
-    padding-right: 4em;
-    border: none;
+.page-header .breadcrumb {
+    background: none;
+    padding-left: 0!important;
+    padding: 0;
     margin-bottom: 0;
 }
-:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: 0 none;
-    width: 80%;
+.page-header .breadcrumb-item a {
+    color: #8f9cc0;
 }
-.mr-0{
-    margin-right: 0px !important;
+.breadcrumb-item+.breadcrumb-item:before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #a8afc7!important;
+    content: "/";
 }
-:host::ng-deep .ui-multiselect {
-    width: 100%;
+.tx-24 {
+    font-size: 24px;
+}
+.custom-card {
     margin-bottom: 20px;
+    border: 0;
+    box-shadow: 0 10px 30px 0 rgba(24,28,33,.05);
+    border-radius: 11px !important;
 }
-:host::ng-deep .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-inputtext {
-    padding: 0.429em;
-    padding-right: 2em;
-    margin-bottom: 0px;
+.card-body {
+    flex: 1 1 auto;
+    padding: 20px;
 }
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e8e8f7;
+    border-radius: 11px !important;
+}
+/* existing css */
+
+.btn-primary{color:#fff;background-color:#099279;border-color:#099279;height:34px;min-width:80px;font-size:13px;margin-right:10px}
+:host::ng-deep .ui-dropdown{width:100%}
+:host::ng-deep .ui-inputtext{width:100%;margin-bottom:20px}
+:host::ng-deep .ui-paginator .ui-paginator-current{float:right;font-weight:600;font-size:11px;color:#2196F3}
+:host::ng-deep .ui-paginator .ui-dropdown{display:none}
+
+:host::ng-deep .ui-paginator .ui-paginator-icon{font-size:13px;font-weight:600}
+:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page{font-size:10px;margin-top:4px;background-color: #099279 !important;}
+:host::ng-deep .ui-paginator .ui-paginator-pages{float:left}
+:host::ng-deep .ui-paginator a.ui-state-disabled{float:left}
+:host::ng-deep .ui-paginator .ui-paginator-first{float:left!important}
+:host::ng-deep .ui-paginator .ui-paginator-prev{float:left!important}
+:host::ng-deep .ui-paginator .ui-paginator-next{float:left!important}
+:host::ng-deep .ui-paginator .ui-paginator-last{float:left!important}
+:host::ng-deep.ui-paginator .ui-paginator-pages .ui-paginator-page:focus{box-shadow:none!important}
+.thhead th{color:#fff;background:#049076fa;    border: 1px solid #e8e8f7 !important;}
+.tdrow{display:table-row;background:#fff}
+.tdrow:hover{background-color:#ececff;cursor:pointer}
+.tdrow td{color:#666;line-height:1.2;font-weight:unset!important;border-bottom:1px solid #f2f2f2}
+:host::ng-deep .ui-table{overflow:hidden;border:none!important}
+:host::ng-deep .ui-table .ui-paginator-bottom{border:1px solid #e8e8f7;background-color:#fff;padding:10px 0}
+.th-1{width:50px}
+.act i{padding:3px;margin:3px;font-size:17px}
+:host::ng-deep .ui-table .ui-table-thead > tr > th{font-size:14px!important;font-weight:600!important}
+.title{font-size:17px;font-weight:500;color:#000}
+.card-box{padding:20px 30px 0;background:#fff;border-radius:10px;box-shadow:0 3px 3px 0 #01937726;margin-bottom:35px}
+.form-lable{font-size:12px;font-weight:500;color:#1b1b1b!important;margin-bottom:5px}
+.search-hero{margin-bottom:10px}
+.search-hero input{padding:15px;border-radius:17px}
+.btn-primary.focus,.btn-primary:focus{outline:none!important}
+.custom-select{display:inline-block;width:100%;padding:.429em;font-weight:400;line-height:1.5;color:#495057;vertical-align:middle;background:#fff;border:1px solid #a6a6a6;border-radius:.25rem;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+:host::ng-deep .ui-inputtext{font-size:14px;color:#333;background:#fff;padding:.429em;border:1px solid #dcdcdc;transition:border-color 0.2s,box-shadow .2s;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+:host::ng-deep .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label{padding-right:4em;border:none}
+:host::ng-deep .ui-dropdown{border:1px solid #dcdcdc;margin-bottom:20px}
+:host::ng-deep button:focus{outline:none!important}
+::-webkit-scrollbar{display:none!important}
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar{display:block!important;-webkit-appearance:none;width:7px;height:5px}
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar-thumb{border-radius:4px;background-color:rgba(0,0,0,.5);-webkit-box-shadow:0 0 1px rgba(255,255,255,.5)}
+.mt-20{margin-top:20px}
+.btn-bg-blue{background-color:#2196F3!important;border-color:#2196F3!important}
+textarea{overflow:auto;resize:vertical;width:100%;border:1px solid #dcdcdc;margin-bottom:20px}
+:host::ng-deep .ui-dropdown-label{padding-right:4em;border:none;margin-bottom:0}
+:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0 none;width:80%}
+.mr-0{margin-right:0!important}
+:host::ng-deep .ui-multiselect{width:100%;margin-bottom:20px}
+:host::ng-deep .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-inputtext{padding:.429em;padding-right:2em;margin-bottom:0}
