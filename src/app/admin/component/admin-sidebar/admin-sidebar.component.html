@@ -5,7 +5,7 @@
                 <mat-icon class="menuBar"> notes</mat-icon>
             </mat-list-item>
             <mat-list-item routerLink="dashboard" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-tachometer" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fab fa-slideshare" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -15,36 +15,36 @@
 
             <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1">
                 <mat-icon  mat-list-icon>
-                    <i class="fa fa-android" aria-hidden="true"
+                    <i class="fab fa-android" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">App Features</h5>
                 </div>
                 <div class="sb-sidenav-collapse-arrow">
-                    <i *ngIf="!expand1" class="fa fa-chevron-down" aria-hidden="true"></i>
-                    <i *ngIf="expand1" class="fa fa-chevron-up" aria-hidden="true"></i>
+                    <i *ngIf="!expand1" class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
                 </div>
             </mat-list-item>
             <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand1">
                 <div class="sub-menu">
 
                     <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
-                        <mat-icon  mat-list-icon><i class="fa fa-user" aria-hidden="true"
+                        <mat-icon  mat-list-icon><i class="fas fa-user-alt" aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Master</h5>
                         </div>
                         <div class="sb-sidenav-collapse-arrow">
-                            <i *ngIf="!expand2" class="fa fa-chevron-down" aria-hidden="true"></i>
-                            <i *ngIf="expand2" class="fa fa-chevron-up" aria-hidden="true"></i>
+                            <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
+                            <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
                         </div>
                     </mat-list-item>
-                    <mat-nav-list style="background: #273a36;" *ngIf="expand2">
+                    <mat-nav-list style="background: #17443a;" *ngIf="expand2">
                         <div class="sub-menu">
                             <mat-list-item style="padding-left: 5px;" routerLink="user_type" routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-user"
+                                <mat-icon  mat-list-icon><i class="fas fa-user"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -54,7 +54,7 @@
                                 </div>
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="demo_page" routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-desktop"
+                                <mat-icon  mat-list-icon><i class="fas fa-desktop"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -65,7 +65,7 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="doc_specialization"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-user-md"
+                                <mat-icon  mat-list-icon><i class="fas fa-user-md"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -75,7 +75,7 @@
                                 </div>
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_handle" routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-user-md"
+                                <mat-icon  mat-list-icon><i class="fas fa-user-md"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -85,7 +85,7 @@
                                 </div>
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_type" routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-paw"
+                                <mat-icon  mat-list-icon><i class="fas fa-paw"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -96,7 +96,7 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_Breed_Type"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -109,7 +109,7 @@
                             <!-- //Banner/// -->
                             <mat-list-item style="padding-left: 5px;" routerLink="master/banner/homebanner"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -120,7 +120,7 @@
                             </mat-list-item>
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/banner/petcarebanner"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -131,7 +131,7 @@
                             </mat-list-item> -->
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/banner/petservicebanner"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -142,9 +142,7 @@
                             </mat-list-item> -->
                             <mat-list-item style="padding-left: 5px;" routerLink="master/banner/ecombanner"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
-                                        aria-hidden="true"
-                                        ></i>
+                                <mat-icon  mat-list-icon><i class="pi pi-shopping-cart" aria-hidden="true" ></i>
                                 </mat-icon>
                                 <div fxFlex="10"></div>
                                 <div class="sidenav-item">
@@ -154,7 +152,7 @@
 
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/banner/marketplacebanner"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -165,7 +163,7 @@
                             </mat-list-item> -->
                             <mat-list-item style="padding-left: 5px;" routerLink="master/banner/splashscreen"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                                <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -175,7 +173,7 @@
                                 </div>
                             </mat-list-item>
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="Time_create" routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-clock-o"
+                                <mat-icon  mat-list-icon><i class="fas fa-clock-o"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -185,7 +183,7 @@
                                 </div>
                             </mat-list-item> -->
                             <!-- <mat-list-item style="padding-left: 5px;" routerLink="master/locations/addlocation" routerLinkActive="active">
-                  <mat-icon  mat-list-icon><i class="fa fa-sitemap"
+                  <mat-icon  mat-list-icon><i class="fas fa-sitemap"
                           aria-hidden="true"
                           ></i>
                   </mat-icon>
@@ -198,7 +196,7 @@
                     </mat-nav-list>
 
                     <mat-list-item routerLinkActive="active" (click)="expand3 = !expand3">
-                        <mat-icon  mat-list-icon><i class="fa fa-shopping-cart"
+                        <mat-icon  mat-list-icon><i class="pi pi-shopping-cart"
                                 aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
@@ -206,15 +204,15 @@
                             <h5 class="lead">Ecommerce</h5>
                         </div>
                         <div class="sb-sidenav-collapse-arrow">
-                            <i *ngIf="!expand3" class="fa fa-chevron-down" aria-hidden="true"></i>
-                            <i *ngIf="expand3" class="fa fa-chevron-up" aria-hidden="true"></i>
+                            <i *ngIf="!expand3" class="fas fa-chevron-down" aria-hidden="true"></i>
+                            <i *ngIf="expand3" class="fas fa-chevron-up" aria-hidden="true"></i>
                         </div>
                     </mat-list-item>
-                    <mat-nav-list style="background: #273a36;" *ngIf="expand3">
+                    <mat-nav-list style="background: #17443a;" *ngIf="expand3">
                         <div class="sub-menu">
                             <mat-list-item style="padding-left: 5px;" routerLink="Category_Management"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-bars"
+                                <mat-icon  mat-list-icon><i class="fas fa-bars"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -225,7 +223,7 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Sub_Category_Management"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-list-ul"
+                                <mat-icon  mat-list-icon><i class="fas fa-list-ul"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -236,7 +234,7 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Product_Management"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-archive"
+                                <mat-icon  mat-list-icon><i class="fas fa-archive"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -251,7 +249,7 @@
 
 
                     <!-- <mat-list-item routerLinkActive="active" (click)="expand4 = !expand4">
-                        <mat-icon  mat-list-icon><i class="fa fa-medkit"
+                        <mat-icon  mat-list-icon><i class="fas fa-medkit"
                                 aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
@@ -259,17 +257,17 @@
                             <h5 class="lead">Pet Care</h5>
                         </div>
                         <div class="sb-sidenav-collapse-arrow">
-                            <i *ngIf="!expand4" class="fa fa-chevron-down" aria-hidden="true"></i>
-                            <i *ngIf="expand4" class="fa fa-chevron-up" aria-hidden="true"></i>
+                            <i *ngIf="!expand4" class="fas fa-chevron-down" aria-hidden="true"></i>
+                            <i *ngIf="expand4" class="fas fa-chevron-up" aria-hidden="true"></i>
                         </div>
                     </mat-list-item>
-                    <mat-nav-list style="background: #273a36;" *ngIf="expand4">
+                    <mat-nav-list style="background: #17443a;" *ngIf="expand4">
                         <div class="sub-menu">
 
 
                             <mat-list-item style="padding-left: 5px;" routerLink="Pet_Health_Checkup"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-heartbeat"
+                                <mat-icon  mat-list-icon><i class="fas fa-heartbeat"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -283,22 +281,22 @@
 
 
                     <mat-list-item routerLinkActive="active" (click)="expand5 = !expand5">
-                        <mat-icon  mat-list-icon><i class="fa fa-cogs" aria-hidden="true"
+                        <mat-icon  mat-list-icon><i class="fas fa-cat" aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
                             <h5 class="lead">Pet Services</h5>
                         </div>
                         <div class="sb-sidenav-collapse-arrow">
-                            <i *ngIf="!expand5" class="fa fa-chevron-down" aria-hidden="true"></i>
-                            <i *ngIf="expand5" class="fa fa-chevron-up" aria-hidden="true"></i>
+                            <i *ngIf="!expand5" class="fas fa-chevron-down" aria-hidden="true"></i>
+                            <i *ngIf="expand5" class="fas fa-chevron-up" aria-hidden="true"></i>
                         </div>
                     </mat-list-item>
-                    <mat-nav-list style="background: #273a36;" *ngIf="expand5">
+                    <mat-nav-list style="background: #17443a;" *ngIf="expand5">
                         <div class="sub-menu">
                             <mat-list-item style="padding-left: 5px;" routerLink="Service_Type"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-cogs"
+                                <mat-icon  mat-list-icon><i class="fas fa-paw"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -309,7 +307,7 @@
                             </mat-list-item>
                             <mat-list-item style="padding-left: 5px;" routerLink="Service_provider_specialization"
                                 routerLinkActive="active">
-                                <mat-icon  mat-list-icon><i class="fa fa-cogs"
+                                <mat-icon  mat-list-icon><i class="fas fa-paw"
                                         aria-hidden="true"
                                         ></i>
                                 </mat-icon>
@@ -322,7 +320,7 @@
                     </mat-nav-list>
 
                     <!-- <mat-list-item routerLink="Coupon_Code" routerLinkActive="active">
-                        <mat-icon  mat-list-icon><i class="fa fa-file-text-o"
+                        <mat-icon  mat-list-icon><i class="fas fa-file-text-o"
                                 aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
@@ -333,7 +331,7 @@
                 </div>
             </mat-nav-list>
             <mat-list-item routerLink="Customer_Management" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-users" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fas fa-users" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -343,7 +341,7 @@
 
 
             <mat-list-item routerLink="Doctor" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-user-md" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fas fa-user-md" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -353,7 +351,7 @@
 
 
             <mat-list-item routerLink="Vendor_Management" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-user" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fas fa-user-alt" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -362,7 +360,7 @@
             </mat-list-item>
 
             <mat-list-item routerLink="Service_Provider_Management" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-wrench" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fas fa-briefcase" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -371,7 +369,7 @@
             </mat-list-item>
 
             <!-- <mat-list-item routerLink="Ecommerce_order" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-shopping-cart"
+                <mat-icon  mat-list-icon><i class="fas fa-shopping-cart"
                         aria-hidden="true" ></i>
                 </mat-icon>
                 <div fxFlex="10"></div>
@@ -382,21 +380,20 @@
 
             <mat-list-item routerLinkActive="active" (click)="expand = !expand">
                 <mat-icon  mat-list-icon>
-                    <i class="fa fa-cog" aria-hidden="true"
-                        ></i></mat-icon>
+                    <i class="fas fa-user-edit" aria-hidden="true"></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Service Appointments</h5>
                 </div>
                 <div class="sb-sidenav-collapse-arrow">
-                    <i *ngIf="!expand" class="fa fa-chevron-down" aria-hidden="true"></i>
-                    <i *ngIf="expand" class="fa fa-chevron-up" aria-hidden="true"></i>
+                    <i *ngIf="!expand" class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand" class="fas fa-chevron-up" aria-hidden="true"></i>
                 </div>
             </mat-list-item>
             <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand">
                 <div class="sub-menu">
                     <mat-list-item routerLink="Pet_care_appointment" routerLinkActive="active">
-                        <mat-icon  mat-list-icon><i class="fa fa-medkit"
+                        <mat-icon  mat-list-icon><i class="fas fa-medkit"
                                 aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
@@ -405,9 +402,7 @@
                         </div>
                     </mat-list-item>
                     <mat-list-item routerLink="Pet_Service_appointment" routerLinkActive="active">
-                        <mat-icon  mat-list-icon><i class="fa fa-wrench"
-                                aria-hidden="true"
-                                ></i>
+                        <mat-icon  mat-list-icon><i class="fas fa-cat" aria-hidden="true"></i>
                         </mat-icon>
                         <div fxFlex="10"></div>
                         <div class="sidenav-item">
@@ -421,7 +416,7 @@
 
 
             <!-- <mat-list-item routerLink="Market_place" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-globe" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fas fa-globe" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -432,7 +427,7 @@
 
 
             <!-- <mat-list-item routerLinkActive="active" (click)="expand9 = !expand9">
-                <mat-icon  mat-list-icon><i class="fa fa-user-circle-o"
+                <mat-icon  mat-list-icon><i class="fas fa-user-circle-o"
                         aria-hidden="true" ></i>
                 </mat-icon>
                 <div fxFlex="10"></div>
@@ -440,14 +435,14 @@
                     <h5 class="lead">Admin Management</h5>
                 </div>
                 <div class="sb-sidenav-collapse-arrow">
-                    <i *ngIf="!expand9" class="fa fa-chevron-down" aria-hidden="true"></i>
-                    <i *ngIf="expand9" class="fa fa-chevron-up" aria-hidden="true"></i>
+                    <i *ngIf="!expand9" class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand9" class="fas fa-chevron-up" aria-hidden="true"></i>
                 </div>
             </mat-list-item>
-            <mat-nav-list style="background: #273a36;" *ngIf="expand9">
+            <mat-nav-list style="background: #17443a;" *ngIf="expand9">
                 <div class="sub-menu">
                     <mat-list-item routerLink="Create_Employee" routerLinkActive="active">
-                        <mat-icon  mat-list-icon><i class="fa fa-globe"
+                        <mat-icon  mat-list-icon><i class="fas fa-globe"
                                 aria-hidden="true"
                                 ></i></mat-icon>
                         <div fxFlex="10"></div>
@@ -459,7 +454,7 @@
             </mat-nav-list> -->
 
             <!-- <mat-list-item routerLink="Activity" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fa fa-clock-o" aria-hidden="true"
+                <mat-icon  mat-list-icon><i class="fas fa-clock-o" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
@@ -471,7 +466,7 @@
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
-        <section style="padding: 0px 10px 10px 10px;">
+        <section class="container-fluid">
             <router-outlet></router-outlet>
         </section>
 

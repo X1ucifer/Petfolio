@@ -28,7 +28,7 @@
 .custom-card {
     margin-bottom: 20px;
     border: 0;
-    box-shadow: 0 10px 30px 0 rgba(24,28,33,.05);
+    box-shadow: 0 10px 30px 0 rgba(25, 28, 32, 0.07);
     border-radius: 11px !important;
 }
 .card-body {
@@ -43,8 +43,56 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid #e8e8f7;
+    border: 1px solid #c7e8c7;
     border-radius: 11px !important;
+    
+}
+
+
+body .ui-button {
+    background-color: #019377 !important;
+    border: 1px solid #019377 !important;
+}
+
+.card-item .card-item-icon.card-icon {
+    background: #3ca9ff;
+}
+.card-item .card-item-icon.card-icon:after {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    background: linear-gradient(90deg,hsla(0,0%,100%,.35) 0,rgba(125,185,232,0));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#59ffffff",endColorstr="#007db9e8",GradientType=1);
+}
+
+.card-item .card-item-icon {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 14px;
+    bottom: 21px;
+    top: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-item .card-item-icon img {width: 70%;}
+.card-item-title {color: #019377;}
+.custom-card .card-item-stat h4 {font-size: 25px !important; margin-bottom: 0 !important;}
+body .ui-calendar.ui-calendar-w-btn .ui-datepicker-trigger.ui-button {
+    padding: 4px 20px !important;
+}
+body .ui-table .ui-table-tbody > tr > td {
+    border: 1px solid #e8e8f7 !important;
+}
+.row-sm>div {
+    padding-left: 10px !important;
+    padding-right: 10px!important;
 }
 /* existing css */
 
@@ -63,13 +111,15 @@
 :host::ng-deep .ui-paginator .ui-paginator-next{float:left!important}
 :host::ng-deep .ui-paginator .ui-paginator-last{float:left!important}
 :host::ng-deep.ui-paginator .ui-paginator-pages .ui-paginator-page:focus{box-shadow:none!important}
-.thhead th{color:#fff;background:#049076fa;    border: 1px solid #e8e8f7 !important;}
+.thhead th{color:#fff;background:#2cc5a8;    border: 1px solid #e8e8f7 !important;}
 .tdrow{display:table-row;background:#fff}
 .tdrow:hover{background-color:#ececff;cursor:pointer}
-.tdrow td{color:#666;line-height:1.2;font-weight:unset!important;border-bottom:1px solid #f2f2f2}
+.tdrow td{color:#333;line-height:1.2;font-weight:unset!important;border-bottom:none}
 :host::ng-deep .ui-table{overflow:hidden;border:none!important}
-:host::ng-deep .ui-table .ui-paginator-bottom{border:1px solid #e8e8f7;background-color:#fff;padding:10px 0}
-.th-1{width:50px}
+:host::ng-deep .ui-table .ui-paginator-bottom{border: 1px solid #e8e8f7;
+    background-color: #fbfafa;
+    padding: 5px 0;}
+.th-1{width:60px}
 .act i{padding:3px;margin:3px;font-size:17px}
 :host::ng-deep .ui-table .ui-table-thead > tr > th{font-size:14px!important;font-weight:600!important}
 .title{font-size:17px;font-weight:500;color:#000}
@@ -78,8 +128,8 @@
 .search-hero{margin-bottom:10px}
 .search-hero input{padding:15px;border-radius:17px}
 .btn-primary.focus,.btn-primary:focus{outline:none!important}
-.custom-select{display:inline-block;width:100%;padding:.429em;font-weight:400;line-height:1.5;color:#495057;vertical-align:middle;background:#fff;border:1px solid #a6a6a6;border-radius:.25rem;-webkit-appearance:none;-moz-appearance:none;appearance:none}
-:host::ng-deep .ui-inputtext{font-size:14px;color:#333;background:#fff;padding:.429em;border:1px solid #dcdcdc;transition:border-color 0.2s,box-shadow .2s;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+.custom-select{display:inline-block;width:100%;padding:10px;font-weight:400;line-height:1.5;color:#495057;vertical-align:middle;background:#fff;border:1px solid #c7e8c7;border-radius:.25rem;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+:host::ng-deep .ui-inputtext{font-size:14px;color:#333;background:#fff;padding:10px;border:1px solid #dcdcdc;transition:border-color 0.2s,box-shadow .2s;-webkit-appearance:none;-moz-appearance:none;appearance:none}
 :host::ng-deep .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label{padding-right:4em;border:none}
 :host::ng-deep .ui-dropdown{border:1px solid #dcdcdc;margin-bottom:20px}
 :host::ng-deep button:focus{outline:none!important}

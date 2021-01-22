@@ -98,10 +98,10 @@
 .head-text {
     font-size: 16px;
     color: #1d212f;
-    font-weight: 800;
+    font-weight: 500;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     letter-spacing: .2px;
 }
 
@@ -116,18 +116,32 @@
 }
 .title-h3{
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 600;color: #16906e;
 }
 
 :host::ng-deep .ui-paginator .ui-paginator-current {
     display: none;
 }
+.thumbSm {height: 30px; width: 30px; border-radius: 5px;border:1px solid #f3f6f9;}
 .bg-org{
-    background: #FF5722 !important;
+    background: #ff6434 !important;
 }
 .bg-green{
-    background: #019377 !important;
+    background: #25b398 !important;
 }
 .bg-blue{
-    background: #3F51B5 !important;;
+    background: #6179ff !important;;
+}
+.bg-success {
+    background-color: #3ee26c!important;
+}
+
+.bg-info {
+    background-color: #36afe2!important;
+}
+.bg-secondary {
+    background-color: #c054e6!important;
+}
+.bg-danger {
+    background-color: #ff5061 !important;
 }
