@@ -19,6 +19,7 @@
 .breadcrumb-item+.breadcrumb-item:before {
     display: inline-block;
     padding-right: .5rem;
+    padding-left: 0;
     color: #a8afc7!important;
     content: "/";
 }

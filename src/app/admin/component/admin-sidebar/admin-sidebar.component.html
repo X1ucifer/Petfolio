@@ -339,15 +339,53 @@
                 </div>
             </mat-list-item>
 
-
-            <mat-list-item routerLink="Doctor" routerLinkActive="active">
+            <mat-list-item routerLinkActive="active" (click)="expand10 = !expand10">
                 <mat-icon  mat-list-icon><i class="fas fa-user-md" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
                     <h5 class="lead">Doctor/Veterinarians</h5>
                 </div>
+                <div class="sb-sidenav-collapse-arrow">
+                    <i *ngIf="!expand10" class="fas fa-chevron-down" aria-hidden="true"></i>
+                    <i *ngIf="expand10" class="fas fa-chevron-up" aria-hidden="true"></i>
+                </div>
             </mat-list-item>
+            <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand10">
+                <div class="sub-menu">
+                    <mat-list-item style="padding-left: 5px;" routerLink="doctor_details"
+                        routerLinkActive="active">
+                        <mat-icon  mat-list-icon><i class="fas fa-user-nurse"
+                                aria-hidden="true"
+                                ></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Doctor Details</h5>
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item style="padding-left: 5px;" routerLink="live_doctor_details"
+                        routerLinkActive="active">
+                        <mat-icon  mat-list-icon><i class="fas fa-hospital-user"
+                                aria-hidden="true"
+                                ></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Live Doctor Details</h5>
+                        </div>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
+
+            <!-- <mat-list-item routerLink="Doctor" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fas fa-user-md" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Doctor/Veterinarians</h5>
+                </div>
+            </mat-list-item> -->
 
 
             <mat-list-item routerLink="Vendor_Management" routerLinkActive="active">

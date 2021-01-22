@@ -44,6 +44,8 @@ import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-ca
 import { CustomerCreateComponent } from './pages/customer-management/customer-create/customer-create.component';
 import { ServiceProviderSpecializationComponent } from './pages/service-provider-management/service-provider-specialization/service-provider-specialization.component';
 import { CreateTimeComponent } from './pages/create-time/create-time.component';
+import { DoctorDetailsComponent } from './pages/doctor-details/doctor-details.component';
+import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doctor-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -73,8 +75,9 @@ const routes: Routes = [
   { path: 'View_order', component: ViewOrderComponent },
   { path: 'View_Product', component: ProductViewComponent },
   { path: 'View_Product', component: ProductViewComponent },
-
-
+  { path: 'doctor_details', component: DoctorDetailsComponent },
+  { path: 'live_doctor_details', component: LiveDoctorDetailsComponent },
+  
   ///Master ////
    /////////Banners//////
    { path: 'master/banner/homebanner', component: HomebannerComponent },
