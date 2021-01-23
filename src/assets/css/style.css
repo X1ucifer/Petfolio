@@ -104,7 +104,7 @@ body .ui-table .ui-table-tbody > tr > td {
 :host::ng-deep .ui-paginator .ui-dropdown{display:none}
 
 :host::ng-deep .ui-paginator .ui-paginator-icon{font-size:13px;font-weight:600}
-:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page{font-size:10px;margin-top:4px;background-color: #099279 !important;}
+:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page{font-size:10px;margin-top:4px;background-color: #099279 !important;color: #eaeaea;}
 :host::ng-deep .ui-paginator .ui-paginator-pages{float:left}
 :host::ng-deep .ui-paginator a.ui-state-disabled{float:left}
 :host::ng-deep .ui-paginator .ui-paginator-first{float:left!important}
@@ -127,7 +127,8 @@ body .ui-table .ui-table-tbody > tr > td {
 .card-box{padding:20px 30px 0;background:#fff;border-radius:10px;box-shadow:0 3px 3px 0 #01937726;margin-bottom:35px}
 .form-lable{font-size:12px;font-weight:500;color:#1b1b1b!important;margin-bottom:5px}
 .search-hero{margin-bottom:10px}
-.search-hero input{padding:15px;border-radius:17px}
+.search-hero input{padding:5px;border-radius:0 17px 17px 0; border-left: 0;}
+.search-hero .input-group-text {border-radius:17px 0 0 17px;background: #fff;}
 .btn-primary.focus,.btn-primary:focus{outline:none!important}
 .custom-select{display:inline-block;width:100%;padding:10px;font-weight:400;line-height:1.5;color:#495057;vertical-align:middle;background:#fff;border:1px solid #c7e8c7;border-radius:.25rem;-webkit-appearance:none;-moz-appearance:none;appearance:none}
 :host::ng-deep .ui-inputtext{font-size:14px;color:#333;background:#fff;padding:10px;border:1px solid #dcdcdc;transition:border-color 0.2s,box-shadow .2s;-webkit-appearance:none;-moz-appearance:none;appearance:none}

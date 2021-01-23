@@ -82,6 +82,9 @@ import { ServiceProviderSpecializationComponent } from './pages/service-provider
 import { CreateTimeComponent } from './pages/create-time/create-time.component';
 import { DoctorDetailsComponent } from './pages/doctor-details/doctor-details.component';
 import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doctor-details.component';
+import { ServiceproviderDetailsComponent } from './pages/serviceprovider-details/serviceprovider-details.component';
+import { LiveServiceproviderDetailsComponent } from './pages/live-serviceprovider-details/live-serviceprovider-details.component';
+import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-appointment.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -129,7 +132,10 @@ import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doc
     ServiceProviderSpecializationComponent,
     CreateTimeComponent,
     DoctorDetailsComponent,
-    LiveDoctorDetailsComponent
+    LiveDoctorDetailsComponent,
+    ServiceproviderDetailsComponent,
+    LiveServiceproviderDetailsComponent,
+    DoctorAppointmentComponent
   ],
   imports: [
     CommonModule,

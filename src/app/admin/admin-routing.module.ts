@@ -46,6 +46,9 @@ import { ServiceProviderSpecializationComponent } from './pages/service-provider
 import { CreateTimeComponent } from './pages/create-time/create-time.component';
 import { DoctorDetailsComponent } from './pages/doctor-details/doctor-details.component';
 import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doctor-details.component';
+import { ServiceproviderDetailsComponent } from './pages/serviceprovider-details/serviceprovider-details.component';
+import { LiveServiceproviderDetailsComponent } from './pages/live-serviceprovider-details/live-serviceprovider-details.component';
+import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-appointment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -77,7 +80,10 @@ const routes: Routes = [
   { path: 'View_Product', component: ProductViewComponent },
   { path: 'doctor_details', component: DoctorDetailsComponent },
   { path: 'live_doctor_details', component: LiveDoctorDetailsComponent },
-  
+  { path: 'serviceprovider_details', component: ServiceproviderDetailsComponent },
+  { path: 'live_serviceprovider_details', component: LiveServiceproviderDetailsComponent },
+  { path: 'Doctor_appointment', component: DoctorAppointmentComponent },
+
   ///Master ////
    /////////Banners//////
    { path: 'master/banner/homebanner', component: HomebannerComponent },
