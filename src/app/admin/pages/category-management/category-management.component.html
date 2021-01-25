@@ -31,9 +31,14 @@
 <div class="row">
     <div class="col-md-4">
         <div class="search-hero">
-            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
-                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
-        </div>
+            <div class="input-group mb-3">
+               <div class="input-group-prepend">
+                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+               </div>
+               <input class="form-control" type="text" name="search2" 
+           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+             </div>
+         </div>
     </div>
 </div>
 <div class="row">
@@ -53,7 +58,7 @@
     </div>
 </div>
 
-<p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+<p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
     <!-- <ng-template pTemplate="caption">
@@ -74,38 +79,22 @@
     </ng-template> -->
     <ng-template pTemplate="header">
         <tr class="thhead">
-            <th class="th-1">
-                S.No
-            </th>
-            <th>
-                Category Icon
-            </th>
-            <th>
-                Category
-            </th>
-
-            <!-- <th>Created by</th>
-            <th>Modified by</th> -->
+            <th class="th-1">    S.No     </th>
+            <th>   Category Icon            </th>
+            <th>   Category         </th>
             <th>Created at</th>
             <th>Modified at</th>
-            <th style="width: 163px;text-align:center">
-                Action
-            </th>
+            <th style="width: 163px;text-align:center">            Action            </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <td>
-                <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="Denim Jeans" style="width: 40px;height: 40px;">
-            </td>
+            <td>   <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="Denim Jeans" style="width: 40px;height: 40px;">          </td>
             <td>{{item.product_cate}}</td>
-            <!-- <td>{{item.img_index}}</td> -->
-
-            {{item.createdAt}}
-            <td>
-                {{item.updatedAt}}
-            </td>
+         
+            <td>            {{item.createdAt}}           </td>
+            <td>                {{item.updatedAt}}            </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"
                     (click)="edit(item)"></i>

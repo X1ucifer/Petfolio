@@ -80,6 +80,12 @@ import { PetCarePaymentComponent } from './pages/payment/pet-care-payment/pet-ca
 import { CustomerCreateComponent } from './pages/customer-management/customer-create/customer-create.component';
 import { ServiceProviderSpecializationComponent } from './pages/service-provider-management/service-provider-specialization/service-provider-specialization.component';
 import { CreateTimeComponent } from './pages/create-time/create-time.component';
+import { DoctorDetailsComponent } from './pages/doctor-details/doctor-details.component';
+import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doctor-details.component';
+import { ServiceproviderDetailsComponent } from './pages/serviceprovider-details/serviceprovider-details.component';
+import { LiveServiceproviderDetailsComponent } from './pages/live-serviceprovider-details/live-serviceprovider-details.component';
+import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-appointment.component';
+
 @NgModule({
   declarations: [AdminHeaderComponent,
     AdminSidebarComponent,
@@ -124,7 +130,12 @@ import { CreateTimeComponent } from './pages/create-time/create-time.component';
     PetCarePaymentComponent,
     CustomerCreateComponent,
     ServiceProviderSpecializationComponent,
-    CreateTimeComponent
+    CreateTimeComponent,
+    DoctorDetailsComponent,
+    LiveDoctorDetailsComponent,
+    ServiceproviderDetailsComponent,
+    LiveServiceproviderDetailsComponent,
+    DoctorAppointmentComponent
   ],
   imports: [
     CommonModule,

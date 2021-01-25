@@ -2,9 +2,14 @@
 <div class="row">
     <div class="col-md-4">
         <div class="search-hero">
-            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
-                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
-        </div>
+            <div class="input-group mb-3">
+               <div class="input-group-prepend">
+                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+               </div>
+               <input class="form-control" type="text" name="search2" 
+           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+             </div>
+         </div>
     </div>
     <!-- <div class="col-md-8 text-right">
         <button type="button" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
@@ -90,7 +95,7 @@
             <td>Test name</td>
             <td>9/25/2020 1:45 PM</td>
             <td>Online</td>
-            <td>Lorem ipsum, or lipsum as it is sometimes known,</td>
+            <td>Lorem ipsum, or lipsum as...</td>
            <td>Status-1</td>
            <td>9/15/2020 1:45 PM</td>
            <td>
