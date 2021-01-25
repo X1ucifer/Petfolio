@@ -8,6 +8,7 @@ import { ApiService } from '../../api.service';
 })
 export class DashboardComponent implements OnInit {
   counts:any;
+  Price_counts : any;
   rows:any = [{ type: "Dog", name: "dog1" },
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" },
@@ -33,6 +34,13 @@ export class DashboardComponent implements OnInit {
       console.log(res)
       this.counts = res.Data;
     });
+
+    this._api.prices_count().subscribe((res:any)=>{
+      console.log(res)
+      this.Price_counts = res.Data;
+    });
+
+
     this._api.doctor_details_list().subscribe(
       (response: any) => {
         console.log(response.Data);

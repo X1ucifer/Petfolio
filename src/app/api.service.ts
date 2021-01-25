@@ -176,6 +176,11 @@ export class ApiService {
   dashboard_count() {
     return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
   }
+
+
+  prices_count() {
+    return this.http.get(this.apiUrl + 'appointments/gettotalprice');
+  }
   user_list() {
     return this.http.get(this.apiUrl + 'userdetails/getlist');
   }
@@ -268,7 +273,7 @@ export class ApiService {
 
 
 
- 
+
 
 
   product_cate_create(data) {
@@ -286,7 +291,7 @@ export class ApiService {
   product_cate_filter_date(data) {
     return this.http.post(this.apiUrl + 'product_cate/filter_date', data);
   }
-  
+
 
   product_subcat_create(data) {
     return this.http.post(this.apiUrl + 'product_subcat/create', data);
