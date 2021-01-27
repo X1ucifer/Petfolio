@@ -68,13 +68,13 @@
                     <td> {{item.bussiness_long}}</td>
                     <td class="act">
                         <ng-container *ngFor="let doc of item.govt_id_proof">
-                            <i (click)="goToLink1(doc.govt_id_proof)" class="fa fa-file-text"
+                            <i (click)="goToLink1(doc.govt_id_proof)" class="fas fa-file-pdf"
                                 style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
                         </ng-container>
                     </td>
                     <td class="act">
                         <ng-container *ngFor="let doc of item.photo_id_proof">
-                            <i (click)="goToLink1(doc.photo_id_proof)" class="fa fa-file-text"
+                            <i (click)="goToLink1(doc.photo_id_proof)" class="fas fa-file-pdf"
                                 style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
                         </ng-container>
                     </td>
@@ -104,7 +104,7 @@
                         </td> -->
 
                     <td class="act">
-                        <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                        <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i> -->
                         <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="del(item._id)"></i>
                         <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
                     </td>

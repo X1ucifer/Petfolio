@@ -105,9 +105,39 @@ body .ui-table .ui-table-tbody > tr > td {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.btn-secondary[_ngcontent-mdw-c181] {
+    color: #fff;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    height: 42px;
+    min-width: 80px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+.btn-secondary.btn-sm, .btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important ;
+    line-height: 1.5 !important; height: inherit;
+}
 /* existing css */
 
-.btn-primary{color:#fff;background-color:#099279;border-color:#099279;height:34px;min-width:80px;font-size:13px;margin-right:10px}
+.btn-primary{color:#fff;background-color:#099279 !important;border-color:#099279 !important;height:42px;min-width:80px;font-size:14px;margin-right:10px}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active {background-color: #15ad91 !important;border-color:#15ad91 !important;}
+
+.btn-secondary{color:#fff;background-color:#6c757d !important;border-color:#6c757d !important;height:42px;min-width:80px;font-size:14px;margin-right:10px}
+.btn-secondary:hover,.btn-secondary:focus,.btn-secondary:active {background-color: #808a92 !important;border-color:#808a92 !important;}
+
 :host::ng-deep .ui-dropdown{width:100%}
 :host::ng-deep .ui-inputtext{width:100%;margin-bottom:20px}
 :host::ng-deep .ui-paginator .ui-paginator-current{float:right;font-weight:600;font-size:13px;color:#333}
@@ -138,10 +168,10 @@ body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active,:host:
 :host::ng-deep .ui-table .ui-table-thead > tr > th{font-size:14px!important;font-weight:600!important;line-height: 15px;}
 .title{font-size:17px;font-weight:500;color:#000}
 .card-box{padding:20px 30px 0;background:#fff;border-radius:10px;box-shadow:0 3px 3px 0 #01937726;margin-bottom:35px}
-.form-lable{font-size:12px;font-weight:500;color:#1b1b1b!important;margin-bottom:5px}
+.form-lable{font-size:14px;font-weight:500;color:#1b1b1b!important;margin-bottom:5px}
 .search-hero{margin-bottom:10px}
-.search-hero input{padding:5px;border-radius:0 17px 17px 0; border-left: 0;}
-.search-hero .input-group-text {border-radius:17px 0 0 17px;background: #fff;}
+.search-hero input{padding:5px;border-radius:0 4px 4px 0; border-left: 0;height: 42px;}
+.search-hero .input-group-text {border-radius:4px 0 0 4px;background: #fff;}
 .btn-primary.focus,.btn-primary:focus{outline:none!important}
 .custom-select{display:inline-block;width:100%;padding:10px;font-weight:400;line-height:1.5;color:#495057;vertical-align:middle;background:#fff;border:1px solid #c7e8c7;border-radius:.25rem;-webkit-appearance:none;-moz-appearance:none;appearance:none}
 :host::ng-deep .ui-inputtext{font-size:14px;color:#333;background:#fff;padding:10px;border:1px solid #dcdcdc;transition:border-color 0.2s,box-shadow .2s;-webkit-appearance:none;-moz-appearance:none;appearance:none}
