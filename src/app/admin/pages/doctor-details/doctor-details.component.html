@@ -7,10 +7,10 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-        
+
     </div>
 
-    
+
 
     <!-- table -->
 
@@ -20,7 +20,7 @@
           <div class="card custom-card">
                 <div class="card-body">
                     <div class="card-item">
-                     
+
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="search-hero">
@@ -28,7 +28,7 @@
                                        <div class="input-group-prepend">
                                          <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                        </div>
-                                       <input class="form-control" type="text" name="search2" 
+                                       <input class="form-control" type="text" name="search2"
                                    [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
                                      </div>
                                   </div>
@@ -47,18 +47,18 @@
                             </div>
                         </div>
                         <div class="row">
-                        
+
                             <div class="col-md-4">
                                 <h5 class="form-lable">Specialization:</h5>
                                 <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select"
                                     optionLabel="specialzation" [showClear]="true"></p-dropdown>
-                        
+
                             </div>
                             <div class="col-md-4">
                                 <button *ngIf="update_button == true" type="button" class="btn btn-primary"
                                     style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()">Filter</button>
-                        
-                        
+
+
                             </div>
                             <div class="col-md-4 text-right">
                                 <button *ngIf="update_button == true" type="button" class="btn btn-primary" style="margin-top: 24px;"
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="doc-table">
-                        
+
                             <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
                                 [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
@@ -83,9 +83,9 @@
                                                 placeholder="Entry Type">
                                         </div>
                                     </div>
-                        
+
                                 </div>
-                        
+
                             </ng-template> -->
                                 <ng-template pTemplate="header">
                                     <tr class="thhead">
@@ -105,9 +105,6 @@
                                         <th>Specialization </th>
                                         <th>Pets handled</th>
                                         <th>Clinic address</th>
-                                        <th>Certificate</th>
-                                        <th>Govt ID proof </th>
-                                        <th>Photo ID proof</th>
                                         <th style="width: 80px;">Created by</th>
                                         <th style="width: 80px;">Created at</th>
                                         <th style="width: 80px;">Updated at</th>
@@ -127,7 +124,7 @@
                                         <td>{{i+1}}</td>
                                         <td>
                                             <div class="imgthumcontainer"><img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;"></div>
-                                            
+
                                         </td>
                                         <td>{{item.dr_title}}.{{item.dr_name}}</td>
                                         <td>
@@ -151,46 +148,24 @@
                                             </ng-container>
                                         </td>
                                         <td class="truncate-cell">{{item.clinic_loc}}</td>
-                                        <td class="act">
-                                            <ng-container *ngFor="let govt_id_pic of item.govt_id_pic">
-                                                <i (click)="goToLink1(govt_id_pic.govt_id_pic)" class="fa fa-file-text"
-                                                    style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
-                                            </ng-container>
-                                        </td>
-                                        <td class="act">
-                                            <ng-container *ngFor="let certificate_pic of item.certificate_pic">
-                                                <i (click)="goToLink1(certificate_pic.certificate_pic)" class="fa fa-file-text"
-                                                    style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
-                                            </ng-container>
-                                        </td>
-                                        <td class="act">
-                                            <ng-container *ngFor="let photo_id_pic of item.photo_id_pic">
-                                                <i (click)="goToLink1(photo_id_pic.photo_id_pic)" class="fa fa-file-text"
-                                                    style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
-                                            </ng-container>
-                                        </td>
                                         <td>
                                             Admin
                                         </td>
                                         <td>
                                             {{item.createdAt | date}}
                                         </td>
-                        
+
                                       <td>
                                           {{item.updatedAt | date}}
                                       </td>
-                        
+
                                         <td>
                                             {{item.profile_status}}
                                         </td>
                                         <td>{{item.user_id.mobile_type}}</td>
                                         <td class="act">
-                                            <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status !== 'Verified' "
-                                                (click)="verify('Verified',item._id,item)" aria-hidden="true" style="color: rgb(2, 187, 57);"
-                                                pTooltip="Approve"></i>
-                                            <i class="fa fa-times-circle-o" *ngIf="item.profile_verification_status == 'Verified' "
-                                                (click)="verify('Not verified',item._id,item)" aria-hidden="true"
-                                                style="color: rgb(223, 26, 26);" pTooltip="Reject"></i>
+                                                <button (click)="verify('Verified',item._id,item)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                                                <button (click)="verify('Not verified',item._id,item)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
                                         </td>
                                         <td>{{item.live_status}}</td>
                                         <td>{{item.live_by}}</td>
@@ -217,7 +192,7 @@
                                     </tr>
                                 </ng-template>
                             </p-table>
-                        
+
                         </div>
 
                     </div>
