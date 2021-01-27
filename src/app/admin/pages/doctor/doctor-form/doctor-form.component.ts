@@ -58,6 +58,7 @@ export class DoctorFormComponent implements OnInit {
   type: any;
   detail: any;
   constructor(
+    private location: Location,
     private router: Router,
     private ValidatorService: ValidatorService,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -349,10 +350,13 @@ export class DoctorFormComponent implements OnInit {
   saveInLocal(key, val): void {
     this.storage.set(key, val);
   }
-
+  back() {
+    this.location.back();
+  }
   getFromLocal(key): any {
     return this.storage.get(key);
   }
+
   edit() {
     let a = {
       "_id" : this.detail._id,

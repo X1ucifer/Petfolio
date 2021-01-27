@@ -22,7 +22,7 @@
                     <div class="card-item">
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="search-hero">
                                     <div class="input-group mb-3">
                                        <div class="input-group-prepend">
@@ -33,39 +33,29 @@
                                      </div>
                                   </div>
                             </div>
-                            <div class="col-md-3">
-                                <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date"></p-calendar>
+                            <div class="col-md-6 text-center">
+                                <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
+                                <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
+                                <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
                             </div>
-                            <div class="col-md-3">
-                                <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date"></p-calendar>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                                    (click)="filter_date()">Search</button>
-                                <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                                    (click)="refersh()">Refresh</button> -->
+                            <div class="col-md-3 text-right">
+                                <button *ngIf="update_button == true" type="button" class="btn btn-secondary"
+                                    (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                                <button type="button" class="btn btn-secondary mr-0" (click)="doc_form()"><i class="fas fa-plus-circle"></i> Add</button>
                             </div>
                         </div>
                         <div class="row">
-
                             <div class="col-md-4">
                                 <h5 class="form-lable">Specialization:</h5>
                                 <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select"
                                     optionLabel="specialzation" [showClear]="true"></p-dropdown>
-
                             </div>
                             <div class="col-md-4">
                                 <button *ngIf="update_button == true" type="button" class="btn btn-primary"
                                     style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()">Filter</button>
-
-
                             </div>
-                            <div class="col-md-4 text-right">
-                                <button *ngIf="update_button == true" type="button" class="btn btn-primary" style="margin-top: 24px;"
-                                    (click)="refersh()">Refresh</button>
-                                <button type="button" style="margin-top: 24px;" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
-                            </div>
-                        </div>
+
+                          </div>
                         <div class="doc-table">
 
                             <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -114,7 +104,7 @@
                                         <th>Live Stauts</th>
                                         <th>Live Updated By</th>
                                         <th style="width: 80px;">Live Update</th>
-                                        <th style="width: 110px;text-align:center">
+                                        <th style="width: 130px;text-align:center">
                                             Action
                                         </th>
                                     </tr>
@@ -182,11 +172,10 @@
                                         aria-hidden="true" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" pTooltip="Un Live">Un Live</a>
                                 </td>
                                         <td class="act">
-                                          <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit(item)"
-                                                pTooltip="Edit"></i>
-                                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                           <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit(item)" pTooltip="Edit"></i>
+                                            <i style="color: #fd2c3a;" class="fa fa-trash-alt" aria-hidden="true" pTooltip="Delete"
                                                 (click)="Deletecompanydetails(item._id)"></i>
-                                            <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"
+                                            <i style="color: #4CAF50;" class="fas fa-exclamation-circle" aria-hidden="true" (click)="view_details(item)"
                                                 pTooltip="View"></i>
                                         </td>
                                     </tr>
