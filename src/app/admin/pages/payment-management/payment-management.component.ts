@@ -160,7 +160,7 @@ export class PaymentManagementComponent implements OnInit {
         "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
         }
       console.log(a);
-      this._api.user_filter_date(a).subscribe(
+      this._api.pay_filter_date(a).subscribe(
         (response: any) => {
           console.log(response.Data);
           this.pay_list = response.Data;
