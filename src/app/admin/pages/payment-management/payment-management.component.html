@@ -51,7 +51,7 @@
                         </div>
                         <div class="card-item-body">
                             <div class="card-item-stat">
-                                <h4 class="font-weight-bold">&#8377; 102455</h4>
+                                <h4 class="font-weight-bold">&#8377; {{Sp_total_price}}</h4>
                             </div>
                         </div>
                     </div>
@@ -137,25 +137,35 @@
         
         
         <div class="doc-table">
-        <p-table [value]="payment_management | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+        <p-table [value]="pay_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
             [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-            
+        
             <ng-template pTemplate="header" >
                 <tr class="thhead">
                     <th class="th-1">  S.No   </th>
                     <th style="width: 100px;"> Appointment ID </th>
-                    <th> User Name    </th>
-                    <th  style="width: 250px;"> Doctor Name </th>
-                    <th> Appointment Date & Time  </th>
-                    <th>Payment Type</th>
-                    <th>Amount Type</th>
-                    <th style="width: 163px;text-align:center">
-                        Action
-                    </th>
+                    <th> User Name </th>
+                    <th> Doctor Name </th>
+                    <th> Appointment Date & Time </th>
+                    <th> Payment Type </th>
+                    <th> Amount </th>
+                    <th> Action</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item let-i="rowIndex" >
+                <tr  class="tdrow">
+                    <td>{{i+1}}</td>
+                    <td>{{item.appointment_UID}}</td>
+                    <td>{{item.first_name}}</td>
+                    <td>{{item.dr_title}}.{{item.dr_name}}</td>
+                    <td>{{item.booking_date_time}} - {{item.booking_time}}</td>
+                    <td>{{item.payment_method}}</td>
+                    <td>{{item.consultancy_fees}}</td>
+                    <td>Action</td>
+                </tr>
+            </ng-template>
+            <!-- <ng-template pTemplate="body" let-item let-i="rowIndex" >
                 <tr  class="tdrow">
                     <td>{{i+1}}</td>
                     <td> df</td>
@@ -170,7 +180,7 @@
                         <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
                     </td>
                 </tr>
-            </ng-template>
+            </ng-template> -->
         </p-table>
         
         </div>
