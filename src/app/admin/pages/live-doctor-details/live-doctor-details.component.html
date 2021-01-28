@@ -10,192 +10,180 @@
 
   </div>
 
-  <!-- table -->
   <div class="row row-sm">
 
-      <div class="col-lg-12">
-        <div class="card custom-card">
-              <div class="card-body">
-                  <div class="card-item">
+    <div class="col-lg-12">
+      <div class="card custom-card">
+            <div class="card-body">
+                <div class="card-item">
 
-                      <div class="row">
-                          <div class="col-md-4">
-                              <div class="search-hero">
-                                  <div class="input-group mb-3">
-                                     <div class="input-group-prepend">
-                                       <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                                     </div>
-                                     <input class="form-control" type="text" name="search2"
-                                 [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="search-hero">
+                                <div class="input-group mb-3">
+                                   <div class="input-group-prepend">
+                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                    </div>
-                                </div>
-                          </div>
-                          <div class="col-md-3">
-                              <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date"></p-calendar>
-                          </div>
-                          <div class="col-md-3">
-                              <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date"></p-calendar>
-                          </div>
-                          <div class="col-md-2">
-                              <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                                  (click)="filter_date()">Search</button>
-                              <!-- <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                                  (click)="refersh()">Refresh</button> -->
-                          </div>
-                      </div>
-                      <div class="row">
-
-                          <div class="col-md-4">
-                              <h5 class="form-lable">Specialization:</h5>
-                              <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select"
-                                  optionLabel="specialzation" [showClear]="true"></p-dropdown>
-
-                          </div>
-                          <div class="col-md-4">
-                              <button *ngIf="update_button == true" type="button" class="btn btn-primary"
-                                  style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()">Filter</button>
-
-
-                          </div>
-                          <div class="col-md-4 text-right">
-                              <button *ngIf="update_button == true" type="button" class="btn btn-primary" style="margin-top: 24px;"
-                                  (click)="refersh()">Refresh</button>
-                              <button type="button" style="margin-top: 24px;" class="btn btn-primary mr-0" (click)="doc_form()">Add</button>
-                          </div>
-                      </div>
-                      <div class="doc-table">
-
-                          <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
-                              [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
-                              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-                              <!-- <ng-template pTemplate="caption">
-                              <div fxLayout="row" fxLayoutAlign="space-around center">
-                                  <div fxFlex="50">
-                                      <h5 style="color:#fff;">Entry Type List</h5>
-                                  </div>
-                                  <div fxFlex="50">
-                                      <div class="ui-table-globalfilter-container">
-                                          <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                                          <input type="text" pInputText size="50" (input)="tt.filterGlobal($event.target.value, 'contains')"
-                                              placeholder="Entry Type">
-                                      </div>
-                                  </div>
-
+                                   <input class="form-control" type="text" name="search2"
+                               [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                                 </div>
                               </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
+                            <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
+                            <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button *ngIf="update_button == true" type="button" class="btn btn-secondary"
+                                (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                            <button type="button" class="btn btn-secondary mr-0" (click)="doc_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5 class="form-lable">Specialization:</h5>
+                            <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select"
+                                optionLabel="specialzation" [showClear]="true"></p-dropdown>
+                        </div>
+                        <div class="col-md-4">
+                            <button *ngIf="update_button == true" type="button" class="btn btn-primary"
+                                style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
 
-                          </ng-template> -->
-                              <ng-template pTemplate="header">
-                                  <tr class="thhead">
-                                      <th class="th-1">
-                                          S.No
-                                      </th>
-                                      <th>
-                                          Image
-                                      </th>
-                                      <th style="width: 120px;">
-                                          Name
-                                      </th>
-                                      <th style="width: 120px;">
-                                          Education / Year of completion
-                                      </th>
-                                      <th>Experience </th>
-                                      <th>Specialization </th>
-                                      <th>Pets handled</th>
-                                      <th>Clinic address</th>
-                                      <th style="width: 80px;">Created by</th>
-                                      <th style="width: 80px;">Created at</th>
-                                      <th style="width: 80px;">Updated at</th>
-                                      <th>Approve / Reject</th>
-                                      <th>Mobile Type</th>
-                                      <th>Profile Stauts</th>
-                                      <th>Live Stauts</th>
-                                      <th>Live Updated By</th>
-                                      <th style="width: 80px;">Live Update</th>
-                                      <th style="width: 110px;text-align:center">
-                                          Action
-                                      </th>
-                                  </tr>
-                              </ng-template>
-                              <ng-template pTemplate="body" let-item let-i="rowIndex">
-                                  <tr class="tdrow">
-                                      <td>{{i+1}}</td>
-                                      <td>
-                                          <div class="imgthumcontainer"><img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;"></div>
+                      </div>
+                    <div class="doc-table">
 
-                                      </td>
-                                      <td>{{item.dr_title}}.{{item.dr_name}}</td>
-                                      <td>
-                                          <ng-container *ngFor="let edu of item.education_details">
-                                              {{edu.education}}-{{edu.year}} ,
-                                          </ng-container>
-                                      </td>
-                                      <td class="truncate-cell">
-                                          <ng-container *ngFor="let exp of item.experience_details">
-                                              {{exp.company}}({{exp.from}}-{{exp.to}}) ,
-                                          </ng-container>
-                                      </td>
-                                      <td class="truncate-cell">
-                                          <ng-container *ngFor="let spec of item.specialization">
-                                              {{spec.specialization}} ,
-                                          </ng-container>
-                                      </td>
-                                      <td class="truncate-cell">
-                                          <ng-container *ngFor="let pet_handle of item.pet_handled">
-                                              {{pet_handle.pet_handled}} ,
-                                          </ng-container>
-                                      </td>
-                                      <td class="truncate-cell">{{item.clinic_loc}}</td>
-                                      <td>
-                                          Admin
-                                      </td>
-                                      <td>
-                                          {{item.createdAt | date}}
-                                      </td>
+                        <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+                            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+                            <!-- <ng-template pTemplate="caption">
+                            <div fxLayout="row" fxLayoutAlign="space-around center">
+                                <div fxFlex="50">
+                                    <h5 style="color:#fff;">Entry Type List</h5>
+                                </div>
+                                <div fxFlex="50">
+                                    <div class="ui-table-globalfilter-container">
+                                        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                                        <input type="text" pInputText size="50" (input)="tt.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Entry Type">
+                                    </div>
+                                </div>
 
+                            </div>
+
+                        </ng-template> -->
+                            <ng-template pTemplate="header">
+                                <tr class="thhead">
+                                    <th class="th-1">
+                                        S.No
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th style="width: 120px;">
+                                        Name
+                                    </th>
+                                    <th style="width: 120px;">
+                                        Education / Year of completion
+                                    </th>
+                                    <th>Experience </th>
+                                    <th>Specialization </th>
+                                    <th>Pets handled</th>
+                                    <th>Clinic address</th>
+                                    <th style="width: 80px;">Created by</th>
+                                    <th style="width: 80px;">Created at</th>
+                                    <th style="width: 80px;">Updated at</th>
+                                    <th>Approve / Reject</th>
+                                    <th>Mobile Type</th>
+                                    <th>Profile Stauts</th>
+                                    <th>Live Stauts</th>
+                                    <th>Live Updated By</th>
+                                    <th style="width: 80px;">Live Update</th>
+                                    <th style="width: 130px;text-align:center">
+                                        Action
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-item let-i="rowIndex">
+                                <tr class="tdrow">
+                                    <td>{{i+1}}</td>
                                     <td>
-                                        {{item.updatedAt | date}}
+                                        <div class="imgthumcontainer"><img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;"></div>
+
+                                    </td>
+                                    <td>{{item.dr_title}}.{{item.dr_name}}</td>
+                                    <td>
+                                        <ng-container *ngFor="let edu of item.education_details">
+                                            {{edu.education}}-{{edu.year}} ,
+                                        </ng-container>
+                                    </td>
+                                    <td class="truncate-cell">
+                                        <ng-container *ngFor="let exp of item.experience_details">
+                                            {{exp.company}}({{exp.from}}-{{exp.to}}) ,
+                                        </ng-container>
+                                    </td>
+                                    <td class="truncate-cell">
+                                        <ng-container *ngFor="let spec of item.specialization">
+                                            {{spec.specialization}} ,
+                                        </ng-container>
+                                    </td>
+                                    <td class="truncate-cell">
+                                        <ng-container *ngFor="let pet_handle of item.pet_handled">
+                                            {{pet_handle.pet_handled}} ,
+                                        </ng-container>
+                                    </td>
+                                    <td class="truncate-cell">{{item.clinic_loc}}</td>
+                                    <td>
+                                        Admin
+                                    </td>
+                                    <td>
+                                        {{item.createdAt | date}}
                                     </td>
 
-                                      <td>
-                                          {{item.profile_status}}
-                                      </td>
-                                      <td>{{item.user_id.mobile_type}}</td>
-                                      <td class="act">
-                                              <button (click)="verify('Verified',item._id,item)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
-                                              <button (click)="verify('Not verified',item._id,item)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
-                                      </td>
-                                      <td>{{item.live_status}}</td>
-                                      <td>{{item.live_by}}</td>
-                                      <!-- <td class="act">
-                                  <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
-                                  pTooltip="Live"></i>
-                              <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
-                                  pTooltip="Block"></i>
-                              </td> -->
-                              <td class="act">
-                                  <a *ngIf="item.live_status == 'Not Live' " (click)="live_status_change('Live',item._id)"
-                                      aria-hidden="true" style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" pTooltip="Make Live">Make Live</a>
-                                  <a *ngIf="item.live_status == 'Live'" (click)="live_status_change('Not Live',item._id)"
-                                      aria-hidden="true" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" pTooltip="Un Live">Un Live</a>
-                              </td>
-                                      <td class="act">
-                                        <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit(item)"
-                                              pTooltip="Edit"></i>
-                                          <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
-                                              (click)="Deletecompanydetails(item._id)"></i>
-                                          <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"
-                                              pTooltip="View"></i>
-                                      </td>
-                                  </tr>
-                              </ng-template>
-                          </p-table>
+                                  <td>
+                                      {{item.updatedAt | date}}
+                                  </td>
 
-                      </div>
+                                    <td>
+                                        {{item.profile_status}}
+                                    </td>
+                                    <td>{{item.user_id.mobile_type}}</td>
+                                    <td class="act">
+                                            <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id,item)" style="padding: 2px; line-height: 1.2;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                                            <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id,item)" style="padding: 2px; line-height: 1.2;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
+                                    </td>
+                                    <td>{{item.live_status}}</td>
+                                    <td>{{item.live_by}}</td>
+                                    <!-- <td class="act">
+                                <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
+                                pTooltip="Live"></i>
+                            <i class="fa fa-times-circle-o" aria-hidden="true" style="color: rgb(223, 26, 26);"
+                                pTooltip="Block"></i>
+                            </td> -->
+                            <td class="act">
+                                <a *ngIf="item.live_status == 'Not Live' " (click)="live_status_change('Live',item._id)"
+                                    aria-hidden="true" style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" pTooltip="Make Live">Make Live</a>
+                                <a *ngIf="item.live_status == 'Live'" (click)="live_status_change('Not Live',item._id)"
+                                    aria-hidden="true" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" pTooltip="Un Live">Un Live</a>
+                            </td>
+                                    <td class="act">
+                                       <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit(item)" pTooltip="Edit"></i>
+                                        <i style="color: #fd2c3a;" class="fa fa-trash-alt" aria-hidden="true" pTooltip="Delete"
+                                            (click)="Deletecompanydetails(item._id)"></i>
+                                        <i style="color: #4CAF50;" class="fas fa-exclamation-circle" aria-hidden="true" (click)="view_details(item)"
+                                            pTooltip="View"></i>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
 
-                  </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
   </section>

@@ -1,10 +1,10 @@
 <section>
     <div class="page-header">
         <div>
-            <h2 class="main-content-title tx-24 mb-1">Customer Management</h2>
+            <h2 class="main-content-title tx-24 mb-1">Cancel Appointment</h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="dashboard">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> Customers</li>
+                <li class="breadcrumb-item active" aria-current="page"> Cancel List</li>
             </ol>
         </div>
         
@@ -42,25 +42,10 @@
             </div>
 
         
-            
-<!-- <div class="row">
-    <div class="col-md-4">
-        <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date"></p-calendar>
-    </div>
-    <div class="col-md-4">
-        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date"></p-calendar>
-    </div>
-    <div class="col-md-4">
-        <button type="button" class="btn btn-primary"
-            (click)="filter_date()">Search</button>
-            <button type="button" class="btn btn-primary"
-            (click)="refersh()">Refresh</button>
-    </div>
-</div> -->
 
 
 <div class="doc-table">
-<p-table [value]="user_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+<p-table [value]="cancel_appointment | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
 
@@ -68,6 +53,9 @@
         <tr class="thhead">
             <th class="th-1">
                 S.No
+            </th>
+            <th style="width: 100px;">
+                Image
             </th>
             <th>
                 Name
@@ -80,7 +68,7 @@
             </th>
             <!-- <th>Created by</th>
             <th>Modified by</th> -->
-            <th>Created Date</th>
+            
             <!-- <th>Last Login Date</th> -->
             <th>Mobile Type</th>
             <th style="width: 163px;text-align:center">
@@ -91,26 +79,20 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex" >
         <tr  class="tdrow">
             <td>{{i+1}}</td>
-            <!-- <td>
-                <div class="card-box-i">
-                    <img src="assets/images/007.png" alt="">
-                </div>
-            </td> -->
+            <td>
+                <div class="imgthumcontainer"><img src="{{item.profile_img}}" alt="" style="width: 100%;"></div>
+            </td>
             <td class="truncate-cell">{{item.first_name}} {{item.last_name}}</td>
             <td class="truncate-cell">{{item.user_email}}</td>
             <td>{{item.user_phone}}</td>
-            <td>
-                {{item.date_of_reg}}
-            </td>
+            
             <td>
                 {{item.mobile_type}}
             </td>
             <td class="act">
-                <i style="color: #4CAF50;" class="fa fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i>
-                <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
-                <!-- <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i> -->
+                <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
+                <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
 
             </td>
         </tr>

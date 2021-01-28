@@ -122,3 +122,33 @@ tr:last-child {
 :host::ng-deep .mat-icon-button i:hover {
     filter: brightness(0.5);
 }
+
+/* notification */
+.notifications-item {
+    overflow:auto;
+     max-height:250px;
+     height: 60px;
+    background: #f3f3f3; padding: 4px 20px; border-bottom: 1px solid #ccc;
+   }
+   
+.menu-title {
+    color:#ff7788;
+    font-size:1.5rem;
+ }
+ 
+ .notification-item p {font-size: 12px;line-height: 1;}
+
+ .text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notifications-item p.mins,.notifications-item p {
+    line-height: 24px;
+}
+
+.notifications-item p.conts {
+    line-height: 24px; font-size: 14px;
+}
+ 

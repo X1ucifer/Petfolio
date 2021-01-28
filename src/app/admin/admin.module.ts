@@ -85,6 +85,9 @@ import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doc
 import { ServiceproviderDetailsComponent } from './pages/serviceprovider-details/serviceprovider-details.component';
 import { LiveServiceproviderDetailsComponent } from './pages/live-serviceprovider-details/live-serviceprovider-details.component';
 import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-appointment.component';
+import { CancelAppointmentComponent } from './pages/cancel-appointment/cancel-appointment.component';
+import { PaymentManagementComponent } from './pages/payment-management/payment-management.component';
+import { NotificationComponent } from './pages/notification/notification.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -135,7 +138,10 @@ import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-ap
     LiveDoctorDetailsComponent,
     ServiceproviderDetailsComponent,
     LiveServiceproviderDetailsComponent,
-    DoctorAppointmentComponent
+    DoctorAppointmentComponent,
+    CancelAppointmentComponent,
+    PaymentManagementComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,

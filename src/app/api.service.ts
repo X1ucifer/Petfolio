@@ -270,11 +270,15 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'SP_services/filter_date', data);
   }
 
+//  cancel appointment
+  cancel_appointment() {
+    return this.http.get(this.apiUrl + 'appointments/listing_cancelled');
+  }
 
-
-
-
-
+//  payment
+  payment_management() {
+    return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
+  }
 
   product_cate_create(data) {
     return this.http.post(this.apiUrl + 'product_cate/create', data);

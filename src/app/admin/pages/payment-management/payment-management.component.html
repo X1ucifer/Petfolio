@@ -1,0 +1,183 @@
+<section>
+    <div class="page-header">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1">Payment Management</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Details</li>
+            </ol>
+        </div>
+        
+    </div>
+
+     <div class="row  mt-3">
+      <div class="col-lg-12">
+          <h3 class="title-h3">Revenue</h3>
+      </div>
+  </div>
+  <div class="row row-sm">
+
+      <div class="col-lg-3">
+          <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-blue">
+                            <img src="assets/images/006.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Ecommerce</label>
+                            <span class="d-block tx-12 mb-0 text-muted">Total Amount</span>
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">&#8377; 100000</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-green">
+                            <img src="assets/images/003.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Service Provider</label>
+                            <span class="d-block tx-12 mb-0 text-muted">Appointment Booking</span>
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">&#8377; 102455</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-org">
+                            <img src="assets/images/004.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Pet Owner </label>
+                            <span class="d-block tx-12 mb-0 text-muted">Subscription</span>
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">&#8377; 154785</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-secondary">
+                            <img src="assets/images/002.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Veterinarians </label>
+                            <span class="d-block tx-12 mb-0 text-muted">Total Amount</span>
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">&#8377; {{Price_counts}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+  </div>
+
+  <div class="row row-sm">
+
+    <div class="col-lg-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="card-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="search-hero">
+                                <div class="input-group mb-3">
+                                   <div class="input-group-prepend">
+                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                   </div>
+                                   <input class="form-control" type="text" name="search2"
+                               [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                                 </div>
+                              </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-2"></p-calendar>
+                            <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-2"></p-calendar>
+                            <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                            <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                        </div>
+                    </div>
+        
+                
+        
+        
+        <div class="doc-table">
+        <p-table [value]="payment_management | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+            
+            <ng-template pTemplate="header" >
+                <tr class="thhead">
+                    <th class="th-1">  S.No   </th>
+                    <th style="width: 100px;"> Appointment ID </th>
+                    <th> User Name    </th>
+                    <th  style="width: 250px;"> Doctor Name </th>
+                    <th> Appointment Date & Time  </th>
+                    <th>Payment Type</th>
+                    <th>Amount Type</th>
+                    <th style="width: 163px;text-align:center">
+                        Action
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-i="rowIndex" >
+                <tr  class="tdrow">
+                    <td>{{i+1}}</td>
+                    <td> df</td>
+                    <td class="truncate-cell">df </td>
+                    <td>{{item.dr_title}}.{{item.dr_name}}</td>
+                    <td> {{item.booking_date}} & {{item.booking_time}} </td>
+                    
+                    <td>{{item.payment_method}}</td>
+                    <td class="act">
+                        <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
+                        <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
+                        <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        
+        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+</section>    

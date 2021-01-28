@@ -49,6 +49,9 @@ import { LiveDoctorDetailsComponent } from './pages/live-doctor-details/live-doc
 import { ServiceproviderDetailsComponent } from './pages/serviceprovider-details/serviceprovider-details.component';
 import { LiveServiceproviderDetailsComponent } from './pages/live-serviceprovider-details/live-serviceprovider-details.component';
 import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-appointment.component';
+import { CancelAppointmentComponent } from './pages/cancel-appointment/cancel-appointment.component';
+import { PaymentManagementComponent } from './pages/payment-management/payment-management.component';
+import { NotificationComponent } from './pages/notification/notification.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -83,6 +86,9 @@ const routes: Routes = [
   { path: 'serviceprovider_details', component: ServiceproviderDetailsComponent },
   { path: 'live_serviceprovider_details', component: LiveServiceproviderDetailsComponent },
   { path: 'Doctor_appointment', component: DoctorAppointmentComponent },
+  { path: 'cancel_appointment', component: CancelAppointmentComponent },
+  { path: 'payment_management', component: PaymentManagementComponent },
+  { path: 'notification', component: NotificationComponent },
 
   ///Master ////
    /////////Banners//////

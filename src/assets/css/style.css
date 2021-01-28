@@ -130,6 +130,19 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
     font-size: 0.875rem !important ;
     line-height: 1.5 !important; height: inherit;
 }
+.title-h3{
+    font-size: 18px;
+    font-weight: 600;color: #16906e;
+}
+
+.thumbSm{height:30px;width:30px;border-radius:5px;border:1px solid #f3f6f9}
+.bg-org{background:#ff6434!important}
+.bg-green{background:#25b398!important}
+.bg-blue{background:#6179ff!important}
+.bg-success{background-color:#3ee26c!important}
+.bg-info{background-color:#36afe2!important}
+.bg-secondary{background-color:#c054e6!important}
+.bg-danger{background-color:#ff5061!important}
 /* existing css */
 
 .btn-primary{color:#fff;background-color:#099279 !important;border-color:#099279 !important;height:42px;min-width:80px;font-size:14px;margin-right:10px}
