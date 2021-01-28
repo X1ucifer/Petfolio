@@ -14,8 +14,9 @@ export class PaymentManagementComponent implements OnInit {
   searchQR: any;
   counts:any;
   Price_counts : any;
+  Sp_total_price: any;
+  pay_list: any;
   value1: any;
-  payment_management: any;
   S_Date: any;
   E_Date: any;
   doctor_list:any;
@@ -36,7 +37,7 @@ export class PaymentManagementComponent implements OnInit {
   user_total_price = 0;
   app_total_price = 0;
 
-
+  payment_management : any;
 
 
 
@@ -48,6 +49,8 @@ export class PaymentManagementComponent implements OnInit {
 
   ) { }
 
+
+
   ngOnInit(): void {
     this._api.dashboard_count().subscribe((res:any)=>{
       console.log(res)
@@ -58,6 +61,11 @@ export class PaymentManagementComponent implements OnInit {
       console.log(res)
       this.Price_counts = res.Data;
     });
+
+    this._api.sp_total_price().subscribe((res:any)=>{
+      console.log(res)
+      this.Sp_total_price = res.Data;
+    })
 
 
     this._api.doctor_details_list().subscribe(
@@ -184,10 +192,10 @@ export class PaymentManagementComponent implements OnInit {
         "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
         }
       console.log(a);
-      this._api.user_filter_date(a).subscribe(
+      this._api.pay_filter_date(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          this.payment_management = response.Data;
+          this.pay_list = response.Data;
         }
       );
     }

@@ -1,0 +1,5 @@
+@import "../../../../assets/css/style.css";
+
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
