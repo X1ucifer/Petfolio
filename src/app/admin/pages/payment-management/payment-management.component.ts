@@ -21,7 +21,25 @@ export class PaymentManagementComponent implements OnInit {
   doctor_list:any;
   sp_list:any;
   Vendor_list:any;
-   
+
+  showtabel = 'Ecom';
+
+
+  Ecom_list : any;
+  SP_list : any;
+  PET_list : any;
+  Doc_list : any;
+
+
+  vendor_total_price = 0;
+  sp_total_price = 0;
+  user_total_price = 0;
+  app_total_price = 0;
+
+
+
+
+
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -72,6 +90,20 @@ export class PaymentManagementComponent implements OnInit {
         this.rows = response.Data;
         this.payment_management = response.Data;
         console.log(this.payment_management);
+
+        this.vendor_total_price = this.payment_management.vendor_total_price;
+        this.sp_total_price = this.payment_management.sp_total_price;
+        this.user_total_price = this.payment_management.user_total_price;
+        this.app_total_price = this.payment_management.app_total_price;
+
+        this.Ecom_list = this.payment_management.vendor_order_details;
+        this.SP_list = this.payment_management.sp_appoint_details;
+        this.PET_list = this.payment_management.user_appoint_details;
+        this.Doc_list = this.payment_management.doc_appoint_details;
+
+        // this.SP_list : any;
+        // this.PET_list : any;
+        // this.Doc_list : any;
       }
     );
   }
@@ -162,10 +194,16 @@ export class PaymentManagementComponent implements OnInit {
     else{
       alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.list();
+  }
+
+
+  showdatas(datas){
+  console.log(this.SP_list);
+  this.showtabel = datas;
   }
 
 

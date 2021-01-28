@@ -7,10 +7,10 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-        
+
     </div>
 
-    
+
 
     <!-- table -->
 
@@ -20,7 +20,7 @@
           <div class="card custom-card">
                 <div class="card-body">
                     <div class="card-item">
-                     
+
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="search-hero">
@@ -28,7 +28,7 @@
                                        <div class="input-group-prepend">
                                          <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                        </div>
-                                       <input class="form-control" type="text" name="search2" 
+                                       <input class="form-control" type="text" name="search2"
                                    [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
                                      </div>
                                   </div>
@@ -43,24 +43,24 @@
                                     (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
                                 <button type="button" class="btn btn-secondary mr-0" (click)="doc_form()"><i class="fas fa-plus-circle"></i> Add</button>
                             </div>
-                            
+
                         </div>
                         <div class="row">
-                        
+
                             <div class="col-md-4">
                                 <h5 class="form-lable">Specialization:</h5>
                                 <p-dropdown [options]="specialzation_list" [(ngModel)]="specialzation_f" placeholder="Select"
                                     optionLabel="specialzation" [showClear]="true"></p-dropdown>
-                        
+
                             </div>
                             <div class="col-md-4">
                                 <button *ngIf="update_button == true" type="button" class="btn btn-primary"
                                     style="margin-left: 10px;margin-top: 24px;" (click)="spec_filter()"><i class="fas fa-filter"></i> Filter</button>
                             </div>
-                          
+
                           </div>
                         <div class="doc-table">
-                        
+
                             <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
                                 [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
@@ -76,9 +76,9 @@
                                                 placeholder="Entry Type">
                                         </div>
                                     </div>
-                        
+
                                 </div>
-                        
+
                             </ng-template> -->
                                 <ng-template pTemplate="header">
                                     <tr class="thhead">
@@ -120,7 +120,7 @@
                                         <td>{{i+1}}</td>
                                         <td>
                                             <div class="imgthumcontainer"><img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;"></div>
-                                            
+
                                         </td>
                                         <td>{{item.dr_title}}.{{item.dr_name}}</td>
                                         <td>
@@ -168,11 +168,11 @@
                                         <td>
                                             {{item.createdAt | date}}
                                         </td>
-                        
+
                                       <td>
                                           {{item.updatedAt | date}}
                                       </td>
-                        
+
                                         <td>
                                             {{item.profile_status}}
                                         </td>
@@ -201,15 +201,15 @@
                                 </td>
                                         <td class="act">
                                            <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit(item)" pTooltip="Edit"></i>
-                                            <i style="color: #fd2c3a;" class="fa fa-trash-alt" aria-hidden="true" pTooltip="Delete"
-                                                (click)="Deletecompanydetails(item._id)"></i>
+                                            <!-- <i style="color: #fd2c3a;" class="fa fa-trash-alt" aria-hidden="true" pTooltip="Delete"
+                                                (click)="Deletecompanydetails(item._id)"></i> -->
                                             <i style="color: #4CAF50;" class="fas fa-exclamation-circle" aria-hidden="true" (click)="view_details(item)"
                                                 pTooltip="View"></i>
                                         </td>
                                     </tr>
                                 </ng-template>
                             </p-table>
-                        
+
                         </div>
 
                     </div>
