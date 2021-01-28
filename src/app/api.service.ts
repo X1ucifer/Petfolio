@@ -280,6 +280,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'userdetails/fetch_payment_Details', data);
   }
   pay_list () { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');}
+  
   sp_total_price() {
     return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
