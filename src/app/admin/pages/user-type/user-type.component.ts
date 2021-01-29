@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef } from '@angular/core'; import { Router } from '@angular/router';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef, TemplateRef } from '@angular/core'; import { Router } from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-type',
@@ -27,7 +28,9 @@ export class UserTypeComponent implements OnInit {
   S_Date: any;
   E_Date: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
-
+  @ViewChild('updateDialog') updateDialog: TemplateRef<any>;
+  @ViewChild('addedDialog') addedDialog: TemplateRef<any>;
+  
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -35,7 +38,7 @@ export class UserTypeComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
-
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +64,12 @@ export class UserTypeComponent implements OnInit {
     );
   }
 
-
+  openAddedDialog() {
+    this.dialog.open(this.addedDialog);
+  }
+  openUpdateDialog() {
+    this.dialog.open(this.updateDialog);
+  }
 
   ////// Inserting Data
 
@@ -80,7 +88,8 @@ export class UserTypeComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.openAddedDialog();
           } else {
             alert(response.Message);
           }
@@ -106,7 +115,8 @@ export class UserTypeComponent implements OnInit {
       this._api.user_type_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          //alert("Updated Successfully");
+          this.openUpdateDialog();
           this.ngOnInit();
         }
       );

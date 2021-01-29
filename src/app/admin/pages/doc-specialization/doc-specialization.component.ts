@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject,  ViewChild, AfterViewInit, ElementRef } from '@angular/core';import { Router } from '@angular/router';
+import { Component, OnInit, Inject,  ViewChild, AfterViewInit, ElementRef, TemplateRef } from '@angular/core';import { Router } from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-doc-specialization',
@@ -26,6 +27,8 @@ export class DocSpecializationComponent implements OnInit {
   S_Date: any;
   E_Date: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
+  @ViewChild('updateDialog') updateDialog: TemplateRef<any>;
+  @ViewChild('addedDialog') addedDialog: TemplateRef<any>;
 
   constructor(
     private router: Router,
@@ -34,6 +37,7 @@ export class DocSpecializationComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +49,17 @@ export class DocSpecializationComponent implements OnInit {
     this.listpettype();
   }
 
+  
+  openDialogWithRef(ref: TemplateRef<any>) {
+    this.dialog.open(ref);
+  }
 
+  openAddedDialog() {
+    this.dialog.open(this.addedDialog);
+  }
+  openUpdateDialog() {
+    this.dialog.open(this.updateDialog);
+  }
 
   listpettype() {
     this._api.doctor_spec_list().subscribe(
@@ -59,7 +73,7 @@ export class DocSpecializationComponent implements OnInit {
   }
 
 
-
+  
   ////// Inserting Data
 
   Insert_pet_type_details() {
@@ -77,7 +91,8 @@ export class DocSpecializationComponent implements OnInit {
     (response: any) => {
       console.log(response.Data);
       if ( response.Code === 200 ) {
-        alert('Added Successfully');
+        //alert('Added Successfully');
+        this. openAddedDialog();
       }else {
         alert(response.Message);
       }
@@ -99,7 +114,8 @@ export class DocSpecializationComponent implements OnInit {
     this._api.doctor_spec_edit(a).subscribe(
     (response: any) => {
       console.log(response.Data);
-      alert("Updated Successfully");
+      this.openUpdateDialog();
+      //alert("Updated Successfully");
       this.ngOnInit();
     }
   );
