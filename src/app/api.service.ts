@@ -177,7 +177,7 @@ export class ApiService {
     return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
   }
 
-  
+
   prices_count() {
     return this.http.get(this.apiUrl + 'appointments/gettotalprice');
   }
@@ -237,6 +237,14 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'demoscreen/filter_date', data);
   }
 
+
+  payment_managements() {
+    return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
+  }
+
+
+
+
   splashscreen_create(data) {
     return this.http.post(this.apiUrl + 'splashscreen/create', data);
   }
@@ -280,14 +288,14 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'userdetails/fetch_payment_Details', data);
   }
   pay_list () { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');}
-  
+
   sp_total_price() {
     return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
   payment_management_list() {
     return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
- 
+
   product_cate_create(data) {
     return this.http.post(this.apiUrl + 'product_cate/create', data);
   }
