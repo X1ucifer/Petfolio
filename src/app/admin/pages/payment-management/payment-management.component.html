@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-        
+
     </div>
 
      <div class="row  mt-3">
@@ -17,7 +17,7 @@
   </div>
   <div class="row row-sm">
 
-      <div class="col-lg-3">
+      <div class="col-lg-3" (click)="showdatas('Ecom')" >
           <div class="card custom-card">
                 <div class="card-body">
                     <div class="card-item">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-item-body">
                             <div class="card-item-stat">
-                                <h4 class="font-weight-bold">&#8377; 100000</h4>
+                                <h4 class="font-weight-bold">&#8377; {{vendor_total_price}}</h4>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3" (click)="showdatas('SP')">
           <div class="card custom-card">
                 <div class="card-body">
                     <div class="card-item">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="card-item-body">
                             <div class="card-item-stat">
-                                <h4 class="font-weight-bold">&#8377; {{Sp_total_price}}</h4>
+                                <h4 class="font-weight-bold">&#8377; {{sp_total_price}}</h4>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3"  (click)="showdatas('PL')">
           <div class="card custom-card">
                 <div class="card-body">
                     <div class="card-item">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="card-item-body">
                             <div class="card-item-stat">
-                                <h4 class="font-weight-bold">&#8377; 154785</h4>
+                                <h4 class="font-weight-bold">&#8377; {{user_total_price}}</h4>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3" (click)="showdatas('Doc')">
           <div class="card custom-card">
                 <div class="card-body">
                     <div class="card-item">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="card-item-body">
                             <div class="card-item-stat">
-                                <h4 class="font-weight-bold">&#8377; {{Price_counts}}</h4>
+                                <h4 class="font-weight-bold">&#8377; {{app_total_price}}</h4>
                             </div>
                         </div>
                     </div>
@@ -132,15 +132,15 @@
                             <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
                         </div>
                     </div>
-        
-                
-        
-        
-        <div class="doc-table">
-        <p-table [value]="pay_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+
+
+
+
+        <div class="doc-table" *ngIf="showtabel == 'Ecom'">
+        <p-table [value]="Ecom_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
             [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-        
+
             <ng-template pTemplate="header" >
                 <tr class="thhead">
                     <th class="th-1">  S.No   </th>
@@ -172,7 +172,6 @@
                     <td class="truncate-cell">df </td>
                     <td>{{item.dr_title}}.{{item.dr_name}}</td>
                     <td> {{item.booking_date}} & {{item.booking_time}} </td>
-                    
                     <td>{{item.payment_method}}</td>
                     <td class="act">
                         <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
@@ -182,12 +181,134 @@
                 </tr>
             </ng-template> -->
         </p-table>
-        
+
         </div>
+
+        <div class="doc-table" *ngIf="showtabel == 'SP'">
+          <p-table [value]="SP_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+              [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
+              <ng-template pTemplate="header" >
+                  <tr class="thhead">
+                      <th class="th-1">  S.No   </th>
+                      <th style="width: 100px;"> Appointment ID </th>
+                      <th> User Name    </th>
+                      <th  style="width: 250px;"> Doctor Name </th>
+                      <th> Appointment Date & Time  </th>
+                      <th>Payment Type</th>
+                      <th>Amount Type</th>
+                      <th style="width: 163px;text-align:center">
+                          Action
+                      </th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item let-i="rowIndex" >
+                <tr  class="tdrow">
+                  <td>{{i+1}}</td>
+                  <td> {{item.appointment_UID}}</td>
+                  <td class="truncate-cell">{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
+                  <td>{{item.doctor_id.first_name}} {{item.doctor_id.last_name}}</td>
+                  <td> {{item.booking_date_time}}</td>
+                  <td>{{item.payment_method}}</td>
+                  <td>{{item.payment_id}}</td>
+                  <td>{{item.amount}}</td>
+                  <td class="act">
+                      <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
+                      <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
+                      <!-- <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i> -->
+                  </td>
+                </tr>
+              </ng-template>
+          </p-table>
+
+          </div>
+
+          <div class="doc-table" *ngIf="showtabel == 'PL'">
+            <p-table [value]="PET_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+                [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
+                <ng-template pTemplate="header" >
+                    <tr class="thhead">
+                        <th class="th-1">  S.No   </th>
+                        <th style="width: 100px;"> Appointment ID </th>
+                        <th> User Name    </th>
+                        <th  style="width: 250px;"> Doctor Name </th>
+                        <th> Appointment Date & Time  </th>
+                        <th>Payment Type</th>
+                        <th>Payment ID</th>
+                        <th>Amount Type</th>
+                        <th style="width: 163px;text-align:center">
+                            Action
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex" >
+                    <tr  class="tdrow">
+                        <td>{{i+1}}</td>
+                        <td> {{item.appointment_UID}}</td>
+                        <td class="truncate-cell">{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
+                        <td>{{item.doctor_id.first_name}} {{item.doctor_id.last_name}}</td>
+                        <td> {{item.booking_date_time}}</td>
+                        <td>{{item.payment_method}}</td>
+                        <td>{{item.payment_id}}</td>
+                        <td>{{item.amount}}</td>
+                        <td class="act">
+                            <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
+                            <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
+                            <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+            </div>
+
+
+            <div class="doc-table" *ngIf="showtabel == 'Doc'">
+              <p-table [value]="Doc_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+                  [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
+                  <ng-template pTemplate="header" >
+                      <tr class="thhead">
+                          <th class="th-1">  S.No   </th>
+                          <th style="width: 100px;"> Appointment ID </th>
+                          <th> User Name    </th>
+                          <th  style="width: 250px;"> Doctor Name </th>
+                          <th> Appointment Date & Time  </th>
+                          <th>Payment Type</th>
+                          <th>Payment ID</th>
+                          <th>Amount Type</th>
+                          <th style="width: 163px;text-align:center">
+                              Action
+                          </th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-item let-i="rowIndex" >
+                    <tr  class="tdrow">
+                      <td>{{i+1}}</td>
+                      <td> {{item.appointment_UID}}</td>
+                      <td class="truncate-cell">{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
+                      <td>{{item.doctor_id.first_name}} {{item.doctor_id.last_name}}</td>
+                      <td> {{item.booking_date_time}}</td>
+                      <td>{{item.payment_method}}</td>
+                      <td>{{item.payment_id}}</td>
+                      <td>{{item.amount}}</td>
+                      <td class="act">
+                          <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
+                          <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
+                          <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
+                      </td>
+                    </tr>
+                  </ng-template>
+              </p-table>
+              </div>
                 </div>
             </div>
         </div>
         </div>
         </div>
 
-</section>    
+</section>

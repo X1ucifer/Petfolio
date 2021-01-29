@@ -35,7 +35,7 @@
                <div class="input-group-prepend">
                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                </div>
-               <input class="form-control" type="text" name="search2" 
+               <input class="form-control" type="text" name="search2"
            [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
              </div>
          </div>
@@ -92,14 +92,14 @@
             <td>{{i+1}}</td>
             <td>   <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="Denim Jeans" style="width: 40px;height: 40px;">          </td>
             <td>{{item.product_cate}}</td>
-         
+
             <td>            {{item.createdAt}}           </td>
             <td>                {{item.updatedAt}}            </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"
                     (click)="edit(item)"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
-                    (click)="delete(item._id)"></i>
+                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                    (click)="delete(item._id)"></i> -->
             </td>
         </tr>
     </ng-template>

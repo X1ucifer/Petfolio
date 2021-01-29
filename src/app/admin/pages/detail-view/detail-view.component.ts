@@ -18,7 +18,7 @@ export class DetailViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  
+
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     console.log(this.view_detail_data);
@@ -44,6 +44,22 @@ export class DetailViewComponent implements OnInit {
       'profile_verification_status' : status,
      };
     this._api.doctor_details_edit(a).subscribe(
+    (response: any) => {
+      console.log(response.Data);
+      alert("Updated Successfully");
+      this.ngOnInit();
+    }
+  );
+}
+
+
+live_status_change(status, id) {
+  let a = {
+    '_id': id,
+    "live_by": "Super Admin",
+    "live_status": status
+  };
+  this._api.doctor_details_edit(a).subscribe(
     (response: any) => {
       console.log(response.Data);
       alert("Updated Successfully");

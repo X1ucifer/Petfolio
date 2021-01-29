@@ -6,6 +6,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
+  [x: string]: any;
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
   constructor(private http: HttpClient) { }

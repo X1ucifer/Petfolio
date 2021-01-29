@@ -19,7 +19,7 @@ export class UserTypeComponent implements OnInit {
 
   user_type_title: string = '';
   user_type_value: any = '';
-  user_type_img: string = 'http://18.237.123.253:3000/api/uploads/template.jpg';
+  user_type_img: string = 'http://54.212.108.156:3000/api/uploads/user-icon.jpg';
   date_and_time: string = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   user_type_list: any = [];
   user_type_id: string = '';
@@ -45,7 +45,7 @@ export class UserTypeComponent implements OnInit {
 
     this.user_type_title = '';
     this.user_type_value = undefined;
-    this.user_type_img = 'http://18.237.123.253:3000/api/uploads/template.jpg';
+    this.user_type_img = 'http://54.212.108.156:3000/api/uploads/user-icon.jpg';
     this.user_type_id = '';
     this.update_button = true;
     this.listpettype();

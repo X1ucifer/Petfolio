@@ -11,19 +11,19 @@
                     <li class="breadcrumb-item active" aria-current="page">View Details</li>
                 </ol>
             </div>
-        
+
             <div class="d-flex">
                 <button class="btn btn-sm btn-secondary " (click)="back()">Back <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
-    
-    
+
+
     <div class="gutter-top container">
         <div class="row sticky-parent">
             <!-- Sidebar -->
             <aside class="col-12 col-md-12 col-xl-3">
                 <div class="sidebar box shadow pb-0 sticky-column">
-                   
+
                     <div class="avatar avatar--180">
                         <div class="avatar__box">
                             <img src="{{view_detail_data.clinic_pic[0].clinic_pic}}" class="pro-pic" height="100%" width="100%">
@@ -34,12 +34,12 @@
                         <ng-container *ngFor="let edu of view_detail_data.education_details">
                             <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}</div>
                         </ng-container>
-                        
+
                     </div>
-                    
+
                     <div class="sidebar__info box-inner box-inner--rounded">
                         <ul class="contacts-block">
-                           
+
 
                             <li class="contacts-block__item">
                                 <i class="font-icon fas fa-phone-alt text-theme"></i> {{view_detail_data.user_id.user_phone}}
@@ -47,7 +47,7 @@
                             <li class="contacts-block__item">
                                 <span><i class="font-icon fas fa-envelope text-theme"></i> {{view_detail_data.user_id.user_email}}</span>
                             </li>
-                            
+
                         </ul>
                         <div class="text-center mb-4">
                             <h4 class="mb-1 text-theme"><strong>Profile Stauts:</strong></h4>
@@ -60,51 +60,51 @@
                             <p> {{view_detail_data.clinic_loc}}</p>
                         </div>
 
-                        
+
                     </div>
-                </div>	
+                </div>
             </aside>
-            
+
             <!-- Content -->
             <div class="col-12 col-md-12 col-xl-9">
                 <div class="box shadow pb-0">
-                   
+
                     <!-- About -->
                     <div class="pb-3">
                         <h2 class="title--h1 first-title title__separate text-theme">Specialisation</h2>
                         <ng-container *ngFor="let spe of view_detail_data.specialization">
-                            <span class="badge badge--green-gradient mr-2 mb-2">{{spe.specialization}}</span> 
-                            
+                            <span class="badge badge--green-gradient mr-2 mb-2">{{spe.specialization}}</span>
+
                         </ng-container>
 
                     </div>
-                    
+
                     <!-- What -->
                     <div class="box-inner">
                         <h2 class="title--h1 first-title title__separate text-theme">Pets handled</h2>
-                               
+
                                         <ng-container *ngFor="let spe of view_detail_data.pet_handled">
-                                            <span class="badge badge--dark mr-2 mb-2">{{spe.pet_handled}}</span> 
+                                            <span class="badge badge--dark mr-2 mb-2">{{spe.pet_handled}}</span>
                                         </ng-container>
-                          	
+
                     </div>
-                    
+
                     <!-- experience -->
                     <div class="box-inner box-inner--white">
                         <h2 class="title--h1 first-title title__separate text-theme">Experience</h2>
-                        
-                       
+
+
                        <div class="resume">
                         <div class="resume_item resume_work">
-                           
+
                             <ul>
                                 <ng-container *ngFor="let exp of view_detail_data.experience_details">
                                     <li>
-                                        <div class="date">({{exp.from}}-{{exp.to}})</div> 
+                                        <div class="date">({{exp.from}}-{{exp.to}})</div>
                                         <h3>{{exp.company}}</h3>
                                     </li>
                                 </ng-container>
-                              
+
                             </ul>
                         </div>
 
@@ -144,27 +144,49 @@
 
                     <div class="box-inner box-inner--white box-inner--rounded">
 
-                        <button type="button" class="btn btn-primary"
-                        *ngIf="view_detail_data.profile_verification_status == 'Not verified' "
-                        (click)="verify('Verified',view_detail_data._id)"><i class="fas fa-user-check"></i> Approve</button>
-                    <button type="button" class="btn btn-danger"
-                        *ngIf="view_detail_data.profile_verification_status == 'Verified' "
-                        (click)="verify('Not verified',view_detail_data._id)"><i class="fas fa-user-slash"></i> Reject</button>
+                      <div class="row">
+                        <div class="col-md-4">
+
+                          <button type="button" class="btn btn-primary"
+                          *ngIf="view_detail_data.live_status == 'Not Live' "
+                          (click)="live_status_change('Live',view_detail_data._id)"><i class="fas fa-user-check"></i> Make Live</button>
+                      <button type="button" class="btn btn-danger"
+                      *ngIf="view_detail_data.live_status == 'Live'"
+                          (click)="live_status_change('Not Live',view_detail_data._id)"><i class="fas fa-user-slash"></i> Un Live</button>
+
+                        </div>
+                        <!-- <div class="col-md-4">
+                          <button (click)="verify('Verified',view_detail_data._id)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="view_detail_data.profile_verification_status != 'Verified'">Approve</button>
+                          <button (click)="verify('Not verified',view_detail_data._id)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="view_detail_data.profile_verification_status == 'Verified'">Reject</button>
+                        </div> -->
+                        <div class="col-md-4">
+                          <button type="button" class="btn btn-primary"
+                          *ngIf="view_detail_data.profile_verification_status != 'Verified' "
+                          (click)="verify('Verified',view_detail_data._id)"><i class="fas fa-user-check"></i> Approve</button>
+                      <button type="button" class="btn btn-danger"
+                          *ngIf="view_detail_data.profile_verification_status == 'Verified' "
+                          (click)="verify('Not verified',view_detail_data._id)"><i class="fas fa-user-slash"></i> Reject</button>
+                        </div>
+
+                      </div>
+
+
+
 
                         <!-- <a class="btn btn-outline-primary mr-2" href="#"><i class="fas fa-certificate"></i> Certificate</a> -->
-                        
+
                     </div>
 
-                       
+
 
 
                 </div>
-                
-               
+
+
             </div>
         </div>
     </div>
-  </section>	
+  </section>
 </main>
 
 <!-- <section *ngIf="view_detail == 'Doctor'">
@@ -191,7 +213,7 @@
                     </p>
                     <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
                             style="font-weight: 400;">{{view_detail_data.profile_status}}</span></p>
-               
+
                     <button type="button" class="btn btn-primary"
                         *ngIf="view_detail_data.profile_verification_status == 'Not verified' "
                         (click)="verify('Verified',view_detail_data._id)"
@@ -200,7 +222,7 @@
                         *ngIf="view_detail_data.profile_verification_status == 'Verified' "
                         (click)="verify('Not verified',view_detail_data._id)"
                         style="margin-left: 10px;margin-top: 24px; width: 110px;font-size: 12px;">Reject</button>
-                    
+
                 </div>
             </div>
         </div>
@@ -219,7 +241,7 @@
                                 <td class="desc">
                                     <ng-container *ngFor="let spe of view_detail_data.specialization">
                                         <span class="badge badge--light">{{spe.specialization}}</span> ,
-                                        
+
                                     </ng-container>
                                 </td>
                             </tr>
@@ -232,7 +254,7 @@
                                     </ng-container>
                                 </td>
                             </tr>
-                           
+
                             <tr>
                                 <th> <label for="f-email"> Clinic Name </label> </th>
                                 <td class="desc"> {{view_detail_data.clinic_name}} </td>
@@ -244,7 +266,7 @@
                                 <td class="desc"> {{view_detail_data.clinic_loc}} </td>
                             </tr>
 
-                          
+
 
                         </table>
 
@@ -294,12 +316,12 @@
                     <li class="breadcrumb-item active" aria-current="page">View Details</li>
                 </ol>
             </div>
-        
+
             <div class="d-flex">
                 <button class="btn btn-sm btn-secondary " (click)="back()">Back <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
-    
+
     </section>
 
     <div class="container" style="width: 100%;">
@@ -307,7 +329,7 @@
             <div class="row" style="padding: 0px 0px 23px 10px;">
                 <table class="table table-sm table-bordered">
                     <tr class="thhead">
-    
+
                         <!-- <th style="color:#fff">Image</th> -->
                         <th style="color:#fff">Name </th>
                         <th style="color:#fff">Email ID</th>
@@ -406,7 +428,7 @@
                                         <td>{{item.vaccinated}}</td>
                                         <td>{{item.last_vaccination_date}}</td>
                                         <td>{{item.date_and_time}}</td>
-                            
+
                                         <td class="act" style="text-align:center">
                                             <!-- <i style="color: #2196f3;" class="fas fa-edit"
                                                 pTooltip="Edit"></i> -->
@@ -803,11 +825,11 @@
                     <h4> <label style="color: #007adb;">User Details</label> </h4>
                 </div>
                  <div class="card-box">
-                   
+
                     <div class="row" style="padding: 0px 0px 23px 10px;">
                         <table>
                             <tr class="thhead">
-            
+
                                 <!-- <th style="color:#fff">Image</th> -->
                                 <th style="color:#fff">Name </th>
                                 <th style="color:#fff">Email ID</th>
@@ -846,37 +868,37 @@
                                 <table cellpadding="5" cellspacing="0">
                                     <tr>
                                         <th> <label for="f-user">Clinic Name</label> </th>
-        
+
                                         <td class="desc">
                                             {{view_detail_data.doc_business_info[0].clinic_name}} </td>
                                     </tr>
                                     <tr>
                                         <th> <label for="f-user">Clinic Location</label> </th>
-        
+
                                         <td class="desc">
-                                            {{view_detail_data.doc_business_info[0].clinic_loc}} 
+                                            {{view_detail_data.doc_business_info[0].clinic_loc}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <th> <label for="f-user">specialization</label> </th>
-        
+
                                         <td><ng-container  *ngFor="let spec of view_detail_data.doc_business_info[0].specialization">
-                                            {{spec.specialization}}, 
+                                            {{spec.specialization}},
                                          </ng-container></td>
                                     </tr>
                                     <tr>
                                         <th> <label for="f-user">Pet Handled</label> </th>
-        
+
                                         <td><ng-container  *ngFor="let spec of view_detail_data.doc_business_info[0].pet_handled">
-                                            {{spec.pet_handled}}, 
+                                            {{spec.pet_handled}},
                                          </ng-container></td>
                                     </tr>
-        
-                                   
-                                   
+
+
+
                                 </table>
                             </div>
-                            
+
                             <!-- <p class="title">
                                 <ng-container *ngFor="let edu of view_detail_data.doc_business_info[0].education_details">
                                     {{edu.education}}-{{edu.year}} ,
@@ -895,7 +917,7 @@
                                 <label (click)="doc_cal()">Doctor Calendar <i class="fa fa-calendar"
                                        ></i></label>
                             </div> -->
-                         
+
                         </div>
                     </div>
                 </div>
@@ -913,47 +935,47 @@
                             <table cellpadding="5" cellspacing="0">
                                 <tr>
                                     <th> <label for="f-user">Pet Name</label> </th>
-    
+
                                     <td class="desc">
                                         {{view_detail_data.pet_id.pet_name}} </td>
                                 </tr>
                                 <tr>
                                     <th> <label for="f-user">Pet Breed</label> </th>
-    
+
                                     <td class="desc">
                                         {{view_detail_data.pet_id.pet_breed}}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th> <label for="f-user">Pet Type</label> </th>
-    
+
                                     <td class="desc">
                                         {{view_detail_data.pet_id.pet_type}}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th> <label for="f-user">Pet Color</label> </th>
-    
+
                                     <td class="desc">
                                         {{view_detail_data.pet_id.pet_color}}
                                     </td>
                                 </tr>
-    
+
                                 <tr>
                                     <th> <label for="f-user">Pet Gender</label> </th>
-    
+
                                     <td class="desc">
                                         {{view_detail_data.pet_id.pet_gender}}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th> <label for="f-user">Pet Weight</label> </th>
-    
+
                                     <td class="desc">
                                         {{view_detail_data.pet_id.pet_weight}}
                                     </td>
                                 </tr>
-                               
+
                             </table>
                         </div>
                     </div>
