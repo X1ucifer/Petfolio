@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef, TemplateRef } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-demo-page',
@@ -28,6 +29,10 @@ export class DemoPageComponent implements OnInit {
   S_Date: any;
   E_Date: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
+  @ViewChild('updateDialog') updateDialog: TemplateRef<any>;
+  @ViewChild('addedDialog') addedDialog: TemplateRef<any>;
+  @ViewChild('deleteDialog') deleteDialog: TemplateRef<any>;
+
   constructor(
     private router: Router,
     private location: Location,
@@ -35,6 +40,7 @@ export class DemoPageComponent implements OnInit {
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +66,16 @@ export class DemoPageComponent implements OnInit {
     }
   }
 
+  openAddedDialog() {
+    this.dialog.open(this.addedDialog);
+  }
+  openUpdateDialog() {
+    this.dialog.open(this.updateDialog);
+  }
+
+  openDeleteDialog() {
+    this.dialog.open(this.deleteDialog);
+  }
 
   create() {
     this.validation();
@@ -80,7 +96,8 @@ export class DemoPageComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.openAddedDialog();
             this.ngOnInit();
           } else {
             alert(response.Message);
@@ -141,7 +158,8 @@ export class DemoPageComponent implements OnInit {
     this._api.demoscreen_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.openDeleteDialog();
         this.ngOnInit();
       }
     );
@@ -174,7 +192,8 @@ export class DemoPageComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Updated Successfully');
+            //alert('Updated Successfully');
+            this.openUpdateDialog();
             this.ngOnInit();
             this.edit_t = false;
             this.id = undefined;
