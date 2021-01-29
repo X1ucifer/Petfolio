@@ -52,47 +52,11 @@ export class PaymentManagementComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._api.dashboard_count().subscribe((res:any)=>{
-      console.log(res)
-      this.counts = res.Data;
-    });
-
-    this._api.prices_count().subscribe((res:any)=>{
-      console.log(res)
-      this.Price_counts = res.Data;
-    });
-
-    this._api.sp_total_price().subscribe((res:any)=>{
-      console.log(res)
-      this.Sp_total_price = res.Data;
-    })
-
-
-    this._api.doctor_details_list().subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        this.rows = response.Data;
-        this.doctor_list = response.Data;
-        console.log(this.doctor_list);
-      }
-    );
-    this._api.service_provider_list().subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        this.sp_list = response.Data;
-      }
-    );
-    this._api.vendor_details_list().subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        this.Vendor_list = response.Data;
-      }
-    );
     this.list();
   }
 
   list() {
-    this._api.payment_management().subscribe(
+    this._api.payment_managements().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;
