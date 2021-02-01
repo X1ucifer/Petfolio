@@ -154,8 +154,10 @@
                                         </td>
                                         <td>{{item.user_id.mobile_type}}</td>
                                         <td class="act">
-                                                <button (click)="verify('Verified',item._id,item)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
-                                                <button (click)="verify('Not verified',item._id,item)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
+                                                <!-- <button (click)="verify('Verified',item._id,item)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                                                <button (click)="verify('Not verified',item._id,item)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button> -->
+                                                <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                                                <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
                                         </td>
                                         <td>{{item.live_status}}</td>
                                         <td>{{item.live_by}}</td>

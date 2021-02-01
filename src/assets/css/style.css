@@ -153,29 +153,35 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
 
 :host::ng-deep .ui-dropdown{width:100%}
 :host::ng-deep .ui-inputtext{width:100%;margin-bottom:20px}
-:host::ng-deep .ui-paginator .ui-paginator-current{float:right;font-weight:600;font-size:13px;color:#333}
+:host::ng-deep .ui-paginator .ui-paginator-current{float:right;}
 :host::ng-deep .ui-paginator .ui-dropdown{display:none}
 
-:host::ng-deep .ui-paginator .ui-paginator-icon{font-size:13px;font-weight:600}
-:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page{font-size:10px;margin-top:4px;background-color: #099279 !important;color: #a5f7e7;    padding: 10px;
-    line-height: 0.5;}
+:host::ng-deep .ui-paginator .ui-paginator-icon{}
+:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page{border: 1px solid #099279;margin-left: -2px;    height: 35px !important; width: 35px !important; line-height: 35px;}
     
-body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active,:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page:hover {    background-color: #0b6b59 !important;    color: #ffffff;}
-:host::ng-deep .ui-paginator .ui-paginator-pages{float:left}
-:host::ng-deep .ui-paginator a.ui-state-disabled{float:left}
-:host::ng-deep .ui-paginator .ui-paginator-first{float:left!important}
-:host::ng-deep .ui-paginator .ui-paginator-prev{float:left!important}
-:host::ng-deep .ui-paginator .ui-paginator-next{float:left!important}
-:host::ng-deep .ui-paginator .ui-paginator-last{float:left!important}
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active,:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page:hover {  }
+.ui-paginator a {background: #fff;}
+:host::ng-deep .ui-paginator .ui-paginator-pages{float:left;}
+:host::ng-deep .ui-paginator a.ui-state-disabled{float:left;border: 1px solid #099279;margin-right: -2px;height: 35px !important; width: 35px !important;line-height: 35px;}
+:host::ng-deep .ui-paginator .ui-paginator-first{float:left!important;border: 1px solid #099279;  border-radius: 5px 0 0 5px;margin-right: -2px;}
+:host::ng-deep .ui-paginator .ui-paginator-prev{float:left!important;border: 1px solid #099279;height: 35px !important; width: 35px !important;}
+:host::ng-deep .ui-paginator .ui-paginator-next{float:left!important;border: 1px solid #099279;margin-left: -2px;height: 35px !important; width: 35px !important;line-height: 35px;}
+:host::ng-deep .ui-paginator .ui-paginator-last{float:left!important;border: 1px solid #099279;margin-left: -2px; border-radius:0 5px 5px 0;height: 35px !important; width: 35px !important;line-height: 35px; }
 :host::ng-deep.ui-paginator .ui-paginator-pages .ui-paginator-page:focus{box-shadow:none!important}
+.ui-paginator .ui-paginator-icon {font-size: 13px;}
+:host::ng-deep .ui-table .ui-paginator-bottom{border-color: #e8e8f7;    background-color: #fbfafa;    padding: 10px 15px;}
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {  background-color: #099279 !important;   color: #fff !important;}
+body .ui-paginator .ui-paginator-pages .ui-paginator-page {    color: #333 !important;font-weight: 600;height: 35px !important; width: 35px !important;}
+
+body .ui-state-disabled, body .ui-widget:disabled {opacity: 1 !important;}
+body .ui-state-disabled span, body .ui-widget:disabled span {opacity: 0.5 !important;}
+
 .thhead th{color:#fff;background:#2cc5a8;    border: 1px solid #e8e8f7 !important;}
 .tdrow{display:table-row;background:#fff}
 .tdrow:hover{background-color:#ececff;cursor:pointer}
 .tdrow td{color:#333;line-height:1.2;font-weight:unset!important;border-bottom:none}
 :host::ng-deep .ui-table{overflow:hidden;border:none!important}
-:host::ng-deep .ui-table .ui-paginator-bottom{border: 1px solid #e8e8f7;
-    background-color: #fbfafa;
-    padding: 5px 0;}
+
 .th-1{width:60px}
 .act i{padding:3px;margin:3px;font-size:17px}
 :host::ng-deep .ui-table .ui-table-thead > tr > th{font-size:14px!important;font-weight:600!important;line-height: 15px;}
@@ -198,7 +204,7 @@ body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active,:host:
 .btn-bg-blue{background-color:#2196F3!important;border-color:#2196F3!important}
 textarea{overflow:auto;resize:vertical;width:100%;border:1px solid #dcdcdc;margin-bottom:20px}
 :host::ng-deep .ui-dropdown-label{padding-right:4em;border:none;margin-bottom:0}
-:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0 none;width:80%}
+:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext{border-top-right-radius:0;border-bottom-right-radius:0;border-right:0 none;width:70%}
 .mr-0{margin-right:0!important}
 :host::ng-deep .ui-multiselect{width:100%;margin-bottom:20px}
 :host::ng-deep .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-inputtext{padding:.429em;padding-right:2em;margin-bottom:0}

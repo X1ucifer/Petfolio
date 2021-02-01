@@ -153,6 +153,11 @@
                     <th> Action</th>
                 </tr>
             </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr class="tdrow">
+                    <td colspan="8">No Record found</td>
+                      </tr>
+             </ng-template>
             <ng-template pTemplate="body" let-item let-i="rowIndex" >
                 <tr  class="tdrow">
                     <td>{{i+1}}</td>
@@ -203,6 +208,11 @@
                       </th>
                   </tr>
               </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr class="tdrow">
+                    <td colspan="8">No Record found</td>
+                      </tr>
+             </ng-template>
               <ng-template pTemplate="body" let-item let-i="rowIndex" >
                 <tr  class="tdrow">
                   <td>{{i+1}}</td>
@@ -244,6 +254,11 @@
                         </th>
                     </tr>
                 </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr class="tdrow">
+                        <td colspan="9">No Record found</td>
+                          </tr>
+                 </ng-template>
                 <ng-template pTemplate="body" let-item let-i="rowIndex" >
                     <tr  class="tdrow">
                         <td>{{i+1}}</td>
@@ -286,6 +301,11 @@
                           </th>
                       </tr>
                   </ng-template>
+                  <ng-template pTemplate="emptymessage">
+                    <tr class="tdrow">
+                        <td colspan="9">No Record found</td>
+                          </tr>
+                 </ng-template>
                   <ng-template pTemplate="body" let-item let-i="rowIndex" >
                     <tr  class="tdrow">
                       <td>{{i+1}}</td>

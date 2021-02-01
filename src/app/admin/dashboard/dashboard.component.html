@@ -450,14 +450,15 @@
                                   <tr class="tdrow">
                                       <td>{{i+1}}</td>
                                       <td>
-                                        <img src="{{item.clinic_pic[0].clinic_pic}}" alt="" class="thumbSm">
+                                          <div class="imgthumcontainer"  style="width: 30px;height: 30px;"><img src="{{item.clinic_pic[0].clinic_pic}}" alt="" class="thumbSm"></div>
+                                        
                                       </td>
                                       <td>{{item.dr_title}}.{{item.dr_name}}</td>
 
                                      <!-- <td><ng-container  *ngFor="let spec of item.specialization">
                                       {{spec.specialization}} ,
                                    </ng-container></td> -->
-                                   <td><ng-container  *ngFor="let pet_handle of item.pet_handled">
+                                   <td class="truncate-cell"><ng-container  *ngFor="let pet_handle of item.pet_handled">
                                       {{pet_handle.pet_handled}} ,
                                    </ng-container></td>
                                       <!-- <td>17-09-2020</td> -->

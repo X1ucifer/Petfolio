@@ -54,7 +54,7 @@
                       </div>
                     <div class="doc-table">
 
-                        <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+                        <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
                             [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
                             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
                             <!-- <ng-template pTemplate="caption">
@@ -150,8 +150,8 @@
                                     </td>
                                     <td>{{item.user_id.mobile_type}}</td>
                                     <td class="act">
-                                            <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id,item)" style="padding: 2px; line-height: 1.2;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
-                                            <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id,item)" style="padding: 2px; line-height: 1.2;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
+                                            <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                                            <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
                                     </td>
                                     <td>{{item.live_status}}</td>
                                     <td>{{item.live_by}}</td>
