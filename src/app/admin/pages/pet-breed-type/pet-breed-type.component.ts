@@ -160,20 +160,6 @@ export class PetBreedTypeComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // //////Additional Calling Funcation//////
   // fileupload(event) {
   //   console.log("this.width")
@@ -244,6 +230,7 @@ export class PetBreedTypeComponent implements OnInit {
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
   }
+
 
 
 }
