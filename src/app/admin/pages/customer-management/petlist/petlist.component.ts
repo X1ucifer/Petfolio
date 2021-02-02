@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service'; 
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-petlist',
   templateUrl: './petlist.component.html',
@@ -13,12 +14,16 @@ export class PetlistComponent implements OnInit {
   searchQR:any;
   value1:any;
   pet_list:any;
+  S_Date: any;
+  E_Date: any;
   view_detail_data:any;
+  list: any;
   constructor(
     private router: Router,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -82,4 +87,28 @@ service_form() {
     this.router.navigateByUrl('/admin/Customer_form')
 
   }
+
+  filter_date() {
+    if ( this.E_Date != undefined && this.S_Date != undefined) {
+      // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+
+      let a = {
+        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
+        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
+        }
+      console.log(a);
+      this._api.splashscreen_filter_date(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          this.list = response.Data;
+        }
+      );
+    }
+    else{
+      alert('Please select the startdate and enddate');
+    }
+   
+  }
+
 }
