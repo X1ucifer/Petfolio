@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {TableModule} from 'primeng/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     HomepageModule,
     FormsModule,
     MatButtonModule,
-    RadioButtonModule],
+    RadioButtonModule, TableModule],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],

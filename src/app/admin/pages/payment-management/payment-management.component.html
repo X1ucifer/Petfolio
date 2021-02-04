@@ -136,7 +136,11 @@
 
 
 
-        <div class="doc-table" *ngIf="showtabel == 'Ecom'">
+        <div class="doc-table" *ngIf="showtabel == 'Ecom'" #TABLE>
+            <div class="ui-helper-clearfix" style="text-align: left">
+                <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="ExportTOExcel()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
+                <!--  <button type="button" pButton icon="fas fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>          -->
+            </div>
         <p-table [value]="Ecom_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
             [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">

@@ -4,6 +4,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-doctor-details',
   templateUrl: './doctor-details.component.html',
@@ -37,7 +38,7 @@ export class DoctorDetailsComponent implements OnInit {
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
   ) { }
-
+  @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
 
     this.specialzation = '';
@@ -330,6 +331,15 @@ export class DoctorDetailsComponent implements OnInit {
   }
   refersh() {
     this.listdoctorsall(); this.E_Date = undefined; this.S_Date = undefined;
+  }
+
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    
+    /* save to file */
+    XLSX.writeFile(wb, 'sheetExcel.xlsx');
   }
 }
 

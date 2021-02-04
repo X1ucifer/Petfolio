@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-live-doctor-details',
   templateUrl: './live-doctor-details.component.html',
@@ -31,7 +31,7 @@ export class LiveDoctorDetailsComponent implements OnInit {
   specialzation_f: any;
   Main_list: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
-
+  @ViewChild('TABLE') table: ElementRef;
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -334,6 +334,16 @@ export class LiveDoctorDetailsComponent implements OnInit {
   refersh() {
     this.listdoctorsall(); this.E_Date = undefined; this.S_Date = undefined;
   }
+
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    
+    /* save to file */
+    XLSX.writeFile(wb, 'sheetExcel.xlsx');
+  }
+  
 }
 
 

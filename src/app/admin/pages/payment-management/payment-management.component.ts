@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../../../api.service';
 import { Router, RouterModule } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-payment-management',
   templateUrl: './payment-management.component.html',
@@ -49,7 +49,7 @@ export class PaymentManagementComponent implements OnInit {
 
   ) { }
 
-
+  @ViewChild('TABLE') table: ElementRef;
 
   ngOnInit(): void {
     this.list();
@@ -178,5 +178,12 @@ export class PaymentManagementComponent implements OnInit {
   this.showtabel = datas;
   }
 
-
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    
+    /* save to file */
+    XLSX.writeFile(wb, 'sheetExcel.xlsx');
+  }
 }

@@ -1,8 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ElementRef } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { DatePipe } from '@angular/common';
+import { ViewChild } from '@angular/core';
+import * as XLSX from 'xlsx';
+declare var $: any;
 
 @Component({
   selector: 'app-customer-management',
@@ -16,6 +19,7 @@ export class CustomerManagementComponent implements OnInit {
   user_list: any;
   S_Date: any;
   E_Date: any;
+  saveAsExcelFile: any;
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -23,7 +27,7 @@ export class CustomerManagementComponent implements OnInit {
     private datePipe: DatePipe,
 
   ) { }
-
+  @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
     this.rows = [{ type: "Dog", name: "dog1" },
     { type: "Cat", name: "cat1" },
@@ -39,7 +43,9 @@ export class CustomerManagementComponent implements OnInit {
     { type: "Cat", name: "cat1" }];
     this.list();
 
+
   }
+ 
 
   list() {
     this._api.user_list().subscribe(
@@ -143,5 +149,18 @@ export class CustomerManagementComponent implements OnInit {
   refersh(){
     this.list();
   }
+ 
+ head = [['S.No', 'Name', 'Email', 'Phone', 'Created Date', 'Mobile Type']]
+
+
+ExportTOExcel() {
+  const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+  const wb: XLSX.WorkBook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+  
+  /* save to file */
+  XLSX.writeFile(wb, 'customerlists.xlsx');
+}
+
 
 }
