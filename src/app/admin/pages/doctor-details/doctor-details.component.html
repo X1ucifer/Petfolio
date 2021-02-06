@@ -61,7 +61,7 @@
                                 <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="ExportTOExcel()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
                                 <!--  <button type="button" pButton icon="fas fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>          -->
                             </div>
-                            
+
                             <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
                                 [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
@@ -104,6 +104,7 @@
                                         <th style="width: 80px;">Updated at</th>
                                         <th>Approve / Reject</th>
                                         <th>Mobile Type</th>
+                                        <th>Consultancy Fees</th>
                                         <th>Profile Stauts</th>
                                         <th>Live Stauts</th>
                                         <th>Live Updated By</th>
@@ -157,6 +158,7 @@
                                             {{item.profile_status}}
                                         </td>
                                         <td>{{item.user_id.mobile_type}}</td>
+                                        <td>{{item.consultancy_fees}}</td>
                                         <td class="act">
                                                 <!-- <button (click)="verify('Verified',item._id,item)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
                                                 <button (click)="verify('Not verified',item._id,item)" style="background-color: rgb(223, 26, 26);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button> -->

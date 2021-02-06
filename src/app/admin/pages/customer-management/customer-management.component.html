@@ -40,12 +40,12 @@
                     <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
                 </div>
 
-    
+
 
             </div>
 
 
-           
+
 
 
 <div class="doc-table table-responsive" #TABLE>
@@ -56,9 +56,9 @@
         </div>
 
   <p-table [value]="user_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
-    [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true" #dt 
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']"> 
-    
+    [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true" #dt
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
     <ng-template pTemplate="header" >
         <tr class="thhead">
             <th class="th-1">
@@ -67,6 +67,9 @@
             <!-- <th>
                 Profile Image
             </th> -->
+            <th style="width: 70px;">
+              Pic
+          </th>
             <th>
                 Name
             </th>
@@ -75,6 +78,9 @@
             </th>
             <th  style="width: 200px;">
                 Phone
+            </th>
+            <th  style="width: 200px;">
+              User type
             </th>
             <!-- <th>Created by</th>
             <th>Modified by</th> -->
@@ -89,7 +95,7 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex" >
         <tr  class="tdrow">
             <td>{{i+1}}</td>
-                 <!-- <td> <div class="imgthumcontainer"><img src="{{item.profile_img}}" alt=""></div></td> -->
+            <td> <div class="imgthumcontainer"><img src="{{item.profile_img}}" alt=""></div></td>
             <td class="truncate-cell">{{item.first_name}} {{item.last_name}}</td>
             <td class="truncate-cell">{{item.user_email}}</td>
             <td>{{item.user_phone}}</td>
@@ -98,6 +104,13 @@
             </td>
             <td>
                 {{item.mobile_type}}
+            </td>
+            <td>
+              <p *ngIf="item.user_type == 1">Pet Lover</p>
+              <p *ngIf="item.user_type == 4">Doctor</p>
+              <p *ngIf="item.user_type == 2">Service Provider</p>
+              <p *ngIf="item.user_type == 3">Vendor</p>
+              <!-- {{item.mobile_type}} -->
             </td>
             <td class="act">
                 <i style="color: #4CAF50;" class="fas fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i>

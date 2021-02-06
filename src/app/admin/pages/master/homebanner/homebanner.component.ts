@@ -19,7 +19,7 @@ export class HomebannerComponent implements OnInit {
   show_status: boolean = true;
   img_title: string = '';
   img_describ: string = '';
-  img_path: string = 'http://52.25.163.13:3000/api/uploads/template.jpg';
+  img_path: string = 'http://52.25.163.13:3000/api/uploads/New Project (1).jpg';
   date_and_time: string = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   user_type_list: any = [];
   user_type_id: string = '';
@@ -44,7 +44,7 @@ export class HomebannerComponent implements OnInit {
     this.show_status = true;
     this.img_title = '';
     this.img_describ = '';
-    this.img_path = 'http://52.25.163.13:3000/api/uploads/template.jpg';
+    this.img_path = 'http://52.25.163.13:3000/api/uploads/New Project (1).jpg';
     this.update_button = true;
     this.listhomebanner();
   }
@@ -180,7 +180,7 @@ export class HomebannerComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width > 800 && height > 400) {
+        if (width == 800 && height == 400) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -232,7 +232,7 @@ export class HomebannerComponent implements OnInit {
     else{
       alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listhomebanner();

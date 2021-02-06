@@ -18,7 +18,7 @@
           <button class="btn btn-primary btn-sm" style="height: inherit;" matDialogClose >Close</button>
         </div>
       </ng-template>
-      
+
       <ng-template #updateDialog>
           <div class="text-center">
             <i class="far fa-check-circle text-success fa-5x"></i>
@@ -56,7 +56,7 @@
                                   </div> -->
                                   <div class="font-11 mt-2 text-secondary">Upload the user type icon with 80 * 80 (Max 100 kB)</div>
                                   <div class="imgthumcontainer"><img src="{{user_type_img}}"></div>
-                                  
+
 
 
                                  </div>
@@ -151,7 +151,7 @@
                             <td>{{item.user_type_title}}</td>
                             <td>
                                 <div class="imgthumcontainer"><img _ngcontent-dah-c159="" src="{{item.user_type_img}}" alt="Denim Jeans"></div>
-                            
+
                         </td>
                         <td>{{item.user_type_value}}</td>
                             <td>
@@ -162,7 +162,7 @@
                             </td>
                             <td class="act">
                                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
-                                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i> -->
+                                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
                                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
                             </td>
                         </tr>

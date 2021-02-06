@@ -106,6 +106,7 @@
                                         <th style="width: 80px;">Updated at</th>
                                         <th>Approve / Reject</th>
                                         <th>Mobile Type</th>
+                                        <th>Amount</th>
                                         <th>Profile Stauts</th>
                                         <th>Live Stauts</th>
                                         <th>Live Updated By</th>
@@ -177,6 +178,7 @@
                                             {{item.profile_status}}
                                         </td>
                                         <td>{{item.user_id.mobile_type}}</td>
+                                        <td>{{item.user_id.consultancy_fees}}</td>
                                         <td class="act">
                                             <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status !== 'Verified' "
                                                 (click)="verify('Verified',item._id,item)" aria-hidden="true" style="color: rgb(2, 187, 57);"

@@ -34,7 +34,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'usertype/edit', data);
   }
   user_type_delete(data) {
-    return this.http.post(this.apiUrl + 'usertype/delete', data);
+    return this.http.post(this.apiUrl + 'usertype/admin_delete', data);
   }
   user_type_filter_date(data) {
     return this.http.post(this.apiUrl + 'usertype/filter_date', data);

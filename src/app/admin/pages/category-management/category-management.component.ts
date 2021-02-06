@@ -197,7 +197,7 @@ export class CategoryManagementComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width > 100 && height > 100) {
+        if (width == 200 && height == 120) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
