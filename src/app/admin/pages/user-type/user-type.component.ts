@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-user-type',
@@ -12,6 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./user-type.component.css']
 })
 export class UserTypeComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   value1: any;
@@ -209,7 +213,7 @@ export class UserTypeComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.user_type_img = res.Data;

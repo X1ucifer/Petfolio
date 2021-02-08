@@ -4,12 +4,16 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
   styleUrls: ['./doctor.component.css']
 })
 export class DoctorComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   value1: any;

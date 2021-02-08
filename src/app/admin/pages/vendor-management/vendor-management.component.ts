@@ -4,12 +4,16 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-vendor-management',
   templateUrl: './vendor-management.component.html',
   styleUrls: ['./vendor-management.component.css']
 })
 export class VendorManagementComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   S_Date: any;
   E_Date: any;
   rows = [];

@@ -4,12 +4,16 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-homebanner',
   templateUrl: './homebanner.component.html',
   styleUrls: ['./homebanner.component.css']
 })
 export class HomebannerComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   value1: any;
@@ -19,7 +23,7 @@ export class HomebannerComponent implements OnInit {
   show_status: boolean = true;
   img_title: string = '';
   img_describ: string = '';
-  img_path: string = 'http://52.25.163.13:3000/api/uploads/New Project (1).jpg';
+  img_path: string = 'http://54.212.108.156:3000/api/uploads/banner_empty.jpg';
   date_and_time: string = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   user_type_list: any = [];
   user_type_id: string = '';
@@ -44,7 +48,7 @@ export class HomebannerComponent implements OnInit {
     this.show_status = true;
     this.img_title = '';
     this.img_describ = '';
-    this.img_path = 'http://52.25.163.13:3000/api/uploads/New Project (1).jpg';
+    this.img_path = 'http://54.212.108.156:3000/api/uploads/banner_empty.jpg';
     this.update_button = true;
     this.listhomebanner();
   }
@@ -204,7 +208,7 @@ export class HomebannerComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

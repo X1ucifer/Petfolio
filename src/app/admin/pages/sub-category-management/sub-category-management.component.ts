@@ -4,12 +4,16 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-sub-category-management',
   templateUrl: './sub-category-management.component.html',
   styleUrls: ['./sub-category-management.component.css']
 })
 export class SubCategoryManagementComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Category_name: any;
   Category_code: any;
   img_path: any;
@@ -241,7 +245,7 @@ export class SubCategoryManagementComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

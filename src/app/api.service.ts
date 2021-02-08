@@ -350,7 +350,10 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'product_details/filter_date', data);
   }
 
+notification_send(data){
+  return this.http.post(this.apiUrl + 'notification/admin_send_notification', data);
 
+}
 
 
   // DoctorList() {

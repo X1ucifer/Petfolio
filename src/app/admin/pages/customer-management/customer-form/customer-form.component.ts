@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-customer-form',
@@ -11,6 +12,8 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
   styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Pet_Name: any;
   Pet_Type: any;
   Pet_Breed: any;
@@ -255,7 +258,7 @@ export class CustomerFormComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

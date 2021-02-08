@@ -4,12 +4,16 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-service-provider-management',
   templateUrl: './service-provider-management.component.html',
   styleUrls: ['./service-provider-management.component.css']
 })
 export class ServiceProviderManagementComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   value1: any;

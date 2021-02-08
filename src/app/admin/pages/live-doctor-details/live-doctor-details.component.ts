@@ -6,13 +6,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
 import * as XLSX from 'xlsx';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-live-doctor-details',
   templateUrl: './live-doctor-details.component.html',
   styleUrls: ['./live-doctor-details.component.css']
 })
 export class LiveDoctorDetailsComponent implements OnInit {
-
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
 
   rows = [];
   searchQR: any;

@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import Swal from 'sweetalert2';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-create-emp',
   templateUrl: './create-emp.component.html',
   styleUrls: ['./create-emp.component.css']
 })
 export class CreateEmpComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Name: any;
   Email: any;
   Designation: any;

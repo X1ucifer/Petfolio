@@ -3,12 +3,16 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Router, RouterModule } from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-pet-care-appointment',
   templateUrl: './pet-care-appointment.component.html',
   styleUrls: ['./pet-care-appointment.component.css']
 })
 export class PetCareAppointmentComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   searchQR: any;
   appointment_list: any;
   Main_list: any;

@@ -5,12 +5,16 @@ import { ApiService } from '../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-customer-create',
   templateUrl: './customer-create.component.html',
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Fname: any;
   Lname: any;
   Email: any;
