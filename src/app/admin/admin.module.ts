@@ -88,6 +88,7 @@ import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-ap
 import { CancelAppointmentComponent } from './pages/cancel-appointment/cancel-appointment.component';
 import { PaymentManagementComponent } from './pages/payment-management/payment-management.component';
 import { NotificationComponent } from './pages/notification/notification.component';
+import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -141,7 +142,8 @@ import { NotificationComponent } from './pages/notification/notification.compone
     DoctorAppointmentComponent,
     CancelAppointmentComponent,
     PaymentManagementComponent,
-    NotificationComponent
+    NotificationComponent,
+    SpDetailViewComponent
   ],
   imports: [
     CommonModule,

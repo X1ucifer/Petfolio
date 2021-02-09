@@ -52,6 +52,7 @@ import { DoctorAppointmentComponent } from './pages/doctor-appointment/doctor-ap
 import { CancelAppointmentComponent } from './pages/cancel-appointment/cancel-appointment.component';
 import { PaymentManagementComponent } from './pages/payment-management/payment-management.component';
 import { NotificationComponent } from './pages/notification/notification.component';
+import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -111,6 +112,8 @@ const routes: Routes = [
    { path: 'Customer_create', component: CustomerCreateComponent },
    { path: 'Service_provider_specialization', component: ServiceProviderSpecializationComponent },
    { path: 'Time_create', component: CreateTimeComponent },
+   { path: 'Sp_View_details', component: SpDetailViewComponent },
+
 ];
 
 @NgModule({

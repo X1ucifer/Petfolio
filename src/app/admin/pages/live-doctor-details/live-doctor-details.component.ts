@@ -73,10 +73,27 @@ export class LiveDoctorDetailsComponent implements OnInit {
         this.Main_list = response.Data;
         this.pet_type_list = response.Data;
         console.log(this.pet_type_list);
+        this.get_c_list();
       }
     );
   }
 
+
+  get_c_list() {
+    this.c_list = this.rows.reverse();
+    console.log(this.c_list)
+    this.excelData = this.c_list
+    // for (let a = 0; a < this.c_list.length; a++) {
+    //   let data = {  
+    //   }
+    //   this.excelData.push(this.c_list)
+    // }
+
+  }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.excelData, 'Live_Doctor_List');
+  }
 
 
   ////// Inserting Data

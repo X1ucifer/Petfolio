@@ -89,7 +89,7 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   exportAsXLSX(): void {
-    this.excelService.exportAsExcelFile(this.excelData, 'Companies List');
+    this.excelService.exportAsExcelFile(this.excelData, 'Doctor_List');
   }
 
 

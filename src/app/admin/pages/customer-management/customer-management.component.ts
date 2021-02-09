@@ -184,7 +184,7 @@ export class CustomerManagementComponent implements OnInit {
   }
 
   exportAsXLSX(): void {
-    this.excelService.exportAsExcelFile(this.excelData, 'Companies List');
+    this.excelService.exportAsExcelFile(this.excelData, 'Customer_List');
   }
 
 }

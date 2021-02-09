@@ -164,9 +164,9 @@ export class ServiceproviderDetailsComponent implements OnInit {
   }
 
   view_details(item) {
-    this.saveInLocal('view_detail', 'Doctor');
+    this.saveInLocal('view_detail', 'Service_provider');
     this.saveInLocal('view_detail_data', item);
-    this.router.navigateByUrl('/admin/View_details')
+    this.router.navigateByUrl('/admin/Sp_View_details')
   }
 
 
