@@ -274,7 +274,7 @@ export class ServiceproviderDetailsComponent implements OnInit {
     else{
       alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;

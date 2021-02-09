@@ -109,13 +109,16 @@
                 <td>
                     {{item.mobile_type}}
                 </td>
-                <td class="act">
-                    <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' "
+                <td>
+                <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
+                <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id,item)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
+
+                    <!-- <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' "
                         (click)="verify('Verified',item._id)" aria-hidden="true" style="color: rgb(2, 187, 57);"
-                        pTooltip="Approve"></i>
+                        pTooltip="Approve">Approve</i>
                     <i class="fa fa-times-circle-o" *ngIf="item.profile_verification_status == 'Verified' "
                         (click)="verify('Not verified',item._id)" aria-hidden="true" style="color: rgb(223, 26, 26);"
-                        pTooltip="Reject"></i>
+                        pTooltip="Reject">Reject</i> -->
                 </td>
                 <!-- <td class="act">
                     <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(2, 187, 57);"
