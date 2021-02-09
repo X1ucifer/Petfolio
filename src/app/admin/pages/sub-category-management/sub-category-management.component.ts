@@ -13,6 +13,8 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./sub-category-management.component.css']
 })
 export class SubCategoryManagementComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Category_name: any;
   Category_code: any;
   img_path: any;
@@ -244,7 +246,7 @@ export class SubCategoryManagementComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

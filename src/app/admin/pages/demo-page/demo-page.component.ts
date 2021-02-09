@@ -6,6 +6,7 @@ import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-demo-page',
@@ -13,6 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./demo-page.component.css']
 })
 export class DemoPageComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   Tittle: any;
@@ -142,7 +145,7 @@ export class DemoPageComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

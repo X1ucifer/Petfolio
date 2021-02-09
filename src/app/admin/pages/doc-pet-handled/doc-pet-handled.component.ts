@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-doc-pet-handled',
@@ -12,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./doc-pet-handled.component.css']
 })
 export class DocPetHandledComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR:any;
   value1:any;

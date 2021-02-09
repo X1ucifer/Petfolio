@@ -5,17 +5,21 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-service-type',
   templateUrl: './service-type.component.html',
   styleUrls: ['./service-type.component.css']
 })
 export class ServiceTypeComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   Tittle: any;
   subtitle : any;
-  banner_img : any;
+  banner_img : any= 'http://54.212.108.156:3000/api/uploads/banner_empty.jpg';
   Description: any;
   selectedtype: any;
   type: any = [];
@@ -158,7 +162,7 @@ export class ServiceTypeComponent implements OnInit {
   addfiles2() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.banner_img = res.Data;
@@ -169,7 +173,7 @@ export class ServiceTypeComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

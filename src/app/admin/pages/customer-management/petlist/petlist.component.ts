@@ -4,12 +4,16 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service'; 
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-petlist',
   templateUrl: './petlist.component.html',
   styleUrls: ['./petlist.component.css']
 })
 export class PetlistComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR:any;
   value1:any;

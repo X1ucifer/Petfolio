@@ -6,6 +6,7 @@ import { ApiService } from '../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ValidatorService } from '../../../../validator.services';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-doctor-form',
@@ -13,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./doctor-form.component.css']
 })
 export class DoctorFormComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Name: any;
   Education: any;
   Specialization: any;
@@ -199,7 +202,7 @@ export class DoctorFormComponent implements OnInit {
   addfiles(data: any) {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post('http://52.25.163.13:3000/upload', fd)
+    this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;

@@ -4,6 +4,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-pet-breed-type',
@@ -11,6 +12,8 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./pet-breed-type.component.css']
 })
 export class PetBreedTypeComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   rows1 = [];
   searchQR: any;

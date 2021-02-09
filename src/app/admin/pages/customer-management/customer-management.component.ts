@@ -5,6 +5,8 @@ import { ApiService } from '../../../api.service';
 import { DatePipe } from '@angular/common';
 import { ViewChild } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { environment } from '../../../../environments/environment';
+
 declare var $: any;
 
 @Component({
@@ -13,6 +15,8 @@ declare var $: any;
   styleUrls: ['./customer-management.component.css']
 })
 export class CustomerManagementComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   rows = [];
   searchQR: any;
   value1: any;

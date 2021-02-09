@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-coupon-code',
   templateUrl: './coupon-code.component.html',
   styleUrls: ['./coupon-code.component.css']
 })
 export class CouponCodeComponent implements OnInit {
+  apiUrl = environment.apiUrl;
+  imgUrl = environment.imageURL;
   Name: any;
   Email: any;
   Designation: any;
