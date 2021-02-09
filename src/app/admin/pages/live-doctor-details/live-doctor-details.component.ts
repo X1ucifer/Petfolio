@@ -7,7 +7,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
 import * as XLSX from 'xlsx';
 import { environment } from '../../../../environments/environment';
-
+import { ExcelService } from '../../../excel.service';
 @Component({
   selector: 'app-live-doctor-details',
   templateUrl: './live-doctor-details.component.html',
@@ -33,6 +33,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
   specialzation_list: any;
   specialzation_f: any;
   Main_list: any;
+  excelData: any[] = [];
+  c_list: any = [];
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   @ViewChild('TABLE') table: ElementRef;
   constructor(
@@ -42,6 +44,7 @@ export class LiveDoctorDetailsComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
+    private excelService: ExcelService,
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +66,7 @@ export class LiveDoctorDetailsComponent implements OnInit {
 
 
   listdoctorsall() {
-    this._api.doctor_details_list().subscribe(
+    this._api.livedoctordetails_getlist().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;

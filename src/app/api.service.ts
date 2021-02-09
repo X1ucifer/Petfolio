@@ -354,8 +354,18 @@ notification_send(data){
   return this.http.post(this.apiUrl + 'notification/admin_send_notification', data);
 
 }
-
-
+live_check(data){
+  return this.http.post(this.apiUrl + 'livedoctordetails/fetch_by_user_id', data);
+}
+livedoctordetails_create(data){
+  return this.http.post(this.apiUrl + 'livedoctordetails/create', data);
+}
+livedoctordetails_edit(data){
+  return this.http.post(this.apiUrl + 'livedoctordetails/edit', data);
+}
+livedoctordetails_getlist(){
+  return this.http.get(this.apiUrl + 'livedoctordetails/getlist');
+}
   // DoctorList() {
   //   return this.http.get(this.apiUrl + 'doctor/getlist');
   // }
