@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject,ElementRef } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { ViewChild } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { environment } from '../../../../environments/environment';
+import { ExcelService } from '../../../excel.service';
 
 declare var $: any;
 
@@ -24,11 +25,14 @@ export class CustomerManagementComponent implements OnInit {
   S_Date: any;
   E_Date: any;
   saveAsExcelFile: any;
+  excelData: any[] = [];
+  c_list: any = [];
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private datePipe: DatePipe,
+    private excelService: ExcelService,
 
   ) { }
   @ViewChild('TABLE') table: ElementRef;
@@ -46,10 +50,10 @@ export class CustomerManagementComponent implements OnInit {
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" }];
     this.list();
-
+ 
 
   }
- 
+
 
   list() {
     this._api.user_list().subscribe(
@@ -58,6 +62,7 @@ export class CustomerManagementComponent implements OnInit {
         this.rows = response.Data;
         this.user_list = response.Data;
         console.log(this.user_list);
+        this.get_c_list();
       }
     );
   }
@@ -129,42 +134,57 @@ export class CustomerManagementComponent implements OnInit {
   }
 
   filter_date() {
-    if ( this.E_Date != undefined && this.S_Date != undefined) {
+    if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
-      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+      let yourDate = this.E_Date.setDate(this.E_Date.getDate() + 1);
 
       let a = {
-        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
-        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
-        }
+        "fromdate": this.datePipe.transform(new Date(this.S_Date), 'yyyy-MM-dd'),
+        "todate": this.datePipe.transform(new Date(yourDate), 'yyyy-MM-dd')
+      }
       console.log(a);
       this._api.user_filter_date(a).subscribe(
         (response: any) => {
           console.log(response.Data);
           this.user_list = response.Data;
+          this.get_c_list();
         }
       );
     }
-    else{
+    else {
       alert('Please select the startdate and enddate');
     }
-   
+
   }
-  refersh(){
+  refersh() {
     this.list();
   }
- 
- head = [['S.No', 'Name', 'Email', 'Phone', 'Created Date', 'Mobile Type']]
+
+  head = [['S.No', 'Name', 'Email', 'Phone', 'Created Date', 'Mobile Type']]
 
 
-ExportTOExcel() {
-  const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
-  const wb: XLSX.WorkBook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-  
-  /* save to file */
-  XLSX.writeFile(wb, 'customerlists.xlsx');
-}
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
+    /* save to file */
+    XLSX.writeFile(wb, 'customerlists.xlsx');
+  }
+  get_c_list() {
+    this.c_list = this.user_list.reverse();
+    console.log(this.c_list)
+    this.excelData = this.c_list
+    // for (let a = 0; a < this.c_list.length; a++) {
+    //   let data = {  
+    //   }
+    //   this.excelData.push(this.c_list)
+    // }
+
+  }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.excelData, 'Companies List');
+  }
 
 }

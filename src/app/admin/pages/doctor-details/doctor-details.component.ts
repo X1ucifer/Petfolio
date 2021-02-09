@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import * as XLSX from 'xlsx';
+import { ExcelService } from '../../../excel.service';
+
 @Component({
   selector: 'app-doctor-details',
   templateUrl: './doctor-details.component.html',
@@ -28,6 +30,8 @@ export class DoctorDetailsComponent implements OnInit {
   specialzation_list: any;
   specialzation_f: any;
   Main_list: any;
+  excelData: any[] = [];
+  c_list: any = [];
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
@@ -37,6 +41,8 @@ export class DoctorDetailsComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
+    private excelService: ExcelService,
+
   ) { }
   @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
@@ -65,10 +71,26 @@ export class DoctorDetailsComponent implements OnInit {
         this.Main_list = response.Data;
         this.pet_type_list = response.Data;
         console.log(this.pet_type_list);
+        this.get_c_list();
       }
     );
   }
 
+  get_c_list() {
+    this.c_list = this.rows.reverse();
+    console.log(this.c_list)
+    this.excelData = this.c_list
+    // for (let a = 0; a < this.c_list.length; a++) {
+    //   let data = {  
+    //   }
+    //   this.excelData.push(this.c_list)
+    // }
+
+  }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.excelData, 'Companies List');
+  }
 
 
   ////// Inserting Data
@@ -238,6 +260,8 @@ export class DoctorDetailsComponent implements OnInit {
 
     this.rows = this.rows.filter((x: any) => x.specialization.some((y: any) => y.specialization == this.specialzation_f.specialzation));
     console.log(this.rows)
+    this.get_c_list();
+
 
   }
   Refresh() {
