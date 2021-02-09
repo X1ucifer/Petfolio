@@ -66,6 +66,20 @@ export class ServiceProviderManagementComponent implements OnInit {
     );
   }
 
+  verify(status, id,item) {
+    // this.insert_live_doctor(item);
+    let a = {
+      '_id': id,
+      'profile_verification_status': status,
+    };
+    this._api.doctor_details_edit(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        // alert("Updated Successfully");
+        // this.ngOnInit();
+      }
+    );
+  }
 
 
   ////// Inserting Data
@@ -116,19 +130,19 @@ export class ServiceProviderManagementComponent implements OnInit {
 
 
 
-  verify(status, id) {
-    let a = {
-      '_id': id,
-      'profile_verification_status': status,
-    };
-    this._api.service_provider_edit(a).subscribe(
-      (response: any) => {
-        console.log(response.Data);
-        alert("Updated Successfully");
-        this.ngOnInit();
-      }
-    );
-  }
+  // verify(status, id) {
+  //   let a = {
+  //     '_id': id,
+  //     'profile_verification_status': status,
+  //   };
+  //   this._api.service_provider_edit(a).subscribe(
+  //     (response: any) => {
+  //       console.log(response.Data);
+  //       alert("Updated Successfully");
+  //       this.ngOnInit();
+  //     }
+  //   );
+  // }
 
 
   Deletecompanydetails(data) {
@@ -270,7 +284,7 @@ export class ServiceProviderManagementComponent implements OnInit {
     else{
       alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;

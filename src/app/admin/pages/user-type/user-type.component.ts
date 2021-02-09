@@ -6,6 +6,9 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 
+
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-user-type',
   templateUrl: './user-type.component.html',
@@ -30,7 +33,7 @@ export class UserTypeComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   @ViewChild('updateDialog') updateDialog: TemplateRef<any>;
   @ViewChild('addedDialog') addedDialog: TemplateRef<any>;
-  
+
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,

@@ -128,7 +128,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
   }
   doctor_details_edit(data) {
-    return this.http.post(this.apiUrl + 'doctordetails/edit', data);
+    return this.http.post(this.apiUrl + 'doctordetails/adminedit', data);
   }
   doctor_details_create(data) {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
