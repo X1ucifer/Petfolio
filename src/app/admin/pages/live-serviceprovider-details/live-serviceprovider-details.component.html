@@ -60,16 +60,17 @@
                                     <th> Service Provider Name </th>
                                     <th> Services      </th>
                                     <th> Specialization </th>
-                                    <th>Certificate</th>
+                                    <!-- <th>Certificate</th>
                                     <th>Govt ID proof </th>
-                                    <th>Photo ID proof</th>
+                                    <th>Photo ID proof</th> -->
                                     <!-- <th>Created by</th>
                                     <th>Modified by</th> -->
-                                    <th style="width: 130px;">Created at</th>
+                                    <!-- <th style="width: 130px;">Created at</th>
                                     <th style="width: 130px;">Modified at</th>
-                                    <th>Mobile Type</th>
-                                    <th style="width: 130px;">Approve / Reject</th>
+                                    
+                                    <th style="width: 130px;">Approve / Reject</th> -->
                                     <!-- <th>Live / Block</th> -->
+                                    <th>Mobile Type</th>
                                     <th style="width: 140px;text-align:center">
                                         Action
                                     </th>
@@ -90,7 +91,7 @@
                                             {{exp.bus_spec_list}},
                                         </ng-container>
                                     </td>
-                                    <td class="act">
+                                    <!-- <td class="act">
                                         <ng-container *ngFor="let doc of item.bus_certif">
                                             <i (click)="goToLink1(doc.bus_certif)" class="fas fa-file-text"
                                                 style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
@@ -112,19 +113,19 @@
                                     </td>
                                     <td>
                                         {{item.updatedAt}}
-                                    </td>
+                                    </td>-->
 
                                     <td>
                                         {{item.mobile_type}}
-                                    </td>
-                                    <td class="act">
+                                    </td> 
+                                    <!-- <td class="act">
                                         <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' "
                                             (click)="verify('Verified',item._id)" aria-hidden="true" style="color: rgb(2, 187, 57);"
                                             pTooltip="Approve"></i>
                                         <i class="fa fa-times-circle-o" *ngIf="item.profile_verification_status == 'Verified' "
                                             (click)="verify('Not verified',item._id)" aria-hidden="true" style="color: rgb(223, 26, 26);"
                                             pTooltip="Reject"></i>
-                                    </td>
+                                    </td> -->
 
                                     <td class="act">
                                         <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i> -->

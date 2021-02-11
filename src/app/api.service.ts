@@ -140,6 +140,9 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'doctordetails/filter_date', data);
   }
 
+  userlivedetails_delete(data) {
+    return this.http.post(this.apiUrl + 'userlivedetails/delete', data);
+  }
   vendor_details_list() {
     return this.http.get(this.apiUrl + 'product_vendor/getlist');
   }

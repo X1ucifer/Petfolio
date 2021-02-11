@@ -12,6 +12,7 @@ export class DetailViewComponent implements OnInit {
   view_detail: any;
   view_detail_data: any;
   live_s: any;
+  user_id:any;
   constructor(
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -20,12 +21,13 @@ export class DetailViewComponent implements OnInit {
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     console.log(this.view_detail);
-    console.log(this.view_detail_data)
+    console.log(this.view_detail_data);
+    this.user_id = this.view_detail_data.user_id._id
   }
 
   ngOnInit(): void {
-    let id = {
-      "user_id": this.view_detail_data._id
+     let id = {
+      "user_id": this.user_id
     }
     console.log(id)
     this._api.live_check(id).subscribe(
@@ -64,6 +66,8 @@ export class DetailViewComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
+        this.view_detail_data = response.Data;
+        this.user_id=this.view_detail_data.user_id
         alert("Updated Successfully");
         this.ngOnInit();
       }
@@ -81,12 +85,16 @@ export class DetailViewComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         alert("Updated Successfully");
-        this.view_detail_data = response.Data;
+       
         if (this.live_s == 'not_live') {
+          this.view_detail_data = response.Data;
+          this.user_id=this.view_detail_data.user_id
           let a = response.Data;
+          console.log(a);
           this._api.livedoctordetails_create(a).subscribe(
             (response: any) => {
               console.log(response);
+              this.ngOnInit();
             }
           );
         }
@@ -95,10 +103,11 @@ export class DetailViewComponent implements OnInit {
           this._api.livedoctordetails_edit(a).subscribe(
             (response: any) => {
               console.log(response);
+              this.ngOnInit();
             }
           );
         }
-        this.ngOnInit();
+        
       }
     );
 

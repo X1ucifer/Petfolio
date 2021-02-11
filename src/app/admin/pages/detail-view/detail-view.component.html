@@ -1,4 +1,4 @@
-<main class="profileview" *ngIf="view_detail == 'Doctor'">
+<main class="profileview">
     <section>
         <div class="page-header">
             <div>
@@ -156,18 +156,19 @@
 
                         <div class="box-inner box-inner--white box-inner--rounded">
 
-                            <div class="row">
+                            <div class="row" *ngIf="this.view_detail != 'liveDoctor'">
                                 <div class="col-md-4">
+                                    <ng-container *ngIf="view_detail_data.profile_verification_status =='Verified'">
 
-                                    <button type="button" class="btn btn-primary"
-                                        *ngIf="view_detail_data.live_status == 'Not Live' "
-                                        (click)="live_status_change('Live',view_detail_data._id)"><i
-                                            class="fas fa-user-check"></i> Make Live</button>
-                                    <button type="button" class="btn btn-danger"
-                                        *ngIf="view_detail_data.live_status == 'Live'"
-                                        (click)="live_status_change('Not Live',view_detail_data._id)"><i
-                                            class="fas fa-user-slash"></i> Un Live</button>
-
+                                        <button type="button" class="btn btn-primary"
+                                            *ngIf="view_detail_data.live_status == 'Not Live' "
+                                            (click)="live_status_change('Live',view_detail_data._id)"><i
+                                                class="fas fa-user-check"></i> Make Live</button>
+                                        <button type="button" class="btn btn-danger"
+                                            *ngIf="view_detail_data.live_status == 'Live'"
+                                            (click)="live_status_change('Not Live',view_detail_data._id)"><i
+                                                class="fas fa-user-slash"></i> Un Live</button>
+                                    </ng-container>
                                 </div>
                                 <!-- <div class="col-md-4">
                           <button (click)="verify('Verified',view_detail_data._id)"  style="background-color: rgb(2, 187, 57);color: #fff;padding: 2px;font-size: 11px;border-radius: 3px;" *ngIf="view_detail_data.profile_verification_status != 'Verified'">Approve</button>

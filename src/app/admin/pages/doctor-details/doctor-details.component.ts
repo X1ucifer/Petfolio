@@ -217,7 +217,7 @@ export class DoctorDetailsComponent implements OnInit {
     console.log(a);
     this._api.doctor_details_delete(a).subscribe(
       (response: any) => {
-        console.log(response.Data);
+        console.log(response);
         alert('Deleted Successfully');
         this.ngOnInit();
       }

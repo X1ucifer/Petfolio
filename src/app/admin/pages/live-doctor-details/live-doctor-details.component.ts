@@ -218,9 +218,9 @@ export class LiveDoctorDetailsComponent implements OnInit {
       '_id': data
     };
     console.log(a);
-    this._api.doctor_details_delete(a).subscribe(
+    this._api.userlivedetails_delete(a).subscribe(
       (response: any) => {
-        console.log(response.Data);
+        console.log(response);
         alert('Deleted Successfully');
         this.ngOnInit();
       }
@@ -242,7 +242,7 @@ export class LiveDoctorDetailsComponent implements OnInit {
   }
 
   view_details(item) {
-    this.saveInLocal('view_detail', 'Doctor');
+    this.saveInLocal('view_detail', 'liveDoctor');
     this.saveInLocal('view_detail_data', item);
     this.router.navigateByUrl('/admin/View_details')
   }
