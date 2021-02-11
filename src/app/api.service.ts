@@ -141,7 +141,7 @@ export class ApiService {
   }
 
   userlivedetails_delete(data) {
-    return this.http.post(this.apiUrl + 'userlivedetails/delete', data);
+    return this.http.post(this.apiUrl + 'livedoctordetails/admin_delete', data);
   }
   vendor_details_list() {
     return this.http.get(this.apiUrl + 'product_vendor/getlist');
