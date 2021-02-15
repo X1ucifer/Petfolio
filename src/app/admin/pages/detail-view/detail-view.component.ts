@@ -99,6 +99,8 @@ export class DetailViewComponent implements OnInit {
           );
         }
         else {
+          this.view_detail_data = response.Data;
+          this.user_id=this.view_detail_data.user_id
           let a = response.Data;
           this._api.livedoctordetails_edit(a).subscribe(
             (response: any) => {
