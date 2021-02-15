@@ -57,7 +57,9 @@
                             <ng-template pTemplate="header">
                                 <tr class="thhead">
                                     <th class="th-1">S.No </th>
-                                    <th> Service Provider Name </th>
+                                    <th> Service Business name </th>
+                                    <th> Services user name</th>
+                                    <th> Services user number</th>
                                     <th> Services      </th>
                                     <th> Specialization </th>
                                     <!-- <th>Certificate</th>
@@ -78,7 +80,11 @@
                             <ng-template pTemplate="body" let-item let-i="rowIndex">
                                 <tr class="tdrow">
                                     <td>{{i+1}}</td>
-                                    <td>{{item.bus_user_name}}</td>
+                                    <td>{{item.bussiness_name}}</td>
+
+                                    <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
+                                    <td>{{item.user_id.user_phone}}</td>
+
                                     <td class="truncate-cell">
                                          <ng-container *ngFor="let exp of item.bus_service_list" class="">
                                             {{exp.bus_service_list}},
@@ -134,7 +140,10 @@
                                     <td class="act">
                                         <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i> -->
                                         <i style="color: #4CAF50;" class="fas fa-exclamation-circle" aria-hidden="true" (click)="view_details(item)"
-                                        pTooltip="View"></i>                                     </td>
+                                        pTooltip="View"></i>
+                                          <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                    (click)="delete(item._id)"></i>
+                                      </td>
                                 </tr>
                             </ng-template>
                         </p-table>

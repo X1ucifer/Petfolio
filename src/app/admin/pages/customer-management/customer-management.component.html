@@ -82,6 +82,22 @@
             <th  style="width: 200px;">
               User type
             </th>
+            <th>
+              Profile Status
+            </th>
+            <th>
+              Delete Status
+            </th>
+            <th>
+              email Status
+            </th>
+            <th>
+              phone Status
+            </th>
+
+            <th  style="width: 200px;">
+              User type
+            </th>
             <!-- <th>Created by</th>
             <th>Modified by</th> -->
             <th>Created Date</th>
@@ -112,6 +128,15 @@
               <p *ngIf="item.user_type == 3">Vendor</p>
               <!-- {{item.mobile_type}} -->
             </td>
+            <td>
+              {{item.user_status}}
+            </td>
+            <td>
+              {{item.delete_status}}
+            </td>
+             <td>
+            {{item.user_email_verification}}
+             </td>
             <td class="act">
                 <i style="color: #4CAF50;" class="fas fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i>
                 <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
