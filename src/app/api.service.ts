@@ -169,7 +169,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'service_provider/create', data);
   }
   service_provider_delete(data) {
-    return this.http.post(this.apiUrl + 'service_provider/delete', data);
+    return this.http.post(this.apiUrl + 'service_provider/admin_delete', data);
   }
   service_providerfilter_date(data) {
     return this.http.post(this.apiUrl + 'service_provider/filter_date', data);

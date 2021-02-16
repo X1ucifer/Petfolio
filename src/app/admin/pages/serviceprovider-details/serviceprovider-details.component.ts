@@ -71,6 +71,20 @@ export class ServiceproviderDetailsComponent implements OnInit {
   }
 
 
+  delete(data) {
+    let a = {
+      '_id': data
+    };
+    console.log(a);
+    this._api.service_provider_delete(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        alert('Deleted Successfully');
+        this.ngOnInit();
+      }
+    );
+  }
+
 
   ////// Inserting Data
 
