@@ -344,7 +344,7 @@
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
-                    <h5 class="lead">Doctor/Veterinarians</h5>
+                    <h5 class="lead">Veterinarians</h5>
                 </div>
                 <div class="sb-sidenav-collapse-arrow">
                     <i *ngIf="!expand10" class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -375,72 +375,32 @@
                             <h5 class="lead">Live Doctor Details</h5>
                         </div>
                     </mat-list-item>
+                    <mat-list-item routerLink="Pet_care_appointment" routerLinkActive="active">
+                        <mat-icon  mat-list-icon><i class="fas fa-medkit"
+                                aria-hidden="true"
+                                ></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Pet Care Appointments</h5>
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item routerLink="cancel_appointment" routerLinkActive="active">
+                        <mat-icon  mat-list-icon><i class="fas fa-user-alt-slash" aria-hidden="true"
+                                ></i></mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Cancel Appointment</h5>
+                        </div>
+                    </mat-list-item>
                 </div>
             </mat-nav-list>
-
-            <mat-list-item routerLink="cancel_appointment" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fas fa-user-alt-slash" aria-hidden="true"
-                        ></i></mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Cancel Appointment</h5>
-                </div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="payment_management" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fas fa-money-bill-wave" aria-hidden="true"
-                        ></i></mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Payment Management</h5>
-                </div>
-            </mat-list-item>
-
-            <mat-list-item routerLink="notification" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fas fa-bell" aria-hidden="true"
-                        ></i></mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Notification</h5>
-                </div>
-            </mat-list-item>
-
-            <!-- <mat-list-item routerLink="Doctor" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fas fa-user-md" aria-hidden="true"
-                        ></i></mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Doctor/Veterinarians</h5>
-                </div>
-            </mat-list-item> -->
-
-            <!-- <mat-list-item routerLink="Doctor_appointment" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fas fa-hospital-user"
-                        aria-hidden="true" ></i>
-                </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Doctor Appointment</h5>
-                </div>
-            </mat-list-item>  -->
-
-            <mat-list-item routerLink="Vendor_Management" routerLinkActive="active">
-                <mat-icon  mat-list-icon><i class="fas fa-user-alt" aria-hidden="true"
-                        ></i></mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Vendor Management</h5>
-                </div>
-            </mat-list-item>
-
-
 
             <mat-list-item routerLinkActive="active" (click)="expand11 = !expand11">
                 <mat-icon  mat-list-icon><i class="fas fa-briefcase" aria-hidden="true"
                         ></i></mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
-                    <h5 class="lead">Service Provider Management</h5>
+                    <h5 class="lead">Service Provider</h5>
                 </div>
                 <div class="sb-sidenav-collapse-arrow">
                     <i *ngIf="!expand11" class="fas fa-chevron-down" aria-hidden="true"></i>
@@ -471,8 +431,70 @@
                             <h5 class="lead">Live  Service Provider Details</h5>
                         </div>
                     </mat-list-item>
+                    <mat-list-item routerLink="Pet_Service_appointment" routerLinkActive="active">
+                        <mat-icon  mat-list-icon><i class="fas fa-cat" aria-hidden="true"></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Pet Services Appointments</h5>
+                        </div>
+                    </mat-list-item>
                 </div>
             </mat-nav-list>
+
+            <mat-list-item routerLink="Vendor_Management" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fas fa-user-alt" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Vendor</h5>
+                </div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="payment_management" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fas fa-money-bill-wave" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Payment Management</h5>
+                </div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="notification" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fas fa-bell" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Notification</h5>
+                </div>
+            </mat-list-item>
+
+
+           
+            <!-- <mat-list-item routerLink="Doctor" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fas fa-user-md" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Doctor/Veterinarians</h5>
+                </div>
+            </mat-list-item> -->
+
+            <!-- <mat-list-item routerLink="Doctor_appointment" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fas fa-hospital-user"
+                        aria-hidden="true" ></i>
+                </mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Doctor Appointment</h5>
+                </div>
+            </mat-list-item>  -->
+
+          
+
+
+
+          
 
             <mat-list-item routerLinkActive="active" (click)="expand5 = !expand5">
                         <mat-icon  mat-list-icon><i class="fas fa-cat" aria-hidden="true"
@@ -523,39 +545,6 @@
                 </div>
             </mat-list-item> -->
 
-            <mat-list-item routerLinkActive="active" (click)="expand = !expand">
-                <mat-icon  mat-list-icon>
-                    <i class="fas fa-user-edit" aria-hidden="true"></i></mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Service Appointments</h5>
-                </div>
-                <div class="sb-sidenav-collapse-arrow">
-                    <i *ngIf="!expand" class="fas fa-chevron-down" aria-hidden="true"></i>
-                    <i *ngIf="expand" class="fas fa-chevron-up" aria-hidden="true"></i>
-                </div>
-            </mat-list-item>
-            <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand">
-                <div class="sub-menu">
-                    <mat-list-item routerLink="Pet_care_appointment" routerLinkActive="active">
-                        <mat-icon  mat-list-icon><i class="fas fa-medkit"
-                                aria-hidden="true"
-                                ></i></mat-icon>
-                        <div fxFlex="10"></div>
-                        <div class="sidenav-item">
-                            <h5 class="lead">Pet Care</h5>
-                        </div>
-                    </mat-list-item>
-                    <mat-list-item routerLink="Pet_Service_appointment" routerLinkActive="active">
-                        <mat-icon  mat-list-icon><i class="fas fa-cat" aria-hidden="true"></i>
-                        </mat-icon>
-                        <div fxFlex="10"></div>
-                        <div class="sidenav-item">
-                            <h5 class="lead">Pet Services</h5>
-                        </div>
-                    </mat-list-item>
-                </div>
-            </mat-nav-list>
 
 
 

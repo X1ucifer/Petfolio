@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ExcelService } from '../../../excel.service';
 
 @Component({
   selector: 'app-pet-care-appointment',
@@ -31,13 +32,16 @@ export class PetCareAppointmentComponent implements OnInit {
   { type: "Cat", name: "cat1" },
   { type: "Cat", name: "cat1" },
   { type: "Cat", name: "cat1" }]
-
+  excelData: any[] = [];
+  c_list: any = [];
 
   constructor(
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private datePipe: DatePipe,
+    private excelService: ExcelService,
+
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +56,7 @@ export class PetCareAppointmentComponent implements OnInit {
         this.Main_list = response.Data;
         this.appointment_list = response.Data;
         console.log(this.appointment_list);
+        this.get_c_list();
       }
     );
   }
@@ -74,18 +79,22 @@ export class PetCareAppointmentComponent implements OnInit {
     if (this.filter_type == 'Completed') {
       this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type)
       console.log(this.appointment_list)
+      this.get_c_list();
     }
     if (this.filter_type == 'Incomplete') {
       this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type)
       console.log(this.appointment_list)
+      this.get_c_list();
     }
     if (this.filter_type == 'Missed') {
       this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type)
       console.log(this.appointment_list)
+      this.get_c_list();
     }
     if (this.filter_type == 'All') {
       this.appointment_list = this.Main_list;
       console.log(this.appointment_list)
+      this.get_c_list();
     }
 
   }
@@ -115,6 +124,7 @@ export class PetCareAppointmentComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           this.appointment_list = response.Data;
+          this.get_c_list();
         }
       );
     }
@@ -125,5 +135,19 @@ export class PetCareAppointmentComponent implements OnInit {
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  }
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.excelData, 'Pet_care_appiontment_List');
+  }
+  get_c_list() {
+    this.c_list = this.appointment_list.reverse();
+    console.log(this.c_list)
+    this.excelData = this.c_list
+    // for (let a = 0; a < this.c_list.length; a++) {
+    //   let data = {  
+    //   }
+    //   this.excelData.push(this.c_list)
+    // }
+
   }
 }

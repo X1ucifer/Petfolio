@@ -4,6 +4,8 @@ import { Router, RouterModule } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import * as XLSX from 'xlsx';
+import { ExcelService } from '../../../excel.service';
+
 @Component({
   selector: 'app-payment-management',
   templateUrl: './payment-management.component.html',
@@ -38,7 +40,8 @@ export class PaymentManagementComponent implements OnInit {
   app_total_price = 0;
 
   payment_management : any;
-
+  excelData: any[] = [];
+  c_list: any = [];
 
 
   constructor(
@@ -46,6 +49,7 @@ export class PaymentManagementComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private datePipe: DatePipe,
+    private excelService: ExcelService,
 
   ) { }
 
@@ -62,7 +66,7 @@ export class PaymentManagementComponent implements OnInit {
         this.rows = response.Data;
         this.payment_management = response.Data;
         console.log(this.payment_management);
-
+        this.get_c_list();
         this.vendor_total_price = this.payment_management.vendor_total_price;
         this.sp_total_price = this.payment_management.sp_total_price;
         this.user_total_price = this.payment_management.user_total_price;
@@ -160,6 +164,7 @@ export class PaymentManagementComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           this.pay_list = response.Data;
+          this.get_c_list()
         }
       );
     }
@@ -185,5 +190,20 @@ export class PaymentManagementComponent implements OnInit {
     
     /* save to file */
     XLSX.writeFile(wb, 'sheetExcel.xlsx');
+  }
+
+  exportAsXLSX(): void {
+    this.excelService.exportAsExcelFile(this.excelData, 'Payment_List');
+  }
+  get_c_list() {
+    this.c_list = this.Ecom_list;
+    console.log(this.c_list)
+    this.excelData = this.c_list
+    // for (let a = 0; a < this.c_list.length; a++) {
+    //   let data = {  
+    //   }
+    //   this.excelData.push(this.c_list)
+    // }
+
   }
 }

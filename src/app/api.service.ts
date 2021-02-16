@@ -369,6 +369,9 @@ livedoctordetails_edit(data){
 livedoctordetails_getlist(){
   return this.http.get(this.apiUrl + 'livedoctordetails/getlist');
 }
+sp_appointments_getlist(){
+  return this.http.get(this.apiUrl + 'sp_appointments/getlist');
+}
   // DoctorList() {
   //   return this.http.get(this.apiUrl + 'doctor/getlist');
   // }

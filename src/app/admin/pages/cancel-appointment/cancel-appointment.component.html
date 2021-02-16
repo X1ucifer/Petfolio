@@ -19,7 +19,7 @@
     <div class="card-body">
         <div class="card-item">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="search-hero">
                         <div class="input-group mb-3">
                            <div class="input-group-prepend">
@@ -30,14 +30,14 @@
                          </div>
                       </div>
                 </div>
-                <div class="col-md-6 text-center">
+                <div class="col-md-6 text-right">
+                    <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                </div>
+                <div class="col-md-12">
                     <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-2"></p-calendar>
                     <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-2"></p-calendar>
                     <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
-                </div>
-                <div class="col-md-3 text-right">
-                    <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
-                    <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
                 </div>
             </div>
 
@@ -71,9 +71,9 @@
 
             <!-- <th>Last Login Date</th> -->
             <th>Mobile Type</th>
-            <th style="width: 163px;text-align:center">
+            <!-- <th style="width: 163px;text-align:center">
                 Action
-            </th>
+            </th> -->
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-item let-i="rowIndex" >
@@ -89,12 +89,12 @@
             <td>
                 {{item.mobile_type}}
             </td>
-            <td class="act">
+            <!-- <td class="act">
                 <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
-                <!-- <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i> -->
+                <i style="color: #fd2c3a;" class="fas fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
 
-            </td>
+            </td> -->
         </tr>
     </ng-template>
 </p-table>
