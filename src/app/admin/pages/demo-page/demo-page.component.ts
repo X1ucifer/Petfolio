@@ -121,7 +121,7 @@ export class DemoPageComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width > 100 && height > 100) {
+        if (width == 100 && height == 100) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -230,7 +230,7 @@ export class DemoPageComponent implements OnInit {
     else{
       alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;

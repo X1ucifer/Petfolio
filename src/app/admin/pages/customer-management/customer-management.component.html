@@ -91,13 +91,9 @@
             <th>
               email Status
             </th>
-            <th>
-              phone Status
-            </th>
 
-            <th  style="width: 200px;">
-              User type
-            </th>
+
+
             <!-- <th>Created by</th>
             <th>Modified by</th> -->
             <th>Created Date</th>
@@ -115,28 +111,32 @@
             <td class="truncate-cell">{{item.first_name}} {{item.last_name}}</td>
             <td class="truncate-cell">{{item.user_email}}</td>
             <td>{{item.user_phone}}</td>
+
             <td>
-                {{item.date_of_reg}}
+                <p *ngIf="item.user_type == 1">Pet Lover</p>
+                <p *ngIf="item.user_type == 4">Doctor</p>
+                <p *ngIf="item.user_type == 2">Service Provider</p>
+                <p *ngIf="item.user_type == 3">Vendor</p>
+                <!-- {{item.mobile_type}} -->
+              </td>
+
+
+            <td>
+                {{item.user_status}}
             </td>
             <td>
+                {{item.delete_status}}
+            </td>
+
+            <td>
+              {{item.user_email_verification}}
+            </td>
+            <td>
+                {{item.createdAt | date}}
+              </td>
+              <td>
                 {{item.mobile_type}}
-            </td>
-            <td>
-              <p *ngIf="item.user_type == 1">Pet Lover</p>
-              <p *ngIf="item.user_type == 4">Doctor</p>
-              <p *ngIf="item.user_type == 2">Service Provider</p>
-              <p *ngIf="item.user_type == 3">Vendor</p>
-              <!-- {{item.mobile_type}} -->
-            </td>
-            <td>
-              {{item.user_status}}
-            </td>
-            <td>
-              {{item.delete_status}}
-            </td>
-             <td>
-            {{item.user_email_verification}}
-             </td>
+              </td>
             <td class="act">
                 <i style="color: #4CAF50;" class="fas fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i>
                 <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
