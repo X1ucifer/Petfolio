@@ -296,7 +296,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'SP_services/edit', data);
   }
   SP_services_delete(data) {
-    return this.http.post(this.apiUrl + 'SP_services/delete', data);
+    return this.http.post(this.apiUrl + 'SP_services/admin_delete', data);
   }
   SP_services_list() {
     return this.http.get(this.apiUrl + 'SP_services/getlist');
