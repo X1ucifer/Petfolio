@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="dropdownslist != undefined">
     <div class="page-header">
         <div>
             <h2 class="main-content-title tx-24 mb-1" *ngIf="type == 'create'">Doctor Create</h2>
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-</section>
+
 
 <div class="card-box">
     <div class="row" style="padding: 0px 0px 23px 10px;">
@@ -146,7 +146,13 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h5 class="form-lable">Specialization:</h5>
-                        <input type="text" pInputText [(ngModel)]="Specialization" placeholder="Specialization">
+                        <select  [(ngModel)]="Specialization" >
+                            <option value='undefined' style="display:none;">Select Specialization</option>
+                            <option  *ngFor="let arr of dropdownslist.specialzation ; let i= index;">
+                                {{arr.specialzation}}
+                            </option>
+                        </select>
+                        <!-- <input type="text" pInputText [(ngModel)]="Specialization" placeholder="Specialization"> -->
                     </div>
                     <div class="col-md-2 text-right">
                         <i class="fa fa-plus add-icon" (click)="addSpecialization()" aria-hidden="true"
@@ -175,7 +181,13 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h5 class="form-lable">Pets handled:</h5>
-                        <input type="text" pInputText [(ngModel)]="handled" placeholder="handled">
+                        <select  [(ngModel)]="handled" >
+                            <option value='undefined' style="display:none;">Select Pets handled</option>
+                            <option  *ngFor="let arr of dropdownslist.pet_handle ; let i= index;">
+                                {{arr.pet_handle}}
+                            </option>
+                        </select>
+                        <!-- <input type="text" pInputText [(ngModel)]="handled" placeholder="handled"> -->
                     </div>
                     <div class="col-md-2 text-right">
                         <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i>
@@ -344,3 +356,4 @@
 
     </div>
 </div>
+</section>

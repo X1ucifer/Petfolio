@@ -395,6 +395,9 @@ livedoctordetails_getlist(){
 sp_appointments_getlist(){
   return this.http.get(this.apiUrl + 'sp_appointments/getlist');
 }
+petdetails_dropdownslist(){
+  return this.http.get(this.apiUrl + 'petdetails/mobile/dropdownslist');
+}
   // DoctorList() {
   //   return this.http.get(this.apiUrl + 'doctor/getlist');
   // }
