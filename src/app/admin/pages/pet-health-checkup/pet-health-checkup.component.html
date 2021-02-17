@@ -6,14 +6,14 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5 class="form-lable">Checkup Type:</h5>
-                    <input type="text" pInputText [(ngModel)]="value1" placeholder="Enter Checkup Type" >
+                    <input type="text" pInputText [(ngModel)]="checkup_type" placeholder="Enter Checkup Type" >
                 </div>
                 <div class="col-md-4">
                   <h5 class="form-lable">Checkup Type Icon:</h5>
-                  <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Checkup Type" >
+                  <input type="file" (change)="getUploadFile($event)" placeholder="Choose Checkup Type ICON" >
               </div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;">Add</button>
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;" (click)="addCheckupType()">Add</button>
                 </div>
         </div>
         </div>
@@ -83,30 +83,30 @@
             </th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-item let-i="rowIndex" >
+    <ng-template pTemplate="body" *ngFor="let item of CheckupList; let i = index;" >
         <tr  class="tdrow">
             <td>{{i+1}}</td>
-            <td>Type-1</td>
+            <td>{{item.name}}</td>
             <td>
-              <img _ngcontent-dah-c159="" src="http://54.153.8.140:3000/api/uploads/template.png" alt="Denim Jeans" style="width: 50%;">
+              <img _ngcontent-dah-c159="" src="{{item.imgurl}}" alt="Denim Jeans" style="width: 50%;">
           </td>
 
             <td>
-                User
+                {{item.createdby}}
             </td>
             <td>
-                Admin
+                {{item.modifiedby}}
             </td>
             <td>
-                16-09-2020
+                {{item.createdat}}
             </td>
             <td>
-                17-09-2020
+                {{item.modified_at}}
             </td>
             <td class="act">
-                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i>
+                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit" (click)="editCheckupType(item.id)"></i>
                 <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i> -->
-                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i>
+                <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View" (click)="viewCheckupType(item.id)"></i>
             </td>
         </tr>
     </ng-template>

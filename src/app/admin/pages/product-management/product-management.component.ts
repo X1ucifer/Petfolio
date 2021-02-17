@@ -147,7 +147,7 @@ export class ProductManagementComponent implements OnInit {
   // }
 
   validation() {
-    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.Vendor == undefined || this.Category == undefined || this.Sub_Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
+    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.Vendor == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -159,6 +159,7 @@ export class ProductManagementComponent implements OnInit {
 
 
   create() {
+
     this.validation();
     if (this.Validation == false) {
       alert("Please enter valid inputs")
@@ -182,7 +183,6 @@ export class ProductManagementComponent implements OnInit {
       let a = {
         "user_id": this.Vendor._id,
         "cat_id": this.Category._id,
-        "sub_cat_id": this.Sub_Category._id,
         "breed_type": obj1,
         "pet_type": obj2,
         "age": obj3,
@@ -299,8 +299,6 @@ export class ProductManagementComponent implements OnInit {
     console.log(this.Vendor);
     console.log(this.Category);
 
-    this.subcate();
-    this.Sub_Category = item.sub_cat_id
     this.Age = obj3;
     this.Cost = item.cost;
     this.pettype = item.pet_type;

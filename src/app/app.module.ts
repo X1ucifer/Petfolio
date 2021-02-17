@@ -9,6 +9,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {HomepageModule} from './homepage/homepage.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,6 +30,7 @@ import {TableModule} from 'primeng/table';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     AdminModule,
     HomepageModule,

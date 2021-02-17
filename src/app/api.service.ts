@@ -81,6 +81,29 @@ export class ApiService {
   //////////////
 
 
+  //PET HEALTH CHECKUP TYPE///
+
+  pet_add_checkup_type(data){
+    return this.http.post(this.apiUrl+ 'changeupdated',data);
+  }
+
+  pet_list_checkup_type(){
+    return this.http.get(this.apiUrl + '');
+  }
+
+  pet_view_checkup_type(id){
+    return this.http.get(this.apiUrl + '?id='+id);
+  }
+
+  pet_update_checkup_type(data){
+    return this.http.post(this.apiUrl + '',data);
+  }
+
+  pet_delete_checkup_type(id){
+    return this.http.delete(this.apiUrl + '?id='+id);
+  }
+
+
   ////pet lover home banner API//////
   homebanner_list() {
     return this.http.get(this.apiUrl + 'homebanner/getlist');
