@@ -337,7 +337,6 @@ export class ProductManagementComponent implements OnInit {
         "_id": this.id,
         "user_id": this.Vendor._id,
         "cat_id": this.Category._id,
-        "sub_cat_id": this.Sub_Category._id,
         "breed_type": obj1,
         "pet_type": obj2,
         "age": obj3,
@@ -383,6 +382,7 @@ export class ProductManagementComponent implements OnInit {
       );
     }
   }
+  
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));

@@ -16,6 +16,8 @@
 
 
 
+
+
 <div class="card-box">
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-6">
@@ -215,22 +217,44 @@
                 <h5 class="form-lable">Pets handled:</h5>
                 <input type="text" pInputText [(ngModel)]="handled" placeholder="Pets handled">
             </div> -->
+
             <div class="col-md-6">
                 <h5 class="form-lable">Clinic Name:</h5>
                 <input type="text" pInputText [(ngModel)]="Clinic_Name" placeholder="Clinic Name">
             </div>
             <div class="col-md-6">
                 <h5 class="form-lable">Clinic Location:</h5>
-                <input type="text" pInputText [(ngModel)]="address" placeholder="Clinic Location">
+                <input [(ngModel)]="address" style="padding:10px; width:75%" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+                <!-- <input type="text" pInputText [(ngModel)]="address" placeholder="Clinic Location"> -->
                 <!-- <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="address"></textarea> -->
+            </div>
+            <div class="map">
+                <agm-map 
+                    [latitude]="base_lat"
+                    [longitude]="base_lng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="false"
+                    [zoomControl]="false">
+
+                    <agm-marker 
+                        [latitude]="location_lat"
+                        [longitude]="location_lng"
+                        [markerDraggable]="true"
+                        (dragEnd)="markerDragEnd($event)">
+                        
+                        <agm-info-window>
+                        <strong>{{address}}</strong>
+                        </agm-info-window>                       
+                    </agm-marker>
+                </agm-map>
             </div>
             <div class="col-md-6">
                 <h5 class="form-lable">Latitude:</h5>
-                <input type="text" pInputText [(ngModel)]="Latitude" placeholder="Latitude">
+                <input type="text" pInputText [(ngModel)]="Latitude" placeholder="Latitude" disabled>
             </div>
             <div class="col-md-6">
                 <h5 class="form-lable">Longitude:</h5>
-                <input type="text" pInputText [(ngModel)]="Longitude" placeholder="Longitude">
+                <input type="text" pInputText [(ngModel)]="Longitude" placeholder="Longitude" disabled>
             </div>
             <div class="col-md-12">
                 <div class="row">

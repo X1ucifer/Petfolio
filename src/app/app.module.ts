@@ -10,6 +10,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {HomepageModule} from './homepage/homepage.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TableModule} from 'primeng/table';
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,12 @@ import {TableModule} from 'primeng/table';
     HomepageModule,
     FormsModule,
     MatButtonModule,
-    RadioButtonModule, TableModule],
+    RadioButtonModule, TableModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
+    }),
+    GooglePlaceModule
+  ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],

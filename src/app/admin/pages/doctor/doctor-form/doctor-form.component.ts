@@ -7,6 +7,8 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ValidatorService } from '../../../../validator.services';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-doctor-form',
@@ -14,8 +16,34 @@ import { environment } from '../../../../../environments/environment';
   styleUrls: ['./doctor-form.component.css']
 })
 export class DoctorFormComponent implements OnInit {
+
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+    
+  public handleAddressChange(address: any) {
+    this.zoom = 15;
+    this.location_lat = Number(address.geometry.location.lat());
+    this.location_lng = Number(address.geometry.location.lng());
+    this.base_lat = this.location_lat;
+    this.base_lng = this.location_lng;
+    this.Latitude = this.location_lat;
+    this.Longitude = this.location_lng;
+    this.address = address.formatted_address;
+    console.log(this.address);
+    
+  }
+
+  options={
+    types: [],
+    componentRestrictions: { country: 'IN' }
+    }
+
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
+  zoom: number = 8;
+  base_lat: number = 11.1271;
+  base_lng: number = 78.6569;
+  location_lat: number = 11.1271;
+  location_lng: number = 78.6569;
   Name: any;
   Education: any;
   Specialization: any;
@@ -94,6 +122,10 @@ export class DoctorFormComponent implements OnInit {
       this.address = this.detail.clinic_loc;
       this.Latitude = this.detail.clinic_lat;
       this.Longitude = this.detail.clinic_long;
+      this.location_lat = this.detail.clinic_lat;
+      this.location_lng = this.detail.clinic_long;
+      this.base_lat = this.location_lat;
+      this.base_lng = this.location_lng;
       this.Completionarray = this.detail.education_details;
       this.Experiencearray = this.detail.experience_details;
       this.Specializationarray = this.detail.specialization;
@@ -280,7 +312,7 @@ export class DoctorFormComponent implements OnInit {
   create_1() {
     this.validation_1();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      alert("Please enter valid inputs");
     } else {
       let a = {
         "first_name": this.tittle,
@@ -308,6 +340,27 @@ export class DoctorFormComponent implements OnInit {
     }
   }
   create() {
+    let a = {
+      "user_id": this.userid,
+      "dr_title": this.tittle,
+      "dr_name": this.Name,
+      "clinic_name": this.Clinic_Name,
+      "clinic_loc": this.address,
+      "clinic_lat": this.Latitude,
+      "clinic_long": this.Longitude,
+      "education_details": this.Completionarray,
+      "experience_details": this.Experiencearray,
+      "specialization": this.Specializationarray,
+      "pet_handled": this.handledarray,
+      "clinic_pic": this.clinic_arr,
+      "certificate_pic": this.certificate_arr,
+      "govt_id_pic": this.govt_arr,
+      "photo_id_pic": this.photo_arr,
+      "profile_status": 0,
+      "profile_verification_status": "Not verified",
+      "date_and_time": "" + new Date(),
+    }
+    console.log(a);
     this.validation();
     if (this.Validation == false) {
       alert("Please enter valid inputs")
@@ -367,6 +420,19 @@ export class DoctorFormComponent implements OnInit {
   }
   getFromLocal(key): any {
     return this.storage.get(key);
+  }
+
+
+  markerDragEnd($event: MouseEvent) {
+    this.location_lat = Number($event.coords.lat);
+    this.location_lng = Number($event.coords.lng);
+    this.base_lat = this.location_lat;
+    this.base_lng = this.location_lng;
+    this.Latitude = this.location_lat;
+    this.Longitude = this.location_lng;
+    this._api.location_details(this.location_lat,this.location_lng).subscribe(async data=>{
+      this.address = await data['results'][0]['formatted_address'];
+    });
   }
 
   edit() {
