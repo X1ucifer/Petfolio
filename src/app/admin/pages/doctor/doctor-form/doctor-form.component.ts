@@ -60,6 +60,7 @@ export class DoctorFormComponent implements OnInit {
   userid: any = undefined;
   type: any;
   detail: any;
+  dropdownslist:any;
   constructor(
     private location: Location,
     private router: Router,
@@ -68,7 +69,15 @@ export class DoctorFormComponent implements OnInit {
     private http: HttpClient,
     private _api: ApiService,
     private routes: ActivatedRoute
-  ) { }
+  ) {
+    this._api.petdetails_dropdownslist().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.dropdownslist = response.Data;
+        console.log(this.dropdownslist);
+      }
+    );
+   }
 
   ngOnInit(): void {
     this.type = this.getFromLocal('fun_type');
