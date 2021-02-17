@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-category-management',
@@ -37,6 +38,7 @@ export class CategoryManagementComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -89,14 +91,16 @@ export class CategoryManagementComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            this.showSuccess('Added Successfully');
+            // alert('Added Successfully');
             this.id = undefined;
             this.img_path = undefined;
             this.Category_name = undefined;
             // this.Category_code = undefined;
             this.imgType.nativeElement.value = '';
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            //alert(response.Message);
           }
           this.ngOnInit();
         }
@@ -113,7 +117,8 @@ export class CategoryManagementComponent implements OnInit {
     this._api.product_cate_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess('Deleted Successfully');
         this.ngOnInit();
       }
     );
@@ -127,7 +132,8 @@ export class CategoryManagementComponent implements OnInit {
   }
   update() {
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      //alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "_id": this.id,
@@ -145,7 +151,8 @@ export class CategoryManagementComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Update Successfully');
+            //alert('Update Successfully');
+            this.showSuccess('Update Successfully');
             this.ngOnInit();
             this.edit_t = false;
             this.id = undefined;
@@ -155,7 +162,8 @@ export class CategoryManagementComponent implements OnInit {
             this.imgType.nativeElement.value = '';
 
           } else {
-            alert(response.Message);
+            //alert(response.Message);
+            this.showError(response.Message);
           }
         }
       );
@@ -180,7 +188,8 @@ export class CategoryManagementComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      //alert('Please select the startdate and enddate');
+      this.showWarning('Please select the startdate and enddate');
     }
 
   }
@@ -207,12 +216,14 @@ export class CategoryManagementComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            //alert('Please upload the file below 1 MB');
+            this.showWarning('Please upload the file below 1 MB');
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          //alert('Please upload the file size 100 * 100');
+          this.showWarning('Please upload the file size 200 * 120');
           this.imgType.nativeElement.value = "";
         }
       };
@@ -231,5 +242,18 @@ export class CategoryManagementComponent implements OnInit {
         console.log(res);
         this.img_path = res.Data;
       });
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

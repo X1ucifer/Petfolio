@@ -552,4 +552,9 @@ petdetails_dropdownslist(){
   //   return this.http.post(this.apiUrl + 'doctortime/doctor_ava_all', data);
   // }
 
+
+  location_details(lat,lng){
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
+  }
+
 }

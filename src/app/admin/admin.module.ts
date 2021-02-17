@@ -89,6 +89,8 @@ import { CancelAppointmentComponent } from './pages/cancel-appointment/cancel-ap
 import { PaymentManagementComponent } from './pages/payment-management/payment-management.component';
 import { NotificationComponent } from './pages/notification/notification.component';
 import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
+import { AgmCoreModule } from '@agm/core';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -169,7 +171,12 @@ import { SpDetailViewComponent } from './pages/service-provider-management/sp-de
     TooltipModule,
     MultiSelectModule,
     TabViewModule,
-    NgMultiSelectDropDownModule.forRoot()],
+    NgMultiSelectDropDownModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
+    }),
+    GooglePlaceModule,
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
