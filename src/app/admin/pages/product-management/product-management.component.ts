@@ -6,6 +6,7 @@ import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-product-management',
@@ -53,6 +54,7 @@ export class ProductManagementComponent implements OnInit {
   sub_cate_list: any;
   subcat_main: any;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -162,7 +164,8 @@ export class ProductManagementComponent implements OnInit {
 
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      //alert("Please enter valid inputs")
+      this.showWarning("Please enter valid inputs")
     } else {
       let obj1 = [];
       let obj2 = [];
@@ -205,7 +208,8 @@ export class ProductManagementComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.showSuccess("Added Successfully")
             this.Description = undefined;
             this.Thmp_list = [];
             this.img_path = undefined;
@@ -219,7 +223,8 @@ export class ProductManagementComponent implements OnInit {
             this.Discount == undefined;
             this.ngOnInit();
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            // alert(response.Message);
           }
         }
       );
@@ -242,12 +247,14 @@ export class ProductManagementComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            //alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB");
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          this.showWarning("Please upload the file size 100 * 100");
+          // alert('Please upload the file size 100 * 100');
           this.imgType.nativeElement.value = "";
         }
       };
@@ -277,7 +284,8 @@ export class ProductManagementComponent implements OnInit {
     this._api.product_details_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         this.ngOnInit();
       }
     );
@@ -315,7 +323,8 @@ export class ProductManagementComponent implements OnInit {
   update() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      //alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs")
     } else {
       let obj1 = [];
       let obj2 = [];
@@ -360,7 +369,8 @@ export class ProductManagementComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Updated Successfully');
+            //alert('Updated Successfully');
+            this.showSuccess("Updated Successfully")
             this.ngOnInit();
             this.edit_t = false;
             this.id = undefined;
@@ -376,7 +386,8 @@ export class ProductManagementComponent implements OnInit {
             this.Cost == undefined;
             this.Discount == undefined;
           } else {
-            alert(response.Message);
+            //alert(response.Message);
+            this.showError(response.Message)
           }
         }
       );
@@ -401,7 +412,8 @@ export class ProductManagementComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
+      //alert('Please select the startdate and enddate');
     }
 
   }
@@ -426,7 +438,8 @@ export class ProductManagementComponent implements OnInit {
       console.log(this.Thmp_list);
     }
     else {
-      alert("Please choose a image")
+      // alert("Please choose a image");
+      this.showWarning("Please choose a image")
     }
   }
   deleteimg(dynamic, i) {
@@ -438,6 +451,19 @@ export class ProductManagementComponent implements OnInit {
       }
       console.log(this.Thmp_list);
     }
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }
 

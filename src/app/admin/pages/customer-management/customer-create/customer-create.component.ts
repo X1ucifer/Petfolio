@@ -6,6 +6,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { environment } from '../../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-customer-create',
@@ -25,6 +26,7 @@ export class CustomerCreateComponent implements OnInit {
   type:any;
   detail:any;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private ValidatorService: ValidatorService,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -74,7 +76,8 @@ export class CustomerCreateComponent implements OnInit {
   create() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs")
     } else {
       let a = {
         "first_name": this.Fname,
@@ -91,10 +94,12 @@ export class CustomerCreateComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully");
             this.router.navigateByUrl('/admin/Customer_Management')
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            // alert(response.Message);
           }
         }
       );
@@ -103,7 +108,8 @@ export class CustomerCreateComponent implements OnInit {
   edit() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs")
     } else {
       let a = {
         "_id":  this.detail._id,
@@ -121,10 +127,12 @@ export class CustomerCreateComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('updated Successfully');
+            // alert('updated Successfully');
+            this.showSuccess("updated Successfully")
             this.router.navigateByUrl('/admin/Customer_Management')
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            // alert(response.Message);
           }
         }
       );
@@ -138,5 +146,18 @@ export class CustomerCreateComponent implements OnInit {
 
   getFromLocal(key): any {
     return this.storage.get(key);
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

@@ -7,6 +7,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-demo-page',
@@ -37,6 +38,7 @@ export class DemoPageComponent implements OnInit {
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any>;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -83,7 +85,8 @@ export class DemoPageComponent implements OnInit {
   create() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs")
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "img_path": this.img_path,
@@ -100,10 +103,12 @@ export class DemoPageComponent implements OnInit {
           console.log(response);
           if (response.Code === 200) {
             //alert('Added Successfully');
+            this.showSuccess("Added Successfully")
             this.openAddedDialog();
             this.ngOnInit();
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            // alert(response.Message);
           }
         }
       );
@@ -126,12 +131,14 @@ export class DemoPageComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            //alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB");
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          // alert('Please upload the file size 100 * 100');
+          this.showWarning("Please upload the file size 200 * 120")
           this.imgType.nativeElement.value = "";
         }
       };
@@ -162,6 +169,7 @@ export class DemoPageComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         this.openDeleteDialog();
         this.ngOnInit();
       }
@@ -178,7 +186,8 @@ export class DemoPageComponent implements OnInit {
   update() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "_id": this.id,
@@ -196,6 +205,7 @@ export class DemoPageComponent implements OnInit {
           console.log(response);
           if (response.Code === 200) {
             //alert('Updated Successfully');
+            this.showSuccess("Updated Successfully");
             this.openUpdateDialog();
             this.ngOnInit();
             this.edit_t = false;
@@ -204,7 +214,8 @@ export class DemoPageComponent implements OnInit {
             this.Tittle = undefined;
             this.Description = undefined;
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            // alert(response.Message);
           }
         }
       );
@@ -228,12 +239,25 @@ export class DemoPageComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
+      // alert('Please select the startdate and enddate');
     }
 
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }
 

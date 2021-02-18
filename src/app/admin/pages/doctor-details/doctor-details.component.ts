@@ -6,6 +6,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import * as XLSX from 'xlsx';
 import { ExcelService } from '../../../excel.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doctor-details',
@@ -35,6 +36,7 @@ export class DoctorDetailsComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -110,9 +112,11 @@ export class DoctorDetailsComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            // alert(response.Message);
           }
           this.ngOnInit();
         }
@@ -123,7 +127,8 @@ export class DoctorDetailsComponent implements OnInit {
 
   Edit_pet_type_details() {
     if (this.specialzation == '') {
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
     } else {
       let a = {
         '_id': this.pet_type_id,
@@ -132,7 +137,8 @@ export class DoctorDetailsComponent implements OnInit {
       this._api.doctor_details_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          // alert("Updated Successfully");
+          this.showSuccess("Updated Successfully")
           this.ngOnInit();
         }
       );
@@ -175,7 +181,8 @@ export class DoctorDetailsComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
+        // alert("Updated Successfully");
         this.ngOnInit();
       }
     );
@@ -190,6 +197,7 @@ export class DoctorDetailsComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
+        this.showSuccess("Updated Successfully")
         // alert("Updated Successfully");
         // this.ngOnInit();
       }
@@ -205,7 +213,8 @@ export class DoctorDetailsComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
+        // alert("Updated Successfully");
         this.ngOnInit();
       }
     );
@@ -218,7 +227,8 @@ export class DoctorDetailsComponent implements OnInit {
     this._api.doctor_details_delete(a).subscribe(
       (response: any) => {
         console.log(response);
-        alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
+        // alert('Deleted Successfully');
         this.ngOnInit();
       }
     );
@@ -349,7 +359,8 @@ export class DoctorDetailsComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
+      // alert('Please select the startdate and enddate');
     }
 
   }
@@ -364,6 +375,19 @@ export class DoctorDetailsComponent implements OnInit {
     
     /* save to file */
     XLSX.writeFile(wb, 'sheetExcel.xlsx');
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }
 

@@ -7,6 +7,7 @@ import { ViewChild } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { environment } from '../../../../environments/environment';
 import { ExcelService } from '../../../excel.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 declare var $: any;
 
@@ -28,6 +29,7 @@ export class CustomerManagementComponent implements OnInit {
   excelData: any[] = [];
   c_list: any = [];
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -107,7 +109,8 @@ export class CustomerManagementComponent implements OnInit {
     this._api.user_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         this.ngOnInit();
       }
     );
@@ -152,7 +155,8 @@ export class CustomerManagementComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      //alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate")
     }
 
   }
@@ -185,6 +189,18 @@ export class CustomerManagementComponent implements OnInit {
 
   exportAsXLSX(): void {
     this.excelService.exportAsExcelFile(this.excelData, 'Customer_List');
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 
 }

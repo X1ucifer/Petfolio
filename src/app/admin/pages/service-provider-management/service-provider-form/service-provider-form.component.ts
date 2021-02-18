@@ -7,6 +7,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ValidatorService } from '../../../../validator.services';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-service-provider-form',
@@ -61,6 +62,7 @@ export class ServiceProviderFormComponent implements OnInit {
   type: any;
   detail: any;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private ValidatorService: ValidatorService,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -121,7 +123,8 @@ export class ServiceProviderFormComponent implements OnInit {
       this.Education = undefined;
     }
     else {
-      alert("Pleasefill all the fields")
+      //alert("Pleasefill all the fields");
+      this.showWarning("Please fill all the fields")
     }
   }
   remove_completion(i) {
@@ -138,7 +141,8 @@ export class ServiceProviderFormComponent implements OnInit {
       this.T_date = undefined;
     }
     else {
-      alert("Pleasefill all the fields")
+      //alert("Pleasefill all the fields")
+      this.showWarning("Please fill all the fields") 
     }
   }
   remove_Experience(i) {
@@ -182,12 +186,14 @@ export class ServiceProviderFormComponent implements OnInit {
           if (d < 10) {
             this.addfiles(str);
           } else {
-            alert('Please upload the file below 1 MB');
+            //alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB")
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          //alert('Please upload the file size 100 * 100');
+          this.showWarning("Please upload the file size 100 * 100")
           this.imgType.nativeElement.value = "";
         }
       };
@@ -270,7 +276,8 @@ export class ServiceProviderFormComponent implements OnInit {
   create_1() {
     this.validation_1();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "first_name": this.tittle,
@@ -289,8 +296,10 @@ export class ServiceProviderFormComponent implements OnInit {
           if (response.Code === 200) {
             this.userid = response.Data.user_details._id;
             console.log(this.userid)
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
+            this.showError(response.Message);
             alert(response.Message);
           }
         }
@@ -300,7 +309,8 @@ export class ServiceProviderFormComponent implements OnInit {
   create() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs")
     } else {
       let a = {
         "user_id": this.userid,
@@ -327,10 +337,12 @@ export class ServiceProviderFormComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.showSuccess("Added Successfully")
             this.router.navigateByUrl('/admin/Doctor')
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            //alert(response.Message);
           }
         }
       );
@@ -383,12 +395,26 @@ export class ServiceProviderFormComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         if (response.Code === 200) {
-          alert('updated Successfully');
+          //alert('updated Successfully');
+          this.showSuccess("updated Successfully")
           this.router.navigateByUrl('/admin/Doctor')
         } else {
-          alert(response.Message);
+          this.showError(response.Message);
+          // alert(response.Message);
         }
       }
     );
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

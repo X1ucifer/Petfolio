@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { MouseEvent } from '@agm/core';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doctor-form',
@@ -90,6 +91,7 @@ export class DoctorFormComponent implements OnInit {
   detail: any;
   dropdownslist:any;
   constructor(
+    private toastr:ToastrManager,
     private location: Location,
     private router: Router,
     private ValidatorService: ValidatorService,
@@ -163,7 +165,8 @@ export class DoctorFormComponent implements OnInit {
       this.Education = undefined;
     }
     else {
-      alert("Pleasefill all the fields")
+      // alert("Pleasefill all the fields")
+      this.showWarning("Please fill all the fields");
     }
   }
   remove_completion(i) {
@@ -181,6 +184,7 @@ export class DoctorFormComponent implements OnInit {
     }
     else {
       alert("Pleasefill all the fields")
+      this.showWarning("Please fill all the fields");
     }
   }
   remove_Experience(i) {
@@ -224,12 +228,14 @@ export class DoctorFormComponent implements OnInit {
           if (d < 10) {
             this.addfiles(str);
           } else {
-            alert('Please upload the file below 1 MB');
+            // alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB");
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          // alert('Please upload the file size 100 * 100');
+          this.showWarning("Please upload the file size 200 * 120");
           this.imgType.nativeElement.value = "";
         }
       };
@@ -312,7 +318,8 @@ export class DoctorFormComponent implements OnInit {
   create_1() {
     this.validation_1();
     if (this.Validation == false) {
-      alert("Please enter valid inputs");
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "first_name": this.tittle,
@@ -331,9 +338,11 @@ export class DoctorFormComponent implements OnInit {
           if (response.Code === 200) {
             this.userid = response.Data.user_details._id;
             console.log(this.userid)
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            //alert(response.Message);
           }
         }
       );
@@ -363,7 +372,8 @@ export class DoctorFormComponent implements OnInit {
     console.log(a);
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "user_id": this.userid,
@@ -390,10 +400,12 @@ export class DoctorFormComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully");
             this.router.navigateByUrl('/admin/Doctor')
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            //alert(response.Message);
           }
         }
       );
@@ -462,12 +474,26 @@ export class DoctorFormComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         if (response.Code === 200) {
-          alert('updated Successfully');
+          // alert('updated Successfully');
+          this.showSuccess("updated Successfully");
           this.router.navigateByUrl('/admin/Doctor')
         } else {
-          alert(response.Message);
+          // alert(response.Message);
+          this.showError(response.Message)
         }
       }
     );
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

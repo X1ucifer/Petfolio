@@ -5,6 +5,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service'; 
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-petlist',
@@ -23,6 +24,7 @@ export class PetlistComponent implements OnInit {
   view_detail_data:any;
   list: any;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -70,7 +72,8 @@ service_form() {
     this._api.pet_detail_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        // alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         let b = {
           'user_id': this.pet_list.userdetailsModels[0]._id
         };
@@ -110,9 +113,22 @@ service_form() {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      // alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
     }
    
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 
 }

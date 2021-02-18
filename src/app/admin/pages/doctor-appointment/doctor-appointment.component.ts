@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
 
@@ -31,6 +32,7 @@ export class DoctorAppointmentComponent implements OnInit {
 
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -93,7 +95,8 @@ export class DoctorAppointmentComponent implements OnInit {
     this._api.appointment_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        // alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         this.ngOnInit();
       }
     );
@@ -116,11 +119,24 @@ export class DoctorAppointmentComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
+      // alert('Please select the startdate and enddate');
     }
    
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

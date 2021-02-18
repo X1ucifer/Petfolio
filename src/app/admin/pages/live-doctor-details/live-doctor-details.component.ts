@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ElementRef, Inject, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
 import * as XLSX from 'xlsx';
@@ -38,6 +39,7 @@ export class LiveDoctorDetailsComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   @ViewChild('TABLE') table: ElementRef;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -102,7 +104,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
 
 
     if (this.specialzation == '') {
-      alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
+      // alert("Please enter the pet type")
     } else {
       let a = {
         'specialzation': this.specialzation,
@@ -113,9 +116,11 @@ export class LiveDoctorDetailsComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            // alert(response.Message);
           }
           this.ngOnInit();
         }
@@ -126,7 +131,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
 
   Edit_pet_type_details() {
     if (this.specialzation == '') {
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
     } else {
       let a = {
         '_id': this.pet_type_id,
@@ -135,7 +141,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
       this._api.doctor_details_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          //alert("Updated Successfully");
+          this.showSuccess("Updated Successfully")
           this.ngOnInit();
         }
       );
@@ -178,7 +185,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        //alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
         this.ngOnInit();
       }
     );
@@ -194,6 +202,7 @@ export class LiveDoctorDetailsComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         // alert("Updated Successfully");
+        this.showSuccess("Updated Successfully");
         // this.ngOnInit();
       }
     );
@@ -208,7 +217,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        //alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
         this.ngOnInit();
       }
     );
@@ -221,7 +231,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
     this._api.userlivedetails_delete(a).subscribe(
       (response: any) => {
         console.log(response);
-        alert('Deleted Successfully');
+        // alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         this.ngOnInit();
       }
     );
@@ -350,7 +361,8 @@ export class LiveDoctorDetailsComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      // alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
     }
 
   }
@@ -365,6 +377,18 @@ export class LiveDoctorDetailsComponent implements OnInit {
     
     /* save to file */
     XLSX.writeFile(wb, 'sheetExcel.xlsx');
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
   
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-live-serviceprovider-details',
@@ -33,6 +34,7 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -78,7 +80,8 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
 
 
     if (this.specialzation == '') {
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
     } else {
       let a = {
         'specialzation': this.specialzation,
@@ -89,9 +92,11 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            // alert(response.Message);
           }
           this.ngOnInit();
         }
@@ -102,7 +107,8 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
 
   Edit_pet_type_details() {
     if (this.specialzation == '') {
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type")
     } else {
       let a = {
         '_id': this.pet_type_id,
@@ -111,7 +117,8 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
       this._api.service_provider_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          // alert("Updated Successfully");
+          this.showSuccess("Updated Successfully")
           this.ngOnInit();
         }
       );
@@ -128,7 +135,8 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
     this._api.service_provider_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        //alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
         this.ngOnInit();
       }
     );
@@ -143,7 +151,8 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
     this._api.service_provider_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         this.ngOnInit();
       }
     );
@@ -272,7 +281,8 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate")
+      //alert('Please select the startdate and enddate');
     }
    
   }
@@ -283,5 +293,18 @@ export class LiveServiceproviderDetailsComponent implements OnInit {
 
 service_form() {
     this.router.navigateByUrl('/admin_panel/Service_Provider_form')
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

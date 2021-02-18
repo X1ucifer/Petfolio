@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-pet-breed-type',
@@ -35,6 +36,7 @@ export class PetBreedTypeComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -83,7 +85,8 @@ export class PetBreedTypeComponent implements OnInit {
   ////// Inserting Data ///
   Insert_pet_breed_details() {
     if (this.pet_breed == '') {
-      alert("Please enter the pet breed")
+      // alert("Please enter the pet breed");
+      this.showWarning("Please enter the pet breed")
     } else {
       let a = {
         'pet_type_id': this.pet_type_name._id,
@@ -96,9 +99,11 @@ export class PetBreedTypeComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            //alert(response.Message);
           }
           this.ngOnInit();
         }
@@ -113,7 +118,8 @@ export class PetBreedTypeComponent implements OnInit {
 
   Edit_pet_breed_details() {
     if (this.pet_breed == '') {
-      alert("Please enter the pet breed")
+      //alert("Please enter the pet breed");
+      this.showWarning("Please enter the pet breed")
     } else {
       let a = {
         '_id': this.pet_breed_id,
@@ -124,7 +130,8 @@ export class PetBreedTypeComponent implements OnInit {
       this._api.pet_breed_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          //alert("Updated Successfully");
+          this.showSuccess("Updated Successfully")
           this.ngOnInit();
         }
       );
@@ -141,7 +148,8 @@ export class PetBreedTypeComponent implements OnInit {
     this._api.pet_breed_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         this.ngOnInit();
       }
     );
@@ -226,12 +234,26 @@ export class PetBreedTypeComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      //alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate")
     }
    
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 
 

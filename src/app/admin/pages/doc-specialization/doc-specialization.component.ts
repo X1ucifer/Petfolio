@@ -6,6 +6,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doc-specialization',
@@ -35,6 +36,7 @@ export class DocSpecializationComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private toastr:ToastrManager,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
@@ -83,7 +85,8 @@ export class DocSpecializationComponent implements OnInit {
 
 
     if(this.specialzation == ''){
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
     }else{
     let a = {
       'specialzation' : this.specialzation,
@@ -95,6 +98,7 @@ export class DocSpecializationComponent implements OnInit {
       console.log(response.Data);
       if ( response.Code === 200 ) {
         //alert('Added Successfully');
+        this.showSuccess("Added Successfully");
         this. openAddedDialog();
       }else {
         alert(response.Message);
@@ -108,7 +112,8 @@ export class DocSpecializationComponent implements OnInit {
 
   Edit_pet_type_details(){
     if(this.specialzation == ''){
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
     }else{
     let a = {
       '_id' : this.pet_type_id,
@@ -119,6 +124,7 @@ export class DocSpecializationComponent implements OnInit {
       console.log(response.Data);
       this.openUpdateDialog();
       //alert("Updated Successfully");
+      this.showSuccess("Updated Successfully");
       this.ngOnInit();
     }
   );
@@ -135,7 +141,8 @@ export class DocSpecializationComponent implements OnInit {
     this._api.doctor_spec_delete(a).subscribe(
     (response: any) => {
       console.log(response.Data);
-      alert('Deleted Successfully');
+      // alert('Deleted Successfully');
+      this.showSuccess("Deleted Successfully");
       this.ngOnInit();
     }
   );
@@ -167,11 +174,24 @@ export class DocSpecializationComponent implements OnInit {
         );
       }
       else{
-        alert('Please select the startdate and enddate');
+        // alert('Please select the startdate and enddate');
+        this.showWarning("Please select the startdate and enddate")
       }
      
     }
     refersh(){
       this.listpettype();
+    }
+
+    showSuccess(msg) {
+      this.toastr.successToastr(msg);
+    }
+  
+    showError(msg) {
+        this.toastr.errorToastr(msg);
+    }
+  
+    showWarning(msg) {
+        this.toastr.warningToastr(msg);
     }
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-vendor-management',
@@ -21,6 +22,7 @@ export class VendorManagementComponent implements OnInit {
   value1:any;
   Main_list:any;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -52,7 +54,8 @@ export class VendorManagementComponent implements OnInit {
     this._api.vendor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        //alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
         this.ngOnInit();
       }
     );
@@ -92,7 +95,8 @@ export class VendorManagementComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
+      //alert('Please select the startdate and enddate');
     }
    
   }
@@ -108,12 +112,26 @@ export class VendorManagementComponent implements OnInit {
     this._api.vendor_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         this.ngOnInit();
       }
     );
   }
   goToLink1(url: string) {
     window.open(url, "_blank");
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

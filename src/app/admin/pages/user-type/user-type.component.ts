@@ -6,6 +6,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 
 
@@ -38,6 +39,7 @@ export class UserTypeComponent implements OnInit {
   @ViewChild('addedDialog') addedDialog: TemplateRef<any>;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -48,7 +50,6 @@ export class UserTypeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.user_type_title = '';
     this.user_type_value = undefined;
     this.user_type_img = 'http://54.212.108.156:3000/api/uploads/user-icon.jpg';
@@ -81,7 +82,8 @@ export class UserTypeComponent implements OnInit {
 
   Insert_user_type_details() {
     if (this.user_type_title == '') {
-      alert("Please enter the user type")
+      //alert("Please enter the user type")
+      this.showWarning("Please enter the user type");
     } else {
       let a = {
         'user_type_title': this.user_type_title,
@@ -95,9 +97,11 @@ export class UserTypeComponent implements OnInit {
           console.log(response.Data);
           if (response.Code === 200) {
             //alert('Added Successfully');
+            this.showSuccess("Added Successfully")
             this.openAddedDialog();
           } else {
             alert(response.Message);
+            this.showError(response.Message)
           }
           this.ngOnInit();
         }
@@ -109,7 +113,8 @@ export class UserTypeComponent implements OnInit {
   Edit_user_type_details() {
 
     if (this.user_type_title == '') {
-      alert("Please enter the user type")
+      //alert("Please enter the user type")
+      this.showWarning("Please enter the user type");
     } else {
       let a = {
         '_id': this.user_type_id,
@@ -122,6 +127,7 @@ export class UserTypeComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           //alert("Updated Successfully");
+          this.showSuccess("Updated Successfully");
           this.openUpdateDialog();
           this.ngOnInit();
         }
@@ -148,7 +154,8 @@ export class UserTypeComponent implements OnInit {
     this._api.user_type_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         this.ngOnInit();
       }
     );
@@ -246,6 +253,19 @@ export class UserTypeComponent implements OnInit {
   }
   refersh() {
     this.listpettype();
+  }
+
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 
 

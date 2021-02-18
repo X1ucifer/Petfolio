@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-homebanner',
@@ -34,6 +35,7 @@ export class HomebannerComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -72,7 +74,8 @@ export class HomebannerComponent implements OnInit {
 
   Insert_homebanner_details() {
     if (this.img_path == '') {
-      alert("Please upload the image")
+      // alert("Please upload the image");
+      this.showWarning("Please upload the image");
     }
     else {
       let a = {
@@ -88,9 +91,11 @@ export class HomebannerComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
           } else {
-            alert(response.Message);
+            this.showError(response.Message)
+            // alert(response.Message);
           }
           this.ngOnInit();
         }
@@ -102,7 +107,8 @@ export class HomebannerComponent implements OnInit {
   Edit_user_type_details() {
 
     if (this.img_path == '') {
-      alert("Please enter the user type")
+      // alert("Please enter the user type");
+      this.showWarning("Please enter the user type");
     } else {
       let a = {
         '_id': this.user_type_id,
@@ -116,7 +122,8 @@ export class HomebannerComponent implements OnInit {
       this._api.homebanner_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          //alert("Updated Successfully");
+          this.showSuccess("Updated Successfully");
           this.ngOnInit();
         }
       );
@@ -139,7 +146,8 @@ export class HomebannerComponent implements OnInit {
     this._api.homebanner_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        // alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         this.ngOnInit();
       }
     );
@@ -189,12 +197,14 @@ export class HomebannerComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            // alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB");
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 400 * 800');
+          // alert('Please upload the file size 400 * 800');
+          this.showWarning("Please upload the file size 400 * 800");
           this.imgType.nativeElement.value = "";
         }
       };
@@ -234,7 +244,8 @@ export class HomebannerComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      // alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate")
     }
 
   }
@@ -242,6 +253,16 @@ export class HomebannerComponent implements OnInit {
     this.listhomebanner();
   }
 
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
 
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
+  }
 
 }

@@ -5,6 +5,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-customer-form',
@@ -43,6 +44,7 @@ export class CustomerFormComponent implements OnInit {
   detail: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -121,7 +123,8 @@ export class CustomerFormComponent implements OnInit {
   create() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let vac;
       if (this.Vaccinated.y == "true") {
@@ -151,10 +154,12 @@ export class CustomerFormComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.showSuccess("Added Successfully");
             this.pet_view();
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            //alert(response.Message);
           }
         }
       );
@@ -164,7 +169,8 @@ export class CustomerFormComponent implements OnInit {
   update() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      // alert("Please enter valid inputs")
+      this.showWarning("Please enter valid inputs");
     } else {
       let vac;
       if (this.Vaccinated.y == "true") {
@@ -195,10 +201,12 @@ export class CustomerFormComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Update Successfully');
+            // alert('Update Successfully');
+            this.showSuccess("Update Successfully");
             this.pet_view();
           } else {
-            alert(response.Message);
+            this.showError(response.Message);
+            // alert(response.Message);
           }
         }
       );
@@ -263,5 +271,17 @@ export class CustomerFormComponent implements OnInit {
         console.log(res);
         this.img_path = res.Data;
       });
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

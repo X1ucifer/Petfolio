@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-detail-view',
@@ -14,6 +15,7 @@ export class DetailViewComponent implements OnInit {
   live_s: any;
   user_id:any;
   constructor(
+    private toastr:ToastrManager,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -68,7 +70,8 @@ export class DetailViewComponent implements OnInit {
         console.log(response.Data);
         this.view_detail_data = response.Data;
         this.user_id=this.view_detail_data.user_id
-        alert("Updated Successfully");
+        // alert("Updated Successfully");
+        this.showSuccess("Updated Successfully");
         this.ngOnInit();
       }
     );
@@ -84,8 +87,8 @@ export class DetailViewComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
-       
+        // alert("Updated Successfully");
+       this.showSuccess("Updated Successfully");
         if (this.live_s == 'not_live') {
           this.view_detail_data = response.Data;
           this.user_id=this.view_detail_data.user_id
@@ -123,7 +126,8 @@ export class DetailViewComponent implements OnInit {
     this._api.pet_detail_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        // alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         let b = {
           'user_id': this.view_detail_data.userdetailsModels[0]._id
         };
@@ -146,7 +150,8 @@ export class DetailViewComponent implements OnInit {
     this._api.customer_location_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        // alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         let b = {
           'user_id': this.view_detail_data.userdetailsModels[0]._id
         };
@@ -160,5 +165,17 @@ export class DetailViewComponent implements OnInit {
         );
       }
     );
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

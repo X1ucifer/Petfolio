@@ -5,6 +5,7 @@ import { ApiService } from '../../../api.service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 import { ExcelService } from '../../../excel.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-pet-care-appointment',
@@ -36,6 +37,7 @@ export class PetCareAppointmentComponent implements OnInit {
   c_list: any = [];
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -105,7 +107,8 @@ export class PetCareAppointmentComponent implements OnInit {
     this._api.appointment_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         this.ngOnInit();
       }
     );
@@ -129,7 +132,8 @@ export class PetCareAppointmentComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate")
+      //alert('Please select the startdate and enddate');
     }
    
   }
@@ -149,5 +153,17 @@ export class PetCareAppointmentComponent implements OnInit {
     //   this.excelData.push(this.c_list)
     // }
 
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }

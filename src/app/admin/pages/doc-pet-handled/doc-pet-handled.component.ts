@@ -6,6 +6,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doc-pet-handled',
@@ -36,6 +37,7 @@ export class DocPetHandledComponent implements OnInit {
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any>;
 
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -87,7 +89,8 @@ export class DocPetHandledComponent implements OnInit {
 
 
     if(this.pet_type_title == ''){
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type");
+      this.showWarning("Please enter the pet type")
     }else{
     let a = {
       'pet_type_title' : this.pet_type_title,
@@ -100,6 +103,7 @@ export class DocPetHandledComponent implements OnInit {
       console.log(response.Data);
       if ( response.Code === 200 ) {
         //alert('Added Successfully');
+        this.showSuccess("Added Successfully");
         this.openAddedDialog();
       }else {
         alert(response.Message);
@@ -113,7 +117,8 @@ export class DocPetHandledComponent implements OnInit {
 
   Edit_pet_type_details(){
     if(this.pet_type_title == ''){
-      alert("Please enter the pet type")
+      // alert("Please enter the pet type")
+      this.showWarning("Please enter the pet type");
     }else{
     let a = {
       '_id' : this.pet_type_id,
@@ -141,7 +146,8 @@ export class DocPetHandledComponent implements OnInit {
     this._api.pet_type_delete(a).subscribe(
     (response: any) => {
       console.log(response.Data);
-      alert('Deleted Successfully');
+      // alert('Deleted Successfully');
+      this.showSuccess("Deleted Successfully")
       this.ngOnInit();
     }
   );
@@ -241,6 +247,16 @@ export class DocPetHandledComponent implements OnInit {
       this.listpettype();
     }
 
-
+    showSuccess(msg) {
+      this.toastr.successToastr(msg);
+    }
+  
+    showError(msg) {
+        this.toastr.errorToastr(msg);
+    }
+  
+    showWarning(msg) {
+        this.toastr.warningToastr(msg);
+    }
 
 }

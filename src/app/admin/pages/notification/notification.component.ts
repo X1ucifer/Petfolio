@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { ViewChild } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -28,6 +29,7 @@ export class NotificationComponent implements OnInit {
   select_list=[];
   chk:boolean = false;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -60,7 +62,8 @@ export class NotificationComponent implements OnInit {
   send() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      //alert("Please enter valid inputs")
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "title": this.title,
@@ -75,9 +78,11 @@ export class NotificationComponent implements OnInit {
             console.log(response.Data);
             if (response.Code === 200) {
               console.log(response);
-              alert('Notification send uccessfully');
+              //alert('Notification send uccessfully');
+              this.showSuccess("Notification send Successfully")
               // this.router.navigateByUrl('/admin/Customer_Management')
             } else {
+              this.showError(response.Message);
               alert(response.Message);
             }
           }
@@ -108,5 +113,17 @@ export class NotificationComponent implements OnInit {
         console.log(this.select_list);
       }
      
+    }
+
+    showSuccess(msg) {
+      this.toastr.successToastr(msg);
+    }
+  
+    showError(msg) {
+        this.toastr.errorToastr(msg);
+    }
+  
+    showWarning(msg) {
+        this.toastr.warningToastr(msg);
     }
   }

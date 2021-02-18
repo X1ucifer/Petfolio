@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../../api.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 @Component({
   selector: 'app-sp-detail-view',
   templateUrl: './sp-detail-view.component.html',
@@ -12,6 +13,7 @@ export class SpDetailViewComponent implements OnInit {
   view_detail_data: any;
   live_s: any;
   constructor(
+    private toastr:ToastrManager,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -63,7 +65,8 @@ export class SpDetailViewComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        //alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
         this.ngOnInit();
       }
     );
@@ -79,7 +82,8 @@ export class SpDetailViewComponent implements OnInit {
     this._api.doctor_details_edit(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Updated Successfully");
+        //alert("Updated Successfully");
+        this.showSuccess("Updated Successfully")
         this.view_detail_data = response.Data;
         if (this.live_s == 'not_live') {
           let a = response.Data;
@@ -111,7 +115,8 @@ export class SpDetailViewComponent implements OnInit {
     this._api.pet_detail_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Updated Successfully');
+        this.showSuccess("Updated Successfully")
         let b = {
           'user_id': this.view_detail_data.userdetailsModels[0]._id
         };
@@ -134,7 +139,8 @@ export class SpDetailViewComponent implements OnInit {
     this._api.customer_location_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully")
         let b = {
           'user_id': this.view_detail_data.userdetailsModels[0]._id
         };
@@ -148,6 +154,18 @@ export class SpDetailViewComponent implements OnInit {
         );
       }
     );
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }
 

@@ -6,6 +6,7 @@ import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-service-type',
@@ -33,6 +34,7 @@ export class ServiceTypeComponent implements OnInit {
   edit_t: boolean = false;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
+    private toastr:ToastrManager,
     private router: Router,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
@@ -68,7 +70,8 @@ export class ServiceTypeComponent implements OnInit {
   create() {
     this.validation();
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      //alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "img_path": this.img_path,
@@ -86,10 +89,12 @@ export class ServiceTypeComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            //alert('Added Successfully');
+            this.showSuccess("Added Successfully")
             this.ngOnInit();
           } else {
-            alert(response.Message);
+            //alert(response.Message);
+            this.showError(response.Message)
           }
         }
       );
@@ -112,12 +117,14 @@ export class ServiceTypeComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            //alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB")
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          //alert('Please upload the file size 100 * 100');
+          this.showWarning("Please upload the file size 100 * 100")
           this.imgType.nativeElement.value = "";
         }
       };
@@ -144,12 +151,14 @@ export class ServiceTypeComponent implements OnInit {
           if (d < 10) {
             this.addfiles2();
           } else {
-            alert('Please upload the file below 1 MB');
+            //alert('Please upload the file below 1 MB');
+            this.showWarning("Please upload the file below 1 MB")
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          //alert('Please upload the file size 100 * 100');
+          this.showWarning("Please upload the file size 100 * 100")
           this.imgType.nativeElement.value = "";
         }
       };
@@ -189,7 +198,8 @@ export class ServiceTypeComponent implements OnInit {
     this._api.SP_services_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        //alert('Deleted Successfully');
+        this.showSuccess("Deleted Successfully");
         this.ngOnInit();
       }
     );
@@ -203,7 +213,8 @@ export class ServiceTypeComponent implements OnInit {
   }
   update() {
     if (this.Validation == false) {
-      alert("Please enter valid inputs")
+      //alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
     } else {
       let a = {
         "_id": this.id,
@@ -222,7 +233,8 @@ export class ServiceTypeComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Update Successfully');
+            //alert('Update Successfully');
+            this.showSuccess("Update Successfully")
             this.ngOnInit();
             this.edit_t = false;
             this.id = undefined;
@@ -230,7 +242,8 @@ export class ServiceTypeComponent implements OnInit {
             this.Tittle = undefined;
             this.Description = undefined;
           } else {
-            alert(response.Message);
+            //alert(response.Message);
+            this.showError(response.Message)
           }
         }
       );
@@ -255,11 +268,24 @@ export class ServiceTypeComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      this.showWarning("Please select the startdate and enddate");
+      //alert('Please select the startdate and enddate');
     }
 
   }
   refersh() {
     this.listpettype(); this.E_Date = undefined; this.S_Date = undefined;
+  }
+
+  showSuccess(msg) {
+    this.toastr.successToastr(msg);
+  }
+
+  showError(msg) {
+      this.toastr.errorToastr(msg);
+  }
+
+  showWarning(msg) {
+      this.toastr.warningToastr(msg);
   }
 }
