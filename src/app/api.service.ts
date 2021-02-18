@@ -398,6 +398,32 @@ sp_appointments_getlist(){
 petdetails_dropdownslist(){
   return this.http.get(this.apiUrl + 'petdetails/mobile/dropdownslist');
 }
+
+
+/// EcomBanner///
+
+ecombanner_add(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/create', data);
+}
+
+ecombanner_update(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/update', data);
+}
+
+ecombanner_delete(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/delete', data);
+}
+
+ecombanner_list(){
+  return this.http.get(this.apiUrl + 'vendor_banner_detail/getlist');
+}
+
+ecomFilter_date(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/filter_date', data);
+}
+
+/// EcomBanner///
+
   // DoctorList() {
   //   return this.http.get(this.apiUrl + 'doctor/getlist');
   // }

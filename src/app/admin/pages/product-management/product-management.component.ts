@@ -53,6 +53,7 @@ export class ProductManagementComponent implements OnInit {
   Ages: any = [{ 'y': 1 }, { 'y': 2 }, { 'y': 3 }, { 'y': 4 }, { 'y': 5 }, { 'y': 6 }, { 'y': 7 }, { 'y': 8 }, { 'y': 9 }, { 'y': 10 }, { 'y': 11 }, { 'y': 12 }, { 'y': 13 }, { 'y': 14 }, { 'y': 15 }, { 'y': 16 }, { 'y': 17 }, { 'y': 18 }, { 'y': 19 }, { 'y': 20 }, { 'y': 'Above' }]
   sub_cate_list: any;
   subcat_main: any;
+  today_deal: boolean;
   constructor(
     private toastr:ToastrManager,
     private router: Router,
@@ -242,7 +243,7 @@ export class ProductManagementComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width > 100 && height > 100) {
+        if (width == 200 && height == 200) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -253,7 +254,7 @@ export class ProductManagementComponent implements OnInit {
           }
         }
         else {
-          this.showWarning("Please upload the file size 100 * 100");
+          this.showWarning("Please upload the file size 200 * 200");
           // alert('Please upload the file size 100 * 100');
           this.imgType.nativeElement.value = "";
         }
@@ -451,6 +452,22 @@ export class ProductManagementComponent implements OnInit {
       }
       console.log(this.Thmp_list);
     }
+  }
+
+  makeTDeal(_id, today_deal){
+    
+    const data = {
+      _id : _id,
+      today_deal : today_deal
+    }
+    this._api.product_details_edit(data).subscribe(data=>{
+      if(data['Code'] == 200){
+        this.showSuccess(data['Message']);
+        this.refersh();
+      }else {
+        this.showError(data['Message']);
+      }
+    });
   }
 
 

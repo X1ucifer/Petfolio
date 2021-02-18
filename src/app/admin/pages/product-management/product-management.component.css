@@ -5,3 +5,9 @@
 :host::ng-deep .ui-table-wrapper{
 overflow-x: scroll;
 }
+
+
+.makeDealbtn{
+    font-size: 11px;
+    
+}

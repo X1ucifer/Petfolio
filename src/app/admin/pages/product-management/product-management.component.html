@@ -84,7 +84,7 @@
                            <div class="col-md-7">
                                 <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
                                     id="imgFile" accept=".png, .jpg, .jpeg">
-                                    <span class="img-size">Image Size Should be 200*120</span>
+                                    <span class="img-size">Image Size Should be 200*200</span>
                                     
             
                                 
@@ -204,6 +204,7 @@
                 Category <p-sortIcon field="code"></p-sortIcon>
             </th>
             <th>Mobile Type</th>
+            <th>Today's Deal</th>
             <th>Created at</th>
             <th>Modified at</th>
             <th style="width: 163px;text-align:center">
@@ -220,6 +221,10 @@
             <td>{{item.cat_id.product_cate}}</td>
             <td>
                 Admin
+            </td>
+            <td>
+                <button class="btn btn-sm btn-success makeDealbtn" *ngIf="item.today_deal === false" (click)="makeTDeal(item._id, true)">Make Today's Deal</button>
+                <button class="btn btn-sm btn-danger makeDealbtn" *ngIf="item.today_deal === true" (click)="makeTDeal(item._id, false)">Cancel Today's Deal</button>
             </td>
             <td>
                 {{item.createdAt | date}}

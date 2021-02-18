@@ -121,7 +121,7 @@ export class CancelAppointmentComponent implements OnInit {
   filter_date() {
     if ( this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
-      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+      let yourDate= this.E_Date.setDate(this.E_Date.getDate());
 
       let a = {
         "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),

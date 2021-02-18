@@ -76,7 +76,8 @@ export class CategoryManagementComponent implements OnInit {
   create() {
 
     if ( this.Category_name == '' || this.Category_name == undefined || this.img_path == undefined) {
-      alert("Please enter the pet type")
+      //alert("Please enter the pet type");
+      this.showWarning("Please enter the pet type")
     } else {
       let a = {
         "img_path": this.img_path,
@@ -147,7 +148,7 @@ export class CategoryManagementComponent implements OnInit {
 
       }
       console.log(a);
-      this._api.splashscreen_edit(a).subscribe(
+      this._api.product_cate_edit(a).subscribe(
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
@@ -173,7 +174,7 @@ export class CategoryManagementComponent implements OnInit {
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
-      let yourDate = this.E_Date.setDate(this.E_Date.getDate() + 1);
+      let yourDate = this.E_Date.setDate(this.E_Date.getDate());
 
       let a = {
         "fromdate": this.datePipe.transform(new Date(this.S_Date), 'yyyy-MM-dd'),
@@ -250,10 +251,10 @@ export class CategoryManagementComponent implements OnInit {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 }
