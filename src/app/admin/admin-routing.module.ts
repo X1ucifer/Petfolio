@@ -53,6 +53,7 @@ import { CancelAppointmentComponent } from './pages/cancel-appointment/cancel-ap
 import { PaymentManagementComponent } from './pages/payment-management/payment-management.component';
 import { NotificationComponent } from './pages/notification/notification.component';
 import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
+import { PetServiceAppointmentViewComponent } from '../pet-service-appointment-view/pet-service-appointment-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -78,6 +79,7 @@ const routes: Routes = [
   { path: 'Ecommerce_order', component: EcommerceOrderComponent },
   { path: 'Pet_care_appointment', component: PetCareAppointmentComponent },
   { path: 'Pet_Service_appointment', component: PetServiceAppointmentComponent },
+  { path: 'View_Pet_Service_appointment', component: PetServiceAppointmentViewComponent },
   { path: 'Market_place', component: MarketPlaceComponent },
   { path: 'View_order', component: ViewOrderComponent },
   { path: 'View_Product', component: ProductViewComponent },

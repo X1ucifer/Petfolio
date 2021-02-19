@@ -51,6 +51,11 @@
                                 <div class="badge badge--aqua d-block mb-2">{{view_detail_data.profile_status}}</div>
                             </div>
 
+                            <div class="text-center mb-4">
+                                <h4 class="mb-1 text-theme"><strong>Mobile Type:</strong></h4>
+                                <div class="badge badge--aqua d-block mb-2" style="font-size: 11px;">{{view_detail_data.mobile_type}}</div>
+                            </div>
+
                             <div class="text-center">
                                 <h4 class="mb-1 text-theme"><strong>Location</strong></h4>
                                 <!-- <h3 class="mb-0"><strong>{{view_detail_data.clinic_name}}</strong></h3> -->
@@ -70,9 +75,21 @@
                             <h2 class="title--h1 first-title title__separate text-theme">Specialisation</h2>
                             <ng-container *ngFor="let spe of view_detail_data.bus_spec_list">
                                 <span class="badge badge--green-gradient mr-2 mb-2">{{spe.bus_spec_list}}</span>
-
                             </ng-container>
 
+                        </div>
+
+                        <div class="box-2">
+                            <h2 class="title--h1 first-title title__separate text-theme"> Gallery</h2>
+                            <ng-container *ngFor="let item of view_detail_data.bus_service_gall">
+                                <div class="row" style="padding: 10px;">
+                                    <div class="col-3">
+                                        <div class="card">
+                                            <img class="img-fluid" src="{{item.bus_service_gall}}" alt="" style="border-radius: 10px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
                         </div>
 
                         <!-- What -->
@@ -80,13 +97,13 @@
                             <h2 class="title--h1 first-title title__separate text-theme">Service List</h2>
 
                             <ng-container *ngFor="let spe of view_detail_data.bus_service_list">
-                                <span class="badge badge--dark mr-2 mb-2">{{spe.bus_service_list}}</span>
+                                <span class="badge badge--dark mr-2 mb-2"> 
+                                    {{spe.bus_service_list}}  - ₹{{spe.amount}} - <i class="fas fa-clock" style="color: #55dcc2;"></i> {{spe.time_slots}}
+                                </span>
                             </ng-container>
 
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

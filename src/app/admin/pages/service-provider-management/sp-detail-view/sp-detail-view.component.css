@@ -198,3 +198,8 @@ tr:last-child{border-bottom:none}
 .resume  .resume_hobby ul li i{font-size:30px}
 .resume  .resume_hobby ul li:before{content:"";position:absolute;top:40px;right:-52px;width:50px;height:2px;background:#019377}
 .resume  .resume_hobby ul li:last-child:before{display:none}
+
+
+.box-2{
+ background-color: #ffffff;
+}

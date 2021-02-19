@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TableModule} from 'primeng/table';
 import { AgmCoreModule } from '@agm/core';
+import { PetServiceAppointmentViewComponent } from './pet-service-appointment-view/pet-service-appointment-view.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AgmCoreModule } from '@agm/core';
     AdminComponent,
     HomepageComponent,
     LoginComponent,
+    PetServiceAppointmentViewComponent,
    ],
   imports: [
     BrowserModule,

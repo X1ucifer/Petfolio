@@ -155,6 +155,11 @@ export class PetServiceAppointmentComponent implements OnInit {
 
   }
 
+  goto(page, value){
+    this.saveInLocal(page,value);
+    this.router.navigateByUrl('/admin/'+page);
+  }
+
   showSuccess(msg) {
     this.toastr.successToastr(msg);
   }
