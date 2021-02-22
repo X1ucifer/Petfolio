@@ -8,15 +8,16 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./pet-service-appointment-view.component.css']
 })
 export class PetServiceAppointmentViewComponent implements OnInit {
+  petServiceDetails: any;
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService,private router:Router) { }
 
   ngOnInit(): void {
-    console.log(this.storage.get('View_Pet_Service_appointment'));
+    //console.log();
     if (this.storage.get('View_Pet_Service_appointment') == null || this.storage.get('View_Pet_Service_appointment') == undefined) {
       this.router.navigateByUrl('admin/Pet_Service_appointment');
     } else {
-      
+      this.petServiceDetails = this.storage.get('View_Pet_Service_appointment');
     }
   }
 

@@ -23,15 +23,15 @@
                     <div class="sidebar box shadow pb-0 sticky-column">
 
                         <div class="avatar avatar--180">
-                            <div class="avatar__box">
-                                <img src="{{view_detail_data.clinic_pic[0].clinic_pic}}" class="pro-pic" height="100%"
+                            <div class="avatar__box" *ngFor="let item of view_detail_data.doc_business_info.clinic_pic">
+                                <img src="{{item.clinic_pic}}" class="pro-pic" height="100%"
                                     width="100%">
                             </div>
                         </div>
                         <div class="text-center mb-4">
                             <h3 class="title title--h3 sidebar__user-name text-theme">
-                                {{view_detail_data.dr_title}}.{{view_detail_data.dr_name}}</h3>
-                            <ng-container *ngFor="let edu of view_detail_data.education_details">
+                                {{view_detail_data.doc_business_info.dr_title}}.{{view_detail_data.doc_business_info.dr_name}}</h3>
+                            <ng-container *ngFor="let edu of view_detail_data.doc_business_info.education_details">
                                 <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}</div>
                             </ng-container>
 
