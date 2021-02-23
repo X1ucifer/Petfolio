@@ -112,7 +112,7 @@ export class ServiceTypeComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 80 && height == 80) {
+        if (width == 100 && height == 100) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -146,7 +146,7 @@ export class ServiceTypeComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 120 && height == 300) {
+        if (width == 150 && height == 300) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles2();
@@ -158,7 +158,7 @@ export class ServiceTypeComponent implements OnInit {
         }
         else {
           //alert('Please upload the file size 100 * 100');
-          this.showWarning("Please upload the file size 100 * 100")
+          this.showWarning("Please upload the file size 150 * 300")
           this.imgType.nativeElement.value = "";
         }
       };
