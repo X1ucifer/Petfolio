@@ -21,6 +21,11 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {TableModule} from 'primeng/table';
 import { AgmCoreModule } from '@agm/core';
 import { PetServiceAppointmentViewComponent } from './pet-service-appointment-view/pet-service-appointment-view.component';
+import { DoctorLoginComponent } from './login/doctor-login/doctor-login.component';
+import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
+import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,9 @@ import { PetServiceAppointmentViewComponent } from './pet-service-appointment-vi
     HomepageComponent,
     LoginComponent,
     PetServiceAppointmentViewComponent,
+    DoctorLoginComponent,
+    DoctorRegisterComponent,
+    DoctorInfoComponent,
    ],
   imports: [
     BrowserModule,
@@ -45,7 +53,9 @@ import { PetServiceAppointmentViewComponent } from './pet-service-appointment-vi
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
     }),
-    GooglePlaceModule
+    GooglePlaceModule,
+    ReactiveFormsModule,
+    MatStepperModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

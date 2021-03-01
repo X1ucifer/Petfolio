@@ -5,10 +5,17 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { DoctorLoginComponent } from './login/doctor-login/doctor-login.component';
+import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
+import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login', },
   { path: 'login', component: LoginComponent, },
+  { path: 'doctor_login', component: DoctorLoginComponent, },
+  { path: 'doctor_register', component: DoctorRegisterComponent, },
+  { path: 'doctor_info', component: DoctorInfoComponent, },
+
   {
     path: 'admin', component: AdminComponent,
     children: [
