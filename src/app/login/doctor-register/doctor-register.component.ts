@@ -338,7 +338,7 @@ export class DoctorRegisterComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            this.userid = response.Data.user_details._id;
+            this.userid = response.Data.user_details;
             console.log(this.userid)
             // alert('Added Successfully');
             this.saveInLocal('userid',this.userid)

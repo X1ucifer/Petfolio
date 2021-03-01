@@ -82,3 +82,9 @@ input{
   .mat-form-field {
     margin-top: 16px;
   }
+  :host::ng-deep .mat-step-header{
+      pointer-events: none !important;
+  }
+  .mat-button[disabled]{
+      color: #818181 !important;
+  }

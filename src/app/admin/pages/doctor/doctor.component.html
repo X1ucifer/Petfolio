@@ -120,7 +120,7 @@
                                     <tr class="tdrow">
                                         <td>{{i+1}}</td>
                                         <td>
-                                            <div class="imgthumcontainer"><img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;"></div>
+                                            <div class="imgthumcontainer" *ngIf="item.clinic_pic.length != 0"><img _ngcontent-dah-c159="" src="{{item.clinic_pic[0].clinic_pic}}" alt="" style="width: 100%;"></div>
 
                                         </td>
                                         <td>{{item.dr_title}}.{{item.dr_name}}</td>
