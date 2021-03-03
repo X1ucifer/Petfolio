@@ -14,7 +14,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
@@ -25,7 +25,6 @@ import { DoctorLoginComponent } from './login/doctor-login/doctor-login.componen
 import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
 import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
 import {MatStepperModule} from '@angular/material/stepper';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,13 +47,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminModule,
     HomepageModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     RadioButtonModule, TableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
     }),
     GooglePlaceModule,
-    ReactiveFormsModule,
     MatStepperModule
   ],
   providers: [

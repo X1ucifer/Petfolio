@@ -18,15 +18,15 @@
             <div class="card-item">
                 <div class="row">
                     <div class="col-md-3">
-                        <h5 class="form-lable">Tittle:</h5>
-                        <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Tittle">
+                        <h5 class="form-lable">Title:</h5>
+                        <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Title">
                     </div>
                     <div class="col-md-3">
                         <h5 class="form-lable">Image:</h5>
                         <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
                             class="form-control" id="city" placeholder="User type icon">
                         <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-                            100 * 100 (Max 200 kB)</div>
+                            800 * 350 (Max 400 kB)</div>
                             <div class="imgthumcontainer"><img *ngIf="img_path != undefined" src="{{img_path}}"></div>
             
                     </div>
@@ -103,7 +103,7 @@
                 Image
             </th>
             <th>
-                Tittle
+                Title
             </th>
             <th>Created by</th>
                   <th style="width: 163px;text-align:center">

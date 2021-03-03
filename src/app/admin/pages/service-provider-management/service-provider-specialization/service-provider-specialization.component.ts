@@ -108,19 +108,19 @@ export class ServiceProviderSpecializationComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 100 && height == 100) {
+        if (width == 200 && height == 200) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
           } else {
             //alert('Please upload the file below 1 MB');
-            this.showWarning("Please upload the file below 1 MB")
+            this.showWarning("Please upload the file below 64 KB")
             this.imgType.nativeElement.value = "";
           }
         }
         else {
           //alert('Please upload the file size 100 * 100');
-          this.showWarning("Please upload the file size 100 * 100")
+          this.showWarning("Please upload the file size 200 * 200")
           this.imgType.nativeElement.value = "";
         }
       };

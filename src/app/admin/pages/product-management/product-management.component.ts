@@ -7,6 +7,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-management',
@@ -54,7 +55,9 @@ export class ProductManagementComponent implements OnInit {
   sub_cate_list: any;
   subcat_main: any;
   today_deal: boolean;
+  productForm: FormGroup;
   constructor(
+    private formBuilder:FormBuilder,
     private toastr:ToastrManager,
     private router: Router,
     private location: Location,
@@ -62,7 +65,8 @@ export class ProductManagementComponent implements OnInit {
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
-  ) { }
+    ){ 
+   }
 
   ngOnInit(): void {
     this.listpettype();
