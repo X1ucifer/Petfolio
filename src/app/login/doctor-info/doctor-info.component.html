@@ -53,7 +53,7 @@
                                 </mat-form-field>
                                 <div>
                                     <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
-                                        matStepperNext  (click)="create()">Next</button>
+                                        matStepperNext  [disabled]= "Completionarray.length <= 0">Next</button>
                                 </div>
                             </form>
                         </mat-step>
@@ -108,7 +108,7 @@
                                     <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
                                         matStepperPrevious>Back</button>
                                     <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
-                                        matStepperNext  (click)="create()">Next</button>
+                                        matStepperNext  [disabled]= "Experiencearray.length <= 0">Next</button>
                                 </div>
                             </form>
                         </mat-step>
@@ -199,18 +199,20 @@
                                     <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
                                         matStepperPrevious>Back</button>
                                     <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
-                                        matStepperNext (click)="create()">Next</button>
+                                        matStepperNext  [disabled]= "handledarray.length <= 0 || Specializationarray.length <= 0 " (click)="create()">Done</button>
                                 </div>
                             </form>
                         </mat-step>
-                        <mat-step>
+                        <!-- <mat-step>
                             <ng-template matStepLabel>Done</ng-template>
                             <p>You are now done.</p>
                             <div>
                                 <button mat-button matStepperPrevious>Back</button>
-                                <button mat-button (click)="stepper.reset()">Reset</button>
+                                <button mat-button matStepperPrevious>Confirm</button>
+
+                                <button mat-button (click)="stepper.reset()">Reset</button> 
                             </div>
-                        </mat-step>
+                        </mat-step> -->
                     </mat-horizontal-stepper>
                 </div>
 
