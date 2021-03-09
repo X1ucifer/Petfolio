@@ -25,7 +25,8 @@ import { DoctorLoginComponent } from './login/doctor-login/doctor-login.componen
 import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
 import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
 import {MatStepperModule} from '@angular/material/stepper';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -54,8 +55,9 @@ import { ReactiveFormsModule } from '@angular/forms';
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
     }),
     GooglePlaceModule,
-    ReactiveFormsModule,
-    MatStepperModule
+    MatStepperModule,
+    CalendarModule,
+    MultiSelectModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

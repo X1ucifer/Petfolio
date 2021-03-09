@@ -583,4 +583,11 @@ ecomFilter_date(data){
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
   }
 
+  new_doctortime_fetch_dates() {
+    return this.http.get(this.apiUrl + 'new_doctortime/fetch_dates');
+  }
+  new_doctortime_get_time_Details() {
+    return this.http.get(this.apiUrl + 'new_doctortime/get_time_Details');
+  }
+
 }
