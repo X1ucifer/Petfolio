@@ -14,7 +14,7 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
@@ -49,6 +49,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
     AdminModule,
     HomepageModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     RadioButtonModule, TableModule,
     AgmCoreModule.forRoot({
@@ -57,7 +58,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     GooglePlaceModule,
     MatStepperModule,
     CalendarModule,
-    MultiSelectModule
+    MultiSelectModule,
+    MatStepperModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

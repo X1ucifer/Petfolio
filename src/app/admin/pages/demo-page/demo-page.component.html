@@ -42,20 +42,20 @@
     <div class="card-body">
         <div class="card-item">
             <div class="row">
-                <div class="col-md-3">
-                    <h5 class="form-lable">Tittle:</h5>
-                    <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Tittle">
+                <div class="col-md-4">
+                    <h5 class="form-lable">Title:</h5>
+                    <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Title">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-8">
                     <h5 class="form-lable">Description:</h5>
-                    <textarea pInputTextarea [(ngModel)]="Description"></textarea>
+                    <textarea pInputTextarea [(ngModel)]="Description" placeholder="Enter Description" rows="4" cols="50"></textarea>
                 </div>
                 <div class="col-md-4">
                     <h5 class="form-lable">Image:</h5>
                     <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
                         class="form-control" id="city" placeholder="User type icon">
                     <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-                        100 * 100 (Max 200 kB)</div>
+                        200 * 200 (Max 60 kB)</div>
                    
                     <div class="imgthumcontainer"> <img *ngIf="img_path != undefined" src="{{img_path}}"></div>
         
@@ -130,7 +130,7 @@
                         Image
                     </th>
                     <th>
-                        Tittle
+                        Title
                     </th>
                     <th>
                         Description

@@ -210,7 +210,7 @@ export class CategoryManagementComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 200 && height == 120) {
+        if (width == 800 && height == 350) {
           let d = this.selectedimgae.size / 100000;
           console.log(d);
           
@@ -218,13 +218,13 @@ export class CategoryManagementComponent implements OnInit {
             this.addfiles1();
           } else {
             //alert('Please upload the file below 1 MB');
-            this.showWarning('Please upload the file below 1 MB');
+            this.showWarning('Please upload the file below 400 KB');
             this.imgType.nativeElement.value = "";
           }
         }
         else {
           //alert('Please upload the file size 100 * 100');
-          this.showWarning('Please upload the file size 200 * 120');
+          this.showWarning('Please upload the file size 800 * 350');
           this.imgType.nativeElement.value = "";
         }
       };

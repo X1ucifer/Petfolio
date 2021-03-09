@@ -16,7 +16,7 @@
         <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
             class="form-control" id="city" placeholder="User type icon">
         <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-            100 * 100 (Max 200 kB)</div>
+            200 * 200 (Max 64 kB)</div>
         <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
     </div>
 
@@ -25,7 +25,7 @@
       <input type="file" #imgType (change)="fileupload1($event)" id="imgfile" accept=".png, .jpg, .jpeg"
           class="form-control" id="city" placeholder="User type icon">
       <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-        150 * 300 (Max 200 kB)</div>
+        800 * 350 (Max 400 kB)</div>
       <img *ngIf="img_path != undefined" src="{{banner_img}}" style="width: 20px;">
 
   </div>

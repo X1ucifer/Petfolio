@@ -46,7 +46,7 @@ export class EcombannerComponent implements OnInit {
   }
 
   listecomBanner() {
-    console.log("list");
+    //console.log("list");
     this._api.ecombanner_list().subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -79,7 +79,6 @@ export class EcombannerComponent implements OnInit {
         "img_index": 4,
         "show_status": true,
         "date_and_time": "" + new Date(),
-
       }
       console.log(a);
       this._api.ecombanner_add(a).subscribe(
@@ -109,18 +108,18 @@ export class EcombannerComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width > 100 && height > 100) {
+        if (width == 800 && height == 350) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
           } else {
             // alert('Please upload the file below 1 MB');
-            this.showWarning("Please upload the file below 1 MB")
+            this.showWarning("Please upload the file below 400 KB")
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          this.showWarning("Please upload the file size 100 * 100")
+          this.showWarning("Please upload the file size 800 * 350")
           // alert('Please upload the file size 100 * 100');
           this.imgType.nativeElement.value = "";
         }

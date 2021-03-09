@@ -30,7 +30,7 @@
                         <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
                             class="form-control" id="city" placeholder="User type icon">
                         <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-                            100 * 100 (Max 200 kB)</div>
+                            200 * 200 (Max 64 kB)</div>
                             <div class="imgthumcontainer"> <img *ngIf="img_path != undefined" src="{{img_path}}"> </div>
             
                     </div>
@@ -108,11 +108,14 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
 <ng-template pTemplate="body" let-item let-i="rowIndex">
     <tr class="tdrow">
         <td>{{i+1}}</td>
-        <td> <div class="imgthumcontainer">  <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="{{item.product_cate}}">    </div>      </td>
+        <td> 
+            <div class="imgthumcontainer">
+                <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="{{item.product_cate}}">    
+            </div>      
+        </td>
         <td>{{item.product_cate}}</td>
-
-        <td>            {{item.createdAt}}           </td>
-        <td>                {{item.updatedAt}}            </td>
+        <td>{{item.createdAt}}</td>
+        <td>{{item.updatedAt}}</td>
         <td class="act">
             <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"
                 (click)="edit(item)"></i>

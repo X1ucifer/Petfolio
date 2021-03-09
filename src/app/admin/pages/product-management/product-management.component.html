@@ -17,6 +17,7 @@
 <div class="card custom-card">
         <div class="card-body">
             <div class="card-item">
+          
                 <div class="row">
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Vendor:</h5>
@@ -85,9 +86,6 @@
                                 <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
                                     id="imgFile" accept=".png, .jpg, .jpeg">
                                     <span class="img-size">Image Size Should be 200*200</span>
-                                    
-            
-                                
                             </div>
                             <div class="col-md-2">
                                 <div class="imgthumcontainer"><img *ngIf="img_path != undefined" src="{{img_path}}"></div>

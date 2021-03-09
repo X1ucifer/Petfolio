@@ -171,21 +171,6 @@ export class UserTypeComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //////Additional Calling Funcation//////
   fileupload(event) {
     console.log("this.width")
@@ -198,17 +183,17 @@ export class UserTypeComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 150 && height == 150) {
+        if (width == 200 && height == 200) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            alert('Please upload the file below 60 KB');
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 80 * 80');
+          alert('Please upload the file size 200 * 200');
           this.imgType.nativeElement.value = "";
         }
       };
