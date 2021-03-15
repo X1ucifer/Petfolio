@@ -91,6 +91,13 @@ import { NotificationComponent } from './pages/notification/notification.compone
 import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
 import { AgmCoreModule } from '@agm/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { DoctorDashbaordComponent } from './doctor/doctor-dashbaord/doctor-dashbaord.component';
+import { DoctorAppointmentListComponent } from './doctor/doctor-appointment-list/doctor-appointment-list.component';
+import { DoctorAppointmentDetailsComponent } from './doctor/doctor-appointment-details/doctor-appointment-details.component';
+import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
+import { DoctorHeaderComponent } from './doctor/doctor-header/doctor-header.component';
+import { DoctorSidebarComponent } from './doctor/doctor-sidebar/doctor-sidebar.component';
+import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -145,7 +152,14 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     CancelAppointmentComponent,
     PaymentManagementComponent,
     NotificationComponent,
-    SpDetailViewComponent
+    SpDetailViewComponent,
+    DoctorDashbaordComponent,
+    DoctorAppointmentListComponent,
+    DoctorAppointmentDetailsComponent,
+    DoctorProfileComponent,
+    DoctorHeaderComponent,
+    DoctorSidebarComponent,
+    DoctorAdminComponent
   ],
   imports: [
     CommonModule,

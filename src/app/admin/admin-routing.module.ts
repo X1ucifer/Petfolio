@@ -54,6 +54,11 @@ import { PaymentManagementComponent } from './pages/payment-management/payment-m
 import { NotificationComponent } from './pages/notification/notification.component';
 import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
 import { PetServiceAppointmentViewComponent } from '../pet-service-appointment-view/pet-service-appointment-view.component';
+import { DoctorDashbaordComponent } from './doctor/doctor-dashbaord/doctor-dashbaord.component';
+import { DoctorAppointmentListComponent } from './doctor/doctor-appointment-list/doctor-appointment-list.component';
+import { DoctorAppointmentDetailsComponent } from './doctor/doctor-appointment-details/doctor-appointment-details.component';
+import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
+import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -92,6 +97,18 @@ const routes: Routes = [
   { path: 'cancel_appointment', component: CancelAppointmentComponent },
   { path: 'payment_management', component: PaymentManagementComponent },
   { path: 'notification', component: NotificationComponent },
+
+  ///DOCTOR///
+  
+  { path: 'doctor-admin', component: DoctorAdminComponent, 
+    children:[
+      {path:'',redirectTo:'dashbaord',pathMatch:'full'},
+      { path: 'dashbaord', component: DoctorDashbaordComponent },
+      { path: 'appointment-list', component: DoctorAppointmentListComponent },
+      { path: 'appointment-details', component: DoctorAppointmentDetailsComponent },
+      { path: 'doctor-profile', component: DoctorProfileComponent },
+    ]
+  },
 
   ///Master ////
    /////////Banners//////

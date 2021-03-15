@@ -583,4 +583,16 @@ ecomFilter_date(data){
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
   }
 
+
+  //DOCTOR CANCEL APPOINTMENT //
+  doc_cancel_appointment(data){
+    return this.http.post(this.apiUrl +'appointments/edit',data);
+  }
+
+  
+  // DOCTOR APPOINTMENT LIST //
+  doc_list_appointment(id){
+    return this.http.get(this.apiUrl + '')
+  }
+
 }
