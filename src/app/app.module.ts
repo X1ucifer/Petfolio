@@ -25,6 +25,8 @@ import { DoctorLoginComponent } from './login/doctor-login/doctor-login.componen
 import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
 import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { CalendarModule } from 'primeng/calendar';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,9 @@ import {MatStepperModule} from '@angular/material/stepper';
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
     }),
     GooglePlaceModule,
+    MatStepperModule,
+    CalendarModule,
+    MultiSelectModule,
     MatStepperModule
   ],
   providers: [

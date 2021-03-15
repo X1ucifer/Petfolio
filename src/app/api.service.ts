@@ -592,7 +592,13 @@ ecomFilter_date(data){
   
   // DOCTOR APPOINTMENT LIST //
   doc_list_appointment(id){
-    return this.http.get(this.apiUrl + '')
+    return this.http.get(this.apiUrl + '');
+  }
+  new_doctortime_fetch_dates() {
+    return this.http.get(this.apiUrl + 'new_doctortime/fetch_dates');
+  }
+  new_doctortime_get_time_Details() {
+    return this.http.get(this.apiUrl + 'new_doctortime/get_time_Details');
   }
 
 }

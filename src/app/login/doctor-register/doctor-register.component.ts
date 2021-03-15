@@ -19,7 +19,6 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 })
 export class DoctorRegisterComponent implements OnInit {
 
-
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
     
   public handleAddressChange(address: any) {
@@ -92,6 +91,26 @@ export class DoctorRegisterComponent implements OnInit {
   type: any;
   detail: any;
   dropdownslist:any;
+  timelist:any=[
+    {'time': '00.15'},
+    {'time': '00.30'},
+    {'time': '00.45'},
+    {'time': '01.00'},
+    {'time': '01.15'},
+    {'time': '01.30'},
+    {'time': '01.45'},
+  ];;
+  datelist:any=[
+    {'day': 'Sunday'},
+    {'day': 'Monday'},
+    {'day': 'Tuesday'},
+    {'day': 'Wednesday'},
+    {'day': 'Thursday'},
+    {'day': 'Friday'},
+    {'day': 'Saturday'},
+  ];
+  selectdate:any;
+  selecttime:any;
   constructor(
     private toastr:ToastrManager,
     private location: Location,
@@ -109,42 +128,56 @@ export class DoctorRegisterComponent implements OnInit {
         console.log(this.dropdownslist);
       }
     );
+    // this._api.new_doctortime_get_time_Details().subscribe(
+    //   (response: any) => {
+    //     console.log(response.Data);
+    //     this.timelist = response.Data;
+    //     console.log(this.timelist);
+    //   }
+    // );
+    // this._api.new_doctortime_fetch_dates().subscribe(
+    //   (response: any) => {
+    //     console.log(response.Data);
+    //     this.datelist = response.Data;
+    //     console.log(this.datelist);
+    //   }
+    // );
    }
 
   ngOnInit(): void {
-    // this.type = this.getFromLocal('fun_type');
-    // if (this.type == 'edit') {
+    this.type = this.getFromLocal('fun_type');
+    if (this.type == 'edit') {
     
-    //   this.detail = this.getFromLocal('view_detail_data');
-    //   console.log(this.detail)
-    //   this.userid = this.detail.user_id._id;
-    //   this.Email = this.detail.user_id.user_email;
-    //   this.Phone = this.detail.user_id.user_phone;
-    //   this.tittle = this.detail.dr_title;
-    //   this.Name = this.detail.dr_name;
-    //   this.Clinic_Name = this.detail.clinic_name;
-    //   this.address = this.detail.clinic_loc;
-    //   this.Latitude = this.detail.clinic_lat;
-    //   this.Longitude = this.detail.clinic_long;
-    //   this.location_lat = this.detail.clinic_lat;
-    //   this.location_lng = this.detail.clinic_long;
-    //   this.base_lat = this.location_lat;
-    //   this.base_lng = this.location_lng;
-    //   this.Completionarray = this.detail.education_details;
-    //   this.Experiencearray = this.detail.experience_details;
-    //   this.Specializationarray = this.detail.specialization;
-    //   this.handledarray = this.detail.pet_handled;
-    //   this.clinic_arr = this.detail.clinic_pic;
-    //   this.certificate_arr = this.detail.certificate_pic;
-    //   this.govt_arr = this.detail.govt_id_pic;
-    //   this.photo_arr = this.detail.photo_id_pic;
-    // }
+      this.detail = this.getFromLocal('view_detail_data');
+      console.log(this.detail)
+      this.userid = this.detail.user_id._id;
+      this.Email = this.detail.user_id.user_email;
+      this.Phone = this.detail.user_id.user_phone;
+      this.tittle = this.detail.dr_title;
+      this.Name = this.detail.dr_name;
+      this.Clinic_Name = this.detail.clinic_name;
+      this.address = this.detail.clinic_loc;
+      this.Latitude = this.detail.clinic_lat;
+      this.Longitude = this.detail.clinic_long;
+      this.location_lat = this.detail.clinic_lat;
+      this.location_lng = this.detail.clinic_long;
+      this.base_lat = this.location_lat;
+      this.base_lng = this.location_lng;
+      this.Completionarray = this.detail.education_details;
+      this.Experiencearray = this.detail.experience_details;
+      this.Specializationarray = this.detail.specialization;
+      this.handledarray = this.detail.pet_handled;
+      this.clinic_arr = this.detail.clinic_pic;
+      this.certificate_arr = this.detail.certificate_pic;
+      this.govt_arr = this.detail.govt_id_pic;
+      this.photo_arr = this.detail.photo_id_pic;
+    }
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
     }
   }
   cancel() {
-    this.router.navigateByUrl('/doctor_login')
+    this.router.navigateByUrl('/admin/Doctor')
   }
   addSpecialization() {
 
@@ -338,12 +371,9 @@ export class DoctorRegisterComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            this.userid = response.Data.user_details;
+            this.userid = response.Data.user_details._id;
             console.log(this.userid)
             // alert('Added Successfully');
-            this.saveInLocal('userid',this.userid)
-            this.router.navigateByUrl('/doctor_info')
-
             this.showSuccess("Added Successfully")
           } else {
             this.showError(response.Message);
@@ -407,7 +437,7 @@ export class DoctorRegisterComponent implements OnInit {
           if (response.Code === 200) {
             // alert('Added Successfully');
             this.showSuccess("Added Successfully");
-            this.router.navigateByUrl('/admin/Doctor')
+            this.router.navigateByUrl('/admin/dashboard')
           } else {
             this.showError(response.Message);
             //alert(response.Message);
@@ -502,4 +532,3 @@ export class DoctorRegisterComponent implements OnInit {
       this.toastr.warningToastr(msg);
   }
 }
-
