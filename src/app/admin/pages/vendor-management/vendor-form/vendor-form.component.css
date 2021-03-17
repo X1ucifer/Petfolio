@@ -28,3 +28,14 @@
     background-color: #099279;
     color: white;
   }
+
+
+.map {
+    width: 100%;
+    min-height: 50vh;
+    height: 0;
+}
+.map agm-map {
+  height: 100%;
+  width: 100%;
+}

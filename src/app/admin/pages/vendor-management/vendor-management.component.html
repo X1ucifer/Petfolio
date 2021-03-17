@@ -5,7 +5,6 @@
         <div class="search-hero">
             <input class="form-control" type="text" name="search2" style="margin-top: 25px;font-family: FontAwesome;"
                 [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
-
         </div>
     </div>
     <div class="col-md-3">
@@ -19,10 +18,11 @@
     <div class="col-md-3">
         <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
             (click)="filter_date()">Search</button>
-        <button type="button" class="btn btn-primary" style="margin-top: 24px;" (click)="refersh()">Refresh</button>
-
+        <button type="button" class="btn btn-primary mr-2" style="margin-top: 24px;" (click)="refersh()">Refresh</button>
+        <button type="button" class="btn btn-primary mr-2" style="margin-top: 24px;" (click)="addnewVendor()">ADD</button>
     </div>
 </div>
+
 <div class="ven-table">
     <div class="doc-table">
         <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
@@ -93,7 +93,7 @@
                       <button class="btn btn-success btn-sm" (click)="verify('Verified',item._id)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;"  *ngIf="item.profile_verification_status != 'Verified'">Approve</button>
                       <button class="btn btn-danger btn-sm" (click)="verify('Not verified',item._id)" style="padding: 2px; line-height: 1.2;font-size: 12px !Important;" *ngIf="item.profile_verification_status == 'Verified'">Reject</button>
 
-
+                        
                         <!-- <i class="fa fa-check-circle-o" *ngIf="item.profile_verification_status == 'Not verified' "
                             (click)="verify('Verified',item._id)" aria-hidden="true" style="color: rgb(2, 187, 57);"
                             pTooltip="Approve"></i>
@@ -112,6 +112,7 @@
                         <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i> -->
                         <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="del(item._id)"></i> -->
                         <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
+                        <i style="color: #000000;" class="fa fa-list" aria-hidden="true" pTooltip="Product List" (click)="viewProduct(item._id)"></i>
                     </td>
                 </tr>
             </ng-template>

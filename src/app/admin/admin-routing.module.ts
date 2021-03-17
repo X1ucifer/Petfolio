@@ -59,6 +59,7 @@ import { DoctorAppointmentListComponent } from './doctor/doctor-appointment-list
 import { DoctorAppointmentDetailsComponent } from './doctor/doctor-appointment-details/doctor-appointment-details.component';
 import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
 import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.component';
+import { ViewVendorProductsComponent } from './pages/vendor-management/view-vendor-products/view-vendor-products.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -97,6 +98,9 @@ const routes: Routes = [
   { path: 'cancel_appointment', component: CancelAppointmentComponent },
   { path: 'payment_management', component: PaymentManagementComponent },
   { path: 'notification', component: NotificationComponent },
+
+
+  { path: 'view-vendor-products', component: ViewVendorProductsComponent },
 
   ///DOCTOR///
   

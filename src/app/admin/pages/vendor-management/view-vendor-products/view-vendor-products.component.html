@@ -16,12 +16,7 @@
             <div class="card-item">
           
                 <div class="row">
-                    <div class="col-md-4" style="margin-bottom: 15px;">
-                        <h5 class="form-lable">Vendor:</h5>
-                        <p-dropdown [options]="vendor_list" [(ngModel)]="Vendor" placeholder="Select Vendor" optionLabel="bussiness_name"
-                            [showClear]="true"></p-dropdown>
-            
-                    </div>
+
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Category:</h5>
                         <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"

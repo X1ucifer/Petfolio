@@ -23,7 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { DatePipe } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogModule } from 'primeng/dialog';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -98,6 +98,9 @@ import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.c
 import { DoctorHeaderComponent } from './doctor/doctor-header/doctor-header.component';
 import { DoctorSidebarComponent } from './doctor/doctor-sidebar/doctor-sidebar.component';
 import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.component';
+import { AddVendorComponent } from './pages/add-vendor/add-vendor.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ViewVendorProductsComponent } from './pages/vendor-management/view-vendor-products/view-vendor-products.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -159,7 +162,9 @@ import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.compone
     DoctorProfileComponent,
     DoctorHeaderComponent,
     DoctorSidebarComponent,
-    DoctorAdminComponent
+    DoctorAdminComponent,
+    AddVendorComponent,
+    ViewVendorProductsComponent
   ],
   imports: [
     CommonModule,
@@ -190,6 +195,8 @@ import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.compone
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
     }),
     GooglePlaceModule,
+    FilterPipeModule,
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

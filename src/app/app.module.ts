@@ -59,7 +59,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     MatStepperModule,
     CalendarModule,
     MultiSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

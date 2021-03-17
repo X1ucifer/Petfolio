@@ -601,4 +601,21 @@ ecomFilter_date(data){
     return this.http.get(this.apiUrl + 'new_doctortime/get_time_Details');
   }
 
+
+  // PRODUCTS LIST //
+  getlist_vendor_products(id){
+    const data = {
+      user_id:id
+    };
+    return this.http.post(this.apiUrl + 'product_details/getlist_from_vendor_id',data);
+  }
+
+
+  // CREATE VENDOR //
+
+
+  create_Vendor(data){
+    return this.http.post(this.apiUrl + 'product_vendor/create', data);
+  }
+
 }
