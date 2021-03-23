@@ -27,6 +27,8 @@ import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { CalendarModule } from 'primeng/calendar';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {ServiceProviderModule} from './service-provider/service-provider.module';
+import { ServiceProviderComponent } from './service-provider/service-provider.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
     DoctorLoginComponent,
     DoctorRegisterComponent,
     DoctorInfoComponent,
+    ServiceProviderComponent,
    ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     MatStepperModule,
     CalendarModule,
     MultiSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    ServiceProviderModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { DoctorLoginComponent } from './login/doctor-login/doctor-login.component';
 import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
 import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
+import { ServiceProviderComponent } from './service-provider/service-provider.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login', },
@@ -30,6 +31,14 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('./homepage/homepage.module').then(m => m.HomepageModule)
+      },]
+  },
+  {
+    path: 'service_provider', component: ServiceProviderComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import(`./service-provider/service-provider.module`).then(m => m.ServiceProviderModule)
       },]
   },
 ];
