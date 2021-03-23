@@ -1,4 +1,4 @@
-@import "../../../../../assets/css/style.css";
+@import "../../../../assets/css/style.css";
 .add-icon{
     font-size: 12px;
     color: #ffffff;
@@ -28,9 +28,15 @@
     background-color: #099279;
     color: white;
   }
+  select{
+    width: 100%;
+    padding: 10px;
+    border-color: #ddd;
+    margin-bottom: 10px;
+  }
 
 
-.map {
+  .map {
     width: 100%;
     min-height: 50vh;
     height: 0;

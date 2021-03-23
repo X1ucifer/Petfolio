@@ -583,11 +583,39 @@ ecomFilter_date(data){
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
   }
 
+
+  //DOCTOR CANCEL APPOINTMENT //
+  doc_cancel_appointment(data){
+    return this.http.post(this.apiUrl +'appointments/edit',data);
+  }
+
+  
+  // DOCTOR APPOINTMENT LIST //
+  doc_list_appointment(id){
+    return this.http.get(this.apiUrl + '');
+  }
   new_doctortime_fetch_dates() {
     return this.http.get(this.apiUrl + 'new_doctortime/fetch_dates');
   }
   new_doctortime_get_time_Details() {
     return this.http.get(this.apiUrl + 'new_doctortime/get_time_Details');
+  }
+
+
+  // PRODUCTS LIST //
+  getlist_vendor_products(id){
+    const data = {
+      user_id:id
+    };
+    return this.http.post(this.apiUrl + 'product_details/getlist_from_vendor_id',data);
+  }
+
+
+  // CREATE VENDOR //
+
+
+  create_Vendor(data){
+    return this.http.post(this.apiUrl + 'product_vendor/create', data);
   }
 
 }

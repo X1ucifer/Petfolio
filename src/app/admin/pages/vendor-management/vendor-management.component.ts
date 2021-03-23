@@ -6,6 +6,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 @Component({
   selector: 'app-vendor-management',
@@ -13,6 +14,7 @@ import { ToastrManager } from 'ng6-toastr-notifications';
   styleUrls: ['./vendor-management.component.css']
 })
 export class VendorManagementComponent implements OnInit {
+
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
   S_Date: any;
@@ -62,6 +64,10 @@ export class VendorManagementComponent implements OnInit {
   }
   vendor_form(){
     this.router.navigateByUrl('/admin_panel/Vendor_form')
+  }
+
+  addnewVendor(){
+    this.router.navigateByUrl('/admin/Vendor_form');
   }
 
   saveInLocal(key, val): void {
@@ -120,6 +126,11 @@ export class VendorManagementComponent implements OnInit {
   }
   goToLink1(url: string) {
     window.open(url, "_blank");
+  }
+
+  viewProduct(id){
+    this.saveInLocal("Vendor_id",id);
+    this.router.navigateByUrl('admin/view-vendor-products');
   }
 
 

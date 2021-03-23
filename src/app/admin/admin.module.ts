@@ -23,7 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { DatePipe } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogModule } from 'primeng/dialog';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -91,6 +91,16 @@ import { NotificationComponent } from './pages/notification/notification.compone
 import { SpDetailViewComponent } from './pages/service-provider-management/sp-detail-view/sp-detail-view.component';
 import { AgmCoreModule } from '@agm/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { DoctorDashbaordComponent } from './doctor/doctor-dashbaord/doctor-dashbaord.component';
+import { DoctorAppointmentListComponent } from './doctor/doctor-appointment-list/doctor-appointment-list.component';
+import { DoctorAppointmentDetailsComponent } from './doctor/doctor-appointment-details/doctor-appointment-details.component';
+import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
+import { DoctorHeaderComponent } from './doctor/doctor-header/doctor-header.component';
+import { DoctorSidebarComponent } from './doctor/doctor-sidebar/doctor-sidebar.component';
+import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.component';
+import { AddVendorComponent } from './pages/add-vendor/add-vendor.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ViewVendorProductsComponent } from './pages/vendor-management/view-vendor-products/view-vendor-products.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -145,7 +155,16 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     CancelAppointmentComponent,
     PaymentManagementComponent,
     NotificationComponent,
-    SpDetailViewComponent
+    SpDetailViewComponent,
+    DoctorDashbaordComponent,
+    DoctorAppointmentListComponent,
+    DoctorAppointmentDetailsComponent,
+    DoctorProfileComponent,
+    DoctorHeaderComponent,
+    DoctorSidebarComponent,
+    DoctorAdminComponent,
+    AddVendorComponent,
+    ViewVendorProductsComponent
   ],
   imports: [
     CommonModule,
@@ -176,6 +195,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
     }),
     GooglePlaceModule,
+    FilterPipeModule,
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
