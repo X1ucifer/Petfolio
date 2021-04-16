@@ -14,17 +14,29 @@ export class DetailViewComponent implements OnInit {
   view_detail_data: any;
   live_s: any;
   user_id:any;
+
+   doctor_details : any;
+   preview_doctor_Details : any;
+
+
+   doctor_clinic_pic : any ;
+   previous_doctor_clinic_pic : any;
+   doctor_education_details : any;
+   previous_doctor_education_details : any;
+
   constructor(
     private toastr:ToastrManager,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
-  ) { 
+  ) {
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
-    console.log(this.view_detail);
-    console.log(this.view_detail_data);
+    this.doctor_details = this.view_detail_data;
     this.user_id = this.view_detail_data.user_id._id
+
+
+
   }
 
   ngOnInit(): void {
@@ -34,17 +46,25 @@ export class DetailViewComponent implements OnInit {
     console.log(id)
     this._api.live_check(id).subscribe(
       (response: any) => {
-        console.log(response);
-        if (response.Data.length == 0) {
-          this.live_s = 'not_live';
-        }
-        else {
-          this.live_s = 'live';
-        }
-        console.log( this.live_s);
+        this.preview_doctor_Details = response.Data[0];
+        console.log(this.doctor_details);
+        console.log(this.preview_doctor_Details);
+
+
+    ///Comparing Array/////
+    this.doctor_clinic_pic = JSON.stringify(this.doctor_details.clinic_pic);
+    this.previous_doctor_clinic_pic = JSON.stringify(this.preview_doctor_Details.clinic_pic);
+    this.doctor_education_details = JSON.stringify(this.doctor_details.education_details);
+    this.previous_doctor_education_details = JSON.stringify(this.preview_doctor_Details.education_details);
+
       }
     );
+
+
   }
+
+
+
   back() {
     this.location.back();
   }
@@ -112,7 +132,7 @@ export class DetailViewComponent implements OnInit {
             }
           );
         }
-        
+
       }
     );
 

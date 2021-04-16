@@ -22,44 +22,98 @@
                 <aside class="col-12 col-md-12 col-xl-3">
                     <div class="sidebar box shadow pb-0 sticky-column">
 
-                        <div class="avatar avatar--180">
-                            <div class="avatar__box" *ngFor="let item of view_detail_data.clinic_pic">
+                      <div class="" style="color: red;" *ngIf = "doctor_clinic_pic !== previous_doctor_clinic_pic">Changes occur</div>
+                       <div class="" style="color: green;" *ngIf = "doctor_clinic_pic !== previous_doctor_clinic_pic">OLD Data</div>
+                        <div class="avatar avatar--180" *ngIf = "doctor_clinic_pic !== previous_doctor_clinic_pic">
+                            <div class="avatar__box" *ngFor="let item of doctor_details.clinic_pic">
                                 <img src="{{item.clinic_pic}}" class="pro-pic" height="100%"
                                     width="100%">
                             </div>
                         </div>
+
+                        <div class="" style="color: green;" *ngIf = "doctor_clinic_pic !== previous_doctor_clinic_pic">New Data</div>
+                        <div class="avatar avatar--180">
+                          <div class="avatar__box" *ngFor="let item of preview_doctor_Details.clinic_pic">
+                              <img src="{{item.clinic_pic}}" class="pro-pic" height="100%"
+                                  width="100%">
+                          </div>
+                       </div>
+
+
                         <div class="text-center mb-4">
+
+                          <div class="" style="color: red;" *ngIf = "doctor_details.dr_name !== preview_doctor_Details.dr_name">Changes occur</div>
+                          <div class="" style="color: green;" *ngIf = "doctor_details.dr_name !== preview_doctor_Details.dr_name">OLD DATA</div>
+                            <h3 class="title title--h3 sidebar__user-name text-theme"  *ngIf = "doctor_details.dr_name !== preview_doctor_Details.dr_name">
+                            {{doctor_details.dr_title}}.{{doctor_details.dr_name}}</h3>
+                            <div class="" style="color: green;" *ngIf = "doctor_details.dr_name !== preview_doctor_Details.dr_name">NEW DATA</div>
                             <h3 class="title title--h3 sidebar__user-name text-theme">
-                                {{view_detail_data.dr_title}}.{{view_detail_data.dr_name}}</h3>
-                            <ng-container *ngFor="let edu of view_detail_data.education_details">
+                            {{preview_doctor_Details.dr_title}}.{{preview_doctor_Details.dr_name}}</h3>
+
+                            <div class="" style="color: red;" *ngIf = "doctor_education_details !== previous_doctor_education_details">Changes occur</div>
+                            <div class="" style="color: green;" *ngIf = "doctor_education_details !== previous_doctor_education_details">OLD DATA</div>
+                            <div class=""*ngIf = "doctor_education_details !== previous_doctor_education_details">
+                            <ng-container  *ngFor="let edu of doctor_details.education_details">
                                 <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}</div>
                             </ng-container>
-
+                           </div>
+                            <div class="" style="color: green;" *ngIf = "doctor_education_details !== previous_doctor_education_details">NEW DATA</div>
+                            <ng-container *ngFor="let edu of doctor_details.education_details">
+                              <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}</div>
+                          </ng-container>
                         </div>
 
                         <div class="sidebar__info box-inner box-inner--rounded">
                             <ul class="contacts-block">
 
-
-                                <li class="contacts-block__item">
+                          <div class="" style="color: red;" *ngIf = "doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">Changes occur</div>
+                          <div class="" style="color: green;" *ngIf = "doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">OLD DATA</div>
+                                <li class="contacts-block__item" *ngIf = "doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
                                     <i class="font-icon fas fa-phone-alt text-theme"></i>
-                                    {{view_detail_data.user_id.user_phone}}
+                                    {{doctor_details.user_id.user_phone}}
                                 </li>
+
+                                <div class="" style="color: green;" *ngIf = "doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">NEW DATA</div>
                                 <li class="contacts-block__item">
+                                  <i class="font-icon fas fa-phone-alt text-theme"></i>
+                                  {{preview_doctor_Details.user_id.user_phone}}
+                              </li>
+
+
+                              <div class="" style="color: red;" *ngIf = "doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">Changes occur</div>
+                              <div class="" style="color: green;" *ngIf = "doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">OLD DATA</div>
+                                <li class="contacts-block__item" *ngIf = "doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
                                     <span><i class="font-icon fas fa-envelope text-theme"></i>
-                                        {{view_detail_data.user_id.user_email}}</span>
+                                        {{doctor_details.user_id.user_email}}</span>
                                 </li>
+                                <div class="" style="color: green;" *ngIf = "doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">NEW DATA</div>
+                                <li class="contacts-block__item">
+                                  <span><i class="font-icon fas fa-envelope text-theme"></i>
+                                      {{preview_doctor_Details.user_id.user_email}}</span>
+                                </li>
+
 
                             </ul>
                             <div class="text-center mb-4">
                                 <h4 class="mb-1 text-theme"><strong>Profile Stauts:</strong></h4>
-                                <div class="badge badge--aqua d-block mb-2">{{view_detail_data.profile_status}}</div>
+                              <div class="" style="color: red;" *ngIf = "doctor_details.profile_status == preview_doctor_Details.profile_status">Changes occur</div>
+                              <div class="" style="color: green;" *ngIf = "doctor_details.profile_status == preview_doctor_Details.profile_status">OLD DATA</div>
+                                <div class="badge badge--aqua d-block mb-2" *ngIf = "doctor_details.profile_status == preview_doctor_Details.profile_status">{{doctor_details.profile_status}}</div>
+                                <div class="" style="color: green;" *ngIf = "doctor_details.profile_status == preview_doctor_Details.profile_status">NEW DATA</div>
+                                <div class="badge badge--aqua d-block mb-2">{{preview_doctor_Details.profile_status}}</div>
+
+
                             </div>
 
                             <div class="text-center">
                                 <h4 class="mb-1 text-theme"><strong>Clinic Name & Location</strong></h4>
-                                <h3 class="mb-0"><strong>{{view_detail_data.clinic_name}}</strong></h3>
-                                <p> {{view_detail_data.clinic_loc}}</p>
+                                <div class="" style="color: red;" *ngIf = "doctor_details.clinic_name == preview_doctor_Details.clinic_name">Changes occur</div>
+                                <div class="" style="color: green;" *ngIf = "doctor_details.clinic_name == preview_doctor_Details.clinic_name">OLD DATA</div>
+                                <h3 class="mb-0" *ngIf = "doctor_details.clinic_name == preview_doctor_Details.clinic_name"><strong>{{doctor_details.clinic_name}}</strong></h3>
+                                <p *ngIf = "doctor_details.clinic_name == preview_doctor_Details.clinic_name">{{doctor_details.clinic_loc}}</p>
+                                <div class="" style="color: green;" *ngIf = "doctor_details.clinic_name == preview_doctor_Details.clinic_name">NEW DATA</div>
+                                <h3 class="mb-0"><strong>{{preview_doctor_Details.clinic_name}}</strong></h3>
+                                <p> {{preview_doctor_Details.clinic_loc}}</p>
                             </div>
 
 

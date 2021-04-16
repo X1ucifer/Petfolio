@@ -101,6 +101,7 @@ import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.compone
 import { AddVendorComponent } from './pages/add-vendor/add-vendor.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ViewVendorProductsComponent } from './pages/vendor-management/view-vendor-products/view-vendor-products.component';
+import { PayemntvendorComponent } from './pages/payemntvendor/payemntvendor.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -164,7 +165,8 @@ import { ViewVendorProductsComponent } from './pages/vendor-management/view-vend
     DoctorSidebarComponent,
     DoctorAdminComponent,
     AddVendorComponent,
-    ViewVendorProductsComponent
+    ViewVendorProductsComponent,
+    PayemntvendorComponent
   ],
   imports: [
     CommonModule,

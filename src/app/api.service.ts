@@ -157,7 +157,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
   }
   doctor_details_delete(data) {
-    return this.http.post(this.apiUrl + 'doctordetails/delete', data);
+    return this.http.post(this.apiUrl + 'doctordetails/admin_delete', data);
   }
   doctor_detailsfilter_date(data) {
     return this.http.post(this.apiUrl + 'doctordetails/filter_date', data);
@@ -218,7 +218,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'userdetails/fetch_all_details', data);
   }
   user_delete(data) {
-    return this.http.post(this.apiUrl + 'userdetails/delete', data);
+    return this.http.post(this.apiUrl + 'userdetails/admin_delete', data);
   }
   user_create(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
@@ -381,7 +381,7 @@ notification_send(data){
 
 }
 live_check(data){
-  return this.http.post(this.apiUrl + 'livedoctordetails/fetch_by_user_id', data);
+  return this.http.post(this.apiUrl + 'temdoctordetails/fetch_by_user_id', data);
 }
 livedoctordetails_create(data){
   return this.http.post(this.apiUrl + 'livedoctordetails/create', data);
@@ -589,7 +589,7 @@ ecomFilter_date(data){
     return this.http.post(this.apiUrl +'appointments/edit',data);
   }
 
-  
+
   // DOCTOR APPOINTMENT LIST //
   doc_list_appointment(id){
     return this.http.get(this.apiUrl + '');
