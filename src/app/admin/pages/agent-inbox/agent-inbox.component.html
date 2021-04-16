@@ -1,0 +1,50 @@
+<!-- <app-newallocation> </app-newallocation> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-lg-3">
+            <label for="bankList"> Select Bank Name</label>
+            <select [(ngModel)]="bankname" class="form-control">
+                <option value="">Choose</option>
+                <option *ngFor="let item of bankTypeList" [value]="item.y">{{item.y}}</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-sm-12 col-lg-3">
+            <label for="bankList"> Select Portfolio type</label>
+            <select [(ngModel)]="portfolio_type" class="form-control">
+                <option value="">Choose</option>
+                <option *ngFor="let item of portfolioTypeList" [value]="item.portfolio_type">{{item.portfolio_type}}</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-sm-12 col-lg-3">
+            <label for="bankList"> Select Allocation type</label>
+            <select [(ngModel)]="allocation_type" class="form-control">
+                <option value="">Choose</option>
+                <option value="new_allocation">New Allocation</option>
+                <option value="re_allocation">Re Allocation</option>
+                <option value="temp_allocation">Temporary Allocation</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-sm mb-4 mr-4" (click)="goto1()" style="background-color: rgb(60, 112, 255); color:white;">Work List</button>
+                <button class="btn btn-sm mb-4 mr-4" (click)="goto2()" style="background-color: rgb(60, 112, 255); color:white;">Allocation</button>
+                <button class="btn btn-sm mb-4 mr-4" (click)="goto3()" style="background-color: rgb(60, 112, 255); color:white;">Re allocation</button>
+                <!-- <button class="btn btn-sm btn-success mb-4" (click)="goto2()">Reallocate</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ag-grid-angular #agGrid 
+                style="width: auto; height: 500px;"
+                class="ag-theme-alpine"
+                [rowData]="dataList"
+                [rowSelection]="'multiple'"
+                [columnDefs]="AllocationcolumnDefs"
+                [pagination]="true">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>

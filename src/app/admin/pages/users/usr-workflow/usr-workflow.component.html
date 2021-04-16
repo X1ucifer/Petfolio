@@ -1,0 +1,114 @@
+<!-- <h4 class="title">Follow up Save</h4> -->
+<mat-icon style="text-align: right;width: 100%;margin-bottom: 13px;margin-top: -10px;" mat-button (click)="close()">close</mat-icon>
+      <div class="card-box">
+        <h4 class="title-f">Workflow</h4>
+        <div class="row" style="padding: 0px 0px 23px 10px;">
+          <div class="col-md-12">
+            <form [formGroup]="workflowForm">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <h5 class="form-lable">Action:</h5>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="Close WorkFlow" (change)="getMainaction($event)">
+                    <label class="custom-control-label" for="customRadioInline1">Close WorkFlow</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="Initiate Workflow" (change)="getMainaction($event)">
+                    <label class="custom-control-label" for="customRadioInline2">Initiate Workflow</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input" value="Change Workflow" (change)="getMainaction($event)">
+                    <label class="custom-control-label" for="customRadioInline3">Change Workflow</label>
+                  </div>
+                  <!-- <div class="p-field-radiobutton">
+                      <p-radioButton name="city" value="Chicago"  inputId="city1"></p-radioButton>
+                      <label for="city1">Close Workflow</label>
+                      <p-radioButton name="city" value="Los Angeles"  inputId="city2"></p-radioButton>
+                      <label for="city2">Initiate Workflow</label>
+                      <p-radioButton name="city" value="New York" inputId="city3"></p-radioButton>
+                      <label for="city3">Change Workflow</label>
+                  </div> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-3">
+                  <h5 class="form-lable">Workflow Action:</h5>
+                  <select formControlName="action_workflow" class="form-control">
+                    <option *ngFor="let item of types" [value]="item.y">{{item.y}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <h5 class="form-lable">To Group:</h5>
+                  <select formControlName="togroup_workflow" class="form-control">
+                    <option *ngFor="let item of types1" [value]="item.y">{{item.y}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <h5 class="form-lable">To Collector:</h5>
+                  <select formControlName="tocollector_workflow" class="form-control">
+                    <option *ngFor="let item of types2" [value]="item.y">{{item.y}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <h5 class="form-lable">Reason:</h5>
+                  <select formControlName="reason_workflow" class="form-control">
+                    <option *ngFor="let item of types3" [value]="item.y">{{item.y}}</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <h5 class="form-lable">Notes:</h5>
+                  <textarea pInputTextarea formControlName="notes_workflow"></textarea>
+                </div>
+              </div>
+            </form>
+            <div class="col-md-12 mt-20">
+              <button type="button" class="btn btn-primary" (click)="addWorkFlow()">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+      <a (click)="table_v = !table_v" class="link-a">View Workflow History</a>
+      <ng-container *ngIf="table_v == true">
+       
+        <h4 class="title">Workflow History</h4>
+        <div class="doc-table">
+          <div class="card-box" style="margin: 10px;"> <p-table [value]="workFlowList | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+              [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+              <ng-template pTemplate="header">
+                  <tr style="text-align: center;">
+                    <th>Date</th>
+                    <th>Collector </th>
+                    <th>Group</th>
+                    <th>Workflow</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                  </tr>
+                  <tr style="text-align: center;" *ngFor="let item of workFlowList">
+                    <td>{{item.createdAt | date}}</td>
+                    <td>{{item.tocollector_workflow}}</td>
+                    <td>{{item.togroup_workflow}}</td>
+                    <td>{{item.main_action_workflow}}</td>
+                    <td>{{item.reason_workflow}}</td>
+                    <td>{{item.action_workflow}}</td>
+                  </tr>
+              </ng-template>
+           </p-table>  </div>
+          </div>
+          <br>
+         
+      </ng-container>
+
+
+
+
+
+
+
+
+
+ 
+  
+  

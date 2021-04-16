@@ -1,0 +1,91 @@
+<h4 class="title">Access Rights</h4>
+<div class="card-box">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-6">
+            <h5 class="form-lable">Select User:</h5>
+            <p-dropdown [options]="typ" placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown>
+        </div>
+        <!-- <div class="col-md-6">
+            <h5 class="form-lable">Currency:</h5>
+            <input type="text" pInputText [(ngModel)]="Currency" placeholder="Currency">
+        </div> -->
+
+        <!-- <div class="col-md-12 mt-20">
+            <button type="button" class="btn btn-primary">Add</button>
+        </div> -->
+    </div>
+</div>
+<div class="card-box">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-12">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                style="    width: auto;margin-right: 7px;">
+            <label for="vehicle1"> Dashboard</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle1" value="Client"  [(ngModel)]="Cli" 
+                style="    width: auto;margin-right: 7px;">
+            <label for="vehicle2"> Client Master</label><br>
+            <div class="card-box" *ngIf="Cli == 'Client'">
+                <div class="row" style="padding: 0px 0px 23px 10px;">
+                    <div class="col-md-12">
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle1">Create Client Type</label><br>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle1">Create Portfolio</label><br>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle1">Create Product</label><br>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle1"> Create Document Type</label><br>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle1"> Clients Management</label><br>
+                        <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle2"> Product Management</label><br>
+                        <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle3"> Bucket management</label><br>
+                        <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle4"> Table/Field Creation</label><br>
+                        <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle4"> Client Status Marking</label><br>
+
+                    </div>
+                </div>
+            </div>
+            <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike"
+                style="    width: auto;margin-right: 7px;">
+            <label for="vehicle3"> User Master</label><br>
+            <div class="card-box">
+                <div class="row" style="padding: 0px 0px 23px 10px;">
+                    <div class="col-md-12">
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle1"> Create User Role</label><br>
+                        <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle2"> Create User Group</label><br>
+                        <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle3"> User Management</label><br>
+                        <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                            style="    width: auto;margin-right: 7px;">
+                        <label for="vehicle4"> User Status Marking</label><br>
+                    </div>
+                </div>
+            </div>
+            <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                style="    width: auto;margin-right: 7px;">
+            <label for="vehicle4"> Access Rights</label><br>
+            <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                style="    width: auto;margin-right: 7px;">
+            <label for="vehicle4"> Master</label><br>
+
+        </div>
+    </div>
+</div>

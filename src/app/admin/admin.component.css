@@ -4,10 +4,10 @@
     margin: 10px;
     border: 1px solid #555;
 }
-/* :host::ng-deep .mat-drawer-content{
-    background-color: white;
-} */
+:host::ng-deep .mat-drawer-content{
+    /* background: #8196c282; */
+}
 
 :host::ng-deep .mat-drawer-container{
-    background-color:#f4fbf4;
+    background-color:transparent !important;
 }

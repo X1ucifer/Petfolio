@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <p>ADD New Settlement</p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="SettlementForm">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="">Settlement ID</label>
+                        <input type="text" placeholder="Settlement ID" class="form-control" formControlName="_id" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Settlement Type</label>
+                        <select formControlName="settlement_type" class="form-control" (change)="getSettlementType($event)">
+                            <option value="">Choose</option>
+                            <option value="OTS">One Time Settlement</option>
+                            <option value="MTS">Multi Time Settlement</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Account ID</label>
+                        <input disabled type="text" placeholder="Account" class="form-control" formControlName="account_id">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Current total</label>
+                        <input type="number" placeholder="Current total" class="form-control" formControlName="current_total">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Payment Date</label>
+                        <input type="date" placeholder="Payment Date" class="form-control" formControlName="payment_date">
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                        <label for="">Amount</label>
+                        <input type="number" placeholder="Amount" class="form-control" formControlName="amount">
+                    </div>
+                    <div class="form-group col-md-4" *ngIf="showOTSFS">
+                        <label for="">No of Installments</label>
+                        <input type="number" placeholder="No of Installments" class="form-control" formControlName="no_of_installments">
+                    </div>
+                    <div class="form-group col-md-4" *ngIf="showOTSFS">
+                        <label for="">First Installment</label>
+                        <input type="number" placeholder="First Installment" class="form-control" formControlName="fst_installment">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Approval Status</label>
+                        <select formControlName="approval_status" class="form-control">
+                            <option value="">Choose</option>
+                            <option value="proposed">Proposed</option>
+                            <option value="pending">Pending</option>
+                            <option value="approval">Approval</option>
+                            <option value="decline">Decline</option>
+                            <option value="void">Void</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Details</label>
+                        <input type="text" placeholder="Details" class="form-control" formControlName="details_notes">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="file" class="custom-file-input" id="customFile" (change)="getFile($event)">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <p *ngIf="uploaded">File Uploaded</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-sm btn-success" (click)="editapprovalRequest()" *ngIf="addmode">Edit</button>
+                    <button class="btn btn-sm btn-success" (click)="addNewSettlement()" *ngIf="editmode">Update</button>
+                    <button class="btn btn-sm btn-success" (click)="cancel()" *ngIf="editmode">Cancel</button>
+                </div>
+            </form>        
+        </div>
+    </div>
+</div>    
+
+<div class="container-fluid">
+    <hr>
+    <div class="row" style="text-align: end; margin:10px;">
+        <p style="font-size: 14px;"><b>Settlement List</b></p>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ag-grid-angular #agGrid 
+                    style="width: auto; height: 300px;"
+                    class="ag-theme-alpine"
+                    [rowData]="SettlementList"
+                    [rowSelection]="'multiple'"
+                    [columnDefs]="SettlementcolumnDefs"
+                    [pagination]="true">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<!-- <h4 class="title">RPO/Auction/PLA Details</h4> -->
+<br>
+<div class="row" style="margin-left: 0px;margin-right:0px;">
+    <!-- <div class="col-md-4">
+        <div class="search-hero">
+            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+        </div>
+    </div> -->
+    <div class="col-md-5">
+        <h5 class="form-lable">Loan Number: <span>1234568908765432</span></h5>
+    </div>
+    <div class="col-md-5">
+        <h5 class="form-lable">Customer Name: <span>Mohammed Imthiyas</span></h5>
+    </div>
+    <!-- <div class="col-md-2 text-right">
+        <button type="button" class="btn btn-primary mr-0" (click)="show2()">Add</button>
+    </div> -->
+</div>
+<br>
+<h4 class="title-f">Asset Header Details</h4>
+<div class="doc-table">
+    <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+        [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+        <ng-template pTemplate="header">
+            <tr style="text-align: center;">
+                <th>S.No</th>
+                <th>Loan Number</th>
+                <th>Agreement ID</th>
+                <th>Agreement Number</th>
+                <th>Plate Number</th>
+                <th>Code</th>
+                <th>Emirate</th>
+                <th>Colour</th>
+                <th>Type of Car</th>
+                <th>Model</th>
+                <th>Bank</th>
+            </tr>
+            <tr>
+                <td colspan="11">No Record Found</td>
+            </tr>
+            
+        </ng-template>
+     </p-table>  </div>
+</div>
+<br>
+<h4 class="title-f">RPO Details</h4>
+<div class="doc-table doc-1">
+    <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+        [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+        <ng-template pTemplate="header">
+            <tr style="text-align: center;">
+                <th>S.No</th>
+                <th>Loan Number</th>
+                <th>Agreement ID</th>
+                <th>Agreement Number</th>
+                <th>Requested By</th>
+                <th>Requested Date</th>
+                <th>Processor Name</th>
+                <th>Action Code</th>
+                <th>Unit ID</th>
+                <th>Remarks</th>
+                <th>Field Collector</th>
+                <th>RPO/PLA Number</th>
+                <th>RPO/PLA Date</th>
+                <th>RPO/PLA Released Date</th>
+                <th>Release Requested By</th>
+                <th>Vechicle Tag Number/Cheque Number</th>
+                <th>Stockyard/PLA Remarks</th>
+                <th>Date/Cheque Bounce Date</th>
+                <th>Auction/Case File Status</th>
+                <th>Auction/Case File Date</th>
+                <th>Auction Company/Police Station</th>
+            </tr>
+            <tr>
+                <td colspan="21">No Record Found</td>
+            </tr>
+            
+        </ng-template>
+     </p-table>  </div>
+</div>

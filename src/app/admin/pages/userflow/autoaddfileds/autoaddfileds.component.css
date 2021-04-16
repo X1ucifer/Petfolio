@@ -1,0 +1,24 @@
+@import "../../../../../assets/css/style.css";
+
+/* :host::ng-deep .doc-table .ui-table table {
+    width: 1684px !important;
+} */
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+:host::ng-deep .doc-table .ui-table table {
+    width: 1700px !important;
+}
+
+table, th, td {
+    /* border: 1px solid #c8c8c8; */
+    border-bottom: 1px solid #c8c8c8 !important;
+    border-collapse: collapse;
+    background-color: white;
+    padding: 3px;
+}
+
+.heading{
+    display:flex;
+    justify-content: space-between;
+}

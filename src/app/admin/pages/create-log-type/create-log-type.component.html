@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a>Client</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Log Type</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <form [formGroup]="LogTypeForm" style="margin: 10px;">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="">Log Type</label>
+                            <input type="text" class="form-control" formControlName="logtype">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="">Bank Name</label>
+                            <select class="form-control" formControlName="bank_id">
+                                <option value="">Choose</option>
+                                <option *ngFor="let item of banknameList" [value]="item.y">{{item.y}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="">Status</label>
+                            <select formControlName="status" class="form-control">
+                                <option value="">Choose</option>
+                                <option value="true">Active</option>
+                                <option value="false">In active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-sm btn-success mr-1" (click)="addlogtype()" *ngIf="addmode">ADD</button>
+                        <button class="btn btn-sm btn-dark mr-1" (click)="editlogtype()" *ngIf="addmode">EDIT</button>
+                        <button class="btn btn-sm btn-info mr-1" (click)="updatelogtype()" *ngIf="editmode">UPDATE</button>
+                        <button class="btn btn-sm btn-primary mr-1" (click)="cancel()" *ngIf="editmode">Cancel</button>
+                        <button class="btn btn-sm btn-danger mr-1" (click)="deletelogtype()">DELETE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ag-grid-angular #agGrid 
+                style="width: auto; height: 500px;"
+                class="ag-theme-alpine"
+                [rowData]="LogTypeList"
+                [rowSelection]="'multiple'"
+                [columnDefs]="LogTypecolumnDefs"
+                [pagination]="true">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>

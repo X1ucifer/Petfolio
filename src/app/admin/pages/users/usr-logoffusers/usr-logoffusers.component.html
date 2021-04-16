@@ -1,0 +1,78 @@
+<!-- <h4 class="title">Logoff Users</h4> -->
+    
+    <!-- <div class="row">
+        <div class="col-md-5">
+            <h5 class="form-lable">Loan Number: <span>1234568908765432</span></h5>
+        </div>
+        <div class="col-md-5">
+            <h5 class="form-lable">Customer Name: <span>Mohammed Imthiyas</span></h5>
+        </div>
+        <div class="col-md-2 text-right">
+            <button type="button" class="btn btn-primary mr-0" (click)="show2()">Add</button>
+        </div>
+    </div>
+    <br> -->
+    <div class="doc-table">
+        <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+    
+            <ng-template pTemplate="header">
+                <tr class="thhead">
+                    <th class="th-1">
+                        S.No
+                    </th>
+                    <th>
+                        User ID
+                    </th>
+                    <th>
+                        User Name
+                    </th>
+    
+                    <th>
+                      Login Date & Time
+                  </th>
+                <th style="text-align: center;">
+                  Status
+              </th>
+                  
+                    <!-- <th style="width: 110px;text-align:center">
+                        Action
+                    </th> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-i="rowIndex">
+                <tr class="tdrow">
+                    <td>{{i+1}}</td>
+                    <td>ASDFGHJKL</td>
+                    <td>Vignesh</td>
+                    <td>7-10-2020,10:15</td>
+                    <td><input type="checkbox"></td>
+                    <!-- <td class="act">
+                        <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+                        <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                        <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
+                    </td> -->
+                </tr>
+            </ng-template>
+         </p-table>  </div>
+    
+    </div>
+    
+    <!-- <div class="doc-table">
+      <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+          [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+          <ng-template pTemplate="header">
+      <tr style="text-align: center;">
+        <td> <button class="btn btn-primary mr-0" style="width: 100%;">Address Details</button> </td>
+        <td> <button class="btn btn-primary mr-0" style="width: 100%;">Bank Details</button> </td>
+        <td> <button class="btn btn-primary mr-0" style="width: 100%;">Income Details</button> </td>
+        <td> <button class="btn btn-primary mr-0" style="width: 100%;">Liability Details</button> </td>
+        <td> <button class="btn btn-primary mr-0" style="width: 100%;">Esisting Asset Details</button> </td>
+        <td> <button class="btn btn-primary mr-0" style="width: 100%;">Credit Card Details</button> </td>
+      </tr>
+          </ng-template>
+       </p-table>  </div>
+    </div> -->
+    

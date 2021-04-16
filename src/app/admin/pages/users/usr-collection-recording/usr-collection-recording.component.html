@@ -1,0 +1,197 @@
+<!-- <h4 class="title">Follow up Save</h4> -->
+<mat-icon style="text-align: left;width: 100%;margin-bottom: 13px;margin-top: -10px;" mat-button (click)="close()">arrow_back_ios</mat-icon>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="title-f">Collection Recording</h4>
+        <div class="card-box">
+            <h4 class="title-f">Account Information</h4>
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <div class="col-md-3">
+                    <h5 class="form-lable">Loan No./Account No.:</h5>
+                    <input type="text" pInputText placeholder="" value="0987654123" disabled>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Customer Name:</h5>
+                    <input type="text" pInputText placeholder="" value="Vignesh" disabled>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Customer ID:</h5>
+                    <input type="text" pInputText placeholder="" value="9865474" disabled>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Branch:</h5>
+                    <input type="text" pInputText placeholder="" value="Chennai" disabled>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Product:</h5>
+                    <input type="text" pInputText placeholder="" value="Bike" disabled>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">DPD>=:</h5>
+                    <input type="text" pInputText placeholder="" value="20" disabled>
+                </div>
+
+                <!-- <div class="col-md-3 mt-20">
+                  <button type="button" class="btn btn-primary">Save</button>
+             </div> -->
+
+            </div>
+        
+            <h4 class="title-f">Collection Information</h4>
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <form [formGroupName]="CollectioninfoForm">
+                  <div class="form-row">
+                    <div class="col-md-3">
+                        <h5 class="form-lable">Payment Type:</h5>
+                        <input type="text" pInputText placeholder="" value="" formControlName="payment_type_collection_info">
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="form-lable">Book Code:</h5>
+                        <input type="text" pInputText placeholder="" value="" formControlName="bookcode_collection_info">
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="form-lable">Payment Date :</h5>
+                        <input type="text" pInputText placeholder="" value="" formControlName="payment_date_collection_info">
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="form-lable">Receipt No:</h5>
+                        <input type="text" pInputText placeholder="" value="" formControlName="reciept_no_collection_info">
+                    </div><div class="col-md-3">
+                        <h5 class="form-lable">Remarks:</h5>
+                        <input type="text" pInputText placeholder="" value="" formControlName="remarks_collection_info">
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="form-lable">Total Amount Overdue:</h5>
+                        <input type="text" pInputText placeholder="" value="" formControlName="total_amount_collection_info">
+                    </div>
+                  </div>
+                </form>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                          <!-- <div class="search-hero">
+                              <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                                  [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+                          </div> -->
+                      </div>
+                      <div class="col-md-8 text-right">
+                          <button type="button" class="btn btn-primary mr-0"> Calculate Total</button> 
+                      </div>
+                  </div>
+                    <div class="doc-table">
+                        <div class="card-box"> <p-table [value]="CollectionInfoList | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+                            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            [globalFilterFields]="['type']">
+                            <ng-template pTemplate="header">
+                                <tr style="text-align: center;">
+                                    <th>S.No</th>
+                                    <th>Installment Type </th>
+                                    <th>Cheque/DD No</th>
+                                    <th>Bank Details</th>
+                                    <th>Branch Details</th>
+                                    <th>Currency</th>
+                                    <th>Installment Amount</th>
+                                    <th>Installment Date</th>
+                                </tr>
+                                <tr style="text-align: center;">
+                                    <td>1</td>
+                                    <td></td>
+                                </tr>
+                            </ng-template>
+                         </p-table>  </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<a (click)="table_v = !table_v" class="link-a">View Collection Recording List</a>
+<ng-container *ngIf="table_v == true">
+
+    <h4 class="title">Collection Recording List</h4>
+  
+    <div class="doc-table">
+        <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+                <tr style="text-align: center;">
+                    <th>S.No</th>
+                    <th>Collection code</th>
+                    <th>Date of Payment</th>
+                    <th>Amount</th>
+                </tr>
+                <tr style="text-align: center;">
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </ng-template>
+         </p-table>  </div>
+    </div>
+    <br>
+
+</ng-container>
+
+<!-- <div class="row" style="padding: 0px 0px 23px 10px;">
+    <div class="col-md-3">
+      <h5 class="form-lable">Loan No./Account No.:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Customer Name:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">DPD>=:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Card Number:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Branch:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Product:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Bucket:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Queue:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Car Type:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">POS / Curr Acc Bal:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Sub Product Code:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Scheme:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    
+    <div class="col-md-3 mt-20">
+            <button type="button" class="btn btn-primary">Save</button>
+       </div>
+
+  </div> -->

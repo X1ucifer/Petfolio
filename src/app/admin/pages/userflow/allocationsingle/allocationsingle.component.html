@@ -1,0 +1,161 @@
+<div>
+  <div class="row">
+    <div class="col-md-4">
+        <h4 class="title">Allocation</h4>
+    </div>
+    <div class="col-md-8 text-right">
+    </div>
+  </div>
+</div>
+
+
+<div class="card-box doc-table">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Account Details</h4>
+      <input type="text" class="form-control" placeholder="Search..." style="height: 35px;"><br>
+      <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="50"
+        [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+        <ng-template pTemplate="header">
+          <tr style="text-align: center;" class="thhead">
+            <th style="width: 100px;">Action</th>
+            <th style="width: 50px;">S.No</th>
+            <th sstyle="width: 100px;">Account No</th>
+            <th>Customer No</th>
+            <th>Name</th>
+            <th>Portfolio</th>
+            <th>Phone Number</th>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-i="rowIndex">
+          <tr class="tdrow">
+            <td class="act">
+              <input type="checkbox">
+            </td>
+            <td style="text-align: center;">{{i+1}}</td>
+            <td style="width: 100px;"><a (click)="showPositionDialog()" style="color: #0e69dd;">1.26472587459</a></td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+          </tr>
+        </ng-template>
+       </p-table>  </div>
+    </div>
+    <div class="col-md-6">
+      <h4>User Details</h4>
+      <select name="cars" id="cars" class="form-control" style="height: 35px;">
+        <option value="volvo">Manager</option>
+        <option value="saab">Sub-Manager</option>
+        <option value="mercedes">User</option>
+        <option value="audi">Data Entry</option>
+      </select><br>
+      <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="50"
+        [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+        <ng-template pTemplate="header">
+          <tr style="text-align: center;" class="thhead">
+            <th style="width: 100px;">Action</th>
+            <th style="width: 50px;">S.No</th>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Assigned Count</th>
+        </ng-template>
+        <ng-template pTemplate="body" let-item let-i="rowIndex">
+          <tr class="tdrow">
+            <td class="act">
+              <input type="checkbox">
+            </td>
+            <td style="text-align: center;">{{i+1}}</td>
+            <td style="width: 100px;"><a (click)="showPositionDialog()" style="color: #0e69dd;">1.26472587459</a></td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+            <td>Lorem ipsum.</td>
+          </tr>
+        </ng-template>
+       </p-table>  </div>
+    </div>
+  </div>
+</div>
+
+
+<p-dialog header="Account Details" [(visible)]="displayPosition" position="center" [modal]="true"
+  [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <div class="">
+    <div class="row pr-hd">
+      <div class="col-md-2 col-xs-12 col-sm-6 col-lg-2 pr-img">
+        <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo"
+          class="img">
+      </div>
+      <div class="col-md-10 col-xs-12 col-sm-6 col-lg-10">
+        <h2 style="font-size: 12px;margin-bottom: 0px;line-height: 20px;">John Doe</h2>
+        <p style="font-size: 12px;color: #d0d0d0">Acc.No: 1.26472587459</p>
+        <a class="pr-v" style="margin-right: 0px;" (click)="cus360()">View 360&#176;</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="pr-det" style="padding-left: 20px;">
+          <tr>
+            <th>Ageing:</th>
+            <td>731+</td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td>test@gmail.com</td>
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td>test@gmail.com</td>
+          </tr>
+          <tr>
+            <th>Nationality:</th>
+            <td>Sri Lanka</td>
+          </tr>
+
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="pr-det" style="padding-left: 20px;">
+          <tr>
+            <th>ID type:</th>
+            <td>Emirates ID</td>
+          </tr>
+          <tr>
+            <th>ID No:</th>
+            <td>7841xxx408479</td>
+          </tr>
+          <tr>
+            <th>Status:</th>
+            <td>INACTIVE</td>
+          </tr>
+          <!-- <tr>
+            <th>Branch:</th>
+            <td>Mizher Mall</td>
+          </tr>
+          <tr>
+            <th>Branch Code:</th>
+            <td>1244</td>
+          </tr>
+          <tr>
+            <th>Sub Products:</th>
+            <td>NA</td>
+          </tr>
+          <tr>
+            <th>CIF Number:</th>
+            <td>NA</td>
+          </tr>
+          <tr>
+            <th>PTP Status:</th>
+            <td>NA</td>
+          </tr> -->
+          <tr>
+            <th>Overdue Amount:</th>
+            <td>25,00000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</p-dialog>

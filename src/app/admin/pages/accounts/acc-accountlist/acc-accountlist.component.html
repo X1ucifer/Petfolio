@@ -1,0 +1,234 @@
+<div style="margin-right: 25px;">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="title">Worklist</h4>
+      <i class="fa fa-download" aria-hidden="true"
+        style="color: #717c88;float: right;margin-top: -43px;margin-right: 6px;padding: 6px;background: #d0d0d0;border-radius: 3px;"></i>
+
+      <i class="fa fa-download" aria-hidden="true"
+        style="color: #717c88;float: right;margin-top: -43px;margin-right: 6px;padding: 6px;background: #d0d0d0;border-radius: 3px;"></i>
+
+      <i class="fa fa-download" aria-hidden="true"
+        style="color: #717c88;float: right;margin-top: -43px;margin-right: 6px;padding: 6px;background: #d0d0d0;border-radius: 3px;"></i>
+
+      <!-- <div class="search-hero">
+      <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;" [(ngModel)]="searchQR"
+        autocomplete="off" placeholder="&#xf002; Search...">
+    </div> -->
+    </div>
+    <!-- <div class="col-md-4 text-right" style="margin-bottom: 10px;">
+    <button type="button" class="btn btn-primary mr-0" (click)="client_form()"><i class="fa fa-plus"
+        aria-hidden="true"></i> Add</button>
+  </div> -->
+  </div>
+
+  <div class="row" style="margin-bottom: 10px;">
+
+    <div class="col-md-6">
+      <div class="p-col-12 p-md-4">
+        <div class="p-inputgroup">
+          <i class="fa fa-search" aria-hidden="true"
+            style="color: #717c88;margin-top: -43px;margin-right: 6px;padding: 6px;background: #d0d0d0;border-radius: 3px;"></i>
+
+          <i class="fa fa-sort" aria-hidden="true"
+            style="color: #717c88;margin-top: -43px;margin-right: 6px;padding: 6px;background: #d0d0d0;border-radius: 3px;"></i>
+
+          <select style="color: #fff;padding: 2px 2px;background: #173677;;border: none;">
+            <option>Account No</option>
+            <option>Customer No</option>
+            <option>Name</option>
+          </select>
+          <input type="text" pInputText placeholder="Search" style="width: auto;border-radius: none;">
+          <button type="button" pButton pRipple label=""
+            style="width: auto;padding: 1px 3px;font-size: 12px; background-color: #173677 !important;border: 1px solid #173677 !important;">
+            <i class="pi pi-search"></i></button>
+
+        </div>
+      </div>
+      <!-- <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText placeholder="Full Search" />
+      </span> -->
+    </div>
+    <div class="col-md-6 text-right">
+      <p-carousel [value]="buttons" [numVisible]="5" [numScroll]="2" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template pTemplate="header">
+          <h5>Basic</h5>
+        </ng-template>
+        <ng-template let-product pTemplate="item">
+          <div class="product-item">
+            <div class="product-item-content">
+              <button class="btn btn-primary" style="margin-right: 10px;">{{product.btn}}</button>
+
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+  <div class="doc-table">
+
+    <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="50"
+      [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
+      <ng-template pTemplate="header">
+
+        <!-- <tr style="text-align: center;" class="thhead">
+          <th style="width: 50px;">S.No</th>
+          <th>Account No</th>
+          <th>Customer No</th>
+          <th>Name</th>
+          <th>Portfolio</th>
+          <th>Bucket:</th>
+          <th>OS Amount:</th>
+          <th>OD Amount:</th>
+          <th>Phone Number</th>
+          <th style="width: 100px;">Action</th>
+        </tr> -->
+
+      </ng-template>
+      <ng-template pTemplate="body" let-item let-i="rowIndex">
+        <tr style="text-align: center;" *ngIf="i == 0" class="thhead">
+          <th style="text-align: center;width: 40px;font-size: 12px;">S.No</th>
+          <th *ngFor="let val of item" style="font-size: 12px;">
+            {{val}}
+          </th>
+        </tr>
+        <tr class="tdrow">
+
+          <ng-container style="text-align: center;" *ngIf="i > 0">
+            <td style="text-align: center;width: 60px;">{{i}}</td>
+            <td (click)="showPositionDialog()" *ngFor="let val of item" style="font-size: 12px;">
+              {{val}}
+            </td>
+          </ng-container>
+          <!-- <td>
+                User
+            </td>
+            <td>
+                Admin
+            </td>
+            <td>
+                16-09-2020
+            </td>
+            <td>
+                17-09-2020
+            </td> -->
+          <!-- <td class="act">
+            <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i>
+            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+            <i style="color: #4CAF50;" class="fa fa-user" aria-hidden="true" (click)="profile()" pTooltip="Profile"></i>
+          </td> -->
+        </tr>
+      </ng-template>
+     </p-table>  </div>
+
+  </div>
+</div>
+<p-dialog header="Account Details" [(visible)]="displayPosition" position="center" [modal]="true"
+  [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <div class="">
+    <div class="row pr-hd">
+      <div class="col-md-2 col-xs-12 col-sm-6 col-lg-2 pr-img">
+        <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo"
+          class="img">
+      </div>
+      <div class="col-md-10 col-xs-12 col-sm-6 col-lg-10">
+        <h2 style="font-size: 12px;margin-bottom: 0px;line-height: 20px;">John Doe</h2>
+        <p style="font-size: 12px;color: #d0d0d0">Acc.No: 1.26472587459</p>
+        <a class="pr-v" style="margin-right: 0px;" (click)="cus360()">View 360&#176;</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="pr-det" style="padding-left: 20px;">
+          <tr>
+            <th>Ageing:</th>
+            <td>731+</td>
+          </tr>
+          <tr>
+            <th>Email:</th>
+            <td>test@gmail.com</td>
+          </tr>
+          <tr>
+            <th>Gender:</th>
+            <td>test@gmail.com</td>
+          </tr>
+          <tr>
+            <th>Nationality:</th>
+            <td>Sri Lanka</td>
+          </tr>
+
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="pr-det" style="padding-left: 20px;">
+          <tr>
+            <th>ID type:</th>
+            <td>Emirates ID</td>
+          </tr>
+          <tr>
+            <th>ID No:</th>
+            <td>7841xxx408479</td>
+          </tr>
+          <tr>
+            <th>Status:</th>
+            <td>INACTIVE</td>
+          </tr>
+          <!-- <tr>
+            <th>Branch:</th>
+            <td>Mizher Mall</td>
+          </tr>
+          <tr>
+            <th>Branch Code:</th>
+            <td>1244</td>
+          </tr>
+          <tr>
+            <th>Sub Products:</th>
+            <td>NA</td>
+          </tr>
+          <tr>
+            <th>CIF Number:</th>
+            <td>NA</td>
+          </tr>
+          <tr>
+            <th>PTP Status:</th>
+            <td>NA</td>
+          </tr> -->
+          <tr>
+            <th>Overdue Amount:</th>
+            <td>25,00000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+<div class="follow">
+  <div style="text-align: center;padding: 10px;color: #fff;">
+    <i class="fa fa-filter" aria-hidden="true" aria-hidden="true" matTooltip=" Filter"></i>
+    <!-- <mat-icon matTooltip=" Collection Details" >extension</mat-icon> -->
+  </div>
+  <div style="text-align: center;padding: 10px;color: #fff;">
+    <i class="fa fa fa-binoculars" aria-hidden="true" matTooltip=""></i>
+    <!-- <mat-icon matTooltip=" Settlement Recording" >extension</mat-icon> -->
+  </div>
+  <div style="text-align: center;padding: 10px;color: #fff;">
+    <i class="fa fa-envelope" aria-hidden="true" matTooltip=""></i>
+    <!-- <mat-icon matTooltip=""  >swap_horiz</mat-icon> -->
+  </div>
+  <div style="text-align: center;padding: 10px;color: #fff;">
+    <i class="fa fa-calendar" aria-hidden="true" matTooltip=""></i>
+    <!-- <mat-icon matTooltip=""  >swap_horiz</mat-icon> -->
+  </div>
+  <div style="text-align: center;padding: 10px;color: #fff;">
+    <i class="fa fa-file-text-o" aria-hidden="true" matTooltip=""></i>
+    <!-- <mat-icon matTooltip=""  >swap_horiz</mat-icon> -->
+  </div>
+  <div style="text-align: center;padding: 10px;color: #fff;">
+    <i class="fa fa-globe" aria-hidden="true" matTooltip=""></i>
+    <!-- <mat-icon matTooltip=""  >swap_horiz</mat-icon> -->
+  </div>
+</div>

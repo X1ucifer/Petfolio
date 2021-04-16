@@ -1,0 +1,80 @@
+
+<!-- <div class="row" *ngIf="loading_show">
+  <p>Uploading Data Please Don't close the session</p>
+  <h4>{{timeLeft}}</h4>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="heading">
+      <h4 class="title">Add Multiple Fields</h4>
+      <!-- <button (click)="save_fields()">Save</button> -->
+      <button class="btn btn-primary" (click)="before_save_fields()">Save</button>
+    </div>
+   <!-- <button (click)="save_fields()">Save</button> -->
+    <table style=" width: 100%; margin-top:10px; ">
+        <tr style="background-color:#f4f4f4;">
+            <th style="padding: 10px; background: #f4f4f4;">S.No</th>
+            <th style="padding: 10px; background: #f4f4f4;">Field Name</th>
+            <th style="padding: 10px; background: #f4f4f4;">Fields detail</th>
+            <th style="padding: 10px; background: #f4f4f4;">Data type</th>
+            <th style="padding: 10px; background: #f4f4f4;">Length</th>
+            <!-- <th style="padding: 10px;">Action</th> -->
+        </tr>
+        <ng-container *ngFor="let item of converted; let i = index">
+        <tr>
+          <td style="padding: 10px;">{{i+1}}</td>
+          <td style="padding: 10px;"><input type="text" pInputText disabled name="item.fields" [(ngModel)]="item.fields" placeholder="Enter Field Name"></td>
+          <td style="padding: 10px;"><input type="text" pInputText [(ngModel)]="item.fields_detail" name="item.fields_detail" placeholder="Enter Fields detail"></td>
+          <td style="padding: 10px;"><p-dropdown [options]="profolio_list" [(ngModel)]="item.data_type" name="item.data_type" placeholder="Select Data type"
+            optionLabel="y" [showClear]="true"></p-dropdown></td>
+          <td style="padding: 10px;"><input type="Number" pInputText [(ngModel)]="item.length" name="item.length" placeholder="Enter length"></td>
+        </tr>
+        </ng-container>
+        <!-- <ng-container *ngFor="let item of final_not_match; let i = index">
+          <tr>
+            <td style="padding: 10px;">{{item.final_not_match}}</td>
+            <td style="padding: 10px;">
+                <input type="text"><i class="fa fa-plus-circle"
+                    style="font-size: 20px !important; color: #20353f;float: right;margin-top: -4px;"
+                    pTooltip="Add Fields"  (click)="save_fields()"></i>
+            </td>
+        </tr>
+        </ng-container> -->
+    </table>
+    <!-- <div class="row">
+      <div class="col-md-12" >
+        <div class="doc-table">
+          <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true"
+            [rows]="5" [rowHover]="true" selectionMode="single" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+              <tr style="text-align: center;">
+                <th pSortableColumn="SNo">S.No <p-sortIcon field="code"></p-sortIcon><p-columnFilter type="text" field="sno"></p-columnFilter></th>
+                <th pSortableColumn="fields">Field Name <p-sortIcon field="code"></p-sortIcon><p-columnFilter type="text" field="Field Name"></p-columnFilter></th>
+                <th pSortableColumn="fields_detail">Fields detail <p-sortIcon field="code"></p-sortIcon></th>
+                <th pSortableColumn="data_type">Data type <p-sortIcon field="code"></p-sortIcon></th>
+                <th pSortableColumn="length">Length <p-sortIcon field="code"></p-sortIcon></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-i="rowIndex">
+              <!-- <tr [pSelectableRow]="item" style="text-align: center;"> --
+                <td>{{i+1}}</td>
+                <td>{{item.fields}}</td>
+                <td>{{item.fields_detail}}</td>
+                <td>{{item.data_type}}</td>
+                <td>{{item.length}}</td>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a>Client</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Main Status & Sub Status</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <form [formGroup]="MstatusForm" style="margin: 10px;">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Main Status</label>
+                            <input type="text" class="form-control" formControlName="mstatus_name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Bank Name</label>
+                            <select class="form-control" formControlName="bank_id">
+                                <option value="">Choose</option>
+                                <option *ngFor="let item of banknameList" [value]="item.y">{{item.y}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="">Status</label>
+                            <select formControlName="status" class="form-control">
+                                <option value="">Choose</option>
+                                <option value="true">Active</option>
+                                <option value="false">In active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-sm btn-success mr-1" (click)="addmstatus()">ADD</button>
+                        <button class="btn btn-sm btn-dark mr-1" (click)="editmstatus()" *ngIf="maddmode">EDIT</button>
+                        <button class="btn btn-sm btn-info mr-1" (click)="updatemstatus()" *ngIf="meditmode">UPDATE</button>
+                        <button class="btn btn-sm btn-primary mr-1" (click)="mcancel()" *ngIf="meditmode">Cancel</button>
+                        <button class="btn btn-sm btn-danger mr-1" (click)="deletemstatus()">DELETE</button>
+                    </div>
+                </form>
+                <ag-grid-angular #agGrid 
+                    style="width: auto; height: 500px;"
+                    class="ag-theme-alpine"
+                    [rowData]="mStatusList"
+                    [rowSelection]="'multiple'"
+                    [columnDefs]="MstatuscolumnDefs"
+                    [pagination]="true">
+                </ag-grid-angular>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <form [formGroup]="SstatusForm" style="margin: 10px;">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Sub Status</label>
+                            <input type="text" class="form-control" formControlName="sstatus_name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Main Status</label>
+                            <select class="form-control" formControlName="mstatus_id" class="form-control">
+                                <option *ngFor="let item of mStatusList" [value]="item._id">{{item.mstatus_name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Bank Name</label>
+                            <select class="form-control" formControlName="bank_id">
+                                <option value="">Choose</option>
+                                <option *ngFor="let item of banknameList" [value]="item.y">{{item.y}}</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            <label for="">Status</label>
+                            <select formControlName="status" class="form-control">
+                                <option value="">Choose</option>
+                                <option value="true">Active</option>
+                                <option value="false">In active</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-sm btn-success mr-1" (click)="addsstatus()" *ngIf="saddmode">ADD</button>
+                        <button class="btn btn-sm btn-dark mr-1" (click)="editsstatus()" *ngIf="saddmode">EDIT</button>
+                        <button class="btn btn-sm btn-info mr-1" (click)="updatesstatus()" *ngIf="seditmode">UPDATE</button>
+                        <button class="btn btn-sm btn-primary mr-1" (click)="scancel()" *ngIf="seditmode">Cancel</button>
+                        <button class="btn btn-sm btn-danger mr-1" (click)="deletesstatus()">DELETE</button>
+                    </div>
+                </form>
+                <ag-grid-angular #agGrid2 
+                    style="width: auto; height: 500px;"
+                    class="ag-theme-alpine"
+                    [rowData]="sStatusList"
+                    [rowSelection]="'multiple'"
+                    [columnDefs]="SstatuscolumnDefs"
+                    [pagination]="true">
+                </ag-grid-angular>
+            </div>
+        </div>
+    </div>
+</div>

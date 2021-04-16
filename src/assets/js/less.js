@@ -301,7 +301,8 @@ module.exports = function(window, less, options) {
         ].join('\n'), { title: 'error-message' });
 
         elem.style.cssText = [
-            "font-family: Arial, sans-serif",
+            // "font-family: Arial, sans-serif",
+            "font-family: Roboto, Helvetica Neue, sans-serif",
             "border: 1px solid #e00",
             "background-color: #eee",
             "border-radius: 5px",

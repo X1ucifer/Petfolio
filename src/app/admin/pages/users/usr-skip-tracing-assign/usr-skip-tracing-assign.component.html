@@ -1,0 +1,140 @@
+<!-- <h4 class="title">Follow up Save</h4> -->
+<mat-icon style="text-align: left;width: 100%;margin-bottom: 13px;margin-top: -10px;" mat-button (click)="close()">arrow_back_ios</mat-icon>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="title-f">Tracing Entry Form:</h4>
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <div class="col-md-3">
+                    <h5 class="form-lable">Social Media type:</h5>
+                    <input type="text" pInputText placeholder="" >
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Links:</h5>
+                    <input type="text" pInputText placeholder="" >
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Email</h5>
+                    <input type="text" pInputText placeholder="" >
+                </div>
+                <div class="col-md-3">
+                    <h5 class="form-lable">Contact name:</h5>
+                    <input type="text" pInputText placeholder="" >
+                </div>
+                <div class="col-md-3">
+                  <h5 class="form-lable">Address</h5>
+                  <input type="text" pInputText placeholder="" >
+              </div>
+                
+                <div class="col-md-3 mt-20">
+                  <button type="button" class="btn btn-primary">Submit</button>
+                  <!-- <button type="button" class="btn btn-warning">Close</button> -->
+             </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<a (click)="table_v = !table_v" class="link-a">View Skip Tracing History</a>
+<ng-container *ngIf="table_v == true">
+
+    <h4 class="title">Skip Tracing History</h4>
+
+    <div class="doc-table">
+        <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+                <tr style="text-align: center;">
+                    <th>S.No</th>
+                    <th>Account Number</th>
+                    <th>Details Obtained</th>
+                    <th>Source of Detail</th>
+                    <th>Remarks</th>
+                    <th>Customer Name</th>
+                    <th>Open Text</th>
+                    <th>Open Text</th>
+                    <th>Open Text</th>
+                    <th>Date</th>
+                    <th>User ID</th>
+                </tr>
+                <tr style="text-align: center;">
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </ng-template>
+         </p-table>  </div>
+    </div>
+    <br>
+
+</ng-container>
+
+<!-- <div class="row" style="padding: 0px 0px 23px 10px;">
+    <div class="col-md-3">
+      <h5 class="form-lable">Loan No./Account No.:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Customer Name:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">DPD>=:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Card Number:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Branch:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Product:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Bucket:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Queue:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Car Type:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">POS / Curr Acc Bal:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Sub Product Code:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    <div class="col-md-3">
+      <h5 class="form-lable">Scheme:</h5>
+      <input type="text" pInputText placeholder="" value="">
+    </div>
+    
+    <div class="col-md-3 mt-20">
+            <button type="button" class="btn btn-primary">Save</button>
+       </div>
+
+  </div> -->

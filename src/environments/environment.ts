@@ -6,23 +6,23 @@
 
 export const environment = {
   production: false,
-
-
-    //Dev URL///
-
-  apiUrl: 'http://54.212.108.156:3000/api/',
-  imageURL: 'http://54.212.108.156:3000/upload'
-
-
-  //Live URL//
-
-
-  // apiUrl: 'http://52.25.163.13:3000/api/',
-  // imageURL: 'http://52.25.163.13:3000/upload'
+  // apiUrl: 'http://54.213.251.72:3000/api/',
+  // imageURL: 'http://54.213.251.72:3000/api/'
 
 
 
+  // apiUrl: 'http://54.202.108.76:3000/api/',
+  // imageURL: 'http://54.202.108.76:3000/api/'
+
+
+  apiUrl: 'http://10.0.237.178:3000/api/',
+  imageURL: 'http://10.0.237.17:3000/api/'
+
+  // apiUrl: 'http://localhost:3000/api/',
+  // imageURL: 'http://localhost:3000/api/'
 
   // apiUrl: 'http://localhost:91/'
   // 34.211.194.144:3000
+
+
 };

@@ -1,0 +1,126 @@
+
+
+@import "../../../../../assets/css/style.css";
+
+:host::ng-deep .doc-table .ui-table table {
+    /* width: 1684px !important; */
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.add-icon{
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 27px;
+    padding: 8px 19px;
+    background: #0e69dd;
+}
+.spec-table {
+      /*  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .spec-table td, .spec-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .spec-table tr:nth-child(even){background-color: #f2f2f2;}
+
+  .spec-table tr:hover {background-color: #ddd;}
+
+  .spec-table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #747f7f;
+    color: white;
+font-weight:500;
+  }
+
+  :host::ng-deep .mat-tab-label-active{
+    background-color: #c4deff;
+    color: #000;
+    filter: brightness(1);
+}
+
+
+
+:host::ng-deep  .cus-tab .mat-tab-label {
+  height: 35px !important;
+  padding: 5px 5px !important;
+ 
+  min-width: 160px !important;
+  width: auto!important;
+
+}
+:host::ng-deep .cus-tab .mat-tab-labels {
+  background: #ffffff  !important;
+}
+
+
+:host::ng-deep .cus-tab  .mat-tab-label-active{
+  background: #fff !important;
+}
+
+
+:host::ng-deep .cus-tab .mat-icon  {
+  background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 18px;
+    width: 100px;
+    font-size: 16px;
+  color: #fff !important;
+}
+
+:host::ng-deep .cus-tab .mat-tab-label-active .mat-icon  {
+  background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 18px;
+    width: 100px;
+    color: #0e69dd !important;
+    font-size: 16px;
+}
+
+
+.ht-img img{
+  width: 33px;
+  float: left;
+  padding: 3px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-right: 10px;
+
+}
+
+:host::ng-deep .tab-info .cus-tab .mat-tab-header {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%
+}
+.pro-head{
+  height: calc(100% - 195px);
+    overflow-y: scroll;
+    background: #253f64;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: fixed;
+    width: 250px;
+    padding-bottom: 10px;
+    z-index: 9999;
+    top: 195px;
+}

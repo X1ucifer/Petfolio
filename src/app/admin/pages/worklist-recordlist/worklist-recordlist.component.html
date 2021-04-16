@@ -1,0 +1,157 @@
+<div style="margin-right: 32px;">
+  <div>
+      <h4 class="title" style="margin-top: 15px;">Worklist  Record</h4>
+  </div>
+</div>
+
+<div class="card" style="padding: 10px; border-radius:10px;">
+  <div class="d-flex justify-content-around" style="font-size: 20px;">
+      <div>
+        <p><b>BANK NAME: </b> <span style="font-size: 16px; color:#2196f3;"> {{bucket_detail.bank_name.bank_name}}</span></p>
+      </div>
+      <div>
+          <p><b>PORTFOLIO: </b> <span style="font-size: 16px; color:#2196f3;"> {{bucket_detail.portfolio_id.portfolio_type}}</span></p>
+      </div>
+      <div>
+          <p><b>PRODUCT: </b> <span style="font-size: 16px; color:#2196f3;"> {{bucket_detail.product_id.product_type}} </span></p>
+      </div>
+      <div>
+        <p><b>Bucket_numer: </b> <span style="font-size: 16px; color:#2196f3;"> {{bucket_detail.bucket_id}} </span></p>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="col-md-12">
+<h5 class="form-lable">Company Name</h5>
+<p-dropdown [options]="Company_details" [(ngModel)]="company_name"
+    placeholder="Company Type" optionLabel="y" [showClear]="true"></p-dropdown>
+</div> -->
+
+<br>
+<div class="col-md-6">
+<h5 class="form-lable">Choose Designations</h5>
+<p-dropdown [options]="Designation_details1" (onChange)="fetchuser_1()" [(ngModel)]="report_to_design"
+  placeholder="Report to Designations" optionLabel="y" [showClear]="true"></p-dropdown>
+</div>
+
+
+<div class="col-md-6">
+<h5 class="form-lable">Choose User Details</h5>
+<p-dropdown [options]="User_details1" (onChange)="Report_fetch()" [(ngModel)]="report_to"
+  placeholder="Report to User Details" optionLabel="y" [showClear]="true"></p-dropdown>
+</div>
+
+
+<div class="card-box" style="margin: 2px;padding-bottom: 15px;">
+  <div class="row">
+      <div class="col-md-12">
+          <div>
+              <h4 class="title-f" style="color: #0a2440;font-weight: 600;border-bottom: 2px solid;">Accounts Details</h4>
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+              style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+          <!-- <label for="vehicle1" style="font-weight: 600;font-size: 12px;"> Select All</label><br> -->
+          <div style="text-align: right;">
+              <button class="btn btn-primary" style="margin-top: -25px;" (click)="submit_allocation()">Click here to Interanl Allocate</button>
+              <!-- <button class="btn btn-primary" style="margin-top: -25px;">Manual Allocate</button> -->
+
+          </div>
+          <h4 class="title-f">New Accounts</h4>
+
+         <div class="animate" *ngIf="!loading">
+
+         </div>
+          <div class="card-box" *ngIf="loading" >
+              <!-- <ag-grid-angular #agGrid
+                  style="width: auto; height: 600px;"
+                  class="ag-theme-alpine"
+                  [rowData]="Finals_excel"
+                  [rowSelection]="'multiple'"
+                  [columnDefs]="columnDefs"
+                  [pagination]="true">
+              </ag-grid-angular> -->
+
+
+      <div class="card-box"> <p-table [value]="saved_Fields | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="25"
+          [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [globalFilterFields]="['type']">
+          <ng-template pTemplate="header">
+              <tr class="thhead">
+                <th class="th-1">
+                  Select
+                </th>
+                  <th class="th-1">
+                      S.No
+                  </th>
+                  <th>
+                     Customer id
+                  </th>
+                  <th>
+                     Passport no
+                  </th>
+                  <th>
+                    Acc no
+                  </th>
+                  <th>
+                    agreement no
+                  </th>
+                  <th>
+                    CIF
+                  </th>
+                  <th>
+                     Fin Id
+                  </th>
+                  <th>
+                      Total Out Standing
+                  </th>
+                  <th>
+                      Allocated Status
+                  </th>
+                  <th style="width: 110px;text-align:center">
+                      More Details
+                  </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-item let-i="rowIndex">
+              <tr class="tdrow"  >
+                  <td> <input type="checkbox" *ngIf="item.allocated_to !== ''" disabled (change)="toggleEditable($event.target.checked,i)" >
+                    <input type="checkbox" *ngIf="item.allocated_to == ''" (change)="toggleEditable($event.target.checked,i)" ></td>
+                  <td>{{i+1}}</td>
+                  <td>{{item.customer_id}}</td>
+                  <td>{{item.passport_no}}</td>
+                  <td>{{item.acc_no}}</td>
+                  <td>{{item.agreement_id}}</td>
+                  <td>{{item.cif}}</td>
+                  <td>{{item.finterstal_id}}</td>
+                  <td>{{item.total_out_standing}}</td>
+                  <td *ngIf="item.allocated_to == ''" >Not allocated</td>
+                  <td *ngIf="item.allocated_to !== ''" >Allocated</td>
+                  <td class="act">
+                      <i style="color: #4CAF50;" class="fa fa-user" aria-hidden="true"
+                          pTooltip="View More Details"></i>
+                  </td>
+              </tr>
+          </ng-template>
+       </p-table>  </div>
+
+
+
+
+
+
+          </div>
+          <h4 class="title-f">Re-Activated Accounts</h4>
+
+          <h4 class="title-f">Existing Accounts</h4>
+
+          </div>
+          <div style="text-align: right;">
+              <button class="btn btn-primary" style="margin-top:15px;margin-bottom: 25px;"> Submit to Manager</button>
+              <button class="btn btn-primary" style="margin-top:15px;margin-bottom: 25px;"> Submit to Team leader</button>
+              <button class="btn btn-primary" style="margin-top:15px;margin-bottom: 25px;"> Submit to Agent</button>
+          </div>
+
+      </div>
+  </div>
+</div>

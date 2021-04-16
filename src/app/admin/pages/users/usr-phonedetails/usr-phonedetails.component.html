@@ -1,0 +1,143 @@
+<!-- <h4 class="title">Phone Details</h4> -->
+<br>
+<div class="row">
+    <!-- <div class="col-md-4">
+        <div class="search-hero">
+            <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+        </div>
+    </div> -->
+    <div class="col-md-5">
+        <h5 class="form-lable">Loan Number: <span>{{CustomerData.Card_Number}}</span></h5>
+    </div>
+    <div class="col-md-5">
+        <h5 class="form-lable">Customer Name: <span>{{CustomerData.Customer_Name}}</span></h5>
+    </div>
+    <!-- <div class="col-md-2 text-right">
+        <button type="button" class="btn btn-primary mr-0" (click)="show2()">Add</button>
+    </div> -->
+    <div class="col-md-12">
+        <div class="doc-table">
+            <table class="det-t">
+                    <tr style="text-align: left;" class="th-b">
+                        <th>Phone Type</th>
+                        <th>Host/Collection</th>
+                        <th>Phone Number</th>
+                        <th>Status</th>
+                        <th>Preferred</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Phone-R</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Phone-O</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Mobile No</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Phone 1</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Phone 2</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Phone 3</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Phone 4</td>
+                        <td>H</td>
+                        <td><input type="text"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Person Responsible Name</td>
+                        <td><input type="text"></td>
+                        <td>Person Responsible Phone</td>
+                        <td><input type="text"></td>
+                        <td></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+                    <tr style="text-align: left;">
+                        <td>Reference Person Name</td>
+                        <td><input type="text"></td>
+                        <td>Reference Person Phone</td>
+                        <td><input type="text"></td>
+                        <td></td>
+                        <td class="act">
+                            <!-- <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit"></i> -->
+                            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"></i>
+                            <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>

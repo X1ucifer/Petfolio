@@ -1,0 +1,205 @@
+<div style="margin-right: 32px;">
+    <div>
+        <h4 class="title" style="margin-top: 15px;">Dual/Temporary Allocation</h4>
+    </div>
+</div>
+<div class="card-box" style="margin: 2px;padding-bottom: 15px;">
+    <!-- <div class="row">
+        <div class="col-md-3">
+            <h4 class="title-f">Rak Bucket 2 C3</h4>
+
+            <table style=" width: 100%;">
+                <tr>
+                    <th style="padding: 10px;">Status:</th>
+                    <td style="padding: 10px;">Allocation Confirmed</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-md-9">
+            <h4 class="title-f">Rak Bank</h4>
+
+            <table style=" width: 100%;">
+                <tr>
+                    <th style="padding: 10px;">Type:</th>
+                    <td style="padding: 10px;">Bucket</td>
+                    <th style="padding: 10px;">No of Customers:</th>
+                    <td style="padding: 10px;">20</td>
+                    <th style="padding: 10px;">No of Accounts:</th>
+                    <td style="padding: 10px;">20</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-md-12" style="margin-top: 10px;">
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <h4 class="title-f">Task Information</h4>
+            <i class="fa fa-chevron-circle-right"
+                style="margin-top: -29px;font-size: 20px !important; color: #20353f;float: right;" pTooltip="View"></i>
+            <hr>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-md-2">
+            <h4 class="title-f" style="color: #0a2440;font-weight: 600;border-bottom: 2px solid;">Filter</h4>
+            <div>
+                <h4 class="title-f">Nationality</h4>
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle1" style="font-weight: 500;font-size: 12px;"> India</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle2" style="font-weight: 500;font-size: 12px;"> Dubai</label><br>
+                <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle3" style="font-weight: 500;font-size: 12px;"> USA</label><br>
+                <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle4" style="font-weight: 500;font-size: 12px;"> UK</label><br>
+                <p style="font-size: 12px;color: #2196f3;">+05 More</p>
+            </div>
+            <hr />
+            <div>
+                <h4 class="title-f">Account</h4>
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle1" style="font-weight: 500;font-size: 12px;"> New</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle2" style="font-weight: 500;font-size: 12px;"> Existing</label><br>
+                <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle3" style="font-weight: 500;font-size: 12px;"> Re-activated</label><br>
+
+            </div>
+            <hr />
+            <div>
+                <h4 class="title-f">Previous agent</h4>
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle1" style="font-weight: 500;font-size: 12px;"> Agent-001</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle2" style="font-weight: 500;font-size: 12px;"> Agent-002</label><br>
+                <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle3" style="font-weight: 500;font-size: 12px;"> Agent-003</label><br>
+                <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike"
+                    style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+                <label for="vehicle4" style="font-weight: 500;font-size: 12px;"> Agent-004</label><br>
+                <p style="font-size: 12px;color: #2196f3;">+05 More</p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div>
+                <h4 class="title-f" style="color: #0a2440;font-weight: 600;border-bottom: 2px solid;">Accounts Details</h4>
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"
+                style="width: auto;margin-right: 5px;position: relative;top: 2px;">
+            <label for="vehicle1" style="font-weight: 600;font-size: 12px;"> Select All</label><br>
+            <div style="text-align: right;">
+                <!-- <button class="btn btn-primary" style="margin-top: -25px;">Click here to Auto Allocate</button> -->
+                <!-- <button class="btn btn-primary" style="margin-top: -25px;">Manual Allocate</button> -->
+
+            </div>
+            <h4 class="title-f">New Accounts</h4>
+            <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="50"
+                [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['type']">
+                <ng-template pTemplate="header">
+                    <tr style="text-align: center;" class="thhead">
+                        <th style="width: 100px;">Action</th>
+                        <th style="width: 50px;">S.No</th>
+                        <th sstyle="width: 100px;">Account No</th>
+                        <th>Customer No</th>
+                        <th>Name</th>
+                        <th>Portfolio</th>
+                        <th>Phone Number</th>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr class="tdrow">
+                        <td class="act">
+                            <input type="checkbox">
+                        </td>
+                        <td style="text-align: center;">{{i+1}}</td>
+                        <td style="width: 100px;"><a (click)="showPositionDialog()"
+                                style="color: #0e69dd;">1.26472587459</a></td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                    </tr>
+                </ng-template>
+             </p-table>  </div>
+            <h4 class="title-f">Re-Activated Accounts</h4>
+            <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="50"
+                [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['type']">
+                <ng-template pTemplate="header">
+                    <tr style="text-align: center;" class="thhead">
+                        <th style="width: 100px;">Action</th>
+                        <th style="width: 50px;">S.No</th>
+                        <th sstyle="width: 100px;">Account No</th>
+                        <th>Customer No</th>
+                        <th>Name</th>
+                        <th>Portfolio</th>
+                        <th>Phone Number</th>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr class="tdrow">
+                        <td class="act">
+                            <input type="checkbox">
+                        </td>
+                        <td style="text-align: center;">{{i+1}}</td>
+                        <td style="width: 100px;"><a (click)="showPositionDialog()"
+                                style="color: #0e69dd;">1.26472587459</a></td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                    </tr>
+                </ng-template>
+             </p-table>  </div>
+            <h4 class="title-f">Existing Accounts</h4>
+            <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="50"
+                [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['type']">
+                <ng-template pTemplate="header">
+                    <tr style="text-align: center;" class="thhead">
+                        <th style="width: 100px;">Action</th>
+                        <th style="width: 50px;">S.No</th>
+                        <th sstyle="width: 100px;">Account No</th>
+                        <th>Customer No</th>
+                        <th>Name</th>
+                        <th>Portfolio</th>
+                        <th>Phone Number</th>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                    <tr class="tdrow">
+                        <td class="act">
+                            <input type="checkbox">
+                        </td>
+                        <td style="text-align: center;">{{i+1}}</td>
+                        <td style="width: 100px;"><a (click)="showPositionDialog()"
+                                style="color: #0e69dd;">1.26472587459</a></td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                        <td>Lorem ipsum.</td>
+                    </tr>
+                </ng-template>
+             </p-table>  </div>
+            </div>
+            <div style="text-align: right;">
+                <button class="btn btn-primary" style="margin-top:15px;margin-bottom: 25px;"> Submit to Manager</button>
+                <button class="btn btn-primary" style="margin-top:15px;margin-bottom: 25px;"> Submit to Team leader</button>
+                <button class="btn btn-primary" style="margin-top:15px;margin-bottom: 25px;"> Submit to Agent</button>
+            </div>
+           
+        </div>
+    </div>
+</div>

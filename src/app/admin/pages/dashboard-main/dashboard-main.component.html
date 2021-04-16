@@ -1,0 +1,607 @@
+<section class="head-tool">
+  <div class="row" style="margin: 0px !important;">
+    <div class="col-md-6">
+      <div class="logo-img">
+        <img class="logo-dark" src="assets/images/logo-01.png" alt="Logo" style="width: 140px;">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div style="text-align: right;">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+          style="margin-right: 20px;">
+          <mat-icon>apps</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Administrator </span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Configurator </span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Designer </span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Transaction </span>
+          </button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="menu1" aria-label="Example icon-button with a menu">
+          <div class="card-box-i">
+            <img src="assets/images/005.png" alt="">
+           <p style="text-align: left;float: right;margin-top:8px;line-height: 14px;">{{login_detail.Name}}<br/>  <span style="font-size:10px;color: #f0b41c;">{{login_detail.Role}}</span></p>
+
+          </div>
+        </button>
+        <mat-menu #menu1="matMenu">
+          <button mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>Profile </span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+            <span>Logout </span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="row" style="padding-top: 80px;background-image: 'url(assets/images/002.jpeg)'; background-repeat: no-repeat;background-size: cover;">
+  <div class="container">
+     <div class="col-md-12">
+   <h3 style="color: #fff;font-size: 22px;font-weight: 500">START YOUR SYSTEM ADMINISTRATION</h3>
+   <p style="color: #FFC107;font-size: 12px;font-weight: 400">This is your Administration landing page. You can start your modification using the tiles <br/> Below are the mini tiles to access a specific settings</p>
+  </div>
+</div>
+</div>
+<!-- <div class="row" style="padding-top: 20px;">
+  <div class="container">
+    <div class="col-md-4 col-xl-4">
+      <div class="card bg-c-green order-card" style="padding: 10px;" (click)="Entity_List()">
+        <div class="card-block" style="padding: 0px 0px 0px 0px">
+          <h5 class="m-b-20" style="font-size: 15px;font-weight: 500;color: #519051;">Organization Setup</h5>
+          <h2 class="text-right"><i style="float: right;margin-top: -30px;padding: 5px;color: #519051;font-size: 15px;border-radius: 50%;border: 2px solid #519051;" class="fa fa-sitemap"></i></h2>
+
+        </div>
+        <div class="op" style="margin-top: 20px;">
+          <i class="fa fa-list-ul" (click)="Entity_List()" pTooltip="Organization List"></i>
+          <i class="fa fa-user-plus" (click)="Add_Entity()" pTooltip="Add Organization"></i>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div> -->
+
+<!-- /////////////////////////// -->
+
+
+
+
+<section style="margin-top: 80px;">
+  <div class="container">
+      <div class="row" style="border: 1px solid;border-radius: 7px;margin: 4px; background-color: white;">
+        <div class="col-md-12" (click)="pay()" style="font-size: 16px;font-weight: 800;padding: 17px">
+        Activity Dashboards <i *ngIf="!payment"
+        class="fa fa-arrow-circle-down coll-i" aria-hidden="true"></i><i *ngIf="payment"
+        class="fa fa-arrow-circle-up coll-i" aria-hidden="true"></i>
+        </div>
+        <div class="row" *ngIf="payment" style="padding: 10px;">
+          <div class="col-md-2 col-xl-2">
+              <div class="card bg-c-blue order-card" (click)="accallocate()">
+                  <div class="card-block">
+                      <h5 class="m-b-20">Accounts Allocated</h5>
+                      <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>65</span></h2>
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-2 col-xl-2">
+              <div class="card bg-c-pink order-card" (click)="accworked()">
+                  <div class="card-block">
+                      <h5 class="m-b-20">Accounts Worked on</h5>
+                      <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>50</span></h2>
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-2 col-xl-2">
+              <div class="card bg-c-yellow order-card" (click)="accpending()">
+                  <div class="card-block">
+                      <h5 class="m-b-20">Accounts Pending</h5>
+                      <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>15</span></h2>
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-2 col-xl-2">
+              <div class="card bg-c-green order-card" (click)="accptptoken()">
+                  <div class="card-block">
+                      <h5 class="m-b-20">PTP Taken</h5>
+                      <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>7</span></h2>
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-2 col-xl-2">
+            <div class="card bg-c-blue order-card" (click)="accallocate()">
+                <div class="card-block">
+                    <h5 class="m-b-20">Broken Promises</h5>
+                    <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xl-2">
+          <div class="card bg-c-pink order-card" (click)="accallocate()">
+              <div class="card-block">
+                  <h5 class="m-b-20">Kept promises</h5>
+                  <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>10</span></h2>
+
+              </div>
+          </div>
+      </div>
+      <div class="col-md-2 col-xl-2">
+        <div class="card bg-c-yellow order-card" (click)="accallocate()">
+            <div class="card-block">
+                <h5 class="m-b-20">Payment Recived</h5>
+                <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>8</span></h2>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xl-2">
+      <div class="card bg-c-green order-card" (click)="accallocate()">
+          <div class="card-block">
+              <h5 class="m-b-20">call back</h5>
+              <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+
+          </div>
+      </div>
+  </div>
+  <div class="col-md-2 col-xl-2">
+    <div class="card bg-c-blue order-card" (click)="accallocate()">
+        <div class="card-block">
+            <h5 class="m-b-20">Priority Accounts</h5>
+            <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-xl-6">
+</div>
+      </div>
+      </div>
+
+  <div class="row" style="border: 1px solid;border-radius: 7px;margin: 4px;background-color: white;">
+  <div class="col-md-12" (click)="asset()" style="font-size: 16px;font-weight: 800;padding: 17px;">
+    Workflow Related <i *ngIf="!assets"
+    class="fa fa-arrow-circle-down coll-i" aria-hidden="true"></i><i *ngIf="assets"
+    class="fa fa-arrow-circle-up coll-i" aria-hidden="true"></i>
+    </div>
+    <div class="row" *ngIf="assets" style="padding: 10px;">
+<div class="col-md-2 col-xl-2">
+  <div class="card bg-c-blue order-card" (click)="accallocate()">
+      <div class="card-block">
+          <h5 class="m-b-20">Skip Requested</h5>
+          <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+      </div>
+  </div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-blue order-card" (click)="accallocate()">
+    <div class="card-block">
+        <h5 class="m-b-20">Skip updated</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-pink order-card" (click)="accallocate()">
+    <div class="card-block">
+        <h5 class="m-b-20">Field visit reqeusted</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-yellow order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Field visit Updated</h5>
+      <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-green order-card" (click)="accallocate()">
+    <div class="card-block">
+        <h5 class="m-b-20">Settlement Raised</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-blue order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Settlement Completed</h5>
+      <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-pink order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Criminal case requested</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-yellow order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Criminal case completed</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-green order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Criminal case released</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-blue order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">RPO reqeusted</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-pink order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">RPO completed</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-yellow order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">RPO released</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-green order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Civil case requested</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-blue order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Civil case completed</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-pink order-card" (click)="accallocate()">
+    <div class="card-block">
+      <h5 class="m-b-20">Civil case released</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+    </div>
+</div>
+</div>
+</div>
+      </div>
+<div class="row" style="border: 1px solid;border-radius: 7px;margin: 4px;background-color: white;">
+  <div class="col-md-12" (click)="asset1()" style="font-size: 16px;font-weight: 800;padding: 17px;">
+    Product Dashboards <i *ngIf="!assets1"
+    class="fa fa-arrow-circle-down coll-i" aria-hidden="true"></i><i *ngIf="assets1"
+    class="fa fa-arrow-circle-up coll-i" aria-hidden="true"></i>
+    </div>
+    <div class="row" *ngIf="assets1" style="padding: 10px;">
+  <div class="col-md-2 col-xl-2">
+    <div class="card bg-c-blue order-card" (click)="creditcardlist()">
+        <div class="card-block">
+            <h5 class="m-b-20">Credit Card</h5>
+            <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>25</span></h2>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-2 col-xl-2">
+  <div class="card bg-c-pink order-card" (click)="vehicleloanlist()">
+      <div class="card-block">
+          <h5 class="m-b-20">Vehicle Loan</h5>
+          <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>20</span></h2>
+
+      </div>
+  </div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-yellow order-card" (click)="personalloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">Personal Loan</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>10</span></h2>
+
+    </div>
+</div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-green order-card" (click)="homeloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">Home Loan</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+    </div>
+</div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-blue order-card" (click)="homeloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">Auto Loan</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+
+    </div>
+</div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-pink order-card" (click)="homeloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">Business Loan</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+
+    </div>
+</div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-yellow order-card" (click)="homeloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">Buiness Vehicle Loan</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+
+    </div>
+</div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-green order-card" (click)="homeloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">Etisalat</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+
+    </div>
+</div>
+</div>
+<div class="col-md-2 col-xl-2">
+<div class="card bg-c-blue order-card" (click)="homeloanlist()">
+    <div class="card-block">
+        <h5 class="m-b-20">DU</h5>
+        <h2 class="text-right"><i class="fa fa-id-card f-left"></i><span>5</span></h2>
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row" style="border: 1px solid;border-radius: 7px;margin: 4px;background-color: white;">
+  <div class="col-md-12" (click)="asset2()" style="font-size: 16px;font-weight: 800;padding: 17px;">
+    Performance Dashboard <i *ngIf="!assets2"
+    class="fa fa-arrow-circle-down coll-i" aria-hidden="true"></i><i *ngIf="assets2"
+    class="fa fa-arrow-circle-up coll-i" aria-hidden="true"></i>
+    </div>
+    <div class="row" *ngIf="assets2" style="padding: 10px;">
+        <div style="display: block" class="col-md-4">
+          <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+            Productivity Target VS Actual
+          </div>
+          <canvas baseChart
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType">
+          </canvas>
+        </div>
+
+
+      <div style="display: block" class="col-md-4">
+        <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+          Resolutions Total Allocated VS Actual Resolved
+        </div>
+        <canvas baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"></canvas>
+      </div>
+
+
+
+      <div style="display: block" class="col-md-4">
+        <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+          Cash collection target vs cash collected
+        </div>
+        <canvas baseChart
+                [datasets]="radarChartData"
+                [labels]="radarChartLabels"
+                [chartType]="radarChartType"></canvas>
+      </div>
+
+
+      <div style="display: block" class="col-md-4">
+        <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+          Attendance calendar
+        </div>
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+
+
+      <div style="display: block" class="col-md-4">
+        <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+         Login - Logout
+        </div>
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"></canvas>
+      </div>
+
+
+      <div style="display: block" class="col-md-4">
+        <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+          Allocations + Tos + Pos + Target
+        </div>
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+
+      <div style="display: block" class="col-md-4">
+        <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+          Performance Tranding
+        </div>
+        <canvas baseChart
+                [datasets]="radarChartData"
+                [labels]="radarChartLabels"
+                [chartType]="radarChartType"></canvas>
+      </div>
+</div>
+</div>
+      <div class="row" style="margin-top: 11px;">
+        <div class="col-md-12 col-xl-12">
+          <a class="work" (click)="dash()">Go to your Worklist</a>
+          <a class="work" (click)="Adhoc()">Adhoc Contact Recording</a>
+          <a class="work blinking" (click)="dash()">Priority Worklist</a>
+      </div>
+      </div>
+
+      <!-- <div class="row" style="border: 1px solid;border-radius: 7px;margin: 4px;background-color: white;">
+<div style="display: block" class="col-md-4">
+  <div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+    Productivity Target VS Actual
+  </div>
+  <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+  </canvas>
+</div>
+<div style="display: block" class="col-md-4">
+<div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+  Resolutions Total Allocated VS Actual Resolved
+</div>
+<canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"></canvas>
+</div>
+<div style="display: block" class="col-md-4">
+<div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+  Cash collection target vs cash collected
+</div>
+<canvas baseChart
+        [datasets]="radarChartData"
+        [labels]="radarChartLabels"
+        [chartType]="radarChartType"></canvas>
+</div>
+<div style="display: block" class="col-md-4">
+<div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+  Attendance calendar
+</div>
+<canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+</canvas>
+</div>
+<div style="display: block" class="col-md-4">
+<div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+ Login - Logout
+</div>
+<canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"></canvas>
+</div>
+<div style="display: block" class="col-md-4">
+<div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+  Allocations + Tos + Pos + Target
+</div>
+<canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+</canvas>
+</div>
+<div style="display: block" class="col-md-4">
+<div class="col-md-12" style="text-align: center;font-weight: 800;padding: 10px;">
+  Performance Tranding
+</div>
+<canvas baseChart
+        [datasets]="radarChartData"
+        [labels]="radarChartLabels"
+        [chartType]="radarChartType"></canvas>
+</div>
+      </div> -->
+  </div>
+</section>
+
+
+
+

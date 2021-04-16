@@ -1,0 +1,106 @@
+<div class="section">
+  <h4 class="title">Allocation Management</h4>
+  <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <div *ngIf="!loadTable">
+            <div class="animate">
+        
+            </div>
+            <p style="color: rgb(17, 63, 85);">Loading all Buckets</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="doc-table" >
+    
+      <!-- <div class="card-box"> <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+          [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [globalFilterFields]="['type']">
+          <ng-template pTemplate="header">
+              <tr class="thhead">
+                  <th class="th-1">
+                      S.No
+                  </th>
+                  <th>
+                     Bucket ID
+                  </th>
+                  <th>
+                     Bank Name
+                  </th>
+
+                  
+                  <th>
+                    Product Name
+                  </th>
+                  <th>
+                    Portfolio Name
+                  </th>
+                  <th>
+                     Total Records
+                  </th>
+                  <th>
+                      Allocated Records
+                  </th>
+                  <th>
+                      Not Allocated Records
+                  </th>
+                  <th>
+                   Uploaded Date
+                    </th>
+                  <th style="width: 110px;text-align:center">
+                      Action
+                  </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-item let-i="rowIndex">
+              <tr class="tdrow">
+                  <td>{{i+1}}</td>
+                  <td>{{item.bucket_id}}</td>
+
+                  
+                  <td>{{item.bank_name.bank_name}}</td>
+                  
+                  <td>{{item.product_id.product_type}}</td>
+                  <td>{{item.portfolio_id.portfolio_type}}</td>
+                  <td>{{item.record_count}}</td>
+                  <td>{{item.allocated_record}}</td>
+                  <td>{{item.not_allocated_record}}</td>
+                  <td>{{item.createdAt | date}}</td>
+                  <td class="act">
+                      <i style="color: #4CAF50;" class="fa fa-user" aria-hidden="true" (click)="move_to_select(item)"
+                          pTooltip="View Record"></i>
+                  </td>
+              </tr>
+          </ng-template>
+       </p-table>  
+    </div> -->
+  </div>
+  <!-- <div class="d-flex justify-content-end">
+      <select [(ngModel)]="pageSize" (change)="getPageSize($event)"> 
+          <option  value="1">25</option>
+          <option  value="3">50</option>
+          <option  value="5">100</option>
+          <option  value="10">500</option>
+      </select>
+  </div> -->
+  
+  <div class="container-fluid" *ngIf="loadTable">
+    <div class="row d-flex justify-content-end">
+        <button class="btn btn-primary btn-sm" (click)="viewBucket()">View</button>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12">
+            <ag-grid-angular #agGrid 
+                style="width: auto; height: 650px;"
+                class="ag-theme-alpine"
+                [rowData]="rows"
+                [rowSelection]="'single'"
+                [columnDefs]="ActionsTakencolumnDefs"
+                [pagination]="true"
+                [paginationPageSize]="paginationPageSize">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>
+</div>

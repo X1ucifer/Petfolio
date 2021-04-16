@@ -1,0 +1,192 @@
+<section>
+    <div class="page-header" style="margin-top: 0PX;">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1">Welcome to Agent Dashboard</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="title-h3">Counts</h3>
+        </div>
+    </div>
+    <div class="row row-sm">
+
+        <div class="col-lg-4">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-blue">
+                            <i aria-hidden="true" class="fa fa-list-alt" style="font-size: 50px;color:#ffff"></i>
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Total Allocated
+                                Accounts</label>
+                            <!-- <span class="d-block tx-12 mb-0 text-muted">Total Allocated Accounts</span> -->
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">89658</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-blue">
+                            <!-- <i class="fa fa-file-text-o" aria-hidden="true" style="font-size: 50px;"></i> -->
+                            <img src="assets/images/002.png" alt="" class="img-fluid">
+
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Touched
+                                Accounts</label>
+                            <!-- <span class="d-block tx-12 mb-0 text-muted">Touched Accounts</span> -->
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">859</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="card-item-icon card-icon bg-blue">
+                            <i class="fa fa-file-text" aria-hidden="true" style="font-size: 50px;color:#ffff"></i>
+                        </div>
+                        <div class="card-item-title mb-2">
+                            <label class="main-content-label text-uppercase font-weight-bold mb-1">Untouched
+                                Accounts</label>
+                            <!-- <span class="d-block tx-12 mb-0 text-muted">Untouched Accounts</span> -->
+                        </div>
+                        <div class="card-item-body">
+                            <div class="card-item-stat">
+                                <h4 class="font-weight-bold">858</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row  mt-3">
+        <div class="col-lg-12">
+            <h3 class="title-h3">Counts Based on Portfolio</h3>
+        </div>
+    </div>
+    <div class="row" style="width: 100%;margin-right: 0px;margin-left: 0px;">
+
+        <div class="col-lg-12"  *ngIf="product_list != []">
+            <mat-tab-group mat-align-tabs="start">
+                <ng-container *ngFor="let item of profolio_list; let i = index">
+                    <mat-tab label="{{item.y}}">
+                        <div class="row" style="width: 100%; margin-right: 0px;margin-left: 0px;padding-top: 30px;">
+
+                            <div class="col-lg-4">
+                                <div class="card custom-card">
+                                    <div class="card-body">
+                                        <div class="card-item">
+                                            <div class="card-item-icon card-icon bg-gry">
+                                                <i aria-hidden="true" class="fa fa-list-alt"
+                                                    style="font-size: 50px;color:#ffff"></i>
+                                            </div>
+                                            <div class="card-item-title mb-2">
+                                                <label
+                                                    class="main-content-label text-uppercase font-weight-bold mb-1">Total
+                                                    Allocated Accounts</label>
+                                                <!-- <span class="d-block tx-12 mb-0 text-muted">Total Allocated Accounts</span> -->
+                                            </div>
+                                            <div class="card-item-body">
+                                                <div class="card-item-stat">
+                                                    <h4 class="font-weight-bold">89658</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card custom-card">
+                                    <div class="card-body">
+                                        <div class="card-item">
+                                            <div class="card-item-icon card-icon bg-gry">
+                                                <!-- <i class="fa fa-file-text-o" aria-hidden="true" style="font-size: 50px;"></i> -->
+                                                <img src="assets/images/002.png" alt="" class="img-fluid">
+
+                                            </div>
+                                            <div class="card-item-title mb-2">
+                                                <label
+                                                    class="main-content-label text-uppercase font-weight-bold mb-1">Touched
+                                                    Accounts</label>
+                                                <!-- <span class="d-block tx-12 mb-0 text-muted">Touched Accounts</span> -->
+                                            </div>
+                                            <div class="card-item-body">
+                                                <div class="card-item-stat">
+                                                    <h4 class="font-weight-bold">859</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="card custom-card">
+                                    <div class="card-body">
+                                        <div class="card-item">
+                                            <div class="card-item-icon card-icon bg-gry">
+                                                <i class="fa fa-file-text" aria-hidden="true"
+                                                    style="font-size: 50px;color:#ffff"></i>
+                                            </div>
+                                            <div class="card-item-title mb-2">
+                                                <label
+                                                    class="main-content-label text-uppercase font-weight-bold mb-1">Untouched
+                                                    Accounts</label>
+                                                <!-- <span class="d-block tx-12 mb-0 text-muted">Untouched Accounts</span> -->
+                                            </div>
+                                            <div class="card-item-body">
+                                                <div class="card-item-stat">
+                                                    <h4 class="font-weight-bold">858</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </mat-tab>
+                </ng-container>
+            </mat-tab-group>
+
+        </div>
+
+
+    </div>
+
+</section>

@@ -1,0 +1,2793 @@
+<div style="">
+  <div class="profile-fix">
+    <div class="row" style="margin: 0px;border-radius: 3px; box-shadow:0px 0px 2px 2px #dfdede">
+      <div class="col-md-3" style="background: #061430;
+      border: 1px solid #061430;
+      border-radius: 3px 0px 0px 3px;">
+        <div class="flex-1">
+          <div class="ht-img">
+            <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png"
+              alt="stack photo" class="img">
+          </div>
+
+          <div class="ht-t">
+            <h2
+              style="font-size: 16px;margin-bottom: 0px;line-height: 20px;margin-top: 6px;font-weight: 900;color: #df3e3e;">
+              {{CustomerData.Customer_Name}}
+            </h2>
+            <p style="font-size: 12px;margin-bottom: 6px;color: #fff;">{{CustomerData.Gender}}, {{CustomerData.Date_Of_Birth}}, {{CustomerData.NATION_NAME}}.</p>
+          </div>
+        </div>
+        <select style="width: 100%;background-color: #ef6c00;;border-radius: 2px;height: 28px;border:none;color:#fff">
+          <option>Choose Account</option>
+          <option>Home</option>
+          <option>Person</option>
+          <option>Credit Card</option>
+        </select>
+        <!-- <button style="width: 100%;background-color: #ef6c00;;border-radius: 0px;height: 28px;" mat-icon-button
+          [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <p style="font-size:12px;color: #fff;line-height: 10px;"> Choose Account<mat-icon
+              style="font-size:15px;position: relative;top:3px">arrow_downward</mat-icon>
+          </p>
+
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon style="font-size:18px;">home</mat-icon>
+            <span>123458012582825987</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon style="font-size:18px;">person</mat-icon>
+            <span>153458012582825987</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon style="font-size:18px;">credit_card</mat-icon>
+            <span>985458012582825965</span>
+          </button>
+        </mat-menu> -->
+      </div>
+
+      <div class="col-md-9" style="padding-left: 0px;padding-right: 0px;border-radius: 0px 3px 3px 0px;">
+        <table
+          style="width: 100%;height: 96px;padding-right: 0px;background: #EBEBEB !important;"
+          class="table_wrapper inpo">
+          <!-- style="width: 100%;height: 96px;padding-right: 0px;background:#0b3052 #e3dfe7!important" -->
+          <tr style="font-size: 12px; line-height:11px;">
+            <th
+              style="padding: 10px 10px 0px 10px !important; width:152px; font-size:10px !important; background: none !important; color:#595555 !important;">
+              UNIQUE ID</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important; width:152px; font-size:10px !important; background: none !important; color:#595555 !important;">
+              ACCOUNT NUMBER</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important; width:152px; font-size:10px !important; background: none !important; color:#595555 !important;">
+              CUSTOMER ID</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important; width:152px; font-size:10px !important;background: none !important; color:#595555 !important;">
+              AGREEMENT ID</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important; width:152px; font-size:10px !important;background: none !important; color:#595555 !important;">
+              NO OF ACC</th>
+            <th
+              style="border-right: none !important;padding: 10px 10px 0px 10px !important; width:152px; font-size:10px !important;background: none !important; color:#595555 !important;">
+              PRODUCT</th>
+          </tr>
+          <tr style="font-size: 12px; line-height:14px;">
+            <td style="padding: 10px;font-size:12px !important;font-weight:bold;color:#595555 !important; background: none !important;">{{CustomerData.insert_id}}</td>
+            <td style="padding: 10px;font-size:12px !important;font-weight:bold;color:#595555 !important; background: none !important;">{{CustomerData.acc_no}}</td>
+            <td style="padding: 10px;font-size:12px !important;font-weight:bold;color:#595555 !important; background: none !important;">{{CustomerData.CUSTOMER_ID}}</td>
+            <td style="padding: 10px;font-size:12px !important;font-weight:bold;color:#595555 !important; background: none !important;">{{CustomerData.agreement_id}}</td>
+            <td style="padding: 10px;font-size:12px !important;font-weight:bold;color:#595555 !important; background: none !important;"><span *ngIf="LinkedAccounts.length != 0">{{this.LinkedAccounts.length}}</span> <span *ngIf="LinkedAccounts.length == 0">NULL</span></td>
+            <td style="padding: 10px;font-size:12px !important;font-weight:bold;color:#595555 !important; background: none !important;border-right: none !important;">{{CustomerData.PRODUCT}}</td>
+          </tr>
+          <tr style="line-height:11px;">
+            <th
+              style="padding: 10px 10px 0px 10px !important;font-size:10px !important;background: none !important; color:#595555 !important;">
+              PRINCIPLE AMT.</th>
+
+            <th
+              style="padding: 10px 10px 0px 10px !important;font-size:10px !important;background: none !important; color:#595555 !important;">
+              INTEREST & OTHER AMT.</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important;font-size:10px !important;background: none !important; color:#595555 !important;">
+              TOTAL OUTSTANDING AMT</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important;font-size:10px !important;background: none !important; color:#595555 !important;">
+              MINIMUM PAYMENT AMT.</th>
+            <th
+              style="padding: 10px 10px 0px 10px !important;font-size:10px !important;background: none !important; color:#595555 !important;">
+              TOTAL OVERDUE AMT.</th>
+            <th
+              style="border-right: none !important;padding: 10px 10px 0px 10px !important;font-size:10px !important;background: none !important; color:#595555 !important;">
+              LEGAL STATUS</th>
+
+
+          </tr>
+          <tr style="line-height:14px;">
+            <td style="padding: 0px 10px 10px 10px !important;font-size:12px !important;font-weight:bold;color:#595555 !important;background: none !important;">{{CustomerData.total_out_standing}}</td>
+
+            <td style="padding: 0px 10px 10px 10px !important;font-size:12px !important;font-weight:bold;color:#595555 !important;background: none !important;">{{CustomerData.total_out_standing}}</td>
+            <td style="padding: 0px 10px 10px 10px !important;font-size:12px !important;font-weight:bold;color:#595555 !important;background: none !important;">{{CustomerData.total_out_standing}}</td>
+            <td style="padding: 0px 10px 10px 10px !important;font-size:12px !important;font-weight:bold;color:#595555 !important;background: none !important;">{{CustomerData.total_out_standing}}</td>
+            <td style="padding: 0px 10px 10px 10px !important;font-size:12px !important;font-weight:bold;color:#595555 !important;background: none !important;">{{CustomerData.total_out_standing}}</td>
+            <td style="padding: 0px 10px 10px 10px !important;font-size:12px !important;font-weight:bold;color:#595555 !important;background: none !important;border-right: none !important;">{{CustomerData.legal_status}}</td>
+
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="tab-info" style="margin-top: 125px;">
+    <mat-tab-group>
+      <mat-tab label="Account Info">
+        
+        <!-- <div class="row" style="margin:5px 0px; background:#e8e8e8;"> -->
+          <div class="row" style="margin:5px 0px; background:#f2efefd1;">
+          <div class="col-md-12" style="background:#fff; padding:10px 10px;margin:10px 0px;">
+            <h4 class="title" style="margin-top: 0px !important;">Customer 360&#176; Overview
+            </h4>
+            <!-- <h4 class="title" style="margin-top: 15px; text-align: right;margin-top: -29px !important;">
+              <span class="inner-a"><a (click)="openworklist()">Go to your Worklist</a></span>
+              <span class="inner-a"><a (click)="show13()">Customer Level Exposure</a></span>
+              <span class="inner-a"><a (click)="openworklist()">Currency Convertor</a></span>
+              <span class="inner-a"><a (click)="openworklist()">Active Workflow Status</a></span>
+            </h4> -->
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-12 card-box" style="background: white; border-radius: 3px;  height: 400px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Account Information</h2>
+                </div>
+                <!-- <div class="col-md-1">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div> -->
+              </div>
+              <!-- <hr> -->
+  
+              <div class="row">
+                
+                <ng-container *ngFor="let item of dataList">
+                  <div class="col-md-2 col-sm-2 col-lg-2">
+                   <span class="labels">
+                    {{item.column}}
+                   </span> 
+                  </div>
+                  <div  class="col-md-2 col-sm-2 col-lg-2 values">
+                    <span data-title="{{item.row}}">: {{item.row}}</span></div>
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+          <!-- Financial -->
+          <!-- <div class="col-md-12">
+            <div class="col-md-12 card-box" style="background: white;
+                border-radius: 3px;  height: 280px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Financial Details</h2>
+                </div>
+          
+              </div>
+            
+              <div class="row">
+                <div class="col-md-2 labels">
+                  DPD </div>
+                <div class="col-md-2 values">
+                  : NA </div>
+                <div class="col-md-2 labels">
+                  Bucket/Cycles
+                </div>
+                <div class="col-md-2 values">
+                  : NA 
+                </div>
+                <div class="col-md-2 labels">
+                  Total Amount Overdue
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Interest Overdue
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Total Charges Overdue
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Other Charges
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Cheque Bounce Counter
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Accrued Interest
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Suspense Interest
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                <div class="col-md-2 labels">
+                  Nomination Interest
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+                
+                <div class="col-md-2 labels">
+                  OS Amount
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  OD Amount
+                </div>
+                <div class="col-md-2 values">
+                  : xxxx </div>
+                <div class="col-md-2 labels">
+                  OD Days
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Times Delq.#
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Peak OD Days
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Delq. Start Date
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Bucket
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Cycle Days
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Action/Result
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                
+                <div class="col-md-2 labels">
+                  Financier
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  LOB
+                </div>
+                <div class="col-md-2 values">
+                  : xxxx </div>
+                <div class="col-md-2 labels">
+                  Loan Type
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Loan Currency
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Scheme
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+
+                <div class="col-md-2 labels">
+                  Loan Financed
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Interest Type
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Interest Rate(%)
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Tenure
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Asset Cost
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Sourcing Dealer
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Sourcing Dealer
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  No. of installments
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Frequency
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Installment Mode
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  EMI
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Billed Installment
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Due Date
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Collection Cycle
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx2
+                </div>
+
+
+                <div class="col-md-2 labels">
+                  Cycle Date
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Loan To value
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Note Date
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  EMI Start Date
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  No. of installments Overdue
+                </div>
+                <div class="col-md-2 values">
+                  : NA
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Contact -->
+          <!-- <div class="col-md-12">
+            <div class="col-md-12 card-box" style="background: white;
+     border-radius: 3px;  height: 200px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Contact Details</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 labels">
+                  Active Phone 1
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432100 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Active Phone 2
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432101 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Active Phone 3
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432101 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Active Phone 4
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432102 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Active Phone 5
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432101 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Active Phone 6
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432104 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Ref.Person Name
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432104 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Ref.Person Phone No
+                </div>
+                <div class="col-md-2 values">
+                  : 9865432104 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                email 
+                <div class="col-md-2 labels">
+                  Email 1
+                </div>
+                <div class="col-md-2 values">
+                  : m@gmail.com <i class="fa fa-envelope" (click)="openworklist2()"
+                    style="font-size:60px;color: red;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Email 2
+                </div>
+                <div class="col-md-2 values">
+                  : m@gmail.com <i class="fa fa-envelope" (click)="openworklist2()"
+                    style="font-size:60px;color: red;"></i>
+                </div>
+                <div class="col-md-2 labels">
+                  Address 1
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  Address 2
+                </div>
+                <div class="col-md-2 values">
+                  : xxxx
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- Follow up details -->
+          <div class="col-md-12">
+            <div class="col-md-12 card-box" style="background: white;
+     border-radius: 3px;  height: 260px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">FollowUp Details</h2>
+                </div>
+              </div>
+              <!-- <hr> -->
+              <ng-container *ngIf="FollowUpList.length == 0">
+                <p>No Previous FollowUp on this User account</p>
+              </ng-container>
+              <ng-container *ngIf="FollowUpList.length != 0">
+                <div class="row" *ngFor="let item of FollowUpList | slice:0">
+                
+                  <div class="col-md-2 labels">
+                    Action to Take
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.actiontotake}} </div>
+                  <div class="col-md-2 labels">
+                    Bank Code
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.bcode}} </div>
+                  <div class="col-md-2 labels">
+                    Customer ID
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.customer_id}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Field Visit Date
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.fdate | date}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Field Visit Territory
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.territory}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Status
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.mstatus}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Sub Status
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.substatus}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Tracing Tool
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.tracingtool}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Tracing Link
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.tracinglink}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Created by
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.createdby}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Creator Name
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.creator_name}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Log Date
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.log_date | date}}
+                  </div>
+                  <!-- promised details -->
+                  <div class="col-md-2 labels">
+                    Log Type
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.log_type}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    PTP Amount
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.ptp_amount}} </div>
+                  <div class="col-md-2 labels">
+                    PTP Status
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.ptp_status}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Remarks
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.remarks}}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <!-- Guranteer Details -->
+          <!-- <div class="col-md-12">
+            <div class="col-md-12 card-box" style="background: white;
+     border-radius: 3px;  height: 150px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Guarantor Details</h2>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2 labels">
+                  Guarantor A/C no.
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  Name
+                </div>
+                <div class="col-md-2 values">
+                  : xxxx </div>
+                <div class="col-md-2 labels">
+                  Profession
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Current Organization/Business
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Name
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  Relationship
+                </div>
+                <div class="col-md-2 values">
+                  : xxxx </div>
+                <div class="col-md-2 labels">
+                  Mobile No
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!--  -->
+
+
+          <!-- <div class="col-md-6">
+            <div class="card-box"
+              style="background: white;border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-11">
+                  <h4 class="title-f">Followup Status</h4>
+                </div>
+                <div class="col-md-1">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="show1()"></i></span>
+                </div>
+              </div>
+              <hr>
+              <div class="row" >
+                <div class="col-md-4 labels">
+                  Total Contacts:
+                </div>
+                <div class="col-md-2 values">
+                  10 </div>
+                <div class="col-md-4 labels">
+                  Account Status:
+                </div>
+                <div class="col-md-2 values">
+                  Live </div>
+                <div class="col-md-4 labels">
+                  Broken Promise Indicator:
+                </div>
+                <div class="col-md-2 values">
+                  -
+                </div>
+                <div class="col-md-4 labels">
+                  Broken Promise Counter:
+                </div>
+                <div class="col-md-2 values">
+                  -
+                </div>
+                <div class="col-md-4 labels">
+                  Last Payment Amount:
+                </div>
+                <div class="col-md-2 values">
+                  10-0-2020
+                </div>
+                <div class="col-md-4 labels">
+                  Last Payment Amount:
+                </div>
+                <div class="col-md-2 values">
+                  20,000
+                </div>
+                <div class="col-md-4 labels">
+                  Last Action Date:
+                </div>
+                <div class="col-md-2 values">
+                  20-10-2020
+                </div>
+                <div class="col-md-4 labels">
+                  Last Action Code:
+                </div>
+                <div class="col-md-2 values">
+                  ABC
+                </div>
+                <div class="col-md-4 labels">
+                  Foreclosure:
+                </div>
+                <div class="col-md-2 values">
+                  -
+                </div>
+                <div class="col-md-4 labels">
+                  Risk Segment:
+                </div>
+                <div class="col-md-2 values">
+                  -
+                </div>
+                <div class="col-md-4 labels">
+                  Best Number to call:
+                </div>
+                <div class="col-md-2 values">
+                  987654321
+                </div>
+                <div class="col-md-3 labels">
+                  Best Time to call:
+                </div>
+                <div class="col-md-3 values">
+                  10:23 AM - 12:00 PM</div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-6">
+            <div class="col-md-12 card-box" style="background: white;
+    border-radius: 1px;  height: 250px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-12">
+                  <h4 class="title-f">Overdue Details</h4>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-4 labels">
+                  DPD </div>
+                <div class="col-md-2 values">
+                  NA </div>
+                <div class="col-md-4 labels">
+                  Bucket/Cycles:
+                </div>
+                <div class="col-md-2 values">
+                  NA </div>
+                <div class="col-md-4 labels">
+                  No. of installments Overdue:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Total Amount Overdue:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Interest Overdue:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Total Charges Overdue:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Other Charges:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Cheque Bounce Counter:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Accrued Interest:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Suspense Interest:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+                <div class="col-md-4 labels">
+                  Nomination Interest:
+                </div>
+                <div class="col-md-2 values">
+                  NA
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="card-box" style="background: white;overflow-y: scroll;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Contact Information</h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-7 labels">
+                  Active Phone 1:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Active Phone 2:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Active Phone 3:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Active Phone 4:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Active Phone 5:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Active Phone 6:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Ref.Person Name:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+                <div class="col-md-7 labels">
+                  Ref.Person Phone No:
+                </div>
+                <div class="col-md-5 values">
+                  986543210 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="card-box" style="background: white;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Active Address
+                  </h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-md-6 labels">
+                  Address 1:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxxx </div>
+                <div class="col-md-6 labels">
+                  Address 2:
+                </div>
+                <div class="col-md-6 values">
+                  xxxx
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="card-box" style="background: white;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+
+
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Email IDs
+                  </h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-6 labels">
+                  Email 1:
+                </div>
+                <div class="col-md-6 values">
+                  m@gmail.com <i class="fa fa-envelope" (click)="openworklist2()"
+                    style="font-size:60px;color: red;"></i>
+                </div>
+                <div class="col-md-6 labels">
+                  Email 2:
+                </div>
+                <div class="col-md-6 values">
+                  m@gmail.com <i class="fa fa-envelope" (click)="openworklist2()"
+                    style="font-size:60px;color: red;"></i>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="card-box" style="background: white;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Promise Details
+                  </h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                    (click)="show1()"></i></span>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-md-6 labels">
+                  Taken On:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxxx </div>
+                <div class="col-md-6 labels">
+                  Taken By:
+                </div>
+                <div class="col-md-6 values">
+                  xxxx </div>
+                <div class="col-md-6 labels">
+                  Promise Date:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Payment Date:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Payment Amount:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-12 card-box" style="background: white;border-radius: 1px;">
+
+            <div class="row" style="background: #20353f;margin-top: -5px;">
+              <div class="col-md-11">
+                <h4 class="title-f">Overdue Details</h4>
+              </div>
+              <div class="col-md-1">
+                <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                    (click)="showPositionDialog()"></i></span>
+              </div>
+            </div>
+
+
+            <hr>
+            <div class="row" >
+              <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false"
+                [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['type']">
+                <ng-template pTemplate="header">
+                  <tr style="text-align: center;">
+                    <th>Loan Number *</th>
+                    <th>Product </th>
+                    <th>Bucket</th>
+                    <th>Action Date</th>
+                    <th>Action Time</th>
+                    <th>Contact Mode</th>
+                    <th>Place Contacted</th>
+                    <th>Person Contacted</th>
+                    <th>Action Code</th>
+                    <th>Action Amount</th>
+                    <th>Remarks</th>
+                    <th>Review Date</th>
+                    <th>Review Time</th>
+                    <th>Created by</th>
+                  </tr>
+                  <tr style="text-align: center;font-size: 12px;">
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-12">
+            <div class="card-box" style="background: white;
+            border-radius: 1px;overflow: hidden;">
+              <div class="row">
+                <div class="col-md-11">
+                  <h4 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Multiple Account Information</h4>
+                </div>
+                <div class="col-md-1">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" >
+                  <div class="doc-table">
+                    <p-table [value]="multipleAccountInformation | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true"
+                      [rows]="5" [rowHover]="true" selectionMode="single" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                      [globalFilterFields]="['type']">
+                      <ng-template pTemplate="header">
+                        <tr style="text-align: center;">
+                          <th pSortableColumn="LoanNumber">Loan Number <p-sortIcon field="code"></p-sortIcon><p-columnFilter type="text" field="LoanNumber"></p-columnFilter></th>
+                          <th pSortableColumn="Product">Product <p-sortIcon field="code"></p-sortIcon><p-columnFilter type="text" field="Product"></p-columnFilter></th>
+                          <th pSortableColumn="LoanAmount">Loan Amount <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="OutstandingAmount">Outstanding Amount <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="Total Overdue Amount">Total Overdue Amount <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="Next Installment Amount">Next Installment Amount <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="Next Installment Due Date">Next Installment Due Date <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="Bucket">Bucket <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="Minimum amount for Bucket movement">Minimum amount for Bucket movement <p-sortIcon field="code"></p-sortIcon></th>
+                          <th pSortableColumn="Unit Code">Unit Code <p-sortIcon field="code"></p-sortIcon></th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-item>
+                        <tr [pSelectableRow]="item" style="text-align: center;">
+                          <td>{{item.LoanNumber}}</td>
+                          <td>{{item.Product}}</td>
+                          <td>{{item.LoanAmount}}</td>
+                          <td>{{item.OutstandingAmount}}</td>
+                          <td>{{item.TotalOverdueAmount}}</td>
+                          <td>{{item.NextInstallmentAmount}}</td>
+                          <td>{{item.NextInstallmentDueDate}}</td>
+                          <td>{{item.Bucket}}</td>
+                          <td>{{item.MinimumamountforBucketmovement}}</td>
+                          <td>{{item.UnitCode}}</td>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="col-md-12 card-box" style="background: white;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+
+
+
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Guarantor Details
+                  </h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-md-9 labels">
+                  Guarantor A/C no.:
+                </div>
+                <div class="col-md-3 values">
+                  xxxxxxx </div>
+                <div class="col-md-9 labels">
+                  Name:
+                </div>
+                <div class="col-md-3 values">
+                  xxxx </div>
+                <div class="col-md-9 labels">
+                  Profession:
+                </div>
+                <div class="col-md-3 values">
+                  xxxxx
+                </div>
+                <div class="col-md-9 labels">
+                  Current Organization / Business:
+                </div>
+                <div class="col-md-3 values">
+                  xxxxxx
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="col-md-12 card-box" style="background: white;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Reference Details
+                  </h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+
+
+              <hr>
+              <div class="row">
+                <div class="col-md-6 labels">
+                  Name:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxxx </div>
+                <div class="col-md-6 labels">
+                  Relationship:
+                </div>
+                <div class="col-md-6 values">
+                  xxxx </div>
+                <div class="col-md-6 labels">
+                  Mobile No:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxx
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+
+          <!-- <div class="col-md-12">
+            <div class="col-md-12 card-box" style="background: white;
+    border-radius: 3px; height: 150px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Allocation Details
+                  </div>
+                </div>
+              </div>
+     
+              <div class="row">
+                <div class="col-md-2 labels">
+                  Allocation Type
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  To Group
+                </div>
+                <div class="col-md-2 values">
+                  : xxxx </div>
+                <div class="col-md-2 labels">
+                  To Collector
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Allocation Date
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Notes
+                </div>
+                <div class="col-md-2 values">
+                  : xxxxx
+                </div>
+              </div>
+              <div class="col-md-12" align="center">
+                <span style="color: #21a0f6;font-size: 12px;text-decoration: underline;cursor: pointer;"
+                  (click)="show14()">viewAllocation history</span>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-3">
+            <div class="col-md-12 card-box" style="background: white;
+    border-radius: 1px; height: 250px;overflow-y: scroll;overflow-x: hidden;">
+
+
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-10">
+                  <h4 class="title-f">Financial Details
+                  </h4>
+                </div>
+                <div class="col-md-2">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+
+
+              <hr>
+              <div class="row">
+                <div class="col-md-6 labels">
+                  OS Amount:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxxx </div>
+                <div class="col-md-6 labels">
+                  OD Amount:
+                </div>
+                <div class="col-md-6 values">
+                  xxxx </div>
+                <div class="col-md-6 labels">
+                  OD Days:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Times Delq.#:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Peak OD Days:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Delq. Start Date:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Bucket:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Cycle Days:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-6 labels">
+                  Action/Result:
+                </div>
+                <div class="col-md-6 values">
+                  xxxxxx
+                </div>
+              </div> 
+            </div>
+          </div> -->
+
+
+
+          <!-- <div class="col-md-12">
+            <div class=" card-box" style="background: white;border-radius: 1px; overflow: hidden;">
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-11">
+                  <h4 class="title-f">Loan Details
+                  </h4>
+                </div>
+                <div class="col-md-1">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+              </div>
+
+
+              <hr>
+              <div class="row">
+                <div class="col-md-2 labels">
+                  Financier:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxxx </div>
+                <div class="col-md-2 labels">
+                  LOB:
+                </div>
+                <div class="col-md-2 values">
+                  xxxx </div>
+                <div class="col-md-2 labels">
+                  Loan Type:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Loan Currency:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+                <div class="col-md-2 labels">
+                  Scheme:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+
+                <div class="col-md-2 labels">
+                  Loan Financed:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Interest Type:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Interest Rate(%):
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Tenure:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Asset Cost:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Sourcing Dealer:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Sourcing Dealer:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  No. of installments:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Frequency:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Installment Mode:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  EMI:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Billed Installment:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Due Date:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Collection Cycle:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx2
+                </div>
+
+
+                <div class="col-md-2 labels">
+                  Cycle Date:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Loan To value:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  Note Date:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+                <div class="col-md-2 labels">
+                  EMI Start Date:
+                </div>
+                <div class="col-md-2 values">
+                  xxxxxx
+                </div>
+
+
+              </div>
+            </div>
+          </div> -->
+          
+          <!-- Skip tracking  -->
+          <!-- <div class="col-md-12">
+            <div class="card-box" style="background: white;border-radius: 1px; overflow: hidden;">
+              <div class="row" style="background: #20353f;margin-top: -5px;">
+                <div class="col-md-11">
+                  <h4 class="title-f">Skip Tracing Details</h4>
+                </div>
+                <div class="col-md-1">
+                  <span><i class="fa fa-plus-circle" style="font-size:11px !important;color:#ef6c00"
+                      (click)="showPositionDialog()"></i></span>
+                </div>
+               
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="doc-table">
+                    <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false"
+                      [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                      [globalFilterFields]="['type']">
+                      <ng-template pTemplate="header">
+                        <tr style="text-align: center;">
+                          <th>S.No</th>
+                          <th>Account Number</th>
+                          <th>Details Obtained</th>
+                          <th>Source of Detail</th>
+                          <th>Remarks</th>
+                          <th>Customer Name</th>
+                          <th>Open Text</th>
+                          <th>Open Text</th>
+                          <th>Open Text</th>
+                          <th>Date</th>
+                          <th>User ID</th>
+                        </tr>
+                        <tr style="text-align: center;">
+                          <td>1</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div> -->
+
+          <!-- Asset Details -->
+          <div class="col-md-12">
+            <div> 
+              <!-- <h4 class="title-f" style="background: #20353f;padding:0px 5px;cursor: pointer;" (click)="asset()">Assets Details <i *ngIf="!assets"
+                  class="fa fa-arrow-circle-down coll-i" aria-hidden="true"></i><i *ngIf="assets"
+                  class="fa fa-arrow-circle-up coll-i" aria-hidden="true"></i></h4> -->
+              <!-- <div class="row" *ngIf="assets" style="padding: 0px 0px 6px 10px;">
+                <div class="col-md-2">
+                  <h5 class="form-lable">Model:</h5>
+                  <input type="text" pInputText placeholder="" value="MU-X">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Brand:</h5>
+                  <input type="text" pInputText placeholder="" value="ISUZU">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Color:</h5>
+                  <input type="text" pInputText placeholder="" value="Black">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Engine No:</h5>
+                  <input type="text" pInputText placeholder="" value="12365478529">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Chassis No:</h5>
+                  <input type="text" pInputText placeholder="" value="87956421225">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">VIN Number:</h5>
+                  <input type="text" pInputText placeholder="" value="61255858256">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Lisence No:</h5>
+                  <input type="text" pInputText placeholder="" value="LIC187212">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Changwat:</h5>
+                  <input type="text" pInputText placeholder="" value="BANGKOK">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Reg.Year:</h5>
+                  <input type="text" pInputText placeholder="" value="2010">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Dealer:</h5>
+                  <input type="text" pInputText placeholder="" value="Dealer Code">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Showroom:</h5>
+                  <input type="text" pInputText placeholder="" value="Showroom Name">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">MO Name:</h5>
+                  <input type="text" pInputText placeholder="" value="Marketing Officer Name">
+
+                </div>
+              </div> -->
+              <!-- <div class="col-md-12 mt-20">
+          <button type="button" class="btn btn-primary">Add</button>
+     </div> -->
+              <!-- <hr> -->
+
+              <div class="title-f" (click)="pay()" style="background:#fff; color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px; cursor: pointer;">
+                <span style="background:#fff; color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 10px;">Payment Details</span> <i *ngIf="!payment"
+                  class="fa fa-arrow-circle-down coll-i" aria-hidden="true"></i><i *ngIf="payment"
+                  class="fa fa-arrow-circle-up coll-i" aria-hidden="true"></i></div>
+              <div class="row" *ngIf="payment" style="background:#fff; padding: 0px 0px 16px 0px; margin-left: 0px; margin-right: 0px;">
+                <div class="col-md-2">
+                  <h5 class="form-lable">Last Paid Date:</h5>
+                  <input type="text" pInputText placeholder="" value="05-11-2013">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Payment Mode:</h5>
+                  <input type="text" pInputText placeholder="" value="Cash">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Collected By:</h5>
+                  <input type="text" pInputText placeholder="CHARILE">
+                </div>
+                <div class="col-md-2">
+                  <h5 class="form-lable">Amount</h5>
+                  <input type="text" pInputText placeholder="" value="12000">
+                </div>
+              </div>
+              <hr>
+            <!-- <div class="title-f" style="background:#fff; color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">
+                <span style="background:#fff; color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 10px;"> Delinquency String </span>
+                <span style="color: #ef6c00;font-size: 12px;text-decoration: underline;cursor: pointer;" (click)="del = !del">view Detail </span>
+            </div> -->
+            <!-- <div class="doc-table" *ngIf="del">
+              <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false"
+                [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['type']">
+
+                <ng-template pTemplate="header">
+
+                  <tr style="text-align: center;">
+                    <th style="background: #747f7f !important;">JAN</th>
+                    <th style="background: #747f7f !important;">FEB</th>
+                    <th style="background: #747f7f !important;">MAR</th>
+                    <th style="background: #747f7f !important;">APR</th>
+                    <th style="background: #747f7f !important;">MAY</th>
+                    <th style="background: #747f7f !important;">JUN</th>
+                    <th style="background: #747f7f !important;">JUL</th>
+                    <th style="background: #747f7f !important;">AUG</th>
+                    <th style="background: #747f7f !important;">SEP</th>
+                    <th style="background: #747f7f !important;">OCT</th>
+                    <th style="background: #747f7f !important;">NOV</th>
+                    <th style="background: #747f7f !important;">DEC</th>
+                    <th style="background: #747f7f !important;">JAN</th>
+                    <th style="background: #747f7f !important;">FEB</th>
+                    <th style="background: #747f7f !important;">MAR</th>
+                    <th style="background: #747f7f !important;">APR</th>
+                    <th style="background: #747f7f !important;">MAY</th>
+                    <th style="background: #747f7f !important;">JUN</th>
+                    <th style="background: #747f7f !important;">JUL</th>
+                    <th style="background: #747f7f !important;">AUG</th>
+                    <th style="background: #747f7f !important;">SEP</th>
+                    <th style="background: #747f7f !important;">OCT</th>
+                    <th style="background: #747f7f !important;">NOV</th>
+                    <th style="background: #747f7f !important;">DEC</th>
+                  </tr>
+                  <tr style="text-align: center;">
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                    <td><input type="text" value="NA"></td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div> -->
+            </div>
+          </div>
+        </div>
+
+
+      </mat-tab>
+      <mat-tab label=" FollowUp Info">
+        <div class="row">
+          <div class="col-md-12" style="background:#fff; padding:10px 10px;margin:10px;">
+            <h4 class="title" style="margin-top: 0px !important;">FollowUp Overview</h4>
+            <!-- <h4 class="title" style="margin-top: 15px; text-align: right;margin-top: -29px !important;">
+              <span class="inner-a"><a (click)="openworklist()">Go to your Worklist</a></span>
+              <span class="inner-a"><a (click)="show13()">Customer Level Exposure</a></span>
+              <span class="inner-a"><a (click)="openworklist()">Currency Convertor</a></span>
+              <span class="inner-a"><a (click)="openworklist()">Active Workflow Status</a></span>
+            </h4> -->
+          </div>
+          <div class="col-md-12">
+            <div class="card-box" style="background: white; border-radius: 3px;  height: 260px;overflow-y: scroll;overflow-x: hidden;">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">FollowUp Details</h2>
+                </div>
+              </div>
+              <!-- <hr> -->
+              <ng-container *ngIf="FollowUpList.length == 0">
+                <p>No Previous FollowUp on this User account</p>
+              </ng-container>
+              <ng-container *ngIf="FollowUpList.length != 0">
+                <div class="row" *ngFor="let item of FollowUpList | slice:FollowUpList.length - 1">
+                
+                  <div class="col-md-2 labels">
+                    Action to Take
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.actiontotake}} </div>
+                  <div class="col-md-2 labels">
+                    Bank Code
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.bcode}} </div>
+                  <div class="col-md-2 labels">
+                    Customer ID
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.customer_id}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Field Visit Date
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.fdate | date}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Field Visit Territory
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.territory}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Status
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.mstatus}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Sub Status
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.substatus}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Tracing Tool
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.tracingtool}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Tracing Link
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.tracinglink}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Created by
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.createdby}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Creator Name
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.creator_name}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Log Date
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.log_date | date}}
+                  </div>
+                  <!-- promised details -->
+                  <div class="col-md-2 labels">
+                    Log Type
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.log_type}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    PTP Amount
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.ptp_amount}} </div>
+                  <div class="col-md-2 labels">
+                    PTP Status
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.ptp_status}}
+                  </div>
+                  <div class="col-md-2 labels">
+                    Remarks
+                  </div>
+                  <div class="col-md-2 values">
+                    : {{item.remarks}}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="container-fluid">
+              <hr>
+              <div class="row" style="text-align: end; margin:10px;">
+                  <p style="font-size: 14px;"><b>FollowUp List</b></p>
+              </div>
+              <div class="row">
+                  <div class="col-12">
+                      <ag-grid-angular #agGrid 
+                              style="width: auto; height: 300px;"
+                              class="ag-theme-alpine"
+                              [rowData]="FollowUpList"
+                              [rowSelection]="'multiple'"
+                              [columnDefs]="FollowUpcolumnDefs"
+                              [pagination]="true">
+                      </ag-grid-angular>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+        
+      </mat-tab>
+      <mat-tab label=" Settlement Info">
+        <div class="conatiner-fluid">
+          <div class="row">
+            <div class="col-12" style="background:#fff; padding:10px 10px;margin:10px;">
+              <h4 class="title" style="margin-top: 0px !important;">Setllement Overview</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card" style="padding: 10px;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Settlement Details</h2>
+                  </div>
+                </div>
+                <ng-container *ngIf="SettlementList.length == 0">
+                  <p>No Previous Settlement on this User account</p>
+                </ng-container>
+                <ng-container *ngIf="SettlementList.length != 0">
+                  <div class="row" *ngFor="let item of SettlementList | slice:SettlementList.length-1">
+                  
+                    <div class="col-md-2 labels">
+                      Settlement type
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.settlement_type}} </div>
+                    <div class="col-md-2 labels">
+                      Account Number
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.account_id}} </div>
+                    <div class="col-md-2 labels">
+                      Current Total
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.current_total}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Payment Date
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.payment_date | date}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      No of Installments
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.no_of_installments}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      First Installment
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.fst_installment}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Approval Status
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.approval_status}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Details
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.details_notes}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Documents
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.attachment_url}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Created by
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.createdby}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Creator Name
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.creator_name}}
+                    </div>
+                    
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="row d-flex justify-content-around" style="text-align: end; margin:10px;">
+                  <p style="font-size: 16px;"><b>Settlement List</b></p>
+                  <div class="form-group col-md-4">
+                      <select class="form-control" (change)="onTypeChange($event)">
+                          <option value="">Choose</option>
+                          <option value="OTS">One Time Settlement</option>
+                          <option value="MTS">Multi Time Settlement</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="card">
+                <ag-grid-angular #agGrid 
+                style="width: auto; height: 300px;"
+                class="ag-theme-alpine"
+                [rowData]="SettlementList | filterBy:userFilter"
+                [rowSelection]="'multiple'"
+                [columnDefs]="SettlementcolumnDefs"
+                [pagination]="true">
+              </ag-grid-angular>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label=" Payments Info">
+        <div class="conatiner-fluid">
+          <div class="row">
+            <div class="col-12" style="background:#fff; padding:10px 10px;margin:10px;">
+              <h4 class="title" style="margin-top: 0px !important;">Payments Overview</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card" style="padding: 10px;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Payment Details</h2>
+                  </div>
+                </div>
+                <ng-container *ngIf="PaymentsList.length == 0">
+                  <p>No Previous Payment on this User account</p>
+                </ng-container>
+                <ng-container *ngIf="PaymentsList.length != 0">
+                  <div class="row" *ngFor="let item of PaymentsList | slice:PaymentsList.length - 1">
+
+                    <div class="col-md-2 labels">
+                      Account Number
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.account_id}} </div>
+                    <div class="col-md-2 labels">
+                      Payment Date
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.payment_date | date}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Payment Amount
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.payment_amount}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Due Amount
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.due_amount}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Paid Date
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.paid_date}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Last Paid Amount
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.last_paid_amount}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Next Payment Date
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.next_payment_date | date}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Documents
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.attachment_url}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Created by
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.createdby}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Creator Name
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.creator_name}}
+                    </div>
+                    
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="row d-flex justify-content-start" style="text-align: end; margin:10px;">
+                  <p style="font-size: 16px;"><b>Payments List</b></p>
+                  
+              </div>
+              <div class="card">
+                <ag-grid-angular #agGrid 
+                      style="width: auto; height: 300px;"
+                      class="ag-theme-alpine"
+                      [rowData]="PaymentsList"
+                      [rowSelection]="'multiple'"
+                      [columnDefs]="PaymentscolumnDefs"
+                      [pagination]="true">
+              </ag-grid-angular>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label=" Field Visit Info">
+        <div class="conatiner-fluid">
+          <div class="row">
+            <div class="col-12" style="background:#fff; padding:10px 10px;margin:10px;">
+              <h4 class="title" style="margin-top: 0px !important;">Field Visit Overview</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card" style="padding: 10px;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Field Visit Details</h2>
+                  </div>
+                </div>
+                <ng-container *ngIf="FieldVisitList.length == 0">
+                  <p>No Previous Field Visit on this User account</p>
+                </ng-container>
+                <ng-container *ngIf="FieldVisitList.length != 0">
+                  <div class="row" *ngFor="let item of FieldVisitList | slice:FieldVisitList.length - 1">
+
+                    <div class="col-md-2 labels">
+                      Account Number
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.account_id}} </div>
+                    <div class="col-md-2 labels">
+                      Field Visit Territory
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.fieldvisitterritory}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Field Visit Area
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.fieldvisitarea}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      First Address
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.firstaddress}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Second Address
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.secondaddress}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Requested Date
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.fvrqdate | date}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Remarks
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.remarks}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Documents
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.attachment_url}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Status
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.status}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Created by
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.createdby}}
+                    </div>
+                    <div class="col-md-2 labels">
+                      Creator Name
+                    </div>
+                    <div class="col-md-2 values">
+                      : {{item.creator_name}}
+                    </div>
+                    
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="row d-flex justify-content-start" style="text-align: end; margin:10px;">
+                  <p style="font-size: 16px;"><b>Field Visit List</b></p>
+                  
+              </div>
+              <div class="card">
+                <ag-grid-angular #agGrid 
+                      style="width: auto; height: 300px;"
+                      class="ag-theme-alpine"
+                      [rowData]="FieldVisitList"
+                      [rowSelection]="'multiple'"
+                      [columnDefs]="FieldVisitcolumnDefs"
+                      [pagination]="true">
+                </ag-grid-angular>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Customer Info">account_circle</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-customerdetails></app-usr-customerdetails>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Guarantor / Reference Datails">collections_bookmark</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-gurantordetails></app-usr-gurantordetails>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Asset Details">extension</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-asset-detail></app-usr-asset-detail>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Collateral Details">attach_money</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-collateraldetailss></app-usr-collateraldetailss>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Financial Details">payment</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-paymentdetails></app-usr-paymentdetails>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Statcard">card_membership</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-statcard></app-usr-statcard>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Repayment Schedule">replay</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-repayment></app-usr-repayment>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Bounces">assignment_return</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-bounces></app-usr-bounces>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Statement">file_copy</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-payment-history></app-usr-payment-history>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Foreclosure">timeline</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-foreclosure></app-usr-foreclosure>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Allocation history reports">history</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-allocationhistory></app-usr-allocationhistory>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Customer Available Accounts">link</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-customerleaccount></app-usr-customerleaccount>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="special follow up trails">swap_vert</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-special-followup ></app-usr-special-followup>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Follow up trails">swap_horiz</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-followuptrails></app-usr-followuptrails>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="FYI & Old Follow Up Trails">folder</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-old-followup></app-usr-old-followup>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Loan & Overdue Details">monetization_on</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-loandetails></app-usr-loandetails>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Allocation Details">ballot</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-allocationdetail></app-usr-allocationdetail>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Delinquency flow">merge_type</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-delinquencyflow></app-usr-delinquencyflow>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Overdue Details">payment</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-overduedetailsone></app-usr-overduedetailsone>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="RPO/Auction/PLA information">info</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-rpo></app-usr-rpo>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Account Summary">event_note</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-accountsummery></app-usr-accountsummery>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Phone Details">contact_phone</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-phonedetails></app-usr-phonedetails>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Retrieve Documents">file_copy</mat-icon>
+        </ng-template>
+        <br>
+        <app-usr-documnetretrieval></app-usr-documnetretrieval>
+      </mat-tab> -->
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Field Visit Status"> directions_bike</mat-icon>
+        </ng-template>
+        <br>
+
+        <h4 class="title">Field Visit Details</h4>
+
+        <div class="doc-table">
+          <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+              <tr style="text-align: center;">
+                <th>S.No</th>
+                <th>Requested Date</th>
+                <th>Field Visit for</th>
+                <th>Address Type</th>
+                <th>Address</th>
+                <th>Phone Ext</th>
+                <th>Mobile</th>
+                <th>Contact Person</th>
+                <th>Amount</th>
+                <th>Field Visit Date</th>
+                <th>Customer Available </th>
+                <th>Payment Made</th>
+                <th>Amount Collected</th>
+                <th>Status</th>
+                <th>Receipt Number</th>
+                <th>Next Action</th>
+                <th>Next Action Date</th>
+                <th>Remarks</th>
+              </tr>
+              <tr style="text-align: center;">
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <br>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Settlement Details">payment</mat-icon>
+        </ng-template>
+        <br>
+        <h4 class="title">Settlement Details</h4>
+
+        <div class="doc-table">
+          <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+              <tr style="text-align: center;">
+                <th>S.No</th>
+                <th>Settlement Type</th>
+                <th>Installment Amount</th>
+                <th>Instrument Date</th>
+                <th>Remarks</th>
+                <th>Total Settlement Amount</th>
+              </tr>
+              <tr style="text-align: center;">
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <br>
+
+
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon pTooltip="Skip Tracing">trending_up</mat-icon>
+        </ng-template>
+        <br>
+
+        <h4 class="title">Skip Tracing Details</h4>
+
+        <div class="doc-table">
+          <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="false" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+              <tr style="text-align: center;">
+                <th>S.No</th>
+                <th>Account Number</th>
+                <th>Details Obtained</th>
+                <th>Source of Detail</th>
+                <th>Remarks</th>
+                <th>Customer Name</th>
+                <th>Open Text</th>
+                <th>Open Text</th>
+                <th>Open Text</th>
+                <th>Date</th>
+                <th>User ID</th>
+              </tr>
+              <tr style="text-align: center;">
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <br>
+
+      </mat-tab> -->
+
+    </mat-tab-group>
+  </div>
+</div>
+<div class="follow">
+  <!-- <div [ngClass]="{'active-i': show === 'show1'}">
+    <mat-icon pTooltip="Follow up" (click)="show1()">swap_horiz</mat-icon>
+  </div> -->
+  <!-- <div [ngClass]="{'active-i': show === 'show2'}">
+    <mat-icon pTooltip="Initiate Workflow" (click)="show2()">timeline</mat-icon>
+  </div> -->
+  <!-- <div [ngClass]="{'active-i': show === 'show3'}">
+    <i class="fa fa-list-alt" aria-hidden="true" pTooltip=" Collection Details" style="padding:6px !important;" (click)="show3()"></i>
+  </div> -->
+  <!-- <div [ngClass]="{'active-i': show === 'show4'}">
+    <i class="fa fa-file-text-o" aria-hidden="true" pTooltip=" Settlement Recording" style="padding:6px !important;" (click)="show4()"></i>
+  </div> -->
+  <!-- <div [ngClass]="{'active-i': show === 'show5'}">
+    <i class="fa fa-taxi" aria-hidden="true" pTooltip="Police Case Filing" style="padding:6px !important;" (click)="show5()"></i>
+  </div> -->
+  <!-- <div [ngClass]="{'active-i': show === 'show6'}">
+    <mat-icon pTooltip="Repo">file_copy</mat-icon>
+  </div>
+  <div [ngClass]="{'active-i': show === 'show7'}">
+    <mat-icon pTooltip="Civil">contact_phone</mat-icon>
+  </div> -->
+
+  <!-- <div [ngClass]="{'active-i': show === 'show8'}">
+    <mat-icon pTooltip="Skip Tracing" (click)="show8()">skip_next</mat-icon>
+  </div> -->
+  <!-- <div [ngClass]="{'active-i': show === 'show9'}">
+    <mat-icon pTooltip="Field Visit" (click)="show9()">person_pin_circle</mat-icon>
+  </div> -->
+
+</div>
+
+
+<p-dialog header="Account Information" [(visible)]="displayPosition" position="center" [modal]="true"
+  [style]="{width: '70vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row" style="padding: 0px 0px 6px 10px;">
+        <div class="col-md-4">
+          <h5 class="form-lable">Account Type:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="Credit Card">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Bank Acc No:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="12345 12345 12345 123">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Loan Acc No:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="12345 12345 12345 123">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Last Payment Date:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="12/12/19">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">POS No:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="123 123 123">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Credit Limit:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="100000">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">CIF No:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="12345 12345 12345 123">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Credit Card No:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="12345 12345 12345 123 ">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Total Outstanding:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="3000000">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Priciple Outstanding:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="200000">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">CID No:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="12345 12345 12345 123">
+        </div>
+        <div class="col-md-4">
+          <h5 class="form-lable">Status:</h5>
+          <input type="text" pInputText disabled=true placeholder="" value="Confirmed">
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-overlayPanel #mailDetails [showCloseIcon]="true" [dismissable]="false" [style]="{'position':'absolute','top': '410px'}">
+  <ng-template pTemplate>
+    <!-- <div class="overlay-contact"> -->
+      <div class="col-md-12" style="padding:0px !important;">
+        <div class="col-md-12 " style="background: white;
+  border-radius: 3px; overflow-y: scroll;overflow-x: hidden; padding:0px !important;">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Mail Details</h2>
+            </div>
+          </div>
+          <!-- <hr> -->
+          <div class="row" style="padding-bottom:10px;">
+            <div class="col-md-2 labelspopup">
+              Email 1
+            </div>
+            <div class="col-md-4 valuepopup">
+              <!-- : m@gmail.com <i class="fa fa-envelope" (click)="openworklist2()"
+                style="font-size:60px;color: red;"></i> -->
+                : m@gmail.com
+            </div>
+            <div class="col-md-2 labelspopup">
+              Email 2
+            </div>
+            <div class="col-md-4 valuepopup">
+              : m@gmail.com
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </ng-template>
+</p-overlayPanel>
+
+<p-overlayPanel #contactDetails [showCloseIcon]="true" [dismissable]="false" [style]="{'left':'250px'}">
+  <ng-template pTemplate>
+    <!-- <div class="overlay-contact"> -->
+      <div class="col-md-12" style="padding:0px !important;">
+        <div class="col-md-12" style="background: white; border-radius: 3px;  height: 200px;overflow-y: scroll;overflow-x: hidden;padding:0px !important;">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Contact Details</h2>
+            </div>
+          </div>
+          <!-- <hr> -->
+          <div class="row">
+            <div class="col-md-2 labelspopup">
+              Home Number
+            </div>
+            <div class="col-md-2 valuepopup">
+              <!-- : 9865432100 <i class="fa fa-phone" (click)="openworklist1()" style="font-size:60px;color: green;"></i> -->
+              : {{CustomerData.Home_Number}}
+            </div>
+            <div class="col-md-2 labelspopup">
+              Mobile Number
+            </div>
+            <div class="col-md-2 valuepopup">
+              : {{CustomerData.Mobile_Number}}
+            </div>
+            <div class="col-md-2 labelspopup">
+              Office Number
+            </div>
+            <div class="col-md-2 valuepopup">
+              : {{CustomerData.Office_Number}}
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </ng-template>
+</p-overlayPanel>
+
+<p-overlayPanel #addressDetails [showCloseIcon]="true" [dismissable]="false" [style]="{'left':'250px'}">
+  <ng-template pTemplate>
+    <!-- <div class="overlay-contact"> -->
+      <div class="col-md-12" style="padding:0px !important;">
+        <div class="col-md-12" style="background: white; border-radius: 3px; overflow-y: scroll;overflow-x: hidden; padding:0px !important;">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="title-f" style="color:#21a0f6 !important;font-size:18px; padding:5px 0px 12px 0px;">Address Details</h2>
+            </div>
+          </div>
+          <!-- <hr> -->
+          <div class="row" style="padding-bottom:10px;">
+            <div class="col-md-3 labelspopup">
+              Address 1
+            </div>
+            <div class="col-md-2 valuepopup">
+              : {{CustomerData.Address_1}}
+            </div>
+            <div class="col-md-3 labelspopup">
+              Address 2
+            </div>
+            <div class="col-md-2 valuepopup">
+              : {{CustomerData.Address_2}}
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </ng-template>
+</p-overlayPanel>
+
+<div class="follow follow-1">
+  <div [ngClass]="{'active-i': show === 'show1'}">
+    <mat-icon pTooltip="Follow up" (click)="show1()">swap_horiz</mat-icon>
+  </div>
+
+  <div [ngClass]="{'active-i': show === 'show9'}">
+    <mat-icon pTooltip="Field Visit" (click)="show9()">person_pin_circle</mat-icon>
+  </div>
+  
+  <!-- <div style="padding: 6px 9px !important;color: #fff;">
+    <i class="fa fa-filter" aria-hidden="true" aria-hidden="true" pTooltip=" Filter"></i>
+    
+  </div>
+  <div style="padding: 6px 9px !important;color: #fff;">
+    <i class="fa fa fa-binoculars" aria-hidden="true" pTooltip=""></i>
+    
+  </div> -->
+  <div style="padding: 6px 9px !important;color: #fff;">
+    <i class="fa fa-envelope" aria-hidden="true" pTooltip="" (click)="mailDetails.toggle($event)"></i>
+    
+    
+  </div>
+  <div style="padding: 6px 9px !important;color: #fff;" (click)="contactDetails.toggle($event)">
+    <i class="fa fa-phone" aria-hidden="true" pTooltip=""></i>
+  </div>
+  <div style="padding: 6px 9px !important;color: #fff;" (click)="addressDetails.toggle($event)">
+    <i class="fa fa-address-card" aria-hidden="true" pTooltip=""></i>
+  </div>
+  <!-- <div style="padding: 6px 9px !important;color: #fff;">
+    <i class="fa fa-calendar" aria-hidden="true" pTooltip=""></i>
+    
+  </div>
+  <div style="padding: 6px 9px !important;color: #fff;">
+    <i class="fa fa-file-text-o" aria-hidden="true" pTooltip=""></i>
+    
+  </div>
+  <div style="padding: 6px 9px !important;color: #fff;">
+    <i class="fa fa-globe" aria-hidden="true" pTooltip=""></i>
+    
+  </div> -->
+</div>

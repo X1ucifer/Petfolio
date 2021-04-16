@@ -1,0 +1,544 @@
+<div class="section">
+    <!-- [ngStyle]="{'pointer-events': form_act? 'none' : 'auto'  }" -->
+    <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()"
+        style="float:right;">Back</button>
+
+    <ng-container
+        *ngIf="Account_list.length > 0 && client_type_list.length > 0 && country.length > 0 && Reporting_to_list.length > 0 && doct.length > 0 && field_set == true">
+        <h4 class="title">Create Organization</h4>
+
+        <div class="card-box" style="margin-top: 7px;" >
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <ng-container>
+                    <div class="col-md-4" [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Existing or New:</h5>
+                        <p-dropdown [options]="type" [(ngModel)]="Existing" placeholder="Select" optionLabel="y"
+                            [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4" [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Account Type:</h5>
+                        <p-dropdown [options]="Account_list" [(ngModel)]="Account_Type" placeholder="Select"
+                            optionLabel="y" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4" [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Set Primary:</h5>
+                        <p-dropdown [options]="typ" [(ngModel)]="Set_Primary" placeholder="Select" optionLabel="y"
+                            (ngModelChange)="set_primary_acc()" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4" [ngClass]="{'dis':form_act}" *ngIf="Set_Primary != undefined && Set_Primary.y != 'Primary office'">
+                        <h5 class="form-lable">Primary Account:</h5>
+                        <p-dropdown [options]="entity_all" [(ngModel)]="Primary_Account" placeholder="Select" optionLabel="y"
+                            [showClear]="true"></p-dropdown>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <ng-container>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}" >
+                        <h5 class="form-lable">Clients Handling:</h5>
+                        <p-multiSelect [options]="client_type_list" [(ngModel)]="Type" defaultLabel="Select"
+                            optionLabel="y"></p-multiSelect>
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Country:</h5>
+                        <p-dropdown [options]="country" [(ngModel)]="Country" (ngModelChange)="set_currency()"
+                            placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown>
+
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">State:</h5>
+                        <ng-container *ngIf="State_l.length > 0">
+                            <p-dropdown [options]="State_l" [(ngModel)]="State" placeholder="Select" optionLabel="y"
+                                [showClear]="true"></p-dropdown>
+                        </ng-container>
+
+
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Town/District:</h5>
+                        <input type="text" pInputText [(ngModel)]="Town_District" placeholder="Town/District">
+
+
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Currency:</h5>
+                        <input type="text" disabled pInputText [(ngModel)]="Currency1" placeholder="Currency">
+
+                        <!-- <p-dropdown [options]="Currency" [(ngModel)]="Currency1" placeholder="Select" optionLabel="y"
+                        [showClear]="true"></p-dropdown> -->
+
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Client Name:</h5>
+                        <input type="text" pInputText [(ngModel)]="Name" placeholder="Client Name">
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Client short code:</h5>
+                        <input type="text" disabled pInputText [(ngModel)]="Short_code" placeholder="Client short code">
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Client system code:</h5>
+                        <input type="text" disabled pInputText [(ngModel)]="System_code" placeholder="Client system code">
+                    </div>
+
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Website:</h5>
+                        <input type="text" pInputText [(ngModel)]="Website" placeholder="Website">
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">System Email Id:</h5>
+                        <input type="text" (ngModelChange)="emailChange0($event)" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="System_email_id" pInputText placeholder="System Email Id" style="width:80%">
+
+                        <div *ngIf="emailError0">
+                            <div class="text-danger">{{emailErrorMsg}}</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Common email id:</h5>
+                        <input type="text" (ngModelChange)="emailChange($event)" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="email_id" pInputText placeholder="Common email id" style="width:80%">
+
+                        <div *ngIf="emailError">
+                            <div class="text-danger">{{emailErrorMsg}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Logo:</h5>
+                        <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
+                            accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon"
+                            style="width: 80%;overflow: hidden;">
+                        <img *ngIf="logo != undefined" src="{{logo}}" alt=""
+                            style="width: 40px;height: 40px;float: right;margin-top: -37px;" />
+
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <ng-container>
+                    <div class="col-md-6"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Head office Address:</h5>
+                        <textarea style="margin-bottom: -5px;" rows="3" cols="30" pInputTextarea
+                            [(ngModel)]="Ho_Address"></textarea>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="PO_Box"
+                                    placeholder="PO Box">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="Pincode"
+                                    placeholder="Pincode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6"  [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Office Address:</h5>
+                        <textarea style="margin-bottom: -5px;" rows="3" cols="30" pInputTextarea
+                            [(ngModel)]="Office_Address"></textarea>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="PO_Box1"
+                                    placeholder="PO Box">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="Pincode1"
+                                    placeholder="Pincode">
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px;">
+                <ng-container >
+                    <div class="col-md-6" [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">No.of License:</h5>
+                        <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="License"
+                            placeholder="No.of License">
+                    </div>
+                    <div class="col-md-6" [ngClass]="{'dis':form_act}">
+                        <h5 class="form-lable">Currency Handling:</h5>
+                        <p-multiSelect [options]="country" [(ngModel)]="currency_handling" defaultLabel="Select"
+                            optionLabel="x"></p-multiSelect>
+
+
+                    </div>
+                </ng-container>
+
+                <div class="col-md-12 mt-20">
+                    <button *ngIf="id == undefined" type="button" class="btn btn-primary"
+                        (click)="create()">Create</button>
+                    <button *ngIf="id != undefined && form_act == false" type="button" class="btn btn-primary"
+                        (click)="update()">Update</button>
+                    <button *ngIf="id != undefined && form_act == true" type="button" class="btn btn-primary btn-bg-blue"
+                        (click)="edit()">Edit</button>
+                        <button *ngIf="id != undefined && form_act == false" type="button" class="btn btn-danger btn-bg-blue"
+                        (click)="can()">Cancel</button>
+                </div>
+                <div class="col-md-12 mt-20" style="overflow-x: scroll;" *ngIf="entity_data != undefined">
+                    <table class="spec-table" style="width: 100%;overflow-x: scroll;">
+
+                        <thead>
+                            <th>Logo</th>
+                            <th>Existing or New</th>
+                            <th>Account Type</th>
+                            <th>Set Primary</th>
+                            <th>Primary Account</th>
+                            <th>Clients Handling</th>
+                            <th>Country</th>
+                            <th>State</th>
+                            <th>Town/District</th>
+                            <th>Currency</th>
+                            <th>Client Name</th>
+                            <th>Client short code</th>
+                            <th>Client system code</th>
+                            <th>Website</th>
+                            <th>System Email Id</th>
+                            <th>Common email id</th>
+                            <th>Ho Address</th>
+                            <th>Office Address</th>
+                            <th>No.of License</th>
+                            <th>Currency Handling</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="{{entity_data.logo}}" alt=""
+                                        style="width: 30px;height: 30px;float: right;margin-top: 0px;" />
+                                </td>
+                                <td>{{entity_data.exising_new}}</td>
+                                <td>{{entity_data.account_type}}</td>
+                                <td>{{entity_data.setprimary}}</td>
+                                <td>{{entity_data.primary_accont}}</td>
+                                <td>
+                                    <ng-container *ngFor="let doc of entity_data.clienttype">
+                                        {{doc.y}},
+                                    </ng-container>
+                                </td>
+                                <td>{{entity_data.country}}</td>
+                                <td>{{entity_data.state}}</td>
+                                <td>{{entity_data.Town}}</td>
+                                <td>{{entity_data.currency}}</td>
+                                <td>{{entity_data.Clinet_name}}</td>
+                                <td>{{entity_data.client_short_code}}</td>
+                                <td>{{entity_data.Client_system_code}}</td>
+                                <td>{{entity_data.website}}</td>
+                                <td>{{entity_data.communication_email}}</td>
+                                <td>{{entity_data.comm_email}}</td>
+                                <td>{{entity_data.ho_address}}</td>
+                                <td>{{entity_data.off_address}}</td>
+                                <td>{{entity_data.no_of_lincenese}}</td>
+                                <td>
+                                    <ng-container *ngFor="let doc of entity_data.currency_handling">
+                                        {{doc.x}},
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="id != undefined">
+            <h4 class="title-f">Ownership/Contact Person:</h4>
+            <div class="card-box">
+                <div class="row" style="padding: 0px 0px 23px 10px;">
+                    <!-- <div class="col-md-12 text-right">
+                       
+                        <i class="fa fa-plus add-icon" (click)="addcontact()" aria-hidden="true" pTooltip="Add"
+                            style="top: -15px;position: relative;"></i>
+                    </div> -->
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_name" placeholder="Name">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" (ngModelChange)="emailChange1($event)" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="ref_email" pInputText placeholder="Email" style="width:80%">
+
+                        <div *ngIf="emailError1">
+                            <div class="text-danger">{{emailErrorMsg}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText (keypress)=_keyPress($event) [(ngModel)]="ref_pone"
+                            placeholder="Phone No">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_whats_pone" (keypress)=_keyPress($event)
+                            placeholder="WhatsApp No">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_lanline" (keypress)=_keyPress($event)
+                            placeholder="Landline">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_extension" placeholder="Extension">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_Staff_no" placeholder="Staff no">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_Internal_ID" placeholder="Internal ID card no">
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+
+                        <p-dropdown [options]="Reporting_to_list" [(ngModel)]="ref_Designation"
+                            placeholder="Designation" optionLabel="y" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 7px;">
+                        <input type="text" pInputText [(ngModel)]="ref_Reporting_to" placeholder="Reporting to">
+
+                    </div>
+                    <!-- <div class="col-md-4" style="margin-bottom: 7px;">
+                    <input type="file">
+                </div> -->
+
+                    <div class="col-md-12 mt-20">
+                        <button type="button" *ngIf="ref_id == undefined"class="btn btn-primary" (click)="create_ref()">Add</button>
+                        <button type="button" *ngIf="ref_id != undefined"  style="float: right;" class="btn btn-primary" (click)="update_ref()">Update</button>
+
+                        <!-- <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button> -->
+                    </div>
+
+                    <div class="col-md-12 mt-20">
+                        <table class="spec-table" style="width: 100%;overflow-x: scroll;">
+
+                            <thead>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone No</th>
+                                <th>WhatsApp No</th>
+                                <th>Landline</th>
+                                <th>Extension</th>
+                                <th>Staff no</th>
+                                <th>Internal ID card no</th>
+                                <th>Designation</th>
+                                <th>Reporting to</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of ref_persons_array ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{arr.ref_name}}</td>
+                                    <td>{{arr.ref_email}}</td>
+                                    <td>{{arr.ref_pone}}</td>
+                                    <td>{{arr.ref_whats_pone}}</td>
+                                    <td>{{arr.ref_lanline}}</td>
+                                    <td>{{arr.ref_extension}}</td>
+                                    <td>{{arr.ref_Staff_no}}</td>
+                                    <td>{{arr.ref_Internal_ID}}</td>
+                                    <td>{{arr.ref_Designation}}</td>
+                                    <td>{{arr.ref_Reporting_to}}</td>
+                                    <td>
+                                        <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit" (click)="edit_ref(arr,i)"></i>
+
+                                        <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_contact(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+            <h4 class="title-f">Add Documents</h4>
+
+            <div class="card-box">
+                <div class="row" style="padding: 0px 0px 23px 10px;">
+
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Document Type:</h5>
+                        <p-dropdown [options]="doct" [(ngModel)]="Document_Type" placeholder="Select" optionLabel="y"
+                            [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Document Name:</h5>
+                        <input type="text" pInputText [(ngModel)]="Document_Name" placeholder="Document Name">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Attachment:</h5>
+                        <input type="file" #imgType (change)="Documentupload($event)" id="imgfile"
+                            accept="application/msword, application/vnd.ms-excel, application/pdf" class="form-control"
+                            id="city" placeholder="User type icon">
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Start date:</h5>
+                        <p-calendar [showIcon]="true" [(ngModel)]="Start_date" inputId="icon"></p-calendar>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">End date:</h5>
+                        <p-calendar [showIcon]="true" [(ngModel)]="End_date" inputId="icon"></p-calendar>
+                    </div>
+                    <div class="col-md-12 mt-20">
+                        <button type="button" *ngIf="Doc_id == undefined"class="btn btn-primary" (click)="create_Doc()">Add</button>
+                        <button type="button" *ngIf="Doc_id != undefined"  style="float: right;" class="btn btn-primary" (click)="update_Doc()">Update</button>
+
+                        <!-- <button type="button" *ngIf="Documents_array.length > 0"  style="float: right;" class="btn btn-primary" (click)="create_Doc()">Save</button> -->
+                        <!-- <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button> -->
+                    </div>
+                    <div class="col-md-12 mt-20">
+                        <table class="spec-table" style="width: 100%;overflow-x: scroll;">
+
+                            <thead>
+                                <th>S.No</th>
+                                <th>Document Type</th>
+                                <th>Document Name</th>
+                                <th>Attachment</th>
+                                <th>Start date</th>
+                                <th>End date</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of Documents_array ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{arr.Document_Type}}</td>
+                                    <td>{{arr.Document_Name}}</td>
+                                    <td>
+                                        <i (click)="goToLink1(arr.Document_link)" class="fa fa-file-text"
+                                            style="background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
+
+                                    </td>
+                                    <td>{{arr.Start_date}}</td>
+                                    <td>{{arr.End_date}}</td>
+                                    <td>
+                                        <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit" (click)="edit_Doc(arr,i)"></i>
+
+                                        <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_doc(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <h4 class="title-f">Account Detail</h4>
+
+            <div class="card-box">
+                <div class="row" style="padding: 0px 0px 23px 10px;">
+
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Account No:</h5>
+                        <input type="text" pInputText [(ngModel)]="Account_No" placeholder="Account No">
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">IFSC Code:</h5>
+                        <input type="text" pInputText [(ngModel)]="IFSC" placeholder="IFSC code">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">IBAN No:</h5>
+                        <input type="text" pInputText [(ngModel)]="IBAN" placeholder="IBAN No">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Bank Name:</h5>
+                        <input type="text" pInputText [(ngModel)]="Bank_Name" placeholder="Bank Name">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Branch:</h5>
+                        <input type="text" pInputText [(ngModel)]="Branch" placeholder="Branch">
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Country:</h5>
+                        <p-dropdown [options]="country" [(ngModel)]="Bnak_Country" (ngModelChange)="set_currency1()"
+                            placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">State:</h5>
+                        <p-dropdown [options]="State_l1" [(ngModel)]="State1" placeholder="Select" optionLabel="y"
+                            [showClear]="true"></p-dropdown>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Town/District:</h5>
+                        <input type="text" pInputText [(ngModel)]="Town_District1" placeholder="Town/District">
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Currency:</h5>
+                        <input type="text" disabled pInputText [(ngModel)]="Bank_Currency" placeholder="Currency">
+
+                        <!-- <p-dropdown [options]="Currency" [(ngModel)]="Bank_Currency" placeholder="Select" optionLabel="y"
+                        [showClear]="true"></p-dropdown> -->
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Swift Code:</h5>
+                        <input type="text" pInputText [(ngModel)]="Swift_Code" placeholder="Swift Code">
+
+                    </div>
+                    <div class="col-md-8">
+                        <h5 class="form-lable">Address of the bank:</h5>
+                        <textarea style="margin-bottom: -5px;" rows="3" cols="30" pInputTextarea
+                            [(ngModel)]="Bank_address"></textarea>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="PO_Box2"
+                                    placeholder="PO Box">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" (keypress)=_keyPress($event) pInputText [(ngModel)]="Pincode2"
+                                    placeholder="Pincode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-20">
+                        <button type="button" *ngIf="Acc_id == undefined"class="btn btn-primary" (click)="create_Acc()">Add</button>
+                        <button type="button" *ngIf="Acc_id != undefined"  style="float: right;" class="btn btn-primary" (click)="update_Acc()">Update</button>
+
+                       
+                        <!-- <button type="button" *ngIf="Account_array.length > 0"  style="float: right;" class="btn btn-primary" (click)="create_Acc()">Save</button> -->
+                        <!-- <button type="button" class="btn btn-primary btn-bg-blue" (click)="cancel()">Cancel</button> -->
+                    </div>
+                    <div class="col-md-12 mt-20">
+                        <table class="spec-table" style="width: 100%;overflow-x: scroll;">
+
+                            <thead>
+                                <th>S.No</th>
+                                <th>Account No</th>
+                                <th>IFSC Code</th>
+                                <th>IBAN No</th>
+                                <th>Bank Name</th>
+                                <th>Branch</th>
+                                <th>Address of the bank</th>
+                                <th>Country</th>
+                                <th>Currency</th>
+                                <th>Swift Code</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of Account_array ; let i= index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{arr.Account_No}}</td>
+                                    <td>{{arr.IFSC}}</td>
+                                    <td>{{arr.IBAN}}</td>
+                                    <td>{{arr.Bank_Name}}</td>
+                                    <td>{{arr.Branch}}</td>
+                                    <td>{{arr.Bank_address}}</td>
+                                    <td>{{arr.Bnak_Country}}</td>
+                                    <td>{{arr.Bank_Currency}}</td>
+                                    <td>{{arr.Swift_Code}}</td>
+                                    <td>
+                                        <i style="color: #2196f3;" class="fa fa-pencil-square-o" aria-hidden="true" pTooltip="Edit" (click)="edit_Acc(arr,i)"></i>
+
+                                        <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_Acc(i)"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

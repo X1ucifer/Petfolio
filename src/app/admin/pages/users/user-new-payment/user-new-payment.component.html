@@ -1,0 +1,84 @@
+
+<div class="container-fluid">
+    <div class="row mt-5">
+        <p>ADD New Payment</p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="PaymentsForm">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="">Payment ID</label>
+                        <input type="text" placeholder="Auto generated ID" class="form-control" formControlName="_id" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Account ID</label>
+                        <input disabled type="text" placeholder="Account ID" class="form-control" formControlName="account_id" >
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Payment Date</label>
+                        <input type="date" placeholder="Payment Date" class="form-control" formControlName="payment_date" >
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Payment Amount</label>
+                        <input type="number" placeholder="Payment Amount" class="form-control" formControlName="payment_amount">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Due Amount</label>
+                        <input type="number" placeholder="Due Amount" class="form-control" formControlName="due_amount">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Paid Date</label>
+                        <input type="date" placeholder="Paid Date" class="form-control" formControlName="paid_date">
+                    </div>
+                    <!-- <div class="form-group col-md-4">
+                        <label for="">Total Installments</label>
+                        <input type="number" placeholder="Total Installments" class="form-control" formControlName="total_installments">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Current Installments</label>
+                        <input type="number" placeholder="Current Installments" class="form-control" formControlName="current_installment">
+                    </div> -->
+                    <div class="form-group col-md-4">
+                        <label for="">Last Paid Amount</label>
+                        <input type="number" placeholder="Last Paid Amount" class="form-control" formControlName="last_paid_amount">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">Next Payment Date</label>
+                        <input type="date" placeholder="Enter Next Payment Date" class="form-control" formControlName="next_payment_date">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="file" class="custom-file-input" id="customFile" (change)="getFile($event)">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <p *ngIf="uploaded">File Uploaded</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-sm btn-success" (click)="addNewPayments()">ADD</button>
+                </div>
+            </form>        
+        </div>
+    </div>
+</div>    
+
+<div class="container-fluid">
+    <hr>
+    <div class="row" style="text-align: end; margin:10px;">
+        <p style="font-size: 14px;"><b>Payments List</b></p>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ag-grid-angular #agGrid 
+                    style="width: auto; height: 300px;"
+                    class="ag-theme-alpine"
+                    [rowData]="PaymentsList"
+                    [rowSelection]="'multiple'"
+                    [columnDefs]="PaymentscolumnDefs"
+                    [pagination]="true">
+            </ag-grid-angular>
+        </div>
+    </div>
+</div>

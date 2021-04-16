@@ -9,8 +9,6 @@ import { AdminComponent } from './admin/admin.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import {HomepageModule} from './homepage/homepage.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ng6-toastr-notifications';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,52 +16,46 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import {RadioButtonModule} from 'primeng/radiobutton';
-import {TableModule} from 'primeng/table';
-import { AgmCoreModule } from '@agm/core';
-import { PetServiceAppointmentViewComponent } from './pet-service-appointment-view/pet-service-appointment-view.component';
-import { DoctorLoginComponent } from './login/doctor-login/doctor-login.component';
-import { DoctorRegisterComponent } from './login/doctor-register/doctor-register.component';
-import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
-import {MatStepperModule} from '@angular/material/stepper';
-import { CalendarModule } from 'primeng/calendar';
-import {MultiSelectModule} from 'primeng/multiselect';
-import {ServiceProviderModule} from './service-provider/service-provider.module';
-import { ServiceProviderComponent } from './service-provider/service-provider.component';
+import { DashboardMainComponent } from './admin/pages/dashboard-main/dashboard-main.component';
+import {ToolbarModule} from 'primeng/toolbar';
+import {MegaMenuModule} from 'primeng/megamenu';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { ChartsModule } from 'ng2-charts';
+import { TooltipModule } from 'primeng/tooltip';
+import { AgGridModule } from 'ag-grid-angular';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-
     AdminComponent,
     HomepageComponent,
     LoginComponent,
-    PetServiceAppointmentViewComponent,
-    DoctorLoginComponent,
-    DoctorRegisterComponent,
-    DoctorInfoComponent,
-    ServiceProviderComponent,
+    DashboardMainComponent,
    ],
   imports: [
     BrowserModule,
+    ChartsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     AppRoutingModule,
     AdminModule,
     HomepageModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    RadioButtonModule, TableModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
-    }),
-    GooglePlaceModule,
-    MatStepperModule,
-    CalendarModule,
-    MultiSelectModule,
-    MatStepperModule,
-    ServiceProviderModule
+    RadioButtonModule,
+    ToolbarModule,
+    MegaMenuModule,
+    MatMenuModule,
+    MatIconModule,
+    TooltipModule,
+    AgGridModule.withComponents([]),
+    FilterPipeModule,
+    NgSelectModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

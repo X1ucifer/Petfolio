@@ -1,0 +1,116 @@
+<div class="row">
+
+    <div class="col-md-4">
+        <label for="designation">Select Designation</label>
+        <select id="designation" [(ngModel)]="designationof" class="form-control" (change)="getdesignationType($event)">
+            <option value="">Choose</option>
+            <option *ngFor="let item of designationList" [value]="item.designation_type">{{item.designation_type}}
+            </option>
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label for="assingedto">Select Agent</label>
+        <select id="assingedto" [(ngModel)]="assingedto" (change)="getassignedto($event)" class="form-control">
+            <option value="">Choose</option>
+            <option *ngFor="let item of userList | filterBy: userFilter" [value]="item.email_id">{{item.name}}</option>
+        </select>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div style="text-align: center;">
+            <h4 class="title-f">Re Allocation List</h4>
+        </div>
+        <div class="row" *ngIf="!dataLoaded">
+            <div>
+                <p class="animate"></p>
+            </div>
+        </div>
+        <div class="row" *ngIf="dataLoaded">
+            <div class="col-md-4">
+                <div class="search-hero">
+                    <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                        [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end" *ngIf="dataLoaded">
+            <!-- <button class="btn btn-sm btn-primary mb-2" (click)="assignto()"> Assign </button> -->
+            <!-- <button class="btn btn-sm btn-success mb-2" (click)="goto('admin_panel/user/createuser')">View in Customer
+                360</button> -->
+        </div>
+        <div class="card-box" *ngIf="dataLoaded">
+            <ag-grid-angular #agGrid style="width: auto; height: 500px;" class="ag-theme-alpine" [rowData]="myrowData"
+                [rowSelection]="'multiple'" [columnDefs]="columnDefs" [pagination]="true">
+            </ag-grid-angular>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div style="text-align: center;">
+            <h4 class="title-f">Allocated List</h4>
+            <div class="d-flex justify-content-center" *ngIf="!Agentselected">
+                Select an Agent
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="search-hero">
+                        <input class="form-control" type="text" name="search2" style="font-family: FontAwesome;"
+                            [(ngModel)]="searchQR" autocomplete="off" placeholder="&#xf002; Search...">
+                    </div>
+                </div>
+            </div>
+            <div class="card-box" *ngIf="noData"> No data Found </div>
+            <div class="d-flex justify-content-end" *ngIf="dataLoaded2">
+                <button class="btn btn-sm btn-primary mb-2" (click)="rellocate()"> Reallocate </button>
+            </div>
+            <div class="card-box" *ngIf="dataLoaded2">
+                <ag-grid-angular #agGrid2 style="width: auto; height: 500px;" class="ag-theme-alpine"
+                    [rowData]="myrowData2" [rowSelection]="'multiple'" [columnDefs]="columnDefs2" [pagination]="true" (rowClicked)="onRowClick($event)">
+                </ag-grid-angular>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<p-dialog header="Reallocate To" [(visible)]="displayBasic" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+
+    <div class="card-box" style="margin-top: 10px;">
+        <div class="row" style="padding: 0px 0px 23px 10px;">
+            <div class="col-md-6">
+                <label for="designation">Select Designation</label>
+                <select id="designation" [(ngModel)]="rdesignationof" class="form-control" (change)="getRdesignationType($event)">
+                    <option value="">Choose</option>
+                    <option *ngFor="let item of designationList" [value]="item.designation_type">{{item.designation_type}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="assingedto">Select Agent</label>
+                <select id="assingedto" [(ngModel)]="reallocateto" class="form-control" (change)="getReallocatedto($event)">
+                    <option value="">Choose</option>
+                    <option *ngFor="let item of userList | filterBy: userFilter2" [value]="item.email_id">{{item.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-12" *ngIf="!dataLoaded3">
+                <p>Please select an agent to Reallocate</p>
+            </div>
+            <div class="col-12" *ngIf="dataLoaded3">
+                <ag-grid-angular #agGrid2 style="width: auto; height: 400px;" class="ag-theme-alpine"
+                    [rowData]="myrowData4" [columnDefs]="columnDefs3" [pagination]="true">
+                </ag-grid-angular>
+            </div>
+            <div class="col-12" style="margin-top: 15px;">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-sm btn-success mb-4" (click)="cancel()" style="border: none !important;margin-right: 10px; background-color: rgb(247, 19, 19);">Cancel</button>
+                    <button class="btn btn-sm btn-success mb-4" (click)="allocatetodata()" >Reallocate</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</p-dialog>
