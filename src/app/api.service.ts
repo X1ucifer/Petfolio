@@ -6,1003 +6,616 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
+  [x: string]: any;
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
-  UploadedExcel: any;
   constructor(private http: HttpClient) { }
 
 
-  Activity_create(data) {
-    return this.http.post<any>(this.apiUrl + 'activity/create',data);
+  CreateDoctor(data) {
+    return this.http.post(this.apiUrl + 'user/register', data);
+  }
+
+  CreateDoctor1(data) {
+    return this.http.post(this.apiUrl + 'doctor/edit', data);
   }
 
 
-  entity_create(data) {
-    return this.http.post(this.apiUrl + 'entity_user/create', data);
-  }
-  entity_edit(data) {
-    return this.http.post(this.apiUrl + 'entity_user/edit', data);
-  }
-  entity_list() {
-    return this.http.get<any>(this.apiUrl + 'entity_user/getlist' );
-  }
-  entity_delete(data) {
-    return this.http.post(this.apiUrl + 'entity_user/delete', data);
-  }
+  /////Petfolio Admin API Start///////
 
-  client_create(data) {
-    return this.http.post(this.apiUrl + 'client_details/create', data);
+  ////User type API//////
+  user_type_list() {
+    return this.http.get(this.apiUrl + 'usertype/admin/getlist');
   }
-  client_edit(data) {
-    return this.http.post(this.apiUrl + 'client_details/edit', data);
-  }
-  client_list() {
-    return this.http.get<any>(this.apiUrl + 'client_details/getlist' );
-  }
-  client_delete(data) {
-    return this.http.post(this.apiUrl + 'client_details/delete', data);
-  }
-
-  client_type_add(data) {
-    return this.http.post(this.apiUrl + 'client_type/create', data);
-  }
-  client_type_edit(data) {
-    return this.http.post(this.apiUrl + 'client_type/edit', data);
-  }
-  client_type_delete(data) {
-    return this.http.post(this.apiUrl + 'client_type/delete', data);
-  }
-  client_type_list() {
-    return this.http.get<any>(this.apiUrl + 'client_type/getlist' );
-  }
-
-  portfolio_type_add(data) {
-    return this.http.post(this.apiUrl + 'portfolio_type/create', data);
-  }
-  portfolio_type_edit(data) {
-    return this.http.post(this.apiUrl + 'portfolio_type/edit', data);
-  }
-  portfolio_type_delete(data) {
-    return this.http.post(this.apiUrl + 'portfolio_type/delete', data);
-  }
-  portfolio_type_list(data) {
-    return this.http.get<any>(this.apiUrl + 'portfolio_type/getlist', data );
-  }
-  product_type_add(data) {
-    return this.http.post(this.apiUrl + 'product_type/create', data);
-  }
-  product_type_edit(data) {
-    return this.http.post(this.apiUrl + 'product_type/edit', data);
-  }
-  product_type_delete(data) {
-    return this.http.post(this.apiUrl + 'product_type/delete', data);
-  }
-  product_type_list(data) {
-    return this.http.get<any>(this.apiUrl + 'product_type/getlist',data );
-  }
-
-
-  fields_add(data) {
-    return this.http.post(this.apiUrl + 'fields/create', data);
-  }
-  fields_edit(data) {
-    return this.http.post(this.apiUrl + 'fields/edit', data);
-  }
-  fields_delete(data) {
-    return this.http.post(this.apiUrl + 'fields/delete', data);
-  }
-  fields_list() {
-    return this.http.get<any>(this.apiUrl + 'fields/getlist' );
-  }
-
-
-  state_details_add(data) {
-    return this.http.post(this.apiUrl + 'state_details/create', data);
-  }
-  state_details_edit(data) {
-    return this.http.post(this.apiUrl + 'state_details/edit', data);
-  }
-  state_details_delete(data) {
-    return this.http.post(this.apiUrl + 'state_details/delete', data);
-  }
-  state_details_list() {
-    return this.http.get<any>(this.apiUrl + 'state_details/getlist' );
-  }
-  document_type_add(data) {
-    return this.http.post(this.apiUrl + 'document_type/create', data);
-  }
-  document_type_edit(data) {
-    return this.http.post(this.apiUrl + 'document_type/edit', data);
-  }
-  document_type_delete(data) {
-    return this.http.post(this.apiUrl + 'document_type/delete', data);
-  }
-  document_type_list() {
-    return this.http.get<any>(this.apiUrl + 'document_type/getlist' );
-  }
-
-  account_type_add(data) {
-    return this.http.post(this.apiUrl + 'account_type/create', data);
-  }
-  account_type_edit(data) {
-    return this.http.post(this.apiUrl + 'account_type/edit', data);
-  }
-  account_type_delete(data) {
-    return this.http.post(this.apiUrl + 'account_type/delete', data);
-  }
-  account_type_list() {
-    return this.http.get<any>(this.apiUrl + 'account_type/getlist' );
-  }
-
-  reportingto_type_add(data) {
-    return this.http.post(this.apiUrl + 'reportingto_type/create', data);
-  }
-  reportingto_type_edit(data) {
-    return this.http.post(this.apiUrl + 'reportingto_type/edit', data);
-  }
-  reportingto_type_delete(data) {
-    return this.http.post(this.apiUrl + 'reportingto_type/delete', data);
-  }
-  reportingto_type_list() {
-    return this.http.get<any>(this.apiUrl + 'reportingto_type/getlist' );
-  }
-
-
-  designation_type_add(data) {
-    return this.http.post(this.apiUrl + 'designation_type/create', data);
-  }
-  designation_type_edit(data) {
-    return this.http.post(this.apiUrl + 'designation_type/edit', data);
-  }
-  designation_type_delete(data) {
-    return this.http.post(this.apiUrl + 'designation_type/delete', data);
-  }
-  designation_type_list() {
-    return this.http.get<any>(this.apiUrl + 'designation_type/getlist' );
-  }
-
-  currency_type_add(data) {
-    return this.http.post(this.apiUrl + 'currency_type/create', data);
-  }
-  currency_type_edit(data) {
-    return this.http.post(this.apiUrl + 'currency_type/edit', data);
-  }
-  currency_type_delete(data) {
-    return this.http.post(this.apiUrl + 'currency_type/delete', data);
-  }
-  currency_type_list() {
-    return this.http.get<any>(this.apiUrl + 'currency_type/getlist' );
-  }
-
-  bucket_type_add(data) {
-    return this.http.post(this.apiUrl + 'bucket_type/create', data);
-  }
-  bucket_type_edit(data) {
-    return this.http.post(this.apiUrl + 'bucket_type/edit', data);
-  }
-  bucket_type_delete(data) {
-    return this.http.post(this.apiUrl + 'bucket_type/delete', data);
-  }
-  bucket_type_list() {
-    return this.http.get<any>(this.apiUrl + 'bucket_type/getlist' );
-  }
-
-  products_detatils_add(data) {
-    return this.http.post(this.apiUrl + 'products_detatils/create', data);
-  }
-  products_detatils_edit(data) {
-    return this.http.post(this.apiUrl + 'products_detatils/edit', data);
-  }
-  products_detatils_delete(data) {
-    return this.http.post(this.apiUrl + 'products_detatils/delete', data);
-  }
-  products_detatils_list() {
-    return this.http.get<any>(this.apiUrl + 'products_detatils/getlist' );
-  }
-
-  userrole_add(data) {
-    return this.http.post(this.apiUrl + 'userrole/create', data);
-  }
-  userrole_edit(data) {
-    return this.http.post(this.apiUrl + 'userrole/edit', data);
-  }
-  userrole_delete(data) {
-    return this.http.post(this.apiUrl + 'userrole/delete', data);
-  }
-  userrole_list() {
-    return this.http.get<any>(this.apiUrl + 'userrole/getlist' );
-  }
-
-  usertype_add(data) {
+  user_type_insert(data) {
     return this.http.post(this.apiUrl + 'usertype/create', data);
   }
-  usertype_edit(data) {
+  user_type_edit(data) {
     return this.http.post(this.apiUrl + 'usertype/edit', data);
   }
-  usertype_delete(data) {
-    return this.http.post(this.apiUrl + 'usertype/delete', data);
+  user_type_delete(data) {
+    return this.http.post(this.apiUrl + 'usertype/admin_delete', data);
   }
-  usertype_list() {
-    return this.http.get<any>(this.apiUrl + 'usertype/getlist' );
-  }
-
-
-  usergroup_add(data) {
-    return this.http.post(this.apiUrl + 'usergroup/create', data);
-  }
-  usergroup_edit(data) {
-    return this.http.post(this.apiUrl + 'usergroup/edit', data);
-  }
-  usergroup_delete(data) {
-    return this.http.post(this.apiUrl + 'usergroup/delete', data);
-  }
-  usergroup_list() {
-    return this.http.get<any>(this.apiUrl + 'usergroup/getlist' );
+  user_type_filter_date(data) {
+    return this.http.post(this.apiUrl + 'usertype/filter_date', data);
   }
 
+  //////////////
 
-  useradd_create(data) {
-    return this.http.post(this.apiUrl + 'useradd/create', data);
+
+  ////Pet type API//////
+  pet_type_list() {
+    return this.http.get(this.apiUrl + 'pettype/getlist');
   }
-  useradd_edit(data) {
-    return this.http.post(this.apiUrl + 'useradd/edit', data);
+  pet_type_insert(data) {
+    return this.http.post(this.apiUrl + 'pettype/create', data);
   }
-  useradd_delete(data) {
-    return this.http.post(this.apiUrl + 'useradd/delete', data);
+  pet_type_edit(data) {
+    return this.http.post(this.apiUrl + 'pettype/edit', data);
   }
-  useradd_list() {
-    return this.http.get<any>(this.apiUrl + 'useradd/getlist' );
+  pet_type_delete(data) {
+    return this.http.post(this.apiUrl + 'pettype/delete', data);
   }
-
-  Code_checker(data) {
-    return this.http.post(this.apiUrl + 'entity_user/find_code', data);
+  pet_type_filter_date(data) {
+    return this.http.post(this.apiUrl + 'pettype/filter_date', data);
   }
+  //////////////
 
 
-
-  fields_mapping_adds(data) {
-    return this.http.post(this.apiUrl + 'fields_mapping/create', data);
+  ////Pet breed API//////
+  pet_breed_list() {
+    return this.http.get(this.apiUrl + 'breedtype/admin/getlist_id');
   }
-  fields_mapping_edit(data) {
-    return this.http.post(this.apiUrl + 'fields_mapping/edit', data);
+  pet_breed_insert(data) {
+    return this.http.post(this.apiUrl + 'breedtype/create', data);
   }
-  fields_mapping_delete(data) {
-    return this.http.post(this.apiUrl + 'fields_mapping/delete', data);
+  pet_breed_edit(data) {
+    return this.http.post(this.apiUrl + 'breedtype/edit', data);
   }
-  fields_mapping_list() {
-    return this.http.get<any>(this.apiUrl + 'fields_mapping/getlist' );
+  pet_breed_delete(data) {
+    return this.http.post(this.apiUrl + 'breedtype/delete', data);
   }
-
-  fields_mapping_fetch(data) {
-    return this.http.post(this.apiUrl + 'fields_mapping/fetch_field_list', data);
+  pet_breed_filter_date(data) {
+    return this.http.post(this.apiUrl + 'breedtype/filter_date', data);
   }
+  //////////////
 
 
+  //PET HEALTH CHECKUP TYPE///
 
-
-  inserting_customer_details(data) {
-    return this.http.post(this.apiUrl + 'customer_details/create', data);
-  }
-
-
-  inserting_excel_details(data) {
-    return this.http.post(this.apiUrl + 'excel_datas/create', data);
+  pet_add_checkup_type(data){
+    return this.http.post(this.apiUrl+ 'changeupdated',data);
   }
 
+  pet_list_checkup_type(){
+    return this.http.get(this.apiUrl + '');
+  }
 
-  inserting_bucket_details(data) {
-    return this.http.post(this.apiUrl + 'bucket_detail/create', data);
+  pet_view_checkup_type(id){
+    return this.http.get(this.apiUrl + '?id='+id);
+  }
+
+  pet_update_checkup_type(data){
+    return this.http.post(this.apiUrl + '',data);
+  }
+
+  pet_delete_checkup_type(id){
+    return this.http.delete(this.apiUrl + '?id='+id);
   }
 
 
+  ////pet lover home banner API//////
+  homebanner_list() {
+    return this.http.get(this.apiUrl + 'homebanner/getlist');
+  }
+  homebanner_insert(data) {
+    return this.http.post(this.apiUrl + 'homebanner/create', data);
+  }
+  homebanner_edit(data) {
+    return this.http.post(this.apiUrl + 'homebanner/edit', data);
+  }
+  homebanner_delete(data) {
+    return this.http.post(this.apiUrl + 'homebanner/delete', data);
+  }
+  homebanner_filter_date(data) {
+    return this.http.post(this.apiUrl + 'homebanner/filter_date', data);
+  }
+  //////////////
 
-  listing_data_excel_details(data) {
-    return this.http.post(this.apiUrl + 'excel_datas/create', data);
+
+  ////doctor_spec_API//////
+  doctor_spec_list() {
+    return this.http.get(this.apiUrl + 'doctor_spec/getlist');
+  }
+  doctor_spec_insert(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/create', data);
+  }
+  doctor_spec_edit(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/edit', data);
+  }
+  doctor_spec_delete(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/delete', data);
+  }
+  doctor_spec_filter_date(data) {
+    return this.http.post(this.apiUrl + 'doctor_spec/filter_date', data);
+  }
+  //////////////
+
+
+
+  ////doctor_spec_API//////
+  doctor_details_list() {
+    return this.http.get(this.apiUrl + 'doctordetails/admin/getlist');
+  }
+  doctor_details_insert(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/create', data);
+  }
+  doctor_details_edit(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/adminedit', data);
+  }
+  doctor_details_create(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/create', data);
+  }
+  doctor_details_delete(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/admin_delete', data);
+  }
+  doctor_detailsfilter_date(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/filter_date', data);
+  }
+
+  userlivedetails_delete(data) {
+    return this.http.post(this.apiUrl + 'livedoctordetails/admin_delete', data);
+  }
+  vendor_details_list() {
+    return this.http.get(this.apiUrl + 'product_vendor/getlist');
+  }
+  vendor_details_edit(data) {
+    return this.http.post(this.apiUrl + 'product_vendor/edit', data);
+  }
+  vendor_detailsfilter_date(data) {
+    return this.http.post(this.apiUrl + 'product_vendor/filter_date', data);
+  }
+  vendor_delete(data) {
+    return this.http.post(this.apiUrl + 'product_vendor/delete', data);
+  }
+  //////////////
+  service_provider_list() {
+    return this.http.get(this.apiUrl + 'service_provider/getlist');
+  }
+  service_provider_insert(data) {
+    return this.http.post(this.apiUrl + 'service_provider/create', data);
+  }
+  service_provider_edit(data) {
+    return this.http.post(this.apiUrl + 'service_provider/edit', data);
+  }
+  service_provider_create(data) {
+    return this.http.post(this.apiUrl + 'service_provider/create', data);
+  }
+  service_provider_delete(data) {
+    return this.http.post(this.apiUrl + 'service_provider/admin_delete', data);
+  }
+  service_providerfilter_date(data) {
+    return this.http.post(this.apiUrl + 'service_provider/filter_date', data);
   }
 
 
 
-  /////Comman Paeg API call/////
-
-  login(data){
-    return this.http.post(this.apiUrl + 'userdetails/login', data);
-  }
-  Forgot_password(data){
-    return this.http.post(this.apiUrl + 'activity/forgotpassword', data);
+  dashboard_count() {
+    return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
   }
 
 
-
-
-  //////User Details//////
-
-  user_details_add(data) {
+  prices_count() {
+    return this.http.get(this.apiUrl + 'appointments/gettotalprice');
+  }
+  user_list() {
+    return this.http.get(this.apiUrl + 'userdetails/getlist');
+  }
+  user_filter_date(data) {
+    return this.http.post(this.apiUrl + 'userdetails/filter_date', data);
+  }
+  single_user_detail(data) {
+    return this.http.post(this.apiUrl + 'userdetails/fetch_all_details', data);
+  }
+  user_delete(data) {
+    return this.http.post(this.apiUrl + 'userdetails/admin_delete', data);
+  }
+  user_create(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
   }
-  user_details_edit(data) {
+  user_edit(data) {
     return this.http.post(this.apiUrl + 'userdetails/edit', data);
   }
-  user_details_delete(data) {
-    return this.http.post(this.apiUrl + 'userdetails/delete', data);
+  appointment_list() {
+    return this.http.get(this.apiUrl + 'appointments/getlist');
   }
-  user_details_list() {
-    return this.http.get<any>(this.apiUrl + 'userdetails/getlist' );
+  appointment_filter_date(data) {
+    return this.http.post(this.apiUrl + 'appointments/filter_date', data);
   }
-
-  user_details_list_by_com(data) {
-    return this.http.post(this.apiUrl + 'userdetails/userlist_by_com', data);
-  }
-
-
-  ////////Create Merge Data /////
-
-  merge_details_add(data) {
-    return this.http.post(this.apiUrl + 'mergedetails/create', data);
-  }
-  merge_details_edit(data) {
-    return this.http.post(this.apiUrl + 'mergedetails/edit', data);
-  }
-  merge_details_delete(data) {
-    return this.http.post(this.apiUrl + 'mergedetails/delete', data);
-  }
-  merge_details_list() {
-    return this.http.get<any>(this.apiUrl + 'mergedetails/getlist' );
-  }
-
-  merge_details_list_by_com(data) {
-    return this.http.post(this.apiUrl + 'mergedetails/userlist_by_com', data);
-  }
-
-
-  allocation_details_id(id){
-    return this.http.get(this.apiUrl + 'allocationdata/getdetails?id='+id);
-  }
-
-  allocation_details_add(data) {
-    return this.http.post(this.apiUrl + 'allocationdata/create', data);
-  }
-
-  allocation_details_update(data) {
-    return this.http.post(this.apiUrl + 'allocationdata/update', data);
-  }
-
-  reallocation_details_add(data){
-    return this.http.post(this.apiUrl + 'allocationdata/reallocate', data);
-  }
-
-  allocation_details_list(data) {
-    console.log(data);
-    return this.http.post(this.apiUrl + 'allocationdata/getlist_id', data);
-  }
-  allocation_details_getassignedfrom(id){
-    return this.http.get(this.apiUrl + 'allocationdata/getassignedfrom?from='+id);
-  }
-
-  allocation_details_getassignedto(id){
-    return this.http.get(this.apiUrl + 'allocationdata/getassignedto?to='+id);
-  }
-
-  allocation_details_getassignedto_id(id,pid){
-    return this.http.get(this.apiUrl + 'allocationdata/getassignedlist?to='+id+'&portfolio_id='+pid);
-  }
-
-  newallocation_data(data){
-    return this.http.post(this.apiUrl+'allocateto_tl/create',data);
-  }
-
-  newallocation_getlist_id(data){
-    return this.http.post(this.apiUrl+'allocateto_tl/getlist_id',data);
-  }
-
-
-  // FOLLOWUP API //
-  add_FollowUp_create(data){
-    return this.http.post(this.apiUrl + 'followup/create', data);
-  }
-
-  edit_FollowUp_update(data){
-    return this.http.post(this.apiUrl + 'followup/update', data);
-  }
-
-  list_FollowUp_getlist(id){
-    return this.http.get(this.apiUrl + 'followup/getlist?id='+id);
-  }
-
-  view_FollowUp_get_id(id){
-    return this.http.get(this.apiUrl + 'followup/get_id?id='+id);
-  }
-
-  delete_FollowUP_delete(id){
-    return this.http.delete(this.apiUrl + 'followup/delete?id='+id);
-  }
-
-
-
-  // WORKFLOW API //
-  add_WorkFlow_create(data){
-    return this.http.post(this.apiUrl + 'workflow/create', data);
-  }
-
-  edit_WorkFlow_update(data){
-    return this.http.post(this.apiUrl + 'workflow/update', data);
-  }
-
-  list_WorkFlow_getlist(id){
-    return this.http.get(this.apiUrl + 'workflow/getlist?id='+id);
-  }
-
-  view_WorkFlow_get_id(id){
-    return this.http.get(this.apiUrl + 'workflow/get_id?id='+id);
-  }
-
-  delete_WorkFlow_delete(id){
-    return this.http.delete(this.apiUrl + 'workflow/delete?id='+id);
-  }
-
-
-  // COLLECTION DETAILS API //
-  add_CollectionDetails_create(data){
-    return this.http.post(this.apiUrl + 'collection/create', data);
-  }
-
-  edit_CollectionDetails_update(data){
-    return this.http.post(this.apiUrl + 'collection/update', data);
-  }
-
-  list_CollectionDetails_getlist(){
-    return this.http.get(this.apiUrl + 'collection/getlist');
+  appointment_delete(data) {
+    return this.http.post(this.apiUrl + 'appointments/delete', data);
   }
-
-  view_CollectionDetails_get_id(id){
-    return this.http.get(this.apiUrl + 'collection/get_id?id='+id);
+  pet_detail_delete(data) {
+    return this.http.post(this.apiUrl + 'petdetails/delete', data);
   }
-
-  delete_CollectionDetails_delete(id){
-    return this.http.delete(this.apiUrl + 'collection/delete?id='+id);
+  customer_location_delete(data) {
+    return this.http.post(this.apiUrl + 'locationdetails/delete', data);
   }
 
-
-  // COLLECTION INFO API //
-  add_CollectionInfo_create(data){
-    return this.http.post(this.apiUrl + 'collection_info/create', data);
+  pet_create(data) {
+    return this.http.post(this.apiUrl + 'petdetails/create', data);
   }
-
-  edit_CollectionInfo_update(data){
-    return this.http.post(this.apiUrl + 'collection_info/update', data);
+  pet_edit(data) {
+    return this.http.post(this.apiUrl + 'petdetails/edit', data);
   }
-
-  list_CollectionInfo_getlist(){
-    return this.http.get(this.apiUrl + 'collection_info/getlist');
+  demoscreen_create(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/create', data);
   }
-
-  view_CollectionInfo_get_id(id){
-    return this.http.get(this.apiUrl + 'collection_info/get_id?id='+id);
+  demoscreen_edit(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/edit', data);
   }
-
-  delete_CollectionInfo_delete(id){
-    return this.http.delete(this.apiUrl + 'collection_info/delete?id='+id);
+  demoscreen_delete(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/delete', data);
   }
-
-
-  // SETTLEMENT DETAILS API //
-  add_Settlement_create(data){
-    return this.http.post(this.apiUrl + 'settlement/create', data);
+  demoscreen_list() {
+    return this.http.get(this.apiUrl + 'demoscreen/getlist');
   }
-
-  edit_Settlement_update(data){
-    return this.http.post(this.apiUrl + 'settlement/update', data);
+  demoscreen_filter_date(data) {
+    return this.http.post(this.apiUrl + 'demoscreen/filter_date', data);
   }
 
-  list_Settlement_getlist(){
-    return this.http.get(this.apiUrl + 'settlement/getlist');
-  }
 
-  view_Settlement_get_id(id){
-    return this.http.get(this.apiUrl + 'settlement/get_id?id='+id);
+  payment_managements() {
+    return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
 
-  delete_Settlement_delete(id){
-    return this.http.delete(this.apiUrl + 'settlement/delete?id='+id);
-  }
 
 
-  // CASE FILLING DETAILS API //
-  add_CaseFilling_create(data){
-    return this.http.post(this.apiUrl + 'casefilling/create', data);
-  }
 
-  edit_CaseFilling_update(data){
-    return this.http.post(this.apiUrl + 'casefilling/update', data);
+  splashscreen_create(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/create', data);
   }
-
-  list_CaseFilling_getlist(){
-    return this.http.get(this.apiUrl + 'casefilling/getlist');
+  splashscreen_edit(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/edit', data);
   }
-
-  view_CaseFilling_get_id(id){
-    return this.http.get(this.apiUrl + 'casefilling/get_id?id='+id);
+  splashscreen_delete(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/delete', data);
   }
-
-  delete_CaseFilling_delete(id){
-    return this.http.delete(this.apiUrl + 'casefilling/delete?id='+id);
+  splashscreen_list() {
+    return this.http.get(this.apiUrl + 'splashscreen/getlist');
   }
-
-
-  //create Bank CODE//
-
-  create_bank_code(data){
-    return this.http.post(this.apiUrl + 'bankcode/create', data);
+  splashscreen_filter_date(data) {
+    return this.http.post(this.apiUrl + 'splashscreen/filter_date', data);
   }
 
-  update_bank_code(data){
-    return this.http.post(this.apiUrl + 'bankcode/update', data);
-  }
 
-  getlist_bank_code(){
-    return this.http.get(this.apiUrl + 'bankcode/getlist');
+  SP_services_create(data) {
+    return this.http.post(this.apiUrl + 'SP_services/create', data);
   }
-
-  delete_bank_code(id){
-    return this.http.delete(this.apiUrl+ 'bankcode/delete?id='+id);
+  SP_services_edit(data) {
+    return this.http.post(this.apiUrl + 'SP_services/edit', data);
   }
-
-
-  //create AREA CODE//
-
-  create_area_code(data){
-    return this.http.post(this.apiUrl + 'areacode/create', data);
+  SP_services_delete(data) {
+    return this.http.post(this.apiUrl + 'SP_services/admin_delete', data);
   }
-
-  update_area_code(data){
-    return this.http.post(this.apiUrl + 'areacode/update', data);
+  SP_services_list() {
+    return this.http.get(this.apiUrl + 'SP_services/getlist');
   }
-
-  getlist_area_code(){
-    return this.http.get(this.apiUrl + 'areacode/getlist');
+  SP_services_filter_date(data) {
+    return this.http.post(this.apiUrl + 'SP_services/filter_date', data);
   }
 
-  delete_area_code(id){
-    return this.http.delete(this.apiUrl+ 'areacode/delete?id='+id);
+//  cancel appointment
+  cancel_appointment() {
+    return this.http.get(this.apiUrl + 'appointments/listing_cancelled');
   }
-
-
-  //create AREA CODE//
 
-  create_fieldvisit_code(data){
-    return this.http.post(this.apiUrl + 'fieldvisitcode/create', data);
+//  payment
+  pay_filter_date(data) {
+    return this.http.post(this.apiUrl + 'userdetails/fetch_payment_Details', data);
   }
+  payment_management () { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');}
+  pay_list () { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');}
 
-  update_fieldvisit_code(data){
-    return this.http.post(this.apiUrl + 'fieldvisitcode/update', data);
+  sp_total_price() {
+    return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
-
-  getlist_fieldvisit_code(){
-    return this.http.get(this.apiUrl + 'fieldvisitcode/getlist');
+  payment_management_list() {
+    return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
 
-  delete_fieldvisit_code(id){
-    return this.http.delete(this.apiUrl+ 'fieldvisitcode/delete?id='+id);
+  product_cate_create(data) {
+    return this.http.post(this.apiUrl + 'product_cate/create', data);
   }
-
-
-  //create Main Status CODE//
-
-  create_mainStatus_code(data){
-    return this.http.post(this.apiUrl + 'mainstatus/create', data);
+  product_cate_edit(data) {
+    return this.http.post(this.apiUrl + 'product_cate/edit', data);
   }
-
-  update_mainStatus_code(data){
-    return this.http.post(this.apiUrl + 'mainstatus/update', data);
+  product_cate_delete(data) {
+    return this.http.post(this.apiUrl + 'product_cate/delete', data);
   }
-
-  getlist_mainStatus_code(){
-    return this.http.get(this.apiUrl + 'mainstatus/getlist');
+  product_cate_list() {
+    return this.http.get(this.apiUrl + 'product_cate/getlist');
   }
-
-  delete_mainStatus_code(id){
-    return this.http.delete(this.apiUrl+ 'mainstatus/delete?id='+id);
+  product_cate_filter_date(data) {
+    return this.http.post(this.apiUrl + 'product_cate/filter_date', data);
   }
 
-  //create Main Status CODE//
 
-  create_subStatus_code(data){
-    return this.http.post(this.apiUrl + 'substatus/create', data);
+  product_subcat_create(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/create', data);
   }
-
-  update_subStatus_code(data){
-    return this.http.post(this.apiUrl + 'substatus/update', data);
-  }
-
-  getlist_subStatus_code(){
-    return this.http.get(this.apiUrl + 'substatus/getlist');
+  product_subcat_edit(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/edit', data);
   }
-
-  delete_subStatus_code(id){
-    return this.http.delete(this.apiUrl+ 'substatus/delete?id='+id);
+  product_subcat_delete(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/delete', data);
   }
-
-
-  //create Followup CODE//
-
-  create_FollowUp(data){
-    return this.http.post(this.apiUrl + 'followup/create', data);
+  product_subcat_list() {
+    return this.http.get(this.apiUrl + 'product_subcat/getlist');
   }
-
-  update_FollowUp(data){
-    return this.http.post(this.apiUrl + 'followup/update', data);
+  product_subcat_filter_date(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/filter_date', data);
   }
-
-  getlist_FollowUp(){
-    return this.http.get(this.apiUrl + 'followup/getlist');
+  product_subcat_by_id(data) {
+    return this.http.post(this.apiUrl + 'product_subcat/getlist_id', data);
   }
 
-  delete_FollowUp(id){
-    return this.http.delete(this.apiUrl+ 'followup/delete?id='+id);
+  product_details_create(data) {
+    return this.http.post(this.apiUrl + 'product_details/create', data);
   }
-
-
-    //create Followup CODE//
-
-    create_new_FollowUp(data){
-      return this.http.post(this.apiUrl + 'newfollowup/create', data);
-    }
-
-    update_new_FollowUp(data){
-      return this.http.post(this.apiUrl + 'newfollowup/update', data);
-    }
-
-
-    getlist_new_FollowUp(id){
-      return this.http.get(this.apiUrl + 'newfollowup/getlist?id='+id);
-    }
-
-    delete_new_FollowUp(id){
-      return this.http.delete(this.apiUrl+ 'newfollowup/delete?id='+id);
-    }
-
-
-//create Actions Taken CODE//
-
-  create_actionstaken(data){
-    return this.http.post(this.apiUrl + 'actiontaken/create', data);
+  product_details_edit(data) {
+    return this.http.post(this.apiUrl + 'product_details/edit', data);
   }
-
-  update_actionstaken(data){
-    return this.http.post(this.apiUrl + 'actiontaken/update', data);
+  product_details_delete(data) {
+    return this.http.post(this.apiUrl + 'product_details/delete', data);
   }
-
-  getlist_actionstaken(){
-    return this.http.get(this.apiUrl + 'actiontaken/getlist');
+  product_details_list() {
+    return this.http.get(this.apiUrl + 'product_details/getlist');
   }
-
-  delete_actionstaken(id){
-    return this.http.delete(this.apiUrl+ 'actiontaken/delete?id='+id);
+  product_details_filter_date(data) {
+    return this.http.post(this.apiUrl + 'product_details/filter_date', data);
   }
-
 
-//create Tracing Tools CODE//
+notification_send(data){
+  return this.http.post(this.apiUrl + 'notification/admin_send_notification', data);
 
-create_tracingtools(data){
-  return this.http.post(this.apiUrl + 'tracingtools/create', data);
 }
-
-update_tracingtools(data){
-  return this.http.post(this.apiUrl + 'tracingtools/update', data);
+live_check(data){
+  return this.http.post(this.apiUrl + 'temdoctordetails/fetch_by_user_id', data);
 }
-
-getlist_tracingtools(){
-  return this.http.get(this.apiUrl + 'tracingtools/getlist');
+livedoctordetails_create(data){
+  return this.http.post(this.apiUrl + 'livedoctordetails/create', data);
 }
-
-delete_tracingtools(id){
-  return this.http.delete(this.apiUrl+ 'tracingtools/delete?id='+id);
+livedoctordetails_edit(data){
+  return this.http.post(this.apiUrl + 'livedoctordetails/edit', data);
+}
+livedoctordetails_getlist(){
+  return this.http.get(this.apiUrl + 'livedoctordetails/getlist');
+}
+sp_appointments_getlist(){
+  return this.http.get(this.apiUrl + 'sp_appointments/getlist');
+}
+petdetails_dropdownslist(){
+  return this.http.get(this.apiUrl + 'petdetails/mobile/dropdownslist');
 }
 
 
-//create Approval Status CODE//
+/// EcomBanner///
 
-create_approvalstatus(data){
-  return this.http.post(this.apiUrl + 'approval_status/create', data);
+ecombanner_add(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/create', data);
 }
 
-update_approvalstatus(data){
-  return this.http.post(this.apiUrl + 'approval_status/update', data);
+ecombanner_update(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/update', data);
 }
 
-getlist_approvalstatus(){
-  return this.http.get(this.apiUrl + 'approval_status/getlist');
+ecombanner_delete(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/delete', data);
 }
 
-delete_approvalstatus(id){
-  return this.http.delete(this.apiUrl+ 'approval_status/delete?id='+id);
+ecombanner_list(){
+  return this.http.get(this.apiUrl + 'vendor_banner_detail/getlist');
 }
 
-
-//create Payment CODE//
-
-create_new_payment(data){
-  return this.http.post(this.apiUrl + 'newpayments/create', data);
+ecomFilter_date(data){
+  return this.http.post(this.apiUrl + 'vendor_banner_detail/filter_date', data);
 }
 
-update_new_payment(data){
-  return this.http.post(this.apiUrl + 'newpayments/update', data);
-}
+/// EcomBanner///
 
-getlist_new_payment(id){
-  return this.http.get(this.apiUrl + 'newpayments/getlist?id='+id);
-}
+  // DoctorList() {
+  //   return this.http.get(this.apiUrl + 'doctor/getlist');
+  // }
 
-delete_new_payment(id){
-  return this.http.delete(this.apiUrl+ 'newpayments/delete?id='+id);
-}
+  // EditDoctor(data){
+  //   return this.http.post(this.apiUrl + 'doctor/edit', data);
+  // }
 
+  // CreateLiveDoctor(data) {
+  //   return this.http.post(this.apiUrl + 'livedoctors/signup', data);
+  // }
 
-
-//create Settlement CODE//
-
-create_new_settlement(data){
-  return this.http.post(this.apiUrl + 'newsettlements/create', data);
-}
-
-update_new_settlement(data){
-  return this.http.post(this.apiUrl + 'newsettlements/update', data);
-}
-
-getlist_new_settlement(id){
-  return this.http.get(this.apiUrl + 'newsettlements/getlist?id='+id);
-}
-
-delete_new_settlement(id){
-  return this.http.delete(this.apiUrl+ 'newsettlements/delete?id='+id);
-}
+  // EditLiveDoctor(data) {
+  //   return this.http.post(this.apiUrl + 'livedoctors/liveedits', data);
+  // }
 
 
-  /////Imthiyas/////
 
-  create_bank_details(data){
-    return this.http.post(this.apiUrl + 'bank_detail/create', data);
+
+  // LiveDoctorList() {
+  //   return this.http.get(this.apiUrl + 'livedoctors/getlist');
+  // }
+
+  // LiveDeleteDoctor(data) {
+  //   return this.http.delete(this.apiUrl + 'livedoctors/delete/' + data);
+  // }
+
+  // DeleteDoctor(data) {
+  //   return this.http.delete(this.apiUrl + 'doctor/delete/' + data);
+  // }
+
+
+  // UserList() {
+  //   return this.http.get(this.apiUrl + 'user/getlist');
+  // }
+
+  // DeleteUser(data) {
+  //   return this.http.delete(this.apiUrl + 'user/delete/' + data);
+  // }
+
+
+
+  // PatientList() {
+  //   return this.http.get(this.apiUrl + 'getlist');
+  // }
+
+  // DeletePatient(data) {
+  //   return this.http.delete(this.apiUrl + 'delete/' + data);
+  // }
+
+
+
+  // GetFamilyList(data) {
+  //   return this.http.post(this.apiUrl + 'family/getlist', data);
+  // }
+
+
+
+  // DeleteMembers(data) {
+  //   return this.http.post(this.apiUrl + 'family/delete', data);
+  // }
+
+
+
+
+
+
+  // specializationList() {
+  //   return this.http.get<any>(this.apiUrl + 'specialization/getlist');
+  // }
+
+  // Createspecialization(data) {
+  //   return this.http.post(this.apiUrl + 'specialization/create', data);
+  // }
+  // Editspecialization(data) {
+  //   return this.http.post(this.apiUrl + 'specialization/edit', data);
+  // }
+  // DeleteSpecialisation(data) {
+  //   return this.http.post(this.apiUrl + 'specialization/delete', data);
+  // }
+
+
+
+
+  // Banner_List() {
+  //   return this.http.get(this.apiUrl + 'homebanner/getlist');
+  // }
+
+
+  // CreateBanner(data) {
+  //   return this.http.post(this.apiUrl + 'homebanner/create', data);
+  // }
+
+
+  // DeleteBanner(data) {
+  //   return this.http.delete(this.apiUrl + 'homebanner/delete/' + data);
+  // }
+
+
+  // Symptoms_list() {
+  //   return this.http.get(this.apiUrl + 'symptoms/getlist');
+  // }
+
+
+  // CreateSymptoms(data) {
+  //   return this.http.post(this.apiUrl + 'symptoms/create', data);
+  // }
+  // EditSymptoms(data) {
+  //   return this.http.post(this.apiUrl + 'symptoms/edit', data);
+  // }
+  // deleteSymptoms(data) {
+  //   return this.http.post(this.apiUrl + 'symptoms/delete', data);
+  // }
+
+
+
+  // editSymptoms(data) {
+  //   return this.http.post(this.apiUrl + 'symptoms/edit', data);
+  // }
+
+  // languageList() {
+  //   return this.http.get<any>(this.apiUrl + 'languages/getlist');
+  // }
+  // doctor_title_lists(){
+  //   return this.http.get<any>(this.apiUrl + 'doctor/getdoclist_title');
+  // }
+  // createcompany(data) {
+  //   return this.http.post(this.apiUrl + 'company/create', data);
+  // }
+  // companylist() {
+  //   return this.http.get<any>(this.apiUrl + 'company/getlist');
+  // }
+  // Deletecompany(data) {
+  //   return this.http.post(this.apiUrl + 'company/delete', data);
+  // }
+  // Editcompany(data) {
+  //   return this.http.post(this.apiUrl + 'company/edit', data);
+  // }
+  // appointment() {
+  //   return this.http.get<any>(this.apiUrl + 'appointment/getlist');
+  // }
+  // companyget() {
+  //   return this.http.get<any>(this.apiUrl + 'company/getlist');
+  // }
+  // forunlive1(data) {
+  //   return this.http.post(this.apiUrl + 'livedoctors/edits', data);
+  // }
+  // forunlive2(data) {
+  //   return this.http.post(this.apiUrl + 'livedoctors/liveedits', data);
+  // }
+  // doctor_calendar(data) {
+  //   return this.http.post(this.apiUrl + 'doctortime/doctor_ava_all', data);
+  // }
+
+
+  location_details(lat,lng){
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
   }
 
-  update_bank_details(data){
-    return this.http.post(this.apiUrl + 'bank_detail/edit', data);
-  }
 
-  delete_bank_details(id){
-    return this.http.get(this.apiUrl + 'bank_detail/delete');
-  }
-
-  getlist_bank_details(data){
-    return this.http.post(this.apiUrl+ 'bank_detail/getlist',data);
+  //DOCTOR CANCEL APPOINTMENT //
+  doc_cancel_appointment(data){
+    return this.http.post(this.apiUrl +'appointments/edit',data);
   }
 
 
-//create LogType CODE//
-
-create_new_logtype(data){
-  return this.http.post(this.apiUrl + 'logtype/create', data);
-}
-
-update_new_logtype(data){
-  return this.http.post(this.apiUrl + 'logtype/update', data);
-}
-
-getlist_new_logtype(){
-  return this.http.get(this.apiUrl + 'logtype/getlist');
-}
-
-delete_new_logtype(id){
-  return this.http.delete(this.apiUrl+ 'logtype/delete?id='+id);
-}
-
-
-  //create Field Visit CODE//
-
-  create_new_fieldvisit(data){
-    return this.http.post(this.apiUrl + 'addfieldvisit/create', data);
+  // DOCTOR APPOINTMENT LIST //
+  doc_list_appointment(id){
+    return this.http.get(this.apiUrl + '');
   }
-
-  update_new_fieldvisit(data){
-    return this.http.post(this.apiUrl + 'addfieldvisit/update', data);
+  new_doctortime_fetch_dates() {
+    return this.http.get(this.apiUrl + 'new_doctortime/fetch_dates');
   }
-
-  getlist_new_fieldvisit(id){
-    return this.http.get(this.apiUrl + 'addfieldvisit/getlist?id='+id);
-  }
-
-  delete_new_fieldvisit(id){
-    return this.http.delete(this.apiUrl+ 'addfieldvisit/delete?id='+id);
+  new_doctortime_get_time_Details() {
+    return this.http.get(this.apiUrl + 'new_doctortime/get_time_Details');
   }
 
 
-
-    //create Teams//
-
-    create_new_team(data){
-      return this.http.post(this.apiUrl + 'addteam/create', data);
-    }
-
-    update_new_team(data){
-      return this.http.post(this.apiUrl + 'addteam/update', data);
-    }
-
-    getlist_new_team(){
-      return this.http.get(this.apiUrl + 'addteam/getlist');
-    }
-
-    delete_new_team(id){
-      return this.http.delete(this.apiUrl+ 'addteam/delete?id='+id);
-    }
-
-//create Team Members//
-
-create_new_teammembers(data){
-  return this.http.post(this.apiUrl + 'team_management/create', data);
-}
-
-update_new_teammembers(data){
-  return this.http.post(this.apiUrl + 'team_management/update', data);
-}
-
-getlist_new_teammembers(){
-  const data ={
-    client_id:"1"
+  // PRODUCTS LIST //
+  getlist_vendor_products(id){
+    const data = {
+      user_id:id
+    };
+    return this.http.post(this.apiUrl + 'product_details/getlist_from_vendor_id',data);
   }
-  return this.http.post(this.apiUrl + 'team_management/getlist_by_client',data);
-}
 
-getlist_new_teamgroup(){
-  const data ={
-    client_id:"1"
+
+  // CREATE VENDOR //
+
+
+  create_Vendor(data){
+    return this.http.post(this.apiUrl + 'product_vendor/create', data);
   }
-  return this.http.post(this.apiUrl + 'team_management/groupby_team',data);
-}
-
-getMemberID(id){
-  return this.http.get(this.apiUrl+'userdetails/getby_id?id='+id);
-}
-
-delete_new_teammembers(id){
-  return this.http.delete(this.apiUrl+ 'team_management/delete?id='+id);
-}
-
-// FIND REPORTING TO //
-
-findReportTo(id){
-  const data = {
-    member_user_id: id
-  };
-  return this.http.post(this.apiUrl+ 'team_management/finding_reporting_to',data)
-}
-
-
-// FILE UPLOAD SERVICE //
-
-uploadFile(file){
-  const fd = new FormData();
-  fd.append('sampleFile', file, file.name);
-  return this.http.post('http://10.0.237.178:3000/upload', fd);
-}
-
-// APPROVAL LIST //
-
-getlist_approval_request(data){
-  return this.http.post(this.apiUrl+'addfieldvisit/assigned_list',data)
-  // return this.http.post(this.apiUrl+'addfieldvisit/fetch_approval_list',data);
-}
-
-getlist_fvapproval_request(data){
-  return this.http.post(this.apiUrl+'addfieldvisit/agent_list',data)
-  // return this.http.post(this.apiUrl+'addfieldvisit/fetch_approval_list',data);
-}
-
-getlist_sem_approval_request(data){
-  return this.http.post(this.apiUrl+'newsettlements/fetch_approval_list',data);
-}
-
-get_bucket_details(data){
-  return this.http.post(this.apiUrl+'bucket_detail/getlist_id',data);
-}
-
-
-
-get_excel_records(data){
-  return this.http.post(this.apiUrl+'excel_datas/fetch_records_by_buckets',data);
-}
-
-
-allocation_details_adds(data){
-  return this.http.post(this.apiUrl+'allocation_detail/create',data);
-}
-
-
-// FIELD VISIT COORDINATORS LIST //
-
-getFieldVisitagents(data){
-  return this.http.post(this.apiUrl+'userdetails/fetch_user_territory',data)
-}
-
-excel_details_update(data){
-  return this.http.post(this.apiUrl+'excel_datas/update_allocation_status',data);
-}
-
-fetch_data_using_user_id(data){
-  return this.http.post(this.apiUrl+'allocation_detail/fetch_data_using_user_id',data);
-}
-
-
-fetch_data_using_allocated_list_by_bucket(data){
-  return this.http.post(this.apiUrl+'allocation_detail/fetch_data_using_allocated_list_by_bucket',data);
-}
-
-
-fetch_records_by_buckets_and_allocation(data){
-  return this.http.post(this.apiUrl+'allocation_detail/fetch_records_by_buckets_and_allocation',data);
-}
-
-
-fetch_data_using_allocated_list(data){
-  return this.http.post(this.apiUrl+'allocation_detail/fetch_data_using_allocated_list',data);
-}
-
-
-
-
-fetch_bucket_details(data){
-  return this.http.post(this.apiUrl+'bucket_detail/getlist_details',data);
-}
-
-
-fetch_bank_list_by_client_id(data){
-  return this.http.post(this.apiUrl+'bank_detail/getlist',data);
-}
-
-
-allocation_details_updates(data){
-  return this.http.post(this.apiUrl+'allocation_detail/edit',data);
-}
-
-
-// LINKED ACCOUNTS //
-
-getLinkedaccounts(data){
-  return this.http.post(this.apiUrl+'allocation_detail/fetch_data_linked_account',data);
-}
-
-// MAPPED ACCOUNTS //
-
-getMappedaccounts(data){
-  return this.http.post(this.apiUrl+'allocation_detail/fetch_data_mapped_account',data);
-}
-
-//SET EXCEL DATA //
-
-setExcelData(data){
- this.UploadedExcel = data;
-}
-
-//GET EXCEL DATA //
-
-getExcelData(){
-  return this.UploadedExcel;
- }
-
-
-
- getAccountStatus(data){
-  return this.http.post(this.apiUrl+'customer_details/check_status',data);
- }
-
- setAccountStatus(data){
-  return this.http.post(this.apiUrl+'customer_details/update_status',data);
- }
-
-
-// Dashboard API //
-
-getDashboardCount(data){
-  return this.http.post(this.apiUrl+'allocation_detail/allocation_dashboard',data);
-}
-
-
 
 }
