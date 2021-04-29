@@ -1,0 +1,90 @@
+@import "../../../assets/css/style.css";
+.add-icon{
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 27px;
+    padding: 8px 19px;
+    background: #099279;
+}
+.spec-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .spec-table td, .spec-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .spec-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .spec-table tr:hover {background-color: #ddd;}
+  
+  .spec-table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #099279;
+    color: white;
+  }
+  select{
+    width: 100%;
+    padding: 10px;
+    border-color: #ddd;
+    margin-bottom: 10px;
+  }
+
+
+  .map {
+    width: 100%;
+    min-height: 50vh;
+    height: 0;
+}
+.map agm-map {
+  height: 100%;
+  width: 100%;
+}
+.login_box {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  background-image: url(../../../assets/images/backgrouimage-01.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+input{
+    width: 100%;
+}
+.login_box {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  background-image: url(../../../assets/images/backgrouimage-01.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.form-lable{
+  text-align: left;
+}
+.form-lable{
+  /* display: inline-block !important; */
+  margin-bottom: 0.5rem !important;
+  color: #009377 !important;
+}

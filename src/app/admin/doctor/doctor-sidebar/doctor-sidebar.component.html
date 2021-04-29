@@ -1,0 +1,39 @@
+<mat-drawer-container class="example-container" [ngClass]="{'menuslider' : menu_slider}">
+    <mat-drawer class="side" mode="side" opened>
+        <mat-nav-list>
+            <mat-list-item (click)="menuslide()">
+                <mat-icon class="menuBar"> notes</mat-icon>
+            </mat-list-item>
+            <mat-list-item routerLink="doctor-admin/dashboard" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fab fa-slideshare" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Dashboard</h5>
+                </div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="doctor-profile" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fab fa-slideshare" aria-hidden="true"
+                        ></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Profile</h5>
+                </div>
+            </mat-list-item>
+
+            <mat-list-item routerLink="appointment-list" routerLinkActive="active">
+                <mat-icon  mat-list-icon><i class="fab fa-slideshare" aria-hidden="true"></i></mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Appointments</h5>
+                </div>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <section class="container-fluid">
+            <router-outlet></router-outlet>
+        </section>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,225 @@
+<section class="login_box" *ngIf="userid != undefined">
+
+    <div class="card-box card" *ngIf="dropdownslist != undefined" style="padding:25px;width: auto;margin: 0 auto;">
+
+
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="main-content-title tx-24 mb-1" style="font-size: 20px;color: #099279;">Doctor Info</h2>
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                        <mat-step [stepControl]="firstFormGroup">
+                            <form style="padding: 20px 0px;" [formGroup]="firstFormGroup">
+                                <ng-template matStepLabel>Education Detail</ng-template>
+                                <mat-form-field>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h5 class="form-lable">Education:</h5>
+                                                <input type="text" pInputText [(ngModel)]="Education"
+                                                    placeholder="Education" formControlName="firstCtrl">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h5 class="form-lable">Year of completion:</h5>
+                                                <input type="text" pInputText [(ngModel)]="completion"
+                                                    placeholder="Completion" formControlName="firstCtrl">
+                                            </div>
+                                            <div class="col-md-2 text-right">
+                                                <i class="fa fa-plus add-icon" (click)="addcompletion()"
+                                                    aria-hidden="true" pTooltip="Add"></i>
+                                            </div>
+
+
+                                        </div>
+                                        <table *ngIf="Completionarray.length > 0 " class="spec-table">
+                                            <thead>
+                                                <th>S.No</th>
+                                                <th>Education</th>
+                                                <th>Year of completion</th>
+                                                <th>Remove</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let arr of Completionarray ; let i= index;">
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{arr.education}}</td>
+                                                    <td>{{arr.year}}</td>
+                                                    <td><i style="color: #fd2c3a;" class="fa fa-trash"
+                                                            aria-hidden="true" pTooltip="Delete"
+                                                            (click)="remove_completion(i)"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </mat-form-field>
+                                <div>
+                                    <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
+                                        matStepperNext  [disabled]= "Completionarray.length <= 0">Next</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup" label="Experience">
+                            <form style="padding: 20px 0px;" [formGroup]="secondFormGroup">
+                                <mat-form-field>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h5 class="form-lable">Company:</h5>
+                                                <input type="text" formControlName="secondCtrl" pInputText
+                                                    [(ngModel)]="CName" placeholder="Company Name">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h5 class="form-lable">From:</h5>
+                                                <input type="date" formControlName="secondCtrl" [(ngModel)]="f_date" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <h5 class="form-lable">To:</h5>
+                                                <input type="date" formControlName="secondCtrl" [(ngModel)]="T_date" />
+                                            </div>
+                                            <div class="col-md-2 text-right">
+                                                <i class="fa fa-plus add-icon" (click)="addExperience()"
+                                                    aria-hidden="true" pTooltip="Add"></i>
+                                            </div>
+
+
+                                        </div>
+                                        <table *ngIf="Experiencearray.length > 0 " class="spec-table">
+                                            <thead>
+                                                <th>S.No</th>
+                                                <th>Company</th>
+                                                <th>From Date</th>
+                                                <th>To Date</th>
+                                                <th>Remove</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let arr of Experiencearray ; let i= index;">
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{arr.company}}</td>
+                                                    <td>{{arr.from}}</td>
+                                                    <td>{{arr.to}}</td>
+                                                    <td><i style="color: #fd2c3a;" class="fa fa-trash"
+                                                            aria-hidden="true" pTooltip="Delete"
+                                                            (click)="remove_Experience(i)"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </mat-form-field>
+                                <div>
+                                    <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
+                                        matStepperPrevious>Back</button>
+                                    <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
+                                        matStepperNext  [disabled]= "Experiencearray.length <= 0">Next</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup" label="Specialization & Pets handled">
+                            <form style="    padding: 20px 0px;
+" [formGroup]="secondFormGroup">
+                                <mat-form-field>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <h5 class="form-lable">Specialization:</h5>
+                                                    <select formControlName="secondCtrl" [(ngModel)]="Specialization">
+                                                        <option value='undefined' style="display:none;">Select
+                                                            Specialization</option>
+                                                        <option
+                                                            *ngFor="let arr of dropdownslist.specialzation ; let i= index;">
+                                                            {{arr.specialzation}}
+                                                        </option>
+                                                    </select>
+                                                    <!-- <input type="text" pInputText [(ngModel)]="Specialization" placeholder="Specialization"> -->
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <i class="fa fa-plus add-icon" (click)="addSpecialization()"
+                                                        aria-hidden="true" pTooltip="Add"></i>
+                                                </div>
+
+
+                                            </div>
+                                            <table *ngIf="Specializationarray.length > 0 " class="spec-table">
+                                                <thead>
+                                                    <th>S.No</th>
+                                                    <th>Specialization</th>
+                                                    <th>Remove</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let arr of Specializationarray ; let i= index;">
+                                                        <td>{{i+1}}</td>
+                                                        <td>{{arr.specialization}}</td>
+                                                        <td><i style="color: #fd2c3a;" class="fa fa-trash"
+                                                                aria-hidden="true" pTooltip="Delete"
+                                                                (click)="remove_Specialization(i)"></i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <h5 class="form-lable">Pets handled:</h5>
+                                                    <select formControlName="secondCtrl" [(ngModel)]="handled">
+                                                        <option value='undefined' style="display:none;">Select Pets
+                                                            handled</option>
+                                                        <option
+                                                            *ngFor="let arr of dropdownslist.pet_handle ; let i= index;">
+                                                            {{arr.pet_handle}}
+                                                        </option>
+                                                    </select>
+                                                    <!-- <input type="text" pInputText [(ngModel)]="handled" placeholder="handled"> -->
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <i class="fa fa-plus add-icon" (click)="addhandled()"
+                                                        aria-hidden="true" pTooltip="Add"></i>
+                                                </div>
+
+
+                                            </div>
+                                            <table *ngIf="handledarray.length > 0 " class="spec-table">
+                                                <thead>
+                                                    <th>S.No</th>
+                                                    <th>handled</th>
+                                                    <th>Remove</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let arr of handledarray ; let i= index;">
+                                                        <td>{{i+1}}</td>
+                                                        <td>{{arr.pet_handled}}</td>
+                                                        <td><i style="color: #fd2c3a;" class="fa fa-trash"
+                                                                aria-hidden="true" pTooltip="Delete"
+                                                                (click)="remove_handled(i)"></i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                                <div>
+                                    <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
+                                        matStepperPrevious>Back</button>
+                                    <button style="float: right;color: #3f51b5;margin-top: 20px;" mat-button
+                                        matStepperNext  [disabled]= "handledarray.length <= 0 || Specializationarray.length <= 0 " (click)="create()">Done</button>
+                                </div>
+                            </form>
+                        </mat-step>
+                        <!-- <mat-step>
+                            <ng-template matStepLabel>Done</ng-template>
+                            <p>You are now done.</p>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperPrevious>Confirm</button>
+
+                                <button mat-button (click)="stepper.reset()">Reset</button> 
+                            </div>
+                        </mat-step> -->
+                    </mat-horizontal-stepper>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
