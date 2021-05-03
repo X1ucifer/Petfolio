@@ -40,6 +40,10 @@ export class DoctorLoginComponent implements OnInit {
   passwordError = false;
   passwordErrorMsg: any;
 
+  phone: any;
+  phoneError = false;
+  phoneErrorMsg: any;
+
   constructor(
     private router: Router,
 
@@ -76,6 +80,14 @@ export class DoctorLoginComponent implements OnInit {
     }
   }
 
+  phoneValidator() {
+    if (this.phone === '' || this.phone === undefined || this.phone === null) {
+      this.phoneError = true;
+      this.phoneErrorMsg = 'Phone number Required.'
+    } else {
+      this.phoneError = false;
+    }
+  }
   emailChange(data) {
     //console.log(data);
     this.email = data;
@@ -88,10 +100,15 @@ export class DoctorLoginComponent implements OnInit {
     this.passwordValidator();
   }
 
+  phoneChange(data){
+    this.phone = data;
+    this.phoneValidator();
+  }
   validator() {
-    this.emailValidator();
-    this.passwordValidator();
-    if (!this.emailError && !this.passwordError) {
+    // this.emailValidator();
+    // this.passwordValidator();
+    this.phoneValidator();
+    if (!this.phoneError) {
       this.validation = true;
     } else {
       this.validation = false;
@@ -101,11 +118,12 @@ export class DoctorLoginComponent implements OnInit {
   logintest1() {
     this.validator();
     if (this.validation) {
-      if ((this.email == 'petfolio@gmail.com') && (this.password == '12345')) {
-        this.router.navigateByUrl('/admin/dashboard');
-      } else {
-        alert('Invalid Account');
-      }
+      // if ((this.email == 'petfolio@gmail.com') && (this.password == '12345')) {
+      //   this.router.navigateByUrl('/admin/dashboard');
+      // } else {
+      //   alert('Invalid Account');
+      // }
+      this.router.navigateByUrl('/admin/Otp');
     }
   }
 

@@ -1,5 +1,5 @@
 <section class="login_box">
-    <section *ngIf="dropdownslist != undefined">
+    <section >
         <div class="page-header">
             <div>
                 <h2 class="main-content-title tx-24 mb-1" style="color: #fff;">Doctor Sign Up</h2>
@@ -35,7 +35,7 @@
                         <div class="text-danger">Phone Number is Required.</div>
                     </div>
                 </div>
-                <div class="col-md-12 mt-20" *ngIf="userid == undefined">
+                <div class="col-md-12 mt-20" >
                     <button type="button" class="btn btn-primary" (click)="create_1()">Save</button>
                     <button type="button" class="btn btn-primary btn-bg-blue" (click)="back()">Back to Login</button>
                 </div>

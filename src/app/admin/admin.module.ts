@@ -102,6 +102,12 @@ import { AddVendorComponent } from './pages/add-vendor/add-vendor.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ViewVendorProductsComponent } from './pages/vendor-management/view-vendor-products/view-vendor-products.component';
 import { PayemntvendorComponent } from './pages/payemntvendor/payemntvendor.component';
+import { OtpComponent } from './pages/otp/otp.component';
+import { DoctorEditCalendarComponent } from './doctor/doctor-edit-calendar/doctor-edit-calendar.component';
+import { DoctorPaymentDetailsComponent } from './doctor/doctor-payment-details/doctor-payment-details.component';
+import { DoctorNotificationComponent } from './doctor/doctor-notification/doctor-notification.component';
+import { DoctorRescheduleAppointmentComponent } from './doctor/doctor-reschedule-appointment/doctor-reschedule-appointment.component';
+import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -166,7 +172,13 @@ import { PayemntvendorComponent } from './pages/payemntvendor/payemntvendor.comp
     DoctorAdminComponent,
     AddVendorComponent,
     ViewVendorProductsComponent,
-    PayemntvendorComponent
+    PayemntvendorComponent,
+    OtpComponent,
+    DoctorEditCalendarComponent,
+    DoctorPaymentDetailsComponent,
+    DoctorNotificationComponent,
+    DoctorRescheduleAppointmentComponent,
+    DoctorSupportComponent
   ],
   imports: [
     CommonModule,

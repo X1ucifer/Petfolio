@@ -60,6 +60,12 @@ import { DoctorAppointmentDetailsComponent } from './doctor/doctor-appointment-d
 import { DoctorProfileComponent } from './doctor/doctor-profile/doctor-profile.component';
 import { DoctorAdminComponent } from './doctor/doctor-admin/doctor-admin.component';
 import { ViewVendorProductsComponent } from './pages/vendor-management/view-vendor-products/view-vendor-products.component';
+import { OtpComponent } from './pages/otp/otp.component';
+import { DoctorEditCalendarComponent } from './doctor/doctor-edit-calendar/doctor-edit-calendar.component';
+import { DoctorPaymentDetailsComponent } from './doctor/doctor-payment-details/doctor-payment-details.component';
+import { DoctorNotificationComponent } from './doctor/doctor-notification/doctor-notification.component';
+import { DoctorRescheduleAppointmentComponent } from './doctor/doctor-reschedule-appointment/doctor-reschedule-appointment.component';
+import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -76,6 +82,7 @@ const routes: Routes = [
   { path: 'Sub_Category_Management', component: SubCategoryManagementComponent },
   { path: 'Product_Management', component: ProductManagementComponent },
   { path: 'Doctor', component: DoctorComponent },
+  { path: 'Otp', component: OtpComponent },
 
   { path: 'Doctor_form', component: DoctorFormComponent },
   { path: 'Vendor_form', component: VendorFormComponent },
@@ -106,11 +113,16 @@ const routes: Routes = [
   
   { path: 'doctor-admin', component: DoctorAdminComponent, 
     children:[
-      {path:'',redirectTo:'dashbaord',pathMatch:'full'},
-      { path: 'dashbaord', component: DoctorDashbaordComponent },
+      {path:'',redirectTo:'dashboard',pathMatch:'full'},
+      { path: 'dashboard', component: DoctorDashbaordComponent },
       { path: 'appointment-list', component: DoctorAppointmentListComponent },
       { path: 'appointment-details', component: DoctorAppointmentDetailsComponent },
       { path: 'doctor-profile', component: DoctorProfileComponent },
+      { path: 'doctor-edit-calendar', component: DoctorEditCalendarComponent },
+      { path: 'doctor-payment details', component: DoctorPaymentDetailsComponent },
+      { path: 'doctor-notification', component: DoctorNotificationComponent },
+      { path: 'doctor-reschedule-appointment', component: DoctorRescheduleAppointmentComponent },
+      { path: 'doctor-support', component: DoctorSupportComponent },
     ]
   },
 
