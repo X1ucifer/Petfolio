@@ -108,6 +108,7 @@ import { DoctorPaymentDetailsComponent } from './doctor/doctor-payment-details/d
 import { DoctorNotificationComponent } from './doctor/doctor-notification/doctor-notification.component';
 import { DoctorRescheduleAppointmentComponent } from './doctor/doctor-reschedule-appointment/doctor-reschedule-appointment.component';
 import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.component';
+import { NgOtpInputModule } from 'ng-otp-input'
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -204,6 +205,7 @@ import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.c
     TooltipModule,
     MultiSelectModule,
     TabViewModule,
+    NgOtpInputModule,
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
