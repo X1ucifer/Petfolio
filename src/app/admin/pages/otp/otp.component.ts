@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otp',
@@ -7,7 +8,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 })
 export class OtpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -49,5 +50,8 @@ export class OtpComponent implements OnInit {
     setTimeout(() => {
       this.showOtpComponent = true;
     }, 0);
+  }
+  login() {
+      this.router.navigateByUrl('/admin/dashboard');
   }
 }
