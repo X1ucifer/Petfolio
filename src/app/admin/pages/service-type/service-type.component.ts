@@ -146,7 +146,7 @@ export class ServiceTypeComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 800 && height == 350) {
+        if (width == 300 && height == 500) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles2();
