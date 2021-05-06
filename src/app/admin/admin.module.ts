@@ -109,6 +109,8 @@ import { DoctorNotificationComponent } from './doctor/doctor-notification/doctor
 import { DoctorRescheduleAppointmentComponent } from './doctor/doctor-reschedule-appointment/doctor-reschedule-appointment.component';
 import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.component';
 import { NgOtpInputModule } from 'ng-otp-input'
+import {CheckboxModule} from 'primeng/checkbox';
+import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -179,7 +181,8 @@ import { NgOtpInputModule } from 'ng-otp-input'
     DoctorPaymentDetailsComponent,
     DoctorNotificationComponent,
     DoctorRescheduleAppointmentComponent,
-    DoctorSupportComponent
+    DoctorSupportComponent,
+    DoctorEditCalendarTimeComponent
   ],
   imports: [
     CommonModule,
@@ -206,6 +209,8 @@ import { NgOtpInputModule } from 'ng-otp-input'
     MultiSelectModule,
     TabViewModule,
     NgOtpInputModule,
+    CheckboxModule,
+    
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
