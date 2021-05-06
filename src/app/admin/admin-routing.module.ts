@@ -66,6 +66,7 @@ import { DoctorPaymentDetailsComponent } from './doctor/doctor-payment-details/d
 import { DoctorNotificationComponent } from './doctor/doctor-notification/doctor-notification.component';
 import { DoctorRescheduleAppointmentComponent } from './doctor/doctor-reschedule-appointment/doctor-reschedule-appointment.component';
 import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.component';
+import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
@@ -119,6 +120,7 @@ const routes: Routes = [
       { path: 'appointment-details', component: DoctorAppointmentDetailsComponent },
       { path: 'doctor-profile', component: DoctorProfileComponent },
       { path: 'doctor-edit-calendar', component: DoctorEditCalendarComponent },
+      { path: 'doctor-edit-calendar-time', component: DoctorEditCalendarTimeComponent },
       { path: 'doctor-payment details', component: DoctorPaymentDetailsComponent },
       { path: 'doctor-notification', component: DoctorNotificationComponent },
       { path: 'doctor-reschedule-appointment', component: DoctorRescheduleAppointmentComponent },
