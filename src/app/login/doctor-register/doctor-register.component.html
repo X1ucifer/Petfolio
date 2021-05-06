@@ -1,4 +1,4 @@
-<section class="login_box">
+<section class="login_box" style="padding: 35px;">
     <section >
         <div class="page-header">
             <div>
@@ -39,10 +39,11 @@
                     <button type="button" class="btn btn-primary" (click)="create_1()">Save</button>
                     <button type="button" class="btn btn-primary btn-bg-blue" (click)="back()">Back to Login</button>
                 </div>
+                <hr>
                 <ng-container >
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-12" style="margin-top: 170px;">
+                            <div class="col-md-12" style="margin-top: 50px;">
                                 <h4 class="title text-left"> Doctor Info</h4>
                             </div>
                             <div class="col-md-12">
@@ -102,8 +103,6 @@
                                 <i class="fa fa-plus add-icon" (click)="addExperience()" aria-hidden="true"
                                     pTooltip="Add"></i>
                             </div>
-
-
                         </div>
                         <table *ngIf="Experiencearray.length > 0 " class="spec-table">
                             <thead>
