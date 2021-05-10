@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-otp',
@@ -7,17 +10,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./otp.component.css']
 })
 export class OtpComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  baseURL = environment.apiUrl;
+  apiRoute = `${this.baseURL}userdetails/mobile/login`;
+  user_data;
+  user;
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    @Inject(SESSION_STORAGE) private storage: StorageService
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.storage.get('user');
   }
   otp: string;
   showOtpComponent = true;
-  @ViewChild('ngOtpInput', { static: false}) ngOtpInput: any;
+  @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
   config = {
     allowNumbersOnly: false,
-    length: 5,
+    length: 6,
     isPasswordInput: false,
     disableAutoFocus: false,
     placeholder: '',
@@ -34,11 +45,11 @@ export class OtpComponent implements OnInit {
     this.ngOtpInput.setValue(val);
   }
 
-  toggleDisable(){
-    if(this.ngOtpInput.otpForm){
-      if(this.ngOtpInput.otpForm.disabled){
+  toggleDisable() {
+    if (this.ngOtpInput.otpForm) {
+      if (this.ngOtpInput.otpForm.disabled) {
         this.ngOtpInput.otpForm.enable();
-      }else{
+      } else {
         this.ngOtpInput.otpForm.disable();
       }
     }
@@ -51,7 +62,29 @@ export class OtpComponent implements OnInit {
       this.showOtpComponent = true;
     }, 0);
   }
-  login() {
-      this.router.navigateByUrl('/admin/dashboard');
+  postUserData() {
+    const json_value = { 'user_phone': this.user.user_phone }
+    return this.http.post<any>(this.apiRoute, json_value)
+  }
+  submit() {
+    // console.log(this.otp, "otp");
+    // console.log(this.user.otp, "user_otp");
+    if (this.otp == this.user.otp) {
+      const name = `${this.user.first_name}_${this.user.last_name}`
+
+      this.router.navigate(['/admin/dashboard', name]);
+    }
+    else {
+      console.log('otp error');
+    }
+
+  }
+  Resend() {
+    console.log(this.user.user_phone);
+    this.postUserData().subscribe(data => {
+      this.user_data = data;
+      this.storage.set('user', this.user_data.Data.user_details);
+    })
+    this.submit();
   }
 }

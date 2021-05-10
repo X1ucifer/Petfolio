@@ -69,8 +69,9 @@ import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.c
 import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard' ,pathMatch:'full'},
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard/:name', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },
   { path: 'Pet_handle', component: DocPetHandledComponent },
   { path: 'Pet_Breed_Type', component: PetBreedTypeComponent },
@@ -111,10 +112,11 @@ const routes: Routes = [
   { path: 'view-vendor-products', component: ViewVendorProductsComponent },
 
   ///DOCTOR///
-  
-  { path: 'doctor-admin', component: DoctorAdminComponent, 
-    children:[
-      {path:'',redirectTo:'dashboard',pathMatch:'full'},
+
+  {
+    path: 'doctor-admin', component: DoctorAdminComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DoctorDashbaordComponent },
       { path: 'appointment-list', component: DoctorAppointmentListComponent },
       { path: 'appointment-details', component: DoctorAppointmentDetailsComponent },
@@ -129,27 +131,27 @@ const routes: Routes = [
   },
 
   ///Master ////
-   /////////Banners//////
-   { path: 'master/banner/homebanner', component: HomebannerComponent },
-   { path: 'master/banner/petcarebanner', component: PetcarebannerComponent },
-   { path: 'master/banner/petservicebanner', component: PetservicebannerComponent },
-   { path: 'master/banner/ecombanner', component: EcombannerComponent },
-   { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
-   { path: 'master/banner/splashscreen', component: SplashScreenComponent },
-   { path: 'master/locations/addlocation', component: LocationsComponent },
+  /////////Banners//////
+  { path: 'master/banner/homebanner', component: HomebannerComponent },
+  { path: 'master/banner/petcarebanner', component: PetcarebannerComponent },
+  { path: 'master/banner/petservicebanner', component: PetservicebannerComponent },
+  { path: 'master/banner/ecombanner', component: EcombannerComponent },
+  { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
+  { path: 'master/banner/splashscreen', component: SplashScreenComponent },
+  { path: 'master/locations/addlocation', component: LocationsComponent },
 
 
-   { path: 'Coupon_Code', component: CouponCodeComponent },
-   { path: 'Create_Employee', component: CreateEmpComponent },
-   { path: 'user_type', component: UserTypeComponent },
-   { path: 'demo_page', component: DemoPageComponent },
-   { path: 'doc_specialization', component: DocSpecializationComponent },
-   { path: 'Activity', component: ActivityLogComponent },
-   { path: 'View_details', component: DetailViewComponent },
-   { path: 'Customer_create', component: CustomerCreateComponent },
-   { path: 'Service_provider_specialization', component: ServiceProviderSpecializationComponent },
-   { path: 'Time_create', component: CreateTimeComponent },
-   { path: 'Sp_View_details', component: SpDetailViewComponent },
+  { path: 'Coupon_Code', component: CouponCodeComponent },
+  { path: 'Create_Employee', component: CreateEmpComponent },
+  { path: 'user_type', component: UserTypeComponent },
+  { path: 'demo_page', component: DemoPageComponent },
+  { path: 'doc_specialization', component: DocSpecializationComponent },
+  { path: 'Activity', component: ActivityLogComponent },
+  { path: 'View_details', component: DetailViewComponent },
+  { path: 'Customer_create', component: CustomerCreateComponent },
+  { path: 'Service_provider_specialization', component: ServiceProviderSpecializationComponent },
+  { path: 'Time_create', component: CreateTimeComponent },
+  { path: 'Sp_View_details', component: SpDetailViewComponent },
 
 ];
 
