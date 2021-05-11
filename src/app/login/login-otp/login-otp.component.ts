@@ -1,15 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { environment } from 'src/environments/environment';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
-  selector: 'app-otp',
-  templateUrl: './otp.component.html',
-  styleUrls: ['./otp.component.css']
+  selector: 'app-login-otp',
+  templateUrl: './login-otp.component.html',
+  styleUrls: ['./login-otp.component.css']
 })
-export class OtpComponent implements OnInit {
+export class LoginOtpComponent implements OnInit {
+
+  loginError = false;
+  loginErrorMsg: any;
 
   baseURL = environment.apiUrl;
   apiRoute = `${this.baseURL}userdetails/mobile/login`;
@@ -73,7 +76,7 @@ export class OtpComponent implements OnInit {
     if (this.otp == this.user.otp) {
       const name = `${this.user.first_name}_${this.user.last_name}`
 
-      this.router.navigate(['/admin/dashboard', name]);
+      this.router.navigate(['/doctor-admin/dashboard']);
     }
     else {
       console.log('otp error');
@@ -86,6 +89,7 @@ export class OtpComponent implements OnInit {
       this.user_data = data;
       this.storage.set('user', this.user_data.Data.user_details);
     })
-    this.submit();
+    window.location.reload();
   }
+
 }

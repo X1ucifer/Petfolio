@@ -12,6 +12,8 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 })
 export class DoctorHeaderComponent implements OnInit {
   displayBasic: boolean;
+  admin: string;
+  user;
   constructor(
 
     private router: Router,
@@ -24,12 +26,15 @@ export class DoctorHeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.user = this.storage.get('user');
+    console.log(this.user.first_name, "header");
+    this.admin = this.user.first_name;
   }
   showBasicDialog() {
     this.displayBasic = true;
-}
+  }
 
-logout(){
-  this.router.navigateByUrl('');
-}
+  logout() {
+    this.router.navigateByUrl('');
+  }
 }

@@ -137,7 +137,7 @@ export class DoctorLoginComponent implements OnInit {
         this.postUserData().subscribe(data => {
           this.user_data = data;
           this.storage.set('user', this.user_data.Data.user_details);
-          this.router.navigate(['/admin/Otp']);
+          this.router.navigate(['/doctor_otp']);
         });
       }
     } catch (err) {

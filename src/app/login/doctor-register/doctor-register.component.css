@@ -138,3 +138,15 @@ select {
 .ui-calendar.ui-calendar-w-btn .ui-inputtext {
   width: 100% !important;
 }
+
+.card-box {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.title-box{
+  background-color: #8deb67;
+  padding: 10px 0;
+  color: #ffffff !important;
+  text-align: center;
+}
