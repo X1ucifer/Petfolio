@@ -70,6 +70,7 @@ select {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 250vh;
 }
 
 input {

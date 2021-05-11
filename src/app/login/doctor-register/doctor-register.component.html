@@ -2,7 +2,7 @@
   <section>
     <div class="page-header">
       <div>
-        <h2 class="main-content-title tx-24 mb-1" style="color: #fff; padding-left: 550px">
+        <h2 class="main-content-title tx-24 mb-1" style="color: #fff; padding-left: 500px">
           Doctor Sign Up
         </h2>
       </div>
@@ -15,12 +15,12 @@
           </h4>
         </div>
         <div class="col-md-6 py-7">
-          <h5 class="form-lable">Tittle:</h5>
-          <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor TIttle" />
+          <h5 class="form-lable">first name:</h5>
+          <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor first name" />
         </div>
         <div class="col-md-6 py-7">
-          <h5 class="form-lable">Name:</h5>
-          <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor Name" />
+          <h5 class="form-lable">last name:</h5>
+          <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor last name" />
         </div>
         <div class="col-md-6 py-7">
           <h5 class="form-lable">Email ID:</h5>
@@ -52,7 +52,7 @@
             Back to Login
           </button>
         </div>
-        <ng-container>
+        <ng-container *ngIf="Validation">
           <div class="col-md-12">
             <div class="row">
 
