@@ -18,6 +18,7 @@
                 <div class="text-danger">Phone Number is Required.</div>
             </div>
         </div>
+        <ng-container *ngIf="type == 'create'">
         <div class="col-md-6">
             <h5 class="form-lable">Email ID:</h5>
             <input type="text" pInputText [(ngModel)]="Email"  (ngModelChange)="EmailidChange($event)"  placeholder="Email ID">
@@ -35,6 +36,29 @@
                 <div class="text-danger">Phone Number is Required.</div>
             </div>
         </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="type == 'edit'">
+        <div class="col-md-6">
+            <h5 class="form-lable">Email ID:</h5>
+            <input type="text" pInputText [(ngModel)]="Email"  disabled (ngModelChange)="EmailidChange($event)"  placeholder="Email ID">
+            <div *ngIf="Email_idError" class="mt-1 error">
+                <div class="text-danger">Valid Email Address Required.</div>
+            </div>
+            <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
+                <div class="text-danger">Valid Email Address Required.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Phone Number:</h5>
+            <input type="text" pInputText [(ngModel)]="Phone" disabled placeholder="Phone Number"  maxlength="10" (keypress)=_keyPress($event)>
+            <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)" class="mt-1 error">
+                <div class="text-danger">Phone Number is Required.</div>
+            </div>
+        </div>
+
+    </ng-container>
 
         <div class="col-md-12 mt-20">
             <button type="button" *ngIf="type == 'create'" class="btn btn-primary" (click)="create()">Create</button>

@@ -13,19 +13,19 @@ export class DetailViewComponent implements OnInit {
   view_detail: any;
   view_detail_data: any;
   live_s: any;
-  user_id:any;
+  user_id: any;
 
-   doctor_details : any;
-   preview_doctor_Details : any;
+  doctor_details: any;
+  preview_doctor_Details: any;
 
 
-   doctor_clinic_pic : any ;
-   previous_doctor_clinic_pic : any;
-   doctor_education_details : any;
-   previous_doctor_education_details : any;
+  doctor_clinic_pic: any;
+  previous_doctor_clinic_pic: any;
+  doctor_education_details: any;
+  previous_doctor_education_details: any;
 
   constructor(
-    private toastr:ToastrManager,
+    private toastr: ToastrManager,
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -33,33 +33,38 @@ export class DetailViewComponent implements OnInit {
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     this.doctor_details = this.view_detail_data;
-    this.user_id = this.view_detail_data.user_id._id
+    if (this.view_detail == 'Doctor') {
+      this.user_id = this.view_detail_data.user_id._id
+
+    }
 
 
 
   }
 
   ngOnInit(): void {
-     let id = {
-      "user_id": this.user_id
-    }
-    console.log(id)
-    this._api.live_check(id).subscribe(
-      (response: any) => {
-        this.preview_doctor_Details = response.Data[0];
-        console.log(this.doctor_details);
-        console.log(this.preview_doctor_Details);
-
-
-    ///Comparing Array/////
-    this.doctor_clinic_pic = JSON.stringify(this.doctor_details.clinic_pic);
-    this.previous_doctor_clinic_pic = JSON.stringify(this.preview_doctor_Details.clinic_pic);
-    this.doctor_education_details = JSON.stringify(this.doctor_details.education_details);
-    this.previous_doctor_education_details = JSON.stringify(this.preview_doctor_Details.education_details);
-
+    if (this.view_detail == 'Doctor') {
+      let id = {
+        "user_id": this.user_id
       }
-    );
-
+      console.log(id)
+      this._api.live_check(id).subscribe(
+        (response: any) => {
+          this.preview_doctor_Details = response.Data[0];
+          console.log(this.doctor_details);
+          console.log(this.preview_doctor_Details);
+  
+  
+          ///Comparing Array/////
+          this.doctor_clinic_pic = JSON.stringify(this.doctor_details.clinic_pic);
+          this.previous_doctor_clinic_pic = JSON.stringify(this.preview_doctor_Details.clinic_pic);
+          this.doctor_education_details = JSON.stringify(this.doctor_details.education_details);
+          this.previous_doctor_education_details = JSON.stringify(this.preview_doctor_Details.education_details);
+  
+        }
+      );
+  
+    } 
 
   }
 
@@ -89,7 +94,7 @@ export class DetailViewComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         this.view_detail_data = response.Data;
-        this.user_id=this.view_detail_data.user_id
+        this.user_id = this.view_detail_data.user_id
         // alert("Updated Successfully");
         this.showSuccess("Updated Successfully");
         this.ngOnInit();
@@ -108,10 +113,10 @@ export class DetailViewComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         // alert("Updated Successfully");
-       this.showSuccess("Updated Successfully");
+        this.showSuccess("Updated Successfully");
         if (this.live_s == 'not_live') {
           this.view_detail_data = response.Data;
-          this.user_id=this.view_detail_data.user_id
+          this.user_id = this.view_detail_data.user_id
           let a = response.Data;
           console.log(a);
           this._api.livedoctordetails_create(a).subscribe(
@@ -123,7 +128,7 @@ export class DetailViewComponent implements OnInit {
         }
         else {
           this.view_detail_data = response.Data;
-          this.user_id=this.view_detail_data.user_id
+          this.user_id = this.view_detail_data.user_id
           let a = response.Data;
           this._api.livedoctordetails_edit(a).subscribe(
             (response: any) => {
@@ -192,10 +197,10 @@ export class DetailViewComponent implements OnInit {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 }
