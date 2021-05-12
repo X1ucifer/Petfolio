@@ -2,20 +2,25 @@
   <section>
     <div class="page-header">
       <div>
-        <h2 class="main-content-title tx-24 mb-1" style="color: #fff; padding-left: 550px">
+        <h2 class="main-content-title tx-24 mb-1" style="color: #fff; padding-left: 500px">
           Doctor Sign Up
         </h2>
       </div>
     </div>
     <div class="card-box">
       <div class="row" style="padding: 0px 0px 23px 10px">
-        <div class="col-md-6 py-7">
-          <h5 class="form-lable">Tittle:</h5>
-          <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor TIttle" />
+        <div class="col-md-12" style="margin-top: 20px">
+          <h4 class="title title-box">
+            Doctor Info
+          </h4>
         </div>
         <div class="col-md-6 py-7">
-          <h5 class="form-lable">Name:</h5>
-          <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor Name" />
+          <h5 class="form-lable">first name:</h5>
+          <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor first name" />
+        </div>
+        <div class="col-md-6 py-7">
+          <h5 class="form-lable">last name:</h5>
+          <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor last name" />
         </div>
         <div class="col-md-6 py-7">
           <h5 class="form-lable">Email ID:</h5>
@@ -47,23 +52,14 @@
             Back to Login
           </button>
         </div>
-        <ng-container>
+        <ng-container *ngIf="Validation">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-12" style="margin-top: 20px">
-                <h4 class="title" style="
-                    background-color: #8deb67;
-                    padding: 10px 0;
-                    color: #ffffff;
-                    text-align: center;
-                  ">
-                  Doctor Info
-                </h4>
-              </div>
+
               <div class="col-md-12 py-7">
-                <h5 class="form-lable" style="font-weight: 600">
+                <h4 class="form-lable title-box" style="font-weight: 600;">
                   Add Education
-                </h5>
+                </h4>
               </div>
               <div class="col-md-5">
                 <h5 class="form-lable" style="color: #000 !important">
@@ -104,9 +100,9 @@
           <div class="col-md-12">
             <div class="row">
               <div class="col-md-12 py-6">
-                <h5 class="form-lable" style="font-weight: 600">
+                <!-- <h5 class="form-lable" style="font-weight: 600">
                   Add Experience
-                </h5>
+                </h5> -->
               </div>
               <div class="col-md-5">
                 <h5 class="form-lable" style="color: #000 !important">
@@ -156,11 +152,16 @@
                     <h5 class="form-lable">Experience:</h5>
                     <p-dropdown [options]="Exp" [(ngModel)]="Experience" placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown>
                 </div> -->
+          <div class="col-md-12">
+            <h4 class="form-lable title-box" style="font-weight: 600">
+              Specialization & pets handled:
+            </h4>
+          </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-10">
-                <h5 class="form-lable" style="font-weight: 600">
-                  Add Specialization:
+                <h5 class="form-lable" style="font-weight: 600;">
+                  Add Specialization
                 </h5>
                 <select [(ngModel)]="Specialization">
                   <option value="undefined" style="display: none">
@@ -239,19 +240,62 @@
                     <h5 class="form-lable">Pets handled:</h5>
                     <input type="text" pInputText [(ngModel)]="handled" placeholder="Pets handled">
                 </div> -->
-
+          <div class="col-md-12">
+            <h4 class="form-lable title-box" style="font-weight: 600;">
+              Clinic Info
+            </h4>
+          </div>
           <div class="col-md-6 py-7">
             <h5 class="form-lable" style="font-weight: 600">Clinic Name:</h5>
             <input type="text" pInputText [(ngModel)]="Clinic_Name" placeholder="Clinic Name" />
           </div>
-          <div class="col-md-6 py-7">
+
+          <!-- <input type="text" pInputText [(ngModel)]="address" placeholder="Clinic Location"> -->
+          <!-- <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="address"></textarea> -->
+
+          <div class="col-md-6 py-7" style="margin-bottom: 15px">
             <h5 class="form-lable" style="font-weight: 600">
-              Clinic Location:
+              Clinic Image:
             </h5>
-            <input [(ngModel)]="address" ngx-google-places-autocomplete [options]="options" #placesRef="ngx-places"
-              (onAddressChange)="handleAddressChange($event)" />
-            <!-- <input type="text" pInputText [(ngModel)]="address" placeholder="Clinic Location"> -->
-            <!-- <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="address"></textarea> -->
+            <input type="file" #imgType (change)="fileupload($event, 'Clinic')" id="imgfile" accept=".png, .jpg, .jpeg"
+              class="form-control" id="city" placeholder="User type icon" />
+            <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+            <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+            <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+            <table *ngIf="clinic_arr.length > 0" class="spec-table" style="margin-top: 8px">
+              <thead>
+                <th>S.No</th>
+                <th>Clinic Image</th>
+                <th>Remove</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let arr of clinic_arr; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <img src="{{ arr.clinic_pic }}" style="width: 20px" />
+                  </td>
+
+                  <td>
+                    <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                      (click)="remove_clinic_img(i)"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-12">
+            <h4 class="form-lable title-box" style="font-weight: 600;">
+              Clinic Location
+            </h4>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6 py-7">
+              <h5 class="form-lable" style="font-weight: 600; margin-bottom: 15px">
+                Clinic Location:
+              </h5>
+              <input [(ngModel)]="address" ngx-google-places-autocomplete [options]="options" #placesRef="ngx-places"
+                (onAddressChange)="handleAddressChange($event)" />
+            </div>
           </div>
           <div class="map">
             <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
@@ -273,37 +317,12 @@
             <input type="text" pInputText [(ngModel)]="Longitude" placeholder="Longitude" disabled />
           </div>
           <div class="col-md-12">
+            <h4 class="form-lable title-box" style="font-weight: 600;">
+              Documents
+            </h4>
+          </div>
+          <div class="col-md-12">
             <div class="row">
-              <div class="col-md-6" style="margin-bottom: 15px">
-                <h5 class="form-lable" style="font-weight: 600">
-                  Clinic Image:
-                </h5>
-                <input type="file" #imgType (change)="fileupload($event, 'Clinic')" id="imgfile"
-                  accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon" />
-                <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
-                <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
-                <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
-                <table *ngIf="clinic_arr.length > 0" class="spec-table" style="margin-top: 8px">
-                  <thead>
-                    <th>S.No</th>
-                    <th>Clinic Image</th>
-                    <th>Remove</th>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let arr of clinic_arr; let i = index">
-                      <td>{{ i + 1 }}</td>
-                      <td>
-                        <img src="{{ arr.clinic_pic }}" style="width: 20px" />
-                      </td>
-
-                      <td>
-                        <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
-                          (click)="remove_clinic_img(i)"></i>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
               <div class="col-md-6" style="margin-bottom: 15px">
                 <h5 class="form-lable" style="font-weight: 600">
                   Govt ID proof:
@@ -393,7 +412,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="col-md-6" style="margin-top: 20px">
+              <!-- <div class="col-md-6" style="margin-top: 20px">
                 <h5 class="form-lable" style="font-weight: 600">
                   Available Day:
                 </h5>
@@ -406,7 +425,7 @@
                 </h5>
                 <p-multiSelect [options]="timelist" [(ngModel)]="selecttime" defaultLabel="Select" optionLabel="time">
                 </p-multiSelect>
-              </div>
+              </div> -->
               <!-- <div class="col-md-12 mt-20">
                             <h5 class="form-lable">Clinic Images:</h5>
                             <input type="file" pInputText [(ngModel)]="value1">
