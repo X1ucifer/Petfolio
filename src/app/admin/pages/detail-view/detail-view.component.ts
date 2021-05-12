@@ -43,26 +43,28 @@ export class DetailViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = {
-      "user_id": this.user_id
-    }
-    console.log(id)
-    this._api.live_check(id).subscribe(
-      (response: any) => {
-        this.preview_doctor_Details = response.Data[0];
-        console.log(this.doctor_details);
-        console.log(this.preview_doctor_Details);
-
-
-        ///Comparing Array/////
-        this.doctor_clinic_pic = JSON.stringify(this.doctor_details.clinic_pic);
-        this.previous_doctor_clinic_pic = JSON.stringify(this.preview_doctor_Details.clinic_pic);
-        this.doctor_education_details = JSON.stringify(this.doctor_details.education_details);
-        this.previous_doctor_education_details = JSON.stringify(this.preview_doctor_Details.education_details);
-
+    if (this.view_detail == 'Doctor') {
+      let id = {
+        "user_id": this.user_id
       }
-    );
-
+      console.log(id)
+      this._api.live_check(id).subscribe(
+        (response: any) => {
+          this.preview_doctor_Details = response.Data[0];
+          console.log(this.doctor_details);
+          console.log(this.preview_doctor_Details);
+  
+  
+          ///Comparing Array/////
+          this.doctor_clinic_pic = JSON.stringify(this.doctor_details.clinic_pic);
+          this.previous_doctor_clinic_pic = JSON.stringify(this.preview_doctor_Details.clinic_pic);
+          this.doctor_education_details = JSON.stringify(this.doctor_details.education_details);
+          this.previous_doctor_education_details = JSON.stringify(this.preview_doctor_Details.education_details);
+  
+        }
+      );
+  
+    } 
 
   }
 
