@@ -39,7 +39,7 @@ export class ProductManagementComponent implements OnInit {
   uploadedFiles: any = [];
   product_code: any;
   Thmp_list: any = [];
-  @ViewChild('imgType', { static: false }) imgType: ElementRef;
+  @ViewChild('imgType1', { static: false }) imgType: ElementRef;
   Vendor: any;
   pet_type_list: any = [];
   pet_breed_list: any = [];
@@ -224,8 +224,9 @@ export class ProductManagementComponent implements OnInit {
             this.pettype = undefined;
             this.Age = undefined;
             this.Product_Name = undefined;
-            this.Cost == undefined;
-            this.Discount == undefined;
+            this.Cost = undefined;
+            this.Discount = undefined;
+            this.threshould = undefined;
             this.ngOnInit();
           } else {
             this.showError(response.Message);
@@ -277,6 +278,8 @@ export class ProductManagementComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;
+        this.imgType.nativeElement.value = "";
+
       });
   }
 
@@ -388,8 +391,8 @@ export class ProductManagementComponent implements OnInit {
             this.pettype = undefined;
             this.Age = undefined;
             this.Product_Name = undefined;
-            this.Cost == undefined;
-            this.Discount == undefined;
+            this.Cost = undefined;
+            this.Discount = undefined;
           } else {
             //alert(response.Message);
             this.showError(response.Message)
