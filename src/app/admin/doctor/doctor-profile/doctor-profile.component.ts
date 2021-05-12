@@ -18,8 +18,8 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 })
 export class DoctorProfileComponent implements OnInit {
 
-  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
-    
+  @ViewChild("placesRef") placesRef: GooglePlaceDirective;
+
   public handleAddressChange(address: any) {
     this.zoom = 15;
     this.location_lat = Number(address.geometry.location.lat());
@@ -30,13 +30,13 @@ export class DoctorProfileComponent implements OnInit {
     this.Longitude = this.location_lng;
     this.address = address.formatted_address;
     console.log(this.address);
-    
+
   }
 
-  options={
+  options = {
     types: [],
     componentRestrictions: { country: 'IN' }
-    }
+  }
 
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
@@ -62,6 +62,8 @@ export class DoctorProfileComponent implements OnInit {
   T_date: any;
   CName: any;
   selectedimgae: any;
+  title;
+  name;
   Exp: any = [
     { "y": "1+ years" },
     { "y": "5+ years" },
@@ -89,9 +91,11 @@ export class DoctorProfileComponent implements OnInit {
   userid: any = undefined;
   type: any;
   detail: any;
-  dropdownslist:any;
+  dropdownslist: any;
+  user_profile: any;
+  user_detail: any;
   constructor(
-    private toastr:ToastrManager,
+    private toastr: ToastrManager,
     private location: Location,
     private router: Router,
     private ValidatorService: ValidatorService,
@@ -107,12 +111,12 @@ export class DoctorProfileComponent implements OnInit {
         console.log(this.dropdownslist);
       }
     );
-   }
+  }
 
   ngOnInit(): void {
     this.type = this.getFromLocal('fun_type');
     if (this.type == 'edit') {
-    
+
       this.detail = this.getFromLocal('view_detail_data');
       console.log(this.detail)
       this.userid = this.detail.user_id._id;
@@ -140,6 +144,21 @@ export class DoctorProfileComponent implements OnInit {
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
     }
+    this.fetchProfile();
+  }
+  fetchProfile() {
+    this.user_detail = { "user_id": "6087d8626163803091258a5d" };
+    this._api.profile_details(this.user_detail).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        console.log(response.Data.education_details);
+        // this.rows = response.Data;
+        this.user_profile = response.Data;
+        this.title = response.Data.dr_title;
+        this.name = response.Data.dr_name;
+        this.Education = response.Data.education_details.education;
+      }
+    )
   }
   cancel() {
     this.router.navigateByUrl('/admin/Doctor')
@@ -249,7 +268,7 @@ export class DoctorProfileComponent implements OnInit {
   addfiles(data: any) {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post(this.imgUrl , fd)
+    this.http.post(this.imgUrl, fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;
@@ -295,7 +314,10 @@ export class DoctorProfileComponent implements OnInit {
     this.certificate_arr.splice(i, 1);
   }
   validation_1() {
-    if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '' || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10) {
+    this.tittle = this.title;
+    this.Name = this.name;
+    // || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10
+    if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '') {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -332,20 +354,20 @@ export class DoctorProfileComponent implements OnInit {
         "user_status": "complete"
       };
       console.log(a);
-      this._api.user_create(a).subscribe(
-        (response: any) => {
-          console.log(response.Data);
-          if (response.Code === 200) {
-            this.userid = response.Data.user_details._id;
-            console.log(this.userid)
-            // alert('Added Successfully');
-            this.showSuccess("Added Successfully")
-          } else {
-            this.showError(response.Message);
-            //alert(response.Message);
-          }
-        }
-      );
+      // this._api.user_create(a).subscribe(
+      //   (response: any) => {
+      //     console.log(response.Data);
+      //     if (response.Code === 200) {
+      //       this.userid = response.Data.user_details._id;
+      //       console.log(this.userid)
+      //       // alert('Added Successfully');
+      //       this.showSuccess("Added Successfully")
+      //     } else {
+      //       this.showError(response.Message);
+      //       //alert(response.Message);
+      //     }
+      //   }
+      // );
     }
   }
   create() {
@@ -442,14 +464,14 @@ export class DoctorProfileComponent implements OnInit {
     this.base_lng = this.location_lng;
     this.Latitude = this.location_lat;
     this.Longitude = this.location_lng;
-    this._api.location_details(this.location_lat,this.location_lng).subscribe(async data=>{
+    this._api.location_details(this.location_lat, this.location_lng).subscribe(async data => {
       this.address = await data['results'][0]['formatted_address'];
     });
   }
 
   edit() {
     let a = {
-      "_id" : this.detail._id,
+      "_id": this.detail._id,
       "user_id": this.userid,
       "dr_title": this.tittle,
       "dr_name": this.Name,
@@ -490,10 +512,10 @@ export class DoctorProfileComponent implements OnInit {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 }

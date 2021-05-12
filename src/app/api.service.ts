@@ -83,24 +83,24 @@ export class ApiService {
 
   //PET HEALTH CHECKUP TYPE///
 
-  pet_add_checkup_type(data){
-    return this.http.post(this.apiUrl+ 'changeupdated',data);
+  pet_add_checkup_type(data) {
+    return this.http.post(this.apiUrl + 'changeupdated', data);
   }
 
-  pet_list_checkup_type(){
+  pet_list_checkup_type() {
     return this.http.get(this.apiUrl + '');
   }
 
-  pet_view_checkup_type(id){
-    return this.http.get(this.apiUrl + '?id='+id);
+  pet_view_checkup_type(id) {
+    return this.http.get(this.apiUrl + '?id=' + id);
   }
 
-  pet_update_checkup_type(data){
-    return this.http.post(this.apiUrl + '',data);
+  pet_update_checkup_type(data) {
+    return this.http.post(this.apiUrl + '', data);
   }
 
-  pet_delete_checkup_type(id){
-    return this.http.delete(this.apiUrl + '?id='+id);
+  pet_delete_checkup_type(id) {
+    return this.http.delete(this.apiUrl + '?id=' + id);
   }
 
 
@@ -204,6 +204,9 @@ export class ApiService {
     return this.http.get(this.apiUrl + 'userdetails/adminpanel/Dashboard/count');
   }
 
+  profile_details(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/fetch_doctor_user_id', data);
+  }
 
   prices_count() {
     return this.http.get(this.apiUrl + 'appointments/gettotalprice');
@@ -228,6 +231,15 @@ export class ApiService {
   }
   appointment_list() {
     return this.http.get(this.apiUrl + 'appointments/getlist');
+  }
+  appointment_booked(data) {
+    return this.http.post(this.apiUrl + 'appointments/mobile/doc_getlist/newapp', data);
+  }
+  appointment_completed(data) {
+    return this.http.post(this.apiUrl + 'appointments/mobile/doc_getlist/comapp', data);
+  }
+  appointment_missed(data) {
+    return this.http.post(this.apiUrl + 'appointments/mobile/doc_getlist/missapp', data);
   }
   appointment_filter_date(data) {
     return this.http.post(this.apiUrl + 'appointments/filter_date', data);
@@ -305,17 +317,17 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'SP_services/filter_date', data);
   }
 
-//  cancel appointment
+  //  cancel appointment
   cancel_appointment() {
     return this.http.get(this.apiUrl + 'appointments/listing_cancelled');
   }
 
-//  payment
+  //  payment
   pay_filter_date(data) {
     return this.http.post(this.apiUrl + 'userdetails/fetch_payment_Details', data);
   }
-  payment_management () { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');}
-  pay_list () { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');}
+  payment_management() { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details'); }
+  pay_list() { return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details'); }
 
   sp_total_price() {
     return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
@@ -376,53 +388,56 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'product_details/filter_date', data);
   }
 
-notification_send(data){
-  return this.http.post(this.apiUrl + 'notification/admin_send_notification', data);
+  notification_send(data) {
+    return this.http.post(this.apiUrl + 'notification/admin_send_notification', data);
 
-}
-live_check(data){
-  return this.http.post(this.apiUrl + 'temdoctordetails/fetch_by_user_id', data);
-}
-livedoctordetails_create(data){
-  return this.http.post(this.apiUrl + 'livedoctordetails/create', data);
-}
-livedoctordetails_edit(data){
-  return this.http.post(this.apiUrl + 'livedoctordetails/edit', data);
-}
-livedoctordetails_getlist(){
-  return this.http.get(this.apiUrl + 'livedoctordetails/getlist');
-}
-sp_appointments_getlist(){
-  return this.http.get(this.apiUrl + 'sp_appointments/getlist');
-}
-petdetails_dropdownslist(){
-  return this.http.get(this.apiUrl + 'petdetails/mobile/dropdownslist');
-}
+  }
+  notification_list(data) {
+    return this.http.post(this.apiUrl + 'notification/mobile/getlist_id', data);
+  }
+  live_check(data) {
+    return this.http.post(this.apiUrl + 'temdoctordetails/fetch_by_user_id', data);
+  }
+  livedoctordetails_create(data) {
+    return this.http.post(this.apiUrl + 'livedoctordetails/create', data);
+  }
+  livedoctordetails_edit(data) {
+    return this.http.post(this.apiUrl + 'livedoctordetails/edit', data);
+  }
+  livedoctordetails_getlist() {
+    return this.http.get(this.apiUrl + 'livedoctordetails/getlist');
+  }
+  sp_appointments_getlist() {
+    return this.http.get(this.apiUrl + 'sp_appointments/getlist');
+  }
+  petdetails_dropdownslist() {
+    return this.http.get(this.apiUrl + 'petdetails/mobile/dropdownslist');
+  }
 
 
-/// EcomBanner///
+  /// EcomBanner///
 
-ecombanner_add(data){
-  return this.http.post(this.apiUrl + 'vendor_banner_detail/create', data);
-}
+  ecombanner_add(data) {
+    return this.http.post(this.apiUrl + 'vendor_banner_detail/create', data);
+  }
 
-ecombanner_update(data){
-  return this.http.post(this.apiUrl + 'vendor_banner_detail/update', data);
-}
+  ecombanner_update(data) {
+    return this.http.post(this.apiUrl + 'vendor_banner_detail/update', data);
+  }
 
-ecombanner_delete(data){
-  return this.http.post(this.apiUrl + 'vendor_banner_detail/delete', data);
-}
+  ecombanner_delete(data) {
+    return this.http.post(this.apiUrl + 'vendor_banner_detail/delete', data);
+  }
 
-ecombanner_list(){
-  return this.http.get(this.apiUrl + 'vendor_banner_detail/getlist');
-}
+  ecombanner_list() {
+    return this.http.get(this.apiUrl + 'vendor_banner_detail/getlist');
+  }
 
-ecomFilter_date(data){
-  return this.http.post(this.apiUrl + 'vendor_banner_detail/filter_date', data);
-}
+  ecomFilter_date(data) {
+    return this.http.post(this.apiUrl + 'vendor_banner_detail/filter_date', data);
+  }
 
-/// EcomBanner///
+  /// EcomBanner///
 
   // DoctorList() {
   //   return this.http.get(this.apiUrl + 'doctor/getlist');
@@ -579,19 +594,19 @@ ecomFilter_date(data){
   // }
 
 
-  location_details(lat,lng){
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
+  location_details(lat, lng) {
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
   }
 
 
   //DOCTOR CANCEL APPOINTMENT //
-  doc_cancel_appointment(data){
-    return this.http.post(this.apiUrl +'appointments/edit',data);
+  doc_cancel_appointment(data) {
+    return this.http.post(this.apiUrl + 'appointments/edit', data);
   }
 
 
   // DOCTOR APPOINTMENT LIST //
-  doc_list_appointment(id){
+  doc_list_appointment(id) {
     return this.http.get(this.apiUrl + '');
   }
   new_doctortime_fetch_dates() {
@@ -603,18 +618,18 @@ ecomFilter_date(data){
 
 
   // PRODUCTS LIST //
-  getlist_vendor_products(id){
+  getlist_vendor_products(id) {
     const data = {
-      user_id:id
+      user_id: id
     };
-    return this.http.post(this.apiUrl + 'product_details/getlist_from_vendor_id',data);
+    return this.http.post(this.apiUrl + 'product_details/getlist_from_vendor_id', data);
   }
 
 
   // CREATE VENDOR //
 
 
-  create_Vendor(data){
+  create_Vendor(data) {
     return this.http.post(this.apiUrl + 'product_vendor/create', data);
   }
 

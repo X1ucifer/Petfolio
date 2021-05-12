@@ -70,7 +70,13 @@ select {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 250vh;
+  height: 100vh;
+}
+
+.login-box__section {
+  height: 100vh;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
 }
 
 input {

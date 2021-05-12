@@ -2,16 +2,16 @@
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-6">
             <h5 class="form-lable">Tittle:</h5>
-            <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor TIttle">
+            <input type="text" pInputText [(ngModel)]="tittle" placeholder="Doctor TIttle" value={{title}}>
         </div>
         <div class="col-md-6">
             <h5 class="form-lable">Name:</h5>
-            <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor Name" >
+            <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor Name" value={{name}}>
         </div>
         <div class="col-md-6">
             <h5 class="form-lable">Email ID:</h5>
             <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
-                placeholder="Email ID" >
+                placeholder="Email ID">
             <div *ngIf="Email_idError" class="mt-1 error">
                 <div class="text-danger">Valid Email Address Required.</div>
             </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-6">
             <h5 class="form-lable">Phone Number:</h5>
-            <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" 
+            <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10"
                 (keypress)=_keyPress($event)>
             <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
                 class="mt-1 error">
@@ -43,7 +43,8 @@
                     </div>
                     <div class="col-md-5">
                         <h5 class="form-lable">Education:</h5>
-                        <input type="text" pInputText [(ngModel)]="Education" placeholder="Education">
+                        <input type="text" pInputText [(ngModel)]="Education" placeholder="Education"
+                            value={{Education}}>
                     </div>
                     <div class="col-md-5">
                         <h5 class="form-lable">Year of completion:</h5>
@@ -128,9 +129,9 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h5 class="form-lable">Specialization:</h5>
-                        <select  [(ngModel)]="Specialization" >
+                        <select [(ngModel)]="Specialization">
                             <option value='undefined' style="display:none;">Select Specialization</option>
-                            <option  *ngFor="let arr of dropdownslist.specialzation ; let i= index;">
+                            <option *ngFor="let arr of dropdownslist.specialzation ; let i= index;">
                                 {{arr.specialzation}}
                             </option>
                         </select>
@@ -163,9 +164,9 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h5 class="form-lable">Pets handled:</h5>
-                        <select  [(ngModel)]="handled" >
+                        <select [(ngModel)]="handled">
                             <option value='undefined' style="display:none;">Select Pets handled</option>
-                            <option  *ngFor="let arr of dropdownslist.pet_handle ; let i= index;">
+                            <option *ngFor="let arr of dropdownslist.pet_handle ; let i= index;">
                                 {{arr.pet_handle}}
                             </option>
                         </select>
@@ -204,27 +205,21 @@
             </div>
             <div class="col-md-6">
                 <h5 class="form-lable">Clinic Location:</h5>
-                <input [(ngModel)]="address" style="padding:10px; width:75%" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+                <input [(ngModel)]="address" style="padding:10px; width:75%" ngx-google-places-autocomplete
+                    [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
                 <!-- <input type="text" pInputText [(ngModel)]="address" placeholder="Clinic Location"> -->
                 <!-- <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="address"></textarea> -->
             </div>
             <div class="map">
-                <agm-map 
-                    [latitude]="base_lat"
-                    [longitude]="base_lng"
-                    [zoom]="zoom"
-                    [disableDefaultUI]="false"
+                <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
                     [zoomControl]="false">
 
-                    <agm-marker 
-                        [latitude]="location_lat"
-                        [longitude]="location_lng"
-                        [markerDraggable]="true"
+                    <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
                         (dragEnd)="markerDragEnd($event)">
-                        
+
                         <agm-info-window>
-                        <strong>{{address}}</strong>
-                        </agm-info-window>                       
+                            <strong>{{address}}</strong>
+                        </agm-info-window>
                     </agm-marker>
                 </agm-map>
             </div>
