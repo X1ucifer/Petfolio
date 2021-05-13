@@ -18,8 +18,8 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 })
 export class DoctorProfileComponent implements OnInit {
 
-  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
-    
+  @ViewChild("placesRef") placesRef: GooglePlaceDirective;
+
   public handleAddressChange(address: any) {
     this.zoom = 15;
     this.location_lat = Number(address.geometry.location.lat());
@@ -30,13 +30,13 @@ export class DoctorProfileComponent implements OnInit {
     this.Longitude = this.location_lng;
     this.address = address.formatted_address;
     console.log(this.address);
-    
+
   }
 
-  options={
+  options = {
     types: [],
     componentRestrictions: { country: 'IN' }
-    }
+  }
 
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
@@ -62,6 +62,8 @@ export class DoctorProfileComponent implements OnInit {
   T_date: any;
   CName: any;
   selectedimgae: any;
+  title;
+  name;
   Exp: any = [
     { "y": "1+ years" },
     { "y": "5+ years" },
@@ -89,9 +91,28 @@ export class DoctorProfileComponent implements OnInit {
   userid: any = undefined;
   type: any;
   detail: any;
-  dropdownslist:any;
+  dropdownslist: any;
+
+  id: any;
+  userID: any;
+  user_profile: any;
+  user_detail: any;
+  educationData: any;
+  experienceData: any;
+  specialzationData: any;
+  petsHandledData: any;
+  clinicName: any;
+  communication_type: any;
+  fee: number;
+  dateTime: any;
+  doc_exp: any;
+  mob_type: any;
+  pro_status: any;
+  ver_status: any;
+  sign: any;
+
   constructor(
-    private toastr:ToastrManager,
+    private toastr: ToastrManager,
     private location: Location,
     private router: Router,
     private ValidatorService: ValidatorService,
@@ -107,12 +128,12 @@ export class DoctorProfileComponent implements OnInit {
         console.log(this.dropdownslist);
       }
     );
-   }
+  }
 
   ngOnInit(): void {
     this.type = this.getFromLocal('fun_type');
     if (this.type == 'edit') {
-    
+
       this.detail = this.getFromLocal('view_detail_data');
       console.log(this.detail)
       this.userid = this.detail.user_id._id;
@@ -140,6 +161,42 @@ export class DoctorProfileComponent implements OnInit {
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
     }
+    this.fetchProfile();
+  }
+  fetchProfile() {
+    this.user_detail = { "user_id": "6087d8626163803091258a5d" };
+    this._api.profile_details(this.user_detail).subscribe(
+      (response: any) => {
+        console.log(response.Data, "res");
+        console.log(response.Data.user_id);
+        // this.rows = response.Data;
+        this.id = response.Data._id;
+        this.userID = response.Data.user_id;
+        this.user_profile = response.Data;
+        this.tittle = response.Data.dr_title;
+        this.Name = response.Data.dr_name;
+        this.Completionarray = response.Data.education_details;
+        this.Experiencearray = response.Data.experience_details;
+        this.Specializationarray = response.Data.specialization;
+        this.handledarray = response.Data.pet_handled;
+        this.Clinic_Name = response.Data.clinic_name;
+        this.address = response.Data.clinic_loc;
+        this.Latitude = response.Data.clinic_lat;
+        this.Longitude = response.Data.clinic_long;
+        this.clinic_arr = response.Data.clinic_pic;
+        this.photo_arr = response.Data.photo_id_pic;
+        this.certificate_arr = response.Data.certificate_pic;
+        this.govt_arr = response.Data.govt_id_pic;
+        this.communication_type = response.Data.communication_type;
+        this.fee = response.Data.consultancy_fees;
+        this.dateTime = response.Data.date_and_time;
+        this.doc_exp = response.Data.doctor_exp;
+        this.mob_type = response.Data.mobile_type;
+        this.pro_status = response.Data.profile_status;
+        this.ver_status = response.Data.profile_verification_status;
+        this.sign = response.Data.signature;
+      }
+    )
   }
   cancel() {
     this.router.navigateByUrl('/admin/Doctor')
@@ -249,7 +306,7 @@ export class DoctorProfileComponent implements OnInit {
   addfiles(data: any) {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post(this.imgUrl , fd)
+    this.http.post(this.imgUrl, fd)
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;
@@ -295,7 +352,9 @@ export class DoctorProfileComponent implements OnInit {
     this.certificate_arr.splice(i, 1);
   }
   validation_1() {
-    if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '' || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10) {
+
+    // || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10
+    if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '') {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -305,7 +364,7 @@ export class DoctorProfileComponent implements OnInit {
     }
   }
   validation() {
-
+    console.log(this.Clinic_Name);
     if (this.Name == undefined || this.Name == '' || this.tittle == undefined || this.tittle == '' || this.Completionarray.length == 0 || this.Specializationarray.length == 0 || this.handledarray.length == 0 || this.clinic_arr.length == 0 || this.photo_arr.length == 0 || this.govt_arr.length == 0 || this.certificate_arr.length == 0 || this.Clinic_Name == undefined || this.Clinic_Name == '' || this.address == undefined || this.address == '' || this.Latitude == undefined || this.Longitude == '' || this.Latitude == '' || this.Longitude == undefined) {
       this.Validation = false;
       console.log(this.Validation)
@@ -316,6 +375,8 @@ export class DoctorProfileComponent implements OnInit {
     }
   }
   create_1() {
+    this.userid = this.userID;
+    console.log(this.tittle);
     this.validation_1();
     if (this.Validation == false) {
       // alert("Please enter valid inputs");
@@ -396,19 +457,19 @@ export class DoctorProfileComponent implements OnInit {
         "date_and_time": "" + new Date(),
       }
       console.log(a);
-      this._api.doctor_details_create(a).subscribe(
-        (response: any) => {
-          console.log(response.Data);
-          if (response.Code === 200) {
-            // alert('Added Successfully');
-            this.showSuccess("Added Successfully");
-            this.router.navigateByUrl('/admin/Doctor')
-          } else {
-            this.showError(response.Message);
-            //alert(response.Message);
-          }
-        }
-      );
+      // this._api.doctor_details_create(a).subscribe(
+      //   (response: any) => {
+      //     console.log(response.Data);
+      //     if (response.Code === 200) {
+      //       // alert('Added Successfully');
+      //       this.showSuccess("Added Successfully");
+      //       this.router.navigateByUrl('/admin/Doctor')
+      //     } else {
+      //       this.showError(response.Message);
+      //       //alert(response.Message);
+      //     }
+      //   }
+      // );
     }
   }
 
@@ -442,32 +503,57 @@ export class DoctorProfileComponent implements OnInit {
     this.base_lng = this.location_lng;
     this.Latitude = this.location_lat;
     this.Longitude = this.location_lng;
-    this._api.location_details(this.location_lat,this.location_lng).subscribe(async data=>{
+    this._api.location_details(this.location_lat, this.location_lng).subscribe(async data => {
       this.address = await data['results'][0]['formatted_address'];
     });
   }
 
   edit() {
     let a = {
-      "_id" : this.detail._id,
-      "user_id": this.userid,
-      "dr_title": this.tittle,
-      "dr_name": this.Name,
-      "clinic_name": this.Clinic_Name,
-      "clinic_loc": this.address,
+      "_id": this.id,
+      "certificate_pic": this.certificate_arr,
       "clinic_lat": this.Latitude,
+      "clinic_loc": this.address,
       "clinic_long": this.Longitude,
+      "clinic_name": this.Clinic_Name,
+      "clinic_pic": this.clinic_arr,
+      "communication_type": this.communication_type,
+      "consultancy_fees": this.fee,
+      "date_and_time": this.dateTime,
+      "doctor_exp": this.doc_exp,
+      "dr_name": this.Name,
+      "dr_title": this.tittle,
       "education_details": this.Completionarray,
       "experience_details": this.Experiencearray,
-      "specialization": this.Specializationarray,
-      "pet_handled": this.handledarray,
-      "clinic_pic": this.clinic_arr,
-      "certificate_pic": this.certificate_arr,
       "govt_id_pic": this.govt_arr,
+      "mobile_type": this.mob_type,
+      "pet_handled": this.handledarray,
       "photo_id_pic": this.photo_arr,
-      "profile_status": 0,
-      "profile_verification_status": "Not verified",
-      "date_and_time": "" + new Date(),
+      "profile_status": this.pro_status,
+      "profile_verification_status": this.ver_status,
+      "signature": this.sign,
+      "specialization": this.Specializationarray,
+      "user_id": this.userID
+      ////
+      // "_id": this.detail._id,
+      // "user_id": this.userid,
+      // "dr_title": this.tittle,
+      // "dr_name": this.Name,
+      // "clinic_name": this.Clinic_Name,
+      // "clinic_loc": this.address,
+      // "clinic_lat": this.Latitude,
+      // "clinic_long": this.Longitude,
+      // "education_details": this.Completionarray,
+      // "experience_details": this.Experiencearray,
+      // "specialization": this.Specializationarray,
+      // "pet_handled": this.handledarray,
+      // "clinic_pic": this.clinic_arr,
+      // "certificate_pic": this.certificate_arr,
+      // "govt_id_pic": this.govt_arr,
+      // "photo_id_pic": this.photo_arr,
+      // "profile_status": 0,
+      // "profile_verification_status": "Not verified",
+      // "date_and_time": "" + new Date(),
     }
     console.log(a);
     this._api.doctor_details_edit(a).subscribe(
@@ -476,7 +562,8 @@ export class DoctorProfileComponent implements OnInit {
         if (response.Code === 200) {
           // alert('updated Successfully');
           this.showSuccess("updated Successfully");
-          this.router.navigateByUrl('/admin/Doctor')
+          // setTimeout(window.location.reload.bind(window.location), 200);
+          // this.router.navigateByUrl('/admin/Doctor')
         } else {
           // alert(response.Message);
           this.showError(response.Message)
@@ -490,10 +577,10 @@ export class DoctorProfileComponent implements OnInit {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 }

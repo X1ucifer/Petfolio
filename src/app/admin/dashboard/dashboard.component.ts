@@ -7,35 +7,36 @@ import { ApiService } from '../../api.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  counts:any;
-  Price_counts : any;
-  rows:any = [{ type: "Dog", name: "dog1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" },
-    { type: "Cat", name: "cat1" }];
-    searchQR:any;
-    doctor_list:any;
-    sp_list:any;
-    Vendor_list:any;
+  counts: any;
+  Price_counts: any;
+  rows: any = [{ type: "Dog", name: "dog1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" },
+  { type: "Cat", name: "cat1" }];
+  searchQR: any;
+  doctor_list: any;
+  sp_list: any;
+  Vendor_list: any;
+
   constructor(
     private _api: ApiService,
   ) { }
 
   ngOnInit(): void {
-    this._api.dashboard_count().subscribe((res:any)=>{
+    this._api.dashboard_count().subscribe((res: any) => {
       console.log(res)
       this.counts = res.Data;
     });
 
-    this._api.prices_count().subscribe((res:any)=>{
+    this._api.prices_count().subscribe((res: any) => {
       console.log(res)
       this.Price_counts = res.Data;
     });
@@ -61,6 +62,6 @@ export class DashboardComponent implements OnInit {
         this.Vendor_list = response.Data;
       }
     );
-  }
 
+  }
 }

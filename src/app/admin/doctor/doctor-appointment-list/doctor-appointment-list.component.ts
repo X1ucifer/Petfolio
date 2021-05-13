@@ -35,6 +35,11 @@ export class DoctorAppointmentListComponent implements OnInit {
   { type: "Cat", name: "cat1" }]
   excelData: any[] = [];
   c_list: any = [];
+  user;
+  user_detail;
+  completed_list;
+  booked_list;
+  missed_list;
 
   constructor(
     private toastr: ToastrManager,
@@ -47,7 +52,8 @@ export class DoctorAppointmentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.listpettype();
+    // this.listpettype();
+    this.user = this.storage.get('user');
   }
 
   MakeCall(url) {
@@ -66,6 +72,36 @@ export class DoctorAppointmentListComponent implements OnInit {
       }
     );
   }
+  completedlist() {
+    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": "603e2a7b2c2b43125f8cb805" };
+    this._api.appointment_completed(this.user_detail).subscribe(
+      (response: any) => {
+        this.rows = response.Data;
+        this.completed_list = response.Data;
+        this.appointment_list = response.Data;
+      }
+    )
+  }
+  bookedlist() {
+    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": "603e2a7b2c2b43125f8cb805" };
+    this._api.appointment_booked(this.user_detail).subscribe(
+      (response: any) => {
+        this.rows = response.Data;
+        this.booked_list = response.Data;
+        this.appointment_list = response.Data;
+      }
+    )
+  }
+  missedlist() {
+    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": "603e2a7b2c2b43125f8cb805" };
+    this._api.appointment_missed(this.user_detail).subscribe(
+      (response: any) => {
+        this.rows = response.Data;
+        this.missed_list = response.Data;
+        this.appointment_list = response.Data;
+      }
+    )
+  }
   view_details(item) {
     this.saveInLocal('view_detail_data', item);
     this.saveInLocal('view_detail', 'Appointment')
@@ -83,17 +119,29 @@ export class DoctorAppointmentListComponent implements OnInit {
     this.appointment_list = this.Main_list;
     this.filter_type = type;
     if (this.filter_type == 'Completed') {
-      this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type)
+      // this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type && x.user_id._id == this.user._id)
+      // console.log(this.appointment_list)
+      // this.get_c_list();
+      this.completedlist();
+      this.appointment_list = this.completed_list
       console.log(this.appointment_list)
       this.get_c_list();
     }
     if (this.filter_type == 'Incomplete') {
-      this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type)
+      // this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type && x.user_id._id == this.user._id)
+      // console.log(this.appointment_list)
+      // this.get_c_list();
+      this.bookedlist();
+      this.appointment_list = this.booked_list
       console.log(this.appointment_list)
       this.get_c_list();
     }
     if (this.filter_type == 'Missed') {
-      this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type)
+      // this.appointment_list = this.appointment_list.filter((x: any) => x.appoinment_status == this.filter_type && x.user_id._id == this.user._id)
+      // console.log(this.appointment_list)
+      // this.get_c_list();
+      this.missedlist();
+      this.appointment_list = this.missed_list
       console.log(this.appointment_list)
       this.get_c_list();
     }

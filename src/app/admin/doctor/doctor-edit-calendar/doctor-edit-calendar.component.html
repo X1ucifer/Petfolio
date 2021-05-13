@@ -1,54 +1,53 @@
-<div class="container">
-    <h3>Available days</h3>
-<div class="item-container">
-<div class="p-field-checkbox">
-    <p-checkbox name="group1" value="monday" [(ngModel)]="selectedCities" inputId="mo"></p-checkbox>
-    <label for="mo">monday</label>
-</div>
-<button><i class="pi pi-pencil"></i></button>
-</div>
-<div class="item-container">
-<div class="p-field-checkbox">
-    <p-checkbox name="group1" value="tuesday" [(ngModel)]="selectedCities" inputId="tu"></p-checkbox>
-    <label for="tu">tuesday</label>
-</div>
-<button><i class="pi pi-pencil"></i></button>
-</div>
-<div class="item-container">
+<div class="container mt-3rem">
+  <h3 style="font-weight: bold">Available days</h3>
+  <div class="item-container">
     <div class="p-field-checkbox">
-        <p-checkbox name="group1" value="wednesday" [(ngModel)]="selectedCities" inputId="wed"></p-checkbox>
-        <label for="wed">wednesday</label>
+      <p-checkbox name="group1" value="monday" [(ngModel)]="selectedCities" inputId="mo"></p-checkbox>
+      <label class="ml-10px" for="mo">monday</label>
     </div>
-    <button><i class="pi pi-pencil"></i></button>
-
-</div>
-<div class="item-container">
-<div class="p-field-checkbox">
-    <p-checkbox name="group1" value="thursday" [(ngModel)]="selectedCities" inputId="th"></p-checkbox>
-    <label for="th">thursday</label>
-</div>
-<button><i class="pi pi-pencil"></i></button>
-</div>
-<div class="item-container">
-<div class="p-field-checkbox">
-    <p-checkbox name="group1" value="friday" [(ngModel)]="selectedCities" inputId="fr"></p-checkbox>
-    <label for="fr">friday</label>
-</div>
-<button><i class="pi pi-pencil"></i></button>
-</div>
-<button (click)="Filter()" type="button" class="btn btn-success btn-sm mr-2">next</button>
-<mat-card>
+    <button><i class="fas fa-pen"></i></button>
+  </div>
+  <div class="item-container">
+    <div class="p-field-checkbox">
+      <p-checkbox name="group1" value="tuesday" [(ngModel)]="selectedCities" inputId="tu"></p-checkbox>
+      <label class="ml-10px" for="tu">tuesday</label>
+    </div>
+    <button><i class="fas fa-pen"></i></button>
+  </div>
+  <div class="item-container">
+    <div class="p-field-checkbox">
+      <p-checkbox name="group1" value="wednesday" [(ngModel)]="selectedCities" inputId="wed"></p-checkbox>
+      <label class="ml-10px" for="wed">wednesday</label>
+    </div>
+    <button><i class="fas fa-pen"></i></button>
+  </div>
+  <div class="item-container">
+    <div class="p-field-checkbox">
+      <p-checkbox name="group1" value="thursday" [(ngModel)]="selectedCities" inputId="th"></p-checkbox>
+      <label class="ml-10px" for="th">thursday</label>
+    </div>
+    <button><i class="fas fa-pen"></i></button>
+  </div>
+  <div class="item-container">
+    <div class="p-field-checkbox">
+      <p-checkbox name="group1" value="friday" [(ngModel)]="selectedCities" inputId="fr"></p-checkbox>
+      <label class="ml-10px" for="fr">friday</label>
+    </div>
+    <button><i class="fas fa-pen"></i></button>
+  </div>
+  <button (click)="Filter()" type="button" class="btn btn-success btn-sm mr-2">
+    next
+  </button>
+  <mat-card>
     <mat-card-content>
-        <!-- <h2 class="example-h2">Checkbox configuration</h2> -->
+      <!-- <h2 class="example-h2">Checkbox configuration</h2> -->
 
-    <!-- <section class="example-section">
+      <!-- <section class="example-section">
       <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
       <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
     </section> -->
-    <!-- <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues">Checked</p-checkbox>
+      <!-- <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues">Checked</p-checkbox>
     <p-checkbox name="groupname" value="val2" [(ngModel)]="selectedValues">indeterminate</p-checkbox> -->
-    
     </mat-card-content>
-</mat-card>
-
+  </mat-card>
 </div>
