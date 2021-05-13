@@ -1,40 +1,19 @@
 <div class="container mt-3rem">
   <h3 style="font-weight: bold">Available days</h3>
-  <div class="item-container">
-    <div class="p-field-checkbox">
-      <p-checkbox name="group1" value="monday" [(ngModel)]="selectedCities" inputId="mo"></p-checkbox>
-      <label class="ml-10px" for="mo">monday</label>
+
+  <ng-container *ngFor="let arr of calendarlist; let i= index;">
+    <div class="item-container">
+      <div class="p-field-checkbox">
+        <input type="checkbox" [(ngModel)]="schedule[i]" [ngModelOptions]="{standalone: true}" />
+        <!-- <p-checkbox [(ngModel)]="schedule[i]"></p-checkbox> -->
+        <label class="ml-10px" for="mo">{{arr.Title}}</label>
+      </div>
+      <ng-container *ngIf="arr.Status != true">
+        <button><i class="fas fa-pen"></i></button>
+      </ng-container>
     </div>
-    <button><i class="fas fa-pen"></i></button>
-  </div>
-  <div class="item-container">
-    <div class="p-field-checkbox">
-      <p-checkbox name="group1" value="tuesday" [(ngModel)]="selectedCities" inputId="tu"></p-checkbox>
-      <label class="ml-10px" for="tu">tuesday</label>
-    </div>
-    <button><i class="fas fa-pen"></i></button>
-  </div>
-  <div class="item-container">
-    <div class="p-field-checkbox">
-      <p-checkbox name="group1" value="wednesday" [(ngModel)]="selectedCities" inputId="wed"></p-checkbox>
-      <label class="ml-10px" for="wed">wednesday</label>
-    </div>
-    <button><i class="fas fa-pen"></i></button>
-  </div>
-  <div class="item-container">
-    <div class="p-field-checkbox">
-      <p-checkbox name="group1" value="thursday" [(ngModel)]="selectedCities" inputId="th"></p-checkbox>
-      <label class="ml-10px" for="th">thursday</label>
-    </div>
-    <button><i class="fas fa-pen"></i></button>
-  </div>
-  <div class="item-container">
-    <div class="p-field-checkbox">
-      <p-checkbox name="group1" value="friday" [(ngModel)]="selectedCities" inputId="fr"></p-checkbox>
-      <label class="ml-10px" for="fr">friday</label>
-    </div>
-    <button><i class="fas fa-pen"></i></button>
-  </div>
+  </ng-container>
+
   <button (click)="Filter()" type="button" class="btn btn-success btn-sm mr-2">
     next
   </button>

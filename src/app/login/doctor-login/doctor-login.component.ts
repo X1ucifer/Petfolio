@@ -48,8 +48,8 @@ export class DoctorLoginComponent implements OnInit {
   phoneErrorMsg: any;
 
   constructor(
-    private router: Router,
     private toastr: ToastrManager,
+    private router: Router,
     private http: HttpClient,
 
     private _api: ApiService,
@@ -169,6 +169,9 @@ export class DoctorLoginComponent implements OnInit {
   }
   register() {
     this.router.navigateByUrl('/doctor_register');
+  }
+  showWarning(msg) {
+    this.toastr.warningToastr(msg);
   }
 }
 

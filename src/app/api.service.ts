@@ -250,6 +250,12 @@ export class ApiService {
   appointment_delete(data) {
     return this.http.post(this.apiUrl + 'appointments/delete', data);
   }
+  calendar_days(data) {
+    return this.http.post(this.apiUrl + 'new_doctortime/fetch_dates', data);
+  }
+  calendar_time(data) {
+    return this.http.post(this.apiUrl + 'new_doctortime/get_time_Details', data);
+  }
   pet_detail_delete(data) {
     return this.http.post(this.apiUrl + 'petdetails/delete', data);
   }

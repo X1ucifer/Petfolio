@@ -28,6 +28,7 @@ export class LoginOtpComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.storage.get('user');
+    console.log(this.user, "user");
   }
   otp: string;
   showOtpComponent = true;
