@@ -73,7 +73,7 @@ export class DoctorAppointmentListComponent implements OnInit {
     );
   }
   completedlist() {
-    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": "603e2a7b2c2b43125f8cb805" };
+    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": this.user._id };
     this._api.appointment_completed(this.user_detail).subscribe(
       (response: any) => {
         this.rows = response.Data;
@@ -83,7 +83,7 @@ export class DoctorAppointmentListComponent implements OnInit {
     )
   }
   bookedlist() {
-    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": "603e2a7b2c2b43125f8cb805" };
+    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": this.user._id };
     this._api.appointment_booked(this.user_detail).subscribe(
       (response: any) => {
         this.rows = response.Data;
@@ -93,7 +93,7 @@ export class DoctorAppointmentListComponent implements OnInit {
     )
   }
   missedlist() {
-    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": "603e2a7b2c2b43125f8cb805" };
+    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": this.user._id };
     this._api.appointment_missed(this.user_detail).subscribe(
       (response: any) => {
         this.rows = response.Data;

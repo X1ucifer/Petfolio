@@ -28,7 +28,7 @@ export class DoctorEditCalendarTimeComponent implements OnInit {
   selectedCities: string[] = [];
 
   Time() {
-    this.user_detail = { "Day": "Thursday", "user_id": "609cf177a27117735be91855" };
+    this.user_detail = { "Day": this.day, "user_id": this.users._id };
     this._api.calendar_time(this.user_detail).subscribe(
       (response: any) => {
         console.log(response.Data);
