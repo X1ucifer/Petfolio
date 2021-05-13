@@ -35,6 +35,8 @@ export class DoctorHeaderComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/doctorlogin');
   }
+
+
 }

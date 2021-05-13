@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../api.service';
 import { environment } from '../../../environments/environment'
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doctor-login',
@@ -48,7 +49,7 @@ export class DoctorLoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-
+    private toastr: ToastrManager,
     private http: HttpClient,
 
     private _api: ApiService,
@@ -118,7 +119,7 @@ export class DoctorLoginComponent implements OnInit {
     }
   }
   // addPerson(user_phone:this.phone): Observable<user_phone> {
-  //   const headers = { 'content-type': 'application/json'}  
+  //   const headers = { 'content-type': 'application/json'}
   //   const body=JSON.stringify(person);
   //   console.log(body)
   //   return this.http.post<Person>(this.baseURL + 'people', body,{'headers':headers})
@@ -135,9 +136,15 @@ export class DoctorLoginComponent implements OnInit {
       console.log(this.phone, 'phone');
       if (this.validation) {
         this.postUserData().subscribe(data => {
-          this.user_data = data;
-          this.storage.set('user', this.user_data.Data.user_details);
-          this.router.navigate(['/doctor_otp']);
+          console.log(data);
+          if(data.Code == 404){
+            alert(data.Message);
+            this.toastr.errorToastr("Invalid otp");
+          } else {
+            this.user_data = data;
+            this.storage.set('user', this.user_data.Data.user_details);
+            this.router.navigate(['/doctor_otp']);
+          }
         });
       }
     } catch (err) {
