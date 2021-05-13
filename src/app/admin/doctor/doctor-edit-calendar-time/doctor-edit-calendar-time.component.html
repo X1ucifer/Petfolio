@@ -1,9 +1,10 @@
 <div class="container">
     <h3 style="font-weight: bold">Available times</h3>
-    <ng-container *ngFor="let arr of timeList">
+    <ng-container *ngFor="let arr of timeList; let i= index;">
         <div class="item-container">
             <div class="p-field-checkbox">
-                <p-checkbox name="group1" value="12" [(ngModel)]="selectedCities" inputId="1"></p-checkbox>
+                <p-checkbox name="group1" value="12" [(ngModel)]="schedule[i]" [ngModelOptions]="{standalone: true}"
+                    inputId="1"></p-checkbox>
                 <label for="mo">{{arr.Time}}</label>
             </div>
         </div>

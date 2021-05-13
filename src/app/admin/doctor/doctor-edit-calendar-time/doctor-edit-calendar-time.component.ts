@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/api.service';
 export class DoctorEditCalendarTimeComponent implements OnInit {
   user_detail: any;
   timeList: any;
+  schedule: string[] = [];
   constructor(private router: Router,
     private _api: ApiService) { }
 
@@ -31,5 +32,11 @@ export class DoctorEditCalendarTimeComponent implements OnInit {
 
   Filter() {
     console.log("submitted");
+    console.log(this.schedule)
+    if (this.schedule[0] != null) {
+      console.log('<========');
+    }
+    console.log(this.schedule[1].length)
+
   }
 }

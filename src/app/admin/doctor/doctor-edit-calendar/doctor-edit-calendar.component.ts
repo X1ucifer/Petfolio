@@ -43,14 +43,14 @@ export class DoctorEditCalendarComponent implements OnInit {
   }
 
   Filter() {
-    console.log(this.schedule[0], "0");
-    console.log(this.schedule[1], "1");
-    for (let i = 0; i < this.length; i++) {
-      console.log(i);
-      if (this.schedule[i] == 'true') {
-        console.log(i, '<=====');
-      }
-    }
+    // console.log(this.schedule[0], "0");
+    // console.log(this.schedule[1], "1");
+    // for (let i = 0; i < this.length; i++) {
+    //   console.log(i);
+    //   if (this.schedule[i] == 'true') {
+    //     console.log(i, '<=====');
+    //   }
+    // }
 
     this.router.navigateByUrl('/doctor-admin/doctor-edit-calendar-time');
   }
