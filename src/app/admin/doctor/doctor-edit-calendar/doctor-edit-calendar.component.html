@@ -9,12 +9,12 @@
         <label class="ml-10px" for="mo">{{arr.Title}}</label>
       </div>
       <ng-container *ngIf="arr.Status != true">
-        <button><i class="fas fa-pen"></i></button>
+        <button (click)="Filter()"><i class="fas fa-pen"></i></button>
       </ng-container>
     </div>
   </ng-container>
 
-  <button (click)="Filter()" type="button" class="btn btn-success btn-sm mr-2">
+  <button type="button" class="btn btn-success btn-sm mr-2">
     next
   </button>
   <mat-card>
