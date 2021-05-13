@@ -78,11 +78,12 @@ export class LoginOtpComponent implements OnInit {
     // console.log(this.user.otp, "user_otp");
     if (this.otp == this.user.otp) {
       const name = `${this.user.first_name}_${this.user.last_name}`
-
       this.router.navigate(['/doctor-admin/dashboard']);
     }
     else {
-      this.showWarning("Invalid OTP");
+      console.log('otp error');
+      this.toastr.errorToastr("Invalid otp");
+      // this.showfailed("Invalid otp");
     }
 
   }
@@ -93,12 +94,13 @@ export class LoginOtpComponent implements OnInit {
       this.storage.set('user', this.user_data.Data.user_details);
     });
     this.showSuccess("otp send successfully");
-    window.location.reload();
+    // window.location.reload();
   }
   showSuccess(msg) {
     this.toastr.successToastr(msg);
   }
-  showWarning(msg) {
-    this.toastr.warningToastr(msg);
+
+  showfailed(msg) {
+    this.toastr.errorToastr(msg);
   }
 }

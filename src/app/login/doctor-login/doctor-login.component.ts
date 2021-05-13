@@ -50,7 +50,6 @@ export class DoctorLoginComponent implements OnInit {
   constructor(
     private toastr: ToastrManager,
     private router: Router,
-
     private http: HttpClient,
 
     private _api: ApiService,
@@ -120,7 +119,7 @@ export class DoctorLoginComponent implements OnInit {
     }
   }
   // addPerson(user_phone:this.phone): Observable<user_phone> {
-  //   const headers = { 'content-type': 'application/json'}  
+  //   const headers = { 'content-type': 'application/json'}
   //   const body=JSON.stringify(person);
   //   console.log(body)
   //   return this.http.post<Person>(this.baseURL + 'people', body,{'headers':headers})
@@ -137,12 +136,13 @@ export class DoctorLoginComponent implements OnInit {
       console.log(this.phone, 'phone');
       if (this.validation) {
         this.postUserData().subscribe(data => {
-          this.user_data = data;
-          this.storage.set('user', this.user_data.Data.user_details);
-          if (this.user_data.Data.user_details == undefined) {
-            this.showWarning("Invalid Account");
-          }
-          else {
+          console.log(data);
+          if(data.Code == 404){
+            alert(data.Message);
+            this.toastr.errorToastr("Invalid otp");
+          } else {
+            this.user_data = data;
+            this.storage.set('user', this.user_data.Data.user_details);
             this.router.navigate(['/doctor_otp']);
           }
         });
