@@ -92,8 +92,25 @@ export class DoctorProfileComponent implements OnInit {
   type: any;
   detail: any;
   dropdownslist: any;
+
+  id: any;
+  userID: any;
   user_profile: any;
   user_detail: any;
+  educationData: any;
+  experienceData: any;
+  specialzationData: any;
+  petsHandledData: any;
+  clinicName: any;
+  communication_type: any;
+  fee: number;
+  dateTime: any;
+  doc_exp: any;
+  mob_type: any;
+  pro_status: any;
+  ver_status: any;
+  sign: any;
+
   constructor(
     private toastr: ToastrManager,
     private location: Location,
@@ -150,13 +167,34 @@ export class DoctorProfileComponent implements OnInit {
     this.user_detail = { "user_id": "6087d8626163803091258a5d" };
     this._api.profile_details(this.user_detail).subscribe(
       (response: any) => {
-        console.log(response.Data);
-        console.log(response.Data.education_details);
+        console.log(response.Data, "res");
+        console.log(response.Data.user_id);
         // this.rows = response.Data;
+        this.id = response.Data._id;
+        this.userID = response.Data.user_id;
         this.user_profile = response.Data;
-        this.title = response.Data.dr_title;
-        this.name = response.Data.dr_name;
-        this.Education = response.Data.education_details.education;
+        this.tittle = response.Data.dr_title;
+        this.Name = response.Data.dr_name;
+        this.Completionarray = response.Data.education_details;
+        this.Experiencearray = response.Data.experience_details;
+        this.Specializationarray = response.Data.specialization;
+        this.handledarray = response.Data.pet_handled;
+        this.Clinic_Name = response.Data.clinic_name;
+        this.address = response.Data.clinic_loc;
+        this.Latitude = response.Data.clinic_lat;
+        this.Longitude = response.Data.clinic_long;
+        this.clinic_arr = response.Data.clinic_pic;
+        this.photo_arr = response.Data.photo_id_pic;
+        this.certificate_arr = response.Data.certificate_pic;
+        this.govt_arr = response.Data.govt_id_pic;
+        this.communication_type = response.Data.communication_type;
+        this.fee = response.Data.consultancy_fees;
+        this.dateTime = response.Data.date_and_time;
+        this.doc_exp = response.Data.doctor_exp;
+        this.mob_type = response.Data.mobile_type;
+        this.pro_status = response.Data.profile_status;
+        this.ver_status = response.Data.profile_verification_status;
+        this.sign = response.Data.signature;
       }
     )
   }
@@ -314,8 +352,7 @@ export class DoctorProfileComponent implements OnInit {
     this.certificate_arr.splice(i, 1);
   }
   validation_1() {
-    this.tittle = this.title;
-    this.Name = this.name;
+
     // || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10
     if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '') {
       this.Validation = false;
@@ -327,7 +364,7 @@ export class DoctorProfileComponent implements OnInit {
     }
   }
   validation() {
-
+    console.log(this.Clinic_Name);
     if (this.Name == undefined || this.Name == '' || this.tittle == undefined || this.tittle == '' || this.Completionarray.length == 0 || this.Specializationarray.length == 0 || this.handledarray.length == 0 || this.clinic_arr.length == 0 || this.photo_arr.length == 0 || this.govt_arr.length == 0 || this.certificate_arr.length == 0 || this.Clinic_Name == undefined || this.Clinic_Name == '' || this.address == undefined || this.address == '' || this.Latitude == undefined || this.Longitude == '' || this.Latitude == '' || this.Longitude == undefined) {
       this.Validation = false;
       console.log(this.Validation)
@@ -338,6 +375,8 @@ export class DoctorProfileComponent implements OnInit {
     }
   }
   create_1() {
+    this.userid = this.userID;
+    console.log(this.tittle);
     this.validation_1();
     if (this.Validation == false) {
       // alert("Please enter valid inputs");
@@ -354,20 +393,20 @@ export class DoctorProfileComponent implements OnInit {
         "user_status": "complete"
       };
       console.log(a);
-      // this._api.user_create(a).subscribe(
-      //   (response: any) => {
-      //     console.log(response.Data);
-      //     if (response.Code === 200) {
-      //       this.userid = response.Data.user_details._id;
-      //       console.log(this.userid)
-      //       // alert('Added Successfully');
-      //       this.showSuccess("Added Successfully")
-      //     } else {
-      //       this.showError(response.Message);
-      //       //alert(response.Message);
-      //     }
-      //   }
-      // );
+      this._api.user_create(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          if (response.Code === 200) {
+            this.userid = response.Data.user_details._id;
+            console.log(this.userid)
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully")
+          } else {
+            this.showError(response.Message);
+            //alert(response.Message);
+          }
+        }
+      );
     }
   }
   create() {
@@ -418,19 +457,19 @@ export class DoctorProfileComponent implements OnInit {
         "date_and_time": "" + new Date(),
       }
       console.log(a);
-      this._api.doctor_details_create(a).subscribe(
-        (response: any) => {
-          console.log(response.Data);
-          if (response.Code === 200) {
-            // alert('Added Successfully');
-            this.showSuccess("Added Successfully");
-            this.router.navigateByUrl('/admin/Doctor')
-          } else {
-            this.showError(response.Message);
-            //alert(response.Message);
-          }
-        }
-      );
+      // this._api.doctor_details_create(a).subscribe(
+      //   (response: any) => {
+      //     console.log(response.Data);
+      //     if (response.Code === 200) {
+      //       // alert('Added Successfully');
+      //       this.showSuccess("Added Successfully");
+      //       this.router.navigateByUrl('/admin/Doctor')
+      //     } else {
+      //       this.showError(response.Message);
+      //       //alert(response.Message);
+      //     }
+      //   }
+      // );
     }
   }
 
@@ -471,25 +510,50 @@ export class DoctorProfileComponent implements OnInit {
 
   edit() {
     let a = {
-      "_id": this.detail._id,
-      "user_id": this.userid,
-      "dr_title": this.tittle,
-      "dr_name": this.Name,
-      "clinic_name": this.Clinic_Name,
-      "clinic_loc": this.address,
+      "_id": this.id,
+      "certificate_pic": this.certificate_arr,
       "clinic_lat": this.Latitude,
+      "clinic_loc": this.address,
       "clinic_long": this.Longitude,
+      "clinic_name": this.Clinic_Name,
+      "clinic_pic": this.clinic_arr,
+      "communication_type": this.communication_type,
+      "consultancy_fees": this.fee,
+      "date_and_time": this.dateTime,
+      "doctor_exp": this.doc_exp,
+      "dr_name": this.Name,
+      "dr_title": this.tittle,
       "education_details": this.Completionarray,
       "experience_details": this.Experiencearray,
-      "specialization": this.Specializationarray,
-      "pet_handled": this.handledarray,
-      "clinic_pic": this.clinic_arr,
-      "certificate_pic": this.certificate_arr,
       "govt_id_pic": this.govt_arr,
+      "mobile_type": this.mob_type,
+      "pet_handled": this.handledarray,
       "photo_id_pic": this.photo_arr,
-      "profile_status": 0,
-      "profile_verification_status": "Not verified",
-      "date_and_time": "" + new Date(),
+      "profile_status": this.pro_status,
+      "profile_verification_status": this.ver_status,
+      "signature": this.sign,
+      "specialization": this.Specializationarray,
+      "user_id": this.userID
+      ////
+      // "_id": this.detail._id,
+      // "user_id": this.userid,
+      // "dr_title": this.tittle,
+      // "dr_name": this.Name,
+      // "clinic_name": this.Clinic_Name,
+      // "clinic_loc": this.address,
+      // "clinic_lat": this.Latitude,
+      // "clinic_long": this.Longitude,
+      // "education_details": this.Completionarray,
+      // "experience_details": this.Experiencearray,
+      // "specialization": this.Specializationarray,
+      // "pet_handled": this.handledarray,
+      // "clinic_pic": this.clinic_arr,
+      // "certificate_pic": this.certificate_arr,
+      // "govt_id_pic": this.govt_arr,
+      // "photo_id_pic": this.photo_arr,
+      // "profile_status": 0,
+      // "profile_verification_status": "Not verified",
+      // "date_and_time": "" + new Date(),
     }
     console.log(a);
     this._api.doctor_details_edit(a).subscribe(
@@ -498,7 +562,8 @@ export class DoctorProfileComponent implements OnInit {
         if (response.Code === 200) {
           // alert('updated Successfully');
           this.showSuccess("updated Successfully");
-          this.router.navigateByUrl('/admin/Doctor')
+          // setTimeout(window.location.reload.bind(window.location), 200);
+          // this.router.navigateByUrl('/admin/Doctor')
         } else {
           // alert(response.Message);
           this.showError(response.Message)

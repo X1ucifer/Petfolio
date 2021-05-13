@@ -151,7 +151,7 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
   }
   doctor_details_edit(data) {
-    return this.http.post(this.apiUrl + 'doctordetails/adminedit', data);
+    return this.http.post(this.apiUrl + 'doctordetails/edit', data);
   }
   doctor_details_create(data) {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
@@ -232,6 +232,9 @@ export class ApiService {
   appointment_list() {
     return this.http.get(this.apiUrl + 'appointments/getlist');
   }
+  reschedule_appointment_list(data) {
+    return this.http.post(this.apiUrl + 'appointments/reshedule_list', data);
+  }
   appointment_booked(data) {
     return this.http.post(this.apiUrl + 'appointments/mobile/doc_getlist/newapp', data);
   }
@@ -281,8 +284,13 @@ export class ApiService {
     return this.http.get(this.apiUrl + 'userdetails/fetch_payment_Details');
   }
 
+  payment_details(data) {
+    return this.http.post(this.apiUrl + 'appointments/doctor_payment', data);
+  }
 
-
+  doctor_dashboard(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/doctor/dashboar', data);
+  }
 
   splashscreen_create(data) {
     return this.http.post(this.apiUrl + 'splashscreen/create', data);

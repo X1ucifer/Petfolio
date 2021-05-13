@@ -157,3 +157,27 @@ select {
   color: #ffffff !important;
   text-align: center;
 }
+
+/* .input:focus-within {
+  border: 1px solid #009377;
+} */
+
+input {
+  width: 100%;
+  border: 1px solid #c3c2c2 !important;
+  padding: 5px !important;
+  transition: border-color 0.2s, box-shadow .2s;
+  outline: none;
+  border-radius: 3px;
+}
+
+input:hover {
+  border: 1px solid #333 !important;
+}
+
+input:focus,
+input:active {
+  border: 1px solid #2196F3 !important;
+  transition: border-color 0.2s;
+  box-shadow: -1px 2px 5px 0px rgba(33, 150, 243, 0.75) .2s !important;
+}

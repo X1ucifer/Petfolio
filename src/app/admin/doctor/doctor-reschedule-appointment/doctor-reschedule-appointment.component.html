@@ -101,23 +101,27 @@
                                         <th class="th-1">
                                             S.No
                                         </th>
-                                        <th>
+                                        <!-- <th>
                                             Customer Name
                                         </th>
-                                        <th>Customer Phone </th>
-                                        <th>Pet Type</th>
-                                        <th>Pet Breed</th>
+                                        <th>Customer Phone </th> -->
+
+                                        <!-- <th>Pet Breed</th> -->
+                                        <th>Booking_Id</th>
                                         <th>Pet Name</th>
-                                        <th>Doctor Name</th>
-                                        <th>Appointment Date & Time</th>
+                                        <th>Pet Type</th>
+
+                                        <!-- <th>Doctor Name</th> -->
+                                        <!-- <th>Appointment Date & Time</th> -->
                                         <th>Appointment Type </th>
-                                        <th>Status</th>
-                                        <th>Booking Date & Time</th>
+                                        <!-- <th>Status</th> -->
                                         <th>
                                             Communication Type
                                         </th>
-                                        <th>Mobile Type</th>
-                                        <th>Created at</th>
+                                        <th>Booking Date & Time</th>
+
+                                        <!-- <th>Mobile Type</th>
+                                        <th>Created at</th> -->
                                         <th>Amount</th>
                                         <th style="width: 120px;text-align:center">
                                             Action
@@ -127,7 +131,7 @@
                                 <ng-template pTemplate="body" let-item let-i="rowIndex">
                                     <tr class="tdrow">
                                         <td>{{i+1}}</td>
-                                        <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
+                                        <!-- <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
                                         <td>{{item.user_id.user_phone}}</td>
                                         <td>{{item.pet_id.pet_type}}</td>
 
@@ -140,8 +144,16 @@
                                         <td>{{item.booking_date_time}}</td>
                                         <td>{{item.communication_type}}</td>
                                         <td>{{item.mobile_type}}</td>
-                                        <td>{{item.booking_date_time}}</td>
-                                        <td>{{item.amount}}</td>
+                                        <td>{{item.booking_date_time}}</td> -->
+
+                                        <td>{{item.Booking_Id}}</td>
+                                        <td>{{item.pet_name}}</td>
+                                        <td>{{item.pet_type}}</td>
+                                        <td>{{item.appointment_type}}</td>
+                                        <td>{{item.communication_type}}</td>
+                                        <td>{{item.Booked_at}}</td>
+                                        <td>{{item.cost}}</td>
+
                                         <td class="act">
                                             <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i>
                     <i style="color: #4CAF50;" class="fa  fa-clock-o" aria-hidden="true" pTooltip="Reschedule"></i>

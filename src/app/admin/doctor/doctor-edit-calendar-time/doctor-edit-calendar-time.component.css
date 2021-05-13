@@ -1,0 +1,54 @@
+.container {
+ max-width: 600px;
+}
+
+.example-h2 {
+ margin: 10px;
+}
+
+.example-section {
+ display: flex;
+ align-content: center;
+ align-items: center;
+ height: 60px;
+}
+
+.example-margin {
+ margin: 0 10px;
+}
+
+
+.item-container {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 0.8rem;
+ background-color: #ffffff;
+ padding: 10px;
+ box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%);
+}
+
+.ml-10px {
+ margin-left: 10px;
+}
+
+.btn-sm {
+ padding: 5px 20px;
+ margin-top: 0.8rem;
+}
+
+label {
+ margin-bottom: unset !important;
+ padding-left: 10px;
+}
+
+.mt-3rem {
+ margin-top: 3rem;
+}
+.centre{
+ text-align: center;
+}
+
+button{
+ margin-left: 250px;
+}

@@ -38,7 +38,7 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
   c_list: any = [];
 
   constructor(
-    private toastr:ToastrManager,
+    private toastr: ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
@@ -51,12 +51,15 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
     this.listpettype();
   }
 
-  MakeCall(url){
+  MakeCall(url) {
     window.open(url, "_blank");
   }
 
   listpettype() {
-    this._api.appointment_list().subscribe(
+    let a = {
+      "doctor_id": "603e2a7b2c2b43125f8cb805"
+    }
+    this._api.reschedule_appointment_list(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;
@@ -105,8 +108,8 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
     }
 
   }
-  Delete(id){
-    let a ={
+  Delete(id) {
+    let a = {
       "_id": id
     }
     this._api.appointment_delete(a).subscribe(
@@ -119,14 +122,14 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
     );
   }
   filter_date() {
-    if ( this.E_Date != undefined && this.S_Date != undefined) {
+    if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
-      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+      let yourDate = this.E_Date.setDate(this.E_Date.getDate() + 1);
 
       let a = {
-        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
-        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
-        }
+        "fromdate": this.datePipe.transform(new Date(this.S_Date), 'yyyy-MM-dd'),
+        "todate": this.datePipe.transform(new Date(yourDate), 'yyyy-MM-dd')
+      }
       console.log(a);
       this._api.appointment_filter_date(a).subscribe(
         (response: any) => {
@@ -136,14 +139,14 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
         }
       );
     }
-    else{
+    else {
       this.showWarning("Please select the startdate and enddate")
       //alert('Please select the startdate and enddate');
     }
-   
+
   }
-  refersh(){
-    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  refersh() {
+    this.listpettype(); this.E_Date = undefined; this.S_Date = undefined;
   }
   exportAsXLSX(): void {
     this.excelService.exportAsExcelFile(this.excelData, 'Pet_care_appiontment_List');
@@ -165,10 +168,10 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 }
