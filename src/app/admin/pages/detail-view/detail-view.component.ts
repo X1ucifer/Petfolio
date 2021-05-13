@@ -23,7 +23,14 @@ export class DetailViewComponent implements OnInit {
   previous_doctor_clinic_pic: any;
   doctor_education_details: any;
   previous_doctor_education_details: any;
+  doctor_spec_details: any;
+  previous_doctor_spec_details: any;
 
+  doctor_pet_handle_details: any;
+  previous_doctor_pet_handle_details: any;
+
+  doctor_experience_details: any;
+  previous_doctor_experience_details: any;
   constructor(
     private toastr: ToastrManager,
     private location: Location,
@@ -50,21 +57,28 @@ export class DetailViewComponent implements OnInit {
       console.log(id)
       this._api.live_check(id).subscribe(
         (response: any) => {
+          console.log(response);
           this.preview_doctor_Details = response.Data[0];
           console.log(this.doctor_details);
           console.log(this.preview_doctor_Details);
-  
-  
+
+
           ///Comparing Array/////
           this.doctor_clinic_pic = JSON.stringify(this.doctor_details.clinic_pic);
           this.previous_doctor_clinic_pic = JSON.stringify(this.preview_doctor_Details.clinic_pic);
           this.doctor_education_details = JSON.stringify(this.doctor_details.education_details);
           this.previous_doctor_education_details = JSON.stringify(this.preview_doctor_Details.education_details);
-  
+          this.doctor_spec_details = JSON.stringify(this.doctor_details.specialization);
+          this.previous_doctor_spec_details = JSON.stringify(this.preview_doctor_Details.specialization)
+          this.doctor_pet_handle_details = JSON.stringify(this.doctor_details.pet_handled);
+          this.previous_doctor_pet_handle_details = JSON.stringify(this.preview_doctor_Details.pet_handled);
+          this.doctor_experience_details= JSON.stringify(this.doctor_details.experience_details);
+          this.previous_doctor_experience_details= JSON.stringify(this.doctor_details.experience_details);
+        
         }
       );
-  
-    } 
+
+    }
 
   }
 
