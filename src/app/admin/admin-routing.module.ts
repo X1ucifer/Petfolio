@@ -123,7 +123,7 @@ const routes: Routes = [
       { path: 'doctor-profile', component: DoctorProfileComponent },
       { path: 'doctor-edit-calendar', component: DoctorEditCalendarComponent },
       { path: 'doctor-edit-calendar-time', component: DoctorEditCalendarTimeComponent },
-      { path: 'doctor-payment details', component: DoctorPaymentDetailsComponent },
+      { path: 'doctor_payment_details', component: DoctorPaymentDetailsComponent },
       { path: 'doctor-notification', component: DoctorNotificationComponent },
       { path: 'doctor-reschedule-appointment', component: DoctorRescheduleAppointmentComponent },
       { path: 'doctor-support', component: DoctorSupportComponent },
