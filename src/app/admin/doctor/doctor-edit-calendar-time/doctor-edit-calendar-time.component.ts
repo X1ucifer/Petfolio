@@ -11,6 +11,8 @@ export class DoctorEditCalendarTimeComponent implements OnInit {
   user_detail: any;
   timeList: any;
   schedule: string[] = [];
+  list: string[] = [];
+  length: any;
   constructor(private router: Router,
     private _api: ApiService) { }
 
@@ -26,17 +28,21 @@ export class DoctorEditCalendarTimeComponent implements OnInit {
       (response: any) => {
         console.log(response.Data);
         this.timeList = response.Data;
+        this.length = response.Data.length;
       }
     )
   }
 
   Filter() {
     console.log("submitted");
-    console.log(this.schedule)
-    if (this.schedule[0] != null) {
-      console.log('<========');
+    console.log(this.schedule, "sch");
+    console.log(this.length, "len");
+    for (let i = 0; i < this.length; i++) {
+      if (this.schedule[i].length > 0) {
+        console.log('<========');
+        this.list.push(this.schedule[i])
+      }
     }
-    console.log(this.schedule[1].length)
-
+    console.log(this.list);
   }
 }
