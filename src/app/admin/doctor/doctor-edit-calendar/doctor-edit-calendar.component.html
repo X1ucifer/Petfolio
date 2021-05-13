@@ -8,8 +8,8 @@
         <!-- <p-checkbox [(ngModel)]="schedule[i]"></p-checkbox> -->
         <label class="ml-10px" for="mo">{{arr.Title}}</label>
       </div>
-      <ng-container *ngIf="arr.Status != true">
-        <button (click)="Filter()"><i class="fas fa-pen"></i></button>
+      <ng-container *ngIf="arr.Status == true">
+        <button (click)="Filter(arr.Title)"><i class="fas fa-pen"></i></button>
       </ng-container>
     </div>
   </ng-container>

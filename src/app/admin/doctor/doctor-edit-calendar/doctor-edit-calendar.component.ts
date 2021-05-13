@@ -42,7 +42,8 @@ export class DoctorEditCalendarComponent implements OnInit {
     )
   }
 
-  Filter() {
+  Filter(data) {
+    console.log(data);
     // console.log(this.schedule[0], "0");
     // console.log(this.schedule[1], "1");
     // for (let i = 0; i < this.length; i++) {
@@ -51,7 +52,7 @@ export class DoctorEditCalendarComponent implements OnInit {
     //     console.log(i, '<=====');
     //   }
     // }
-
+    localStorage.setItem('dataSource', data);
     this.router.navigateByUrl('/doctor-admin/doctor-edit-calendar-time');
   }
 }

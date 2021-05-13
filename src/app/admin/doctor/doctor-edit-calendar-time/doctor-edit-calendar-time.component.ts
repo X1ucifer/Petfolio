@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Component({
   selector: 'app-doctor-edit-calendar-time',
@@ -10,39 +11,42 @@ import { ApiService } from 'src/app/api.service';
 export class DoctorEditCalendarTimeComponent implements OnInit {
   user_detail: any;
   timeList: any;
-  schedule: string[] = [];
-  list: string[] = [];
-  length: any;
-  constructor(private router: Router,
+  day: any;
+  users: any;
+  post_data: any;
+  constructor(
+    @Inject(SESSION_STORAGE) private storage: StorageService,
+    private router: Router,
     private _api: ApiService) { }
 
   ngOnInit(): void {
+    this.day = localStorage.getItem('dataSource');
+    this.users = this.storage.get("user");
     this.Time();
   }
 
   selectedCities: string[] = [];
 
   Time() {
-    this.user_detail = { "Day": "Sunday", "user_id": "6087d8626163803091258a5d" };
+    this.user_detail = { "Day": "Thursday", "user_id": "609cf177a27117735be91855" };
     this._api.calendar_time(this.user_detail).subscribe(
       (response: any) => {
         console.log(response.Data);
         this.timeList = response.Data;
-        this.length = response.Data.length;
       }
     )
   }
 
-  Filter() {
-    console.log("submitted");
-    console.log(this.schedule, "sch");
-    console.log(this.length, "len");
-    for (let i = 0; i < this.length; i++) {
-      if (this.schedule[i].length > 0) {
-        console.log('<========');
-        this.list.push(this.schedule[i])
+  submit_time(a) {
+    this._api.calendar_update(a).subscribe(
+      (response: any) => {
+        console.log(response.Data, "submit_time");
       }
-    }
-    console.log(this.list);
+    )
+  }
+  Filter() {
+    this.post_data = { "days": [this.day], "timing": this.timeList, "user_id": this.users._id };
+    console.log(this.post_data);
+    this.submit_time(this.post_data);
   }
 }

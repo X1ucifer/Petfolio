@@ -3,8 +3,7 @@
     <ng-container *ngFor="let arr of timeList; let i= index;">
         <div class="item-container">
             <div class="p-field-checkbox">
-                <p-checkbox name="group1" value="i" [(ngModel)]="schedule[i]" [ngModelOptions]="{standalone: true}"
-                    inputId="1"></p-checkbox>
+                <input type="checkbox" [(ngModel)]="arr.Status" [ngModelOptions]="{standalone: true}">
                 <label for="mo">{{arr.Time}}</label>
             </div>
         </div>
