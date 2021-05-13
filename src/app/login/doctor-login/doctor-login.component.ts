@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../api.service';
 import { environment } from '../../../environments/environment'
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doctor-login',
@@ -47,6 +48,7 @@ export class DoctorLoginComponent implements OnInit {
   phoneErrorMsg: any;
 
   constructor(
+    private toastr: ToastrManager,
     private router: Router,
 
     private http: HttpClient,
@@ -137,7 +139,12 @@ export class DoctorLoginComponent implements OnInit {
         this.postUserData().subscribe(data => {
           this.user_data = data;
           this.storage.set('user', this.user_data.Data.user_details);
-          this.router.navigate(['/doctor_otp']);
+          if (this.user_data.Data.user_details == undefined) {
+            this.showWarning("Invalid Account");
+          }
+          else {
+            this.router.navigate(['/doctor_otp']);
+          }
         });
       }
     } catch (err) {
@@ -162,6 +169,9 @@ export class DoctorLoginComponent implements OnInit {
   }
   register() {
     this.router.navigateByUrl('/doctor_register');
+  }
+  showWarning(msg) {
+    this.toastr.warningToastr(msg);
   }
 }
 

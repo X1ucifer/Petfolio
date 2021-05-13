@@ -28,6 +28,7 @@ export class LoginOtpComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.storage.get('user');
+    console.log(this.user, "user");
   }
   otp: string;
   showOtpComponent = true;
@@ -81,7 +82,7 @@ export class LoginOtpComponent implements OnInit {
       this.router.navigate(['/doctor-admin/dashboard']);
     }
     else {
-      console.log('otp error');
+      this.showWarning("Invalid OTP");
     }
 
   }
@@ -96,5 +97,8 @@ export class LoginOtpComponent implements OnInit {
   }
   showSuccess(msg) {
     this.toastr.successToastr(msg);
+  }
+  showWarning(msg) {
+    this.toastr.warningToastr(msg);
   }
 }

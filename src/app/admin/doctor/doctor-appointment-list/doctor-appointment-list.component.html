@@ -150,9 +150,10 @@
                                                 (click)="Delete(item._id)" pTooltip="Delete"></i> -->
                                             <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true"
                                                 (click)="view_details(item)" pTooltip="View Details"></i>
-                                            <i *ngIf="item.communication_type == 'online'" style="color: #000000;"
-                                                class="fa fa-link" aria-hidden="true" (click)="MakeCall(item.video_id)"
-                                                pTooltip="Video Call"></i>
+                                            <ng-container *ngIf="item.communication_type == 'Online'">
+                                                <i style="color: #000000;" class="fa fa-link" aria-hidden="true"
+                                                    (click)="MakeCall(item.video_id)" pTooltip="Video Call"></i>
+                                            </ng-container>
                                         </td>
                                     </tr>
                                 </ng-template>
