@@ -57,13 +57,18 @@ export class PetBreedTypeComponent implements OnInit {
     this.listpetbreed();
   }
 
-
+  cancel() {
+    this.update_button = true;
+   this.pet_type_name._id= undefined;
+   this.pet_breed= undefined;
+  }
 
   listpettype() {
-    this._api.pet_type_list().subscribe(
+    this._api.pet_breed_list().subscribe(
       (response: any) => {
         console.log("response.Data");
         console.log(response.Data);
+        this.rows = response.Data;
         this.rows1 = response.Data;
         this.pet_type_name = this.rows1[0];
       }
@@ -160,9 +165,12 @@ export class PetBreedTypeComponent implements OnInit {
     this.update_button = false;
     this.pet_breed_id = data._id;
     this.pet_type_id = data.pet_type_id._id;
+    console.log( this.pet_type_id)
+    console.log( this.rows1)
     for (let a = 0; a < this.rows1.length; a++) {
-      if (data.pet_type_id._id === this.rows1[a]._id) {
+      if ( this.pet_type_id == this.rows1[a].pet_type_id._id) {
         this.pet_type_name = this.rows1[a];
+        console.log( this.rows1[a].pet_type_id._id)
       }
     }
     this.user_type_value = data.user_type_value;

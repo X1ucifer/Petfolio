@@ -51,6 +51,8 @@
                          (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button>
                     <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4"
                        (click)="Edit_pet_type_details()"><i class="fas fa-pen"></i> Update</button>
+                       <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()">
+                        Cancel</button>
                 </div>
             </div>
         </div>

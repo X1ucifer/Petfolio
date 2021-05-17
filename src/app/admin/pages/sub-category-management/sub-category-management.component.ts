@@ -207,7 +207,7 @@ export class SubCategoryManagementComponent implements OnInit {
 
   }
   refersh() {
-    this.listpettype();
+    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
   }
 
 

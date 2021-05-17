@@ -179,8 +179,13 @@ export class DocSpecializationComponent implements OnInit {
       }
      
     }
+    
+  cancel() {
+    this.update_button = true;
+    this.specialzation= undefined;
+  }
     refersh(){
-      this.listpettype();
+      this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
     }
 
     showSuccess(msg) {

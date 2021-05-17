@@ -178,7 +178,7 @@ export class PaymentManagementComponent implements OnInit {
 
   }
   refersh(){
-    this.list();
+    this.list();this.E_Date = undefined ; this.S_Date = undefined;
   }
 
 

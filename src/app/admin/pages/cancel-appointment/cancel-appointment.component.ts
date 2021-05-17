@@ -142,6 +142,7 @@ export class CancelAppointmentComponent implements OnInit {
   }
   refersh(){
     this.list();
+    this.E_Date = undefined ; this.S_Date = undefined;
   }
 
 }

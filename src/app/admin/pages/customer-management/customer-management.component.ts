@@ -161,7 +161,7 @@ export class CustomerManagementComponent implements OnInit {
 
   }
   refersh() {
-    this.list();
+    this.list();this.E_Date = undefined ; this.S_Date = undefined;
   }
 
   head = [['S.No', 'Name', 'Email', 'Phone', 'Created Date', 'Mobile Type']]
