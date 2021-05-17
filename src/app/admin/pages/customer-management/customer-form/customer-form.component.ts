@@ -6,6 +6,7 @@ import { ApiService } from '../../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-customer-form',
@@ -42,6 +43,7 @@ export class CustomerFormComponent implements OnInit {
   img_path: string = undefined;
   type: any;
   detail: any;
+  dob_date:any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   constructor(
     private toastr:ToastrManager,
@@ -50,6 +52,7 @@ export class CustomerFormComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private http: HttpClient,
+    public datepipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +69,8 @@ export class CustomerFormComponent implements OnInit {
       this.Pet_Weight = this.detail.pet_weight;
       this.Pet_Age = this.detail.pet_age;
       this.Vaccinated_date = new Date(this.detail.last_vaccination_date);
+      this.dob_date = new Date(this.detail.pet_dob);
+
       this.Vaccinated = { "y": ""+this.detail.vaccinated }
     }
 
@@ -110,7 +115,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   validation() {
-    if (this.Pet_Name == undefined || this.Pet_Name == '' || this.Pet_Weight == undefined || this.Pet_Weight == '' || this.Pet_Type == undefined || this.Pet_Breed == undefined || this.Pet_Gender == undefined || this.Pet_Color == undefined || this.Pet_Age == undefined || this.Pet_Age == '' || this.Vaccinated == undefined || this.Vaccinated_date == undefined) {
+    if (this.Pet_Name == undefined || this.Pet_Name == '' || this.Pet_Weight == undefined || this.Pet_Weight == '' || this.Pet_Type == undefined || this.Pet_Breed == undefined || this.Pet_Gender == undefined || this.Pet_Color == undefined || this.Pet_Age == undefined || this.Pet_Age == '' || this.Vaccinated == undefined || this.Vaccinated_date == undefined|| this.dob_date == undefined) {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -144,9 +149,10 @@ export class CustomerFormComponent implements OnInit {
         "pet_weight": +this.Pet_Weight,
         "pet_age": +this.Pet_Age,
         "vaccinated": vac,
-        "last_vaccination_date": "" + this.Vaccinated_date,
+        "pet_dob": "" + this.datepipe.transform(this.dob_date, 'dd-MM-yyyy'),
+        "last_vaccination_date": "" + this.datepipe.transform(this.Vaccinated_date, 'dd-MM-yyyy'),
         "default_status": true,
-        "date_and_time": "" + new Date(),
+        "date_and_time": "" + this.datepipe.transform(new Date(), 'dd-MM-yyyy hh:mm'),
         "mobile_type": "Admin"
       };
       console.log(a);
@@ -190,6 +196,7 @@ export class CustomerFormComponent implements OnInit {
         "pet_color": this.Pet_Color,
         "pet_weight": +this.Pet_Weight,
         "pet_age": +this.Pet_Age,
+        "pet_dob": "" + this.datepipe.transform(this.dob_date, 'dd-MM-yyyy'),
         "vaccinated": vac,
         "last_vaccination_date": "" + this.Vaccinated_date,
         "default_status": true,
