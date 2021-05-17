@@ -110,7 +110,7 @@ export class DoctorProfileComponent implements OnInit {
   pro_status: any;
   ver_status: any;
   sign: any;
-
+  users: any;
   constructor(
     private toastr: ToastrManager,
     private location: Location,
@@ -161,10 +161,11 @@ export class DoctorProfileComponent implements OnInit {
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
     }
+    this.users = this.storage.get("user");
     this.fetchProfile();
   }
   fetchProfile() {
-    this.user_detail = { "user_id": "6087d8626163803091258a5d" };
+    this.user_detail = { "user_id": this.users._id };
     this._api.profile_details(this.user_detail).subscribe(
       (response: any) => {
         console.log(response.Data, "res");

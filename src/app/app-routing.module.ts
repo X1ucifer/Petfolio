@@ -14,7 +14,7 @@ import { LoginOtpComponent } from './login/login-otp/login-otp.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login', },
   { path: 'login', component: LoginComponent, },
-  { path: 'doctor_login', component: DoctorLoginComponent, },
+  { path: 'doctorlogin', component: DoctorLoginComponent, },
   { path: 'doctor_otp', component: LoginOtpComponent, },
   { path: 'doctor_register', component: DoctorRegisterComponent, },
   { path: 'doctor_info', component: DoctorInfoComponent, },

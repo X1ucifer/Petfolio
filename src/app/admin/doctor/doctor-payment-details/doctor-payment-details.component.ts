@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 
 @Component({
@@ -10,17 +11,20 @@ import { ApiService } from 'src/app/api.service';
 export class DoctorPaymentDetailsComponent implements OnInit {
   title = 'pet';
   payment_list: any;
+  users: any;
   constructor(
+    @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
   ) { }
 
   ngOnInit(): void {
+    this.users = this.storage.get("user");
     this.paymentDetails();
   }
   // payment_details
   paymentDetails() {
     let a = {
-      "doctor_id": "603e2a7b2c2b43125f8cb805"
+      "doctor_id": this.users._id
     }
     this._api.payment_details(a).subscribe(
       (response: any) => {

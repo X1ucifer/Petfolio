@@ -36,7 +36,7 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
   { type: "Cat", name: "cat1" }]
   excelData: any[] = [];
   c_list: any = [];
-
+  users;
   constructor(
     private toastr: ToastrManager,
     private router: Router,
@@ -48,6 +48,7 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.users = this.storage.get("user");
     this.listpettype();
   }
 
@@ -57,7 +58,7 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
 
   listpettype() {
     let a = {
-      "doctor_id": "603e2a7b2c2b43125f8cb805"
+      "doctor_id": this.users._id
     }
     this._api.reschedule_appointment_list(a).subscribe(
       (response: any) => {

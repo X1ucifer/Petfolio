@@ -16,6 +16,7 @@ export class DoctorNotificationComponent implements OnInit {
   notification_list: any;
   searchQR: any;
   user_detail;
+  users;
   rows: any = [{ type: "Dog", name: "dog1" },
   { type: "Cat", name: "cat1" },
   { type: "Cat", name: "cat1" },
@@ -39,11 +40,12 @@ export class DoctorNotificationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.users = this.storage.get("user");
     this.notifications();
   }
 
   notifications() {
-    this.user_detail = { "user_id": "603e27792c2b43125f8cb802" };
+    this.user_detail = { "user_id": this.users._id };
     this._api.notification_list(this.user_detail).subscribe(
       (response: any) => {
         console.log(response.Data);
