@@ -359,7 +359,7 @@ export class DoctorRegisterComponent implements OnInit {
   }
   validation_1() {
     if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '' || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10) {
-      this.Validation = true;
+      this.Validation = false;
       console.log(this.Validation)
     }
     else {
@@ -370,7 +370,7 @@ export class DoctorRegisterComponent implements OnInit {
   validation() {
 
     if (this.Name == undefined || this.Name == '' || this.tittle == undefined || this.tittle == '' || this.Completionarray.length == 0 || this.Specializationarray.length == 0 || this.handledarray.length == 0 || this.clinic_arr.length == 0 || this.photo_arr.length == 0 || this.govt_arr.length == 0 || this.sign_arr.length == 0 || this.certificate_arr.length == 0 || this.Clinic_Name == undefined || this.Clinic_Name == '' || this.address == undefined || this.address == '' || this.Latitude == undefined || this.Longitude == '' || this.Latitude == '' || this.Longitude == undefined) {
-      this.Validation = true;
+      this.Validation = false;
       console.log(this.Validation)
     }
     else {

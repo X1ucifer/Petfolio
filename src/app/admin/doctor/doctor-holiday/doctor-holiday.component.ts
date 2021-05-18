@@ -39,6 +39,7 @@ export class DoctorHolidayComponent implements OnInit {
           this.showSuccess("Added Successfully");
           // window.location.reload();
           this.update();
+          this.holiday_date = "";
         } else {
           this.showError(response.Message);
           //alert(response.Message);
