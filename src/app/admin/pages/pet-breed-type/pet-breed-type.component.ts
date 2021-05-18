@@ -160,6 +160,8 @@ export class PetBreedTypeComponent implements OnInit {
     );
   }
 
+  
+
 
   Editcompanydetailsdata(data) {
     this.update_button = false;
