@@ -401,7 +401,23 @@ export class ProductManagementComponent implements OnInit {
       );
     }
   }
-  
+  cancel() {
+    this.edit_t = false;
+    this.edit_t = false;
+    this.id = undefined;
+    this.Description = undefined;
+    this.Thmp_list = [];
+    this.img_path = undefined;
+    this.Vendor = undefined;
+    this.Category = undefined;
+    this.Sub_Category = undefined;
+    this.pettype = undefined;
+    this.Age = undefined;
+    this.Product_Name = undefined;
+    this.Cost = undefined;
+    this.Discount = undefined;
+    this.threshould = undefined;
+  }
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));

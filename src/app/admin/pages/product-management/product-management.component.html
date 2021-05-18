@@ -125,7 +125,8 @@
                     <div class="col-md-12">
                         <button type="button" *ngIf="edit_t == false" class="btn btn-primary" (click)="create()"><i class="fas fa-plus-circle"></i> Add</button>
                         <button *ngIf="edit_t == true" type="button" class="btn btn-primary" (click)="update()"><i class="fas fa-edit"></i> Update</button>
-                    </div>
+                        <button *ngIf="edit_t == true" type="button" class="btn btn-danger mt-4" (click)="cancel()">
+                            Cancel</button> </div>
             
                 </div>
             </div>

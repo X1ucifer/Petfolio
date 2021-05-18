@@ -57,7 +57,11 @@ export class CategoryManagementComponent implements OnInit {
   }
 
 
-
+  cancel() {
+    this.edit_t = false;
+    this.img_path= undefined;
+    this.Category_name= undefined;
+  }
   listpettype() {
     this._api.product_cate_list().subscribe(
       (response: any) => {
@@ -195,7 +199,7 @@ export class CategoryManagementComponent implements OnInit {
 
   }
   refersh() {
-    this.listpettype();
+    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
   }
 
 

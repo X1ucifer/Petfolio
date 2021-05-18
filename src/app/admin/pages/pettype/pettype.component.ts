@@ -66,7 +66,10 @@ export class PettypeComponent implements OnInit {
   }
 
 
-
+  cancel() {
+    this.update_button = true;
+    this.pet_type_title= undefined;
+  }
   ////// Inserting Data
 
   Insert_pet_type_details() {
@@ -229,7 +232,7 @@ export class PettypeComponent implements OnInit {
      
     }
     refersh(){
-      this.listpettype();
+      this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
     }
     
     showSuccess(msg) {

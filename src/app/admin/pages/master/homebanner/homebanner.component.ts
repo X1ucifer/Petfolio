@@ -68,7 +68,10 @@ export class HomebannerComponent implements OnInit {
     );
   }
 
-
+  cancel() {
+    this.update_button = true;
+    this.img_path = undefined;
+  }
 
   ////// Inserting Data
 
@@ -250,7 +253,7 @@ export class HomebannerComponent implements OnInit {
 
   }
   refersh(){
-    this.listhomebanner();
+    this.listhomebanner();this.E_Date = undefined ; this.S_Date = undefined;
   }
 
   showSuccess(msg) {

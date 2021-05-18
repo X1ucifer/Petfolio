@@ -141,6 +141,11 @@ export class SplashScreenComponent implements OnInit {
       });
   }
 
+  cancel() {
+    this.edit_t = false;
+    this.img_path= undefined;
+    this.Tittle= undefined;
+  }
 
   delete(data) {
     let a = {

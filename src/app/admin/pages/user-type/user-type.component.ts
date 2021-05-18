@@ -39,7 +39,7 @@ export class UserTypeComponent implements OnInit {
   @ViewChild('addedDialog') addedDialog: TemplateRef<any>;
 
   constructor(
-    private toastr:ToastrManager,
+    private toastr: ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -109,7 +109,12 @@ export class UserTypeComponent implements OnInit {
     }
   }
 
-
+  cancel() {
+    this.update_button = true;
+    this.user_type_title = undefined;
+    this.user_type_value = undefined;
+    this.user_type_img = undefined;
+  }
   Edit_user_type_details() {
 
     if (this.user_type_title == '') {
@@ -207,7 +212,7 @@ export class UserTypeComponent implements OnInit {
   addfiles1() {
     const fd = new FormData();
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    this.http.post(this.imgUrl , fd)
+    this.http.post(this.imgUrl, fd)
       .subscribe((res: any) => {
         console.log(res);
         this.user_type_img = res.Data;
@@ -237,7 +242,7 @@ export class UserTypeComponent implements OnInit {
 
   }
   refersh() {
-    this.listpettype();
+    this.listpettype(); this.E_Date = undefined; this.S_Date = undefined;
   }
 
 
@@ -246,11 +251,11 @@ export class UserTypeComponent implements OnInit {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 
 

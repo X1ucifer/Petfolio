@@ -155,6 +155,7 @@ export class CreateTimeComponent implements OnInit {
     }
     refersh(){
       this.listpettype();
+      this.E_Date = undefined ; this.S_Date = undefined;
     }
     _keyPress(event: any) {
       const pattern = /[0-9\ ]/;

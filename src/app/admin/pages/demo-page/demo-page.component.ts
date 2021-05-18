@@ -81,7 +81,13 @@ export class DemoPageComponent implements OnInit {
   openDeleteDialog() {
     this.dialog.open(this.deleteDialog);
   }
-
+  cancel() {
+    this.edit_t = false;
+    this.img_path = undefined;
+    this.Tittle = undefined;
+    this.Description = undefined;
+  
+  }
   create() {
     this.validation();
     if (this.Validation == false) {

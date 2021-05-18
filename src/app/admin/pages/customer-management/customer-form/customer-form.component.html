@@ -40,7 +40,10 @@
             <h5 class="form-lable">Pet Age:</h5>
             <input type="text" pInputText [(ngModel)]="Pet_Age" placeholder="Age">
         </div>
-
+        <div class="col-md-6">
+            <h5 class="form-lable">Pet DOB:</h5>
+            <p-calendar [(ngModel)]="dob_date" [showIcon]="true" inputId="icon"></p-calendar>
+        </div>
         <div class="col-md-6">
             <h5 class="form-lable">Vaccinated:</h5>
             <p-dropdown [options]="vacinated_array" [(ngModel)]="Vaccinated" placeholder="Select" optionLabel="y"

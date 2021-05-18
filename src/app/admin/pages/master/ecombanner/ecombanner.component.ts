@@ -64,7 +64,11 @@ export class EcombannerComponent implements OnInit {
       console.log(this.Validation)
     }
   }
-
+  cancel() {
+    this.edit_t = false;
+    this.img_path= undefined;
+    this.Tittle= undefined;
+  }
 
   create() {
     this.validation();

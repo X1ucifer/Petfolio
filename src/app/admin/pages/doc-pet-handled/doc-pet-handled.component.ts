@@ -244,9 +244,13 @@ export class DocPetHandledComponent implements OnInit {
      
     }
     refersh(){
-      this.listpettype();
+      this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
     }
-
+    cancel() {
+      this.update_button = true;
+      this.pet_type_title = undefined;
+      this.user_type_value = undefined;
+    }
     showSuccess(msg) {
       this.toastr.successToastr(msg);
     }
