@@ -199,6 +199,27 @@ export class DoctorProfileComponent implements OnInit {
       }
     )
   }
+  update() {
+    let a = {
+      "first_name": this.tittle,
+      "last_name": this.Name,
+      "user_email": this.users.user_email,
+      "user_email_verification": false,
+      "user_id": this.users._id
+    }
+    this._api.profile_update(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        if (response.Code === 200) {
+          console.log("updated Successfully");
+          // window.location.reload();
+        } else {
+          console.log(response.Message);
+          //alert(response.Message);
+        }
+      }
+    );
+  }
   cancel() {
     this.router.navigateByUrl('/admin/Doctor')
   }

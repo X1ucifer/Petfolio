@@ -1,0 +1,25 @@
+<!-- <p>doctor-holiday works!</p> -->
+<div class="container">
+ <div class="col-md-6">
+  <h1 class="form-lable" style="color: #000 !important;padding-left: 2rem;">Holiday</h1>
+  <p-calendar [(ngModel)]="holiday_date" [showIcon]="true" inputId="icon"></p-calendar>
+  <!-- <input type="text" pInputText [(ngModel)]="T_date" placeholder="year" /> -->
+ </div>
+ <button type="button" class="btn btn-primary" (click)="create()">Save</button>
+
+ <table class="spec-table">
+  <thead>
+   <th>S.No</th>
+   <th>Date</th>
+   <th>Remove</th>
+  </thead>
+  <tbody>
+   <tr *ngFor="let arr of Datearray ; let i= index;">
+    <td>{{i+1}}</td>
+    <td>{{arr.Date}}</td>
+    <td><i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+      (click)="remove_holiday(arr._id)"></i></td>
+   </tr>
+  </tbody>
+ </table>
+</div>

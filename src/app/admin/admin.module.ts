@@ -111,6 +111,7 @@ import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.c
 import { NgOtpInputModule } from 'ng-otp-input'
 import {CheckboxModule} from 'primeng/checkbox';
 import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
+import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -182,7 +183,8 @@ import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-t
     DoctorNotificationComponent,
     DoctorRescheduleAppointmentComponent,
     DoctorSupportComponent,
-    DoctorEditCalendarTimeComponent
+    DoctorEditCalendarTimeComponent,
+    DoctorHolidayComponent
   ],
   imports: [
     CommonModule,

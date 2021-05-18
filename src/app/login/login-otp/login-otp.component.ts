@@ -94,7 +94,7 @@ export class LoginOtpComponent implements OnInit {
       this.storage.set('user', this.user_data.Data.user_details);
     });
     this.showSuccess("otp send successfully");
-    // window.location.reload();
+    window.location.reload();
   }
   showSuccess(msg) {
     this.toastr.successToastr(msg);

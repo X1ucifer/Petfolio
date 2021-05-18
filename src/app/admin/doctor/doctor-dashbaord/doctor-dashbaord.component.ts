@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-doctor-dashbaord',
@@ -12,15 +14,30 @@ export class DoctorDashbaordComponent implements OnInit {
   completedAppointment: any;
   missedAppointment: any;
   paymentDetail: any;
-
+  checkData: any;
+  users: any;
+  display: boolean;
+  content: any;
   constructor(
+    @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
   ) { }
 
   ngOnInit(): void {
+    this.users = this.storage.get("user");
     this.dashboardDetails();
+    this.checkDetails();
   }
-
+  checkDetails() {
+    this.display = true;
+    this.checkData = { "user_id": "6098ff1b074e747b0fcd04b5" }
+    this._api.doctor_checkdetails(this.checkData).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.content = response.Message
+      }
+    )
+  }
   dashboardDetails() {
     let a = {
       "doctor_id": "603e2a7b2c2b43125f8cb805"

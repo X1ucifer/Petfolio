@@ -32,6 +32,9 @@ import { ServiceProviderComponent } from './service-provider/service-provider.co
 import { LoginOtpComponent } from './login/login-otp/login-otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +70,9 @@ import { NgOtpInputModule } from 'ng-otp-input';
     MultiSelectModule,
     MatStepperModule,
     ServiceProviderModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    DialogModule,
+    ButtonModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

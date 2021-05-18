@@ -20,7 +20,9 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'doctor/edit', data);
   }
 
-
+  DoctorRegister(data) {
+    return this.http.post(this.apiUrl + 'userdetails/create', data);
+  }
   /////Petfolio Admin API Start///////
 
   ////User type API//////
@@ -207,7 +209,9 @@ export class ApiService {
   profile_details(data) {
     return this.http.post(this.apiUrl + 'doctordetails/fetch_doctor_user_id', data);
   }
-
+  profile_update(data) {
+    return this.http.post(this.apiUrl + 'userdetails/mobile/update/profile', data);
+  }
   prices_count() {
     return this.http.get(this.apiUrl + 'appointments/gettotalprice');
   }
@@ -225,6 +229,9 @@ export class ApiService {
   }
   user_create(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
+  }
+  user_update(data) {
+    return this.http.post(this.apiUrl + 'userdetails/mobile/update/profile', data);
   }
   user_edit(data) {
     return this.http.post(this.apiUrl + 'userdetails/edit', data);
@@ -258,6 +265,15 @@ export class ApiService {
   }
   calendar_update(data) {
     return this.http.post(this.apiUrl + 'new_doctortime/update_doc_date', data);
+  }
+  holiday_create(data) {
+    return this.http.post(this.apiUrl + 'holiday/create', data);
+  }
+  holiday_update(data) {
+    return this.http.post(this.apiUrl + 'holiday/getlist_id', data);
+  }
+  holiday_delete(data) {
+    return this.http.post(this.apiUrl + 'holiday/delete', data);
   }
   pet_detail_delete(data) {
     return this.http.post(this.apiUrl + 'petdetails/delete', data);
@@ -301,6 +317,9 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'doctordetails/doctor/dashboar', data);
   }
 
+  doctor_checkdetails(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/check_status', data);
+  }
   splashscreen_create(data) {
     return this.http.post(this.apiUrl + 'splashscreen/create', data);
   }

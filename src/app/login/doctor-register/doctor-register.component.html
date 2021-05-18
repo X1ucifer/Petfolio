@@ -48,10 +48,12 @@
           <button type="button" class="btn btn-primary" (click)="create_1()">
             Save
           </button>
+
           <button type="button" class="btn btn-primary btn-bg-blue" (click)="back()">
             Back to Login
           </button>
         </div>
+
         <ng-container *ngIf="Validation">
           <div class="col-md-12">
             <div class="row">
@@ -112,14 +114,27 @@
               </div>
               <div class="col-md-3">
                 <h5 class="form-lable" style="color: #000 !important">From:</h5>
-                <p-calendar [(ngModel)]="f_date" [showIcon]="true" inputId="icon"></p-calendar>
+                <!-- <p-calendar [(ngModel)]="f_date" [showIcon]="true" inputId="icon"></p-calendar>
+                
+                  YEAR PICKER: -->
+                <!-- <jp-multi-datepicker tabindex="-1" mode="YEAR" label="Choose a year" [(ngModel)]="chosenYearDate"
+                  [max]="2021"></jp-multi-datepicker><br>
+                {{chosenYearDate}} -->
+                <input type="text" pInputText [(ngModel)]="f_date" placeholder="year" />
               </div>
               <div class="col-md-3">
                 <h5 class="form-lable" style="color: #000 !important">To:</h5>
-                <p-calendar [(ngModel)]="T_date" [showIcon]="true" inputId="icon"></p-calendar>
+                <!-- <p-calendar [(ngModel)]="T_date" [showIcon]="true" inputId="icon"></p-calendar> -->
+                <input type="text" pInputText [(ngModel)]="T_date" placeholder="year" />
               </div>
               <div class="col-md-1 text-right">
                 <i class="fa fa-plus add-icon" (click)="addExperience()" aria-hidden="true" pTooltip="Add"></i>
+              </div>
+              <div class="col-md-5">
+                <h5 class="form-lable" style="color: #000 !important;">Experience:</h5>
+                <!-- <p-dropdown [options]="Exp" [(ngModel)]="Experience" placeholder="Select" optionLabel="y" [showClear]="true"></p-dropdown> -->
+                <input style=" padding-bottom: 10px; margin-bottom: 20px;" type="number" pInputText
+                  [(ngModel)]="Experience" placeholder="Experience" />
               </div>
             </div>
             <table *ngIf="Experiencearray.length > 0" class="spec-table">
@@ -128,6 +143,7 @@
                 <th>Company</th>
                 <th>From Date</th>
                 <th>To Date</th>
+                <th>yearsofexperience</th>
                 <th>Remove</th>
               </thead>
               <tbody>
@@ -135,6 +151,7 @@
                   <td>{{ i + 1 }}</td>
                   <td>{{ arr.company }}</td>
                   <td>{{ arr.from }}</td>
+                  <td>{{ arr.to }}</td>
                   <td>{{ arr.to }}</td>
                   <td>
                     <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
@@ -310,11 +327,11 @@
           </div>
           <div class="col-md-6 py-7">
             <h5 class="form-lable" style="font-weight: 600">Latitude:</h5>
-            <input type="text" pInputText [(ngModel)]="Latitude" placeholder="Latitude" disabled />
+            <input type="text" pInputText [(ngModel)]="Latitude" placeholder="Latitude" />
           </div>
           <div class="col-md-6 py-7">
             <h5 class="form-lable" style="font-weight: 600">Longitude:</h5>
-            <input type="text" pInputText [(ngModel)]="Longitude" placeholder="Longitude" disabled />
+            <input type="text" pInputText [(ngModel)]="Longitude" placeholder="Longitude" />
           </div>
           <div class="col-md-12">
             <h4 class="form-lable title-box" style="font-weight: 600;">
@@ -411,6 +428,61 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+              <div class="col-md-6" style="margin-bottom: 15px">
+                <h5 class="form-lable" style="font-weight: 600">
+                  Signature ID proof:
+                </h5>
+                <input type="file" #imgType (change)="fileupload($event, 'sign')" id="imgfile"
+                  accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon" />
+                <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+
+                <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                <table *ngIf="sign_arr.length > 0" class="spec-table" style="margin-top: 8px">
+                  <thead>
+                    <th>S.No</th>
+                    <th>Sign ID proof</th>
+                    <th>Remove</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let arr of sign_arr; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>
+                        <img src="{{ arr.sign_id_pic }}" style="width: 20px" />
+                      </td>
+
+                      <td>
+                        <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                          (click)="remove_sign_img(i)"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-12" style="margin-top: 20px">
+                <h4 class="title title-box">
+                  Appointment details
+                </h4>
+              </div>
+              <div class="col-md-6 py-7">
+                <h5 class="form-lable">communication type</h5>
+                <select [(ngModel)]="CType">
+                  <option value="undefined" style="display: none">
+                    Select Type
+                  </option>
+                  <option *ngFor="
+                      let arr of communication;
+                      let i = index
+                    ">
+                    {{ arr.type }}
+                  </option>
+                </select>
+                <!-- <input type="text" pInputText [(ngModel)]="communication" placeholder="communication type" /> -->
+              </div>
+              <div class="col-md-6 py-7">
+                <h5 class="form-lable">consultancy fees</h5>
+                <input type="number" pInputText [(ngModel)]="fee" placeholder="consultancy fees" />
               </div>
               <!-- <div class="col-md-6" style="margin-top: 20px">
                 <h5 class="form-lable" style="font-weight: 600">
