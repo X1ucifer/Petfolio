@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { MouseEvent } from '@agm/core';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { DatePipe } from '@angular/common'
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -70,6 +71,8 @@ export class DoctorRegisterComponent implements OnInit {
   fee: any;
   CType: any;
   users: any;
+  dateTime: any;
+  date: any;
   communication: any = [
     { "type": "Online" },
     { "type": "Visit" },
@@ -132,7 +135,8 @@ export class DoctorRegisterComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    public datepipe: DatePipe
   ) {
     this._api.petdetails_dropdownslist().subscribe(
       (response: any) => {
@@ -191,8 +195,13 @@ export class DoctorRegisterComponent implements OnInit {
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
     }
-    this.Experience = this.T_date - this.f_date;
-    console.log(this.Experience);
+    // this.Experience = this.T_date - this.f_date;
+    // console.log(this.Experience);
+    const now = Date.now();
+    this.dateTime = this.datepipe.transform(now, 'dd/MM/yyyy h:mm:ss');
+    this.date = this.datepipe.transform(now, 'dd/MM/yyyy h:mm a');
+    console.log(this.dateTime, "date");
+    console.log(this.date, "date");
   }
   cancel() {
     this.router.navigateByUrl('/admin/Doctor')
@@ -368,19 +377,22 @@ export class DoctorRegisterComponent implements OnInit {
     }
   }
   validation() {
-
-    if (this.Name == undefined || this.Name == '' || this.tittle == undefined || this.tittle == '' || this.Completionarray.length == 0 || this.Specializationarray.length == 0 || this.handledarray.length == 0 || this.clinic_arr.length == 0 || this.photo_arr.length == 0 || this.govt_arr.length == 0 || this.sign_arr.length == 0 || this.certificate_arr.length == 0 || this.Clinic_Name == undefined || this.Clinic_Name == '' || this.address == undefined || this.address == '' || this.Latitude == undefined || this.Longitude == '' || this.Latitude == '' || this.Longitude == undefined) {
+    this.addSpecialization();
+    this.addcompletion();
+    this.addExperience();
+    this.addhandled();
+    if (this.Name == undefined || this.Name == '' || this.tittle == undefined || this.tittle == '' || this.Completionarray.length == 0 || this.Specializationarray.length == 0 || this.handledarray.length == 0 || this.clinic_arr.length == 0 || this.photo_arr.length == 0 || this.govt_arr.length == 0 || this.sign_arr.length == 0 || this.certificate_arr.length == 0 || this.Clinic_Name == undefined || this.Clinic_Name == '' || this.address == undefined || this.address == '' || this.Latitude == undefined || this.Longitude == '' || this.Latitude == '' || this.Longitude == undefined || this.CType == undefined || this.CType == '' || this.fee == undefined || this.fee == '') {
       this.Validation = false;
       console.log(this.Validation)
     }
     else {
-      // this.userdetails = { "date_of_reg": "13/05/2021 11:09 AM", "first_name": this.tittle, "last_name": this.Name, "mobile_type": "adminpanel", "user_email": this.Email, "user_email_verification": false, "user_phone": this.Phone, "user_type": 4 }
-      // console.log(this.userdetails);
-      // this._api.DoctorRegister(this.userdetails).subscribe(
-      //   (response: any) => {
-      //     console.log(response.Data, "res");
-      //   }
-      // );
+      this.userdetails = { "date_of_reg": this.date, "first_name": this.tittle, "last_name": this.Name, "mobile_type": "adminpanel", "user_email": this.Email, "user_email_verification": false, "user_phone": this.Phone, "user_type": 4 }
+      console.log(this.userdetails);
+      this._api.DoctorRegister(this.userdetails).subscribe(
+        (response: any) => {
+          console.log(response.Data, "res");
+        }
+      );
       this.Validation = true;
       console.log(this.Validation)
     }
@@ -419,32 +431,11 @@ export class DoctorRegisterComponent implements OnInit {
     }
   }
   create() {
-    // let a = {
-    //   "user_id": this.userid,
-    //   "dr_title": this.tittle,
-    //   "dr_name": this.Name,
-    //   "clinic_name": this.Clinic_Name,
-    //   "clinic_loc": this.address,
-    //   "clinic_lat": this.Latitude,
-    //   "clinic_long": this.Longitude,
-    //   "education_details": this.Completionarray,
-    //   "experience_details": this.Experiencearray,
-    //   "specialization": this.Specializationarray,
-    //   "pet_handled": this.handledarray,
-    //   "clinic_pic": this.clinic_arr,
-    //   "certificate_pic": this.certificate_arr,
-    //   "govt_id_pic": this.govt_arr,
-    //   "photo_id_pic": this.photo_arr,
-    //   "profile_status": 0,
-    //   "profile_verification_status": "Not verified",
-    //   "date_and_time": "" + new Date(),
-    // }
-    // console.log(a);
     this.validation();
     if (this.Validation == false) {
-      // alert("Please enter valid inputs");
       this.showWarning("Please enter valid inputs");
     } else {
+
       let a = {
         "certificate_pic": this.certificate_arr,
         "clinic_lat": this.Latitude,
@@ -454,7 +445,7 @@ export class DoctorRegisterComponent implements OnInit {
         "clinic_pic": this.clinic_arr,
         "communication_type": this.CType,
         "consultancy_fees": this.fee,
-        "date_and_time": "13/05/2021 11:13:28",
+        "date_and_time": this.dateTime,
         "dr_name": this.Name,
         "dr_title": this.tittle,
         "education_details": this.Completionarray,
@@ -470,19 +461,19 @@ export class DoctorRegisterComponent implements OnInit {
         "user_id": this.userid,
       }
       console.log(a, "form-data");
-      // this._api.doctor_details_create(a).subscribe(
-      //   (response: any) => {
-      //     console.log(response.Data);
-      //     if (response.Code === 200) {
-      //       // alert('Added Successfully');
-      //       this.showSuccess("Added Successfully");
-      //       this.router.navigateByUrl('/admin/dashboard')
-      //     } else {
-      //       this.showError(response.Message);
-      //       //alert(response.Message);
-      //     }
-      //   }
-      // );
+      this._api.doctor_details_create(a).subscribe(
+        (response: any) => {
+          // console.log(response.Data);
+          if (response.Code === 200) {
+            // alert('Added Successfully');
+            this.showSuccess("Added Successfully");
+            this.router.navigateByUrl('/doctorlogin')
+          } else {
+            this.showError(response.Message);
+            //alert(response.Message);
+          }
+        }
+      );
     }
   }
 
