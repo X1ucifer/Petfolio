@@ -37,7 +37,8 @@ export class DoctorHolidayComponent implements OnInit {
         console.log(response.Data);
         if (response.Code === 200) {
           this.showSuccess("Added Successfully");
-          window.location.reload();
+          // window.location.reload();
+          this.update();
         } else {
           this.showError(response.Message);
           //alert(response.Message);

@@ -229,11 +229,12 @@ export class DoctorRegisterComponent implements OnInit {
   addExperience() {
 
     if (this.CName != undefined && this.CName != '' && this.f_date != undefined && this.T_date != undefined) {
-      let obj = { "company": this.CName, "from": this.f_date, "to": this.T_date }
+      let obj = { "company": this.CName, "from": this.f_date, "to": this.T_date, "yearsofexperience": this.Experience }
       this.Experiencearray.push(obj);
       this.CName = undefined;
       this.f_date = undefined;
       this.T_date = undefined;
+      this.Experience = undefined;
     }
     else {
       alert("Pleasefill all the fields")
@@ -358,7 +359,7 @@ export class DoctorRegisterComponent implements OnInit {
   }
   validation_1() {
     if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '' || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10) {
-      this.Validation = false;
+      this.Validation = true;
       console.log(this.Validation)
     }
     else {
@@ -369,7 +370,7 @@ export class DoctorRegisterComponent implements OnInit {
   validation() {
 
     if (this.Name == undefined || this.Name == '' || this.tittle == undefined || this.tittle == '' || this.Completionarray.length == 0 || this.Specializationarray.length == 0 || this.handledarray.length == 0 || this.clinic_arr.length == 0 || this.photo_arr.length == 0 || this.govt_arr.length == 0 || this.sign_arr.length == 0 || this.certificate_arr.length == 0 || this.Clinic_Name == undefined || this.Clinic_Name == '' || this.address == undefined || this.address == '' || this.Latitude == undefined || this.Longitude == '' || this.Latitude == '' || this.Longitude == undefined) {
-      this.Validation = false;
+      this.Validation = true;
       console.log(this.Validation)
     }
     else {
