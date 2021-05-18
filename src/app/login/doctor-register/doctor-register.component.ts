@@ -60,8 +60,8 @@ export class DoctorRegisterComponent implements OnInit {
   Clinic_Name: any;
   Latitude: any;
   Longitude: any;
-  f_date: any;
-  T_date: any;
+  f_date: number;
+  T_date: number;
   chosenYearDate: any;
   CName: any;
   selectedimgae: any;
@@ -191,6 +191,8 @@ export class DoctorRegisterComponent implements OnInit {
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
     }
+    this.Experience = this.T_date - this.f_date;
+    console.log(this.Experience);
   }
   cancel() {
     this.router.navigateByUrl('/admin/Doctor')

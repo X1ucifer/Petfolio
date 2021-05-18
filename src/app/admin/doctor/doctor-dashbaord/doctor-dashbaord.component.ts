@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DialogModule } from 'primeng/dialog';
+import { Router } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-doctor-dashbaord',
@@ -19,6 +21,8 @@ export class DoctorDashbaordComponent implements OnInit {
   display: boolean;
   content: any;
   constructor(
+    private toastr: ToastrManager,
+    private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
   ) { }
@@ -34,7 +38,17 @@ export class DoctorDashbaordComponent implements OnInit {
     this._api.doctor_checkdetails(this.checkData).subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.content = response.Message
+        if (response.Data.profile_status == false) {
+          this.showWarning("profile status is pending");
+          this.router.navigate(['/doctor_register']);
+        }
+        else if (response.Data.calender_status == false) {
+          this.showWarning("calender_status is pending");
+          this.router.navigate(['/doctor-admin/doctor-edit-calendar']);
+        }
+        else if (response.Data.profile_verification_status == "Not verified") {
+          this.content = response.Message
+        }
       }
     )
   }
@@ -55,5 +69,15 @@ export class DoctorDashbaordComponent implements OnInit {
         this.paymentDetail = this.dashboardData.payment_detail
       }
     );
+  }
+  ok() {
+    this.router.navigate(['/doctorlogin']);
+  }
+  refresh() {
+    this.checkDetails();
+    window.location.reload();
+  }
+  showWarning(msg) {
+    this.toastr.warningToastr(msg);
   }
 }
