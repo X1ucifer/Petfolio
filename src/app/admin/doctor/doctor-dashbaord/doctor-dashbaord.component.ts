@@ -30,7 +30,7 @@ export class DoctorDashbaordComponent implements OnInit {
   ngOnInit(): void {
     this.users = this.storage.get("user");
     this.dashboardDetails();
-    this.checkDetails();
+    // this.checkDetails();
   }
   checkDetails() {
     this.display = true;
