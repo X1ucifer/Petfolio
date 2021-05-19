@@ -82,7 +82,7 @@ export class ProductManagementComponent implements OnInit {
     this._api.product_details_list().subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.list = response.Data;
+        this.list = response.Data.reverse();
       }
     );
   }

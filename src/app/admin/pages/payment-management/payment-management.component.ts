@@ -78,7 +78,7 @@ export class PaymentManagementComponent implements OnInit {
         this.SP_list = this.payment_management.sp_appoint_details;
         this.PET_list = this.payment_management.user_appoint_details;
         this.Doc_list = this.payment_management.doc_appoint_details;
-
+        console.log(this.Ecom_list)
         // this.SP_list : any;
         // this.PET_list : any;
         // this.Doc_list : any;

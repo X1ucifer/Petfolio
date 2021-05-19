@@ -225,7 +225,12 @@ export class ServiceProviderSpecializationComponent implements OnInit {
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
   }
-
+  cancel() {
+    this.edit_t = true;
+    this.img_path = undefined;
+            this.Tittle = undefined;
+            this.Description = undefined;
+  }
   showSuccess(msg) {
     this.toastr.successToastr(msg);
   }

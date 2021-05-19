@@ -205,11 +205,13 @@ export class ServiceTypeComponent implements OnInit {
     );
   }
   edit(item) {
+    console.log(item)
     this.edit_t = true;
     this.id = item._id;
     this.img_path = item.img_path;
     this.Tittle = item.img_title;
     this.Description = item.img_describ;
+    this.banner_img =  item.img_banner;
   }
   update() {
     if (this.Validation == false) {
@@ -276,7 +278,13 @@ export class ServiceTypeComponent implements OnInit {
   refersh() {
     this.listpettype(); this.E_Date = undefined; this.S_Date = undefined;
   }
-
+  cancel() {
+    this.edit_t = true;
+    this.img_path = undefined;
+    this.Tittle = undefined;
+    this.Description = undefined;
+    this.banner_img =  undefined;
+  }
   showSuccess(msg) {
     this.toastr.successToastr(msg);
   }

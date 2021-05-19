@@ -2,19 +2,20 @@ import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core'
 import { Router, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-import { ApiService } from '../../../../api.service';
+import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-view-vendor-products',
-  templateUrl: './view-vendor-products.component.html',
-  styleUrls: ['./view-vendor-products.component.css']
+  selector: 'app-addproduct',
+  templateUrl: './addproduct.component.html',
+  styleUrls: ['./addproduct.component.css']
 })
-export class ViewVendorProductsComponent implements OnInit {
+export class AddproductComponent implements OnInit {
+
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
   rows = [];
@@ -39,7 +40,7 @@ export class ViewVendorProductsComponent implements OnInit {
   uploadedFiles: any = [];
   product_code: any;
   Thmp_list: any = [];
-  @ViewChild('imgType', { static: false }) imgType: ElementRef;
+  @ViewChild('imgType1', { static: false }) imgType: ElementRef;
   Vendor: any;
   pet_type_list: any = [];
   pet_breed_list: any = [];
@@ -56,8 +57,6 @@ export class ViewVendorProductsComponent implements OnInit {
   subcat_main: any;
   today_deal: boolean;
   productForm: FormGroup;
-  VendorID: any;
-  vendorFilter: any = { user_id: '' };
   constructor(
     private formBuilder:FormBuilder,
     private toastr:ToastrManager,
@@ -81,9 +80,7 @@ export class ViewVendorProductsComponent implements OnInit {
   }
   listpettype() {
     console.log("list");
-    const vendor_id = this.getFromLocal("Vendor_id");
-    this.VendorID = vendor_id;
-    this._api.getlist_vendor_products(vendor_id).subscribe(
+    this._api.product_details_list().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.list = response.Data.reverse();
@@ -158,7 +155,7 @@ export class ViewVendorProductsComponent implements OnInit {
   // }
 
   validation() {
-    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.VendorID == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
+    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.Vendor == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -193,7 +190,7 @@ export class ViewVendorProductsComponent implements OnInit {
       console.log(obj3)
 
       let a = {
-        "user_id": this.VendorID,
+        "user_id": this.Vendor._id,
         "cat_id": this.Category._id,
         "breed_type": obj1,
         "pet_type": obj2,
@@ -231,7 +228,6 @@ export class ViewVendorProductsComponent implements OnInit {
             this.Cost = undefined;
             this.Discount = undefined;
             this.threshould = undefined;
-            
             this.ngOnInit();
           } else {
             this.showError(response.Message);
@@ -283,6 +279,8 @@ export class ViewVendorProductsComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.img_path = res.Data;
+        this.imgType.nativeElement.value = "";
+
       });
   }
 
@@ -355,7 +353,7 @@ export class ViewVendorProductsComponent implements OnInit {
 
       let a = {
         "_id": this.id,
-        "user_id": this.VendorID,
+        "user_id": this.Vendor._id,
         "cat_id": this.Category._id,
         "breed_type": obj1,
         "pet_type": obj2,
@@ -396,7 +394,6 @@ export class ViewVendorProductsComponent implements OnInit {
             this.Product_Name = undefined;
             this.Cost = undefined;
             this.Discount = undefined;
-            this.threshould = undefined;
           } else {
             //alert(response.Message);
             this.showError(response.Message)
@@ -405,7 +402,23 @@ export class ViewVendorProductsComponent implements OnInit {
       );
     }
   }
-  
+  cancel() {
+    this.edit_t = false;
+    this.edit_t = false;
+    this.id = undefined;
+    this.Description = undefined;
+    this.Thmp_list = [];
+    this.img_path = undefined;
+    this.Vendor = undefined;
+    this.Category = undefined;
+    this.Sub_Category = undefined;
+    this.pettype = undefined;
+    this.Age = undefined;
+    this.Product_Name = undefined;
+    this.Cost = undefined;
+    this.Discount = undefined;
+    this.threshould = undefined;
+  }
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
@@ -481,14 +494,6 @@ export class ViewVendorProductsComponent implements OnInit {
     });
   }
 
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
-
-  getFromLocal(key): any {
-    return this.storage.get(key);
-  }
-
 
   showSuccess(msg) {
     this.toastr.successToastr(msg);
@@ -502,3 +507,4 @@ export class ViewVendorProductsComponent implements OnInit {
       this.toastr.warningToastr(msg);
   }
 }
+
