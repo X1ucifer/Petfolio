@@ -80,7 +80,7 @@ export class AddproductComponent implements OnInit {
   }
   listpettype() {
     console.log("list");
-    this._api.product_details_list().subscribe(
+    this._api.newproduct_detail().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.list = response.Data.reverse();
@@ -155,7 +155,7 @@ export class AddproductComponent implements OnInit {
   // }
 
   validation() {
-    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.Vendor == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
+    if ( this.Thmp_list.length == 0  || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Description == undefined || this.Description == '') {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -190,27 +190,22 @@ export class AddproductComponent implements OnInit {
       console.log(obj3)
 
       let a = {
-        "user_id": this.Vendor._id,
         "cat_id": this.Category._id,
         "breed_type": obj1,
         "pet_type": obj2,
         "age": obj3,
-        "cost": this.Cost,
-        "threshould": +this.threshould,
+       
         "product_discription": this.Description,
         "product_name": this.Product_Name,
         "product_img": this.Thmp_list,
-        "discount": this.Discount,
-        "related": '',
-        "count": 0,
         "date_and_time": '' + new Date(),
-        "mobile_type": 'Admin',
-        "verification_status": "Not Verified",
-        "status": true,
-        "delete_status": true
+        // "mobile_type": 'Admin',
+        // "verification_status": "Not Verified",
+        // "status": true,
+        "delete_status": false
       }
       console.log(a);
-      this._api.product_details_create(a).subscribe(
+      this._api.newproduct_detail_create(a).subscribe(
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
@@ -309,25 +304,20 @@ export class AddproductComponent implements OnInit {
       obj3.push({ 'y': item.age[i] });
     }
     console.log(obj3);
-    let arr1 = this.vendor_list;
     let arr2 = this.Catagories_list;
-    this.Vendor = arr1.filter((x: any) => x._id == item.user_id)[0]
     this.Category = item.cat_id;
     console.log(this.Vendor);
     console.log(this.Category);
 
     this.Age = obj3;
-    this.Cost = item.cost;
     this.pettype = item.pet_type;
     let c = this.pet_breed_list;
     let d = c.filter((x: any) => item.breed_type.some((y: any) => y._id == x._id))
     this.petBreed = d;
     console.log(this.petBreed)
-    this.threshould = item.threshould
     this.Description = item.product_discription
     this.Product_Name = item.product_name
     this.Thmp_list = item.product_img
-    this.Discount = item.discount
   }
   update() {
     this.validation();
@@ -353,12 +343,10 @@ export class AddproductComponent implements OnInit {
 
       let a = {
         "_id": this.id,
-        "user_id": this.Vendor._id,
         "cat_id": this.Category._id,
         "breed_type": obj1,
         "pet_type": obj2,
         "age": obj3,
-        "cost": this.Cost,
         "threshould": +this.threshould,
         "product_discription": this.Description,
         "product_name": this.Product_Name,

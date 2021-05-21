@@ -651,8 +651,12 @@ export class ApiService {
   new_doctortime_get_time_Details() {
     return this.http.get(this.apiUrl + 'new_doctortime/get_time_Details');
   }
-
-
+  newproduct_detail() {
+    return this.http.get(this.apiUrl + 'newproduct_detail/getlist');
+  }
+  newproduct_detail_create(data) {
+    return this.http.post(this.apiUrl + 'newproduct_detail/create', data);
+  }
   // PRODUCTS LIST //
   getlist_vendor_products(id) {
     const data = {

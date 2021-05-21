@@ -2,7 +2,7 @@
 <section>
     <div class="page-header">
         <div>
-            <h2 class="main-content-title tx-24 mb-1">Product Management</h2>
+            <h2 class="main-content-title tx-24 mb-1">Add Product</h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
@@ -16,12 +16,12 @@
             <div class="card-item">
           
                 <div class="row">
-                    <div class="col-md-4" style="margin-bottom: 15px;">
+                    <!-- <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Vendor:</h5>
                         <p-dropdown [options]="vendor_list" [(ngModel)]="Vendor" placeholder="Select Vendor" optionLabel="bussiness_name"
                             [showClear]="true"></p-dropdown>
             
-                    </div>
+                    </div> -->
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Category:</h5>
                         <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"
@@ -55,7 +55,7 @@
                         <h5 class="form-lable">Product Code:</h5>
                         <input type="text" pInputText [(ngModel)]="product_code" placeholder="Enter Product Code">
                     </div> -->
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <h5 class="form-lable">Cost:</h5>
                         <input type="text" pInputText [(ngModel)]="Cost" placeholder="Cost">
                     </div>
@@ -66,7 +66,7 @@
                     <div class="col-md-4">
                         <h5 class="form-lable">Threshould:</h5>
                         <input type="text" pInputText [(ngModel)]="threshould" placeholder="Threshould">
-                    </div>
+                    </div> -->
                     <!-- <div class="col-md-4">
                         <h5 class="form-lable">Count:</h5>
                         <input type="text" pInputText [(ngModel)]="Count" placeholder="Count">
@@ -200,7 +200,6 @@
                 Category <p-sortIcon field="code"></p-sortIcon>
             </th>
             <th>Mobile Type</th>
-            <th>Today's Deal</th>
             <th>Created at</th>
             <th>Modified at</th>
             <th style="width: 163px;text-align:center">
@@ -218,10 +217,10 @@
             <td>
                 Admin
             </td>
-            <td>
+            <!-- <td>
                 <button class="btn btn-sm btn-success makeDealbtn" *ngIf="item.today_deal === false" (click)="makeTDeal(item._id, true)">Make Today's Deal</button>
                 <button class="btn btn-sm btn-danger makeDealbtn" *ngIf="item.today_deal === true" (click)="makeTDeal(item._id, false)">Cancel Today's Deal</button>
-            </td>
+            </td> -->
             <td>
                 {{item.createdAt | date}}
             </td>

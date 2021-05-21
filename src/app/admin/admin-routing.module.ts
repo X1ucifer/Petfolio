@@ -68,7 +68,7 @@ import { DoctorRescheduleAppointmentComponent } from './doctor/doctor-reschedule
 import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.component';
 import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
 import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.component';
-
+import {AddproductComponent} from './pages/addproduct/addproduct.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
@@ -154,6 +154,7 @@ const routes: Routes = [
   { path: 'Service_provider_specialization', component: ServiceProviderSpecializationComponent },
   { path: 'Time_create', component: CreateTimeComponent },
   { path: 'Sp_View_details', component: SpDetailViewComponent },
+  { path: 'Add_Product', component: AddproductComponent },
 
 ];
 
