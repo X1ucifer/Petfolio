@@ -52,7 +52,7 @@ export class AddproductComponent implements OnInit {
   Discount: any;
   petBreed: any;
   Sub_Category: any;
-  Ages: any = [{ 'y': 1 }, { 'y': 2 }, { 'y': 3 }, { 'y': 4 }, { 'y': 5 }, { 'y': 6 }, { 'y': 7 }, { 'y': 8 }, { 'y': 9 }, { 'y': 10 }, { 'y': 11 }, { 'y': 12 }, { 'y': 13 }, { 'y': 14 }, { 'y': 15 }, { 'y': 16 }, { 'y': 17 }, { 'y': 18 }, { 'y': 19 }, { 'y': 20 }, { 'y': 'Above' }]
+  Ages: any = [{ 'y': 1 }, { 'y': 2 }, { 'y': 3 }, { 'y': 4 }, { 'y': 5 }, { 'y': 6 }, { 'y': 7 }, { 'y': 8 }, { 'y': 9 }, { 'y': 10 }, { 'y': 11 }, { 'y': 12 }, { 'y': 13 }, { 'y': 14 }, { 'y': 15 }, { 'y': 16 }, { 'y': 17 }, { 'y': 18 }, { 'y': 19 }, { 'y': 20 }]
   sub_cate_list: any;
   subcat_main: any;
   today_deal: boolean;
@@ -285,7 +285,7 @@ export class AddproductComponent implements OnInit {
       '_id': data
     };
     console.log(a);
-    this._api.product_details_delete(a).subscribe(
+    this._api.newproduct_detail_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         //alert('Deleted Successfully');
@@ -347,22 +347,16 @@ export class AddproductComponent implements OnInit {
         "breed_type": obj1,
         "pet_type": obj2,
         "age": obj3,
-        "threshould": +this.threshould,
         "product_discription": this.Description,
         "product_name": this.Product_Name,
         "product_img": this.Thmp_list,
-        "discount": this.Discount,
-        "related": '',
-        "count": 0,
         "date_and_time": '' + new Date(),
         "mobile_type": 'Admin',
-        "verification_status": "Not Verified",
-        "status": true,
-        "delete_status": true
+        "delete_status": false
 
       }
       console.log(a);
-      this._api.product_details_edit(a).subscribe(
+      this._api.newproduct_detail_edit(a).subscribe(
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
@@ -382,6 +376,7 @@ export class AddproductComponent implements OnInit {
             this.Product_Name = undefined;
             this.Cost = undefined;
             this.Discount = undefined;
+            this.petBreed = undefined;
           } else {
             //alert(response.Message);
             this.showError(response.Message)
@@ -406,6 +401,7 @@ export class AddproductComponent implements OnInit {
     this.Cost = undefined;
     this.Discount = undefined;
     this.threshould = undefined;
+    this.petBreed = undefined;
   }
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {
@@ -417,7 +413,7 @@ export class AddproductComponent implements OnInit {
         "todate": this.datePipe.transform(new Date(yourDate), 'yyyy-MM-dd')
       }
       console.log(a);
-      this._api.product_details_filter_date(a).subscribe(
+      this._api.newproduct_detail_filter_date(a).subscribe(
         (response: any) => {
           console.log(response.Data);
           this.list = response.Data;

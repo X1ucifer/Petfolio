@@ -132,7 +132,15 @@ export class VendorManagementComponent implements OnInit {
     this.saveInLocal("Vendor_id",id);
     this.router.navigateByUrl('admin/view-vendor-products');
   }
+  view_details(item) {
+    this.saveInLocal('fun_type', 'create');
+    this.saveInLocal('view_detail_data', item);
+    this.saveInLocal('view_detail', 'vendor');
+        this.router.navigateByUrl('/admin/View_details')
+    window.scrollTo(0, 0);
 
+
+  }
 
   showSuccess(msg) {
     this.toastr.successToastr(msg);

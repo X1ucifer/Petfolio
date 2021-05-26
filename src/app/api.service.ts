@@ -657,6 +657,12 @@ export class ApiService {
   newproduct_detail_create(data) {
     return this.http.post(this.apiUrl + 'newproduct_detail/create', data);
   }
+  newproduct_detail_delete(data) {
+    return this.http.post(this.apiUrl + 'newproduct_detail/delete', data);
+  }
+  newproduct_detail_edit(data) {
+    return this.http.post(this.apiUrl + 'newproduct_detail/edit', data);
+  }
   // PRODUCTS LIST //
   getlist_vendor_products(id) {
     const data = {
@@ -664,7 +670,9 @@ export class ApiService {
     };
     return this.http.post(this.apiUrl + 'product_details/getlist_from_vendor_id', data);
   }
-
+  newproduct_detail_filter_date(data) {
+    return this.http.post(this.apiUrl + 'newproduct_detail/filter_date', data);
+  }
 
   // CREATE VENDOR //
 
