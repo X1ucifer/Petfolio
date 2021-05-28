@@ -680,5 +680,17 @@ export class ApiService {
   create_Vendor(data) {
     return this.http.post(this.apiUrl + 'product_vendor/create', data);
   }
+  diagnosis_create(data) {
+    return this.http.post(this.apiUrl + 'diagnosis/create', data);
+  }
+  diagnosis_getlist() {
+    return this.http.get(this.apiUrl + 'diagnosis/getlist');
+  }
 
+  sub_diagnosis_create(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/create', data);
+  }
+  sub_diagnosis_getlist() {
+    return this.http.get(this.apiUrl + 'sub_diagnosis/getlist');
+  }
 }

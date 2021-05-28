@@ -113,6 +113,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
 import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.component';
 import { AddproductComponent } from './pages/addproduct/addproduct.component';
+import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
+import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -186,7 +188,9 @@ import { AddproductComponent } from './pages/addproduct/addproduct.component';
     DoctorSupportComponent,
     DoctorEditCalendarTimeComponent,
     DoctorHolidayComponent,
-    AddproductComponent
+    AddproductComponent,
+    DiagnosisComponent,
+    SubDiagnosisComponent,
   ],
   imports: [
     CommonModule,

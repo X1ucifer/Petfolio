@@ -69,6 +69,10 @@ import { DoctorSupportComponent } from './doctor/doctor-support/doctor-support.c
 import { DoctorEditCalendarTimeComponent } from './doctor/doctor-edit-calendar-time/doctor-edit-calendar-time.component';
 import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.component';
 import {AddproductComponent} from './pages/addproduct/addproduct.component';
+import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
+import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
+
+
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
@@ -155,6 +159,8 @@ const routes: Routes = [
   { path: 'Time_create', component: CreateTimeComponent },
   { path: 'Sp_View_details', component: SpDetailViewComponent },
   { path: 'Add_Product', component: AddproductComponent },
+  { path: 'Diagnosis', component: DiagnosisComponent },
+  { path: 'Sub_diagnosis', component: SubDiagnosisComponent },
 
 ];
 
