@@ -417,6 +417,7 @@ export class ProductManagementComponent implements OnInit {
     this.Cost = undefined;
     this.Discount = undefined;
     this.threshould = undefined;
+    this.petBreed = undefined;
   }
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {

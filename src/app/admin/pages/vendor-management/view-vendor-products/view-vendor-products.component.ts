@@ -397,6 +397,7 @@ export class ViewVendorProductsComponent implements OnInit {
             this.Cost = undefined;
             this.Discount = undefined;
             this.threshould = undefined;
+            this.petBreed = undefined;
           } else {
             //alert(response.Message);
             this.showError(response.Message)
@@ -441,7 +442,24 @@ export class ViewVendorProductsComponent implements OnInit {
 
     // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
-
+  cancel() {
+    this.edit_t = false;
+    this.edit_t = false;
+    this.id = undefined;
+    this.Description = undefined;
+    this.Thmp_list = [];
+    this.img_path = undefined;
+    this.Vendor = undefined;
+    this.Category = undefined;
+    this.Sub_Category = undefined;
+    this.pettype = undefined;
+    this.Age = undefined;
+    this.Product_Name = undefined;
+    this.Cost = undefined;
+    this.Discount = undefined;
+    this.threshould = undefined;
+    this.petBreed = undefined;
+  }
 
   addimg() {
     if (this.img_path != undefined) {
