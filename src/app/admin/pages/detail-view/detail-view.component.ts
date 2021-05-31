@@ -74,7 +74,7 @@ export class DetailViewComponent implements OnInit {
           this.previous_doctor_pet_handle_details = JSON.stringify(this.preview_doctor_Details.pet_handled);
           this.doctor_experience_details= JSON.stringify(this.doctor_details.experience_details);
           this.previous_doctor_experience_details= JSON.stringify(this.doctor_details.experience_details);
-        
+
         }
       );
 
@@ -104,7 +104,7 @@ export class DetailViewComponent implements OnInit {
       '_id': id,
       'profile_verification_status': status,
     };
-    this._api.doctor_details_edit(a).subscribe(
+    this._api.doctor_details_edit1(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         this.view_detail_data = response.Data;

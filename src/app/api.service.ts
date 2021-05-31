@@ -155,6 +155,9 @@ export class ApiService {
   doctor_details_edit(data) {
     return this.http.post(this.apiUrl + 'doctordetails/edit', data);
   }
+  doctor_details_edit1(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/verify/edit', data);
+  }
   doctor_details_create(data) {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
   }
