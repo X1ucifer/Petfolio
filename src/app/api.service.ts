@@ -155,6 +155,9 @@ export class ApiService {
   doctor_details_edit(data) {
     return this.http.post(this.apiUrl + 'doctordetails/edit', data);
   }
+  doctor_details_edit1(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/verify/edit', data);
+  }
   doctor_details_create(data) {
     return this.http.post(this.apiUrl + 'doctordetails/create', data);
   }
@@ -690,7 +693,7 @@ export class ApiService {
   sub_diagnosis_create(data) {
     return this.http.post(this.apiUrl + 'sub_diagnosis/create', data);
   }
-  
+
   sub_diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'sub_diagnosis/getlist');
   }
