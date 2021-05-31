@@ -120,19 +120,19 @@
     <ng-template pTemplate="body" let-item let-i="rowIndex">
         <tr class="tdrow">
             <td>{{i+1}}</td>
-            <!-- <td>{{item.pet_type_id.pet_type_title}}</td> -->
-            <!-- <td>{{item.pet_breed}}</td> -->
+            <td>{{item.diagnosis_id}}</td>
+            <td>{{item.sub_diagnosis}}</td>
  
             <td>
                 Admin
             </td>
          
             <td>
-                <!-- {{item.date_and_time}} -->
+                {{item.date_and_time}}
             </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
-                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i> -->
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"  pTooltip="View"></i> -->
             </td>
         </tr>

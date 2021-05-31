@@ -683,15 +683,31 @@ export class ApiService {
   diagnosis_create(data) {
     return this.http.post(this.apiUrl + 'diagnosis/create', data);
   }
+
+  diagnosis_edit(data) {
+    return this.http.post(this.apiUrl + 'diagnosis/edit', data);
+  }
   diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'diagnosis/getlist');
   }
-
+  diagnosis_delete(data){
+    return this.http.post(this.apiUrl + 'diagnosis/delete', data);
+  }
   sub_diagnosis_create(data) {
     return this.http.post(this.apiUrl + 'sub_diagnosis/create', data);
   }
-  
+
   sub_diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'sub_diagnosis/getlist');
+  }
+  sub_diagnosis_edit(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/edit', data);
+  }
+  sub_diagnosis_delete(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/delete', data);
+  }
+
+  sub_diagnosis_filter(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/filter', data);
   }
 }

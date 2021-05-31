@@ -76,11 +76,12 @@ export class SubDiagnosisComponent implements OnInit {
   }
 
   listpetbreed() {
-    this._api.Sub_Diagnosis_list().subscribe(
+    this._api.sub_diagnosis_getlist().subscribe(
       (response: any) => {
         console.log("Sub_Diagnosis_list");
         console.log(response.Data);
         this.rows = response.Data;
+        console.log(this.rows);
       }
     );
   }
@@ -127,11 +128,11 @@ export class SubDiagnosisComponent implements OnInit {
     } else {
       let a = {
         '_id': this.Sub_Diagnosis_id,
-        'pet_type_id': this.Diagnosis._id,
-        'Sub_Diagnosis': this.Sub_Diagnosis,
+        'diagnosis_id': this.Diagnosis._id,
+        'sub_diagnosis': this.Sub_Diagnosis,
         // 'user_type_value': this.user_type_value,
       };
-      this._api.Sub_Diagnosis_edit(a).subscribe(
+      this._api.sub_diagnosis_edit(a).subscribe(
         (response: any) => {
           console.log(response.Data);
           //alert("Updated Successfully");
@@ -149,7 +150,7 @@ export class SubDiagnosisComponent implements OnInit {
       '_id': data
     };
     console.log(a);
-    this._api.Sub_Diagnosis_delete(a).subscribe(
+    this._api.sub_diagnosis_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         //alert('Deleted Successfully');
@@ -163,10 +164,10 @@ export class SubDiagnosisComponent implements OnInit {
 
 
   Editcompanydetailsdata(data) {
+    this.Sub_Diagnosis_id = data._id
     this.update_button = false;
-    this.Sub_Diagnosis_id = data._id;
-    this.Sub_Diagnosis = data.Sub_Diagnosis
-    this.pet_type_id = data.pet_type_id._id;
+    this.Sub_Diagnosis = data.sub_diagnosis
+    this.pet_type_id = data.diagnosis_id;
     console.log( this.pet_type_id)
     console.log( this.rows1)
     for (let a = 0; a < this.rows1.length; a++) {
@@ -176,8 +177,6 @@ export class SubDiagnosisComponent implements OnInit {
         break
       }
     }
-    this.user_type_value = data.user_type_value;
-    this.Sub_Diagnosis = data.Sub_Diagnosis;
   }
 
 
@@ -191,7 +190,7 @@ export class SubDiagnosisComponent implements OnInit {
         "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
         }
       console.log(a);
-      this._api.Sub_Diagnosis_filter_date(a).subscribe(
+      this._api.sub_diagnosis_filter(a).subscribe(
         (response: any) => {
           console.log(response.Data);
           this.rows = response.Data;
