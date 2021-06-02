@@ -231,7 +231,8 @@ export class ViewVendorProductsComponent implements OnInit {
             this.Cost = undefined;
             this.Discount = undefined;
             this.threshould = undefined;
-            
+            this.petBreed = undefined;
+
             this.ngOnInit();
           } else {
             this.showError(response.Message);

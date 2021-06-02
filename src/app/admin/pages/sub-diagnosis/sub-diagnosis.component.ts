@@ -167,7 +167,7 @@ export class SubDiagnosisComponent implements OnInit {
     this.Sub_Diagnosis_id = data._id
     this.update_button = false;
     this.Sub_Diagnosis = data.sub_diagnosis
-    this.pet_type_id = data.diagnosis_id;
+    this.pet_type_id = data.diagnosis_id._id;
     console.log( this.pet_type_id)
     console.log( this.rows1)
     for (let a = 0; a < this.rows1.length; a++) {
@@ -204,7 +204,8 @@ export class SubDiagnosisComponent implements OnInit {
    
   }
   refersh(){
-    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+    this.listpetbreed();
+    this.E_Date = undefined ; this.S_Date = undefined;
   }
 
 

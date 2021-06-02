@@ -465,8 +465,8 @@ export class DoctorFormComponent implements OnInit {
       "certificate_pic": this.certificate_arr,
       "govt_id_pic": this.govt_arr,
       "photo_id_pic": this.photo_arr,
-      "profile_status": 0,
-      "profile_verification_status": "Not verified",
+      // "profile_status": 0,
+      // "profile_verification_status": "Not verified",
       "date_and_time": "" + new Date(),
     }
     console.log(a);
@@ -476,7 +476,7 @@ export class DoctorFormComponent implements OnInit {
         if (response.Code === 200) {
           // alert('updated Successfully');
           this.showSuccess("updated Successfully");
-          this.router.navigateByUrl('/admin/Doctor')
+          this.router.navigateByUrl('/admin/doctor_details')
         } else {
           // alert(response.Message);
           this.showError(response.Message)

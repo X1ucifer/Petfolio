@@ -696,6 +696,10 @@ export class ApiService {
   diagnosis_delete(data){
     return this.http.post(this.apiUrl + 'diagnosis/delete', data);
   }
+
+  diagnosis_filter(data){
+    return this.http.post(this.apiUrl + 'diagnosis/filter_date', data);
+  }
   sub_diagnosis_create(data) {
     return this.http.post(this.apiUrl + 'sub_diagnosis/create', data);
   }
@@ -711,6 +715,6 @@ export class ApiService {
   }
 
   sub_diagnosis_filter(data) {
-    return this.http.post(this.apiUrl + 'sub_diagnosis/filter', data);
+    return this.http.post(this.apiUrl + 'sub_diagnosis/filter_date', data);
   }
 }

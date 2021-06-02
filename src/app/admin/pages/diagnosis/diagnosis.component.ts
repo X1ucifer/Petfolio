@@ -155,7 +155,7 @@ export class DiagnosisComponent implements OnInit {
           "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
           }
         console.log(a);
-        this._api.pet_type_filter_date(a).subscribe(
+        this._api.diagnosis_filter(a).subscribe(
           (response: any) => {
             console.log(response.Data);
             this.rows = response.Data;

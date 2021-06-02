@@ -71,7 +71,9 @@ import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.c
 import {AddproductComponent} from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
+import { WalkinAppointmentComponent } from './pages/walkin-appointment/walkin-appointment.component';
 
+import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -161,6 +163,8 @@ const routes: Routes = [
   { path: 'Add_Product', component: AddproductComponent },
   { path: 'Diagnosis', component: DiagnosisComponent },
   { path: 'Sub_diagnosis', component: SubDiagnosisComponent },
+  { path: 'Walkin_Appointment', component: WalkinAppointmentComponent },
+  { path: 'Walkin_Appointment_form', component: WalkinAppointmentFormComponent },
 
 ];
 
