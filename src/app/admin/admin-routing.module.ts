@@ -135,6 +135,9 @@ const routes: Routes = [
       { path: 'doctor-reschedule-appointment', component: DoctorRescheduleAppointmentComponent },
       { path: 'doctor-holiday', component: DoctorHolidayComponent },
       { path: 'doctor-support', component: DoctorSupportComponent },
+      { path: 'Walkin_Appointment_form', component: WalkinAppointmentFormComponent },
+      { path: 'Walkin_Appointment', component: WalkinAppointmentComponent },
+
     ]
   },
 
@@ -163,8 +166,6 @@ const routes: Routes = [
   { path: 'Add_Product', component: AddproductComponent },
   { path: 'Diagnosis', component: DiagnosisComponent },
   { path: 'Sub_diagnosis', component: SubDiagnosisComponent },
-  { path: 'Walkin_Appointment', component: WalkinAppointmentComponent },
-  { path: 'Walkin_Appointment_form', component: WalkinAppointmentFormComponent },
 
 ];
 

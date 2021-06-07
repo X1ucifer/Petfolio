@@ -233,6 +233,9 @@ export class ApiService {
   user_create(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
   }
+  user_check_user_admin(data) {
+    return this.http.post(this.apiUrl + 'userdetails/check_user_admin', data);
+  }
   user_update(data) {
     return this.http.post(this.apiUrl + 'userdetails/mobile/update/profile', data);
   }
@@ -716,5 +719,10 @@ export class ApiService {
 
   sub_diagnosis_filter(data) {
     return this.http.post(this.apiUrl + 'sub_diagnosis/filter_date', data);
+  }
+
+
+  appointments_mobile_create(data) {
+    return this.http.post(this.apiUrl + 'appointments/mobile/create', data);
   }
 }

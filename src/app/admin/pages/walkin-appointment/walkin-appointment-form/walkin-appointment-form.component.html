@@ -1,6 +1,6 @@
 <h4 class="title text-center" style="font-size: 20px;">Add Appointment</h4>
 <ng-container *ngIf="step == 1 || preview == true">
-    <div class="card-box">
+    <div class="card-box" style="margin-top: 10px;">
         <div class="row" style="padding: 0px 0px 23px 10px;">
             <div class="col-md-12">
                 <h4 class="title" style="color: #019377;">Customer Details</h4>
@@ -23,7 +23,7 @@
             <ng-container>
                 <div class="col-md-6">
                     <h5 class="form-lable">Email ID:</h5>
-                    <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
+                    <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)" [disabled]="cus_edit"
                         placeholder="Email ID">
                     <div *ngIf="Email_idError" class="mt-1 error">
                         <div class="text-danger">Valid Email Address Required.</div>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-md-6">
                     <h5 class="form-lable">Phone Number:</h5>
-                    <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10"
+                    <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" [disabled]="cus_edit"
                         (keypress)=_keyPress($event)>
                     <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
                         class="mt-1 error">
@@ -44,7 +44,7 @@
 
             </ng-container>
 
-            <div class="col-md-12 mt-20 text-right">
+            <div class="col-md-12 mt-20 text-right" *ngIf="preview != true">
                 <button type="button" class="btn btn-primary" (click)="create()">Next</button>
             </div>
 
@@ -55,13 +55,14 @@
 
 
 <ng-container *ngIf="step == 2 || preview == true">
-    <div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0">
+    <div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0" style="margin-top: 10px;">
         <div class="row" style="padding: 0px 0px 23px 10px;">
+            <div class="col-md-12">
+                <h4 class="title" style="color: #019377;">Pet Details</h4>
+            </div>
             <ng-container *ngIf="pet_list.length == 0 || petadd == true || petedit == true">
 
-                <div class="col-md-12">
-                    <h4 class="title" style="color: #019377;">Pet Details</h4>
-                </div>
+                
                 <div class="col-md-12">
                     <h4 class="form-lable" style="margin-bottom: 20px;">Owner name: <span
                             style="color: #019377;padding-left: 7px;margin-bottom: 20px;">
@@ -102,10 +103,10 @@
                     <h5 class="form-lable">Pet Age:</h5>
                     <input type="text" pInputText [(ngModel)]="Pet_Age" placeholder="Age">
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <h5 class="form-lable">Pet DOB:</h5>
                     <p-calendar [(ngModel)]="dob_date" [showIcon]="true" inputId="icon"></p-calendar>
-                </div>
+                </div> -->
                 <div class="col-md-6">
                     <h5 class="form-lable">Vaccinated:</h5>
                     <p-dropdown [options]="vacinated_array" [(ngModel)]="Vaccinated" placeholder="Select"
@@ -134,7 +135,7 @@
                     <button *ngIf=" petadd == true" type="button" class="btn btn-primary" (click)="createpet()">Create</button>
                 </div>
             </ng-container>
-            <ng-container *ngIf="pet_list.length > 0">
+            <ng-container>
                 <section>
 
                     <div class="row row-sm">
@@ -249,7 +250,7 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-12 text-right">
+                                <div class="col-md-12 text-right"  *ngIf="preview != true">
                                     <button type="button" style="margin-bottom: 10px; margin-top: 10px;"
                                         class="btn btn-primary" (click)="Submit()"
                                         [disabled]="pet_select == undefined">Next</button>
@@ -271,17 +272,17 @@
 
 
 <ng-container *ngIf="step == 3 || preview == true">
-    <div class="card-box">
+    <div class="card-box" style="margin-top: 10px;">
         <div class="row" style="padding: 0px 0px 23px 10px;">
             <div class="col-md-12">
                 <h4 class="title" style="color: #019377;">Doctor Appointment</h4>
             </div>
 
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <h5 class="form-lable">Doctor:</h5>
                 <p-dropdown [options]="rows" [(ngModel)]="doctor" placeholder="Select" optionLabel="dr_name"
                     [showClear]="true"></p-dropdown>
-            </div>
+            </div> -->
             <div class="col-md-4">
                 <h5 class="form-lable">Appointment Date:</h5>
                 <p-calendar [(ngModel)]="app_date" [showIcon]="true" inputId="icon"></p-calendar>
@@ -289,7 +290,7 @@
             </div>
             <div class="col-md-4">
                 <h5 class="form-lable">Appointment Time:</h5>
-                <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer"></p-calendar>
+                <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer" [hourFormat]='12'></p-calendar>
 
             </div>
             <div class="col-md-6">
@@ -298,14 +299,16 @@
 
             </div>
             <div class="col-md-6">
-                <h5 class="form-lable">Description:</h5>
+                <h5 class="form-lable">Problem Info:</h5>
                 <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="desc"></textarea>
 
             </div>
-            <div class="col-md-12 mt-20 text-right">
+            <div class="col-md-12 mt-20 text-right"  *ngIf="preview != true">
                 <button type="button" class="btn btn-primary" (click)="Book()">Next</button>
             </div>
-
+            <div class="col-md-12 mt-20 text-right"  *ngIf="preview == true">
+                <button type="button" class="btn btn-primary" style="background-color: rgb(64, 64, 250);" (click)="edit()">Submit</button>
+            </div>
         </div>
     </div>
 

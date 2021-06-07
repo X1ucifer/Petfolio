@@ -56,17 +56,19 @@ export class WalkinAppointmentFormComponent implements OnInit {
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
   step: any = 1;
   customer_datails: any;
-  pet_list:any =[];
-  petadd:boolean = false;
-  rows:any = [];
-  doctor:any;
-  app_date:any;
-  app_time:any;
-  pet_select:any;
-  desc:any;
-  allergies:any;
-  preview:boolean = false;
-  petedit:boolean=false;
+  pet_list: any = [];
+  petadd: boolean = false;
+  rows: any = [];
+  doctor: any;
+  app_date: any;
+  app_time: any;
+  pet_select: any;
+  desc: any;
+  allergies: any;
+  preview: boolean = false;
+  petedit: boolean = false;
+  cus_edit: boolean = false;
+  doc_detail:any;
   constructor(
     private toastr: ToastrManager,
     private router: Router,
@@ -79,9 +81,10 @@ export class WalkinAppointmentFormComponent implements OnInit {
 
   ) {
     window.scrollTo(0, 0);
-   }
+  }
 
   ngOnInit(): void {
+    this.doc_detail = this.storage.get('user');
     this.listpetbreed();
     this.listpettype();
     this.listdoctorsall();
@@ -131,50 +134,18 @@ export class WalkinAppointmentFormComponent implements OnInit {
         "user_status": "complete"
       };
       console.log(a);
-      this._api.user_create(a).subscribe(
+      this._api.user_check_user_admin(a).subscribe(
         (response: any) => {
-          console.log(response.Data);
+          console.log(response);
           if (response.Code === 200) {
             // alert('Added Successfully');
             this.showSuccess("Added Successfully");
             this.step = 2;
-            this.customer_datails = response.Data.user_details;
+            this.customer_datails = response.Data;
             this.pet_view();
+            this.cus_edit = true;
           } else {
             this.showError(response.Message);
-            // alert(response.Message);
-          }
-        }
-      );
-    }
-  }
-  edit() {
-    this.validation();
-    if (this.Validation == false) {
-      // alert("Please enter valid inputs");
-      this.showWarning("Please enter valid inputs")
-    } else {
-      let a = {
-        "_id": this.detail._id,
-        "first_name": this.Fname,
-        "last_name": this.Lname,
-        "user_email": this.Email,
-        "user_phone": this.Phone,
-        "user_type": 1,
-        "date_of_reg": new Date(),
-        "mobile_type": 'Admin',
-        "user_status": "complete"
-      };
-      console.log(a);
-      this._api.user_edit(a).subscribe(
-        (response: any) => {
-          console.log(response.Data);
-          if (response.Code === 200) {
-            // alert('updated Successfully');
-            this.showSuccess("updated Successfully")
-            this.router.navigateByUrl('/admin/Customer_Management')
-          } else {
-            this.showError(response.Message)
             // alert(response.Message);
           }
         }
@@ -211,7 +182,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
   service_form() {
     this.petadd = true;
   }
-  Submit(){
+  Submit() {
     this.step = 3;
   }
   listpettype() {
@@ -240,7 +211,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
   }
 
   validation1() {
-    if (this.Pet_Name == undefined || this.Pet_Name == '' || this.Pet_Weight == undefined || this.Pet_Weight == '' || this.Pet_Type == undefined || this.Pet_Breed == undefined || this.Pet_Gender == undefined || this.Pet_Color == undefined || this.Pet_Age == undefined || this.Pet_Age == '' || this.Vaccinated == undefined || this.Vaccinated_date == undefined || this.dob_date == undefined) {
+    if (this.Pet_Name == undefined || this.Pet_Name == '' || this.Pet_Weight == undefined || this.Pet_Weight == '' || this.Pet_Type == undefined || this.Pet_Breed == undefined || this.Pet_Gender == undefined || this.Pet_Color == undefined || this.Pet_Age == undefined || this.Pet_Age == '' || this.Vaccinated == undefined || this.Vaccinated_date == undefined) {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -274,7 +245,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
         "pet_weight": +this.Pet_Weight,
         "pet_age": +this.Pet_Age,
         "vaccinated": vac,
-        "pet_dob": "" + this.datepipe.transform(this.dob_date, 'dd-MM-yyyy'),
+        // "pet_dob": "" + this.datepipe.transform(this.dob_date, 'dd-MM-yyyy'),
         "last_vaccination_date": "" + this.datepipe.transform(this.Vaccinated_date, 'dd-MM-yyyy'),
         "default_status": true,
         "date_and_time": "" + this.datepipe.transform(new Date(), 'dd-MM-yyyy hh:mm'),
@@ -293,9 +264,9 @@ export class WalkinAppointmentFormComponent implements OnInit {
             this.Pet_Name = undefined;
             this.Pet_Type = undefined;
             this.Pet_Breed = undefined;
-            this.Pet_Color= undefined;
+            this.Pet_Color = undefined;
             this.Pet_Weight = undefined;
-            this.Pet_Age= undefined;
+            this.Pet_Age = undefined;
             this.Pet_Gender = undefined;
             this.dob_date = undefined;
             this.Vaccinated_date = undefined;
@@ -308,24 +279,24 @@ export class WalkinAppointmentFormComponent implements OnInit {
       );
     }
   }
-  edit_details(item){
+  edit_details(item) {
 
     this.detail = item;
-  this.img_path = this.detail.pet_img;
-  this.Pet_Name = this.detail.pet_name;
-  this.Pet_Type = { "pet_type_title": this.detail.pet_type };
-  this.Pet_Breed = { "pet_breed": this.detail.pet_breed };
-  this.Pet_Gender = { "y": this.detail.pet_gender };
-  this.Pet_Color = this.detail.pet_color;
-  this.Pet_Weight = this.detail.pet_weight;
-  this.Pet_Age = this.detail.pet_age;
-  this.Vaccinated_date = new Date(this.detail.last_vaccination_date);
-  this.dob_date = new Date(this.detail.pet_dob);
+    this.img_path = this.detail.pet_img;
+    this.Pet_Name = this.detail.pet_name;
+    this.Pet_Type = { "pet_type_title": this.detail.pet_type };
+    this.Pet_Breed = { "pet_breed": this.detail.pet_breed };
+    this.Pet_Gender = { "y": this.detail.pet_gender };
+    this.Pet_Color = this.detail.pet_color;
+    this.Pet_Weight = this.detail.pet_weight;
+    this.Pet_Age = this.detail.pet_age;
+    this.Vaccinated_date = new Date(this.detail.last_vaccination_date);
+    // this.dob_date = new Date(this.detail.pet_dob);
 
-  this.Vaccinated = { "y": ""+this.detail.vaccinated }
-  this.petedit = true;
-  console.log(item)
-}
+    this.Vaccinated = { "y": "" + this.detail.vaccinated }
+    this.petedit = true;
+    console.log(item)
+  }
   update() {
     this.validation1();
     if (this.Validation == false) {
@@ -350,7 +321,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
         "pet_color": this.Pet_Color,
         "pet_weight": +this.Pet_Weight,
         "pet_age": +this.Pet_Age,
-        "pet_dob": "" + this.datepipe.transform(this.dob_date, 'dd-MM-yyyy'),
+        // "pet_dob": "" + this.datepipe.transform(this.dob_date, 'dd-MM-yyyy'),
         "vaccinated": vac,
         "last_vaccination_date": "" + this.Vaccinated_date,
         "default_status": true,
@@ -370,9 +341,9 @@ export class WalkinAppointmentFormComponent implements OnInit {
             this.Pet_Name = undefined;
             this.Pet_Type = undefined;
             this.Pet_Breed = undefined;
-            this.Pet_Color= undefined;
+            this.Pet_Color = undefined;
             this.Pet_Weight = undefined;
-            this.Pet_Age= undefined;
+            this.Pet_Age = undefined;
             this.Pet_Gender = undefined;
             this.dob_date = undefined;
             this.Vaccinated_date = undefined;
@@ -395,7 +366,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
     this._api.single_user_detail(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        this.pet_list=response.Data.petdetailsModels;
+        this.pet_list = response.Data.petdetailsModels;
       }
     );
 
@@ -459,7 +430,109 @@ export class WalkinAppointmentFormComponent implements OnInit {
     );
   }
 
-  Book(){
+  Book() {
     this.preview = true;
+  }
+
+
+  validation3() {
+    this.doctor = this.doc_detail;
+    if (this.doctor == undefined || this.doctor == '' || this.app_date == undefined || this.app_time == undefined || this.allergies == undefined || this.allergies == '' || this.desc == undefined || this.desc == '') {
+      this.Validation = false;
+      console.log(this.Validation)
+    }
+    else {
+      this.Validation = true;
+      console.log(this.Validation)
+    }
+  }
+
+
+  edit() {
+    this.validation();
+    if (this.Validation == false) {
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs")
+    } else {
+      let a = {
+        "_id": this.customer_datails._id,
+        "first_name": this.Fname,
+        "last_name": this.Lname,
+        "user_email": this.Email,
+        "user_phone": this.Phone,
+        "user_type": 1,
+        "date_of_reg": new Date(),
+        "mobile_type": 'Admin',
+        "user_status": "complete"
+      };
+      console.log(a);
+      this._api.user_edit(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          if (response.Code === 200) {
+            this.doc_app_create()
+            // alert('updated Successfully');
+            // this.showSuccess("updated Successfully")
+            // this.router.navigateByUrl('/admin/Customer_Management')
+          } else {
+            this.showError(response.Message)
+            // alert(response.Message);
+          }
+        }
+      );
+    }
+  }
+
+  doc_app_create() {
+    this.validation3();
+    if (this.Validation == false) {
+      // alert("Please enter valid inputs");
+      this.showWarning("Please enter valid inputs");
+    } else {
+
+      let a = {
+        "allergies": this.allergies,
+        "amount": this.doctor.consultancy_fees,
+        "appointment_types": "Normal",
+        "booking_date": "" + this.datepipe.transform(this.app_date, 'dd-MM-yyyy'),
+        "booking_date_time": "" + this.datepipe.transform(this.app_date, 'dd-MM-yyyy') + ' ' + this.datepipe.transform(this.app_time, 'h:mm a'),
+        "booking_time": "" + this.datepipe.transform(this.app_time, 'h:mm a'),
+        "communication_type": "Visit",
+        "date_and_time": "" + this.datepipe.transform(new Date(), 'dd-MM-yyyy h:mm a'),
+        "display_date": "" + this.datepipe.transform(this.app_date, 'yyyy-MM-dd ') + ' ' + this.datepipe.transform(this.app_time, 'HH:mm:ss'),
+        "doc_attched": [],
+        "doc_feedback": "",
+        "doc_rate": 0,
+        "doctor_id": this.doctor._id,
+        "location_id": "",
+        "mobile_type": "Admin",
+        "payment_id": "",
+        "payment_method": "",
+        "pet_id": this.pet_select,
+        "problem_info": this.desc,
+        "server_date_time": "",
+        "service_amount": "",
+        "service_name": "",
+        "user_feedback": "",
+        "user_id": this.customer_datails._id,
+        "user_rate": 0.0,
+        "video_id": "",
+        "visit_type": "Clinic"
+      };
+      console.log(a);
+      this._api.appointments_mobile_create(a).subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.Code === 200) {
+            this.showSuccess("Appointment added successfully");
+            this.router.navigateByUrl('/admin/Walkin_Appointment')
+
+          } else {
+            this.showError(response.Message);
+            //alert(response.Message);
+          }
+        }
+      );
+    }
   }
 }
