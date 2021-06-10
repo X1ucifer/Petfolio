@@ -429,6 +429,8 @@ export class WalkinAppointmentFormComponent implements OnInit {
         console.log(response.Data);
         this.rows = response.Data;
         console.log(this.rows);
+        this.doctor = response.Data.filter((x) => x._id == this.doc_detail._id)
+        console.log(this.doctor);
       }
     );
   }
@@ -439,7 +441,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
 
 
   validation3() {
-    this.doctor = this.doc_detail;
+    // this.doctor = this.doc_detail;
     if (this.doctor == undefined || this.doctor == '' || this.app_date == undefined || this.app_time == undefined || this.allergies == undefined || this.allergies == '' || this.desc == undefined || this.desc == '') {
       this.Validation = false;
       console.log(this.Validation)

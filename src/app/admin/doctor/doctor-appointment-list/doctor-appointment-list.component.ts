@@ -54,6 +54,7 @@ export class DoctorAppointmentListComponent implements OnInit {
   ngOnInit(): void {
     // this.listpettype();
     this.user = this.storage.get('user');
+    this.listpettype();
   }
 
   MakeCall(url) {
