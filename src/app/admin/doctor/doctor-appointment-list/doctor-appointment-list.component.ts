@@ -48,6 +48,7 @@ export class DoctorAppointmentListComponent implements OnInit {
     private _api: ApiService,
     private datePipe: DatePipe,
     private excelService: ExcelService,
+    public datepipe: DatePipe,
 
   ) { }
 
@@ -74,13 +75,13 @@ export class DoctorAppointmentListComponent implements OnInit {
     );
   }
   completedlist() {
-    this.user_detail = { "current_time": "2021-05-10 16:08:18", "doctor_id": this.user._id };
+    this.user_detail = { "current_time": "" + this.datepipe.transform(new Date(), 'yyyy-MM-dd h:mm:ss'), "doctor_id": this.user._id };
     this._api.appointment_completed(this.user_detail).subscribe(
       (response: any) => {
         this.rows = response.Data;
         this.completed_list = response.Data;
         this.appointment_list = response.Data;
-        console.log(response.Data);
+        console.log(this.user_detail);
       }
     )
   }

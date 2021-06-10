@@ -729,4 +729,9 @@ export class ApiService {
   walkin_appointment_getlist() {
     return this.http.get(this.apiUrl + 'walkin_appointment/getlist');
   }
+  walkin_appointment_delete(data) {
+    return this.http.post(this.apiUrl + 'walkin_appointment/delete', data);
+  }
+  
+  
 }
