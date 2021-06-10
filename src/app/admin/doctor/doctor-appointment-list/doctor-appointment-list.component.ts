@@ -80,6 +80,7 @@ export class DoctorAppointmentListComponent implements OnInit {
         this.rows = response.Data;
         this.completed_list = response.Data;
         this.appointment_list = response.Data;
+        console.log(response.Data);
       }
     )
   }
@@ -90,6 +91,7 @@ export class DoctorAppointmentListComponent implements OnInit {
         this.rows = response.Data;
         this.booked_list = response.Data;
         this.appointment_list = response.Data;
+        console.log(response.Data);
       }
     )
   }
@@ -100,6 +102,7 @@ export class DoctorAppointmentListComponent implements OnInit {
         this.rows = response.Data;
         this.missed_list = response.Data;
         this.appointment_list = response.Data;
+        console.log(response.Data);
       }
     )
   }
