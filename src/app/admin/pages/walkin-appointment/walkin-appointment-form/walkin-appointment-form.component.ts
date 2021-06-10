@@ -429,7 +429,9 @@ export class WalkinAppointmentFormComponent implements OnInit {
         console.log(response.Data);
         this.rows = response.Data;
         console.log(this.rows);
-        this.doctor = response.Data.filter((x) => x._id == this.doc_detail._id)
+        let arr = response.Data.filter((x) => x.user_id._id == this.doc_detail._id)
+        this.doctor = arr[0]
+        console.log("this.rows");
         console.log(this.doctor);
       }
     );
