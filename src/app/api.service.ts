@@ -723,6 +723,10 @@ export class ApiService {
 
 
   appointments_mobile_create(data) {
-    return this.http.post(this.apiUrl + 'appointments/mobile/create', data);
+    return this.http.post(this.apiUrl + 'walkin_appointment/create', data);
+  }
+  
+  walkin_appointment_getlist() {
+    return this.http.get(this.apiUrl + 'walkin_appointment/getlist');
   }
 }

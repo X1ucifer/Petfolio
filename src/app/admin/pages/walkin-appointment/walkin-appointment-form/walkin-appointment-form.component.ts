@@ -88,6 +88,9 @@ export class WalkinAppointmentFormComponent implements OnInit {
     this.listpetbreed();
     this.listpettype();
     this.listdoctorsall();
+    console.log("this.doc_detail")
+    console.log(this.doc_detail)
+
   }
 
   // ==================  customer==================

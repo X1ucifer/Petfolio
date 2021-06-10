@@ -55,7 +55,7 @@ export class WalkinAppointmentComponent implements OnInit {
   }
 
   listpettype() {
-    this._api.appointment_list().subscribe(
+    this._api.walkin_appointment_getlist().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;
@@ -173,7 +173,7 @@ export class WalkinAppointmentComponent implements OnInit {
 
   service_form() {
     this.saveInLocal('fun_type', 'create');
-    this.router.navigateByUrl('/admin/Walkin_Appointment_form')
+    this.router.navigateByUrl('/doctor-admin/Walkin_Appointment_form')
   }
 
 }
