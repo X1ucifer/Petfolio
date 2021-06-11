@@ -1,6 +1,29 @@
 <h4 class="title text-center" style="font-size: 20px;">Add Appointment</h4>
 <ng-container *ngIf="step == 1 || preview == true">
-    <div class="card-box" style="margin-top: 10px;">
+
+  <div class="card-box" style="margin-top: 10px;" *ngIf="check_old">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-12">
+            <h4 class="title" style="color: #019377;">Customer Details</h4>
+        </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Phone Number:</h5>
+                <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" [disabled]="cus_edit"
+                    (keypress)=_keyPress($event)>
+                <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
+                    class="mt-1 error">
+                    <div class="text-danger">Phone Number is Required.</div>
+                </div>
+            </div>
+        <div class="col-md-12 mt-20 text-right" *ngIf="preview != true">
+            <button type="button" class="btn btn-primary" (click)="check_user()">Check</button>
+        </div>
+    </div>
+</div>
+
+
+
+  <div class="card-box" style="margin-top: 10px;" *ngIf="!check_old">
         <div class="row" style="padding: 0px 0px 23px 10px;">
             <div class="col-md-12">
                 <h4 class="title" style="color: #019377;">Customer Details</h4>
@@ -9,28 +32,28 @@
             <div class="col-md-6">
                 <h5 class="form-lable">First name:</h5>
                 <input type="text" pInputText [(ngModel)]="Fname" placeholder="First name">
-                <div *ngIf="Validation == false && (Fname == undefined || Fname == '')" class="mt-1 error">
+                <!-- <div *ngIf="Validation == false && (Fname == undefined || Fname == '')" class="mt-1 error">
                     <div class="text-danger">Phone Number is Required.</div>
-                </div>
+                </div> -->
             </div>
             <div class="col-md-6">
                 <h5 class="form-lable">Last name:</h5>
                 <input type="text" pInputText [(ngModel)]="Lname" placeholder="Last name">
-                <div *ngIf="Validation == false && (Lname == undefined || Lname == '')" class="mt-1 error">
+                <!-- <div *ngIf="Validation == false && (Lname == undefined || Lname == '')" class="mt-1 error">
                     <div class="text-danger">Phone Number is Required.</div>
-                </div>
+                </div> -->
             </div>
             <ng-container>
                 <div class="col-md-6">
                     <h5 class="form-lable">Email ID:</h5>
                     <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)" [disabled]="cus_edit"
                         placeholder="Email ID">
-                    <div *ngIf="Email_idError" class="mt-1 error">
+                    <!-- <div *ngIf="Email_idError" class="mt-1 error">
                         <div class="text-danger">Valid Email Address Required.</div>
                     </div>
                     <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
                         <div class="text-danger">Valid Email Address Required.</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-6">
                     <h5 class="form-lable">Phone Number:</h5>
@@ -62,7 +85,7 @@
             </div>
             <ng-container *ngIf="pet_list.length == 0 || petadd == true || petedit == true">
 
-                
+
                 <div class="col-md-12">
                     <h4 class="form-lable" style="margin-bottom: 20px;">Owner name: <span
                             style="color: #019377;padding-left: 7px;margin-bottom: 20px;">
@@ -204,7 +227,7 @@
                                                             <th>
                                                                 Last Vaccinated date
                                                             </th>
-            
+
                                                             <th>Created at</th> -->
                                             <th style="width: 100px;text-align:center">
                                                 Action

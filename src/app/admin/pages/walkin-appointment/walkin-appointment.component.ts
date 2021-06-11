@@ -69,7 +69,7 @@ export class WalkinAppointmentComponent implements OnInit {
   view_details(item) {
     this.saveInLocal('view_detail_data', item);
     this.saveInLocal('view_detail', 'Appointment')
-    this.router.navigateByUrl('/admin/View_details')
+    this.router.navigateByUrl('/doctor-admin/appointment-details')
 
   }
   saveInLocal(key, val): void {
@@ -108,7 +108,7 @@ export class WalkinAppointmentComponent implements OnInit {
     let a ={
       "_id": id
     }
-    this._api.appointment_delete(a).subscribe(
+    this._api.walkin_appointment_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         //alert('Deleted Successfully');
@@ -139,7 +139,7 @@ export class WalkinAppointmentComponent implements OnInit {
       this.showWarning("Please select the startdate and enddate")
       //alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
@@ -152,7 +152,7 @@ export class WalkinAppointmentComponent implements OnInit {
     console.log(this.c_list)
     this.excelData = this.c_list
     // for (let a = 0; a < this.c_list.length; a++) {
-    //   let data = {  
+    //   let data = {
     //   }
     //   this.excelData.push(this.c_list)
     // }

@@ -725,13 +725,18 @@ export class ApiService {
   appointments_mobile_create(data) {
     return this.http.post(this.apiUrl + 'walkin_appointment/create', data);
   }
-  
+
   walkin_appointment_getlist() {
     return this.http.get(this.apiUrl + 'walkin_appointment/getlist');
   }
   walkin_appointment_delete(data) {
     return this.http.post(this.apiUrl + 'walkin_appointment/delete', data);
   }
-  
-  
+
+
+  check_user(data) {
+    return this.http.post(this.apiUrl + 'userdetails/check_user', data);
+  }
+
+
 }

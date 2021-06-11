@@ -117,6 +117,7 @@ import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
 import { WalkinAppointmentComponent } from './pages/walkin-appointment/walkin-appointment.component';
 import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
+import { ViewappointmentdetailsComponent } from './doctor/viewappointmentdetails/viewappointmentdetails.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -195,6 +196,7 @@ import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walki
     SubDiagnosisComponent,
     WalkinAppointmentComponent,
     WalkinAppointmentFormComponent,
+    ViewappointmentdetailsComponent,
   ],
   imports: [
     CommonModule,

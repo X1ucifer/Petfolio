@@ -74,7 +74,7 @@ tr:last-child{border-bottom:none}
     background-color: #FF3D57;
     color: #fff;
   }
-  
+
   .text-theme {color: #019278;}
 /* profile css */
 /* -----------------------------------------------------------------
@@ -99,7 +99,7 @@ tr:last-child{border-bottom:none}
     @media only screen and (max-width: 580px) {
     .sidebar__info{padding-top:1.5rem;padding-bottom:1.25rem}
     }
-   
+
     .contacts-block{list-style:none;padding-left:0;margin-bottom:.5rem;overflow:hidden}
     @media only screen and (max-width: 1200px) {
     .contacts-block{margin-bottom:1rem}
@@ -121,7 +121,7 @@ tr:last-child{border-bottom:none}
     .contacts-block__item a{color:#44566C;text-decoration:none}
     .contacts-block__item a:hover{color:#304CFD}
     .contacts-block .font-icon{margin-right:.7rem}
-  
+
      .box{background-color:#fff;border-radius:20px;padding:1rem;position:relative;transition:box-shadow .3s ease-in-out}
     @media only screen and (max-width: 580px) {
     .box{border-radius:16px;padding:1rem}
@@ -183,7 +183,7 @@ tr:last-child{border-bottom:none}
     .avatar {
     width: 100%;
     height: fit-content;}
-   
+
     @media only screen and (min-width: 580px) {
     .pt-sm-6{padding-top:5rem}
     }
@@ -200,3 +200,20 @@ tr:last-child{border-bottom:none}
 .resume  .resume_hobby ul li i{font-size:30px}
 .resume  .resume_hobby ul li:before{content:"";position:absolute;top:40px;right:-52px;width:50px;height:2px;background:#019377}
 .resume  .resume_hobby ul li:last-child:before{display:none}
+
+.old {
+  /* background: #f1c9c9; */
+  /* border-radius: 10px; */
+  border: 2px solid #a8deb0;
+}
+
+.new {
+  /* background: #a8deb0;
+  border-radius: 10px; */
+  border: 2px solid #f4c1c1;
+}
+
+.red_color {
+  color: red;
+}
+

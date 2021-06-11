@@ -47,6 +47,8 @@ export class WalkinAppointmentFormComponent implements OnInit {
   detail: any;
   dob_date: any;
 
+  check_old : Boolean = true;
+
   Fname: any;
   Lname: any;
   Email: any;
@@ -90,6 +92,9 @@ export class WalkinAppointmentFormComponent implements OnInit {
     this.listdoctorsall();
     console.log("this.doc_detail")
     console.log(this.doc_detail)
+    let doctordetails = this.storage.get("user");
+    console.log(doctordetails);
+
 
   }
 
@@ -121,15 +126,15 @@ export class WalkinAppointmentFormComponent implements OnInit {
     }
   }
   create() {
-    this.validation();
-    if (this.Validation == false) {
-      // alert("Please enter valid inputs");
-      this.showWarning("Please enter valid inputs")
-    } else {
+    // this.validation();
+    // if (this.Validation == false) {
+    //   // alert("Please enter valid inputs");
+    //   this.showWarning("Please enter valid inputs")
+    // } else {
       let a = {
-        "first_name": this.Fname,
-        "last_name": this.Lname,
-        "user_email": this.Email,
+        "first_name": this.Fname || "" ,
+        "last_name": this.Lname || "" ,
+        "user_email": this.Email || "" ,
         "user_phone": this.Phone,
         "user_type": 1,
         "date_of_reg": new Date(),
@@ -145,6 +150,10 @@ export class WalkinAppointmentFormComponent implements OnInit {
             this.showSuccess("Added Successfully");
             this.step = 2;
             this.customer_datails = response.Data;
+            this.Fname = response.Data.first_name;
+            this.Lname = response.Data.last_name;
+            this.Email = response.Data.user_email;
+            this.Phone = response.Data.user_phone;
             this.pet_view();
             this.cus_edit = true;
           } else {
@@ -153,7 +162,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
           }
         }
       );
-    }
+    // }
   }
 
 
@@ -176,6 +185,27 @@ export class WalkinAppointmentFormComponent implements OnInit {
 
   showWarning(msg) {
     this.toastr.warningToastr(msg);
+  }
+
+  check_user(){
+      console.log(this.Phone);
+      let a = {
+        user_phone : this.Phone
+      }
+      this._api.check_user(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          if(response.Data == null){
+            this.check_old = false;
+          } else{
+            this.check_old = false;
+             this.create();
+          }
+        }
+      );
+
+
+
   }
 
 
@@ -496,6 +526,8 @@ export class WalkinAppointmentFormComponent implements OnInit {
       // alert("Please enter valid inputs");
       this.showWarning("Please enter valid inputs");
     } else {
+      let doctordetails = this.storage.get("user");
+      console.log(doctordetails);
 
       let a = {
         "allergies": this.allergies,
@@ -510,7 +542,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
         "doc_attched": [],
         "doc_feedback": "",
         "doc_rate": 0,
-        "doctor_id": this.doctor._id,
+        "doctor_id": this.doc_detail._id,
         "location_id": "",
         "mobile_type": "Admin",
         "payment_id": "",
@@ -532,7 +564,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
           console.log(response);
           if (response.Code === 200) {
             this.showSuccess("Appointment added successfully");
-            this.router.navigateByUrl('/admin/Walkin_Appointment')
+            this.router.navigateByUrl('/doctor-admin/Walkin_Appointment')
 
           } else {
             this.showError(response.Message);
