@@ -104,7 +104,7 @@ export class PetCareAppointmentComponent implements OnInit {
     let a ={
       "_id": id
     }
-    this._api.walkin_appointment_delete(a).subscribe(
+    this._api.appointment_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         //alert('Deleted Successfully');
