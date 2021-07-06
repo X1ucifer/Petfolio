@@ -116,6 +116,9 @@ import { AddproductComponent } from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
 import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.component';
+import { WalkinAppointmentComponent } from './pages/walkin-appointment/walkin-appointment.component';
+import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
+import { ViewappointmentdetailsComponent } from './doctor/viewappointmentdetails/viewappointmentdetails.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -193,6 +196,9 @@ import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.c
     DiagnosisComponent,
     SubDiagnosisComponent,
     OrdermanagmentComponent,
+    WalkinAppointmentComponent,
+    WalkinAppointmentFormComponent,
+    ViewappointmentdetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -220,7 +226,7 @@ import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.c
     TabViewModule,
     NgOtpInputModule,
     CheckboxModule,
-    
+
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
@@ -242,4 +248,3 @@ import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.c
   ]
 })
 export class AdminModule { }
- 

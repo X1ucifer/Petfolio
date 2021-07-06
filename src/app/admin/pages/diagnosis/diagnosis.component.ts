@@ -110,7 +110,7 @@ export class DiagnosisComponent implements OnInit {
       '_id' : this.pet_type_id,
       'diagnosis' : this.Diagnosis,
      };
-    this._api.pet_type_edit(a).subscribe(
+    this._api.diagnosis_edit(a).subscribe(
     (response: any) => {
       console.log(response.Data);
       //alert("Updated Successfully");
@@ -128,7 +128,7 @@ export class DiagnosisComponent implements OnInit {
       '_id' : data
      };
     console.log(a);
-    this._api.pet_type_delete(a).subscribe(
+    this._api.diagnosis_delete(a).subscribe(
     (response: any) => {
       console.log(response.Data);
       //alert('Deleted Successfully');
@@ -155,7 +155,7 @@ export class DiagnosisComponent implements OnInit {
           "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
           }
         console.log(a);
-        this._api.pet_type_filter_date(a).subscribe(
+        this._api.diagnosis_filter(a).subscribe(
           (response: any) => {
             console.log(response.Data);
             this.rows = response.Data;

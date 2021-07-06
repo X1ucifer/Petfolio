@@ -227,6 +227,8 @@ export class ProductManagementComponent implements OnInit {
             this.Cost = undefined;
             this.Discount = undefined;
             this.threshould = undefined;
+            this.petBreed = undefined;
+
             this.ngOnInit();
           } else {
             this.showError(response.Message);
@@ -393,6 +395,8 @@ export class ProductManagementComponent implements OnInit {
             this.Product_Name = undefined;
             this.Cost = undefined;
             this.Discount = undefined;
+            this.petBreed = undefined;
+
           } else {
             //alert(response.Message);
             this.showError(response.Message)

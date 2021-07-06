@@ -27,20 +27,20 @@
 
                             <div class="" style="color: red;" *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">
                                 Changes occur</div>
-                            <div class="" style="color: green;"
+                            <div class="" style="color: red;text-align: right;font-size: 10px;"
                                 *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">OLD
                                 Data</div>
                             <div class="avatar avatar--180" *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">
-                                <div class="avatar__box" *ngFor="let item of doctor_details.clinic_pic">
+                                <div class="avatar__box" *ngFor="let item of preview_doctor_Details.clinic_pic">
                                     <img src="{{item.clinic_pic}}" class="pro-pic" height="100%" width="100%">
                                 </div>
                             </div>
 
-                            <div class="" style="color: green;"
+                            <div class="" style="color: red;text-align: right;font-size: 10px;"
                                 *ngIf="doctor_clinic_pic !== previous_doctor_clinic_pic">New
                                 Data</div>
                             <div class="avatar avatar--180">
-                                <div class="avatar__box" *ngFor="let item of preview_doctor_Details.clinic_pic">
+                                <div class="avatar__box" *ngFor="let item of doctor_details.clinic_pic">
                                     <img src="{{item.clinic_pic}}" class="pro-pic" height="100%" width="100%">
                                 </div>
                             </div>
@@ -51,33 +51,32 @@
                                 <div class="" style="color: red;"
                                     *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">Changes occur
                                 </div>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">OLD DATA</div>
-                                <h3 class="title title--h3 sidebar__user-name text-theme"
+                                <h3 class="title title--h3 sidebar__user-name text-theme old"
                                     *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">
-                                    {{doctor_details.dr_title}}.{{doctor_details.dr_name}}</h3>
-                                <div class="" style="color: green;"
-                                    *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">NEW DATA</div>
-                                <h3 class="title title--h3 sidebar__user-name text-theme">
-                                    {{preview_doctor_Details.dr_title}}.{{preview_doctor_Details.dr_name}}</h3>
-
+                                    {{doctor_details.dr_title}}.{{preview_doctor_Details.dr_name}}</h3>
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_details.dr_name !== preview_doctor_Details.dr_name">* NEW DATA</div>
+                                <h3 class="title title--h3 sidebar__user-name  text-theme new red_color">
+                                    {{preview_doctor_Details.dr_title}}.{{doctor_details.dr_name}}</h3>
                                 <div class="" style="color: red;"
                                     *ngIf="doctor_education_details !== previous_doctor_education_details">Changes occur
                                 </div>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_education_details !== previous_doctor_education_details">OLD DATA
                                 </div>
                                 <div class="" *ngIf="doctor_education_details !== previous_doctor_education_details">
-                                    <ng-container *ngFor="let edu of doctor_details.education_details">
+                                    <ng-container *ngFor="let edu of preview_doctor_Details.education_details">
                                         <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}
                                         </div>
                                     </ng-container>
                                 </div>
-                                <div class="" style="color: green;"
-                                    *ngIf="doctor_education_details !== previous_doctor_education_details">NEW DATA
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
+                                    *ngIf="doctor_education_details !== previous_doctor_education_details">* NEW DATA
                                 </div>
                                 <ng-container *ngFor="let edu of doctor_details.education_details">
-                                    <div class="badge badge--light d-block mb-2">{{edu.education}}-{{edu.year}}</div>
+                                    <div class="badge badge--light d-block mb-2 red_color">{{edu.education}}-{{edu.year}}</div>
                                 </ng-container>
                             </div>
 
@@ -87,7 +86,7 @@
                                     <div class="" style="color: red;"
                                         *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
                                         Changes occur</div>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
                                         OLD DATA</div>
                                     <li class="contacts-block__item"
@@ -96,7 +95,7 @@
                                         {{doctor_details.user_id.user_phone}}
                                     </li>
 
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.user_id.user_phone !== preview_doctor_Details.user_id.user_phone">
                                         NEW DATA</div>
                                     <li class="contacts-block__item">
@@ -108,7 +107,7 @@
                                     <div class="" style="color: red;"
                                         *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
                                         Changes occur</div>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
                                         OLD DATA</div>
                                     <li class="contacts-block__item"
@@ -116,7 +115,7 @@
                                         <span><i class="font-icon fas fa-envelope text-theme"></i>
                                             {{doctor_details.user_id.user_email}}</span>
                                     </li>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.user_id.user_email !== preview_doctor_Details.user_id.user_email">
                                         NEW DATA</div>
                                     <li class="contacts-block__item">
@@ -131,14 +130,14 @@
                                     <div class="" style="color: red;"
                                         *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
                                         Changes occur</div>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
                                         OLD
                                         DATA</div>
                                     <div class="badge badge--aqua d-block mb-2"
                                         *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
                                         {{doctor_details.profile_status}}</div>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.profile_status !== preview_doctor_Details.profile_status">
                                         NEW
                                         DATA</div>
@@ -155,7 +154,7 @@
                                         *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">
                                         Changes
                                         occur</div>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">OLD
                                         DATA
                                     </div>
@@ -165,7 +164,7 @@
                                     </h3>
                                     <p *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">
                                         {{doctor_details.clinic_loc}}</p>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.clinic_name !== preview_doctor_Details.clinic_name">NEW
                                         DATA
                                     </div>
@@ -178,15 +177,15 @@
                                     <div class="" style="color: red;"
                                         *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees">
                                         Changes occur</div>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees">
                                         OLD
                                         Data</div>
                                     <h4 *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees"
-                                        class="mb-1 text-theme"><strong>RS {{doctor_details.consultancy_fees}}
+                                        class="mb-1 text-theme"><strong>RS {{preview_doctor_Details.consultancy_fees}}
                                             /-</strong>
                                     </h4>
-                                    <div class="" style="color: green;"
+                                    <div class="" style="color: red;text-align: right;font-size: 10px;"
                                         *ngIf="doctor_details.consultancy_fees !== preview_doctor_Details.consultancy_fees">
                                         NEW DATA
                                     </div>
@@ -210,7 +209,7 @@
                                 <div class="" style="color: red;"
                                     *ngIf="doctor_spec_details !== previous_doctor_spec_details">
                                     Changes occur</div>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_spec_details !== previous_doctor_spec_details">OLD
                                     Data</div>
                                 <ng-container *ngIf="doctor_spec_details !== previous_doctor_spec_details">
@@ -221,7 +220,7 @@
 
                                     </ng-container>
                                 </ng-container>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_spec_details !== previous_doctor_spec_details">NEW DATA
                                 </div>
                                 <ng-container *ngFor="let spe of preview_doctor_Details.specialization">
@@ -237,7 +236,7 @@
                                 <div class="" style="color: red;"
                                     *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">
                                     Changes occur</div>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">OLD
                                     Data</div>
                                 <ng-container *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">
@@ -246,7 +245,7 @@
                                         <span class="badge badge--dark mr-2 mb-2">{{spe.pet_handled}}</span>
                                     </ng-container>
                                 </ng-container>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_pet_handle_details !== previous_doctor_pet_handle_details">NEW DATA
                                 </div>
                                 <ng-container *ngFor="let spe of preview_doctor_Details.pet_handled">
@@ -261,7 +260,7 @@
                                 <div class="" style="color: red;"
                                     *ngIf="doctor_experience_details !== previous_doctor_experience_details">
                                     Changes occur</div>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_experience_details !== previous_doctor_experience_details">OLD
                                     Data</div>
                                 <ng-container *ngIf="doctor_experience_details !== previous_doctor_experience_details">
@@ -271,7 +270,7 @@
                                         <div class="resume_item resume_work">
 
                                             <ul>
-                                                <ng-container *ngFor="let exp of doctor_details.experience_details">
+                                                <ng-container *ngFor="let exp of preview_doctor_Details.experience_details">
                                                     <li>
                                                         <div class="date">({{exp.from}}-{{exp.to}})</div>
                                                         <h3>{{exp.company}}</h3>
@@ -283,14 +282,14 @@
 
                                     </div>
                                 </ng-container>
-                                <div class="" style="color: green;"
+                                <div class="" style="color: red;text-align: right;font-size: 10px;"
                                     *ngIf="doctor_experience_details !== previous_doctor_experience_details">NEW DATA
                                 </div>
                                 <div class="resume">
                                     <div class="resume_item resume_work">
 
                                         <ul>
-                                            <ng-container *ngFor="let exp of preview_doctor_Details.experience_details">
+                                            <ng-container *ngFor="let exp of doctor_details.experience_details">
                                                 <li>
                                                     <div class="date">({{exp.from}}-{{exp.to}})</div>
                                                     <h3>{{exp.company}}</h3>
@@ -314,20 +313,20 @@
                                     </tr>
                                     <tr class="tdrow">
                                         <td class="act">
-                                            <ng-container *ngFor="let govt_id_pic of view_detail_data.govt_id_pic">
+                                            <ng-container *ngFor="let govt_id_pic of doctor_details.certificate_pic">
                                                 <i (click)="goToLink1(govt_id_pic.govt_id_pic)"
                                                     class="fas fa-file-pdf text-danger"></i>
                                             </ng-container>
                                         </td>
                                         <td class="act">
                                             <ng-container
-                                                *ngFor="let certificate_pic of view_detail_data.certificate_pic">
+                                                *ngFor="let certificate_pic of doctor_details.govt_id_pic">
                                                 <i (click)="goToLink1(certificate_pic.certificate_pic)"
                                                     class="fas fa-file-pdf text-danger"></i>
                                             </ng-container>
                                         </td>
                                         <td class="act">
-                                            <ng-container *ngFor="let photo_id_pic of view_detail_data.photo_id_pic">
+                                            <ng-container *ngFor="let photo_id_pic of doctor_details.photo_id_pic">
                                                 <i (click)="goToLink1(photo_id_pic.photo_id_pic)"
                                                     class="fas fa-file-pdf text-danger"></i>
                                             </ng-container>
@@ -1225,7 +1224,7 @@
 
 
                 <div style="display: block;margin-left: auto;margin-right: auto;margin-bottom: .25rem;" class="avatar avatar--180">
-                    <div 
+                    <div
                         class="avatar__box" *ngFor="let item of view_detail_data.bussiness_gallery">
                         <img src="{{item.bussiness_gallery}}" class="pro-pic" height="100%" width="100%">
                     </div>

@@ -233,6 +233,9 @@ export class ApiService {
   user_create(data) {
     return this.http.post(this.apiUrl + 'userdetails/create', data);
   }
+  user_check_user_admin(data) {
+    return this.http.post(this.apiUrl + 'userdetails/check_user_admin', data);
+  }
   user_update(data) {
     return this.http.post(this.apiUrl + 'userdetails/mobile/update/profile', data);
   }
@@ -686,10 +689,20 @@ export class ApiService {
   diagnosis_create(data) {
     return this.http.post(this.apiUrl + 'diagnosis/create', data);
   }
+
+  diagnosis_edit(data) {
+    return this.http.post(this.apiUrl + 'diagnosis/edit', data);
+  }
   diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'diagnosis/getlist');
   }
+  diagnosis_delete(data){
+    return this.http.post(this.apiUrl + 'diagnosis/delete', data);
+  }
 
+  diagnosis_filter(data){
+    return this.http.post(this.apiUrl + 'diagnosis/filter_date', data);
+  }
   sub_diagnosis_create(data) {
     return this.http.post(this.apiUrl + 'sub_diagnosis/create', data);
   }
@@ -697,4 +710,33 @@ export class ApiService {
   sub_diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'sub_diagnosis/getlist');
   }
+  sub_diagnosis_edit(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/edit', data);
+  }
+  sub_diagnosis_delete(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/delete', data);
+  }
+
+  sub_diagnosis_filter(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/filter_date', data);
+  }
+
+
+  appointments_mobile_create(data) {
+    return this.http.post(this.apiUrl + 'walkin_appointment/create', data);
+  }
+
+  walkin_appointment_getlist() {
+    return this.http.get(this.apiUrl + 'walkin_appointment/getlist');
+  }
+  walkin_appointment_delete(data) {
+    return this.http.post(this.apiUrl + 'walkin_appointment/delete', data);
+  }
+
+
+  check_user(data) {
+    return this.http.post(this.apiUrl + 'userdetails/check_user', data);
+  }
+
+
 }

@@ -1,0 +1,338 @@
+<h4 class="title text-center" style="font-size: 20px;">Add Appointment</h4>
+<ng-container *ngIf="step == 1 || preview == true">
+
+  <div class="card-box" style="margin-top: 10px;" *ngIf="check_old">
+    <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-12">
+            <h4 class="title" style="color: #019377;">Customer Details</h4>
+        </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Phone Number:</h5>
+                <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" [disabled]="cus_edit"
+                    (keypress)=_keyPress($event)>
+                <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
+                    class="mt-1 error">
+                    <div class="text-danger">Phone Number is Required.</div>
+                </div>
+            </div>
+        <div class="col-md-12 mt-20 text-right" *ngIf="preview != true">
+            <button type="button" class="btn btn-primary" (click)="check_user()">Check</button>
+        </div>
+    </div>
+</div>
+
+
+
+  <div class="card-box" style="margin-top: 10px;" *ngIf="!check_old">
+        <div class="row" style="padding: 0px 0px 23px 10px;">
+            <div class="col-md-12">
+                <h4 class="title" style="color: #019377;">Customer Details</h4>
+            </div>
+
+            <div class="col-md-6">
+                <h5 class="form-lable">First name:</h5>
+                <input type="text" pInputText [(ngModel)]="Fname" placeholder="First name">
+                <!-- <div *ngIf="Validation == false && (Fname == undefined || Fname == '')" class="mt-1 error">
+                    <div class="text-danger">Phone Number is Required.</div>
+                </div> -->
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Last name:</h5>
+                <input type="text" pInputText [(ngModel)]="Lname" placeholder="Last name">
+                <!-- <div *ngIf="Validation == false && (Lname == undefined || Lname == '')" class="mt-1 error">
+                    <div class="text-danger">Phone Number is Required.</div>
+                </div> -->
+            </div>
+            <ng-container>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Email ID:</h5>
+                    <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)" [disabled]="cus_edit"
+                        placeholder="Email ID">
+                    <!-- <div *ngIf="Email_idError" class="mt-1 error">
+                        <div class="text-danger">Valid Email Address Required.</div>
+                    </div>
+                    <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
+                        <div class="text-danger">Valid Email Address Required.</div>
+                    </div> -->
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Phone Number:</h5>
+                    <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" [disabled]="cus_edit"
+                        (keypress)=_keyPress($event)>
+                    <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
+                        class="mt-1 error">
+                        <div class="text-danger">Phone Number is Required.</div>
+                    </div>
+                </div>
+
+            </ng-container>
+
+            <div class="col-md-12 mt-20 text-right" *ngIf="preview != true">
+                <button type="button" class="btn btn-primary" (click)="create()">Next</button>
+            </div>
+
+        </div>
+    </div>
+
+</ng-container>
+
+
+<ng-container *ngIf="step == 2 || preview == true">
+    <div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0" style="margin-top: 10px;">
+        <div class="row" style="padding: 0px 0px 23px 10px;">
+            <div class="col-md-12">
+                <h4 class="title" style="color: #019377;">Pet Details</h4>
+            </div>
+            <ng-container *ngIf="pet_list.length == 0 || petadd == true || petedit == true">
+
+
+                <div class="col-md-12">
+                    <h4 class="form-lable" style="margin-bottom: 20px;">Owner name: <span
+                            style="color: #019377;padding-left: 7px;margin-bottom: 20px;">
+                            {{customer_datails.first_name}} {{customer_datails.last_name}}</span></h4>
+                    <!-- <input type="text" pInputText [(ngModel)]="Name" placeholder="Owner Name" disabled> -->
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet name:</h5>
+                    <input type="text" pInputText [(ngModel)]="Pet_Name" placeholder="Pet name">
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet Type:</h5>
+                    <p-dropdown [options]="type_array" [(ngModel)]="Pet_Type" placeholder="Select"
+                        optionLabel="pet_type_title" [showClear]="true"></p-dropdown>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet Breed:</h5>
+                    <p-dropdown [options]="breed_array" [(ngModel)]="Pet_Breed" placeholder="Select"
+                        optionLabel="pet_breed" [showClear]="true"></p-dropdown>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet Gender:</h5>
+                    <p-dropdown [options]="gender_array" [(ngModel)]="Pet_Gender" placeholder="Select" optionLabel="y"
+                        [showClear]="true"></p-dropdown>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet color:</h5>
+                    <input type="text" pInputText [(ngModel)]="Pet_Color" placeholder="Pet Color">
+
+                    <!-- <p-dropdown [options]="color_array" [(ngModel)]="Pet_Color" placeholder="Select" optionLabel="y"
+                [showClear]="true"></p-dropdown> -->
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet weight:</h5>
+                    <input type="text" pInputText [(ngModel)]="Pet_Weight" placeholder="Weight">
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Pet Age:</h5>
+                    <input type="text" pInputText [(ngModel)]="Pet_Age" placeholder="Age">
+                </div>
+                <!-- <div class="col-md-6">
+                    <h5 class="form-lable">Pet DOB:</h5>
+                    <p-calendar [(ngModel)]="dob_date" [showIcon]="true" inputId="icon"></p-calendar>
+                </div> -->
+                <div class="col-md-6">
+                    <h5 class="form-lable">Vaccinated:</h5>
+                    <p-dropdown [options]="vacinated_array" [(ngModel)]="Vaccinated" placeholder="Select"
+                        optionLabel="y" [showClear]="false"></p-dropdown>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="form-lable">Last Vaccinated date:</h5>
+                    <p-calendar [(ngModel)]="Vaccinated_date" [showIcon]="true" inputId="icon"></p-calendar>
+                </div>
+                <!-- <div class="col-md-6">
+                    <h5 class="form-lable">Pet Photo:</h5>
+                    <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
+                        accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                    <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user
+                        type icon with 100 * 100 (Max 200 kB)</div>
+                    <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+                </div> -->
+                <!-- <div class="col-md-6">
+            <h5 class="form-lable">Register Pet details:</h5>
+            <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="Details"></textarea>
+        </div> -->
+
+                <div class="col-md-12 mt-20">
+                    <button *ngIf=" petedit == true" type="button" class="btn btn-primary" (click)="update()">Update</button>
+
+                    <button *ngIf=" petadd == true" type="button" class="btn btn-primary" (click)="createpet()">Create</button>
+                </div>
+            </ng-container>
+            <ng-container>
+                <section>
+
+                    <div class="row row-sm">
+
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="search-hero">
+                                        <!-- <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1"><i
+                                                                        class="fas fa-search"></i></span>
+                                                            </div>
+                                                            <input class="form-control" type="text" name="search2"
+                                                                [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-9 text-right">
+                                    <!-- <button type="button" style="margin-bottom: 10px;" class="btn btn-primary" (click)="Submit()" [disabled]="pet_select == undefined">Submit</button> -->
+                                    <button type="button" style="margin-bottom: 10px;" class="btn btn-primary mr-0"
+                                        (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                                </div>
+                            </div>
+
+                            <!-- end search -->
+                            <div class="doc-table">
+                                <p-table [value]="pet_list" styleClass="ui-table-customers" #tt [paginator]="true"
+                                    [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
+                                    [showCurrentPageReport]="true"
+                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                    [globalFilterFields]="['type']">
+
+                                    <ng-template pTemplate="header">
+                                        <tr class="thhead">
+                                            <th style="width: 70px;">
+                                                Select
+                                            </th>
+                                            <th>
+                                                Pet Photo
+                                            </th>
+                                            <th>
+                                                Pet name
+                                            </th>
+                                            <th>
+                                                Pet Type
+                                            </th>
+                                            <th>
+                                                Pet Breed
+                                            </th>
+                                            <!-- <th>
+                                                                Pet Gender
+                                                            </th>
+                                                            <th>
+                                                                Pet color
+                                                            </th>
+                                                            <th>
+                                                                Pet weight
+                                                            </th>
+                                                            <th>
+                                                                Pet age
+                                                            </th>
+                                                            <th>
+                                                                Vaccinated
+                                                            </th>
+                                                            <th>
+                                                                Last Vaccinated date
+                                                            </th>
+
+                                                            <th>Created at</th> -->
+                                            <th style="width: 100px;text-align:center">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="emptymessage">
+                                        <tr class="tdrow">
+                                            <td colspan="12">No Record found</td>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-item let-i="rowIndex">
+                                        <tr class="tdrow">
+                                            <td><input type="radio" id="{{item._id}}" [(ngModel)]="pet_select"
+                                                    name="pet" value="{{item._id}}">
+                                            </td>
+                                            <td>
+                                                <div class="imgthumcontainer">
+                                                    <img src="{{item.pet_img}}" alt="">
+                                                </div>
+                                            </td>
+                                            <td>{{item.pet_name}}</td>
+                                            <td>{{item.pet_type}}</td>
+                                            <td>{{item.pet_breed}}</td>
+                                            <!-- <td>{{item.pet_gender}}</td>
+                                                            <td>{{item.pet_color}}</td>
+                                                            <td>{{item.pet_weight}} kg</td>
+                                                            <td>{{item.pet_age}} Year</td>
+                                                            <td>{{item.vaccinated}}</td>
+                                                            <td>{{item.last_vaccination_date}}</td>
+                                                            <td>{{item.date_and_time}}</td> -->
+                                            <td class="act" style="text-align: center;">
+                                                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true"
+                                                    (click)="edit_details(item)" pTooltip="Edit"></i>
+                                                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
+                                                    pTooltip="Delete" (click)="delete_pet(item._id)"></i> -->
+                                                <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"
+                                                                    pTooltip="View"></i> -->
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right"  *ngIf="preview != true">
+                                    <button type="button" style="margin-bottom: 10px; margin-top: 10px;"
+                                        class="btn btn-primary" (click)="Submit()"
+                                        [disabled]="pet_select == undefined">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </section>
+            </ng-container>
+        </div>
+    </div>
+
+
+
+</ng-container>
+
+
+<ng-container *ngIf="step == 3 || preview == true">
+    <div class="card-box" style="margin-top: 10px;">
+        <div class="row" style="padding: 0px 0px 23px 10px;">
+            <div class="col-md-12">
+                <h4 class="title" style="color: #019377;">Doctor Appointment</h4>
+            </div>
+
+            <!-- <div class="col-md-4">
+                <h5 class="form-lable">Doctor:</h5>
+                <p-dropdown [options]="rows" [(ngModel)]="doctor" placeholder="Select" optionLabel="dr_name"
+                    [showClear]="true"></p-dropdown>
+            </div> -->
+            <div class="col-md-4">
+                <h5 class="form-lable">Appointment Date:</h5>
+                <p-calendar [(ngModel)]="app_date" [showIcon]="true" inputId="icon"></p-calendar>
+
+            </div>
+            <div class="col-md-4">
+                <h5 class="form-lable">Appointment Time:</h5>
+                <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer" [hourFormat]='12'></p-calendar>
+
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Allergies:</h5>
+                <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="allergies"></textarea>
+
+            </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Problem Info:</h5>
+                <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="desc"></textarea>
+
+            </div>
+            <div class="col-md-12 mt-20 text-right"  *ngIf="preview != true">
+                <button type="button" class="btn btn-primary" (click)="Book()">Next</button>
+            </div>
+            <div class="col-md-12 mt-20 text-right"  *ngIf="preview == true">
+                <button type="button" class="btn btn-primary" style="background-color: rgb(64, 64, 250);" (click)="edit()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+</ng-container>

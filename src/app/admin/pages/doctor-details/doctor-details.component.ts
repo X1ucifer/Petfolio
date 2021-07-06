@@ -189,17 +189,17 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   verify(status, id,item) {
-    this.insert_live_doctor(item);
+    // this.insert_live_doctor(item);
     let a = {
       '_id': id,
       'profile_verification_status': status,
     };
-    this._api.doctor_details_edit(a).subscribe(
+    this._api.doctor_details_edit1(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         this.showSuccess("Updated Successfully")
         // alert("Updated Successfully");
-        // this.ngOnInit();
+        this.ngOnInit();
       }
     );
   }

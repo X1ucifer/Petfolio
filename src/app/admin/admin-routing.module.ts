@@ -72,7 +72,7 @@ import {AddproductComponent} from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
 import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.component';
-
+import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -134,6 +134,9 @@ const routes: Routes = [
       { path: 'doctor-reschedule-appointment', component: DoctorRescheduleAppointmentComponent },
       { path: 'doctor-holiday', component: DoctorHolidayComponent },
       { path: 'doctor-support', component: DoctorSupportComponent },
+      { path: 'Walkin_Appointment_form', component: WalkinAppointmentFormComponent },
+      { path: 'Walkin_Appointment', component: WalkinAppointmentComponent },
+
     ]
   },
 

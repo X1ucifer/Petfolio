@@ -9,6 +9,131 @@
             </ol>
         </div>
     </div>
+    <div class="row row-sm">
+    <div class="col-lg-12">
+<div class="card custom-card">
+        <div class="card-body">
+            <div class="card-item">
+
+                <div class="row">
+                    <!-- <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Vendor:</h5>
+                        <p-dropdown [options]="vendor_list" [(ngModel)]="Vendor" placeholder="Select Vendor" optionLabel="bussiness_name"
+                            [showClear]="true"></p-dropdown>
+
+                    </div> -->
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Category:</h5>
+                        <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"
+                            [showClear]="true"></p-dropdown>
+
+                    </div>
+
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Pet Type:</h5>
+                            <p-multiSelect [options]="pet_type_list" [(ngModel)]="pettype" defaultLabel="Select"
+                            optionLabel="pet_type_title"></p-multiSelect>
+
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Pet Breed:</h5>
+                            <p-multiSelect [options]="pet_breed_list" [(ngModel)]="petBreed" defaultLabel="Select"
+                            optionLabel="pet_breed"></p-multiSelect>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Age:</h5>
+                        <p-multiSelect [options]="Ages" [(ngModel)]="Age" defaultLabel="Select"
+                            optionLabel="y"></p-multiSelect>
+
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 15px;">
+                        <h5 class="form-lable">Product Name:</h5>
+                        <input type="text" pInputText [(ngModel)]="Product_Name" placeholder="Enter Product Name" maxlength = "25">
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <h5 class="form-lable">Product Code:</h5>
+                        <input type="text" pInputText [(ngModel)]="product_code" placeholder="Enter Product Code">
+                    </div> -->
+                    <!-- <div class="col-md-4">
+                        <h5 class="form-lable">Cost:</h5>
+                        <input type="text" pInputText [(ngModel)]="Cost" placeholder="Cost">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Discount:</h5>
+                        <input type="text" pInputText [(ngModel)]="Discount" placeholder="Discount %">
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="form-lable">Threshould:</h5>
+                        <input type="text" pInputText [(ngModel)]="threshould" placeholder="Threshould">
+                    </div> -->
+                    <!-- <div class="col-md-4">
+                        <h5 class="form-lable">Count:</h5>
+                        <input type="text" pInputText [(ngModel)]="Count" placeholder="Count">
+                    </div> -->
+                    <div class="col-md-12">
+                        <h5 class="form-lable">Description:</h5>
+                        <textarea pInputTextarea [(ngModel)]="Description" rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="form-lable">Product image:</h5>
+
+                        <div class="form-group row">
+                           <div class="col-md-7">
+                                <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
+                                    id="imgFile" accept=".png, .jpg, .jpeg">
+                                    <span class="img-size">Image Size Should be 200*200</span>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="imgthumcontainer"><img *ngIf="img_path != undefined" src="{{img_path}}"></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="">
+                                    <button (click)="addimg()" class="btn btn-sm btn-primary"><i
+                                            class="fa fa-plus"></i> Add Image</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="Thmp_list.length > 0">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Image</th>
+                                            <th style="text-align: center;">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let dynamic of Thmp_list; let i = index;">
+                                            <td style="text-align: center;"><div class="imgthumcontainer" style="width: 30px; height:30px;display: inline-block;"><img src="{{dynamic}}" ></div></td>
+                                            <td style="text-align: center;"> <button (click)="deleteimg(dynamic,i)"
+                                                    class="btn btn-sm btn-danger">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- <input type="file" pInputText [(ngModel)]="value1"> -->
+                        <!-- <p-fileUpload name="demo[]" url="http://52.25.163.13:3000/upload" (onUpload)="onUpload($event)" multiple="multiple"
+                            accept="image/*" maxFileSize="1000000">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload> -->
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="button" *ngIf="edit_t == false" class="btn btn-primary" (click)="create()"><i class="fas fa-plus-circle"></i> Add</button>
+                        <button *ngIf="edit_t == true" type="button" class="btn btn-primary" (click)="update()"><i class="fas fa-edit"></i> Update</button>
+                        <button *ngIf="edit_t == true" type="button" class="btn btn-danger" (click)="cancel()">
+                            Cancel</button> </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+    </div>
 
 
 <div class="row row-sm">
