@@ -115,6 +115,7 @@ import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.c
 import { AddproductComponent } from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
+import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -191,6 +192,7 @@ import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.compo
     AddproductComponent,
     DiagnosisComponent,
     SubDiagnosisComponent,
+    OrdermanagmentComponent,
   ],
   imports: [
     CommonModule,

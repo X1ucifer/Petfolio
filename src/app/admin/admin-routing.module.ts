@@ -71,6 +71,7 @@ import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.c
 import {AddproductComponent} from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
+import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.component';
 
 
 const routes: Routes = [
@@ -161,6 +162,8 @@ const routes: Routes = [
   { path: 'Add_Product', component: AddproductComponent },
   { path: 'Diagnosis', component: DiagnosisComponent },
   { path: 'Sub_diagnosis', component: SubDiagnosisComponent },
+
+  { path: 'order_managment', component: OrdermanagmentComponent },
 
 ];
 

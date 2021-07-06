@@ -19,7 +19,7 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 export class DoctorFormComponent implements OnInit {
 
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
-    
+
   public handleAddressChange(address: any) {
     this.zoom = 15;
     this.location_lat = Number(address.geometry.location.lat());
@@ -30,7 +30,7 @@ export class DoctorFormComponent implements OnInit {
     this.Longitude = this.location_lng;
     this.address = address.formatted_address;
     console.log(this.address);
-    
+
   }
 
   options={
@@ -90,6 +90,7 @@ export class DoctorFormComponent implements OnInit {
   type: any;
   detail: any;
   dropdownslist:any;
+  consultancy_fees : any;
   constructor(
     private toastr:ToastrManager,
     private location: Location,
@@ -112,7 +113,7 @@ export class DoctorFormComponent implements OnInit {
   ngOnInit(): void {
     this.type = this.getFromLocal('fun_type');
     if (this.type == 'edit') {
-    
+
       this.detail = this.getFromLocal('view_detail_data');
       console.log(this.detail)
       this.userid = this.detail.user_id._id;
@@ -136,6 +137,7 @@ export class DoctorFormComponent implements OnInit {
       this.certificate_arr = this.detail.certificate_pic;
       this.govt_arr = this.detail.govt_id_pic;
       this.photo_arr = this.detail.photo_id_pic;
+      this.consultancy_fees =  +this.detail.consultancy_fees;
     }
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
@@ -368,6 +370,7 @@ export class DoctorFormComponent implements OnInit {
       "profile_status": 0,
       "profile_verification_status": "Not verified",
       "date_and_time": "" + new Date(),
+      "consultancy_fees" : this.consultancy_fees
     }
     console.log(a);
     this.validation();

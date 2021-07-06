@@ -78,7 +78,7 @@
                     <div class="card-item-icon card-icon bg-danger">
                         <img src="assets/images/002.png" alt="" class="img-fluid">
                     </div>
-                    <div class="card-item-title mb-2">
+                    <div class="card-item-title mb-2" style="width:70%" >
                         <label class="main-content-label text-uppercase font-weight-bold mb-1">Payment detail</label>
                         <span class="d-block tx-12 mb-0 text-muted">count</span>
                     </div>
@@ -98,9 +98,9 @@
         [style]="{width: '50vw'}">
         {{ content }}
         <div class="footer">
-            <p-button style="padding: 1rem;" icon="pi pi-check" (click)="ok()" label="Ok" styleClass="p-button-text">
+            <p-button icon="pi pi-check" (click)="ok()" label="Ok" styleClass="p-button-text">
             </p-button>
-            <p-button style="padding: 1rem;" icon="pi pi-times" (click)="refresh()" label="Refresh"></p-button>
+            <p-button icon="pi pi-times" (click)="refresh()" label="Refresh"></p-button>
         </div>
     </p-dialog>
 

@@ -313,7 +313,7 @@ export class ApiService {
   }
 
   payment_details(data) {
-    return this.http.post(this.apiUrl + 'appointments/doctor_payment', data);
+    return this.http.post(this.apiUrl + 'appointments/admin_doctor_payment', data);
   }
 
   doctor_dashboard(data) {

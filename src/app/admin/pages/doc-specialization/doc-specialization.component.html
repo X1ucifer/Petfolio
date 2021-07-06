@@ -28,7 +28,7 @@
     </div>
   </ng-template>
 
-  
+
 <div class="row row-sm">
 
     <div class="col-lg-12">
@@ -45,7 +45,7 @@
               <h5 class="form-lable">Pet Icon:</h5>
               <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Type">
           </div> -->
-         
+
                 <div class="col-md-4">
                     <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4"
                          (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button>
@@ -91,7 +91,7 @@
 
             </div>
 
-            
+
 
             <div class="table-responsive">
                 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
@@ -144,8 +144,10 @@
             <td class="act">
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true"
                     (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
-                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
-                    (click)="Deletecompanydetails(item._id)"></i> -->
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                    (click)="Deletecompanydetails(item._id)"></i>
+
+
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>
         </tr>

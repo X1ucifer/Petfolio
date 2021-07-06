@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-    
+
         <div class="d-flex">
             <button class="btn btn-sm btn-secondary " (click)="back()">Back <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></button>
         </div>
@@ -229,22 +229,22 @@
                 <!-- <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="address"></textarea> -->
             </div>
             <div class="map">
-                <agm-map 
+                <agm-map
                     [latitude]="base_lat"
                     [longitude]="base_lng"
                     [zoom]="zoom"
                     [disableDefaultUI]="false"
                     [zoomControl]="false">
 
-                    <agm-marker 
+                    <agm-marker
                         [latitude]="location_lat"
                         [longitude]="location_lng"
                         [markerDraggable]="true"
                         (dragEnd)="markerDragEnd($event)">
-                        
+
                         <agm-info-window>
                         <strong>{{address}}</strong>
-                        </agm-info-window>                       
+                        </agm-info-window>
                     </agm-marker>
                 </agm-map>
             </div>
@@ -353,18 +353,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- <div class="col-md-12 mt-20">
-                        <h5 class="form-lable">Clinic Images:</h5>
-                        <input type="file" pInputText [(ngModel)]="value1">
-                        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" multiple="multiple"
-                            accept="image/*" maxFileSize="1000000">
-                            <ng-template pTemplate="content">
-                                <ul *ngIf="uploadedFiles.length">
-                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                                </ul>
-                            </ng-template>
-                        </p-fileUpload>
-                    </div> -->
+
+                    <div class="col-md-6">
+                      <h5 class="form-lable">Consultance Fee:</h5>
+                      <input type="number" pInputText [(ngModel)]="consultancy_fees" placeholder="consultance fee">
+                  </div>
+
                 </div>
             </div>
             <div class="col-md-12 mt-20">

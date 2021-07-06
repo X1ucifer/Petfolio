@@ -7,6 +7,18 @@
  height: 75px;
 }
 
+.tabledata {
+  padding: 0px 100px !important;
+}
+
+.card-box {
+  margin-bottom: 10px !important;
+}
+
+h2 {
+  margin: 0px 0 4px !important;
+}
+
 :host::ng-deep .mat-toolbar.mat-primary {
  /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important; */
  box-shadow: -9.829px 11.607px 20px 0 rgba(144,143,160,.09);
@@ -22,7 +34,7 @@
  color: #019278;
  font-size: 24px;
  /* position: absolute;*/
- padding-left: 5px; 
+ padding-left: 5px;
 }
 
 .logo-img {
@@ -50,7 +62,7 @@
  margin-top: 17px;
 }
 .ad-user p{
-   
+
  font-size: 12px;
  z-index: 999;
  color: #777777;

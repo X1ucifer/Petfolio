@@ -66,7 +66,7 @@ export class AddproductComponent implements OnInit {
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
-    ){ 
+    ){
    }
 
   ngOnInit(): void {
@@ -76,7 +76,7 @@ export class AddproductComponent implements OnInit {
     this.pettypelist();
     this.listpetbreed();
     this.sub_cat_list();
-    // this.subcatagorieslist(); 
+    // this.subcatagorieslist();
   }
   listpettype() {
     console.log("list");
@@ -194,7 +194,7 @@ export class AddproductComponent implements OnInit {
         "breed_type": obj1,
         "pet_type": obj2,
         "age": obj3,
-       
+
         "product_discription": this.Description,
         "product_name": this.Product_Name,
         "product_img": this.Thmp_list,
@@ -463,7 +463,7 @@ export class AddproductComponent implements OnInit {
   }
 
   makeTDeal(_id, today_deal){
-    
+
     const data = {
       _id : _id,
       today_deal : today_deal

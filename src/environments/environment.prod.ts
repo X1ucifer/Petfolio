@@ -7,7 +7,7 @@ export const environment = {
   imageURL: 'http://54.212.108.156:3000/api/'
 
 
-
+  // 13.57.9.246
 
    //Live URL//
 
