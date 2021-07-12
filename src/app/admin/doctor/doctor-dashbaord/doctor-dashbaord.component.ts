@@ -16,10 +16,18 @@ export class DoctorDashbaordComponent implements OnInit {
   completedAppointment: any;
   missedAppointment: any;
   paymentDetail: any;
+
+
+  w_new_appointment: any;
+  w_completedAppointment: any;
+  w_missedAppointment: any;
+  w_paymentDetail: any;
+
+
   checkData: any;
   users: any;
   display: boolean;
-  content: any;
+  content: any = '';
   constructor(
     private toastr: ToastrManager,
     private router: Router,
@@ -29,12 +37,14 @@ export class DoctorDashbaordComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = this.storage.get("user");
+    console.log(this.users);
     this.dashboardDetails();
+    this.dashboardDetails1();
     // this.checkDetails();
   }
   checkDetails() {
     this.display = true;
-    this.checkData = { "user_id": "6098ff1b074e747b0fcd04b5" }
+    this.checkData = { "user_id": this.users._id }
     this._api.doctor_checkdetails(this.checkData).subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -54,7 +64,7 @@ export class DoctorDashbaordComponent implements OnInit {
   }
   dashboardDetails() {
     let a = {
-      "doctor_id": "603e2a7b2c2b43125f8cb805"
+      "doctor_id": this.users._id
     }
     this._api.doctor_dashboard(a).subscribe(
       (response: any) => {
@@ -66,7 +76,26 @@ export class DoctorDashbaordComponent implements OnInit {
         this.new_appointment = this.dashboardData.new_appointment_count;
         this.completedAppointment = this.dashboardData.complete_appointment_count;
         this.missedAppointment = this.dashboardData.missed_appointment_count;
-        this.paymentDetail = this.dashboardData.payment_detail
+        this.paymentDetail = this.dashboardData.payment_detail;
+      }
+    );
+  }
+
+  dashboardDetails1() {
+    let a = {
+      "doctor_id": this.users._id
+    }
+    this._api.doctor_dashboard1(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        // this.rows = response.Data;
+        // this.Main_list = response.Data;
+        this.dashboardData = response.Data;
+        console.log(this.dashboardData);
+        this.w_new_appointment = this.dashboardData.new_appointment_count;
+        this.w_completedAppointment = this.dashboardData.complete_appointment_count;
+        this.w_missedAppointment = this.dashboardData.missed_appointment_count;
+        this.w_paymentDetail = this.dashboardData.payment_detail
       }
     );
   }

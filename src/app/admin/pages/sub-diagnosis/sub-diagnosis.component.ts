@@ -16,6 +16,7 @@ export class SubDiagnosisComponent implements OnInit {
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
   rows = [];
+  final = [];
   rows1 = [];
   searchQR: any;
   value1: any;
@@ -80,8 +81,8 @@ export class SubDiagnosisComponent implements OnInit {
       (response: any) => {
         console.log("Sub_Diagnosis_list");
         console.log(response.Data);
-        this.rows = response.Data;
-        console.log(this.rows);
+        this.final = response.Data;
+        console.log(this.final);
       }
     );
   }
@@ -201,7 +202,7 @@ export class SubDiagnosisComponent implements OnInit {
       //alert('Please select the startdate and enddate');
       this.showWarning("Please select the startdate and enddate")
     }
-   
+
   }
   refersh(){
     this.listpetbreed();

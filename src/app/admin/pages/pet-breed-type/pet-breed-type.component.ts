@@ -28,7 +28,7 @@ export class PetBreedTypeComponent implements OnInit {
   date_and_time: string = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   pet_breed_list: any = [];
   pet_breed_id: string = '';
-
+  pet_breed_img : string= '';
 
   update_button: boolean;
   selectedimgae: any;
@@ -94,6 +94,7 @@ export class PetBreedTypeComponent implements OnInit {
       this.showWarning("Please enter the pet breed")
     } else {
       let a = {
+        'pet_breed_img' : this.pet_breed_img,
         'pet_type_id': this.pet_type_name._id,
         'pet_breed': this.pet_breed,
         'user_type_value': this.user_type_value,
@@ -128,6 +129,7 @@ export class PetBreedTypeComponent implements OnInit {
     } else {
       let a = {
         '_id': this.pet_breed_id,
+        'pet_breed_img': this.pet_breed_img,
         'pet_type_id': this.pet_type_name._id,
         'pet_breed': this.pet_breed,
         'user_type_value': this.user_type_value,
@@ -166,7 +168,8 @@ export class PetBreedTypeComponent implements OnInit {
   Editcompanydetailsdata(data) {
     this.update_button = false;
     this.pet_breed_id = data._id;
-    this.pet_breed = data.pet_breed
+    this.pet_breed = data.pet_breed;
+    this.pet_breed_img = data.pet_breed_img;
     this.pet_type_id = data.pet_type_id._id;
     console.log( this.pet_type_id)
     console.log( this.rows1)
@@ -183,48 +186,48 @@ export class PetBreedTypeComponent implements OnInit {
 
 
 
-  // //////Additional Calling Funcation//////
-  // fileupload(event) {
-  //   console.log("this.width")
-  //   this.selectedimgae = event.target.files[0];
-  //   console.log(this.selectedimgae.size / 100000);
-  //   let fr = new FileReader();
-  //   fr.onload = () => { // when file has loaded
-  //     var img = new Image();
-  //     img.onload = () => {
-  //       let width = img.width;
-  //       let height = img.height;
-  //       console.log(width,height);
-  //       if(width !== 500 && height !== 500){
-  //         let d = this.selectedimgae.size / 100000 ;
-  //         if(d < 10){
-  //         this.addfiles1();
-  //        }else{
-  //         alert('Please upload the file below 1 MB');
-  //         this.imgType.nativeElement.value = "";
-  //        }
-  //       }
-  //       else{
-  //         alert('Please upload the file size 500 * 500');
-  //         this.imgType.nativeElement.value = "";
-  //       }
-  //     };
-  //     img.src = fr.result as string; // The data URL
-  //   };
-  //   fr.readAsDataURL(this.selectedimgae);
-  //   // clear the value after upload
-  // }
+  //////Additional Calling Funcation//////
+  fileupload(event) {
+    console.log("this.width")
+    this.selectedimgae = event.target.files[0];
+    console.log(this.selectedimgae.size / 100000);
+    let fr = new FileReader();
+    fr.onload = () => { // when file has loaded
+      var img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        console.log(width,height);
+        if(width == 200 && height == 200){
+          let d = this.selectedimgae.size / 100000 ;
+          if(d < 10){
+          this.addfiles1();
+         }else{
+          alert('Please upload the file below 1 MB');
+          this.imgType.nativeElement.value = "";
+         }
+        }
+        else{
+          alert('Please upload the file size 200 * 200');
+          this.imgType.nativeElement.value = "";
+        }
+      };
+      img.src = fr.result as string; // The data URL
+    };
+    fr.readAsDataURL(this.selectedimgae);
+    // clear the value after upload
+  }
 
 
-  // addfiles1() {
-  // const fd = new FormData();
-  // fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-  // this.http.post('http://18.237.123.253:3000/upload', fd)
-  //   .subscribe((res: any) => {
-  //     console.log(res);
-  //     this.user_type_img = res.Data;
-  //   });
-  //  }
+  addfiles1() {
+  const fd = new FormData();
+  fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+  this.http.post('http://54.212.108.156:3000/upload', fd)
+    .subscribe((res: any) => {
+      console.log(res);
+      this.pet_breed_img = res.Data;
+    });
+   }
 
 
 
@@ -249,7 +252,7 @@ export class PetBreedTypeComponent implements OnInit {
       //alert('Please select the startdate and enddate');
       this.showWarning("Please select the startdate and enddate")
     }
-   
+
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;

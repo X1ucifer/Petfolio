@@ -35,10 +35,10 @@ export class VendorManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.listpettype();
-  
+
   }
   listpettype() {
-    this._api.vendor_details_list().subscribe(
+    this._api.vendor_details_list1().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;
@@ -104,7 +104,7 @@ export class VendorManagementComponent implements OnInit {
       this.showWarning("Please select the startdate and enddate");
       //alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listpettype();

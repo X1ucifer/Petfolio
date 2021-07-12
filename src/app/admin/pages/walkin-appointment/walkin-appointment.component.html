@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Walk in Appointment</li>
             </ol>
         </div>
-        
+
     </div>
 
     <div class="row row-sm">
@@ -34,8 +34,8 @@
                                     <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button> -->
                                     <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
 
-                                </div> 
-                               
+                                </div>
+
                             </div>
                             <!-- search end -->
 
@@ -44,10 +44,10 @@
                                    <button (click)="Filter('Completed')" type="button" class="btn btn-success btn-sm mr-2"><i class="fas fa-check-circle"></i> Completed</button>
                                      <button (click)="Filter('Incomplete')" type="button" class="btn btn-primary btn-sm mr-2"><i class="far fa-check-circle"></i> Booked</button>
                                      <button (click)="Filter('Missed')" type="button" class="btn btn-danger btn-sm mr-2"><i class="fas fa-times-circle"></i> Cancelled</button>
-                                     <button (click)="refersh()" type="button" class="btn btn-secondary btn-sm mr-2"><i class="fas fa-sync-alt"></i> Refersh</button> 
+                                     <button (click)="refersh()" type="button" class="btn btn-secondary btn-sm mr-2"><i class="fas fa-sync-alt"></i> Refersh</button>
 
 
-                                
+
                                     </div>
                              </div> -->
                         </div>
@@ -62,7 +62,7 @@
 <div class="card custom-card">
         <div class="card-body">
             <div class="card-item">
-                
+
 <div class="doc-table table-responsive">
     <div class="ui-helper-clearfix" style="text-align: left">
         <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="exportAsXLSX()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
@@ -134,8 +134,8 @@
                 <td>{{item.booking_date_time}}</td>
                    <td>{{item.amount}}</td>
                 <td class="act">
-                    <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i>
-                    <i style="color: #4CAF50;" class="fa  fa-clock-o" aria-hidden="true" pTooltip="Reschedule"></i>
+                    <i style="color: #2196f3;" class="fas fa-edit" (click)="edit(item)" aria-hidden="true" pTooltip="Edit"></i>
+                    <!--  <i style="color: #4CAF50;" class="fa  fa-clock-o" aria-hidden="true" pTooltip="Reschedule"></i>
                     <i style="color: #fd2c3a;" class="fa fa-ban" aria-hidden="true" pTooltip="Disable"></i> -->
                     <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
                     <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"

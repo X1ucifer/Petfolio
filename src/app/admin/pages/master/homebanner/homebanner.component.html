@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-  
+
     </div>
 
 
@@ -20,14 +20,21 @@
             <div class="card-item">
                 <div class="row">
                     <div class="col-md-4">
-                      <h5 class="form-lable">Home Banner</h5>
+                      <h5 class="form-lable">Home banner</h5>
                       <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
                       accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
                       <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 800 * 350 (Max 400 kB)</div>
 
                       <div class="imgthumcontainer"><img src="{{img_path}}"></div>
-                      
+
                   </div>
+
+                  <div class="col-md-4">
+                    <h5 class="form-lable">Home banner title</h5>
+                    <input type="text" pInputText name="img_title" [(ngModel)]="img_title" placeholder="Enter home Banner title">
+                  </div>
+
+
                    <div class="col-md-4">
                       <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4"  (click)="Insert_homebanner_details()"><i class="fas fa-plus-circle"></i> Add</button>
                     <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4"  (click)="Edit_user_type_details()"><i class="fas fa-edit"></i> Update</button>
@@ -100,6 +107,9 @@
             <th>
               Home Banner
             </th>
+            <th>
+              Home Title
+            </th>
             <th>Created by</th>
             <!-- <th>Modified by</th> -->
             <th>Created at</th>
@@ -116,6 +126,9 @@
             <td>
               <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="Denim Jeans" style="width: 20%;">
           </td>
+          <td>
+            {{item.img_title}}
+           </td>
             <td>
                 Admin
             </td>
@@ -124,7 +137,7 @@
             </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
-                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i> -->
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>
         </tr>

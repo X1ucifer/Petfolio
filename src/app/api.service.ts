@@ -144,6 +144,25 @@ export class ApiService {
   //////////////
 
 
+    ////doctor_spec_API//////
+    sp_spec_list() {
+      return this.http.get(this.apiUrl + 'sp_spec/getlist');
+    }
+    sp_spec_insert(data) {
+      return this.http.post(this.apiUrl + 'sp_spec/create', data);
+    }
+    sp_spec_edit(data) {
+      return this.http.post(this.apiUrl + 'sp_spec/edit', data);
+    }
+    sp_spec_delete(data) {
+      return this.http.post(this.apiUrl + 'sp_spec/delete', data);
+    }
+    sp_spec_filter_date(data) {
+      return this.http.post(this.apiUrl + 'sp_spec/filter_date', data);
+    }
+    //////////////
+
+
 
   ////doctor_spec_API//////
   doctor_details_list() {
@@ -319,8 +338,17 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'appointments/admin_doctor_payment', data);
   }
 
+  payment_details1(data) {
+    return this.http.post(this.apiUrl + 'appointments/admin_doctor_payment1', data);
+  }
+
+
   doctor_dashboard(data) {
     return this.http.post(this.apiUrl + 'doctordetails/doctor/dashboar', data);
+  }
+
+  doctor_dashboard1(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/doctor/dashboar1', data);
   }
 
   doctor_checkdetails(data) {
@@ -707,6 +735,13 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'sub_diagnosis/create', data);
   }
 
+
+  sub_diagnosis_getlist_byid(data) {
+    return this.http.post(this.apiUrl + 'sub_diagnosis/getlist_id', data);
+  }
+
+
+
   sub_diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'sub_diagnosis/getlist');
   }
@@ -737,6 +772,82 @@ export class ApiService {
   check_user(data) {
     return this.http.post(this.apiUrl + 'userdetails/check_user', data);
   }
+
+
+    ////Health Issue type API//////
+    health_issue_type_list() {
+      return this.http.get(this.apiUrl + 'healthissue/getlist');
+    }
+    health_issue_type_insert(data) {
+      return this.http.post(this.apiUrl + 'healthissue/create', data);
+    }
+    health_issue_type_edit(data) {
+      return this.http.post(this.apiUrl + 'healthissue/edit', data);
+    }
+    health_issue_type_delete(data) {
+      return this.http.post(this.apiUrl + 'healthissue/delete', data);
+    }
+    health_issue_type_filter_date(data) {
+      return this.http.post(this.apiUrl + 'healthissue/filter_date', data);
+    }
+    //////////////
+
+
+      ////pet lover mini banner API//////
+  mini_banner_list() {
+    return this.http.get(this.apiUrl + 'minibanner/getlist');
+  }
+  mini_banner_insert(data) {
+    return this.http.post(this.apiUrl + 'minibanner/create', data);
+  }
+  mini_banner_edit(data) {
+    return this.http.post(this.apiUrl + 'minibanner/edit', data);
+  }
+  mini_banner_delete(data) {
+    return this.http.post(this.apiUrl + 'minibanner/delete', data);
+  }
+  mini_banner_filter_date(data) {
+    return this.http.post(this.apiUrl + 'minibanner/filter_date', data);
+  }
+  //////////////
+
+
+  update_appointment(data) {
+    return this.http.post(this.apiUrl + 'walkin_appointment/update/doctorcomment', data);
+  }
+
+  create_prescription(data) {
+    return this.http.post(this.apiUrl + 'prescription/walkin_create', data);
+  }
+
+  fetch_prescription(data) {
+    return this.http.post(this.apiUrl + 'prescription/getlist', data);
+  }
+
+  update_prescription(data) {
+    return this.http.post(this.apiUrl + 'prescription/walkinedit', data);
+  }
+
+
+
+  appointment_list_doctor(data) {
+    return this.http.post(this.apiUrl + 'appointments/getlist_doctor_id', data);
+  }
+
+
+  vendor_details_list1() {
+    return this.http.get(this.apiUrl + 'product_vendor/getlist_list');
+  }
+
+  service_provider_list1() {
+    return this.http.get(this.apiUrl + 'service_provider/getlist_sp_id');
+  }
+
+  makelivedoctor(data) {
+    return this.http.post(this.apiUrl + 'doctordetails/adminedit', data);
+  }
+
+
 
 
 }

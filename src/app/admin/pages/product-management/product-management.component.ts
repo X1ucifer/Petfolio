@@ -40,6 +40,8 @@ export class ProductManagementComponent implements OnInit {
   product_code: any;
   Thmp_list: any = [];
   @ViewChild('imgType1', { static: false }) imgType: ElementRef;
+  @ViewChild('imgType2', { static: false }) imgType2: ElementRef;
+
   Vendor: any;
   pet_type_list: any = [];
   pet_breed_list: any = [];
@@ -56,6 +58,7 @@ export class ProductManagementComponent implements OnInit {
   subcat_main: any;
   today_deal: boolean;
   productForm: FormGroup;
+  thumbnail_image : any;
   constructor(
     private formBuilder:FormBuilder,
     private toastr:ToastrManager,
@@ -65,7 +68,7 @@ export class ProductManagementComponent implements OnInit {
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
-    ){ 
+    ){
    }
 
   ngOnInit(): void {
@@ -75,7 +78,7 @@ export class ProductManagementComponent implements OnInit {
     this.pettypelist();
     this.listpetbreed();
     this.sub_cat_list();
-    // this.subcatagorieslist(); 
+    // this.subcatagorieslist();
   }
   listpettype() {
     console.log("list");
@@ -154,14 +157,15 @@ export class ProductManagementComponent implements OnInit {
   // }
 
   validation() {
-    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.Vendor == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
-      this.Validation = false;
-      console.log(this.Validation)
-    }
-    else {
-      this.Validation = true;
-      console.log(this.Validation)
-    }
+    // if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.Vendor == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
+    //   this.Validation = false;
+    //   console.log(this.Validation)
+    // }
+    // else {
+    //   this.Validation = true;
+    //   console.log(this.Validation)
+    // }
+    this.Validation = true;
   }
 
 
@@ -206,7 +210,8 @@ export class ProductManagementComponent implements OnInit {
         "mobile_type": 'Admin',
         "verification_status": "Not Verified",
         "status": true,
-        "delete_status": true
+        "delete_status": false,
+        "thumbnail_image":this.thumbnail_image || "",
       }
       console.log(a);
       this._api.product_details_create(a).subscribe(
@@ -218,6 +223,7 @@ export class ProductManagementComponent implements OnInit {
             this.Description = undefined;
             this.Thmp_list = [];
             this.img_path = undefined;
+            this.thumbnail_image = undefined;
             this.Vendor = undefined;
             this.Category = undefined;
             this.Sub_Category = undefined;
@@ -250,7 +256,7 @@ export class ProductManagementComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 200 && height == 200) {
+        if (width !== 0 && height !== 0) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -302,6 +308,7 @@ export class ProductManagementComponent implements OnInit {
   }
 
   edit(item) {
+    console.log(item);
     this.edit_t = true;
     this.id = item._id;
     let obj3 = [];
@@ -314,6 +321,7 @@ export class ProductManagementComponent implements OnInit {
     let arr2 = this.Catagories_list;
     this.Vendor = arr1.filter((x: any) => x._id == item.user_id)[0]
     this.Category = item.cat_id;
+    this.thumbnail_image = item.thumbnail_image;
     console.log(this.Vendor);
     console.log(this.Category);
 
@@ -371,7 +379,8 @@ export class ProductManagementComponent implements OnInit {
         "mobile_type": 'Admin',
         "verification_status": "Not Verified",
         "status": true,
-        "delete_status": true
+        "delete_status": false,
+        "thumbnail_image":this.thumbnail_image || "",
 
       }
       console.log(a);
@@ -483,7 +492,7 @@ export class ProductManagementComponent implements OnInit {
   }
 
   makeTDeal(_id, today_deal){
-    
+
     const data = {
       _id : _id,
       today_deal : today_deal
@@ -510,5 +519,54 @@ export class ProductManagementComponent implements OnInit {
   showWarning(msg) {
       this.toastr.warningToastr(msg);
   }
+
+
+      //////Additional Calling Funcation//////
+      fileupload2(event) {
+        console.log("this.width")
+        this.selectedimgae = event.target.files[0];
+        console.log(this.selectedimgae.size / 100000);
+        let fr = new FileReader();
+        fr.onload = () => { // when file has loaded
+          var img = new Image();
+          img.onload = () => {
+            let width = img.width;
+            let height = img.height;
+            console.log(width, height);
+            if (width !== 0 && height !== 0) {
+              let d = this.selectedimgae.size / 100000;
+              if (d < 10) {
+                this.addfiles2();
+              } else {
+                //alert('Please upload the file below 1 MB');
+                this.showWarning("Please upload the file below 1 MB");
+                this.imgType2.nativeElement.value = "";
+              }
+            }
+            else {
+              this.showWarning("Please upload the file size 200 * 200");
+              // alert('Please upload the file size 100 * 100');
+              this.imgType2.nativeElement.value = "";
+            }
+          };
+          img.src = fr.result as string; // The data URL
+        };
+        fr.readAsDataURL(this.selectedimgae);
+        // clear the value after upload
+      }
+
+
+      addfiles2() {
+        const fd = new FormData();
+        fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+        this.http.post(this.imgUrl , fd)
+          .subscribe((res: any) => {
+            console.log(res);
+            this.thumbnail_image = res.Data;
+            this.imgType.nativeElement.value = "";
+          });
+      }
+
+
 }
 

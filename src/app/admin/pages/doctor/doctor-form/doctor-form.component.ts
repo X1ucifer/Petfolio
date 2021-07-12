@@ -61,6 +61,9 @@ export class DoctorFormComponent implements OnInit {
   f_date: any;
   T_date: any;
   CName: any;
+
+  thumbnail_image : any ;
+
   selectedimgae: any;
   Exp: any = [
     { "y": "1+ years" },
@@ -137,7 +140,9 @@ export class DoctorFormComponent implements OnInit {
       this.certificate_arr = this.detail.certificate_pic;
       this.govt_arr = this.detail.govt_id_pic;
       this.photo_arr = this.detail.photo_id_pic;
+      this.thumbnail_image = this.thumbnail_image;
       this.consultancy_fees =  +this.detail.consultancy_fees;
+
     }
     for (let i = 1980; i < 2020; i++) {
       this.years.push({ "y": i + 1 })
@@ -280,6 +285,10 @@ export class DoctorFormComponent implements OnInit {
           this.img_path = undefined;
 
         }
+        if (data == 'thumbnail_img') {
+          this.thumbnail_image = this.img_path ;
+          this.img_path = undefined;
+        }
       });
 
 
@@ -371,6 +380,7 @@ export class DoctorFormComponent implements OnInit {
       "profile_verification_status": "Not verified",
       "date_and_time": "" + new Date(),
       "consultancy_fees" : this.consultancy_fees
+
     }
     console.log(a);
     this.validation();
@@ -394,9 +404,12 @@ export class DoctorFormComponent implements OnInit {
         "certificate_pic": this.certificate_arr,
         "govt_id_pic": this.govt_arr,
         "photo_id_pic": this.photo_arr,
+        "thumbnail_image" : this.thumbnail_image,
         "profile_status": 0,
         "profile_verification_status": "Not verified",
         "date_and_time": "" + new Date(),
+        "consultancy_fees" : this.consultancy_fees
+
       }
       console.log(a);
       this._api.doctor_details_create(a).subscribe(
@@ -468,9 +481,12 @@ export class DoctorFormComponent implements OnInit {
       "certificate_pic": this.certificate_arr,
       "govt_id_pic": this.govt_arr,
       "photo_id_pic": this.photo_arr,
+      "thumbnail_image" : this.thumbnail_image,
       // "profile_status": 0,
       // "profile_verification_status": "Not verified",
       "date_and_time": "" + new Date(),
+      "consultancy_fees" : this.consultancy_fees
+
     }
     console.log(a);
     this._api.doctor_details_edit(a).subscribe(

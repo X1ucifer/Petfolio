@@ -1,25 +1,25 @@
 <mat-card>
- <div class=""  *ngIf="notification_list.length == 0" >
-   No Record Found
- </div>
- <div class="tabledata" *ngIf="notification_list.length !== 0" >
-  <p-table [value]="notification_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true"
-  [rows]="10" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-  <ng-template pTemplate="body" let-item let-i="rowIndex">
+  <div class=""  *ngIf="notification_list.length == 0" >
+    No Record Found
+  </div>
+  <div class="tabledata" *ngIf="notification_list.length !== 0" >
+   <p-table [value]="notification_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true"
+   [rows]="10" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+   <ng-template pTemplate="body" let-item let-i="rowIndex">
 
-   <div class="card-box shadow">
-    <div class="row">
-     <div class="col-md-12" style="padding: 6px 10px 10px;">
-      <h2>{{item.notify_title}}</h2>
-      <span style="font-size: 18px;">{{item.notify_descri}}</span>
-      <div style="font-weight: 200;">
-       {{item.notify_time}}
+    <div class="card-box shadow">
+     <div class="row">
+      <div class="col-md-12" style="padding: 6px 10px 10px;">
+       <h2>{{item.notify_title}}</h2>
+       <span style="font-size: 18px;">{{item.notify_descri}}</span>
+       <div style="font-weight: 200;">
+        {{item.notify_time}}
+       </div>
       </div>
      </div>
     </div>
-   </div>
-  </ng-template>
- </p-table>
-</div>
-</mat-card>
+   </ng-template>
+  </p-table>
+ </div>
+ </mat-card>

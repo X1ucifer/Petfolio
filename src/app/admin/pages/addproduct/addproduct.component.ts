@@ -41,6 +41,7 @@ export class AddproductComponent implements OnInit {
   product_code: any;
   Thmp_list: any = [];
   @ViewChild('imgType1', { static: false }) imgType: ElementRef;
+  @ViewChild('imgType2', { static: false }) imgType2: ElementRef;
   Vendor: any;
   pet_type_list: any = [];
   pet_breed_list: any = [];
@@ -57,6 +58,10 @@ export class AddproductComponent implements OnInit {
   subcat_main: any;
   today_deal: boolean;
   productForm: FormGroup;
+  thumbnail_image : any;
+
+
+
   constructor(
     private formBuilder:FormBuilder,
     private toastr:ToastrManager,
@@ -282,6 +287,54 @@ export class AddproductComponent implements OnInit {
   }
 
 
+    //////Additional Calling Funcation//////
+    fileupload2(event) {
+      console.log("this.width")
+      this.selectedimgae = event.target.files[0];
+      console.log(this.selectedimgae.size / 100000);
+      let fr = new FileReader();
+      fr.onload = () => { // when file has loaded
+        var img = new Image();
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+          console.log(width, height);
+          if (width !== 200 && height == 200) {
+            let d = this.selectedimgae.size / 100000;
+            if (d < 10) {
+              this.addfiles2();
+            } else {
+              //alert('Please upload the file below 1 MB');
+              this.showWarning("Please upload the file below 1 MB");
+              this.imgType2.nativeElement.value = "";
+            }
+          }
+          else {
+            this.showWarning("Please upload the file size 200 * 200");
+            // alert('Please upload the file size 100 * 100');
+            this.imgType2.nativeElement.value = "";
+          }
+        };
+        img.src = fr.result as string; // The data URL
+      };
+      fr.readAsDataURL(this.selectedimgae);
+      // clear the value after upload
+    }
+
+
+    addfiles2() {
+      const fd = new FormData();
+      fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+      this.http.post(this.imgUrl , fd)
+        .subscribe((res: any) => {
+          console.log(res);
+          this.thumbnail_image = res.Data;
+          this.imgType.nativeElement.value = "";
+
+        });
+    }
+
+
   delete(data) {
     let a = {
       '_id': data
@@ -298,6 +351,7 @@ export class AddproductComponent implements OnInit {
   }
 
   edit(item) {
+    console.log("item",item);
     this.edit_t = true;
     this.id = item._id;
     let obj3 = [];
@@ -312,6 +366,7 @@ export class AddproductComponent implements OnInit {
     console.log(this.Category);
 
     this.Age = obj3;
+    this.thumbnail_image = item.thumbnail_image;
     this.pettype = item.pet_type;
     let c = this.pet_breed_list;
     let d = c.filter((x: any) => item.breed_type.some((y: any) => y._id == x._id))

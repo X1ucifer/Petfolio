@@ -112,21 +112,22 @@ export class ServiceTypeComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 200 && height == 200) {
-          let d = this.selectedimgae.size / 100000;
-          if (d < 10) {
-            this.addfiles1();
-          } else {
-            //alert('Please upload the file below 1 MB');
-            this.showWarning("Please upload the file below 64 KB");
-            this.imgType.nativeElement.value = "";
-          }
-        }
-        else {
-          //alert('Please upload the file size 100 * 100');
-          this.showWarning("Please upload the file size 200 * 200");
-          this.imgType.nativeElement.value = "";
-        }
+        // if (width == 80 && height == 80) {
+        //   let d = this.selectedimgae.size / 100000;
+        //   if (d < 10) {
+        //     this.addfiles1();
+        //   } else {
+        //     //alert('Please upload the file below 1 MB');
+        //     this.showWarning("Please upload the file below 64 KB");
+        //     this.imgType.nativeElement.value = "";
+        //   }
+        // }
+        // else {
+        //   //alert('Please upload the file size 100 * 100');
+        //   this.showWarning("Please upload the file size 200 * 200");
+        //   this.imgType.nativeElement.value = "";
+        // }
+        this.addfiles1();
       };
       img.src = fr.result as string; // The data URL
     };
@@ -146,21 +147,22 @@ export class ServiceTypeComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 300 && height == 500) {
-          let d = this.selectedimgae.size / 100000;
-          if (d < 10) {
-            this.addfiles2();
-          } else {
-            //alert('Please upload the file below 1 MB');
-            this.showWarning("Please upload the file below 400 KB")
-            this.imgType.nativeElement.value = "";
-          }
-        }
-        else {
-          //alert('Please upload the file size 100 * 100');
-          this.showWarning("Please upload the file size 800 * 350")
-          this.imgType.nativeElement.value = "";
-        }
+        // if (width ==  350 && height == 800) {
+        //   let d = this.selectedimgae.size / 100000;
+        //   if (d < 10) {
+        //     this.addfiles2();
+        //   } else {
+        //     //alert('Please upload the file below 1 MB');
+        //     this.showWarning("Please upload the file below 400 KB")
+        //     this.imgType.nativeElement.value = "";
+        //   }
+        // }
+        // else {
+        //   //alert('Please upload the file size 100 * 100');
+        //   this.showWarning("Please upload the file size 800 * 350")
+        //   this.imgType.nativeElement.value = "";
+        // }
+        this.addfiles2();
       };
       img.src = fr.result as string; // The data URL
     };

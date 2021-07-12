@@ -26,6 +26,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
   Pet_Weight: any;
   Pet_Age: any;
   Vaccinated: any = [];
+  Catagories_list: any;
   Details: any;
   Vaccinated_date: any;
   vacinated_array: any = [
@@ -52,7 +53,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
   Fname: any;
   Lname: any;
   Email: any;
-  Phone: any;
+  Phone: any = '9710809161';
   Email_id: any;
   Email_idError: any;
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
@@ -71,6 +72,27 @@ export class WalkinAppointmentFormComponent implements OnInit {
   petedit: boolean = false;
   cus_edit: boolean = false;
   doc_detail:any;
+  diagnosis_type = [];
+  sub_diagnosis_type = [];
+  diagnosis : any = '';
+  sub_diagnosis : any = '';
+
+  diagnosis_text : any = '';
+  sub_diagnosis_text : any = '';
+
+
+  title = 'autocomplete-using-angular-ng-autocomplete-example';
+  keyword = 'diagnosis';
+  keyword1 = 'sub_diagnosis';
+  keyword2 = 'pet_breed';
+  keyword3 = 'pet_type_title';
+
+
+
+
+
+
+
   constructor(
     private toastr: ToastrManager,
     private router: Router,
@@ -90,6 +112,7 @@ export class WalkinAppointmentFormComponent implements OnInit {
     this.listpetbreed();
     this.listpettype();
     this.listdoctorsall();
+    this.list_diagnosis();
     console.log("this.doc_detail")
     console.log(this.doc_detail)
     let doctordetails = this.storage.get("user");
@@ -188,6 +211,10 @@ export class WalkinAppointmentFormComponent implements OnInit {
   }
 
   check_user(){
+    console.log(this.Phone);
+    if(this.Phone == '' || this.Phone == undefined){
+       this.toastr.warningToastr('Please fill the phone number');
+    }else{
       console.log(this.Phone);
       let a = {
         user_phone : this.Phone
@@ -198,11 +225,15 @@ export class WalkinAppointmentFormComponent implements OnInit {
           if(response.Data == null){
             this.check_old = false;
           } else{
-            this.check_old = false;
+            // this.check_old = false;
              this.create();
+             this.step = 2;
+             this.preview == true;
           }
         }
       );
+    }
+
 
 
 
@@ -556,7 +587,9 @@ export class WalkinAppointmentFormComponent implements OnInit {
         "user_id": this.customer_datails._id,
         "user_rate": 0.0,
         "video_id": "",
-        "visit_type": "Clinic"
+        "visit_type": "Clinic",
+        diagnosis :  this.diagnosis_text,
+        sub_diagnosis : this.sub_diagnosis_text,
       };
       console.log(a);
       this._api.appointments_mobile_create(a).subscribe(
@@ -574,4 +607,100 @@ export class WalkinAppointmentFormComponent implements OnInit {
       );
     }
   }
+
+
+  list_diagnosis() {
+    this._api.diagnosis_getlist().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.diagnosis_type = response.Data
+      }
+    );
+  }
+
+
+  list_sub_diagnosis() {
+    console.log(this.diagnosis);
+    for(let c  =  0 ; c < this.diagnosis_type.length ; c++){
+     if(this.diagnosis_type[c]._id == this.diagnosis._id){
+       this.diagnosis_text = this.diagnosis_type[c].diagnosis;
+     }
+    }
+
+
+
+    console.log(this.diagnosis._id);
+    let a = {
+      "diagnosis_id" :this.diagnosis._id
+    }
+    this._api.sub_diagnosis_getlist_byid(a).subscribe(
+      (response: any) => {
+        console.log(response.Data);
+       this.sub_diagnosis_type = response.Data;
+      }
+    );
+  }
+
+
+
+  fetch_text(data){
+    for(let c  =  0 ; c < this.diagnosis_type.length ; c++){
+      if(this.diagnosis_type[c]._id == this.diagnosis){
+        this.diagnosis_text = this.diagnosis_type[c].diagnosis;
+        console.log(this.diagnosis_text);
+      }
+     }
+    console.log(this.sub_diagnosis_type,data);
+     for(let d  =  0 ; d < this.sub_diagnosis_type.length ; d++){
+       console.log(this.sub_diagnosis_type[d]._id,this.sub_diagnosis);
+      if(this.sub_diagnosis_type[d]._id == this.sub_diagnosis){
+        this.sub_diagnosis_text = this.sub_diagnosis_type[d].sub_diagnosis;
+        console.log(this.sub_diagnosis_text);
+      }
+     }
+  }
+
+  subcate() {
+    console.log(this.diagnosis_text);
+  }
+
+
+  selectEvent(item) {
+    console.log(item);
+    this.diagnosis = item;
+    this.list_sub_diagnosis();
+    // here we can write code for doing something with selected item
+  }
+
+  onChangeSearch(val: string) {
+    // here we can fetch data from remote location here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e){
+    // here we can write our code for doing something when input is focused
+  }
+
+
+  selectEvent1(item) {
+    console.log(item);
+    // here we can write code for doing something with selected item
+  }
+
+
+  selectEvent2(item) {
+    console.log(item);
+    this.Pet_Breed = '';
+    // here we can write code for doing something with selected item
+  }
+
+
+  selectEvent3(item){
+    console.log(item);
+  }
+
+
+
+
+
 }

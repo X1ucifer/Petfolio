@@ -1,0 +1,75 @@
+<div class="container" style="width: 100%;">
+      <p (click)="back()"> <i class="fa fa-arrow-left"></i> Back </p>
+      <div class="row">
+          <div class="col-md-12" style="margin-top: 25px;">
+              <div class="spec">
+                  <h4> <label style="color: #007adb;" *ngIf="!button_action">prescription add</label></h4>
+                  <h4> <label style="color: #007adb;"  *ngIf="button_action">prescription Edit</label></h4>
+              </div>
+              <div class="card-box" style="padding: 5px 5px 5px 5px">
+                  <div class="app-i">
+                    <table>
+                      <tr>
+                        <th>Medicine</th>
+                        <th>No of days</th>
+                        <th>Consumption per day</th>
+                        <th>Action</th>
+                      </tr>
+                      <tr>
+                        <td><input class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ui-state-filled ng-touched" type="text" name="medicine" [(ngModel)]="Tablet_name" >  </td>
+                        <td><input class="ui-inputtext ui-corner-all ui-state-default ui-widget ng-pristine ng-valid ui-state-filled ng-touched" type="text"  name="no_of_day" [(ngModel)]="Quantity" > </td>
+                        <td>
+                          <div class="row">
+                             <div class="col-md-4">
+                              <input type="checkbox" class="largerCheckbox" id="vehicle1" name="morning" [(ngModel)]="morning"  name="vehicle1" value="Bike">
+                              <label for="vehicle1" style="margin-left: 10px;">Morning</label><br>
+                             </div>
+                             <div class="col-md-4">
+                              <input type="checkbox" class="largerCheckbox" id="vehicle2" name="evening" [(ngModel)]="evening"  name="vehicle2" value="Car">
+                              <label for="vehicle2" style="margin-left: 10px;">Evening</label><br>
+                              </div>
+                              <div class="col-md-4">
+                                <input type="checkbox" class="largerCheckbox" id="vehicle3" name="night" [(ngModel)]="night"  name="vehicle3" value="Boat">
+                                <label for="vehicle3" style="margin-left: 10px;">Night</label><br>
+                                </div>
+                          </div>
+
+
+                        </td>
+                        <td><button class="btn btn-success btn-sm mr-2" (click)="add()">Add</button></td>
+                      </tr>
+                      <ng-container *ngFor="let item of datas; let i = index">
+                        <tr>
+                        <td>{{item.Tablet_name}}</td>
+                        <td>{{item.Quantity}}</td>
+                        <td>
+                          <div class="row">
+                            <div class="col-md-4">
+                          <input type="checkbox" class="largerCheckbox"  id="vehicle1" name="morning" [(ngModel)]="item.consumption.morning"  name="vehicle1" value="Bike">
+                          <label for="vehicle1" style="margin-left: 10px;"> Morning</label><br>
+                          </div>
+                          <div class="col-md-4">
+                          <input type="checkbox"  class="largerCheckbox"   id="vehicle2" name="evening" [(ngModel)]="item.consumption.evening"  name="vehicle2" value="Car">
+                          <label for="vehicle2" style="margin-left: 10px;"> Evening</label><br>
+                         </div>
+                         <div class="col-md-4">
+                          <input type="checkbox"  class="largerCheckbox"   id="vehicle3" name="night" [(ngModel)]="item.consumption.night"  name="vehicle3" value="Boat">
+                          <label for="vehicle3" style="margin-left: 10px;"> Night</label><br>
+                          </div>
+                          </div>
+                        </td>
+                        <td><button class="btn btn-danger btn-sm mr-2" (click)="remove(i)" >Remove</button></td>
+                      </tr>
+                      </ng-container>
+                    </table>
+                  <div>
+                      </div>
+                  </div>
+              </div>
+              <button class="btn btn-secondary btn-sm mr-2" (click)="save()" *ngIf="!button_action" >Save</button>
+              <button class="btn btn-primary btn-sm mr-2" (click)="update()" *ngIf="button_action" >Update</button>
+          </div>
+
+      </div>
+  </div>
+

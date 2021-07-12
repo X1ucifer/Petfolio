@@ -35,6 +35,9 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +54,7 @@ import { ButtonModule } from 'primeng/button';
   ],
   imports: [
     BrowserModule,
+    AutocompleteLibModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

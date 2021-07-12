@@ -57,6 +57,7 @@
                             <ng-template pTemplate="header">
                                 <tr class="thhead">
                                     <th class="th-1">S.No </th>
+                                    <!-- <th> Lgoin N & N </th> -->
                                     <th> Service Business name </th>
                                     <th> Services user name</th>
                                     <th> Services user number</th>
@@ -80,6 +81,7 @@
                             <ng-template pTemplate="body" let-item let-i="rowIndex">
                                 <tr class="tdrow">
                                     <td>{{i+1}}</td>
+                                    <!-- <td>{{item.user_id.first_name}} {{item.user_id.last_name}} & {{item.user_id.user_phone}}</td> -->
                                     <td>{{item.bussiness_name}}</td>
 
                                     <td>{{item.bus_user_name}}</td>
