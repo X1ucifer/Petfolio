@@ -24,7 +24,15 @@ export class DoctorEditCalendarComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private formBuilder: FormBuilder
-  ) { }
+  ) { 
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/doctorlogin');
+
+    }
+  }
 
   ngOnInit(): void {
     this.users = this.storage.get("user");
@@ -54,6 +62,13 @@ export class DoctorEditCalendarComponent implements OnInit {
     // }
     localStorage.setItem('dataSource', data);
     this.router.navigateByUrl('/doctor-admin/doctor-edit-calendar-time');
+  }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
   }
 }
 function user(user: any): any {

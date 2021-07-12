@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-appointment-details',
@@ -20,7 +21,16 @@ export class DoctorAppointmentDetailsComponent implements OnInit {
     private location: Location,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
+    private router: Router,
+
   ) { 
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/doctorlogin');
+
+    }
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     const x = new Date(this.view_detail_data.booking_date_time);

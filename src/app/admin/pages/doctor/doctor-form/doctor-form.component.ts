@@ -104,6 +104,13 @@ export class DoctorFormComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute
   ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/login');
+
+    }
     this._api.petdetails_dropdownslist().subscribe(
       (response: any) => {
         console.log(response.Data);

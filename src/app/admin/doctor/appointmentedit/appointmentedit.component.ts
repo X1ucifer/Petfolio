@@ -36,6 +36,13 @@ export class AppointmenteditComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
   ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/doctorlogin');
+
+    }
     this._api.sub_diagnosis_getlist().subscribe(
       (response: any) => {
         console.log(response.Data);

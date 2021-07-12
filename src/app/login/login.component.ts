@@ -101,6 +101,7 @@ export class LoginComponent implements OnInit {
     this.validator();
     if (this.validation) {
       if ((this.email == 'petfolio@gmail.com') && (this.password == '12345')) {
+       this.saveInLocal('login', true);
         this.router.navigateByUrl('/admin/dashboard');
       } else {
         alert('Invalid Account');

@@ -3,6 +3,7 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
 import { DatePipe } from '@angular/common'
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-holiday',
@@ -20,8 +21,18 @@ export class DoctorHolidayComponent implements OnInit {
     private toastr: ToastrManager,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
-    public datepipe: DatePipe
-  ) { }
+    public datepipe: DatePipe,
+    private router: Router,
+
+  ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/doctorlogin');
+
+    }
+   }
 
   ngOnInit(): void {
     this.users = this.storage.get("user");
@@ -83,5 +94,11 @@ export class DoctorHolidayComponent implements OnInit {
   showError(msg) {
     this.toastr.errorToastr(msg);
   }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 }

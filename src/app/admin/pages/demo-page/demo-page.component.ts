@@ -46,7 +46,15 @@ export class DemoPageComponent implements OnInit {
     private http: HttpClient,
     private datePipe: DatePipe,
     private dialog: MatDialog
-  ) { }
+  ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/login');
+
+    }
+   }
 
   ngOnInit(): void {
     this.listpettype();
@@ -264,6 +272,13 @@ export class DemoPageComponent implements OnInit {
 
   showWarning(msg) {
       this.toastr.warningToastr(msg);
+  }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
   }
 }
 

@@ -17,7 +17,15 @@ export class DoctorEditCalendarTimeComponent implements OnInit {
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private router: Router,
-    private _api: ApiService) { }
+    private _api: ApiService) {
+      let login = false
+      login = this.getFromLocal('login');
+      console.log(login)
+      if (login != true) {
+        this.router.navigateByUrl('/doctorlogin');
+  
+      }
+     }
 
   ngOnInit(): void {
     this.day = localStorage.getItem('dataSource');
@@ -48,5 +56,12 @@ export class DoctorEditCalendarTimeComponent implements OnInit {
     this.post_data = { "days": [this.day], "timing": this.timeList, "user_id": this.users._id };
     console.log(this.post_data);
     this.submit_time(this.post_data);
+  }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
   }
 }

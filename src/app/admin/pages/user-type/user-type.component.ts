@@ -47,7 +47,15 @@ export class UserTypeComponent implements OnInit {
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
     private dialog: MatDialog
-  ) { }
+  ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/login');
+
+    }
+   }
 
   ngOnInit(): void {
     this.user_type_title = '';
@@ -259,5 +267,11 @@ export class UserTypeComponent implements OnInit {
   }
 
 
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
 }
