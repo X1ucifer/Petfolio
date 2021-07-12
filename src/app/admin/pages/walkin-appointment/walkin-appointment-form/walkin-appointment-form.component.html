@@ -98,13 +98,43 @@
                 </div>
                 <div class="col-md-6">
                     <h5 class="form-lable">Pet Type:</h5>
-                    <p-dropdown [options]="type_array" [(ngModel)]="Pet_Type" placeholder="Select"
-                        optionLabel="pet_type_title" [showClear]="true"></p-dropdown>
+                    <!-- <p-dropdown [options]="type_array" [(ngModel)]="Pet_Type" placeholder="Select"
+                        optionLabel="pet_type_title" [showClear]="true"></p-dropdown> -->
+
+                        <div class="ng-autocomplete">
+                          <ng-autocomplete [data]="type_array" [searchKeyword]="keyword3" (selected)='selectEvent3($event)'
+                              [itemTemplate]="itemTemplate3"
+                              [notFoundTemplate]="notFoundTemplate">
+                          </ng-autocomplete>
+
+                          <ng-template #itemTemplate3 let-item>
+                              <a [innerHTML]="item.pet_type_title"></a>
+                          </ng-template>
+
+                          <ng-template #notFoundTemplate let-notFound>
+                              <div [innerHTML]="notFound"></div>
+                          </ng-template>
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <h5 class="form-lable">Pet Breed:</h5>
-                    <p-dropdown [options]="breed_array" [(ngModel)]="Pet_Breed" placeholder="Select"
-                        optionLabel="pet_breed" [showClear]="true"></p-dropdown>
+                    <!-- <p-dropdown [options]="breed_array" [(ngModel)]="Pet_Breed" placeholder="Select"
+                        optionLabel="pet_breed" [showClear]="true"></p-dropdown> -->
+
+                        <div class="ng-autocomplete">
+                          <ng-autocomplete [data]="breed_array" [searchKeyword]="keyword2" (selected)='selectEvent2($event)'
+                              [itemTemplate]="itemTemplate2"
+                              [notFoundTemplate]="notFoundTemplate">
+                          </ng-autocomplete>
+
+                          <ng-template #itemTemplate2 let-item>
+                              <a [innerHTML]="item.pet_breed"></a>
+                          </ng-template>
+
+                          <ng-template #notFoundTemplate let-notFound>
+                              <div [innerHTML]="notFound"></div>
+                          </ng-template>
+                        </div>
                 </div>
                 <div class="col-md-6">
                     <h5 class="form-lable">Pet Gender:</h5>
@@ -326,6 +356,73 @@
                 <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="desc"></textarea>
 
             </div>
+
+            <div class="col-md-6">
+              <h5 class="form-lable">Primary diagnosis:</h5>
+
+              <div class="ng-autocomplete">
+                <ng-autocomplete [data]="diagnosis_type" [searchKeyword]="keyword" (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.diagnosis"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
+              <!-- <select name="cars" id="cars" class="form-control" [(ngModel)]="diagnosis" (ngModelChange)="list_sub_diagnosis()">
+                <option value="" disabled>Select diagonsis</option>
+                <ng-container *ngFor='let item of diagnosis_type;let i = index'>
+                  <option value="{{item._id}}">{{item.diagnosis}}</option>
+                </ng-container>
+              </select> -->
+          </div>
+
+
+
+
+
+
+
+          <div class="col-md-6">
+            <h5 class="form-lable">Sub diagnosis:</h5>
+            <div class="ng-autocomplete">
+              <ng-autocomplete [data]="sub_diagnosis_type" [searchKeyword]="keyword1" (selected)='selectEvent1($event)'
+                  [itemTemplate]="itemTemplate1"
+                  [notFoundTemplate]="notFoundTemplate">
+              </ng-autocomplete>
+
+              <ng-template #itemTemplate1 let-item>
+                  <a [innerHTML]="item.sub_diagnosis"></a>
+              </ng-template>
+
+              <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+
+
+            <!-- <select name="cars" id="cars" class="form-control" [(ngModel)]="sub_diagnosis" (ngModelChange)="fetch_text(sub_diagnosis)"  >
+              <option value="" disabled>Select sub diagonsis</option>
+              <ng-container *ngFor='let items of sub_diagnosis_type;let i = index'>
+                <option value="{{items._id}}">{{items.sub_diagnosis}}</option>
+              </ng-container>
+            </select> -->
+        </div>
+
+
+
+
+
+
+
+
+
+
             <div class="col-md-12 mt-20 text-right"  *ngIf="preview != true">
                 <button type="button" class="btn btn-primary" (click)="Book()">Next</button>
             </div>

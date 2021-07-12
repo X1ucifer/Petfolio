@@ -62,7 +62,7 @@ export class ServiceproviderDetailsComponent implements OnInit {
 
 
   listpettype() {
-    this._api.service_provider_list().subscribe(
+    this._api.service_provider_list1().subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;

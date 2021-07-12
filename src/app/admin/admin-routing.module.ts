@@ -71,15 +71,25 @@ import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.c
 import {AddproductComponent} from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
-import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.component';
-import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
 import { WalkinAppointmentComponent } from './pages/walkin-appointment/walkin-appointment.component';
+
+import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
+import { HealthissueComponent } from './pages/healthissue/healthissue.component';
+import { MinibannerComponent } from './pages/master/minibanner/minibanner.component';
+import { AppointmenteditComponent } from './doctor/appointmentedit/appointmentedit.component';
+import { PrescriptionaddComponent } from './doctor/prescriptionadd/prescriptionadd.component';
+import { PrescriptionviewComponent } from './doctor/prescriptionview/prescriptionview.component';
+import { SpSpecializationComponent } from '../service-provider/pages/sp-specialization/sp-specialization.component';
+import { SpSpecComponent } from './pages/sp-spec/sp-spec.component';
+import { WalkinpaymentComponent } from './doctor/walkinpayment/walkinpayment.component';
+import { ApppaymentComponent } from './doctor/apppayment/apppayment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/:name', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },
+  { path: 'healthissue', component: HealthissueComponent },
   { path: 'Pet_handle', component: DocPetHandledComponent },
   { path: 'Pet_Breed_Type', component: PetBreedTypeComponent },
   { path: 'Pet_Health_Checkup', component: PetHealthCheckupComponent },
@@ -114,6 +124,8 @@ const routes: Routes = [
   { path: 'cancel_appointment', component: CancelAppointmentComponent },
   { path: 'payment_management', component: PaymentManagementComponent },
   { path: 'notification', component: NotificationComponent },
+
+
   { path: 'view-vendor-products', component: ViewVendorProductsComponent },
 
   ///DOCTOR///
@@ -135,6 +147,12 @@ const routes: Routes = [
       { path: 'doctor-support', component: DoctorSupportComponent },
       { path: 'Walkin_Appointment_form', component: WalkinAppointmentFormComponent },
       { path: 'Walkin_Appointment', component: WalkinAppointmentComponent },
+      { path: 'appointment_edit', component: AppointmenteditComponent },
+      { path: 'prescriptionadd', component: PrescriptionaddComponent },
+      { path: 'prescriptionview', component: PrescriptionviewComponent },
+
+      { path: 'walkinpayment', component: WalkinpaymentComponent },
+      { path: 'apppayment', component: ApppaymentComponent }
 
     ]
   },
@@ -142,12 +160,14 @@ const routes: Routes = [
   ///Master ////
   /////////Banners//////
   { path: 'master/banner/homebanner', component: HomebannerComponent },
+  { path: 'master/banner/minibanner', component: MinibannerComponent },
   { path: 'master/banner/petcarebanner', component: PetcarebannerComponent },
   { path: 'master/banner/petservicebanner', component: PetservicebannerComponent },
   { path: 'master/banner/ecombanner', component: EcombannerComponent },
   { path: 'master/banner/marketplacebanner', component: MarketplacebannerComponent },
   { path: 'master/banner/splashscreen', component: SplashScreenComponent },
   { path: 'master/locations/addlocation', component: LocationsComponent },
+  { path: 'master/sp/specialization', component: SpSpecComponent },
 
 
   { path: 'Coupon_Code', component: CouponCodeComponent },
@@ -164,8 +184,6 @@ const routes: Routes = [
   { path: 'Add_Product', component: AddproductComponent },
   { path: 'Diagnosis', component: DiagnosisComponent },
   { path: 'Sub_diagnosis', component: SubDiagnosisComponent },
-
-  { path: 'order_managment', component: OrdermanagmentComponent },
 
 ];
 

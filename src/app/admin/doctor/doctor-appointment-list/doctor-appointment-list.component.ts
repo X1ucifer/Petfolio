@@ -63,7 +63,11 @@ export class DoctorAppointmentListComponent implements OnInit {
   }
 
   listpettype() {
-    this._api.appointment_list().subscribe(
+    console.log(this.user);
+    let a  = {
+      doctor_id : this.user._id
+    }
+    this._api.appointment_list_doctor(a).subscribe(
       (response: any) => {
         console.log(response.Data);
         this.rows = response.Data;

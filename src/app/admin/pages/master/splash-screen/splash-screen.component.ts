@@ -108,7 +108,7 @@ export class SplashScreenComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        // if (width == 800 && height == 350) {
+        if (width !== 0 && height !== 0) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -117,12 +117,12 @@ export class SplashScreenComponent implements OnInit {
             this.showWarning("Please upload the file below 400 KB")
             this.imgType.nativeElement.value = "";
           }
-        // }
-        // else {
-        //   this.showWarning("Please upload the file size 800 * 350")
-        //   // alert('Please upload the file size 100 * 100');
-        //   this.imgType.nativeElement.value = "";
-        // }
+        }
+        else {
+          this.showWarning("Please upload the file size 800 * 350")
+          // alert('Please upload the file size 100 * 100');
+          this.imgType.nativeElement.value = "";
+        }
       };
       img.src = fr.result as string; // The data URL
     };

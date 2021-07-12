@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-  
+
     </div>
 
     <div class="row row-sm">
@@ -21,7 +21,7 @@
                     <div class="col-md-3">
                         <h5 class="form-lable">Diagnosis:</h5>
                        <p-dropdown [options]="rows1" [(ngModel)]="Diagnosis" (ngModelChange)="saverange()"  placeholder="Select Diagnosis" optionLabel="diagnosis" [showClear]="true"></p-dropdown>
-            
+
                     </div>
                     <div class="col-md-3">
                         <h5 class="form-lable">Sub Diagnosis:</h5>
@@ -37,7 +37,7 @@
                     <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()">
                         Cancel</button>
                 </div>
-            
+
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
 <div class="card custom-card">
         <div class="card-body">
             <div class="card-item">
-                
+
                 <div class="row">
                     <div class="col-md-3">
                         <div class="search-hero">
@@ -77,9 +77,9 @@
 
                 <!-- search -->
 
-                
+
                 <div class="table-responsive" *ngIf="rows.length > 0">
-                    <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+                    <p-table [value]="final | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
     <!-- <ng-template pTemplate="caption">
@@ -109,7 +109,7 @@
             <th>
                 Sub Diagnosis
                         </th>
-     
+
             <th>Created by</th>
             <th>Created at</th>
             <th style="width: 163px;text-align:center">
@@ -122,11 +122,10 @@
             <td>{{i+1}}</td>
             <td>{{item.diagnosis_id.diagnosis}}</td>
             <td>{{item.sub_diagnosis}}</td>
- 
             <td>
                 Admin
             </td>
-         
+
             <td>
                 {{item.date_and_time}}
             </td>

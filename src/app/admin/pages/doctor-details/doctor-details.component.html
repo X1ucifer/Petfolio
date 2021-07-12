@@ -93,6 +93,12 @@
                                             Name
                                         </th>
                                         <th style="width: 120px;">
+                                          Clinic Name
+                                      </th>
+                                      <th style="width: 120px;">
+                                        login N & N
+                                       </th>
+                                        <th style="width: 120px;">
                                             Education / Year of completion
                                         </th>
                                         <th>Experience </th>
@@ -122,6 +128,10 @@
 
                                         </td>
                                         <td>{{item.dr_title}}.{{item.dr_name}}</td>
+                                        <td>{{item.clinic_name}}</td>
+
+                                        <td>{{item.user_id.first_name}} {{item.user_id.last_name}} &  {{item.user_id.user_phone}}</td>
+
                                         <td>
                                             <ng-container *ngFor="let edu of item.education_details">
                                                 {{edu.education}}-{{edu.year}} ,

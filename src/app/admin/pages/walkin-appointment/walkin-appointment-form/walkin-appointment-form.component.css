@@ -30,20 +30,86 @@ overflow-x: scroll;
     border-collapse: collapse;
     width: 100%;
   }
-  
+
   .spec-table td, .spec-table th {
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
+
   .spec-table tr:nth-child(even){background-color: #f2f2f2;}
-  
+
   .spec-table tr:hover {background-color: #ddd;}
-  
+
   .spec-table th {
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: left;
     background-color: #099279;
     color: white;
+  }
+
+  .combobox {
+
+    margin: auto;
+  }
+
+  .combobox-input {
+
+    width: 330px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-bottom: 2px solid rgb(165, 112, 112);
+  }
+
+  .combobox-input:focus{
+
+    outline-style: none;
+  }
+
+  .combobox-options {
+
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    width: 350px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    z-index: 1;
+  }
+
+  .selected {
+
+    color: cornsilk;
+    background-color: rgb(165, 112, 112);
+  }
+
+  list-item{
+
+    display: block;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  list-item:hover{
+
+    background-color: grey;
+    color: white;
+  }
+
+  .error-text{
+
+    color: rgb(165, 112, 112);
+  }
+
+  .ng-autocomplete {
+    width:100%;
+    max-width: 600px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .error{
+    border: 1px solid red;
   }

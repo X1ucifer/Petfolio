@@ -4,8 +4,8 @@
     </div>
 </div>
 
+<h2>Walk in appointment</h2>
 <div class="row row-sm">
-
     <div class="col-lg-3">
         <div class="card custom-card">
             <div class="card-body">
@@ -13,13 +13,13 @@
                     <div class="card-item-icon card-icon">
                         <img src="assets/images/004.png" alt="" class="img-fluid">
                     </div>
-                    <div class="card-item-title mb-2">
-                        <label class="main-content-label text-uppercase font-weight-bold mb-1">New appointment</label>
+                    <div class="card-item-title mb-2" style="width: 70%;">
+                        <label class="main-content-label text-uppercase font-weight-bold mb-1">New</label>
                         <span class="d-block tx-12 mb-0 text-muted">count</span>
                     </div>
                     <div class="card-item-body">
                         <div class="card-item-stat">
-                            <h4 class="font-weight-bold">{{new_appointment}}</h4>
+                            <h4 class="font-weight-bold">{{w_new_appointment}}</h4>
                         </div>
                     </div>
                 </div>
@@ -34,14 +34,14 @@
                     <div class="card-item-icon card-icon bg-success">
                         <img src="assets/images/001.png" alt="" class="img-fluid">
                     </div>
-                    <div class="card-item-title mb-2">
+                    <div class="card-item-title mb-2" style="width: 70%;">
                         <label class="main-content-label text-uppercase font-weight-bold mb-1">Complete
-                            appointment</label>
+                            </label>
                         <span class="d-block tx-12 mb-0 text-muted">count</span>
                     </div>
                     <div class="card-item-body">
                         <div class="card-item-stat">
-                            <h4 class="font-weight-bold">{{completedAppointment}}</h4>
+                            <h4 class="font-weight-bold">{{w_completedAppointment}}</h4>
                         </div>
                     </div>
                 </div>
@@ -56,14 +56,14 @@
                     <div class="card-item-icon card-icon bg-info">
                         <img src="assets/images/003.png" alt="" class="img-fluid">
                     </div>
-                    <div class="card-item-title mb-2">
+                    <div class="card-item-title mb-2" style="width: 70%;">
                         <label class="main-content-label text-uppercase font-weight-bold mb-1">Missed
-                            appointment</label>
+                            </label>
                         <span class="d-block tx-12 mb-0 text-muted">count</span>
                     </div>
                     <div class="card-item-body">
                         <div class="card-item-stat">
-                            <h4 class="font-weight-bold">{{missedAppointment}}</h4>
+                            <h4 class="font-weight-bold">{{w_missedAppointment}}</h4>
                         </div>
                     </div>
                 </div>
@@ -78,13 +78,13 @@
                     <div class="card-item-icon card-icon bg-danger">
                         <img src="assets/images/002.png" alt="" class="img-fluid">
                     </div>
-                    <div class="card-item-title mb-2" style="width:70%" >
+                    <div class="card-item-title mb-2" style="width: 70%;">
                         <label class="main-content-label text-uppercase font-weight-bold mb-1">Payment detail</label>
                         <span class="d-block tx-12 mb-0 text-muted">count</span>
                     </div>
                     <div class="card-item-body">
                         <div class="card-item-stat">
-                            <h4 class="font-weight-bold">{{paymentDetail}}</h4>
+                            <h4 class="font-weight-bold">{{w_paymentDetail}}</h4>
                         </div>
                     </div>
                 </div>
@@ -93,12 +93,102 @@
     </div>
 
 </div>
-<div class="dialog">
+
+<h2>Mobile app appointment</h2>
+<div class="row row-sm">
+
+  <div class="col-lg-3">
+      <div class="card custom-card">
+          <div class="card-body">
+              <div class="card-item">
+                  <div class="card-item-icon card-icon">
+                      <img src="assets/images/004.png" alt="" class="img-fluid">
+                  </div>
+                  <div class="card-item-title mb-2" style="width: 70%;">
+                      <label class="main-content-label text-uppercase font-weight-bold mb-1">New </label>
+                      <span class="d-block tx-12 mb-0 text-muted">count</span>
+                  </div>
+                  <div class="card-item-body">
+                      <div class="card-item-stat">
+                          <h4 class="font-weight-bold">{{new_appointment}}</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-lg-3">
+      <div class="card custom-card">
+          <div class="card-body">
+              <div class="card-item">
+                  <div class="card-item-icon card-icon bg-success">
+                      <img src="assets/images/001.png" alt="" class="img-fluid">
+                  </div>
+                  <div class="card-item-title mb-2" style="width: 70%;">
+                      <label class="main-content-label text-uppercase font-weight-bold mb-1">Complete
+                          </label>
+                      <span class="d-block tx-12 mb-0 text-muted">count</span>
+                  </div>
+                  <div class="card-item-body">
+                      <div class="card-item-stat">
+                          <h4 class="font-weight-bold">{{completedAppointment}}</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-lg-3">
+      <div class="card custom-card">
+          <div class="card-body">
+              <div class="card-item">
+                  <div class="card-item-icon card-icon bg-info">
+                      <img src="assets/images/003.png" alt="" class="img-fluid">
+                  </div>
+                  <div class="card-item-title mb-2" style="width: 70%;">
+                      <label class="main-content-label text-uppercase font-weight-bold mb-1">Missed
+                          </label>
+                      <span class="d-block tx-12 mb-0 text-muted">count</span>
+                  </div>
+                  <div class="card-item-body">
+                      <div class="card-item-stat">
+                          <h4 class="font-weight-bold">{{missedAppointment}}</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-lg-3">
+      <div class="card custom-card">
+          <div class="card-body">
+              <div class="card-item">
+                  <div class="card-item-icon card-icon bg-danger">
+                      <img src="assets/images/002.png" alt="" class="img-fluid">
+                  </div>
+                  <div class="card-item-title mb-2" style="width: 70%;">
+                      <label class="main-content-label text-uppercase font-weight-bold mb-1">Payment detail</label>
+                      <span class="d-block tx-12 mb-0 text-muted">count</span>
+                  </div>
+                  <div class="card-item-body">
+                      <div class="card-item-stat">
+                          <h4 class="font-weight-bold">{{paymentDetail}}</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="dialog" *ngIf="content !== ''">
     <p-dialog header="Register Info" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [(visible)]="display"
         [style]="{width: '50vw'}">
         {{ content }}
         <div class="footer">
-            <p-button icon="pi pi-check" (click)="ok()" label="Ok" styleClass="p-button-text">
+            <p-button  icon="pi pi-check" (click)="ok()" label="Ok" styleClass="p-button-text">
             </p-button>
             <p-button icon="pi pi-times" (click)="refresh()" label="Refresh"></p-button>
         </div>

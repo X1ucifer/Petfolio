@@ -115,10 +115,18 @@ import { DoctorHolidayComponent } from './doctor/doctor-holiday/doctor-holiday.c
 import { AddproductComponent } from './pages/addproduct/addproduct.component';
 import { DiagnosisComponent } from './pages/diagnosis/diagnosis.component';
 import { SubDiagnosisComponent } from './pages/sub-diagnosis/sub-diagnosis.component';
-import { OrdermanagmentComponent } from './pages/ordermanagment/ordermanagment.component';
 import { WalkinAppointmentComponent } from './pages/walkin-appointment/walkin-appointment.component';
 import { WalkinAppointmentFormComponent } from './pages/walkin-appointment/walkin-appointment-form/walkin-appointment-form.component';
 import { ViewappointmentdetailsComponent } from './doctor/viewappointmentdetails/viewappointmentdetails.component';
+import { HealthissueComponent } from './pages/healthissue/healthissue.component';
+import { MinibannerComponent } from './pages/master/minibanner/minibanner.component';
+import { AppointmenteditComponent } from './doctor/appointmentedit/appointmentedit.component';
+import { PrescriptionaddComponent } from './doctor/prescriptionadd/prescriptionadd.component';
+import { PrescriptionviewComponent } from './doctor/prescriptionview/prescriptionview.component';
+import { SpSpecComponent } from './pages/sp-spec/sp-spec.component';
+import { WalkinpaymentComponent } from './doctor/walkinpayment/walkinpayment.component';
+import { ApppaymentComponent } from './doctor/apppayment/apppayment.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -195,10 +203,17 @@ import { ViewappointmentdetailsComponent } from './doctor/viewappointmentdetails
     AddproductComponent,
     DiagnosisComponent,
     SubDiagnosisComponent,
-    OrdermanagmentComponent,
     WalkinAppointmentComponent,
     WalkinAppointmentFormComponent,
     ViewappointmentdetailsComponent,
+    HealthissueComponent,
+    MinibannerComponent,
+    AppointmenteditComponent,
+    PrescriptionaddComponent,
+    PrescriptionviewComponent,
+    SpSpecComponent,
+    WalkinpaymentComponent,
+    ApppaymentComponent,
   ],
   imports: [
     CommonModule,
@@ -218,6 +233,7 @@ import { ViewappointmentdetailsComponent } from './doctor/viewappointmentdetails
     ButtonModule,
     InputTextModule,
     CalendarModule,
+    AutocompleteLibModule,
     Ng2SearchPipeModule,
     TableModule,
     FileUploadModule,
@@ -226,7 +242,6 @@ import { ViewappointmentdetailsComponent } from './doctor/viewappointmentdetails
     TabViewModule,
     NgOtpInputModule,
     CheckboxModule,
-
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'

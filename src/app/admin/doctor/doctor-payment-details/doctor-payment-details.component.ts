@@ -9,6 +9,7 @@ import { environment } from '../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+
 @Component({
   selector: 'app-doctor-payment-details',
   templateUrl: './doctor-payment-details.component.html',

@@ -282,6 +282,16 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="col-md-6" style="margin-bottom: 15px;">
+                      <h5 class="form-lable">Thumb Image:</h5>
+                      <input type="file" #imgType (change)="fileupload($event,'thumbnail_img')" id="imgfile"
+                          accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                      <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                      <img *ngIf="thumbnail_image != undefined" src="{{thumbnail_image}}" style="width: 25%;">
+                      <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                  </div>
+
                     <div class="col-md-6" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Govt ID proof:</h5>
                         <input type="file" #imgType (change)="fileupload($event,'Govt')" id="imgfile"
@@ -358,7 +368,18 @@
                       <h5 class="form-lable">Consultance Fee:</h5>
                       <input type="number" pInputText [(ngModel)]="consultancy_fees" placeholder="consultance fee">
                   </div>
-
+                    <!-- <div class="col-md-12 mt-20">
+                        <h5 class="form-lable">Clinic Images:</h5>
+                        <input type="file" pInputText [(ngModel)]="value1">
+                        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" multiple="multiple"
+                            accept="image/*" maxFileSize="1000000">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                        </p-fileUpload>
+                    </div> -->
                 </div>
             </div>
             <div class="col-md-12 mt-20">

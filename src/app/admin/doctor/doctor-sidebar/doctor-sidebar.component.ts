@@ -20,6 +20,7 @@ export class DoctorSidebarComponent implements OnInit {
   expand9: boolean = false;
   expand10: boolean = false;
   expand11: boolean = false;
+  expand12 : boolean = false;
   menu_slider: boolean = false;
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,

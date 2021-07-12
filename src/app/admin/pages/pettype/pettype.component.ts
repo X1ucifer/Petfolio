@@ -19,6 +19,11 @@ export class PettypeComponent implements OnInit {
   searchQR:any;
   value1:any;
 
+
+  pet_type_image : any;
+
+
+
   S_Date: any;
   E_Date: any;
   pet_type_title : string = '';
@@ -29,6 +34,7 @@ export class PettypeComponent implements OnInit {
 
   update_button : boolean;
   selectedimgae : any;
+
 
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
@@ -80,6 +86,7 @@ export class PettypeComponent implements OnInit {
       this.showWarning("Please enter the pet type")
     }else{
     let a = {
+      'pet_type_img' : this.pet_type_image,
       'pet_type_title' : this.pet_type_title,
       'user_type_value' : this.user_type_value,
       'date_and_time' : new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"}),
@@ -96,6 +103,7 @@ export class PettypeComponent implements OnInit {
         this.showError(response.Message)
       }
       this.ngOnInit();
+      this.imgType.nativeElement.value = "";
     }
   );
     }
@@ -109,6 +117,7 @@ export class PettypeComponent implements OnInit {
     }else{
     let a = {
       '_id' : this.pet_type_id,
+      'pet_type_img' : this.pet_type_image,
       'pet_type_title' : this.pet_type_title,
       'user_type_value' : this.user_type_value,
      };
@@ -118,6 +127,7 @@ export class PettypeComponent implements OnInit {
       //alert("Updated Successfully");
       this.showSuccess("Updated Successfully")
       this.ngOnInit();
+      this.imgType.nativeElement.value = "";
     }
   );
     }
@@ -144,6 +154,7 @@ export class PettypeComponent implements OnInit {
   Editcompanydetailsdata(data) {
     this.update_button = false;
     this.pet_type_id = data._id;
+    this.pet_type_image = data.pet_type_image;
     this.user_type_value = data.user_type_value ;
     this.pet_type_title = data.pet_type_title ;
   }
@@ -164,55 +175,56 @@ export class PettypeComponent implements OnInit {
 
 
 
-    // //////Additional Calling Funcation//////
-    // fileupload(event) {
-    //   console.log("this.width")
-    //   this.selectedimgae = event.target.files[0];
-    //   console.log(this.selectedimgae.size / 100000);
-    //   let fr = new FileReader();
-    //   fr.onload = () => { // when file has loaded
-    //     var img = new Image();
-    //     img.onload = () => {
-    //       let width = img.width;
-    //       let height = img.height;
-    //       console.log(width,height);
-    //       if(width !== 500 && height !== 500){
-    //         let d = this.selectedimgae.size / 100000 ;
-    //         if(d < 10){
-    //         this.addfiles1();
-    //        }else{
-    //         alert('Please upload the file below 1 MB');
-    //         this.imgType.nativeElement.value = "";
-    //        }
-    //       }
-    //       else{
-    //         alert('Please upload the file size 500 * 500');
-    //         this.imgType.nativeElement.value = "";
-    //       }
-    //     };
-    //     img.src = fr.result as string; // The data URL
-    //   };
-    //   fr.readAsDataURL(this.selectedimgae);
-    //   // clear the value after upload
-    // }
+    //////Additional Calling Funcation//////
+    fileupload(event) {
+      console.log("this.width")
+      this.selectedimgae = event.target.files[0];
+      console.log(this.selectedimgae.size / 100000);
+      let fr = new FileReader();
+      fr.onload = () => { // when file has loaded
+        var img = new Image();
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+          console.log('ADfad',width,height);
+          if(width == 200 && height == 200){
+            let d = this.selectedimgae.size / 100000 ;
+            console.log(d);
+            if(d < 10){
+            this.addfiles1();
+           }else{
+            alert('Please upload the file below 1 MB');
+            this.imgType.nativeElement.value = "";
+           }
+          }
+          else{
+            alert('Please upload the file size 200 * 200');
+            this.imgType.nativeElement.value = "";
+          }
+        };
+        img.src = fr.result as string; // The data URL
+      };
+      fr.readAsDataURL(this.selectedimgae);
+      // clear the value after upload
+    }
 
 
-    // addfiles1() {
-    // const fd = new FormData();
-    // fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
-    // this.http.post('http://18.237.123.253:3000/upload', fd)
-    //   .subscribe((res: any) => {
-    //     console.log(res);
-    //     this.user_type_img = res.Data;
-    //   });
-    //  }
+    addfiles1() {
+    const fd = new FormData();
+    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+    this.http.post('http://54.212.108.156:3000/upload', fd)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.pet_type_image = res.Data;
+      });
+     }
 
 
     filter_date() {
       if ( this.E_Date != undefined && this.S_Date != undefined) {
         // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
         let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
-  
+
         let a = {
           "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
           "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
@@ -229,24 +241,24 @@ export class PettypeComponent implements OnInit {
         this.showWarning("Please select the startdate and enddate");
         //alert('Please select the startdate and enddate');
       }
-     
+
     }
     refersh(){
       this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
     }
-    
+
     showSuccess(msg) {
       this.toastr.successToastr(msg);
     }
-  
+
     showError(msg) {
         this.toastr.errorToastr(msg);
     }
-  
+
     showWarning(msg) {
         this.toastr.warningToastr(msg);
     }
-    
+
 
 
 }

@@ -14,33 +14,33 @@
 <div class="card custom-card">
         <div class="card-body">
             <div class="card-item">
-          
+
                 <div class="row">
 
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Category:</h5>
                         <p-dropdown [options]="Catagories_list" [(ngModel)]="Category" placeholder="Select Category" optionLabel="product_cate" (ngModelChange)="subcate()"
                             [showClear]="true"></p-dropdown>
-            
+
                     </div>
 
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Pet Type:</h5>
                             <p-multiSelect [options]="pet_type_list" [(ngModel)]="pettype" defaultLabel="Select"
                             optionLabel="pet_type_title"></p-multiSelect>
-            
+
                     </div>
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Pet Breed:</h5>
                             <p-multiSelect [options]="pet_breed_list" [(ngModel)]="petBreed" defaultLabel="Select"
                             optionLabel="pet_breed"></p-multiSelect>
-            
+
                     </div>
                     <div class="col-md-4">
                         <h5 class="form-lable">Age:</h5>
                         <p-multiSelect [options]="Ages" [(ngModel)]="Age" defaultLabel="Select"
                             optionLabel="y"></p-multiSelect>
-            
+
                     </div>
                     <div class="col-md-4" style="margin-bottom: 15px;">
                         <h5 class="form-lable">Product Name:</h5>
@@ -71,10 +71,18 @@
                         <textarea pInputTextarea [(ngModel)]="Description" rows="5" cols="50"></textarea>
                     </div>
                     <div class="col-md-6">
+                      <h5 class="form-lable">Thumb Image:</h5>
+                      <input type="file" #imgType (change)="fileupload1($event,'thumbnail_img')" id="imgfile"
+                          accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                      <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                      <img *ngIf="thumbnail_image != undefined" src="{{thumbnail_image}}" style="width: 25%;">
+                      <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                    </div>
+
+                    <div class="col-md-6">
                         <h5 class="form-lable">Product image:</h5>
-            
                         <div class="form-group row">
-                           <div class="col-md-7">
+                           <div class="col-md-4">
                                 <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
                                     id="imgFile" accept=".png, .jpg, .jpeg">
                                     <span class="img-size">Image Size Should be 200*200</span>
@@ -116,14 +124,14 @@
                             </ng-template>
                         </p-fileUpload> -->
                     </div>
-            
-                    <div class="col-md-12">
+
+                    <div class="col-md-12" style="margin-top: 100px;">
                         <button type="button" *ngIf="edit_t == false" class="btn btn-primary" (click)="create()"><i class="fas fa-plus-circle"></i> Add</button>
                         <button *ngIf="edit_t == true" type="button" class="btn btn-primary" (click)="update()"><i class="fas fa-edit"></i> Update</button>
                         <button *ngIf="edit_t == true" type="button" class="btn btn-danger " (click)="cancel()">
-                            Cancel</button> 
+                            Cancel</button>
                     </div>
-            
+
                 </div>
             </div>
         </div>

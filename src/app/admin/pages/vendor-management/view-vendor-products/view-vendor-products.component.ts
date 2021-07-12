@@ -17,6 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ViewVendorProductsComponent implements OnInit {
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
+  thumbnail_image : any;
   rows = [];
   searchQR: any;
   Tittle: any;
@@ -67,7 +68,7 @@ export class ViewVendorProductsComponent implements OnInit {
     private _api: ApiService,
     private http: HttpClient,
     private datePipe: DatePipe,
-    ){ 
+    ){
    }
 
   ngOnInit(): void {
@@ -77,15 +78,14 @@ export class ViewVendorProductsComponent implements OnInit {
     this.pettypelist();
     this.listpetbreed();
     this.sub_cat_list();
-    // this.subcatagorieslist(); 
+    // this.subcatagorieslist();
   }
   listpettype() {
-    console.log("list");
     const vendor_id = this.getFromLocal("Vendor_id");
     this.VendorID = vendor_id;
     this._api.getlist_vendor_products(vendor_id).subscribe(
       (response: any) => {
-        console.log(response.Data);
+        console.log(response);
         this.list = response.Data.reverse();
       }
     );
@@ -93,18 +93,14 @@ export class ViewVendorProductsComponent implements OnInit {
   pettypelist() {
     this._api.pet_type_list().subscribe(
       (response: any) => {
-        console.log(response.Data);
         this.rows = response.Data;
         this.pet_type_list = response.Data;
-        console.log(this.pet_type_list);
       }
     );
   }
   listpetbreed() {
     this._api.pet_breed_list().subscribe(
       (response: any) => {
-        console.log("breed list");
-        console.log(response.Data);
         this.pet_breed_list = response.Data;
       }
     );
@@ -112,39 +108,30 @@ export class ViewVendorProductsComponent implements OnInit {
   vendorlist() {
     this._api.vendor_details_list().subscribe(
       (response: any) => {
-        console.log(response.Data);
         this.rows = response.Data;
         this.vendor_list = response.Data;
-        console.log(this.vendor_list);
       }
     );
   }
   catagorieslist() {
     this._api.product_cate_list().subscribe(
       (response: any) => {
-        console.log(response.Data);
         this.rows = response.Data;
         this.Catagories_list = response.Data;
-        console.log(this.Catagories_list);
       }
     );
   }
   sub_cat_list() {
     this._api.product_subcat_list().subscribe(
       (response: any) => {
-        console.log(response.Data);
         this.subcat_main = response.Data;
-
-        console.log(this.subcat_main);
       }
     );
   }
   subcate() {
-    console.log(this.Category);
 
     let a = this.subcat_main;
     this.sub_cate_list = a.filter((X: any) => this.Category.product_cate == X.product_categ)
-    console.log(this.sub_cate_list);
   }
   // subcatagorieslist() {
   //   this._api.product_cate_list().subscribe(
@@ -157,14 +144,59 @@ export class ViewVendorProductsComponent implements OnInit {
   //   );
   // }
 
+
+    //////Additional Calling Funcation//////
+    fileupload1(event, str) {
+      this.selectedimgae = event.target.files[0];
+      let fr = new FileReader();
+      fr.onload = () => { // when file has loaded
+        var img = new Image();
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+          if (width > 100 && height > 100) {
+            let d = this.selectedimgae.size / 100000;
+            if (d < 10) {
+              this.addfiles(str);
+            } else {
+              // alert('Please upload the file below 1 MB');
+              this.showWarning("Please upload the file below 1 MB");
+              this.imgType.nativeElement.value = "";
+            }
+          }
+          else {
+            // alert('Please upload the file size 100 * 100');
+            this.showWarning("Please upload the file size 200 * 120");
+            this.imgType.nativeElement.value = "";
+          }
+        };
+        img.src = fr.result as string; // The data URL
+      };
+      fr.readAsDataURL(this.selectedimgae);
+      // clear the value after upload
+    }
+
+
+    addfiles(data: any) {
+      const fd = new FormData();
+      fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+      this.http.post(this.imgUrl , fd)
+        .subscribe((res: any) => {
+        if (data == 'thumbnail_img') {
+            this.thumbnail_image = res.Data;
+            this.img_path = undefined;
+          }
+        });
+
+    }
+
+
   validation() {
-    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.VendorID == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == '' || this.Discount == undefined || this.Discount == '' || this.Description == undefined || this.Description == '') {
+    if (this.threshould == '' || this.threshould == undefined || this.Thmp_list.length == 0 || this.VendorID == undefined || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Cost == undefined || this.Cost == ''  || this.Description == undefined || this.Description == '') {
       this.Validation = false;
-      console.log(this.Validation)
     }
     else {
       this.Validation = true;
-      console.log(this.Validation)
     }
   }
 
@@ -182,15 +214,12 @@ export class ViewVendorProductsComponent implements OnInit {
       for (let i = 0; i < this.petBreed.length; i++) {
         obj1.push(this.petBreed[i]._id)
       }
-      console.log(obj1)
       for (let i = 0; i < this.pettype.length; i++) {
         obj2.push(this.pettype[i]._id)
       }
-      console.log(obj2)
       for (let i = 0; i < this.Age.length; i++) {
         obj3.push(this.Age[i].y)
       }
-      console.log(obj3)
 
       let a = {
         "user_id": this.VendorID,
@@ -209,8 +238,9 @@ export class ViewVendorProductsComponent implements OnInit {
         "date_and_time": '' + new Date(),
         "mobile_type": 'Admin',
         "verification_status": "Not Verified",
+        "thumbnail_image":this.thumbnail_image,
         "status": true,
-        "delete_status": true
+        "delete_status": false
       }
       console.log(a);
       this._api.product_details_create(a).subscribe(
@@ -244,16 +274,13 @@ export class ViewVendorProductsComponent implements OnInit {
   }
   //////Additional Calling Funcation//////
   fileupload(event) {
-    console.log("this.width")
     this.selectedimgae = event.target.files[0];
-    console.log(this.selectedimgae.size / 100000);
     let fr = new FileReader();
     fr.onload = () => { // when file has loaded
       var img = new Image();
       img.onload = () => {
         let width = img.width;
         let height = img.height;
-        console.log(width, height);
         if (width == 200 && height == 200) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
@@ -282,7 +309,6 @@ export class ViewVendorProductsComponent implements OnInit {
     fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
     this.http.post(this.imgUrl , fd)
       .subscribe((res: any) => {
-        console.log(res);
         this.img_path = res.Data;
       });
   }
@@ -292,10 +318,8 @@ export class ViewVendorProductsComponent implements OnInit {
     let a = {
       '_id': data
     };
-    console.log(a);
     this._api.product_details_delete(a).subscribe(
       (response: any) => {
-        console.log(response.Data);
         //alert('Deleted Successfully');
         this.showSuccess("Deleted Successfully");
         this.ngOnInit();
@@ -307,18 +331,13 @@ export class ViewVendorProductsComponent implements OnInit {
     this.edit_t = true;
     this.id = item._id;
     let obj3 = [];
-    console.log(item.age);
     for (let i = 0; i < item.age.length; i++) {
       obj3.push({ 'y': item.age[i] });
     }
-    console.log(obj3);
     let arr1 = this.vendor_list;
     let arr2 = this.Catagories_list;
     this.Vendor = arr1.filter((x: any) => x._id == item.user_id)[0]
     this.Category = item.cat_id;
-    console.log(this.Vendor);
-    console.log(this.Category);
-
     this.Age = obj3;
     this.Cost = item.cost;
     this.pettype = item.pet_type;
@@ -331,6 +350,7 @@ export class ViewVendorProductsComponent implements OnInit {
     this.Product_Name = item.product_name
     this.Thmp_list = item.product_img
     this.Discount = item.discount
+    this.thumbnail_image = item.thumbnail_image
   }
   update() {
     this.validation();
@@ -344,15 +364,12 @@ export class ViewVendorProductsComponent implements OnInit {
       for (let i = 0; i < this.petBreed.length; i++) {
         obj1.push(this.petBreed[i]._id)
       }
-      console.log(obj1)
       for (let i = 0; i < this.pettype.length; i++) {
         obj2.push(this.pettype[i]._id)
       }
-      console.log(obj2)
       for (let i = 0; i < this.Age.length; i++) {
         obj3.push(this.Age[i].y)
       }
-      console.log(obj3)
 
       let a = {
         "_id": this.id,
@@ -367,13 +384,14 @@ export class ViewVendorProductsComponent implements OnInit {
         "product_name": this.Product_Name,
         "product_img": this.Thmp_list,
         "discount": this.Discount,
+        "thumbnail_image":this.thumbnail_image,
         "related": '',
         "count": 0,
         "date_and_time": '' + new Date(),
         "mobile_type": 'Admin',
         "verification_status": "Not Verified",
         "status": true,
-        "delete_status": true
+        "delete_status": false
 
       }
       console.log(a);
@@ -399,6 +417,7 @@ export class ViewVendorProductsComponent implements OnInit {
             this.Discount = undefined;
             this.threshould = undefined;
             this.petBreed = undefined;
+            this.thumbnail_image = undefined;
           } else {
             //alert(response.Message);
             this.showError(response.Message)
@@ -407,7 +426,7 @@ export class ViewVendorProductsComponent implements OnInit {
       );
     }
   }
-  
+
   filter_date() {
     if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
@@ -417,10 +436,8 @@ export class ViewVendorProductsComponent implements OnInit {
         "fromdate": this.datePipe.transform(new Date(this.S_Date), 'yyyy-MM-dd'),
         "todate": this.datePipe.transform(new Date(yourDate), 'yyyy-MM-dd')
       }
-      console.log(a);
       this._api.product_details_filter_date(a).subscribe(
         (response: any) => {
-          console.log(response.Data);
           this.list = response.Data;
         }
       );
@@ -438,7 +455,6 @@ export class ViewVendorProductsComponent implements OnInit {
   onUpload(event) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
-      console.log(this.uploadedFiles)
     }
 
     // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
@@ -466,7 +482,6 @@ export class ViewVendorProductsComponent implements OnInit {
     if (this.img_path != undefined) {
       this.Thmp_list.push(this.img_path);
       this.img_path = undefined
-      console.log(this.Thmp_list);
     }
     else {
       // alert("Please choose a image");
@@ -474,18 +489,16 @@ export class ViewVendorProductsComponent implements OnInit {
     }
   }
   deleteimg(dynamic, i) {
-    console.log(dynamic, i, this.Thmp_list)
     for (let b = 0; b < this.Thmp_list.length; b++) {
       if (this.Thmp_list[b] == dynamic) {
         //this.Location_list[i].status="true";
         this.Thmp_list.splice(b, 1);
       }
-      console.log(this.Thmp_list);
     }
   }
 
   makeTDeal(_id, today_deal){
-    
+
     const data = {
       _id : _id,
       today_deal : today_deal

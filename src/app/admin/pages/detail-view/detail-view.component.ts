@@ -220,4 +220,24 @@ export class DetailViewComponent implements OnInit {
   showWarning(msg) {
     this.toastr.warningToastr(msg);
   }
+
+  makelive(){
+    console.log(this.doctor_details);
+    console.log(this.preview_doctor_Details);
+    // makelivedoctor
+    let b = {
+
+    };
+    console.log(b);
+    this._api.makelivedoctor(b).subscribe(
+      (response: any) => {
+
+      }
+    );
+
+
+
+
+
+  }
 }

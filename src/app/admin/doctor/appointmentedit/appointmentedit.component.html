@@ -1,0 +1,403 @@
+<section *ngIf="view_detail == 'Appointment'">
+  <div class="container" style="width: 100%;">
+      <p (click)="back()"> <i class="fa fa-arrow-left"></i> Back </p>
+      <p  style="text-align: right;"><button class="btn btn-success btn-sm mr-2" (click)="printComponent('component1')">print</button></p>
+      <div class="row">
+        <div class="container" id="component1">
+          <div class="col-md-12" style="margin-top: 25px;">
+              <div class="spec">
+                  <h4> <label style="color: #007adb;">Appointment Details</label> </h4>
+              </div>
+              <div class="d-flex justify-content-end" *ngIf="showCanel">
+                  <button *ngIf="view_detail_data.appoinment_status == 'Incomplete'" class="btn-sm btn btn-warning"
+                      (click)="cancelAppointment()"> Cancel Appointment</button>
+              </div>
+              <div class="card-box" style="padding: 5px 5px 5px 5px">
+                  <div class="app-i">
+                      <table cellpadding="5" cellspacing="0">
+                          <tr>
+                              <th> <label for="f-user"> Doctor Name </label> </th>
+
+                              <td class="desc">
+                                  {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
+                              </td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-user"> Appointment Date & Time </label> </th>
+
+                              <td class="desc">
+                                  {{view_detail_data.booking_date_time}}
+                              </td>
+                          </tr>
+                          <!-- <tr>
+                              <th> <label for="f-pass1"> Date of Birth </label> </th>
+
+                              <td class="desc"> data.DOB</td>
+                          </tr> -->
+                          <tr>
+                              <th> <label for="f-pass2">Appointment Type </label> </th>
+
+                              <td class="desc">{{view_detail_data.appointment_types}}</td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Status </label> </th>
+
+                              <td class="desc">
+                                <select name="cars" class="form-control"  id="cars" name="status" [(ngModel)]="view_detail_data.appoinment_status">
+                                  <option value="Completed">Completed</option>
+                                  <option value="Incomplete">Incomplete</option>
+                                </select>
+                              </td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Booking Date & Time</label> </th>
+
+                              <td class="desc">{{view_detail_data.booking_date_time}}</td>
+                          </tr>
+
+                          <tr>
+                              <th> <label for="f-dispname">Communication Type</label> </th>
+
+                              <td class="desc">Direct {{view_detail_data.communication_type}}</td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Mobile Type</label> </th>
+
+                              <td class="desc">{{view_detail_data.mobile_type}}</td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Payment Method</label> </th>
+
+                              <td class="desc">
+                                <select name="cars" class="form-control" id="cars" name="status" [(ngModel)]="view_detail_data.payment_method">
+                                  <option value="Online">Online</option>
+                                  <option value="Cash">Cash</option>
+                                  <option value="Card">Card</option>
+                                </select>
+                              </td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Amount</label> </th>
+                              <td class="desc"> <input type="number" [(ngModel)]="view_detail_data.amount" name="amount"></td>
+                            </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Prescription Details</label> </th>
+
+                              <td class="desc">
+                                <a href="/#/doctor-admin/prescriptionadd"  *ngIf="view_detail_data.prescription_details == 'add'" >Add Prescription</a>
+                                <a href="/#/doctor-admin/prescriptionadd" *ngIf="view_detail_data.prescription_details == 'edit'">Edit Prescription</a>
+                                <!-- {{view_detail_data.prescription_details}} -->
+                              </td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Doctor Comments</label> </th>
+
+                              <td class="desc"> <textarea name="doctor_feedbac" [(ngModel)]="view_detail_data.doctor_comment"></textarea> </td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-dispname">Customer Feedback</label> </th>
+
+                              <td class="desc"> <textarea name="customer_feedback" [(ngModel)]="view_detail_data.user_feedback"></textarea></td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <label for="f-dispname">Primary diagnosis: </label>
+                            </th>
+                            <td>
+                              <select name="cars" id="cars" class="form-control" [(ngModel)]="view_detail_data.diagnosis" (ngModelChange)="list_sub_diagnosis()">
+                                <option value="" disabled>Select diagonsis</option>
+                                <ng-container *ngFor='let item of diagnosis_type;let i = index'>
+                                  <option value="{{item.diagnosis}}">{{item.diagnosis}}</option>
+                                </ng-container>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <label for="f-dispname">Sub diagnosis:</label>
+                            </th>
+                            <td>
+                              <select name="cars" id="cars" class="form-control" [(ngModel)]="view_detail_data.sub_diagnosis"  >
+                                <option value="" disabled>Select sub diagonsis</option>
+                                <ng-container *ngFor='let items of sub_diagnosis_type;let i = index'>
+                                  <option value="{{items.sub_diagnosis}}">{{items.sub_diagnosis}}</option>
+                                </ng-container>
+                              </select>
+                            </td>
+                          </tr>
+
+
+                          <tr>
+                            <th> <label for="f-dispname">Next apponitment Date</label> </th>
+
+                            <td class="desc"> <input type="date" name="doctor_feedbac" [(ngModel)]="view_detail_data.next_appointment_date"><input type="time" name="doctor_feedbac" [(ngModel)]="view_detail_data.next_appointment_time"></td>
+                         </tr>
+
+                          <!-- <tr>
+                              <th> <label for="f-tos">Available Hours </label> </th>
+
+                              <td class="desc"> data.AvailableHours </td>
+                          </tr>
+                          <tr>
+                              <th> <label for="f-tos"> Available Type </label> </th>
+
+                              <td class="desc"> data.Available_type </td>
+                          </tr> -->
+                          <!-- <tr>
+                              <th> <label for="f-tos"> Charges Per Appointment </label> </th>
+
+                              <td class="desc"> data.Charge_Per_15min </td>
+                          </tr> -->
+                          <!-- <tr>
+                              <th><label for="f-tos"> Live Status</label></th>
+                              <td class="desc"> data.Live_Status </td>
+                          </tr> -->
+                          <!-- <tr>
+                              <th><label for="f-tos"> Current Location</label></th>
+                              <td class="desc"> {{view_detail_data.booking_date_time}}</td>
+                          </tr> -->
+
+                          <!-- <tr>
+                              <th><label for="f-tos">Doctor Brife</label></th>
+                              <td class="desc"> data.Special_mention </td>
+                          </tr> -->
+
+
+                          <!-- <tr>
+                              <th><label for="f-tos">About Doctor</label></th>
+                              <td class="desc"> data.Information </td>
+                          </tr> -->
+                          <!-- <tr>
+                              <th><label for="f-tos">KMS Registration Number</label></th>
+                              <td class="desc"> data.KMS_registration </td>
+                          </tr>
+                          <tr>
+                              <th><label for="f-tos">Signature</label></th>
+                              <td class="desc"> <img style="width: 100px;" src="data.signature" alt="" /> </td>
+                          </tr> -->
+
+
+                      </table>
+                      <div style="text-align: right;padding: 10px;">
+                        <button class="btn btn-success btn-sm mr-2"  (click)="update_appointment()">Update Appointment</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12" style="width: 100%;" *ngIf="view_detail_data.prescription_details == 'edit'">
+            <div class="spec">
+              <h4> <label style="color: #007adb;">Prescription Details</label> </h4>
+           </div>
+            <div class="card-box" style="padding: 5px 5px 5px 5px">
+              <div class="app-i">
+                <table>
+                  <tr>
+                    <th>Medicine</th>
+                    <th>No of days</th>
+                    <th>Consumption per day</th>
+                  </tr>
+                  <ng-container *ngFor="let item of datas; let i = index">
+                    <tr>
+                    <td>{{item.Tablet_name}}</td>
+                    <td>{{item.Quantity}}</td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-4">
+                      <input type="checkbox" class="largerCheckbox"  id="vehicle1" name="morning" [(ngModel)]="item.consumption.morning"  name="vehicle1" value="Bike">
+                      <label for="vehicle1" style="margin-left: 10px;"> Morning</label><br>
+                      </div>
+                      <div class="col-md-4">
+                      <input type="checkbox" class="largerCheckbox"  id="vehicle2" name="evening" [(ngModel)]="item.consumption.evening"  name="vehicle2" value="Car">
+                      <label for="vehicle2" style="margin-left: 10px;"> Evening</label><br>
+                     </div>
+                     <div class="col-md-4">
+                      <input type="checkbox" class="largerCheckbox"  id="vehicle3" name="night" [(ngModel)]="item.consumption.night"  name="vehicle3" value="Boat">
+                      <label for="vehicle3" style="margin-left: 10px;"> Night</label><br>
+                      </div>
+                      </div>
+                    </td>
+                  </tr>
+                  </ng-container>
+                </table>
+              <div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+
+          <div class="col-md-12" style="margin-top: 25px;">
+              <div class="spec">
+                  <h4> <label style="color: #007adb;">User Details</label> </h4>
+              </div>
+              <div class="card-box">
+
+                  <div class="row" style="padding: 0px 0px 23px 10px;">
+                      <table style="width: 100% !important;">
+                          <tr class="thhead">
+
+                              <!-- <th style="color:#fff">Image</th> -->
+                              <th style="color:#fff">Name </th>
+                              <th style="color:#fff">Email ID</th>
+                              <th style="color:#fff">Phone Number</th>
+                          </tr>
+                          <tr class="tdrow">
+                              <!-- <td class="act">
+                                  <img src="assets/images/005.png" style="width: 50px;height: 50px;">
+                              </td> -->
+                              <td class="act">
+                                  {{view_detail_data.user_id.first_name}} {{view_detail_data.user_id.last_name}}
+                              </td>
+                              <td class="act">
+                                  {{view_detail_data.user_id.user_email}}
+                              </td>
+                              <td class="act">
+                                  {{view_detail_data.user_id.user_phone}}
+                              </td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12" style="margin-top: 25px;">
+              <div class="spec">
+                  <h4> <label style="color: #007adb;">Doctor Details</label> </h4>
+              </div>
+              <div class="card-box">
+                  <div class="row" style="padding: 0px 0px 23px 10px;">
+                      <div class="col-md-3">
+                          <img src="{{view_detail_data.doc_business_info[0].clinic_pic[0].clinic_pic}}"
+                              class="pro-pic" style="width: 150px;border-radius: 50%;height: 150px;">
+                      </div>
+                      <div class="col-md-9" style="padding-left: 20px;">
+                          <h1 style="margin-bottom: 0px;padding-left: 4px;">
+                              {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
+                          </h1>
+                          <div class=" app-i">
+                              <table cellpadding="5" cellspacing="0">
+                                  <tr>
+                                      <th> <label for="f-user">Clinic Name</label> </th>
+
+                                      <td class="desc">
+                                          {{view_detail_data.doc_business_info[0].clinic_name}} </td>
+                                  </tr>
+                                  <tr>
+                                      <th> <label for="f-user">Clinic Location</label> </th>
+
+                                      <td class="desc">
+                                          {{view_detail_data.doc_business_info[0].clinic_loc}}
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th> <label for="f-user">specialization</label> </th>
+
+                                      <td>
+                                          <ng-container
+                                              *ngFor="let spec of view_detail_data.doc_business_info[0].specialization">
+                                              {{spec.specialization}},
+                                          </ng-container>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <th> <label for="f-user">Pet Handled</label> </th>
+
+                                      <td>
+                                          <ng-container
+                                              *ngFor="let spec of view_detail_data.doc_business_info[0].pet_handled">
+                                              {{spec.pet_handled}},
+                                          </ng-container>
+                                      </td>
+                                  </tr>
+
+
+
+                              </table>
+
+                          </div>
+
+                          <!-- <p class="title">
+                              <ng-container *ngFor="let edu of view_detail_data.doc_business_info[0].education_details">
+                                  {{edu.education}}-{{edu.year}} ,
+                              </ng-container>
+                          </p>
+                          <p><i class="fa fa-envelope-o"></i> {{view_detail_data.doctor_id.user_email}} - <i
+                                  class="fa fa-phone"></i> {{view_detail_data.doctor_id.user_phone}}</p>
+                          <p style="font-size:12px;font-weight: 500;"><i class="fa fa-briefcase"></i>
+                              <ng-container *ngFor="let exp of view_detail_data.doc_business_info[0].experience_details">
+                                  {{exp.company}}({{exp.from}}-{{exp.to}}) ,
+                              </ng-container>
+                          </p> -->
+                          <!-- <p style="font-size:12px;font-weight: 700;">Profile Stauts: <span
+                                  style="font-weight: 400;">{{view_detail_data.doc_business_info[0].profile_status}}</span></p> -->
+                          <!-- <div class="p-field p-col-12 p-md-4">
+                              <label (click)="doc_cal()">Doctor Calendar <i class="fa fa-calendar"
+                                     ></i></label>
+                          </div> -->
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12" style="margin-top: 25px;">
+              <div class="spec">
+                  <h4> <label style="color: #007adb;">Pet Details</label> </h4>
+              </div>
+              <div class="card-box">
+                  <div class="row" style="padding: 0px 0px 23px 10px;">
+                      <div class="col-md-3">
+                          <img src="../../../../assets/images/dog.jpg" class="pro-pic"
+                              style="width: 150px;border-radius: 50%;height: 150px;">
+                      </div>
+                      <div class="col-md-9 app-i" style="padding-left: 20px;">
+                          <table cellpadding="5" cellspacing="0">
+                              <tr>
+                                  <th> <label for="f-user">Pet Name</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_name}} </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Breed</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_breed}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Type</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_type}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Color</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_color}}
+                                  </td>
+                              </tr>
+
+                              <tr>
+                                  <th> <label for="f-user">Pet Gender</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_gender}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Weight</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_weight}}
+                                  </td>
+                              </tr>
+
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

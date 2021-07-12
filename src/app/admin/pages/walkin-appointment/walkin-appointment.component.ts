@@ -176,5 +176,13 @@ export class WalkinAppointmentComponent implements OnInit {
     this.router.navigateByUrl('/doctor-admin/Walkin_Appointment_form')
   }
 
+
+  edit(data){
+    console.log(data);
+    this.saveInLocal('view_detail_data', data);
+    this.saveInLocal('view_detail', 'Appointment')
+    this.router.navigateByUrl('/doctor-admin/appointment_edit')
+  }
+
 }
 

@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-  
+
     </div>
 
     <div class="row row-sm">
@@ -22,13 +22,13 @@
                         <h5 class="form-lable">Pet type</h5>
                         <input type="text" pInputText name="pet_type_title" [(ngModel)]="pet_type_title" placeholder="Enter Pet type">
                     </div>
-                    <!-- <div class="col-md-4">
+                    <div class="col-md-4">
                       <h5 class="form-lable">Pet type icon</h5>
                       <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
                       accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
-                      <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 80 * 80 (Max 100 kB)</div>
-                      <img src="{{user_type_img}}" style="width: 15%;">
-                  </div> -->
+                      <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 200 * 200 (Max 100 kB)</div>
+                      <img src="{{pet_type_image}}" style="width: 15%;">
+                  </div>
                     <div class="col-md-4">
                         <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4" (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button>
                         <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4" (click)="Edit_pet_type_details()"> <i class="fas fa-edit"></i> Update</button>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-               
+
 
                 <!-- search -->
 
@@ -103,6 +103,9 @@
                 S.No
             </th>
             <th>
+              Pet type Image
+            </th>
+            <th>
               Pet type
             </th>
             <th>Created by</th>
@@ -118,10 +121,10 @@
     <!-- <ng-container *ngFor="let item of user_type_list ; let i = index;"> -->
       <tr class="tdrow">
             <td>{{i+1}}</td>
+               <td>
+              <img _ngcontent-dah-c159="" src="{{item.pet_type_img}}" alt="Denim Jeans" style="width: 20%;">
+              </td>
             <td>{{item.pet_type_title}}</td>
-            <!-- <td>
-              <img _ngcontent-dah-c159="" src="{{item.user_type_img}}" alt="Denim Jeans" style="width: 20%;">
-          </td> -->
             <td>
                 Admin
             </td>
@@ -130,7 +133,7 @@
             </td>
             <td class="act">
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
-                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i> -->
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>
         </tr>
