@@ -326,12 +326,32 @@ export class AppointmenteditComponent implements OnInit {
   }
 
   printComponent(cmpName) {
+    
     let printContents = document.getElementById(cmpName).innerHTML;
     let originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
     window.print();
     document.body.innerHTML = originalContents;
+    document.close();
 }
-
+print(cmpName): void {
+  const printContents = document.getElementById(cmpName).innerHTML;
+  const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+  popupWin.document.open();
+  popupWin.document.write(`
+      <html>
+          <head>
+              <title>Print Page</title>
+          </head>
+          <body
+              style="font-size: 14px;
+                  font-family: 'Source Sans Pro', 'Helvetica Neue',
+                  Helvetica, Arial, sans-serif;
+                  color: #333";
+              onload="document.execCommand('print');window.close()">${printContents}</body>
+      </html>`
+  );
+  popupWin.document.close();
+}
 
 }
