@@ -36,8 +36,18 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { VendorLoginComponent } from './vendor/vendor-login/vendor-login.component';
+import { VendorAdminComponent } from './vendor/vendor-admin/vendor-admin.component';
+import { VendoSideBarComponent } from './vendor/vendo-side-bar/vendo-side-bar.component';
+import { VendoHeaderComponent } from './vendor/vendo-header/vendo-header.component'
 
-
+import {VendorModule} from './vendor/vendor.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +61,11 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     DoctorInfoComponent,
     ServiceProviderComponent,
     LoginOtpComponent,
+    VendorLoginComponent,
+    VendorAdminComponent,
+    
+    VendoSideBarComponent,
+    VendoHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +91,14 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     ServiceProviderModule,
     NgOtpInputModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    VendorModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    MatDialogModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

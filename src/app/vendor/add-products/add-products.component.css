@@ -1,0 +1,9 @@
+@import "../../../assets/css/style.css";
+
+:host::ng-deep .ui-dialog-visible {
+    background: #eee !important;
+}
+:host::ng-deep .ui-dialog .ui-dialog-titlebar {
+    text-align: center !important;
+    font-size: 19px !important;
+}
