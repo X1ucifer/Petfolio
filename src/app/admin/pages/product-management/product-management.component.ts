@@ -69,13 +69,6 @@ export class ProductManagementComponent implements OnInit {
     private http: HttpClient,
     private datePipe: DatePipe,
     ){
-      let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/login');
-
-    }
    }
 
   ngOnInit(): void {
@@ -583,12 +576,6 @@ export class ProductManagementComponent implements OnInit {
           });
       }
 
-      saveInLocal(key, val): void {
-        this.storage.set(key, val);
-      }
-    
-      getFromLocal(key): any {
-        return this.storage.get(key);
-      }
+
 }
 

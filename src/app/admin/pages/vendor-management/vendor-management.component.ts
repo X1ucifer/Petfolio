@@ -31,15 +31,7 @@ export class VendorManagementComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
-  ) {
-    let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/login');
-
-    }
-   }
+  ) { }
 
   ngOnInit(): void {
 

@@ -1,7 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { Component, OnInit } from '@angular/core';
 
-import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-doctor-support',
   templateUrl: './doctor-support.component.html',
@@ -9,27 +7,9 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class DoctorSupportComponent implements OnInit {
 
-  constructor(
-    
-    private router: Router,
-    @Inject(SESSION_STORAGE) private storage: StorageService,
-  ) {
-    let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/doctorlogin');
-
-    }
-   }
+  constructor() { }
 
   ngOnInit(): void {
   }
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
 
-  getFromLocal(key): any {
-    return this.storage.get(key);
-  }
 }

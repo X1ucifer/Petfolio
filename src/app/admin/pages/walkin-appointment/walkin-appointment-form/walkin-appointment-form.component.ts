@@ -110,13 +110,6 @@ export class WalkinAppointmentFormComponent implements OnInit {
     private ValidatorService: ValidatorService,
 
   ) {
-    let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/doctorlogin');
-
-    }
     window.scrollTo(0, 0);
   }
 

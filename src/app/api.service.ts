@@ -873,59 +873,6 @@ export class ApiService {
   }
 
 
-  userdetails_create(data) {
-    return this.http.post(this.apiUrl + 'userdetails/create', data);
-  }
-  userdetails_business(data) {
-    return this.http.post(this.apiUrl + 'product_vendor/create', data);
-  }
-  email_verification(data){
-    return this.http.post(this.apiUrl + 'userdetails/send/emailotp', data);
-  }
-   
-   vendor_check_status(data){
-    return this.http.post(this.apiUrl + 'product_vendor/check_status', data);
-  }
-  Vendor_gets_Order_ID(data){
-    return this.http.post(this.apiUrl + 'product_vendor/getlist_id', data);
-  }
-  Vendor_New_Order_API(data){
-    return this.http.post(this.apiUrl + 'vendor_order_booking/get_order_details_vendor_id', data);
-  }
-  Vendor_Completed_Order_API(data){
-    return this.http.post(this.apiUrl + 'vendor_order_booking/get_order_details_vendor_id', data);
-  }
-  Vendor_Cancelled_Order_API(data){
-  return this.http.post(this.apiUrl + 'vendor_order_booking/get_order_details_vendor_id', data);
-  }
-  Vendor_Fetches_Order_Details(data){
-    return this.http.post(this.apiUrl + 'vendor_order_booking/fetch_order_details_id', data);
-  }
-  Vendor_Accepts_Order(data){
-    return this.http.post(this.apiUrl + 'vendor_order_booking/update_status_accept', data);
-  }
-  Vendor_Dispatches_Order(data){
-    return this.http.post(this.apiUrl + 'vendor_order_booking/update_status_dispatch', data);
-  }
-  Vendor_Cancels_Order(data){
-    return this.http.post(this.apiUrl + 'vendor_order_booking/update_status_vendor_cancel', data);
-  }
-  Vendor_product(data){
-    return this.http.post(this.apiUrl + 'vendor_order_group/get_grouped_order_by_vendor', data);
-  }
-  ven_pro_cat(){
-    return this.http.get(this.apiUrl + 'product_cate/getlist_cat');
-  }
-  Vendor_product_by_cat(data){
-    return this.http.post(this.apiUrl + 'newproduct_detail/fetch_product_by_cat', data);
-  }
-  Vendor_pro_add_to_list(data){
-    return this.http.post(this.apiUrl + 'newproduct_detail/vendor_product_create', data);
-  }
-  vendor_order_group(data){
-    return this.http.post(this.apiUrl + 'vendor_order_group/get_grouped_order_by_vendor', data);
-  }
-  getlist_from_vendor_id1(data){
-    return this.http.post(this.apiUrl + 'product_details/mobile/getlist_from_vendor_id1', data);
-  }
+
+
 }

@@ -37,15 +37,7 @@ export class DoctorNotificationComponent implements OnInit {
     private _api: ApiService,
     private datePipe: DatePipe,
     private excelService: ExcelService,
-  ) {
-    let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/doctorlogin');
-
-    }
-   }
+  ) { }
 
   ngOnInit(): void {
 
@@ -71,12 +63,5 @@ export class DoctorNotificationComponent implements OnInit {
         this.notification_list = response.Data;
       }
     )
-  }
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
-
-  getFromLocal(key): any {
-    return this.storage.get(key);
   }
 }

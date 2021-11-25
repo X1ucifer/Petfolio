@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ApiService } from '../../api.service';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,21 +29,10 @@ export class DashboardComponent implements OnInit {
   Vendor_list: any;
 
   constructor(
-    private router: Router,
-
     private _api: ApiService,
+    private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService
-
-  ) {
-    let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/login');
-
-    }
-
-  }
+  ) { }
 
   ngOnInit(): void {
 
@@ -90,8 +79,9 @@ export class DashboardComponent implements OnInit {
       }
     );
 
-
   }
+
+
   saveInLocal(key, val): void {
     this.storage.set(key, val);
   }
@@ -99,9 +89,6 @@ export class DashboardComponent implements OnInit {
   getFromLocal(key): any {
     return this.storage.get(key);
   }
-
-
-
 
 
 }

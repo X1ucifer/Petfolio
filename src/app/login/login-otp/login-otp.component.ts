@@ -78,7 +78,6 @@ export class LoginOtpComponent implements OnInit {
     // console.log(this.user.otp, "user_otp");
     if (this.otp == this.user.otp) {
       const name = `${this.user.first_name}_${this.user.last_name}`
-      this.saveInLocal('login', true);
       this.router.navigate(['/doctor-admin/dashboard']);
     }
     else {
@@ -103,12 +102,5 @@ export class LoginOtpComponent implements OnInit {
 
   showfailed(msg) {
     this.toastr.errorToastr(msg);
-  }
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
-
-  getFromLocal(key): any {
-    return this.storage.get(key);
   }
 }

@@ -10,11 +10,6 @@ import { DoctorRegisterComponent } from './login/doctor-register/doctor-register
 import { DoctorInfoComponent } from './login/doctor-info/doctor-info.component';
 import { ServiceProviderComponent } from './service-provider/service-provider.component';
 import { LoginOtpComponent } from './login/login-otp/login-otp.component';
-import { VendorLoginComponent } from './vendor/vendor-login/vendor-login.component';
-import { VendorAdminComponent } from './vendor/vendor-admin/vendor-admin.component';
-import { VendoRegisterComponent } from './vendor/vendo-register/vendo-register.component';
-import { VendoOtpComponent } from './vendor/vendo-otp/vendo-otp.component';
-import { VedorBussinessComponent } from './vendor/vedor-bussiness/vedor-bussiness.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login', },
@@ -23,10 +18,6 @@ const routes: Routes = [
   { path: 'doctor_otp', component: LoginOtpComponent, },
   { path: 'doctor_register', component: DoctorRegisterComponent, },
   { path: 'doctor_info', component: DoctorInfoComponent, },
-  { path: 'vendorlogin', component: VendorLoginComponent, },
-  { path: 'vendor_register', component: VendoRegisterComponent, },
-  { path: 'vendor_business_info', component: VedorBussinessComponent, },
-  { path: 'vendor_otp', component: VendoOtpComponent, },
 
   {
     path: 'admin', component: AdminComponent,
@@ -50,14 +41,6 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import(`./service-provider/service-provider.module`).then(m => m.ServiceProviderModule)
-      },]
-  },
-  {
-    path: 'vendor', component: VendorAdminComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import(`./vendor/vendor.module`).then(m => m.VendorModule)
       },]
   },
 ];

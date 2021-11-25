@@ -303,13 +303,7 @@
             </div>
             <div class="col-md-4">
                 <h5 class="form-lable">Appointment Time:</h5>
-                <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer" #calendar hideOnDateTimeSelect=false [hourFormat]='12'>
-                    <p-footer>
-                        <button pButton type="button" label="Close" style="float: right;font-size: 12px;margin: 5px;" 
-                           (click)="calendar.hideOverlay()">
-                        </button>
-                    </p-footer>
-                </p-calendar>
+                <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer" [hourFormat]='12'></p-calendar>
 
             </div>
             <div class="col-md-8">

@@ -1,12 +1,10 @@
-import { Component, OnInit, ViewChild,Inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MouseEvent } from '@agm/core';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { ApiService } from 'src/app/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-
 @Component({
   selector: 'app-vendor-form',
   templateUrl: './vendor-form.component.html',
@@ -52,15 +50,7 @@ export class VendorFormComponent implements OnInit {
   Contact:any;
   registration:any;
   uploadedFiles: any[] = [];
-  constructor(private router: Router, private _api:ApiService, private formBuilder:FormBuilder, private toastr:ToastrManager,    @Inject(SESSION_STORAGE) private storage: StorageService,
-  ) {
-    let login = false
-    login = this.getFromLocal('login');
-    console.log(login)
-    if (login != true) {
-      this.router.navigateByUrl('/login');
-
-    }
+  constructor(private router: Router, private _api:ApiService, private formBuilder:FormBuilder, private toastr:ToastrManager) {
     this.addVendorForm = this.formBuilder.group({
       _id:['',Validators.required],
       business_reg:['',Validators.required],
@@ -182,11 +172,5 @@ export class VendorFormComponent implements OnInit {
   showWarning(msg) {
     this.toastr.warningToastr(msg);
   }
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
 
-  getFromLocal(key): any {
-    return this.storage.get(key);
-  }
 }

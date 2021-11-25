@@ -137,7 +137,6 @@ export class PrescriptionviewComponent implements OnInit {
   }
 
 
-
   live_status_change(status, id) {
     let a = {
       '_id': id,
