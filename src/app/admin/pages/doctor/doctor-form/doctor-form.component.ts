@@ -126,18 +126,13 @@ export class DoctorFormComponent implements OnInit {
     private routes: ActivatedRoute,
     public datepipe: DatePipe
   ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/login');
 
-    let current_year = (new Date()).getFullYear();
-    console.log(current_year);
-     current_year = current_year + 1;
-    for(let a = 0 ; a < 50 ; a++){
-      current_year =  current_year - 1;
-      this.year_list.push(current_year);
     }
-    console.log(this.year_list);
-
-
-    this.stage1 = true;
     this._api.petdetails_dropdownslist().subscribe(
       (response: any) => {
         console.log(response.Data);

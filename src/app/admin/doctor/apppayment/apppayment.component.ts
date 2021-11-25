@@ -40,6 +40,13 @@ export class ApppaymentComponent implements OnInit {
     private http: HttpClient,
     private datePipe: DatePipe,
     ){
+      let login = false
+      login = this.getFromLocal('login');
+      console.log(login)
+      if (login != true) {
+        this.router.navigateByUrl('/doctorlogin');
+
+      }
    }
 
   ngOnInit(): void {
@@ -112,13 +119,6 @@ export class ApppaymentComponent implements OnInit {
   refersh() {
     this.ngOnInit(); this.E_Date = undefined; this.S_Date = undefined;
   }
-
-  view_details(item) {
-    this.saveInLocal('view_detail_data', item);
-    this.saveInLocal('view_detail', 'Appointment')
-    this.router.navigateByUrl('/doctor-admin/appointment-details')
-  }
-
   saveInLocal(key, val): void {
     this.storage.set(key, val);
   }
@@ -126,13 +126,4 @@ export class ApppaymentComponent implements OnInit {
   getFromLocal(key): any {
     return this.storage.get(key);
   }
-
-
-  onlinefilter(){
-    this.searchQR = 'Online';
-  }
-  cashfilter(){
-    this.searchQR = 'Cash';
-  }
 }
-

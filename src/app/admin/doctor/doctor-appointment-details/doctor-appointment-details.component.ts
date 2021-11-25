@@ -3,10 +3,7 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
-// import { DomSanitizer } from "@angular/platform-browser";
-import {BrowserModule, DomSanitizer} from '@angular/platform-browser'
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-doctor-appointment-details',

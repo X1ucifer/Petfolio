@@ -57,13 +57,6 @@ export class DoctorEditCalendarComponent implements OnInit {
   }
 
 
-  saveInLocal(key, val): void {
-    this.storage.set(key, val);
-  }
-
-  getFromLocal(key): any {
-    return this.storage.get(key);
-  }
 
   next_funcation(){
     console.log(this.schedule);
@@ -82,6 +75,13 @@ export class DoctorEditCalendarComponent implements OnInit {
     console.log(data);
     localStorage.setItem('dataSource', data);
     this.router.navigateByUrl('/doctor-admin/doctor-edit-calendar-time');
+  }
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
   }
 }
 function user(user: any): any {

@@ -41,7 +41,13 @@ export class PrescriptionaddComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
   ) {
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/doctorlogin');
 
+    }
   }
 
   ngOnInit(): void {

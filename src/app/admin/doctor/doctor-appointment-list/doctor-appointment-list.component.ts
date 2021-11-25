@@ -58,7 +58,15 @@ export class DoctorAppointmentListComponent implements OnInit {
     private excelService: ExcelService,
     public datepipe: DatePipe,
 
-  ) { }
+  ) { 
+    let login = false
+    login = this.getFromLocal('login');
+    console.log(login)
+    if (login != true) {
+      this.router.navigateByUrl('/doctorlogin');
+
+    }
+  }
 
   ngOnInit(): void {
     this.listpettype1();

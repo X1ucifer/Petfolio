@@ -1,0 +1,230 @@
+<section class="login_box">
+    <section class="login-box__section">
+        
+        <div class="card-box">
+            <div class="row" style="padding: 0px 0px 23px 10px">
+                <ng-container>
+                    
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <div>
+                                <h2 class="main-content-title tx-24 mb-1" style="color: #000;">
+                                    Business Details
+                                </h2>
+                            </div>
+                        </div>
+                        <h4 class="form-lable title-box" style="font-weight: 600;">
+                            Business Info
+                        </h4>
+                    </div>
+                    <div class="col-md-6 py-7">
+                        <h5 class="form-lable" style="font-weight: 600">Business Name:</h5>
+                        <input type="text" pInputText [ngModelOptions]="{standalone: true}" [(ngModel)]="Clinic_Name" placeholder="Clinic Name" />
+                    </div>
+                    <div class="col-md-6 py-7">
+                        <h5 class="form-lable">Email ID:</h5>
+                        <div>
+                            <input type="text" pInputText [ngModelOptions]="{standalone: true}" [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
+                                placeholder="Email ID" />
+                        </div>
+                        <div>
+                            <div *ngIf="Email_idError" class="mt-1 error">
+                                <div class="text-danger">Valid Email Address Required.</div>
+                            </div>
+                            <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
+                                <div class="text-danger">Valid Email Address Required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-7">
+                        <h5 class="form-lable">Phone Number:</h5>
+                        <input type="text" pInputText [ngModelOptions]="{standalone: true}" [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10"
+                            (keypress)="_keyPress($event)" />
+                        <div *ngIf="
+                    Validation == false &&
+                    (Phone == undefined || Phone == '' || Phone.length != 10)
+                  " class="mt-1 error">
+                            <div class="text-danger">Phone Number is Required.</div>
+                        </div>
+                    </div>
+                    <!-- <input type="text" pInputText [ngModelOptions]="{standalone: true}" [(ngModel)]="address" placeholder="Clinic Location"> -->
+                    <!-- <textarea rows="5" cols="30" pInputTextarea [ngModelOptions]="{standalone: true}" [(ngModel)]="address"></textarea> -->
+
+                    <div class="col-md-6 py-7" style="margin-bottom: 15px">
+                        <h5 class="form-lable" style="font-weight: 600">
+                            Upload Service Images:
+                        </h5>
+                        <input type="file" #imgType (change)="fileupload($event, 'Clinic')" id="imgfile"
+                            accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon" />
+                        <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                        <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+                        <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                        <table *ngIf="clinic_arr.length > 0" class="spec-table" style="margin-top: 8px">
+                            <thead>
+                                <th>S.No</th>
+                                <th>Image</th>
+                                <th>Remove</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of clinic_arr; let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>
+                                        <img src="{{ arr.clinic_pic }}" style="width: 20px" />
+                                    </td>
+
+                                    <td>
+                                        <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true"
+                                            pTooltip="Delete" (click)="remove_clinic_img(i)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="form-lable title-box" style="font-weight: 600;">
+                            Business Location
+                        </h4>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6 py-7">
+                            <h5 class="form-lable" style="font-weight: 600; margin-bottom: 15px">
+                                Business Location:
+                            </h5>
+                            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="address" ngx-google-places-autocomplete [options]="options"
+                                #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
+                        </div>
+                    </div>
+                    <div class="map">
+                        <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+                            [zoomControl]="false">
+                            <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
+                                (dragEnd)="markerDragEnd($event)">
+                                <agm-info-window>
+                                    <strong>{{ address }}</strong>
+                                </agm-info-window>
+                            </agm-marker>
+                        </agm-map>
+                    </div>
+                    <div class="col-md-6 py-7">
+                        <h5 class="form-lable" style="font-weight: 600">Latitude:</h5>
+                        <input type="text" pInputText [ngModelOptions]="{standalone: true}" [(ngModel)]="Latitude" placeholder="Latitude" />
+                    </div>
+                    <div class="col-md-6 py-7">
+                        <h5 class="form-lable" style="font-weight: 600">Longitude:</h5>
+                        <input type="text" pInputText [ngModelOptions]="{standalone: true}" [(ngModel)]="Longitude" placeholder="Longitude" />
+                    </div>
+                    <div class="col-md-12">
+                        <h4 class="form-lable title-box" style="font-weight: 600;">
+                            Documents
+                        </h4>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6" style="margin-bottom: 15px">
+                                <h5 class="form-lable" style="font-weight: 600">
+                                    Govt ID proof:
+                                </h5>
+                                <input type="file" #imgType (change)="fileupload($event, 'Govt')" id="imgfile"
+                                    accept=".png, .jpg, .jpeg" class="form-control" id="city"
+                                    placeholder="User type icon" />
+                                <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div>
+                                <img *ngIf="govt_arr != undefined" src="{{govt_arr}}" style="width: 20px;">
+
+                                <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i>
+                                <table *ngIf="govt_arr.length > 0" class="spec-table" style="margin-top: 8px">
+                                    <thead>
+                                        <th>S.No</th>
+                                        <th>Govt ID proof</th>
+                                        <th>Remove</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let arr of govt_arr; let i = index">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>
+                                                <img src="{{ arr.govt_id_pic }}" style="width: 20px" />
+                                            </td>
+
+                                            <td>
+                                                <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true"
+                                                    pTooltip="Delete" (click)="remove_govt_img(i)"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="form-lable" style="font-weight: 600">
+                                    Photo ID proof:
+                                </h5>
+                                <input type="file" #imgType (change)="fileupload($event, 'Photo')" id="imgfile"
+                                    accept=".png, .jpg, .jpeg" class="form-control" id="city"
+                                    placeholder="User type icon" />
+                                <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div>
+                                <img *ngIf="photo_arr != undefined" src="{{photo_arr}}" style="width: 20px;">
+                                <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i>
+                                <table *ngIf="photo_arr.length > 0" class="spec-table" style="margin-top: 8px">
+                                    <thead>
+                                        <th>S.No</th>
+                                        <th>Photo ID proof</th>
+                                        <th>Remove</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let arr of photo_arr; let i = index">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>
+                                                <img src="{{ arr.photo_id_pic }}" style="width: 20px" />
+                                            </td>
+                                            <td>
+                                                <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true"
+                                                    pTooltip="Delete" (click)="remove_photo_img(i)"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="form-lable" style="font-weight: 600">
+                                    Certificate:
+                                </h5>
+                                <input type="file" #imgType (change)="fileupload($event, 'Certificate')" id="imgfile"
+                                    accept=".png, .jpg, .jpeg" class="form-control" id="city"
+                                    placeholder="User type icon" />
+                                <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 100 * 100 (Max 200 kB)</div> -->
+                                <!-- <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;"> -->
+                                <!-- <i class="fa fa-plus add-icon" (click)="addhandled()" aria-hidden="true" pTooltip="Add"></i> -->
+                                <table *ngIf="certificate_arr.length > 0" class="spec-table" style="margin-top: 8px">
+                                    <thead>
+                                        <th>S.No</th>
+                                        <th>Certificate</th>
+                                        <th>Remove</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let arr of certificate_arr; let i = index">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>
+                                                <img src="{{ arr.certificate_pic }}" style="width: 20px" />
+                                            </td>
+                                            <td>
+                                                <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true"
+                                                    pTooltip="Delete" (click)="remove_Certificate_img(i)"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-20">
+                        <button type="button" class="btn btn-primary" (click)="create()">
+                            Save
+                        </button>
+                    </div>
+                </ng-container>
+
+               
+            </div>
+        </div>
+    </section>
+</section>
+
