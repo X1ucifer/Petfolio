@@ -25,9 +25,9 @@ export class DoctorAppointmentDetailsComponent implements OnInit {
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
-    private sanitizer: DomSanitizer,
+    // private sanitizer: DomSanitizer,
   ) {
-    this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(http://54.212.108.156/assets/images/dog.jpg)');
+    // this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(http://54.212.108.156/assets/images/dog.jpg)');
     console.log(this.backgroundImg);
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
