@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { MouseEvent } from '@agm/core';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -246,7 +246,7 @@ export class DoctorRegisterComponent implements OnInit {
       this.Experience = undefined;
     }
     else {
-      alert("Pleasefill all the fields")
+      // alert("Please fill all the fields")
       this.showWarning("Please fill all the fields");
     }
   }
@@ -411,7 +411,8 @@ export class DoctorRegisterComponent implements OnInit {
         "user_type": 4,
         "date_of_reg": "17/05/2021 11:45 AM",
         "mobile_type": 'Adminpanel',
-        "user_status": "complete"
+        "user_status": "complete",
+        "ref_code" : ""
       };
       console.log(a);
       this._api.user_create(a).subscribe(

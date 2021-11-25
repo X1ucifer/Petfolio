@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../api.service';
 import { log } from 'util';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 
 @Component({
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
 
     private http: HttpClient,
+    private toastr:ToastrManager,
 
     private _api: ApiService,
     @Inject(SESSION_STORAGE) private storage: StorageService
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.saveInLocal('login_cache', false);
   }
   emailValidator() {
     let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -101,9 +102,11 @@ export class LoginComponent implements OnInit {
     this.validator();
     if (this.validation) {
       if ((this.email == 'petfolio@gmail.com') && (this.password == '12345')) {
+        this.saveInLocal('login_cache', true);
         this.router.navigateByUrl('/admin/dashboard');
       } else {
-        alert('Invalid Account');
+       this.toastr.warningToastr("Invalid Account");
+        this.saveInLocal('login_cache', false);
       }
     }
   }

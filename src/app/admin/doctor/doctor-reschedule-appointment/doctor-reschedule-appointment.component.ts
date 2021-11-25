@@ -37,6 +37,15 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
   excelData: any[] = [];
   c_list: any = [];
   users;
+
+
+  temp_data = [];
+  type_array: any = [];
+  type_false : any;
+  Pet_Type : any;
+  pettype : any;
+  keyword3 = 'pet_type_title';
+
   constructor(
     private toastr: ToastrManager,
     private router: Router,
@@ -48,8 +57,51 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listpettype1();
+    let login_check = this.storage.get("doctor_login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/doctorlogin');
+    }
+
+
     this.users = this.storage.get("user");
     this.listpettype();
+
+
+  }
+
+
+  listpettype1() {
+    this._api.pet_type_list().subscribe(
+      (response: any) => {
+        console.log(response.Data);
+        this.pettype = response.Data;
+        for (let i = 0; i < response.Data.length; i++) {
+          this.type_array.push({ "pet_type_title": response.Data[i].pet_type_title })
+        }
+        console.log(this.type_array);
+      }
+    );
+  }
+
+
+  selectEvent3(item){
+    console.log(item);
+    this.Pet_Type = item;
+    // this.searchQR = item.pet_type_title
+    this.appointment_list = [];
+    for(let a  = 0 ; a < this.temp_data.length ; a ++){
+      if(this.temp_data[a].pet_id.pet_type == item.pet_type_title){
+        this.appointment_list.push(this.temp_data[a]);
+      }
+    }
+  }
+
+  clear(){
+    this.searchQR = '';
+    this.appointment_list = this.temp_data;
   }
 
   MakeCall(url) {
@@ -66,6 +118,7 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
         this.rows = response.Data;
         this.Main_list = response.Data;
         this.appointment_list = response.Data;
+        this.temp_data = this.appointment_list;
         console.log(this.appointment_list);
         this.get_c_list();
       }
@@ -157,11 +210,18 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
     console.log(this.c_list)
     this.excelData = this.c_list
     // for (let a = 0; a < this.c_list.length; a++) {
-    //   let data = {  
+    //   let data = {
     //   }
     //   this.excelData.push(this.c_list)
     // }
 
+  }
+
+  edit(data){
+    console.log(data);
+    this.saveInLocal('view_detail_data', data);
+    this.saveInLocal('view_detail', 'Appointment')
+    this.router.navigateByUrl('/doctor-admin/appointment_edit')
   }
 
   showSuccess(msg) {
@@ -174,5 +234,12 @@ export class DoctorRescheduleAppointmentComponent implements OnInit {
 
   showWarning(msg) {
     this.toastr.warningToastr(msg);
+  }
+
+  onlinefilter(){
+    this.searchQR = 'Online';
+  }
+  cashfilter(){
+    this.searchQR = 'Cash';
   }
 }

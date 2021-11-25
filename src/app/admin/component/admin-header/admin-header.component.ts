@@ -30,5 +30,16 @@ export class AdminHeaderComponent implements OnInit {
 
 logout(){
   this.router.navigateByUrl('');
+  this.saveInLocal('login_cache', false);
 }
+
+saveInLocal(key, val): void {
+  this.storage.set(key, val);
+}
+
+getFromLocal(key): any {
+  return this.storage.get(key);
+}
+
+
 }

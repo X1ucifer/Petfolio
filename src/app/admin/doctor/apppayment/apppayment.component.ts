@@ -43,6 +43,15 @@ export class ApppaymentComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    let login_check = this.storage.get("doctor_login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/doctorlogin');
+    }
+
+
     this.users = this.storage.get("user");
     let a = {
       "doctor_id": this.users._id
@@ -104,5 +113,26 @@ export class ApppaymentComponent implements OnInit {
     this.ngOnInit(); this.E_Date = undefined; this.S_Date = undefined;
   }
 
+  view_details(item) {
+    this.saveInLocal('view_detail_data', item);
+    this.saveInLocal('view_detail', 'Appointment')
+    this.router.navigateByUrl('/doctor-admin/appointment-details')
+  }
+
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
+
+
+  onlinefilter(){
+    this.searchQR = 'Online';
+  }
+  cashfilter(){
+    this.searchQR = 'Cash';
+  }
 }
 

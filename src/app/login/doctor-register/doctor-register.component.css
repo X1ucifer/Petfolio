@@ -5,7 +5,7 @@
   color: #ffffff;
   margin-top: 27px;
   padding: 8px 19px;
-  background: #099279;
+  background: #3c94c3;
 }
 
 .spec-table {
@@ -32,7 +32,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: left;
-  background-color: #099279;
+  background-color: #3c94c3;
   color: white;
 }
 
@@ -117,7 +117,7 @@ select {
 .form-lable {
   /* display: inline-block !important; */
   margin-bottom: 0.5rem !important;
-  color: #009377 !important;
+  color: #125071 !important;
 }
 
 .form-control {
@@ -159,7 +159,7 @@ select {
 }
 
 /* .input:focus-within {
-  border: 1px solid #009377;
+  border: 1px solid #125071;
 } */
 
 input {

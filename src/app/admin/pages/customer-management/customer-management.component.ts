@@ -39,6 +39,20 @@ export class CustomerManagementComponent implements OnInit {
   ) { }
   @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
+
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
+
+
+
+
     this.rows = [{ type: "Dog", name: "dog1" },
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" },
@@ -52,12 +66,13 @@ export class CustomerManagementComponent implements OnInit {
     { type: "Cat", name: "cat1" },
     { type: "Cat", name: "cat1" }];
     this.list();
- 
+
 
   }
 
 
   list() {
+
     this._api.user_list().subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -164,7 +179,7 @@ export class CustomerManagementComponent implements OnInit {
     this.list();this.E_Date = undefined ; this.S_Date = undefined;
   }
 
-  head = [['S.No', 'Name', 'Email', 'Phone', 'Created Date', 'Mobile Type']]
+  head = [['S.No', 'Name', 'Email', 'Phone', 'Created Date', 'Device type']]
 
 
   ExportTOExcel() {
@@ -180,7 +195,7 @@ export class CustomerManagementComponent implements OnInit {
     console.log(this.c_list)
     this.excelData = this.c_list
     // for (let a = 0; a < this.c_list.length; a++) {
-    //   let data = {  
+    //   let data = {
     //   }
     //   this.excelData.push(this.c_list)
     // }

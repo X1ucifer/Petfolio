@@ -81,7 +81,7 @@ export class PrescriptionaddComponent implements OnInit {
   }
 
   back(){
-
+    this.router.navigateByUrl('/doctor-admin/appointment_edit');
   }
 
 
@@ -114,7 +114,8 @@ export class PrescriptionaddComponent implements OnInit {
   save(){
 
      if(this.datas.length == 0){
-      alert("Add Tablets");
+       this.toastr.warningToastr("Add Tablets");
+      // alert("Add Tablets");
      }else{
       let a = {
         "Appointment_ID":this.view_detail_data._id,
@@ -133,7 +134,7 @@ export class PrescriptionaddComponent implements OnInit {
       this._api.create_prescription(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          this.toastr.successToastr("Updated Successfully");
           // this.ngOnInit();
         }
       );
@@ -143,7 +144,7 @@ export class PrescriptionaddComponent implements OnInit {
 
   update(){
     if(this.datas.length == 0){
-      alert("Add Tablets");
+      this.toastr.warningToastr("Add Tablets");
      }else{
       let a = {
         "_id" : this.update_id,
@@ -163,7 +164,7 @@ export class PrescriptionaddComponent implements OnInit {
       this._api.update_prescription(a).subscribe(
         (response: any) => {
           console.log(response.Data);
-          alert("Updated Successfully");
+          this.toastr.successToastr("Updated Successfully");
           this.router.navigateByUrl('/doctor-admin/Walkin_Appointment');
           // this.ngOnInit();
         }

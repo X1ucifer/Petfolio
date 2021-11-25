@@ -45,6 +45,16 @@ export class ServiceproviderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
+
     this.specialzation = '';
     // this.user_type_img = 'http://18.237.123.253:3000/api/uploads/template.jpg';
     this.pet_type_id = '';

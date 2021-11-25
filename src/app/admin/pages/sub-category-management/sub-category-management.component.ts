@@ -6,6 +6,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-sub-category-management',
@@ -46,6 +47,7 @@ export class SubCategoryManagementComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
+    private toastr:ToastrManager,
   ) { }
 
   ngOnInit(): void {
@@ -87,7 +89,7 @@ export class SubCategoryManagementComponent implements OnInit {
   create() {
 
     if (this.Category == undefined || this.Sub_Category == undefined || this.Sub_Category == '' || this.img_path == undefined) {
-      alert("Please enter the pet type")
+      this.toastr.warningToastr("Please enter the pet type")
     } else {
       let a = {
         "img_path": this.img_path,
@@ -103,7 +105,7 @@ export class SubCategoryManagementComponent implements OnInit {
         (response: any) => {
           console.log(response.Data);
           if (response.Code === 200) {
-            alert('Added Successfully');
+            this.toastr.successToastr('Added Successfully');
             this.id = undefined;
             this.img_path = undefined;
             this.Category = undefined;
@@ -111,7 +113,7 @@ export class SubCategoryManagementComponent implements OnInit {
             // this.Category_code = undefined;
             this.imgType.nativeElement.value = '';
           } else {
-            alert(response.Message);
+            this.toastr.warningToastr(response.Message);
           }
           this.ngOnInit();
         }
@@ -128,7 +130,7 @@ export class SubCategoryManagementComponent implements OnInit {
     this._api.product_subcat_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        this.toastr.successToastr('Deleted Successfully');
         this.ngOnInit();
       }
     );
@@ -144,7 +146,7 @@ export class SubCategoryManagementComponent implements OnInit {
   }
   update() {
     if (this.Category == undefined || this.Sub_Category == undefined || this.Sub_Category == '' || this.img_path == undefined) {
-      alert("Please enter valid inputs")
+      this.toastr.warningToastr("Please enter valid inputs")
     } else {
       let a = {
         "_id": this.id,
@@ -166,7 +168,7 @@ export class SubCategoryManagementComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.Code === 200) {
-            alert('Update Successfully');
+            this.toastr.successToastr('Update Successfully');
             this.ngOnInit();
             this.edit_t = false;
             this.id = undefined;
@@ -177,7 +179,7 @@ export class SubCategoryManagementComponent implements OnInit {
             this.imgType.nativeElement.value = '';
 
           } else {
-            alert(response.Message);
+            this.toastr.warningToastr(response.Message);
           }
         }
       );
@@ -202,7 +204,7 @@ export class SubCategoryManagementComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      this.toastr.warningToastr("Please select the startdate and enddate");
     }
 
   }
@@ -227,12 +229,12 @@ export class SubCategoryManagementComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            this.toastr.warningToastr("Please upload the file below 1 MB");
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          this.toastr.warningToastr("Please upload the file size 100 * 100");
           this.imgType.nativeElement.value = "";
         }
       };

@@ -10,6 +10,7 @@ import { environment } from '../../../../../environments/environment';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { MouseEvent } from '@agm/core';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-doctor-form',
@@ -33,6 +34,10 @@ export class DoctorFormComponent implements OnInit {
 
   }
 
+  stage1 = false;
+  stage2 = false;
+
+
   options={
     types: [],
     componentRestrictions: { country: 'IN' }
@@ -55,6 +60,7 @@ export class DoctorFormComponent implements OnInit {
   years: any = [];
   address: any;
   tittle: any;
+  tittle_idError : any;
   Clinic_Name: any;
   Latitude: any;
   Longitude: any;
@@ -74,6 +80,10 @@ export class DoctorFormComponent implements OnInit {
     { "y": "25+ years" },
     { "y": "30+ years" },
   ];
+
+
+
+
   Experiencearray: any = [];
   Completionarray: any = [];
   handledarray: any = [];
@@ -87,6 +97,7 @@ export class DoctorFormComponent implements OnInit {
   Validation: any;
   Email: any;
   Phone: any;
+  phone_idError : any;
   Email_id: any;
   Email_idError: any;
   userid: any = undefined;
@@ -94,6 +105,16 @@ export class DoctorFormComponent implements OnInit {
   detail: any;
   dropdownslist:any;
   consultancy_fees : any;
+
+
+  ///New Params///
+
+  clinic_number : any = '';
+  doctor_id : any = '';
+  about_doctor: any = '';
+  communication_type : any = '';
+  year_list = [];
+  city_name = '';
   constructor(
     private toastr:ToastrManager,
     private location: Location,
@@ -102,8 +123,21 @@ export class DoctorFormComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
     private _api: ApiService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    public datepipe: DatePipe
   ) {
+
+    let current_year = (new Date()).getFullYear();
+    console.log(current_year);
+     current_year = current_year + 1;
+    for(let a = 0 ; a < 50 ; a++){
+      current_year =  current_year - 1;
+      this.year_list.push(current_year);
+    }
+    console.log(this.year_list);
+
+
+    this.stage1 = true;
     this._api.petdetails_dropdownslist().subscribe(
       (response: any) => {
         console.log(response.Data);
@@ -153,11 +187,36 @@ export class DoctorFormComponent implements OnInit {
   }
   addSpecialization() {
 
-    if (this.Specialization != undefined && this.Specialization != '') {
-      let obj = { "specialization": this.Specialization }
-      this.Specializationarray.push(obj);
-      this.Specialization = undefined;
+    if(this.Specializationarray.length == 0){
+      if (this.Specialization != undefined && this.Specialization != '') {
+        let obj = { "specialization": this.Specialization }
+        this.Specializationarray.push(obj);
+        this.Specialization = undefined;
+      }
+    }else{
+      var checks = '0';
+      for(let a  = 0 ; a < this.Specializationarray.length;a ++){
+        if(this.Specialization == this.Specializationarray[a].specialization){
+          checks = '1';
+        }
+         if(a == this.Specializationarray.length -1){
+          if(checks == '1'){
+            alert('this specialization already exist')
+          }else{
+            if (this.Specialization != undefined && this.Specialization != '') {
+              let obj = { "specialization": this.Specialization }
+              this.Specializationarray.push(obj);
+              this.Specialization = undefined;
+            }
+          }
+         }
+      }
     }
+
+
+
+
+
   }
   remove_Specialization(i) {
     this.Specializationarray.splice(i, 1);
@@ -183,14 +242,23 @@ export class DoctorFormComponent implements OnInit {
   addExperience() {
 
     if (this.CName != undefined && this.CName != '' && this.f_date != undefined && this.T_date != undefined) {
-      let obj = { "company": this.CName, "from": this.f_date, "to": this.T_date }
-      this.Experiencearray.push(obj);
-      this.CName = undefined;
-      this.f_date = undefined;
-      this.T_date = undefined;
+      if(+this.f_date < +this.T_date){
+        let temp = 0;
+        temp = +this.T_date - +this.f_date;
+        console.log(temp);
+        let obj = { "company": this.CName, "from": this.f_date, "to": this.T_date, "yearsofexperience" : temp }
+        this.Experiencearray.push(obj);
+        this.CName = undefined;
+        this.f_date = undefined;
+        this.T_date = undefined;
+      }else{
+        alert("Select valid date");
+      }
+
+
     }
     else {
-      alert("Pleasefill all the fields")
+      this.toastr.warningToastr("Pleasefill all the fields")
       this.showWarning("Please fill all the fields");
     }
   }
@@ -200,12 +268,40 @@ export class DoctorFormComponent implements OnInit {
   }
   addhandled() {
 
-    if (this.handled != undefined && this.handled != '') {
-      let obj = { "pet_handled": this.handled }
-      this.handledarray.push(obj);
-      this.handled = undefined;
+    console.log(this.handled);
+    if(this.handledarray.length == 0){
+      if (this.handled != undefined && this.handled != '') {
+        let obj = { "pet_handled": this.handled }
+        this.handledarray.push(obj);
+        this.handled = undefined;
+      }
+    }else{
+    console.log("Test");
+     var checks = '0';
+     console.log(this.handledarray.length);
+
+     for(let a  = 0 ; a < this.handledarray.length;a ++){
+       console.log(this.handledarray[a].pet_handled,this.handled);
+      if(this.handledarray[a].pet_handled == this.handled){
+        checks = '1';
+      }
+      if(a == this.handledarray.length - 1){
+        console.log(checks);
+        if(checks == '1'){
+        alert('pethandle already added');
+        }else{
+          if (this.handled != undefined && this.handled != '') {
+            let obj = { "pet_handled": this.handled }
+            this.handledarray.push(obj);
+            this.handled = undefined;
+          }
+        }
+      }
+     }
     }
   }
+
+
   remove_handled(i) {
     this.handledarray.splice(i, 1);
 
@@ -230,21 +326,15 @@ export class DoctorFormComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width > 100 && height > 100) {
           let d = this.selectedimgae.size / 100000;
-          if (d < 10) {
+          console.log(d);
+          if (d < 21) {
             this.addfiles(str);
           } else {
             // alert('Please upload the file below 1 MB');
-            this.showWarning("Please upload the file below 1 MB");
+            this.showWarning("Please upload the file below 2 MB");
             this.imgType.nativeElement.value = "";
           }
-        }
-        else {
-          // alert('Please upload the file size 100 * 100');
-          this.showWarning("Please upload the file size 200 * 120");
-          this.imgType.nativeElement.value = "";
-        }
       };
       img.src = fr.result as string; // The data URL
     };
@@ -327,6 +417,9 @@ export class DoctorFormComponent implements OnInit {
     }
   }
   create_1() {
+
+
+
     this.validation_1();
     if (this.Validation == false) {
       // alert("Please enter valid inputs");
@@ -336,9 +429,12 @@ export class DoctorFormComponent implements OnInit {
         "first_name": this.tittle,
         "last_name": this.Name,
         "user_email": this.Email,
+        "user_email_verification" : false,
+        "ref_code":"",
         "user_phone": this.Phone,
+        "otp": 123456,
         "user_type": 4,
-        "date_of_reg": new Date(),
+        "date_of_reg": ""+this.datepipe.transform(new Date(), 'dd-MM-yyyy hh:mm:ss'),
         "mobile_type": 'Admin',
         "user_status": "complete"
       };
@@ -351,6 +447,8 @@ export class DoctorFormComponent implements OnInit {
             console.log(this.userid)
             // alert('Added Successfully');
             this.showSuccess("Added Successfully")
+            this.stage1 = false;
+            this.stage2 = true;
           } else {
             this.showError(response.Message);
             //alert(response.Message);
@@ -361,55 +459,68 @@ export class DoctorFormComponent implements OnInit {
   }
   create() {
     let a = {
-      "user_id": this.userid,
-      "dr_title": this.tittle,
-      "dr_name": this.Name,
-      "clinic_name": this.Clinic_Name,
-      "clinic_loc": this.address,
-      "clinic_lat": this.Latitude,
-      "clinic_long": this.Longitude,
-      "education_details": this.Completionarray,
-      "experience_details": this.Experiencearray,
-      "specialization": this.Specializationarray,
-      "pet_handled": this.handledarray,
-      "clinic_pic": this.clinic_arr,
-      "certificate_pic": this.certificate_arr,
-      "govt_id_pic": this.govt_arr,
-      "photo_id_pic": this.photo_arr,
-      "profile_status": 0,
-      "profile_verification_status": "Not verified",
-      "date_and_time": "" + new Date(),
-      "consultancy_fees" : this.consultancy_fees
+    "certificate_pic":this.certificate_arr,
+    "city_name":this.city_name,
+    "clinic_lat":this.Latitude,
+    "clinic_loc":this.address,
+    "clinic_long":this.Longitude,
+    "clinic_name":this.Clinic_Name,
+    "clinic_no":this.clinic_number,
+    "clinic_pic":this.clinic_arr,
+    "communication_type":this.communication_type,
+    "consultancy_fees": this.consultancy_fees,
+    "date_and_time": ""+this.datepipe.transform(new Date(), 'dd/MM/yyyy hh:mm:ss'),
+    "doctor_id": this.doctor_id,
+    "doctor_info": this.about_doctor,
+    "dr_name": this.Name,
+    "dr_title":"Dr",
+    "education_details":this.Completionarray,
+    "experience_details": this.Experiencearray,
+    "govt_id_pic":this.govt_arr,
+    "mobile_type":"Admin",
+    "pet_handled":this.handledarray,
+    "photo_id_pic":this.photo_arr,
+    "profile_status":true,
+    "profile_verification_status":"Not verified",
+    "signature":"",
+    "specialization":this.Specializationarray,
+    "user_id":this.userid
+  }
 
-    }
     console.log(a);
-    this.validation();
+    // this.validation();
+    this.Validation = true;
     if (this.Validation == false) {
       // alert("Please enter valid inputs");
       this.showWarning("Please enter valid inputs");
     } else {
       let a = {
-        "user_id": this.userid,
-        "dr_title": this.tittle,
+        "certificate_pic":this.certificate_arr,
+        "city_name":this.city_name,
+        "clinic_lat":this.Latitude,
+        "clinic_loc":this.address,
+        "clinic_long":this.Longitude,
+        "clinic_name":this.Clinic_Name,
+        "clinic_no":this.clinic_number,
+        "clinic_pic":this.clinic_arr,
+        "communication_type":this.communication_type,
+        "consultancy_fees": this.consultancy_fees,
+        "date_and_time": ""+this.datepipe.transform(new Date(), 'dd/MM/yyyy hh:mm:ss'),
+        "doctor_id": this.doctor_id,
+        "doctor_info": this.about_doctor,
         "dr_name": this.Name,
-        "clinic_name": this.Clinic_Name,
-        "clinic_loc": this.address,
-        "clinic_lat": this.Latitude,
-        "clinic_long": this.Longitude,
-        "education_details": this.Completionarray,
+        "dr_title":"Dr",
+        "education_details":this.Completionarray,
         "experience_details": this.Experiencearray,
-        "specialization": this.Specializationarray,
-        "pet_handled": this.handledarray,
-        "clinic_pic": this.clinic_arr,
-        "certificate_pic": this.certificate_arr,
-        "govt_id_pic": this.govt_arr,
-        "photo_id_pic": this.photo_arr,
-        "thumbnail_image" : this.thumbnail_image,
-        "profile_status": 0,
-        "profile_verification_status": "Not verified",
-        "date_and_time": "" + new Date(),
-        "consultancy_fees" : this.consultancy_fees
-
+        "govt_id_pic":this.govt_arr,
+        "mobile_type":"Admin",
+        "pet_handled":this.handledarray,
+        "photo_id_pic":this.photo_arr,
+        "profile_status":true,
+        "profile_verification_status":"Not verified",
+        "signature":"",
+        "specialization":this.Specializationarray,
+        "user_id":this.userid
       }
       console.log(a);
       this._api.doctor_details_create(a).subscribe(
@@ -432,6 +543,20 @@ export class DoctorFormComponent implements OnInit {
     this.Email_id = data;
     this.Email_idError = this.ValidatorService.emailValidator(this.Email_id);
   }
+  PhoneChange(data) {
+    this.Email_id = data;
+    this.Email_idError = this.ValidatorService.emailValidator(this.Email_id);
+  }
+  FirstnameChange(data) {
+    this.tittle = data;
+    this.tittle_idError = this.ValidatorService.stringValidator(this.tittle);
+  }
+  LastnameChange(data) {
+    this.Email_id = data;
+    this.Email_idError = this.ValidatorService.emailValidator(this.Email_id);
+  }
+
+
   _keyPress(event: any) {
     const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);

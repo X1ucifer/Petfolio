@@ -60,6 +60,10 @@ export class DoctorLoginComponent implements OnInit {
 
   ngOnInit() {
 
+
+
+
+
   }
   // emailValidator() {
   //   let reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -137,13 +141,20 @@ export class DoctorLoginComponent implements OnInit {
       if (this.validation) {
         this.postUserData().subscribe(data => {
           console.log(data);
+          this.user_data = data;
+          console.log(this.user_data);
           if(data.Code == 404){
-            alert(data.Message);
-            this.toastr.errorToastr("Invalid otp");
+            this.toastr.errorToastr("Invalid doctor account");
+            this.saveInLocal('doctor_login_cache', false);
           } else {
-            this.user_data = data;
-            this.storage.set('user', this.user_data.Data.user_details);
-            this.router.navigate(['/doctor_otp']);
+            if(this.user_data.Data.user_details.user_type == 4){
+              this.storage.set('user', this.user_data.Data.user_details);
+              this.saveInLocal('doctor_login_cache', true);
+              this.router.navigate(['/doctor_otp']);
+            }else{
+              this.toastr.errorToastr("Invalid doctor account");
+              this.saveInLocal('doctor_login_cache', false);
+            }
           }
         });
       }
@@ -168,7 +179,7 @@ export class DoctorLoginComponent implements OnInit {
     return this.storage.get(key);
   }
   register() {
-    this.router.navigateByUrl('/doctor_register');
+    // this.router.navigateByUrl('/doctor_register');
   }
   showWarning(msg) {
     this.toastr.warningToastr(msg);

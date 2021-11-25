@@ -1,152 +1,120 @@
 <section *ngIf="view_detail == 'Appointment'">
     <div class="container" style="width: 100%;">
-        <p (click)="back()"> <i class="fa fa-arrow-left"></i> Back </p>
+      <button class="btn btn-success btn-sm mr-2" (click)="back()"> <i class="fa fa-arrow-left"></i> Back </button>
+        <!-- <p (click)="back()"> <i class="fa fa-arrow-left"></i> Back </p> -->
         <div class="row">
             <div class="col-md-12" style="margin-top: 25px;">
-                <div class="spec">
-                    <h4> <label style="color: #007adb;">Appointment Details</label> </h4>
-                </div>
-                <div class="d-flex justify-content-end" *ngIf="showCanel">
-                    <button *ngIf="view_detail_data.appoinment_status == 'Incomplete'" class="btn-sm btn btn-warning"
-                        (click)="cancelAppointment()"> Cancel Appointment</button>
-                </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <h4> <label style="color: #007adb;">Appointment Details</label> </h4>
+              </div>
+              <div class="col-md-6">
+                <!-- <p  style="text-align: right;"><button class="btn btn-success btn-sm mr-2" (click)="printComponent('component1')">Print</button></p> -->
+                <p  style="text-align: right;"><button class="btn btn-success btn-sm mr-2" (click)="viewprescription()">View Prescription</button></p>
+              </div>
+              </div>
                 <div class="card-box" style="padding: 5px 5px 5px 5px">
                     <div class="app-i">
-                        <table cellpadding="5" cellspacing="0">
-                            <tr>
-                                <th> <label for="f-user"> Doctor Name </label> </th>
+                      <div class="container" id="component1">
+                     <div class="row">
+                       <div class="col-md-12">
+                         <h3 style="font-weight: bold;">Appointment Details</h3>
+                        <table>
+                          <tr>
+                            <th> <label for="f-user"> Doctor Name </label> </th>
 
-                                <td class="desc">
-                                    {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-user"> Appointment Date & Time </label> </th>
+                            <th class="desc">
+                                {{view_detail_data.doc_business_info[0].dr_title}}.{{view_detail_data.doc_business_info[0].dr_name}}
+                            </th>
+                        </tr>
+                        <tr>
+                          <th> <label for="f-dispname">Consultation type</label> </th>
 
-                                <td class="desc">
-                                    {{view_detail_data.booking_date_time}}
-                                </td>
-                            </tr>
-                            <!-- <tr>
-                                <th> <label for="f-pass1"> Date of Birth </label> </th>
+                          <td class="desc">{{view_detail_data.communication_type}}</td>
+                       </tr>
+                        <tr>
+                            <th> <label for="f-user"> Appointment Date </label> </th>
 
-                                <td class="desc"> data.DOB</td>
-                            </tr> -->
-                            <tr>
-                                <th> <label for="f-pass2">Appointment Type </label> </th>
+                            <td class="desc">
+                                {{view_detail_data.booking_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                          <th> <label for="f-user"> Appointment Time </label> </th>
 
-                                <td class="desc">{{view_detail_data.appointment_types}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Status </label> </th>
+                          <td class="desc">
+                              {{view_detail_data.booking_time}}
+                          </td>
+                      </tr>
+                        <tr>
+                          <th> <label for="f-dispname">Appointment Status</label> </th>
 
-                                <td class="desc"> {{view_detail_data.appoinment_status}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Booking Date & Time</label> </th>
+                          <td class="desc"> {{view_detail_data.appoinment_status}}</td>
+                        </tr>
+                        <tr>
+                          <th> <label for="f-dispname">Payment Method</label> </th>
 
-                                <td class="desc">{{view_detail_data.booking_date_time}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Start Appointment Status</label> </th>
+                          <td class="desc">{{view_detail_data.payment_method}}</td>
+                      </tr>
+                      <tr>
+                        <th> <label for="f-dispname">Amount</label> </th>
 
-                                <td class="desc">{{view_detail_data.start_appointment_status}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">End Appointment Status</label> </th>
+                        <td class="desc">{{view_detail_data.amount}}</td>
+                      </tr>
 
-                                <td class="desc">{{view_detail_data.end_appointment_status}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Communication Type</label> </th>
+                      <tr>
+                        <th> <label for="f-pass2">Diagnosis</label> </th>
 
-                                <td class="desc">{{view_detail_data.communication_type}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Mobile Type</label> </th>
+                        <td class="desc">{{view_detail_data.diagnosis}}</td>
+                    </tr>
+                    <tr>
+                        <th> <label for="f-dispname">Sub Diagnosis</label> </th>
 
-                                <td class="desc">{{view_detail_data.mobile_type}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Payment Method</label> </th>
+                        <td class="desc">{{view_detail_data.sub_diagnosis}}</td>
+                    </tr>
+                      <tr>
+                        <th> <label for="f-dispname">Doctor Feedback</label> </th>
 
-                                <td class="desc">{{view_detail_data.payment_method}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Amount</label> </th>
-
-                                <td class="desc">{{view_detail_data.amount}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Prescription Details</label> </th>
-
-                                <td class="desc">{{view_detail_data.prescription_details}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Doctor Feedback</label> </th>
-
-                                <td class="desc">{{view_detail_data.doc_feedback}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Customer Feedback</label> </th>
-
-                                <td class="desc">{{view_detail_data.user_feedback}}</td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-dispname">Attachments</label> </th>
-
-                                <td class="act desc">
-                                    <ng-container *ngFor="let photo_id_pic of view_detail_data.doc_attched">
-                                        <i (click)="goToLink1(photo_id_pic.file)" class="fas fa-file-pdf"
-                                            style="background-color: #fff;color: #fd2c3a;"></i>
-                                    </ng-container>
-                                </td>
-                            </tr>
-                            <!-- <tr>
-                                <th> <label for="f-tos">Available Hours </label> </th>
-
-                                <td class="desc"> data.AvailableHours </td>
-                            </tr>
-                            <tr>
-                                <th> <label for="f-tos"> Available Type </label> </th>
-
-                                <td class="desc"> data.Available_type </td>
-                            </tr> -->
-                            <!-- <tr>
-                                <th> <label for="f-tos"> Charges Per Appointment </label> </th>
-
-                                <td class="desc"> data.Charge_Per_15min </td>
-                            </tr> -->
-                            <!-- <tr>
-                                <th><label for="f-tos"> Live Status</label></th>
-                                <td class="desc"> data.Live_Status </td>
-                            </tr> -->
-                            <!-- <tr>
-                                <th><label for="f-tos"> Current Location</label></th>
-                                <td class="desc"> {{view_detail_data.booking_date_time}}</td>
-                            </tr> -->
-
-                            <!-- <tr>
-                                <th><label for="f-tos">Doctor Brife</label></th>
-                                <td class="desc"> data.Special_mention </td>
-                            </tr> -->
-
-
-                            <!-- <tr>
-                                <th><label for="f-tos">About Doctor</label></th>
-                                <td class="desc"> data.Information </td>
-                            </tr> -->
-                            <!-- <tr>
-                                <th><label for="f-tos">KMS Registration Number</label></th>
-                                <td class="desc"> data.KMS_registration </td>
-                            </tr>
-                            <tr>
-                                <th><label for="f-tos">Signature</label></th>
-                                <td class="desc"> <img style="width: 100px;" src="data.signature" alt="" /> </td>
-                            </tr> -->
-
-
+                        <td class="desc">{{view_detail_data.doctor_comment}},{{view_detail_data.doc_feedback}}</td>
+                     </tr>
                         </table>
+                       </div>
+                       <br>
+                       <hr>
+                       <div class="col-md-12" style="padding-top: 40px;">
+                        <h3 style="font-weight: bold;">Prescription Detail</h3>
+                        <table>
+                          <tr style="background: #3c93c1;">
+                            <th>Medicine</th>
+                            <th>No of days</th>
+                            <th>Consumption per day</th>
+                          </tr>
+                          <ng-container *ngFor="let item of prescription; let i = index">
+                            <tr style="text-align: center;">
+                            <td>{{item.Tablet_name}}</td>
+                            <td>{{item.Quantity}}</td>
+                            <td>
+                              <div class="row">
+                                <div class="col-md-4" style="text-align: center;">
+                              <label for="vehicle1" style="margin-left: 10px;font-weight: bolder;">Morning</label><br>
+                              <label for="vehicle2" style="margin-left: 10px;"><span *ngIf="item.consumption.morning">1</span><span *ngIf="!item.consumption.morning">0</span></label><br>
+                              </div>
+                              <div class="col-md-4" style="text-align: center;">
+                              <label for="vehicle2" style="margin-left: 10px;font-weight: bolder;">Afternoon</label><br>
+                              <label for="vehicle2" style="margin-left: 10px;"><span *ngIf="item.consumption.evening">1</span><span *ngIf="!item.consumption.evening">0</span></label><br>
+                             </div>
+                             <div class="col-md-4" style="text-align: center;">
+                              <label for="vehicle3" style="margin-left: 10px;font-weight: bolder;">Night</label><br>
+                              <label for="vehicle3" style="margin-left: 10px;"><span *ngIf="item.consumption.night">1</span><span *ngIf="!item.consumption.night">0</span></label><br>
+                              </div>
+                              </div>
+                            </td>
+                          </tr>
+                          </ng-container>
+                        </table>
+                      </div>
+                     </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -183,6 +151,66 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12" style="margin-top: 25px;">
+              <div class="spec">
+                  <h4> <label style="color: #007adb;">Pet Details</label> </h4>
+              </div>
+              <div class="card-box">
+                  <div class="row" style="padding: 0px 0px 23px 10px;">
+                      <div class="col-md-3">
+                          <img src="../../../../assets/images/dog.jpg" class="pro-pic"
+                              style="width: 150px;border-radius: 50%;height: 150px;">
+                      </div>
+                      <div class="col-md-9 app-i" style="padding-left: 20px;">
+                          <table cellpadding="5" cellspacing="0">
+                              <tr>
+                                  <th> <label for="f-user">Pet Name</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_name}} </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Breed</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_breed}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Type</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_type}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Color</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_color}}
+                                  </td>
+                              </tr>
+
+                              <tr>
+                                  <th> <label for="f-user">Pet Gender</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_gender}}
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th> <label for="f-user">Pet Weight</label> </th>
+
+                                  <td class="desc">
+                                      {{view_detail_data.pet_id.pet_weight}}
+                                  </td>
+                              </tr>
+
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
             <div class="col-md-12" style="margin-top: 25px;">
                 <div class="spec">
                     <h4> <label style="color: #007adb;">Doctor Details</label> </h4>
@@ -261,66 +289,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12" style="margin-top: 25px;">
-                <div class="spec">
-                    <h4> <label style="color: #007adb;">Pet Details</label> </h4>
-                </div>
-                <div class="card-box">
-                    <div class="row" style="padding: 0px 0px 23px 10px;">
-                        <div class="col-md-3">
-                            <img src="../../../../assets/images/dog.jpg" class="pro-pic"
-                                style="width: 150px;border-radius: 50%;height: 150px;">
-                        </div>
-                        <div class="col-md-9 app-i" style="padding-left: 20px;">
-                            <table cellpadding="5" cellspacing="0">
-                                <tr>
-                                    <th> <label for="f-user">Pet Name</label> </th>
 
-                                    <td class="desc">
-                                        {{view_detail_data.pet_id.pet_name}} </td>
-                                </tr>
-                                <tr>
-                                    <th> <label for="f-user">Pet Breed</label> </th>
-
-                                    <td class="desc">
-                                        {{view_detail_data.pet_id.pet_breed}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th> <label for="f-user">Pet Type</label> </th>
-
-                                    <td class="desc">
-                                        {{view_detail_data.pet_id.pet_type}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th> <label for="f-user">Pet Color</label> </th>
-
-                                    <td class="desc">
-                                        {{view_detail_data.pet_id.pet_color}}
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th> <label for="f-user">Pet Gender</label> </th>
-
-                                    <td class="desc">
-                                        {{view_detail_data.pet_id.pet_gender}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th> <label for="f-user">Pet Weight</label> </th>
-
-                                    <td class="desc">
-                                        {{view_detail_data.pet_id.pet_weight}}
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>

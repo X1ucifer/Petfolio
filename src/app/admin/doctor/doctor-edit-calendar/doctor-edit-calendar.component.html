@@ -4,7 +4,7 @@
   <ng-container *ngFor="let arr of calendarlist; let i= index;">
     <div class="item-container">
       <div class="p-field-checkbox">
-        <input type="checkbox" [(ngModel)]="schedule[i]" [ngModelOptions]="{standalone: true}" />
+        <input type="checkbox" [(ngModel)]="schedule[i]" *ngIf="arr.Status !== true" [ngModelOptions]="{standalone: true}" />
         <!-- <p-checkbox [(ngModel)]="schedule[i]"></p-checkbox> -->
         <label class="ml-10px" for="mo">{{arr.Title}}</label>
       </div>
@@ -14,8 +14,8 @@
     </div>
   </ng-container>
 
-  <button type="button" class="btn btn-success btn-sm mr-2">
-    next
+  <button type="button" class="btn btn-success btn-sm mr-2" (click)="next_funcation()">
+    Next
   </button>
   <mat-card>
     <mat-card-content>

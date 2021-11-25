@@ -1,1 +1,141 @@
-<p>prescriptionview works!</p>
+
+<html>
+
+<body>
+  <p  style="text-align: right;"><button class="btn btn-success btn-sm mr-2" (click)="printComponent('component1')">Print</button></p>
+  <div class="container" id="component1">
+    <section style="padding: 50px 0px;">
+
+      <div class="container box-1">
+            <div class="row row1" style="padding: 10px;">
+                <div class="col-md-7 doc">
+                    <h5 class="name">Dr. {{view_detail_data.doctor_id.first_name}}  {{view_detail_data.doctor_id.last_name}}</h5>
+                    <p>{{view_detail_data.doc_business_info[0].clinic_name}}</p>
+                    <p>{{view_detail_data.doc_business_info[0].clinic_loc}}</p>
+                </div>
+                <div class="col-md-5" style="display: flex;">
+                    <div style="flex-basis: 70%; ">
+                        <div class="power">
+                            <h6 style="font-weight:600;font-size:13px;margin-bottom: 0px;">Powered By:</h6>
+                            <p><a>Petfolio</a></p>
+                            <p><a>www.petfolio.com</a></p>
+                            <p style="font-size:14px">Phone: +91 998776655</p>
+                        </div>
+                    </div>
+                    <div style="flex-basis: 30%;">
+                          <!-- <img [src]="sanitizer.bypassSecurityTrustUrl('../../../../assets/images/logo/logo.png')" style="width: 100px;" /> -->
+                          <div class="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row2" style="padding: 10px; margin-top: 10px;">
+              <div class="row col-md-12">
+              <div class="col-md-6">
+                    <h5>Prescription No : <span> {{view_detail_data.appointment_UID}}</span></h5>
+                </div>
+                <div class="col-md-6">
+                    <h5>Owner's Name : <span> {{view_detail_data.user_id.first_name}} {{view_detail_data.user_id.last_name}}</span></h5>
+                </div>
+                <div class="col-md-6">
+                    <h5>Name : <span> {{view_detail_data.pet_id.pet_name}}</span></h5>
+                </div>
+                <div class="col-md-6">
+                    <h5>Type : <span> {{view_detail_data.pet_id.pet_type}}</span></h5>
+                </div>
+                <div class="col-md-6">
+                    <h5>Breed : <span> {{view_detail_data.pet_id.pet_breed}}</span></h5>
+                </div>
+
+                <div class="col-md-6">
+                  <h5>Gender : <span> {{view_detail_data.pet_id.pet_gender}}</span></h5>
+              </div>
+
+              <div class="col-md-6">
+                <h5>Weight : <span> {{view_detail_data.pet_id.pet_weight}}</span></h5>
+            </div>
+
+            <div class="col-md-6">
+              <h5>Age : <span> {{view_detail_data.pet_id.pet_age}}</span></h5>
+          </div>
+
+          <div class="col-md-6">
+            <h5>Diagnosis : <span> {{view_detail_data.diagnosis}}</span></h5>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Sub Diagnosis : <span> {{view_detail_data.sub_diagnosis}}</span></h5>
+      </div>
+
+
+              </div>
+                <div class="col-md-12">
+                    <hr style="border-top: 1px solid rgb(133, 148, 153);" />
+                </div>
+            </div>
+
+            <div class="row row3" style="padding: 10px">
+                <div class="col-md-12">
+                    <h3>Doctor Comments :</h3>
+                      <table style="width:100%">
+                        <!-- <caption>Monthly savings</caption> -->
+                        <tr>
+                            <td style="height: 100px;">
+                             {{view_detail_data.doctor_comment}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row row3" style="padding: 10px">
+                <div class="col-md-12">
+                    <h3>Presciption Medicines:</h3>
+                    <table style="width:100%">
+                        <!-- <caption>Monthly savings</caption> -->
+                        <tr style="background: #3f97bd;color: black;">
+                            <th style="text-align: center;">Medicine</th>
+                            <th style="text-align: center;">No of days</th>
+                            <th style="text-align: center;">Consumption</th>
+                        </tr>
+                        <ng-container *ngFor='let item of prescription;let i = index'>
+                          <tr>
+                            <td>{{item.Tablet_name}}</td>
+                            <td>{{item.Quantity}}</td>
+                            <td>
+                              <div class="row">
+                                <div class="col-md-4" style="text-align: center;">
+                              <label for="vehicle1" style="margin-left: 10px;font-weight: bolder;">Morning</label><br>
+                              <label for="vehicle2" style="margin-left: 10px;"><span *ngIf="item.consumption.morning">1</span><span *ngIf="!item.consumption.morning">0</span></label><br>
+                              </div>
+                              <div class="col-md-4" style="text-align: center;">
+                              <label for="vehicle2" style="margin-left: 10px;font-weight: bolder;">Afternoon</label><br>
+                              <label for="vehicle2" style="margin-left: 10px;"><span *ngIf="item.consumption.evening">1</span><span *ngIf="!item.consumption.evening">0</span></label><br>
+                             </div>
+                             <div class="col-md-4" style="text-align: center;">
+                              <label for="vehicle3" style="margin-left: 10px;font-weight: bolder;">Night</label><br>
+                              <label for="vehicle3" style="margin-left: 10px;"><span *ngIf="item.consumption.night">1</span><span *ngIf="!item.consumption.night">0</span></label><br>
+                              </div>
+                              </div>
+                            </td>
+                        </tr>
+                        </ng-container>
+
+                    </table>
+                </div>
+
+
+            </div>
+            <div class="row row1" style="padding: 10px;">
+                  <div class="col-md-9">
+                  </div>
+                  <div class="col-md-3">
+                    <div class="logo" style="background:url({{view_detail_data.doc_business_info[0].signature}}); background-repeat: no-repeat;padding: 30px;background-size: contain;"></div>
+                    <p>(Dr. {{view_detail_data.doctor_id.first_name}}  {{view_detail_data.doctor_id.last_name}})</p>
+                  </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+</body>
+
+</html>

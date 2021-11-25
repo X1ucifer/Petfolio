@@ -99,7 +99,7 @@ export class CustomerFormComponent implements OnInit {
           this.breed_array.push({"pet_breed": response.Data[i].pet_breed})
         }
         console.log(this.breed_array);
-        
+
       }
     );
   }
@@ -254,12 +254,12 @@ export class CustomerFormComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 1 MB');
+            this.toastr.warningToastr('Please upload the file below 1 MB');
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 100 * 100');
+          this.toastr.warningToastr('Please upload the file size 100 * 100');
           this.imgType.nativeElement.value = "";
         }
       };

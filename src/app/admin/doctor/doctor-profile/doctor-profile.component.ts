@@ -131,6 +131,15 @@ export class DoctorProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    let login_check = this.storage.get("doctor_login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/doctorlogin');
+    }
+
+
     this.type = this.getFromLocal('fun_type');
     if (this.type == 'edit') {
 

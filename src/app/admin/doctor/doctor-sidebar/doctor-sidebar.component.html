@@ -12,13 +12,21 @@
                 </div>
             </mat-list-item>
 
+            <mat-list-item routerLink="client-details" routerLinkActive="active">
+              <mat-icon mat-list-icon><i class="far fa-calendar-check" aria-hidden="true"></i></mat-icon>
+              <div fxFlex="10"></div>
+              <div class="sidenav-item">
+                  <h5 class="lead">Client Details</h5>
+              </div>
+             </mat-list-item>
+
 
             <mat-list-item style="padding-left: 5px;" routerLink="Walkin_Appointment" routerLinkActive="active">
               <mat-icon mat-list-icon><i class="fas fa-user-clock"></i>
               </mat-icon>
               <div fxFlex="10"></div>
               <div class="sidenav-item">
-                  <h5 class="lead">Walk in Appointment
+                  <h5 class="lead">Walk-in Appointments
                   </h5>
               </div>
           </mat-list-item>
@@ -28,7 +36,7 @@
             <mat-icon mat-list-icon><i class="far fa-address-book" aria-hidden="true"></i></mat-icon>
             <div fxFlex="10"></div>
             <div class="sidenav-item">
-                <h5 class="lead">Appointments list</h5>
+                <h5 class="lead">Petfolio Appointments</h5>
             </div>
           </mat-list-item>
 
@@ -37,7 +45,7 @@
             <mat-icon mat-list-icon><i class="far fa-calendar-check" aria-hidden="true"></i></mat-icon>
             <div fxFlex="10"></div>
             <div class="sidenav-item">
-                <h5 class="lead">Reschedule appointment</h5>
+                <h5 class="lead">Rescheduled Appointments</h5>
             </div>
            </mat-list-item>
 
@@ -55,7 +63,7 @@
                 <i *ngIf="expand3" class="fas fa-chevron-up" aria-hidden="true"></i>
             </div>
               </mat-list-item>
-              <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand3">
+              <mat-nav-list style="background: #125071;padding-left: 5px;" *ngIf="expand3">
                 <div class="sub-menu">
                   <mat-list-item style="padding-left: 5px;" routerLink="apppayment"
                       routerLinkActive="active">
@@ -65,7 +73,7 @@
                       </mat-icon>
                       <div fxFlex="10"></div>
                       <div class="sidenav-item">
-                          <h5 class="lead">Mobile app payment</h5>
+                          <h5 class="lead">Petfolio Payments</h5>
                       </div>
                   </mat-list-item>
 
@@ -79,7 +87,7 @@
                   </mat-icon>
                   <div fxFlex="10"></div>
                   <div class="sidenav-item">
-                      <h5 class="lead">Walkin payment details</h5>
+                      <h5 class="lead">Walk-in Payments</h5>
                   </div>
               </mat-list-item>
               </div>
@@ -89,7 +97,7 @@
         <mat-icon mat-list-icon><i class="far fa-envelope" aria-hidden="true"></i></mat-icon>
         <div fxFlex="10"></div>
         <div class="sidenav-item">
-            <h5 class="lead">Notification</h5>
+            <h5 class="lead">Notifications</h5>
         </div>
        </mat-list-item>
 
@@ -99,16 +107,16 @@
                 ></i></mat-icon>
         <div fxFlex="10"></div>
         <div class="sidenav-item">
-            <h5 class="lead">Setting</h5>
+            <h5 class="lead">Settings</h5>
         </div>
         <div class="sb-sidenav-collapse-arrow">
             <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
             <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
         </div>
           </mat-list-item>
-          <mat-nav-list style="background: #005f4d;padding-left: 5px;" *ngIf="expand2">
+          <mat-nav-list style="background: #125071;padding-left: 5px;" *ngIf="expand2">
             <div class="sub-menu">
-              <mat-list-item style="padding-left: 5px;" routerLink="doctor-profile"
+              <!-- <mat-list-item style="padding-left: 5px;" routerLink="doctor-profile"
                   routerLinkActive="active">
                   <mat-icon  mat-list-icon><i class="fas fa-user-md"
                           aria-hidden="true"
@@ -116,9 +124,9 @@
                   </mat-icon>
                   <div fxFlex="10"></div>
                   <div class="sidenav-item">
-                      <h5 class="lead">Profile edit</h5>
+                      <h5 class="lead">Edit Profile</h5>
                   </div>
-              </mat-list-item>
+              </mat-list-item> -->
 
               <mat-list-item style="padding-left: 5px;" routerLink="doctor-edit-calendar"
               routerLinkActive="active">
@@ -142,9 +150,24 @@
           </mat-icon>
           <div fxFlex="10"></div>
           <div class="sidenav-item">
-              <h5 class="lead">Holiday</h5>
+              <h5 class="lead">Holidays</h5>
           </div>
           </mat-list-item>
+
+
+          <mat-list-item style="padding-left: 5px;" routerLink="showhidenappointments"
+          routerLinkActive="active">
+          <mat-icon  mat-list-icon><i class="fas fa-user-tie"
+                  aria-hidden="true"
+                  ></i>
+          </mat-icon>
+          <div fxFlex="10"></div>
+          <div class="sidenav-item">
+              <h5 class="lead">Hidden Appointments</h5>
+          </div>
+          </mat-list-item>
+
+
           </div>
           </mat-nav-list>
 

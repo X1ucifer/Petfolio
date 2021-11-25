@@ -4,20 +4,22 @@
   <div class="card-box" style="margin-top: 10px;" *ngIf="check_old">
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-12">
-            <h4 class="title" style="color: #019377;">Customer Details</h4>
+            <h4 class="title" style="color: #3c95c4;">Customer Details</h4>
         </div>
             <div class="col-md-6">
                 <h5 class="form-lable">Phone Number:</h5>
-                <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" [disabled]="cus_edit"
+                <input type="number" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10" [disabled]="cus_edit"
                     (keypress)=_keyPress($event)>
                 <div *ngIf="Validation == false && (Phone == undefined || Phone == ''  || Phone.length != 10)"
                     class="mt-1 error">
                     <div class="text-danger">Phone Number is Required.</div>
                 </div>
             </div>
-        <div class="col-md-12 mt-20 text-right" *ngIf="preview != true">
-            <button type="button" class="btn btn-primary" (click)="check_user()">Check</button>
-        </div>
+            <div class="col-md-6">
+              <div class="col-md-12 mt-30" *ngIf="preview != true">
+                <button type="button" class="btn btn-primary" (click)="check_user()">Continue</button>
+                </div>
+              </div>
     </div>
 </div>
 
@@ -26,7 +28,7 @@
   <div class="card-box" style="margin-top: 10px;" *ngIf="!check_old">
         <div class="row" style="padding: 0px 0px 23px 10px;">
             <div class="col-md-12">
-                <h4 class="title" style="color: #019377;">Customer Details</h4>
+                <h4 class="title" style="color: #3c95c4;">Customer Details</h4>
             </div>
 
             <div class="col-md-6">
@@ -46,8 +48,17 @@
             <ng-container>
                 <div class="col-md-6">
                     <h5 class="form-lable">Email ID:</h5>
-                    <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)" [disabled]="cus_edit"
-                        placeholder="Email ID">
+                    <!-- <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)" [disabled]="cus_edit"
+                        placeholder="Email ID"> -->
+
+                        <input type="text" pInputText  placeholder="Email ID" [(ngModel)]="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email"name="email" ngModel #emailref="ngModel">
+          <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
+           <div [hidden]="!emailref.errors?.pattern">
+             Invalid Email
+           </div>
+          </div>
+
+
                     <!-- <div *ngIf="Email_idError" class="mt-1 error">
                         <div class="text-danger">Valid Email Address Required.</div>
                     </div>
@@ -78,19 +89,17 @@
 
 
 <ng-container *ngIf="step == 2 || preview == true">
-    <div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0" style="margin-top: 10px;">
+    <div class="card-box" style="margin-top: 10px;">
         <div class="row" style="padding: 0px 0px 23px 10px;">
             <div class="col-md-12">
-                <h4 class="title" style="color: #019377;">Pet Details</h4>
+                <h4 class="title" style="color: #3c95c4;">Pet Details</h4>
             </div>
             <ng-container *ngIf="pet_list.length == 0 || petadd == true || petedit == true">
-
-
                 <div class="col-md-12">
-                    <h4 class="form-lable" style="margin-bottom: 20px;">Owner name: <span
-                            style="color: #019377;padding-left: 7px;margin-bottom: 20px;">
+                    <h4 class="form-lable" style="margin-bottom: 20px;">Pet Owner Name: <span
+                            style="color: #3c95c4;padding-left: 7px;margin-bottom: 20px;">
                             {{customer_datails.first_name}} {{customer_datails.last_name}}</span></h4>
-                    <!-- <input type="text" pInputText [(ngModel)]="Name" placeholder="Owner Name" disabled> -->
+                    <!-- <input type="text" pInputText [(ngModel)]="Name" placeholder="Walk-in Payments" disabled> -->
                 </div>
                 <div class="col-md-6">
                     <h5 class="form-lable">Pet name:</h5>
@@ -142,7 +151,7 @@
                         [showClear]="true"></p-dropdown>
                 </div>
                 <div class="col-md-6">
-                    <h5 class="form-lable">Pet color:</h5>
+                    <h5 class="form-lable">Pet Color:</h5>
                     <input type="text" pInputText [(ngModel)]="Pet_Color" placeholder="Pet Color">
 
                     <!-- <p-dropdown [options]="color_array" [(ngModel)]="Pet_Color" placeholder="Select" optionLabel="y"
@@ -156,10 +165,6 @@
                     <h5 class="form-lable">Pet Age:</h5>
                     <input type="text" pInputText [(ngModel)]="Pet_Age" placeholder="Age">
                 </div>
-                <!-- <div class="col-md-6">
-                    <h5 class="form-lable">Pet DOB:</h5>
-                    <p-calendar [(ngModel)]="dob_date" [showIcon]="true" inputId="icon"></p-calendar>
-                </div> -->
                 <div class="col-md-6">
                     <h5 class="form-lable">Vaccinated:</h5>
                     <p-dropdown [options]="vacinated_array" [(ngModel)]="Vaccinated" placeholder="Select"
@@ -169,23 +174,9 @@
                     <h5 class="form-lable">Last Vaccinated date:</h5>
                     <p-calendar [(ngModel)]="Vaccinated_date" [showIcon]="true" inputId="icon"></p-calendar>
                 </div>
-                <!-- <div class="col-md-6">
-                    <h5 class="form-lable">Pet Photo:</h5>
-                    <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
-                        accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
-                    <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user
-                        type icon with 100 * 100 (Max 200 kB)</div>
-                    <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
-                </div> -->
-                <!-- <div class="col-md-6">
-            <h5 class="form-lable">Register Pet details:</h5>
-            <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="Details"></textarea>
-        </div> -->
-
                 <div class="col-md-12 mt-20">
-                    <button *ngIf=" petedit == true" type="button" class="btn btn-primary" (click)="update()">Update</button>
-
-                    <button *ngIf=" petadd == true" type="button" class="btn btn-primary" (click)="createpet()">Create</button>
+                    <button *ngIf="petedit == true" type="button" class="btn btn-primary" (click)="update()">Update Pet Detail</button>
+                    <button *ngIf="petadd == true" type="button" class="btn btn-primary" (click)="createpet()">Add Pet Detail</button>
                 </div>
             </ng-container>
             <ng-container>
@@ -207,7 +198,7 @@
                                                         </div> -->
                                     </div>
                                 </div>
-                                <div class="col-md-9 text-right">
+                                <div class="col-md-9 text-right" *ngIf="pet_list.length !== 0">
                                     <!-- <button type="button" style="margin-bottom: 10px;" class="btn btn-primary" (click)="Submit()" [disabled]="pet_select == undefined">Submit</button> -->
                                     <button type="button" style="margin-bottom: 10px;" class="btn btn-primary mr-0"
                                         (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
@@ -215,7 +206,7 @@
                             </div>
 
                             <!-- end search -->
-                            <div class="doc-table">
+                            <div class="doc-table"  *ngIf="pet_list.length !== 0">
                                 <p-table [value]="pet_list" styleClass="ui-table-customers" #tt [paginator]="true"
                                     [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
                                     [showCurrentPageReport]="true"
@@ -239,26 +230,6 @@
                                             <th>
                                                 Pet Breed
                                             </th>
-                                            <!-- <th>
-                                                                Pet Gender
-                                                            </th>
-                                                            <th>
-                                                                Pet color
-                                                            </th>
-                                                            <th>
-                                                                Pet weight
-                                                            </th>
-                                                            <th>
-                                                                Pet age
-                                                            </th>
-                                                            <th>
-                                                                Vaccinated
-                                                            </th>
-                                                            <th>
-                                                                Last Vaccinated date
-                                                            </th>
-
-                                                            <th>Created at</th> -->
                                             <th style="width: 100px;text-align:center">
                                                 Action
                                             </th>
@@ -282,20 +253,9 @@
                                             <td>{{item.pet_name}}</td>
                                             <td>{{item.pet_type}}</td>
                                             <td>{{item.pet_breed}}</td>
-                                            <!-- <td>{{item.pet_gender}}</td>
-                                                            <td>{{item.pet_color}}</td>
-                                                            <td>{{item.pet_weight}} kg</td>
-                                                            <td>{{item.pet_age}} Year</td>
-                                                            <td>{{item.vaccinated}}</td>
-                                                            <td>{{item.last_vaccination_date}}</td>
-                                                            <td>{{item.date_and_time}}</td> -->
                                             <td class="act" style="text-align: center;">
                                                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true"
                                                     (click)="edit_details(item)" pTooltip="Edit"></i>
-                                                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true"
-                                                    pTooltip="Delete" (click)="delete_pet(item._id)"></i> -->
-                                                <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true"
-                                                                    pTooltip="View"></i> -->
                                             </td>
                                         </tr>
                                     </ng-template>
@@ -328,7 +288,7 @@
     <div class="card-box" style="margin-top: 10px;">
         <div class="row" style="padding: 0px 0px 23px 10px;">
             <div class="col-md-12">
-                <h4 class="title" style="color: #019377;">Doctor Appointment</h4>
+                <h4 class="title" style="color: #3c95c4;">Appointment Details</h4>
             </div>
 
             <!-- <div class="col-md-4">
@@ -346,18 +306,33 @@
                 <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer" [hourFormat]='12'></p-calendar>
 
             </div>
-            <div class="col-md-6">
-                <h5 class="form-lable">Allergies:</h5>
+            <div class="col-md-8">
+                <h5 class="form-lable">Comments (If any) :</h5>
                 <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="allergies"></textarea>
-
-            </div>
-            <div class="col-md-6">
-                <h5 class="form-lable">Problem Info:</h5>
-                <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="desc"></textarea>
-
             </div>
 
-            <div class="col-md-6">
+              <div class="col-md-8">
+                  <h5 class="form-lable">Select Health Issue :</h5>
+                  <div class="ng-autocomplete">
+                    <ng-autocomplete [data]="health_issue_type" [searchKeyword]="keyword4" (selected)='selectEvent4($event)'
+                        (inputChanged)='selectEvent4($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.health_issue_title"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                  </div>
+              </div>
+
+
+
+
+          <!-- <div class="col-md-6">
               <h5 class="form-lable">Primary diagnosis:</h5>
 
               <div class="ng-autocomplete">
@@ -374,19 +349,7 @@
                     <div [innerHTML]="notFound"></div>
                 </ng-template>
               </div>
-              <!-- <select name="cars" id="cars" class="form-control" [(ngModel)]="diagnosis" (ngModelChange)="list_sub_diagnosis()">
-                <option value="" disabled>Select diagonsis</option>
-                <ng-container *ngFor='let item of diagnosis_type;let i = index'>
-                  <option value="{{item._id}}">{{item.diagnosis}}</option>
-                </ng-container>
-              </select> -->
           </div>
-
-
-
-
-
-
 
           <div class="col-md-6">
             <h5 class="form-lable">Sub diagnosis:</h5>
@@ -404,20 +367,7 @@
                   <div [innerHTML]="notFound"></div>
               </ng-template>
             </div>
-
-
-            <!-- <select name="cars" id="cars" class="form-control" [(ngModel)]="sub_diagnosis" (ngModelChange)="fetch_text(sub_diagnosis)"  >
-              <option value="" disabled>Select sub diagonsis</option>
-              <ng-container *ngFor='let items of sub_diagnosis_type;let i = index'>
-                <option value="{{items._id}}">{{items.sub_diagnosis}}</option>
-              </ng-container>
-            </select> -->
-        </div>
-
-
-
-
-
+          </div> -->
 
 
 

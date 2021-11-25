@@ -12,7 +12,7 @@
             <button type="button" class="btn btn-secondary btn-sm" (click)="back()">Back <i class="fas fa-arrow-right ml-2"></i> </button>
 
         </div>
-  
+
     </div>
 
     <div class="row row-sm">
@@ -39,7 +39,7 @@
                         <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
                     </div>
                     <div class="col-md-2 text-right">
-                       
+
                         <button type="button" class="btn btn-primary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                                 Pet Gender
                             </th>
                             <th>
-                                Pet color
+                                Pet Color
                             </th>
                             <th>
                                 Pet weight
@@ -87,7 +87,7 @@
                             <th>
                                 Last Vaccinated date
                             </th>
-                           
+
                             <th>Created at</th>
                             <th style="width: 100px;text-align:center">
                                 Action
@@ -117,7 +117,7 @@
                             <td>{{item.vaccinated}}</td>
                             <td>{{item.last_vaccination_date}}</td>
                             <td>{{item.date_and_time}}</td>
-                     
+
                             <td class="act" style="text-align: center;">
                                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true"  (click)="edit_details(item)"
                                     pTooltip="Edit"></i>
@@ -136,7 +136,7 @@
         </div>
     </div>
  </div>
-    </div> 
+    </div>
 
 
 <!-- <div class="row">

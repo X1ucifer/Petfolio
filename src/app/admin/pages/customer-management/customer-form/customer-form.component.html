@@ -3,7 +3,7 @@
 <div class="card-box" *ngIf="breed_array.length > 0 &&  type_array.length > 0">
     <div class="row" style="padding: 0px 0px 23px 10px;">
         <div class="col-md-12">
-            <h4 class="form-lable" style="margin-bottom: 20px;">Owner name: <span style="color: #019377;padding-left: 7px;margin-bottom: 20px;"> {{Detail.userdetailsModels[0].first_name}} {{Detail.userdetailsModels[0].last_name}}</span></h4>
+            <h4 class="form-lable" style="margin-bottom: 20px;">Pet Owner Name: <span style="color: #3c95c4;padding-left: 7px;margin-bottom: 20px;"> {{Detail.userdetailsModels[0].first_name}} {{Detail.userdetailsModels[0].last_name}}</span></h4>
             <!-- <input type="text" pInputText [(ngModel)]="Name" placeholder="Owner Name" disabled> -->
         </div>
         <div class="col-md-6">
@@ -26,7 +26,7 @@
                 [showClear]="true"></p-dropdown>
         </div>
         <div class="col-md-6">
-            <h5 class="form-lable">Pet color:</h5>
+            <h5 class="form-lable">Pet Color:</h5>
             <input type="text" pInputText [(ngModel)]="Pet_Color" placeholder="Pet Color">
 
             <!-- <p-dropdown [options]="color_array" [(ngModel)]="Pet_Color" placeholder="Select" optionLabel="y"

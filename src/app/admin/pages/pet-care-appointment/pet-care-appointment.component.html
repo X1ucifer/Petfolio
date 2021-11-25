@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-        
+
     </div>
 
     <div class="row row-sm">
@@ -33,7 +33,7 @@
                                     <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-2"></p-calendar>
                                     <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
                                 </div>
-                               
+
                             </div>
                             <!-- search end -->
 
@@ -42,10 +42,10 @@
                                      <button (click)="Filter('Completed')" type="button" class="btn btn-success btn-sm mr-2"><i class="fas fa-check-circle"></i> Completed</button>
                                      <button (click)="Filter('Incomplete')" type="button" class="btn btn-primary btn-sm mr-2"><i class="far fa-check-circle"></i> Booked</button>
                                      <button (click)="Filter('Missed')" type="button" class="btn btn-danger btn-sm mr-2"><i class="fas fa-times-circle"></i> Cancelled</button>
-                                     <button (click)="refersh()" type="button" class="btn btn-secondary btn-sm mr-2"><i class="fas fa-sync-alt"></i> Refersh</button>
+                                     <button (click)="refersh()" type="button" class="btn btn-secondary btn-sm mr-2"><i class="fas fa-sync-alt"></i> Refresh</button>
                                  </div>
                              </div>
-                             
+
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
 <div class="card custom-card">
         <div class="card-body">
             <div class="card-item">
-                
+
 <div class="doc-table table-responsive">
     <div class="ui-helper-clearfix" style="text-align: left">
         <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="exportAsXLSX()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
@@ -89,9 +89,9 @@
                     S.No
                 </th>
                     <th>
-                    Customer Name
+                    Client name
                 </th>
-                <th>Customer Phone </th>
+                <th>Client phone </th>
                 <th>Pet Type</th>
                 <th>Pet Breed</th>
                 <th>Pet Name</th>
@@ -101,10 +101,10 @@
                 <th>Status</th>
                 <th>Booking Date & Time</th>
                 <th>
-                    Communication Type
+                    Consultation type
                 </th>
-                <th>Mobile Type</th>
-                <th>Created at</th>
+                <th>Device type</th>
+                <!-- <th>Created at</th> -->
                 <th>Amount</th>
                 <th style="width: 110px;text-align:center">
                     Action
@@ -112,7 +112,7 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-item let-i="rowIndex">
-            <tr class="tdrow">
+            <tr class="tdrow" [ngStyle]="{'background-color':item.appoinment_status === 'Missed' ? '#ff6c6c' : 'white'}">
                 <td>{{i+1}}</td>
                 <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
                 <td>{{item.user_id.user_phone}}</td>
@@ -127,7 +127,7 @@
                 <td>{{item.booking_date_time}}</td>
                 <td>{{item.communication_type}}</td>
                 <td>{{item.mobile_type}}</td>
-                <td>{{item.booking_date_time}}</td>
+                <!-- <td>{{item.booking_date_time}}</td> -->
                    <td>{{item.amount}}</td>
                 <td class="act">
                     <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"></i>

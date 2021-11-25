@@ -127,6 +127,12 @@ import { SpSpecComponent } from './pages/sp-spec/sp-spec.component';
 import { WalkinpaymentComponent } from './doctor/walkinpayment/walkinpayment.component';
 import { ApppaymentComponent } from './doctor/apppayment/apppayment.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { ShowhidenappointmentComponent } from './doctor/showhidenappointment/showhidenappointment.component';
+import { ClientdetailsComponent } from './doctor/clientdetails/clientdetails.component';
+import { WalkinnewComponent } from './pages/walkinnew/walkinnew.component';
+import { ViewcustomerdetailComponent } from './pages/viewcustomerdetail/viewcustomerdetail.component';
+import { DoctorEditCalendarFulltimeComponent } from './doctor/doctor-edit-calendar-fulltime/doctor-edit-calendar-fulltime.component';
+import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -214,6 +220,12 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     SpSpecComponent,
     WalkinpaymentComponent,
     ApppaymentComponent,
+    ShowhidenappointmentComponent,
+    ClientdetailsComponent,
+    WalkinnewComponent,
+    ViewcustomerdetailComponent,
+    DoctorEditCalendarFulltimeComponent,
+    AddnewproductComponent,
   ],
   imports: [
     CommonModule,

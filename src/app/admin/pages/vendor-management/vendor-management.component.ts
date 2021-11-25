@@ -34,6 +34,18 @@ export class VendorManagementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
+
+
     this.listpettype();
 
   }
@@ -132,6 +144,13 @@ export class VendorManagementComponent implements OnInit {
     this.saveInLocal("Vendor_id",id);
     this.router.navigateByUrl('admin/view-vendor-products');
   }
+
+  addProduct(id){
+    this.saveInLocal("Vendor_id",id);
+    this.router.navigateByUrl('admin/addnewproduct');
+  }
+
+
   view_details(item) {
     this.saveInLocal('fun_type', 'create');
     this.saveInLocal('view_detail_data', item);

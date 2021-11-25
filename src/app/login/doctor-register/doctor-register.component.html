@@ -3,7 +3,7 @@
     <div class="page-header">
       <div>
         <h2 class="main-content-title tx-24 mb-1" style="color: #fff; padding-left: 500px">
-          Doctor Sign Up
+          Doctor Registration
         </h2>
       </div>
     </div>
@@ -15,12 +15,12 @@
           </h4>
         </div>
         <div class="col-md-6 py-7">
-          <h5 class="form-lable">first name:</h5>
-          <input type="text" class="input" pInputText [(ngModel)]="tittle" placeholder="Doctor first name" />
+          <h5 class="form-lable">First Name:</h5>
+          <input type="text" class="input" pInputText [(ngModel)]="tittle" placeholder="Doctor First Name" />
         </div>
         <div class="col-md-6 py-7">
-          <h5 class="form-lable">last name:</h5>
-          <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor last name" />
+          <h5 class="form-lable">Last Name:</h5>
+          <input type="text" pInputText [(ngModel)]="Name" placeholder="Doctor Last Name" />
         </div>
         <div class="col-md-6 py-7">
           <h5 class="form-lable">Email ID:</h5>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-12 mt-20">
           <button type="button" class="btn btn-primary" (click)="create_1()">
-            Save
+            Proceed
           </button>
 
           <button type="button" class="btn btn-primary btn-bg-blue" (click)="back()">
@@ -115,7 +115,7 @@
               <div class="col-md-3">
                 <h5 class="form-lable" style="color: #000 !important">From:</h5>
                 <!-- <p-calendar [(ngModel)]="f_date" [showIcon]="true" inputId="icon"></p-calendar>
-                
+
                   YEAR PICKER: -->
                 <!-- <jp-multi-datepicker tabindex="-1" mode="YEAR" label="Choose a year" [(ngModel)]="chosenYearDate"
                   [max]="2021"></jp-multi-datepicker><br>
@@ -466,7 +466,7 @@
                 </h4>
               </div>
               <div class="col-md-6 py-7">
-                <h5 class="form-lable">communication type</h5>
+                <h5 class="form-lable">Consultation type</h5>
                 <select [(ngModel)]="CType">
                   <option value="undefined" style="display: none">
                     Select Type
@@ -478,7 +478,7 @@
                     {{ arr.type }}
                   </option>
                 </select>
-                <!-- <input type="text" pInputText [(ngModel)]="communication" placeholder="communication type" /> -->
+                <!-- <input type="text" pInputText [(ngModel)]="communication" placeholder="Consultation type" /> -->
               </div>
               <div class="col-md-6 py-7">
                 <h5 class="form-lable">consultancy fees</h5>

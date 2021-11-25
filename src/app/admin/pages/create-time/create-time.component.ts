@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-create-time',
@@ -38,6 +39,7 @@ export class CreateTimeComponent implements OnInit {
     private _api: ApiService,
     private routes: ActivatedRoute,
     private datePipe: DatePipe,
+    private toastr:ToastrManager,
   ) { }
 
   ngOnInit(): void {
@@ -67,7 +69,7 @@ export class CreateTimeComponent implements OnInit {
 
 
     if(this.Time == ''){
-      alert("Please enter the pet type")
+      this.toastr.warningToastr("Please enter the pet type")
     }else{
     let a = {
       'Time' : this.Time,
@@ -78,9 +80,9 @@ export class CreateTimeComponent implements OnInit {
     (response: any) => {
       console.log(response.Data);
       if ( response.Code === 200 ) {
-        alert('Added Successfully');
+        this.toastr.successToastr('Added Successfully');
       }else {
-        alert(response.Message);
+        this.toastr.warningToastr(response.Message);
       }
       this.ngOnInit();
     }
@@ -91,7 +93,7 @@ export class CreateTimeComponent implements OnInit {
 
   Edit_pet_type_details(){
     if(this.Time == ''){
-      alert("Please enter the pet type")
+      this.toastr.warningToastr("Please enter the pet type")
     }else{
     let a = {
       '_id' : this.pet_type_id,
@@ -100,7 +102,7 @@ export class CreateTimeComponent implements OnInit {
     this._api.doctor_spec_edit(a).subscribe(
     (response: any) => {
       console.log(response.Data);
-      alert("Updated Successfully");
+      this.toastr.successToastr("Updated Successfully");
       this.ngOnInit();
     }
   );
@@ -117,7 +119,7 @@ export class CreateTimeComponent implements OnInit {
     this._api.doctor_spec_delete(a).subscribe(
     (response: any) => {
       console.log(response.Data);
-      alert('Deleted Successfully');
+      this.toastr.successToastr('Deleted Successfully');
       this.ngOnInit();
     }
   );
@@ -135,7 +137,7 @@ export class CreateTimeComponent implements OnInit {
       if ( this.E_Date != undefined && this.S_Date != undefined) {
         // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
         let yourDate= this.E_Date.setDate(this.E_Date.getDate());
-  
+
         let a = {
           "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
           "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
@@ -149,9 +151,9 @@ export class CreateTimeComponent implements OnInit {
         );
       }
       else{
-        alert('Please select the startdate and enddate');
+        this.toastr.warningToastr("Please select the startdate and enddate");
       }
-     
+
     }
     refersh(){
       this.listpettype();
@@ -162,7 +164,7 @@ export class CreateTimeComponent implements OnInit {
       let inputChar = String.fromCharCode(event.charCode);
       if (!pattern.test(inputChar)) {
         event.preventDefault();
-  
+
       }
     }
 }

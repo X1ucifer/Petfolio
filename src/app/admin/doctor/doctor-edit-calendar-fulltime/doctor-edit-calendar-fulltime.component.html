@@ -1,0 +1,13 @@
+<div class="container">
+  <h3 style="font-weight: bold">Available times</h3>
+  <ng-container *ngFor="let arr of timeList; let i= index;">
+      <div class="item-container">
+          <div class="p-field-checkbox">
+              <input type="checkbox" [(ngModel)]="arr.Status" [ngModelOptions]="{standalone: true}">
+              <label for="mo">{{arr.Time}}</label>
+          </div>
+      </div>
+  </ng-container>
+
+  <button (click)="Filter()" type="button" class="btn btn-success btn-sm mr-2">submit</button>
+</div>

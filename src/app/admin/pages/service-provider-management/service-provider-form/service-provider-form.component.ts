@@ -74,7 +74,7 @@ export class ServiceProviderFormComponent implements OnInit {
   ngOnInit(): void {
     this.type = this.getFromLocal('fun_type');
     if (this.type == 'edit') {
-    
+
       this.detail = this.getFromLocal('view_detail_data');
       console.log(this.detail)
       this.userid = this.detail.user_id._id;
@@ -142,7 +142,7 @@ export class ServiceProviderFormComponent implements OnInit {
     }
     else {
       //alert("Pleasefill all the fields")
-      this.showWarning("Please fill all the fields") 
+      this.showWarning("Please fill all the fields")
     }
   }
   remove_Experience(i) {
@@ -300,7 +300,7 @@ export class ServiceProviderFormComponent implements OnInit {
             this.showSuccess("Added Successfully")
           } else {
             this.showError(response.Message);
-            alert(response.Message);
+            this.toastr.warningToastr(response.Message);
           }
         }
       );

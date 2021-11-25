@@ -75,6 +75,15 @@ export class AddproductComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
+
     this.listpettype();
     this.vendorlist();
     this.catagorieslist();
@@ -251,7 +260,7 @@ export class AddproductComponent implements OnInit {
         let width = img.width;
         let height = img.height;
         console.log(width, height);
-        if (width == 200 && height == 200) {
+        if (width == 800 && height == 350) {
           let d = this.selectedimgae.size / 100000;
           if (d < 10) {
             this.addfiles1();
@@ -262,7 +271,7 @@ export class AddproductComponent implements OnInit {
           }
         }
         else {
-          this.showWarning("Please upload the file size 200 * 200");
+          this.showWarning("Please upload the file size 350 * 800");
           // alert('Please upload the file size 100 * 100');
           this.imgType.nativeElement.value = "";
         }
@@ -299,7 +308,7 @@ export class AddproductComponent implements OnInit {
           let width = img.width;
           let height = img.height;
           console.log(width, height);
-          if (width !== 200 && height == 200) {
+          if (width == 200 && height == 200) {
             let d = this.selectedimgae.size / 100000;
             if (d < 10) {
               this.addfiles2();

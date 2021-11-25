@@ -63,7 +63,7 @@ tr:last-child{border-bottom:none}
     color: #fff;
   }
   .badge--green-gradient {
-    background-image: linear-gradient(to right, #019377 0%, #2ec1a5 50%, #099479 100%);
+    background-image: linear-gradient(to right, #3c95c4 0%, #2ec1a5 50%, #099479 100%);
     color: #fff;
   }
   .badge--aqua {
@@ -74,7 +74,7 @@ tr:last-child{border-bottom:none}
     background-color: #FF3D57;
     color: #fff;
   }
-  
+
   .text-theme {color: #019278;}
 /* profile css */
 /* -----------------------------------------------------------------
@@ -99,7 +99,7 @@ tr:last-child{border-bottom:none}
     @media only screen and (max-width: 580px) {
     .sidebar__info{padding-top:1.5rem;padding-bottom:1.25rem}
     }
-   
+
     .contacts-block{list-style:none;padding-left:0;margin-bottom:.5rem;overflow:hidden}
     @media only screen and (max-width: 1200px) {
     .contacts-block{margin-bottom:1rem}
@@ -121,7 +121,7 @@ tr:last-child{border-bottom:none}
     .contacts-block__item a{color:#44566C;text-decoration:none}
     .contacts-block__item a:hover{color:#304CFD}
     .contacts-block .font-icon{margin-right:.7rem}
-  
+
      .box{background-color:#fff;border-radius:20px;padding:1rem;position:relative;transition:box-shadow .3s ease-in-out}
     @media only screen and (max-width: 580px) {
     .box{border-radius:16px;padding:1rem}
@@ -183,7 +183,7 @@ tr:last-child{border-bottom:none}
     .avatar {
     width: 100%;
     height: fit-content;}
-   
+
     @media only screen and (min-width: 580px) {
     .pt-sm-6{padding-top:5rem}
     }
@@ -193,12 +193,12 @@ tr:last-child{border-bottom:none}
 .resume  ul li .date{font-size:16px;font-weight:500;margin-bottom:15px}
 .resume  ul li .info{margin-bottom:20px}
 .resume  ul li:last-child .info{margin-bottom:0}
-.resume  .resume_work ul li:before,.resume  .resume_education ul li:before{content:"";position:absolute;top:3px;left:-25px;width:10px;height:10px;border-radius:50%;border:2px solid #019377;    background: #fff;}
-.resume  .resume_work ul li:after,.resume  .resume_education ul li:after{content:"";position:absolute;top:11px;left:-21px;width:2px;height:115px;background:#019377;}
+.resume  .resume_work ul li:before,.resume  .resume_education ul li:before{content:"";position:absolute;top:3px;left:-25px;width:10px;height:10px;border-radius:50%;border:2px solid #3c95c4;    background: #fff;}
+.resume  .resume_work ul li:after,.resume  .resume_education ul li:after{content:"";position:absolute;top:11px;left:-21px;width:2px;height:115px;background:#3c95c4;}
 .resume  .resume_hobby ul{display:flex;justify-content:space-between}
-.resume  .resume_hobby ul li{width:80px;height:80px;border:2px solid #019377;border-radius:50%;position:relative;color:#019377}
+.resume  .resume_hobby ul li{width:80px;height:80px;border:2px solid #3c95c4;border-radius:50%;position:relative;color:#3c95c4}
 .resume  .resume_hobby ul li i{font-size:30px}
-.resume  .resume_hobby ul li:before{content:"";position:absolute;top:40px;right:-52px;width:50px;height:2px;background:#019377}
+.resume  .resume_hobby ul li:before{content:"";position:absolute;top:40px;right:-52px;width:50px;height:2px;background:#3c95c4}
 .resume  .resume_hobby ul li:last-child:before{display:none}
 
 

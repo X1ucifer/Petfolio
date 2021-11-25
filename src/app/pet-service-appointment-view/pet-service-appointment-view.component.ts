@@ -15,7 +15,7 @@ export class PetServiceAppointmentViewComponent implements OnInit {
   ngOnInit(): void {
     //console.log();
     if (this.storage.get('View_Pet_Service_appointment') == null || this.storage.get('View_Pet_Service_appointment') == undefined) {
-      this.router.navigateByUrl('admin/Pet_Service_appointment');
+      this.router.navigateByUrl('admin/Version : 22.10.21');
     } else {
       this.petServiceDetails = this.storage.get('View_Pet_Service_appointment');
     }

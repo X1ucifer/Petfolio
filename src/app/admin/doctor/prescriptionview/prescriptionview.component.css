@@ -1,0 +1,78 @@
+.box-1 {
+  height: auto;
+  background-color: #fff;
+  border: 1px solid #aaa8a8;
+  max-width: 900px;
+}
+
+.name {
+  font-size: 23px;
+  font-weight: 600;
+  color: #fff;
+  font-style: italic;
+}
+
+p {
+  margin-bottom: 2px;
+}
+
+.logo {
+  background:url('../../../../assets/images/logo/logo_pet.png');
+  background-repeat: no-repeat;
+  padding: 60px;
+  background-size: contain;
+}
+
+.logo {
+  background:url('../../../../assets/images/logo/logo_pet.png');
+  background-repeat: no-repeat;
+  padding: 60px;
+  background-size: contain;
+}
+
+.row1 {
+  padding: 10px;
+  background: #2996bd;
+}
+
+.row1 p {
+  color: #eaeaea;
+}
+
+.row1 p a {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.row2 h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.row2 h5 span {
+  color: #1a88b5;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  margin-top: 30px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ecebeb;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+td {
+  color: #6a6969;
+}

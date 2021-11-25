@@ -1,0 +1,112 @@
+<section>
+  <div class="page-header">
+      <div>
+          <h2 class="main-content-title tx-24 mb-1">Customer Management</h2>
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page"> Customers</li>
+          </ol>
+      </div>
+
+  </div>
+
+
+
+<div class="row row-sm">
+
+  <div class="col-lg-12">
+<div class="card custom-card">
+  <div class="card-body">
+      <div class="card-item">
+          <div class="row col-md-12">
+              <div class="col-md-4">
+                  <div class="search-hero">
+                      <div class="input-group mb-3">
+                         <div class="input-group-prepend">
+                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                         </div>
+                         <input class="form-control" type="text" name="search2"
+                     [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                       </div>
+                    </div>
+              </div>
+              <div class="col-md-3">
+                  <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class=""></p-calendar>
+              </div>
+                <div class="col-md-3">
+                  <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-1"></p-calendar>
+                </div>
+                <div class="col-md-1">
+                  <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+              </div>
+              <div class="col-md-1">
+                  <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+              </div>
+          </div>
+
+
+
+
+
+<div class="doc-table table-responsive" #TABLE>
+
+      <div class="ui-helper-clearfix" style="text-align: left">
+          <button type="button" pButton icon="pi pi-file-o" iconPos="left" label="EXCEL" (click)="exportAsXLSX()" style="margin-right: 0.5em; margin-bottom: 10px;"></button>
+          <!--  <button type="button" pButton icon="fas fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>          -->
+      </div>
+
+<p-table [value]="user_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+  [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true" #dt
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+
+  <ng-template pTemplate="header" >
+      <tr class="thhead">
+          <th style="width: 3px;" >
+              S.No
+          </th>
+          <!-- <th>
+              Profile Image
+          </th> -->
+          <th style="width: 20px;" >
+              Name
+          </th>
+          <th  style="width: 20px;">
+              Email
+          </th>
+          <th  style="width: 10px;">
+              Phone
+          </th>
+
+
+          <th style="width: 20px;text-align:center">
+              Action
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-i="rowIndex" >
+      <tr  class="tdrow">
+          <td>{{i+1}}</td>
+          <td class="truncate-cell">{{item.first_name}} {{item.last_name}}</td>
+          <td class="truncate-cell">{{item.user_email}}</td>
+          <td>{{item.user_phone}}</td>
+
+          <td class="act">
+              <!-- <i style="color: #4CAF50;" class="fas fa-paw" aria-hidden="true"  pTooltip="View Pet" (click)="pet_view(item)"></i> -->
+              <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
+
+
+
+</div>
+
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+</section>

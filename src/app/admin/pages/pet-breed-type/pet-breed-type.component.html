@@ -27,13 +27,13 @@
                         <h5 class="form-lable">Pet Breed:</h5>
                         <input type="text" pInputText [(ngModel)]="pet_breed" name="pet_breed" placeholder="Enter Pet Breed" >
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                       <h5 class="form-lable">Breed Icon</h5>
                       <input type="file" #imgType (change)="fileupload($event)" id="imgfile"
                       accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
                       <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 200 * 200 (Max 100 kB)</div>
                       <img src="{{pet_breed_img}}" style="width: 15%;">
-                  </div>
+                  </div> -->
                     <!-- <div class="col-md-3">
                       <h5 class="form-lable">Pet Breed Icon:</h5>
                       <input type="file" pInputText [(ngModel)]="value1" placeholder="Enter Pet Breed" >
@@ -113,9 +113,9 @@
             <th>
                 Pet Type
             </th>
-            <th>
+            <!-- <th>
               Breed Icon
-          </th>
+          </th> -->
             <th>
                 Breed
             </th>
@@ -131,9 +131,9 @@
         <tr class="tdrow">
             <td>{{i+1}}</td>
             <td>{{item.pet_type_id.pet_type_title}}</td>
-            <td>
+            <!-- <td>
               <img _ngcontent-dah-c159="" src="{{item.pet_breed_img}}" alt="Denim Jeans" style="width: 20%;">
-              </td>
+              </td> -->
             <td>{{item.pet_breed}}</td>
 
             <td>

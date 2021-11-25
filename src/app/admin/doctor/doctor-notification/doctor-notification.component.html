@@ -1,7 +1,7 @@
 <mat-card>
-  <div class=""  *ngIf="notification_list.length == 0" >
-    No Record Found
-  </div>
+  <h3 style="text-align: center;"  *ngIf="notification_list.length == 0" >
+    No Records Found
+  </h3>
   <div class="tabledata" *ngIf="notification_list.length !== 0" >
    <p-table [value]="notification_list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true"
    [rows]="10" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"

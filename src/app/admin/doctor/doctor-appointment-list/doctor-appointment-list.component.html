@@ -1,7 +1,7 @@
 <section>
     <div class="page-header">
         <div>
-            <h2 class="main-content-title tx-24 mb-1">Pet Care Appointment</h2>
+            <h2 class="main-content-title tx-24 mb-1">Petfolio Appointments</h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
@@ -39,6 +39,28 @@
                             </div>
 
                         </div>
+
+
+                        <div class="row">
+                          <div class="col-md-4">
+                            <h5 class="form-lable">Filter by pet type:</h5>
+                                  <ng-autocomplete [data]="type_array" [(ngModel)]="type_false" [searchKeyword]="keyword3" (selected)='selectEvent3($event)'
+                                      [itemTemplate]="itemTemplate3"
+                                      [notFoundTemplate]="notFoundTemplate">
+                                  </ng-autocomplete>
+                                  <ng-template #itemTemplate3 let-item>
+                                      <a [innerHTML]="item.pet_type_title"></a>
+                                  </ng-template>
+                                  <ng-template #notFoundTemplate let-notFound>
+                                      <div [innerHTML]="notFound"></div>
+                                  </ng-template>
+                        </div>
+                        <div class="col-md-4">
+                          <button class="btn btn-secondary mr-0" style="margin-top: 30px;"  (click)="clear()" >Clear Filter</button>
+                        </div>
+                        </div>
+
+
                         <!-- search end -->
 
                         <div class="row mt-2">
@@ -52,7 +74,7 @@
                                 <button (click)="Filter('Missed')" type="button" class="btn btn-danger btn-sm mr-2"><i
                                         class="fas fa-times-circle"></i> Cancelled</button>
                                 <button (click)="refersh()" type="button" class="btn btn-secondary btn-sm mr-2"><i
-                                        class="fas fa-sync-alt"></i> Refersh</button>
+                                        class="fas fa-sync-alt"></i> Refresh</button>
                             </div>
                         </div>
 
@@ -102,9 +124,9 @@
                                             S.No
                                         </th>
                                         <th>
-                                            Customer Name
+                                            Client name
                                         </th>
-                                        <th>Customer Phone </th>
+                                        <th>Client phone </th>
                                         <th>Pet Type</th>
                                         <th>Pet Breed</th>
                                         <th>Pet Name</th>
@@ -114,9 +136,9 @@
                                         <th>Status</th>
                                         <th>Booking Date & Time</th>
                                         <th>
-                                            Communication Type
+                                            Consultation type
                                         </th>
-                                        <th>Mobile Type</th>
+                                        <th>Device type</th>
                                         <th>Created at</th>
                                         <th>Amount</th>
                                         <th style="width: 120px;text-align:center">
@@ -125,7 +147,7 @@
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-item let-i="rowIndex">
-                                    <tr class="tdrow">
+                                    <tr class="tdrow" [ngStyle]="{'background-color':item.appoinment_status === 'Missed' ? '#ff6c6c' : 'white'}">
                                         <td>{{i+1}}</td>
                                         <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
                                         <td>{{item.user_id.user_phone}}</td>
@@ -138,7 +160,7 @@
                                         <td>{{item.appointment_types}}</td>
                                         <td>{{item.appoinment_status}}</td>
                                         <td>{{item.booking_date_time}}</td>
-                                        <td>{{item.communication_type}}</td>
+                                        <td>{{item.communication_type}}<span *ngIf="item.visit_type !== ''"> - ({{item.visit_type}})</span> </td>
                                         <td>{{item.mobile_type}}</td>
                                         <td>{{item.booking_date_time}}</td>
                                         <td>{{item.amount}}</td>
@@ -150,9 +172,9 @@
                                                 (click)="Delete(item._id)" pTooltip="Delete"></i> -->
                                             <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true"
                                                 (click)="view_details(item)" pTooltip="View Details"></i>
-                                            <ng-container *ngIf="item.communication_type == 'Online'">
+                                            <ng-container *ngIf="item.communication_type == 'Online' && item.appoinment_status !== 'Missed'">
                                                 <i style="color: #000000;" class="fa fa-link" aria-hidden="true"
-                                                    (click)="MakeCall(item.video_id)" pTooltip="Video Call"></i>
+                                                    (click)="MakeCall(item)" pTooltip="Video Call"></i>
                                             </ng-container>
                                         </td>
                                     </tr>

@@ -3,6 +3,8 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from 'src/app/api.service';
 import { DatePipe } from '@angular/common'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-doctor-holiday',
@@ -10,7 +12,7 @@ import { DatePipe } from '@angular/common'
   styleUrls: ['./doctor-holiday.component.css']
 })
 export class DoctorHolidayComponent implements OnInit {
-  holiday_date: any;
+  holiday_date: any = "";
   users: any;
   holiday_details: any;
   holiday_list: any;
@@ -18,17 +20,30 @@ export class DoctorHolidayComponent implements OnInit {
   delete_date: any;
   constructor(
     private toastr: ToastrManager,
+    private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     public datepipe: DatePipe
   ) { }
 
   ngOnInit(): void {
+
+    let login_check = this.storage.get("doctor_login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/doctorlogin');
+    }
+
+
     this.users = this.storage.get("user");
     this.update();
   }
   create() {
     // this.date=new Date();
+    if(this.holiday_date == ''){
+      this.showError("Select the Date");
+    }else{
     this.holiday_date = this.datepipe.transform(this.holiday_date, 'dd-MM-yyyy');
     this.holiday_details = { "Date": this.holiday_date, "user_id": this.users._id }
     console.log(this.holiday_details);
@@ -46,6 +61,7 @@ export class DoctorHolidayComponent implements OnInit {
         }
       }
     );
+  }
   }
   update() {
     this.holiday_list = { "user_id": this.users._id };
@@ -73,8 +89,9 @@ export class DoctorHolidayComponent implements OnInit {
           this.showError(response.Message);
           //alert(response.Message);
         }
+        this.ngOnInit();
       })
-    window.location.reload();
+    // window.location.reload();
   }
   showSuccess(msg) {
     this.toastr.successToastr(msg);

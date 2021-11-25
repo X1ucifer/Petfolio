@@ -68,6 +68,12 @@ export class ApiService {
   pet_breed_list() {
     return this.http.get(this.apiUrl + 'breedtype/admin/getlist_id');
   }
+
+  pet_breed_type(data) {
+    return this.http.post(this.apiUrl + 'breedtype/mobile/getlist_id', data);
+  }
+
+
   pet_breed_insert(data) {
     return this.http.post(this.apiUrl + 'breedtype/create', data);
   }
@@ -265,7 +271,7 @@ export class ApiService {
     return this.http.get(this.apiUrl + 'appointments/getlist');
   }
   reschedule_appointment_list(data) {
-    return this.http.post(this.apiUrl + 'appointments/reshedule_list', data);
+    return this.http.post(this.apiUrl + 'appointments/reshedule_list_getlist_doctor_id', data);
   }
   appointment_booked(data) {
     return this.http.post(this.apiUrl + 'appointments/mobile/doc_getlist/newapp', data);
@@ -761,9 +767,23 @@ export class ApiService {
     return this.http.post(this.apiUrl + 'walkin_appointment/create', data);
   }
 
+
+
   walkin_appointment_getlist() {
     return this.http.get(this.apiUrl + 'walkin_appointment/getlist');
   }
+
+
+  walkin_appointment_edit(data) {
+    return this.http.post(this.apiUrl + 'walkin_appointment/mobile/doctor/app_edit', data);
+  }
+
+
+  walkin_appointment_getlist_id(data) {
+    return this.http.post(this.apiUrl + 'walkin_appointment/doctor_id', data);
+  }
+
+
   walkin_appointment_delete(data) {
     return this.http.post(this.apiUrl + 'walkin_appointment/delete', data);
   }
@@ -832,6 +852,11 @@ export class ApiService {
 
   appointment_list_doctor(data) {
     return this.http.post(this.apiUrl + 'appointments/getlist_doctor_id', data);
+  }
+
+
+  start_the_call(data) {
+    return this.http.post(this.apiUrl + 'appointments/edit', data);
   }
 
 

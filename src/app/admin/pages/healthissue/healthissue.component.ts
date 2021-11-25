@@ -189,12 +189,12 @@ export class HealthissueComponent implements OnInit {
             if(d < 10){
             this.addfiles1();
            }else{
-            alert('Please upload the file below 1 MB');
+            this.toastr.warningToastr("Please upload the file below 1 MB");
             this.imgType.nativeElement.value = "";
            }
           }
           else{
-            alert('Please upload the file size 100 * 100');
+            this.toastr.warningToastr("Please upload the file size 100 * 100");
             this.imgType.nativeElement.value = "";
           }
         };

@@ -17,7 +17,7 @@ export class CategoryManagementComponent implements OnInit {
   imgUrl = environment.imageURL;
   Category_name: any;
   Category_code: any;
-  img_path: any;
+  img_path: any = "http://54.212.108.156:3000/api/uploads/1625751478722.png";
   edit_t: boolean = false;
   id: any;
   Validation:any;
@@ -59,7 +59,7 @@ export class CategoryManagementComponent implements OnInit {
 
   cancel() {
     this.edit_t = false;
-    this.img_path= undefined;
+    this.img_path= "http://54.212.108.156:3000/api/uploads/1625751478722.png";
     this.Category_name= undefined;
   }
   listpettype() {
@@ -217,7 +217,7 @@ export class CategoryManagementComponent implements OnInit {
         if (width == 200 && height == 200) {
           let d = this.selectedimgae.size / 100000;
           console.log(d);
-          
+
           if (d < 10) {
             this.addfiles1();
           } else {

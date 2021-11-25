@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,9 +30,23 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private _api: ApiService,
+    private router: Router,
+    @Inject(SESSION_STORAGE) private storage: StorageService
   ) { }
 
   ngOnInit(): void {
+
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
+
+
     this._api.dashboard_count().subscribe((res: any) => {
       console.log(res)
       this.counts = res.Data;
@@ -64,4 +80,15 @@ export class DashboardComponent implements OnInit {
     );
 
   }
+
+
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
+
+
 }

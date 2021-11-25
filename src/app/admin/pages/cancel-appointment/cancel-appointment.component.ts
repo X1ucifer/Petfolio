@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { DatePipe } from '@angular/common';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-cancel-appointment',
@@ -21,6 +22,7 @@ export class CancelAppointmentComponent implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
     private datePipe: DatePipe,
+    private toastr:ToastrManager,
 
   ) { }
 
@@ -92,7 +94,7 @@ export class CancelAppointmentComponent implements OnInit {
     this._api.user_delete(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert('Deleted Successfully');
+        this.toastr.successToastr('Deleted Successfully');
         this.ngOnInit();
       }
     );
@@ -136,9 +138,9 @@ export class CancelAppointmentComponent implements OnInit {
       );
     }
     else{
-      alert('Please select the startdate and enddate');
+      this.toastr.warningToastr("Please select the startdate and enddate");
     }
-   
+
   }
   refersh(){
     this.list();

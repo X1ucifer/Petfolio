@@ -1,10 +1,10 @@
 <section>
     <div class="page-header">
         <div>
-            <h2 class="main-content-title tx-24 mb-1">Walk in Appointment</h2>
+            <h2 class="main-content-title tx-24 mb-1">Walk-in Appointments</h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"> Walk in Appointment</li>
+                <li class="breadcrumb-item active" aria-current="page"> Walk-in Appointments</li>
             </ol>
         </div>
 
@@ -28,28 +28,38 @@
                                          </div>
                                       </div>
                                 </div>
+
+
+
+
                               <div class="col-md-8 text-lg-right text-sm-left">
                                     <!-- <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-2"></p-calendar>
                                     <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-2"></p-calendar>
                                     <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button> -->
-                                    <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
+                                    <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> New Appointment</button>
 
                                 </div>
 
+
                             </div>
-                            <!-- search end -->
-
-                          <!-- <div class="row mt-2">
-                                <div class="col-md-12 text-right">
-                                   <button (click)="Filter('Completed')" type="button" class="btn btn-success btn-sm mr-2"><i class="fas fa-check-circle"></i> Completed</button>
-                                     <button (click)="Filter('Incomplete')" type="button" class="btn btn-primary btn-sm mr-2"><i class="far fa-check-circle"></i> Booked</button>
-                                     <button (click)="Filter('Missed')" type="button" class="btn btn-danger btn-sm mr-2"><i class="fas fa-times-circle"></i> Cancelled</button>
-                                     <button (click)="refersh()" type="button" class="btn btn-secondary btn-sm mr-2"><i class="fas fa-sync-alt"></i> Refersh</button>
-
-
-
-                                    </div>
-                             </div> -->
+                            <div class="row">
+                              <div class="col-md-4">
+                                <h5 class="form-lable">Filter by pet type:</h5>
+                                      <ng-autocomplete [data]="type_array" [(ngModel)]="type_false" [searchKeyword]="keyword3" (selected)='selectEvent3($event)'
+                                          [itemTemplate]="itemTemplate3"
+                                          [notFoundTemplate]="notFoundTemplate">
+                                      </ng-autocomplete>
+                                      <ng-template #itemTemplate3 let-item>
+                                          <a [innerHTML]="item.pet_type_title"></a>
+                                      </ng-template>
+                                      <ng-template #notFoundTemplate let-notFound>
+                                          <div [innerHTML]="notFound"></div>
+                                      </ng-template>
+                            </div>
+                            <div class="col-md-4">
+                              <button class="btn btn-secondary mr-0" style="margin-top: 30px;"  (click)="clear()" >Clear Filter</button>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -93,22 +103,21 @@
                     S.No
                 </th>
                     <th>
-                    Customer Name
+                    Client name
                 </th>
-                <th>Customer Phone </th>
+                <th>Client phone </th>
                 <th>Pet Type</th>
                 <th>Pet Breed</th>
                 <th>Pet Name</th>
                 <th>Doctor Name</th>
+                <th>Payment Type</th>
                 <th>Appointment Date & Time</th>
                 <th>Appointment Type </th>
-                <th>Status</th>
+                <th>Appointment Status</th>
                 <th>Booking Date & Time</th>
                 <th>
-                    Communication Type
+                    Consultation type
                 </th>
-                <th>Mobile Type</th>
-                <th>Created at</th>
                 <th>Amount</th>
                 <th style="width: 110px;text-align:center">
                     Action
@@ -116,27 +125,27 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-item let-i="rowIndex">
-            <tr class="tdrow">
+            <tr class="tdrow" [ngStyle]="{'background-color':item.appoinment_status === 'Missed' ? '#ff6c6c' : 'white'}">
                 <td>{{i+1}}</td>
                 <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
                 <td>{{item.user_id.user_phone}}</td>
                 <td>{{item.pet_id.pet_type}}</td>
-
                 <td>{{item.pet_id.pet_breed}}</td>
                 <td>{{item.pet_id.pet_name}}</td>
                 <td>{{item.doc_business_info[0].dr_name}}</td>
+                <td>{{item.payment_method}}</td>
                 <td>{{item.booking_date_time}}</td>
                 <td>{{item.appointment_types}}</td>
                 <td>{{item.appoinment_status}}</td>
                 <td>{{item.booking_date_time}}</td>
-                <td>{{item.communication_type}}</td>
-                <td>{{item.mobile_type}}</td>
-                <td>{{item.booking_date_time}}</td>
+                <td>Clinic Visit</td>
                    <td>{{item.amount}}</td>
                 <td class="act">
                     <i style="color: #2196f3;" class="fas fa-edit" (click)="edit(item)" aria-hidden="true" pTooltip="Edit"></i>
-                    <!--  <i style="color: #4CAF50;" class="fa  fa-clock-o" aria-hidden="true" pTooltip="Reschedule"></i>
-                    <i style="color: #fd2c3a;" class="fa fa-ban" aria-hidden="true" pTooltip="Disable"></i> -->
+                    <!--  <i style="color: #4CAF50;" class="fa  fa-clock-o" aria-hidden="true" pTooltip="Reschedule"></i> -->
+                    <i style="color: #ff0000;" *ngIf="item.visibility == 'visible'" class="fa fa-ban" (click)="hide(item._id)"  aria-hidden="true" pTooltip="Hide"></i>
+                    <i style="color: green;" *ngIf="item.visibility == 'hide'" class="fa fa-eye" (click)="visible(item._id)" aria-hidden="true" pTooltip="Visible"></i>
+
                     <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
                     <i style="color: #31ccfc;" class="fa fa-info-circle" aria-hidden="true" (click)="view_details(item)"
                         pTooltip="View Details"></i>

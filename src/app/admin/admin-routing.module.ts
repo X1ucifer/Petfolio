@@ -83,6 +83,12 @@ import { SpSpecializationComponent } from '../service-provider/pages/sp-speciali
 import { SpSpecComponent } from './pages/sp-spec/sp-spec.component';
 import { WalkinpaymentComponent } from './doctor/walkinpayment/walkinpayment.component';
 import { ApppaymentComponent } from './doctor/apppayment/apppayment.component';
+import { ShowhidenappointmentComponent } from './doctor/showhidenappointment/showhidenappointment.component';
+import { ClientdetailsComponent } from './doctor/clientdetails/clientdetails.component';
+import { WalkinnewComponent } from './pages/walkinnew/walkinnew.component';
+import { ViewcustomerdetailComponent } from './pages/viewcustomerdetail/viewcustomerdetail.component';
+import { DoctorEditCalendarFulltimeComponent } from './doctor/doctor-edit-calendar-fulltime/doctor-edit-calendar-fulltime.component';
+import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -125,6 +131,8 @@ const routes: Routes = [
   { path: 'payment_management', component: PaymentManagementComponent },
   { path: 'notification', component: NotificationComponent },
 
+  { path: 'addnewproduct', component: AddnewproductComponent },
+
 
   { path: 'view-vendor-products', component: ViewVendorProductsComponent },
 
@@ -137,9 +145,11 @@ const routes: Routes = [
       { path: 'dashboard', component: DoctorDashbaordComponent },
       { path: 'appointment-list', component: DoctorAppointmentListComponent },
       { path: 'appointment-details', component: DoctorAppointmentDetailsComponent },
+      { path: 'client-details', component: ClientdetailsComponent },
       { path: 'doctor-profile', component: DoctorProfileComponent },
       { path: 'doctor-edit-calendar', component: DoctorEditCalendarComponent },
       { path: 'doctor-edit-calendar-time', component: DoctorEditCalendarTimeComponent },
+      { path: 'doctor-edit-calendar-fulltime', component: DoctorEditCalendarFulltimeComponent },
       { path: 'doctor_payment_details', component: DoctorPaymentDetailsComponent },
       { path: 'doctor-notification', component: DoctorNotificationComponent },
       { path: 'doctor-reschedule-appointment', component: DoctorRescheduleAppointmentComponent },
@@ -151,8 +161,15 @@ const routes: Routes = [
       { path: 'prescriptionadd', component: PrescriptionaddComponent },
       { path: 'prescriptionview', component: PrescriptionviewComponent },
 
+
+      { path: 'walkinnew', component: WalkinnewComponent },
+      { path: 'view_customer', component: ViewcustomerdetailComponent },
+
       { path: 'walkinpayment', component: WalkinpaymentComponent },
-      { path: 'apppayment', component: ApppaymentComponent }
+      { path: 'apppayment', component: ApppaymentComponent },
+
+      { path: 'showhidenappointments', component: ShowhidenappointmentComponent },
+
 
     ]
   },

@@ -106,7 +106,7 @@ export class DocPetHandledComponent implements OnInit {
         this.showSuccess("Added Successfully");
         this.openAddedDialog();
       }else {
-        alert(response.Message);
+        this.toastr.warningToastr(response.Message);
       }
       this.ngOnInit();
     }
@@ -225,7 +225,7 @@ export class DocPetHandledComponent implements OnInit {
       if ( this.E_Date != undefined && this.S_Date != undefined) {
         // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
         let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
-  
+
         let a = {
           "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
           "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
@@ -241,7 +241,7 @@ export class DocPetHandledComponent implements OnInit {
       else{
         alert('Please select the startdate and enddate');
       }
-     
+
     }
     refersh(){
       this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
@@ -254,11 +254,11 @@ export class DocPetHandledComponent implements OnInit {
     showSuccess(msg) {
       this.toastr.successToastr(msg);
     }
-  
+
     showError(msg) {
         this.toastr.errorToastr(msg);
     }
-  
+
     showWarning(msg) {
         this.toastr.warningToastr(msg);
     }

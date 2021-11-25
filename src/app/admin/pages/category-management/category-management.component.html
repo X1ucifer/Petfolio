@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page"> Details</li>
             </ol>
         </div>
-  
+
     </div>
 
     <div class="row row-sm">
@@ -25,21 +25,21 @@
                         <h5 class="form-lable">Category Code:</h5>
                         <input type="text" pInputText [(ngModel)]="Category_code" placeholder="Enter Category Code">
                     </div> -->
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <h5 class="form-lable">Category Icon:</h5>
                         <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
                             class="form-control" id="city" placeholder="User type icon">
                         <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
                             200 * 200 (Max 64 kB)</div>
                             <div class="imgthumcontainer"> <img *ngIf="img_path != undefined" src="{{img_path}}"> </div>
-            
-                    </div>
+
+                    </div> -->
                     <div class="col-md-3">
                         <button type="button" *ngIf="edit_t == false" class="btn btn-primary mt-4" (click)="create()"><i class="fas fa-plus-circle"></i> Add</button>
                         <button *ngIf="edit_t == true" type="button" class="btn btn-primary mt-4" (click)="update()"><i class="fas fa-edit"></i> Update</button>
                         <button *ngIf="edit_t == true" type="button" class="btn btn-danger mt-4" (click)="cancel()">
                             Cancel</button></div>
-            
+
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                 <!-- search -->
 
                 <div class="doc-table table-responsive">
-                    
+
 <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
 [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
@@ -99,7 +99,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
 <ng-template pTemplate="header">
     <tr class="thhead">
         <th class="th-1">    S.No     </th>
-        <th style="width: 120px;">   Category Icon            </th>
+        <!-- <th style="width: 120px;">   Category Icon            </th> -->
         <th>   Category         </th>
         <th>Created at</th>
         <th>Modified at</th>
@@ -109,11 +109,11 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
 <ng-template pTemplate="body" let-item let-i="rowIndex">
     <tr class="tdrow">
         <td>{{i+1}}</td>
-        <td> 
+        <!-- <td>
             <div class="imgthumcontainer">
-                <img _ngcontent-dah-c159="" src="{{item.img_path}}" alt="{{item.product_cate}}">    
-            </div>      
-        </td>
+                <img _ngcontent-dah-c159="" src="http://54.212.108.156:3000/api/uploads/1625751478722.png" alt="{{item.product_cate}}">
+            </div>
+        </td> -->
         <td>{{item.product_cate}}</td>
         <td>{{item.createdAt}}</td>
         <td>{{item.updatedAt}}</td>

@@ -8,7 +8,7 @@
                <div class="input-group-prepend">
                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                </div>
-               <input class="form-control" type="text" name="search2" 
+               <input class="form-control" type="text" name="search2"
            [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
              </div>
          </div>
@@ -25,7 +25,7 @@
         <button type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
             (click)="filter_date()">Search</button>
         <button type="button" class="btn btn-primary" style="margin-top: 24px;" (click)="refersh()">Refresh</button>
-      
+
     </div>
 </div>
 <div class="doc-table">
@@ -33,7 +33,7 @@
     <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
         [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-       
+
         <ng-template pTemplate="header">
             <tr class="thhead">
                 <th class="th-1">
@@ -55,7 +55,7 @@
                 <th>Modified by</th> -->
                 <th>Created at</th>
                 <th>Modified at</th>
-                <th>Mobile Type</th>
+                <th>Device type</th>
                 <th>Approve / Reject</th>
                 <!-- <th>Live / Block</th> -->
                 <th style="width: 163px;text-align:center">
@@ -86,12 +86,12 @@
                 <td class="act">
                     <i (click)="goToLink1(item.bus_proof)" class="fas fa-file-pdf"
                     style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
-            
+
                 </td>
                 <td class="act">
                     <i (click)="goToLink1(item.bus_profile)" class="fas fa-file-pdf"
                     style="cursor:pointer;background-color: #fff;color: #fd2c3a;" aria-hidden="true"></i>
-            
+
                 </td>
                 <!-- <td>
                     User

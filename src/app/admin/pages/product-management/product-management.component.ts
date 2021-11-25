@@ -72,6 +72,15 @@ export class ProductManagementComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
     this.listpettype();
     this.vendorlist();
     this.catagorieslist();

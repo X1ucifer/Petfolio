@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
-
+import { DatePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -29,12 +29,64 @@ export class AppointmenteditComponent implements OnInit {
   next_appointment_date : any;
   next_appointment_time : any;
 
+  time_list = [
+    "01:00 AM",
+    "01:30 AM",
+    "02:00 AM",
+    "02:30 AM",
+    "03:00 AM",
+    "03:30 AM",
+    "04:00 AM",
+    "04:30 AM",
+    "05:00 AM",
+    "05:30 AM",
+    "06:00 AM",
+    "06:30 AM",
+    "07:00 AM",
+    "07:30 AM",
+    "08:00 AM",
+    "08:30 AM",
+    "09:00 AM",
+    "09:30 AM",
+    "10:00 AM",
+    "10:30 AM",
+    "11:00 AM",
+    "11:30 AM",
+    "12:00 AM",
+    "12:30 AM",
+    "01:00 PM",
+    "01:30 PM",
+    "02:00 PM",
+    "02:30 PM",
+    "03:00 PM",
+    "03:30 PM",
+    "04:00 PM",
+    "04:30 PM",
+    "05:00 PM",
+    "05:30 PM",
+    "06:00 PM",
+    "06:30 PM",
+    "07:00 PM",
+    "07:30 PM",
+    "08:00 PM",
+    "08:30 PM",
+    "09:00 PM",
+    "09:30 PM",
+    "10:00 PM",
+    "10:30 PM",
+    "11:00 PM",
+    "11:30 PM",
+    "12:00 PM",
+    "12:30 PM",
+  ]
+
   constructor(
     private toastr:ToastrManager,
     private location: Location,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
+    public datepipe: DatePipe
   ) {
     this._api.sub_diagnosis_getlist().subscribe(
       (response: any) => {
@@ -56,7 +108,7 @@ export class AppointmenteditComponent implements OnInit {
     this.user_id = this.view_detail_data.user_id._id;
     this.sub_diagnosis = this.view_detail_data.sub_diagnosis;
     this.diagnosis =  this.view_detail_data.diagnosis;
-
+    this.view_detail_data.payment_method = 'Cash';
     console.log(this.sub_diagnosis);
 
     let id = {
@@ -117,7 +169,7 @@ export class AppointmenteditComponent implements OnInit {
     })
   }
   back() {
-    this.location.back();
+    this.router.navigateByUrl('/doctor-admin/Walkin_Appointment');
   }
   goToLink1(url: string) {
     window.open(url, "_blank");
@@ -303,16 +355,18 @@ export class AppointmenteditComponent implements OnInit {
       end_appointment_status : "Completed",
       next_appointment_time : this.view_detail_data.next_appointment_time,
       next_appointment_date : this.view_detail_data.next_appointment_date,
-      completed_at : ""+new Date(),
+      // completed_at : ""+new Date(),
       doctor_comment : this.view_detail_data.doctor_comment,
       user_feedback  : this.view_detail_data.user_feedback,
       amount : this.view_detail_data.amount,
+      missed_at : this.datepipe.transform(new Date(), 'dd/MM/yyyy h:mm:ss'),
+      completed_at : this.datepipe.transform(new Date(), 'dd/MM/yyyy h:mm:ss'),
     }
     console.log(a);
     this._api.update_appointment(a).subscribe(
       (response: any) => {
         console.log(response.Data);
-        alert("Update successfully");
+        this.toastr.successToastr("Update successfully");
         this.router.navigateByUrl('/doctor-admin/Walkin_Appointment');
       }
     );

@@ -36,6 +36,17 @@ export class DoctorHeaderComponent implements OnInit {
 
   logout() {
     this.router.navigateByUrl('/doctorlogin');
+    this.saveInLocal('doctor_login_cache', false);
+
+  }
+
+
+  saveInLocal(key, val): void {
+    this.storage.set(key, val);
+  }
+
+  getFromLocal(key): any {
+    return this.storage.get(key);
   }
 
 

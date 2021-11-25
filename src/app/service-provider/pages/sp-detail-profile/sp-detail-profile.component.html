@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="text-center mb-4">
-                                <h4 class="mb-1 text-theme"><strong>Mobile Type:</strong></h4>
+                                <h4 class="mb-1 text-theme"><strong>Device type:</strong></h4>
                                 <div class="badge badge--aqua d-block mb-2" style="font-size: 11px;">{{view_detail_data.mobile_type}}</div>
                             </div>
 
@@ -97,7 +97,7 @@
                             <h2 class="title--h1 first-title title__separate text-theme">Service List</h2>
 
                             <ng-container *ngFor="let spe of view_detail_data.bus_service_list">
-                                <span class="badge badge--dark mr-2 mb-2"> 
+                                <span class="badge badge--dark mr-2 mb-2">
                                     {{spe.bus_service_list}}  - ₹{{spe.amount}} - <i class="fas fa-clock" style="color: #55dcc2;"></i> {{spe.time_slots}}
                                 </span>
                             </ng-container>

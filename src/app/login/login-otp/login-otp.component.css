@@ -14,7 +14,7 @@
     background-size: cover;
     background-position: center;
   }
-  
+
   .login_box_inner {
     display: contents;
     background-color: #fff;
@@ -22,7 +22,7 @@
     border-radius: 8px;
     box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
   }
-  
+
   .form-control {
     background: #fff;
     border: 1px solid #d7dae3;
@@ -41,7 +41,7 @@
     /* // padding: 0px !important;
    // box-shadow: 0 0 36px #ff0000; */
   }
-  
+
   .logo img {
      width: 150px;
      text-align: center;
@@ -50,13 +50,13 @@
     display: flex;
     justify-content: center;
   }
-  
+
   .login_form .btn {
     height: 50px;
     /* font-weight: 700; */
     border-radius: .50rem !important;
   }
-  
+
   /* // .logo {
   //   text-align: center;
   //   width: 500px;
@@ -73,5 +73,5 @@
   label {
     display: inline-block;
     margin-bottom: 0.5rem;
-    color: #009377;
+    color: #125071;
   }

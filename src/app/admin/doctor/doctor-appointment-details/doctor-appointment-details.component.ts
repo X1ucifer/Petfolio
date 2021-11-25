@@ -3,6 +3,10 @@ import { Location } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { ApiService } from '../../../api.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+// import { DomSanitizer } from "@angular/platform-browser";
+import {BrowserModule, DomSanitizer} from '@angular/platform-browser'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-doctor-appointment-details',
@@ -15,12 +19,19 @@ export class DoctorAppointmentDetailsComponent implements OnInit {
   live_s: any;
   user_id:any;
   showCanel: boolean;
+  prescription : any;
+
+  backgroundImg : any;
   constructor(
     private toastr:ToastrManager,
     private location: Location,
+    private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private _api: ApiService,
-  ) { 
+    private sanitizer: DomSanitizer,
+  ) {
+    this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(http://54.212.108.156/assets/images/dog.jpg)');
+    console.log(this.backgroundImg);
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     const x = new Date(this.view_detail_data.booking_date_time);
@@ -52,7 +63,30 @@ export class DoctorAppointmentDetailsComponent implements OnInit {
         console.log( this.live_s);
       }
     );
+
+
+
+    let ids = {
+      "Appointment_ID": this.view_detail_data._id
+    }
+    console.log(ids)
+    this._api.fetch_prescription(ids).subscribe(
+      (response: any) => {
+        console.log(response);
+        if(response.Data.length == 0){
+          this.prescription = [];
+        }else{
+          this.prescription = response.Data[0].Prescription_data;
+        }
+      }
+    );
+
+
+
   }
+
+
+
   cancelAppointment(){
     const data =     {
       "_id": this.view_detail_data._id,
@@ -136,7 +170,7 @@ export class DoctorAppointmentDetailsComponent implements OnInit {
             }
           );
         }
-        
+
       }
     );
 
@@ -202,4 +236,34 @@ export class DoctorAppointmentDetailsComponent implements OnInit {
   showWarning(msg) {
       this.toastr.warningToastr(msg);
   }
+
+  printComponent(cmpName) {
+    let printContents = document.getElementById(cmpName).innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    window.location.reload();
+}
+
+
+ printComponent1() {
+  var divToPrint = document.getElementById('component1');
+  var newWin = window.open('', 'Print-Window');
+  newWin.document.open();
+  newWin.document.write('<html><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" media="print"/><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+  newWin.document.close();
+  setTimeout(function() {
+    newWin.close();
+  }, 10);
+}
+
+
+viewprescription(){
+  this.router.navigateByUrl('/doctor-admin/prescriptionview');
+}
+
+
+
+
 }

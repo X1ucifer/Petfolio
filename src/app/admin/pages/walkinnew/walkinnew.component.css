@@ -1,0 +1,144 @@
+@import "../../../../assets/css/style.css";
+:host::ng-deep .doc-table .ui-table table {
+    /* width: 1600px !important; */
+}
+:host::ng-deep .ui-table-wrapper{
+overflow-x: scroll;
+}
+.card-box-i img {
+    width: 30px;
+    height: 30px;
+    /* border-radius: 50%; */
+}
+.card-box{
+    width: 70%;
+    margin: auto;
+}
+.card{
+    width: 70%;
+    margin: auto;
+}
+
+.mt-30{
+  margin-top: 30px;
+}
+
+
+.add-icon{
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 27px;
+    padding: 8px 19px;
+    background: #3c94c3;
+}
+.spec-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .spec-table td, .spec-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .spec-table tr:nth-child(even){background-color: #f2f2f2;}
+
+  .spec-table tr:hover {background-color: #ddd;}
+
+  .spec-table th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    background-color: #3c94c3;
+    color: white;
+  }
+
+  .combobox {
+
+    margin: auto;
+  }
+
+  .combobox-input {
+
+    width: 330px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-bottom: 2px solid rgb(165, 112, 112);
+  }
+
+  .combobox-input:focus{
+
+    outline-style: none;
+  }
+
+  .combobox-options {
+
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    width: 350px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    z-index: 1;
+  }
+
+  .selected {
+
+    color: cornsilk;
+    background-color: rgb(165, 112, 112);
+  }
+
+  list-item{
+
+    display: block;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  list-item:hover{
+
+    background-color: grey;
+    color: white;
+  }
+
+  .error-text{
+
+    color: rgb(165, 112, 112);
+  }
+
+  .ng-autocomplete {
+    width:100%;
+    max-width: 600px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .error{
+    border: 1px solid red;
+  }
+
+
+
+  .ui-inputtext {
+    width: 100%;
+    margin-bottom: 0px !important;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

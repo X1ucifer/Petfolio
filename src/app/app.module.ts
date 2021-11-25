@@ -38,6 +38,8 @@ import { ButtonModule } from 'primeng/button';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     ServiceProviderModule,
     NgOtpInputModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

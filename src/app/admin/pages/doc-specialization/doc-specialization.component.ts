@@ -54,7 +54,7 @@ export class DocSpecializationComponent implements OnInit {
     this.listpettype();
   }
 
-  
+
   openDialogWithRef(ref: TemplateRef<any>) {
     this.dialog.open(ref);
   }
@@ -78,7 +78,7 @@ export class DocSpecializationComponent implements OnInit {
   }
 
 
-  
+
   ////// Inserting Data
 
   Insert_pet_type_details() {
@@ -101,7 +101,7 @@ export class DocSpecializationComponent implements OnInit {
         this.showSuccess("Added Successfully");
         this. openAddedDialog();
       }else {
-        alert(response.Message);
+        this.toastr.warningToastr(response.Message);
       }
       this.ngOnInit();
     }
@@ -160,7 +160,7 @@ export class DocSpecializationComponent implements OnInit {
       if ( this.E_Date != undefined && this.S_Date != undefined) {
         // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
         let yourDate= this.E_Date.setDate(this.E_Date.getDate());
-  
+
         let a = {
           "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
           "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
@@ -177,9 +177,9 @@ export class DocSpecializationComponent implements OnInit {
         // alert('Please select the startdate and enddate');
         this.showWarning("Please select the startdate and enddate")
       }
-     
+
     }
-    
+
   cancel() {
     this.update_button = true;
     this.specialzation= undefined;
@@ -191,11 +191,11 @@ export class DocSpecializationComponent implements OnInit {
     showSuccess(msg) {
       this.toastr.successToastr(msg);
     }
-  
+
     showError(msg) {
         this.toastr.errorToastr(msg);
     }
-  
+
     showWarning(msg) {
         this.toastr.warningToastr(msg);
     }

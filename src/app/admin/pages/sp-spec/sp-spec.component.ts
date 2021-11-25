@@ -101,7 +101,7 @@ export class SpSpecComponent implements OnInit {
         this.showSuccess("Added Successfully");
         this. openAddedDialog();
       }else {
-        alert(response.Message);
+        this.toastr.warningToastr(response.Message);
       }
       this.ngOnInit();
     }

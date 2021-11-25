@@ -199,7 +199,7 @@ export class DoctorInfoComponent implements OnInit {
       this.T_date = undefined;
     }
     else {
-      alert("Pleasefill all the fields")
+      this.toastr.warningToastr("Pleasefill all the fields")
       this.showWarning("Please fill all the fields");
     }
   }
@@ -514,7 +514,7 @@ export class DoctorInfoComponent implements OnInit {
   }
 
 
-  
+
 }
 
 

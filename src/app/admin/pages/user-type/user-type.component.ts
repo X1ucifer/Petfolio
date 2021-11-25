@@ -100,7 +100,7 @@ export class UserTypeComponent implements OnInit {
             this.showSuccess("Added Successfully")
             this.openAddedDialog();
           } else {
-            alert(response.Message);
+            this.toastr.warningToastr(response.Message);
             this.showError(response.Message)
           }
           this.ngOnInit();
@@ -193,12 +193,12 @@ export class UserTypeComponent implements OnInit {
           if (d < 10) {
             this.addfiles1();
           } else {
-            alert('Please upload the file below 60 KB');
+            this.toastr.warningToastr('Please upload the file below 60 KB');
             this.imgType.nativeElement.value = "";
           }
         }
         else {
-          alert('Please upload the file size 200 * 200');
+          this.toastr.warningToastr('Please upload the file size 200 * 200');
           this.imgType.nativeElement.value = "";
         }
       };
@@ -237,7 +237,7 @@ export class UserTypeComponent implements OnInit {
       );
     }
     else {
-      alert('Please select the startdate and enddate');
+      this.toastr.warningToastr('Please select the startdate and enddate');
     }
 
   }

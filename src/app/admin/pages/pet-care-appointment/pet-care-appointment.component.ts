@@ -47,6 +47,15 @@ export class PetCareAppointmentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
     this.listpettype();
   }
 
@@ -135,7 +144,7 @@ export class PetCareAppointmentComponent implements OnInit {
       this.showWarning("Please select the startdate and enddate")
       //alert('Please select the startdate and enddate');
     }
-   
+
   }
   refersh(){
     this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
@@ -148,7 +157,7 @@ export class PetCareAppointmentComponent implements OnInit {
     console.log(this.c_list)
     this.excelData = this.c_list
     // for (let a = 0; a < this.c_list.length; a++) {
-    //   let data = {  
+    //   let data = {
     //   }
     //   this.excelData.push(this.c_list)
     // }

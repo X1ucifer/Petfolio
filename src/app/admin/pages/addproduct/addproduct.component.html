@@ -82,7 +82,7 @@
                            <div class="col-md-7">
                                 <input type="file" class="form-control"  #imgType1 (change)="fileupload($event)"
                                     id="imgFile" accept=".png, .jpg, .jpeg">
-                                    <span class="img-size">Image Size Should be 200*200</span>
+                                    <span class="img-size">Image Size Should be 350 * 800</span>
                             </div>
                             <div class="col-md-2">
                                 <div class="imgthumcontainer"><img *ngIf="img_path != undefined" src="{{img_path}}"></div>
@@ -206,7 +206,7 @@
             <th pSortableColumn="code">
                 Category <p-sortIcon field="code"></p-sortIcon>
             </th>
-            <th>Mobile Type</th>
+            <th>Device type</th>
             <th>Created at</th>
             <th>Modified at</th>
             <th style="width: 163px;text-align:center">

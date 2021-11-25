@@ -51,7 +51,7 @@
                     <th>Photo ID proof</th> -->
                     <th>Created at</th>
                     <th>Modified at</th>
-                    <th>Mobile Type</th>
+                    <th>Device type</th>
                     <th>Approve / Reject</th>
                     <!-- <th>Live / Block</th> -->
                     <th style="width: 163px;text-align:center">
@@ -62,7 +62,7 @@
             <ng-template pTemplate="body" let-item let-i="rowIndex">
                 <tr class="tdrow">
                     <td>{{i+1}}</td>
-                    <td>{{item.bussiness}}</td>
+                    <td>{{item.bussiness_name}}</td>
                     <td>{{item.bussiness_email}} </td>
                     <td> {{item.bussiness_phone}}</td>
                     <td> {{item.bussiness_long}}</td>
@@ -113,6 +113,9 @@
                         <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="del(item._id)"></i> -->
                         <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View" (click)="view_details(item)" ></i>
                         <i style="color: #000000;" class="fa fa-list" aria-hidden="true" pTooltip="Product List" (click)="viewProduct(item._id)"></i>
+
+                        <i style="color: #000000;" class="fa fa-plus" aria-hidden="true" pTooltip="Product List" (click)="addProduct(item._id)"></i>
+
                     </td>
                 </tr>
             </ng-template>

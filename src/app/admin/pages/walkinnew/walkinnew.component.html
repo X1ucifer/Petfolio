@@ -1,0 +1,429 @@
+<div class="card-box" style="margin-top: 10px;" *ngIf="stage1">
+  <div class="row" style="padding: 0px 0px 23px 10px;">
+      <div class="col-md-12">
+          <h4 class="title" style="color: #3c95c4;">Customer Details</h4>
+      </div>
+          <div class="col-md-6">
+              <h5 class="form-lable">Phone Number:</h5>
+              <input type="number" pInputText [(ngModel)]="phone_number" placeholder="Phone Number" maxlength="10">
+                  <div *ngIf="phone_number_valid == true" class="mt-1">
+                  <div class="text-danger">Phone Number is Required & It must be 10 Digit</div>
+                 </div>
+          </div>
+          <div class="col-md-6">
+            <div class="col-md-12 mt-30">
+              <button type="button" class="btn btn-primary" (click)="check_user()">Continue</button>
+              </div>
+            </div>
+  </div>
+</div>
+
+
+<div class="card-box" style="margin-top: 10px;" *ngIf="stage2">
+  <div class="row" style="padding: 0px 0px 23px 10px;">
+      <div class="col-md-12">
+          <h4 class="title" style="color: #3c95c4;">Customer Details</h4>
+      </div>
+
+        <div class="col-md-6">
+            <h5 class="form-lable">First name : <span style="color: red;">*</span></h5>
+            <input type="text" pInputText [(ngModel)]="first_name" placeholder="First name" pattern="[A-Za-z]{1,15}" id="firstname" name="firstname" ngModel #firstname="ngModel">
+            <div *ngIf="first_name_valid == true" class="mt-1">
+              <div class="text-danger">First name is Required</div>
+             </div>
+             <div *ngIf="firstname.errors &&(firstname.touched || firstname.dirty)" class ="alert alert-danger">
+              <div [hidden]="!firstname.errors?.pattern">
+               Enter Only Text
+              </div>
+              </div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="form-lable">Last name : <span style="color: red;">*</span></h5>
+            <input type="text" pInputText [(ngModel)]="last_name" placeholder="Last name" pattern="[A-Za-z]{1,15}" id="lastname" name="lastname" ngModel #lastname="ngModel">
+            <div *ngIf="last_name_valid == true" class="mt-1">
+              <div class="text-danger">Last name is Required</div>
+             </div>
+             <div *ngIf="lastname.errors &&(lastname.touched || lastname.dirty)" class ="alert alert-danger">
+              <div [hidden]="!lastname.errors?.pattern">
+                Enter Only Text
+              </div>
+              </div>
+        </div>
+            <div class="col-md-6">
+                <h5 class="form-lable">Email ID : <span style="color: red;">*</span></h5>
+                <input type="text" pInputText  placeholder="Email ID" [(ngModel)]="email_id" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  id="email"name="email" ngModel #emailref="ngModel">
+                <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class ="alert alert-danger">
+                <div [hidden]="!emailref.errors?.pattern">
+                 Invalid Email
+                </div>
+                </div>
+                <div *ngIf="email_id_valid == true" class="mt-1">
+                  <div class="text-danger">Email ID is Required</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <h5 class="form-lable">Phone Number : <span style="color: red;">*</span></h5>
+              <input type="text" pInputText [(ngModel)]="phone_number" disabled placeholder="Phone Number" maxlength="10">
+                  <div *ngIf="phone_number_valid == true" class="mt-1">
+                  <div class="text-danger">Phone Number is Required & It must be 10 Digit</div>
+              </div>
+          </div>
+
+        <div class="col-md-12 mt-20 text-right" >
+          <button type="button" class="btn btn-primary" (click)="backaction1()">Back</button>
+          <button type="button" class="btn btn-primary" (click)="create_user()">Next</button>
+        </div>
+
+
+
+  </div>
+</div>
+
+
+<div class="card-box" style="margin-top: 10px;" *ngIf="stage3">
+  <div class="row" style="padding: 0px 0px 23px 10px;">
+      <div class="col-md-12">
+          <h4 class="title" style="color: #3c95c4;">Add Pet Details</h4>
+      </div>
+      <div class="col-md-6">
+        <h5 class="form-lable">Pet name:</h5>
+        <input type="text" pInputText [(ngModel)]="Pet_Name" placeholder="Pet name">
+        <div *ngIf="Pet_Name_valid == true" class="mt-1">
+          <div class="text-danger">Pet name is Required</div>
+         </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Pet Type:</h5>
+        <!-- <p-dropdown [options]="type_array" [(ngModel)]="Pet_Type" placeholder="Select"
+            optionLabel="pet_type_title" [showClear]="true"></p-dropdown> -->
+
+            <div class="ng-autocomplete">
+              <ng-autocomplete [data]="type_array" [(ngModel)]="type_false" [searchKeyword]="keyword3" (selected)='selectEvent3($event)'
+                  [itemTemplate]="itemTemplate3"
+                  [notFoundTemplate]="notFoundTemplate">
+              </ng-autocomplete>
+
+              <ng-template #itemTemplate3 let-item>
+                  <a [innerHTML]="item.pet_type_title"></a>
+              </ng-template>
+
+              <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+            <div *ngIf="Pet_Type_valid == true" class="mt-1">
+              <div class="text-danger">Pet Type is Required</div>
+             </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Pet Breed:</h5>
+        <!-- <p-dropdown [options]="breed_array" [(ngModel)]="Pet_Breed" placeholder="Select"
+            optionLabel="pet_breed" [showClear]="true"></p-dropdown> -->
+
+            <div class="ng-autocomplete">
+              <ng-autocomplete [data]="breed_array" [(ngModel)]="bread_false" [searchKeyword]="keyword2" (selected)='selectEvent2($event)'
+                  [itemTemplate]="itemTemplate2"
+                  [notFoundTemplate]="notFoundTemplate">
+              </ng-autocomplete>
+
+              <ng-template #itemTemplate2 let-item>
+                  <a [innerHTML]="item.pet_breed"></a>
+              </ng-template>
+
+              <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+              </ng-template>
+            </div>
+            <div *ngIf="Pet_breed_valid == true" class="mt-1">
+              <div class="text-danger">Pet Breed is Required</div>
+             </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Pet Gender:</h5>
+        <p-dropdown [options]="gender_array" [(ngModel)]="Pet_Gender" placeholder="Select" optionLabel="y"
+            [showClear]="true"></p-dropdown>
+            <div *ngIf="Pet_Gender_valid == true" class="mt-1">
+              <div class="text-danger">Pet Gender is Required</div>
+             </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Pet Color:</h5>
+
+        <input type="text" pInputText [(ngModel)]="Pet_Color" placeholder="Pet Color" pattern="[A-Za-z]{1,15}" id="Pet_Colors" name="Pet_Colors" ngModel #Pet_Colors="ngModel">
+         <div *ngIf="Pet_Colors.errors &&(Pet_Colors.touched || Pet_Colors.dirty)" class ="alert alert-danger">
+          <div [hidden]="!Pet_Colors.errors?.pattern">
+           Enter Only Text
+          </div>
+          </div>
+        <!-- <input type="text" pInputText [(ngModel)]="Pet_Color" placeholder="Pet Color"> -->
+        <div *ngIf="Pet_Color_valid == true" class="mt-1">
+          <div class="text-danger">Pet Color is Required & Valid data</div>
+         </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Pet weight:</h5>
+        <input type="number" pInputText [(ngModel)]="Pet_Weight" placeholder="Weight">
+        <div *ngIf="Pet_Weight_valid == true" class="mt-1">
+          <div class="text-danger">Pet weight is Required  & Valid data</div>
+         </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Pet Age:</h5>
+        <input type="number" pInputText [(ngModel)]="Pet_Age" placeholder="Age">
+        <div *ngIf="Pet_Age_valid == true" class="mt-1">
+          <div class="text-danger">Pet Age is Required  & Valid data</div>
+         </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Vaccinated:</h5>
+        <p-dropdown [options]="vacinated_array" [(ngModel)]="Vaccinated" placeholder="Select"
+            optionLabel="y" [showClear]="false"></p-dropdown>
+            <div *ngIf="vaccination_select == true" class="mt-1">
+              <div class="text-danger">Vaccinated is Required </div>
+             </div>
+    </div>
+    <div class="col-md-6">
+        <h5 class="form-lable">Last Vaccinated date:</h5>
+        <p-calendar [(ngModel)]="Vaccinated_date" [showIcon]="true" inputId="icon"></p-calendar>
+        <div *ngIf="vaccination_date == true" class="mt-1">
+          <div class="text-danger">Last Vaccinated is Required & Select Valid Date</div>
+         </div>
+    </div>
+    <div class="col-md-12 mt-20">
+        <button type="button" class="btn btn-primary" (click)="update()" *ngIf="update_pet_button">Update Pet Detail</button>
+        <button type="button" class="btn btn-primary" (click)="add_petvalidation()" *ngIf="!update_pet_button">Add Pet Detail</button>
+        <button type="button" class="btn btn-primary" *ngIf="pet_list.length > 0" (click)="skip()">Skip</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card-box" style="margin-top: 10px;" *ngIf="stage4">
+  <div class="row" style="padding: 0px 0px 23px 10px;">
+      <div class="col-md-12">
+          <h4 class="title" style="color: #3c95c4;">Pet Details List</h4>
+      </div>
+      <div class="doc-table"  *ngIf="pet_list.length !== 0">
+        <p-table [value]="pet_list" styleClass="ui-table-customers" #tt [paginator]="true"
+            [rows]="5" [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['type']">
+
+            <ng-template pTemplate="header">
+                <tr class="thhead">
+                    <th style="width: 70px;">
+                        Select
+                    </th>
+
+                    <th>
+                        Pet name
+                    </th>
+                    <th>
+                        Pet Type
+                    </th>
+                    <th>
+                        Pet Breed
+                    </th>
+                    <th style="width: 100px;text-align:center">
+                        Action
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr class="tdrow">
+                    <td colspan="12">No Record found</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-i="rowIndex">
+                <tr class="tdrow">
+                    <td><input type="radio" id="{{item._id}}" [(ngModel)]="pet_select"
+                            name="pet" value="{{item._id}}">
+                    </td>
+                    <td>{{item.pet_name}}</td>
+                    <td>{{item.pet_type}}</td>
+                    <td>{{item.pet_breed}}</td>
+                    <td class="act" style="text-align: center;">
+                        <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true"
+                            (click)="edit_details(item)" pTooltip="Edit"></i>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="button" class="btn btn-primary" (click)="backpet()" >Add Pet</button>
+            <button type="button" style="margin-bottom: 10px; margin-top: 10px;"
+                class="btn btn-primary" (click)="select_pet()">Next</button>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="card-box" style="margin-top: 10px;" *ngIf="stage5">
+  <div class="row" style="padding: 0px 0px 23px 10px;">
+
+      <div class="row" style="padding: 0px 0px 23px 10px;">
+        <div class="col-md-12">
+            <h4 class="title" style="color: #3c95c4;">Appointment Details</h4>
+        </div>
+
+        <div class="col-md-4">
+            <h5 class="form-lable">Appointment Date:</h5>
+            <p-calendar [(ngModel)]="app_date" [showIcon]="true" inputId="icon"></p-calendar>
+            <div *ngIf="app_date_valid == true" class="mt-1">
+              <div class="text-danger">Appointment Date is Required & Select Valid Date</div>
+             </div>
+        </div>
+        <div class="col-md-4">
+            <h5 class="form-lable">Appointment Time:</h5>
+            <p-calendar [(ngModel)]="app_time" [timeOnly]="true" class="timer" [hourFormat]='12'></p-calendar>
+            <div *ngIf="app_time_valid == true" class="mt-1">
+              <div class="text-danger">Appointment Time is Required & Select Valid Date</div>
+             </div>
+          </div>
+        <div class="col-md-8">
+            <h5 class="form-lable">Comments (If any) :</h5>
+            <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="allergies"></textarea>
+            <div *ngIf="allergies_valid == true" class="mt-1">
+              <div class="text-danger">Comments is Required</div>
+             </div>
+          </div>
+          <div class="col-md-8">
+              <h5 class="form-lable">Select Health Issue :</h5>
+              <div class="ng-autocomplete">
+                <ng-autocomplete [data]="health_issue_type" [searchKeyword]="keyword4" (selected)='selectEvent4($event)'
+                    (inputChanged)='selectEvent4($event)' [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.health_issue_title"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
+              <div *ngIf="desc_valid == true" class="mt-1">
+                <div class="text-danger">Health Issue is Required</div>
+               </div>
+          </div>
+
+        <div class="col-md-12 mt-20 text-right" >
+            <button type="button" class="btn btn-primary" (click)="backpetselect()">Back</button>
+            <button type="button" class="btn btn-primary" style="background-color: rgb(64, 64, 250);" (click)="Preview()">Submit</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card-box" style="margin-top: 10px;" *ngIf="stage6">
+  <div class="row" style="padding: 0px 0px 23px 10px;">
+      <div class="col-md-12">
+          <h4 class="title" style="color: #3c95c4;">Appointment Detail</h4>
+          <hr>
+          <div class="row">
+            <h2>Customer Detail</h2>
+            <table>
+              <tr>
+                <th>First name : </th>
+                <td>{{first_name}}</td>
+              </tr>
+              <tr>
+                <th>Last name : </th>
+                <td>{{last_name}}</td>
+              </tr>
+              <tr>
+                <th>Email ID : </th>
+                <td>{{email_id}}</td>
+              </tr>
+              <tr>
+                <th>Phone Number : </th>
+                <td>{{phone_number}}</td>
+              </tr>
+            </table>
+          </div>
+          <hr>
+          <div class="row">
+            <h2>Pet Detail</h2>
+            <table>
+              <tr>
+                <th>Pet name : </th>
+                <td>{{pet_details.pet_name}}</td>
+              </tr>
+              <tr>
+                <th>Pet Type : </th>
+                <td>{{pet_details.pet_type}}</td>
+              </tr>
+              <tr>
+                <th>Pet Breed : </th>
+                <td>{{pet_details.pet_breed}}</td>
+              </tr>
+              <tr>
+                <th>Pet Gender : </th>
+                <td>{{pet_details.pet_gender}}</td>
+              </tr>
+              <tr>
+                <th>Pet Color : </th>
+                <td>{{pet_details.pet_color}}</td>
+              </tr>
+              <tr>
+                <th>Pet weight : </th>
+                <td>{{pet_details.pet_weight}}</td>
+              </tr>
+              <tr>
+                <th>Pet Age : </th>
+                <td>{{pet_details.pet_age}}</td>
+              </tr>
+              <tr>
+                <th>Vaccinated : </th>
+                <td *ngIf="pet_details.vaccinated">Yes</td>
+                <td *ngIf="!pet_details.vaccinated">No</td>
+              </tr>
+              <tr>
+                <th>Vaccinated Date : </th>
+                <td *ngIf="pet_details.vaccinated">{{pet_details.last_vaccination_date | date}}</td>
+                <td *ngIf="!pet_details.vaccinated"></td>
+              </tr>
+            </table>
+          </div>
+          <hr>
+          <div class="row">
+            <h2>Appointment Details</h2>
+            <table>
+              <tr>
+                <th>Appointment Date : </th>
+                <td>{{app_date | date}}</td>
+              </tr>
+              <tr>
+                <th>Appointment Time : </th>
+                <td>{{app_time | date:'hh:mm'}}</td>
+              </tr>
+              <tr>
+                <th>Comments : </th>
+                <td>{{allergies}}</td>
+              </tr>
+              <tr>
+                <th>Health Issue : </th>
+                <td>{{desc}}</td>
+              </tr>
+            </table>
+          </div>
+          <hr>
+
+          <div class="row">
+            <button class="btn btn-primary" (click)="appointmentback()" >Edit Appointment</button>
+            <button class="btn btn-primary" (click)="doc_app_create()">Book Appointment</button>
+          </div>
+      </div>
+  </div>
+</div>

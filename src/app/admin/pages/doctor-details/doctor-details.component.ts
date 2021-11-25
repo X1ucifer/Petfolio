@@ -49,6 +49,17 @@ export class DoctorDetailsComponent implements OnInit {
   @ViewChild('TABLE') table: ElementRef;
   ngOnInit(): void {
 
+
+    let login_check = this.storage.get("login_cache");
+    console.log(login_check);
+    if(login_check == true){
+    }else{
+      this.router.navigateByUrl('/');
+    }
+
+
+
+
     this.specialzation = '';
     // this.user_type_img = 'http://18.237.123.253:3000/api/uploads/template.jpg';
     this.pet_type_id = '';
@@ -83,7 +94,7 @@ export class DoctorDetailsComponent implements OnInit {
     console.log(this.c_list)
     this.excelData = this.c_list
     // for (let a = 0; a < this.c_list.length; a++) {
-    //   let data = {  
+    //   let data = {
     //   }
     //   this.excelData.push(this.c_list)
     // }
@@ -372,7 +383,7 @@ export class DoctorDetailsComponent implements OnInit {
     const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    
+
     /* save to file */
     XLSX.writeFile(wb, 'sheetExcel.xlsx');
   }

@@ -2,7 +2,7 @@
 <section>
   <div class="page-header">
       <div>
-          <h2 class="main-content-title tx-24 mb-1">Mobile Payment Details</h2>
+          <h2 class="main-content-title tx-24 mb-1">Petfolio Payments</h2>
           <ol class="breadcrumb">
               <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Payment Details</li>
@@ -11,7 +11,7 @@
   </div>
   <div class="row row-sm">
   <div class="col-lg-12">
-    <h1 style="font-weight: 500;">Total Transction : Rs.{{total_value}} /-</h1>
+    <h1 style="font-weight: 500;">Total Transactions : Rs.{{total_value}} /-</h1>
   </div>
   </div>
 
@@ -42,6 +42,12 @@
                       <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
                   </div>
               </div>
+              <div class="row">
+                <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-secondary" (click)="onlinefilter()"><i class="fas fa-credit-card"></i> Online</button>
+                <button type="button" class="btn btn-secondary" (click)="cashfilter()"><i class="fas fa-money-bill"></i> Cash</button>
+                </div>
+              </div>
               <div class="doc-table">
 <p-table [value]="list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
   [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
@@ -55,7 +61,7 @@
              Appointment id
           </th>
           <th>
-            Patienr Name
+            Patient Name
           </th>
           <th>
             Appointment type
@@ -64,22 +70,22 @@
           <th>Payment Method</th>
           <th>Payment ID</th>
           <th>Appointment Date</th>
-          <th>Consulatancy fee</th>
-          <th>Appoinment Status</th>
+          <th>Consultancy fee</th>
+          <th>Appointment Status</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-item let-i="rowIndex">
-      <tr class="tdrow">
-          <td>{{i+1}}</td>
-          <td>{{item.appointment_UID}}</td>
-          <td>{{item.user_id.first_name}} {{item.user_id.last_name}}</td>
-          <td>{{item.appointment_types}}</td>
-          <td>{{item.appoinment_status}}</td>
-          <td>{{item.payment_method}}</td>
-          <td>{{item.payment_id}}</td>
-          <td>{{item.booking_date_time}}</td>
-          <td>{{item.amount}}</td>
-          <td>{{item.appoinment_status}}</td>
+    <tr class="tdrow">
+          <td><a (click)="view_details(item)">{{i+1}}</a></td>
+          <td><a (click)="view_details(item)">{{item.appointment_UID}}</a></td>
+          <td><a (click)="view_details(item)">{{item.user_id.first_name}} {{item.user_id.last_name}}</a></td>
+          <td><a (click)="view_details(item)">{{item.appointment_types}}</a></td>
+          <td><a (click)="view_details(item)">{{item.appoinment_status}}</a></td>
+          <td><a (click)="view_details(item)">{{item.payment_method}}</a></td>
+          <td><a (click)="view_details(item)">{{item.payment_id}}</a></td>
+          <td><a (click)="view_details(item)">{{item.booking_date_time}}</a></td>
+          <td><a (click)="view_details(item)">{{item.amount}}</a></td>
+          <td><a (click)="view_details(item)">{{item.appoinment_status}}</a></td>
       </tr>
   </ng-template>
 </p-table>
