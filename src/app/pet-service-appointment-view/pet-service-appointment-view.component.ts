@@ -18,6 +18,7 @@ export class PetServiceAppointmentViewComponent implements OnInit {
       this.router.navigateByUrl('admin/Version : 22.10.21');
     } else {
       this.petServiceDetails = this.storage.get('View_Pet_Service_appointment');
+      console.log("petServiceDetails",this.petServiceDetails);
     }
   }
 

@@ -75,7 +75,7 @@ export class DiagnosisComponent implements OnInit {
   Insert_pet_type_details() {
 
 
-    if(this.Diagnosis == ''){
+    if(this.Diagnosis.trim() == ''){
       //alert("Please enter the pet type")
       this.showWarning("Please enter the pet type")
     }else{
@@ -102,7 +102,7 @@ export class DiagnosisComponent implements OnInit {
 
 
   Edit_pet_type_details(){
-    if(this.Diagnosis == ''){
+    if(this.Diagnosis.trim() == ''){
       //alert("Please enter the pet type")
       this.showWarning("Please enter the pet type")
     }else{

@@ -91,7 +91,7 @@ export class SubDiagnosisComponent implements OnInit {
 
   ////// Inserting Data ///
   Insert_Sub_Diagnosis_details() {
-    if (this.Sub_Diagnosis == '') {
+    if (this.Sub_Diagnosis.trim() == '') {
       // alert("Please enter the pet breed");
       this.showWarning("Please enter the pet breed")
     } else {
@@ -123,7 +123,7 @@ export class SubDiagnosisComponent implements OnInit {
   }
 
   Edit_Sub_Diagnosis_details() {
-    if (this.Sub_Diagnosis == '') {
+    if (this.Sub_Diagnosis.trim() == '') {
       //alert("Please enter the pet breed");
       this.showWarning("Please enter the pet breed")
     } else {

@@ -76,9 +76,11 @@ export class HomebannerComponent implements OnInit {
   ////// Inserting Data
 
   Insert_homebanner_details() {
-    if (this.img_path == '') {
+    if (this.img_path.trim() == '') {
       // alert("Please upload the image");
       this.showWarning("Please upload the image");
+    }else if(this.img_title.trim()==''){
+      this.showWarning("Please insert title");
     }
     else {
       let a = {
@@ -109,9 +111,11 @@ export class HomebannerComponent implements OnInit {
 
   Edit_user_type_details() {
 
-    if (this.img_path == '') {
+    if (this.img_path.trim() == '') {
       // alert("Please enter the user type");
       this.showWarning("Please enter the user type");
+    }else if(this.img_title.trim()==''){
+      this.showWarning("Please insert title");
     } else {
       let a = {
         '_id': this.user_type_id,

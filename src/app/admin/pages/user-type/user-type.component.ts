@@ -81,7 +81,7 @@ export class UserTypeComponent implements OnInit {
   ////// Inserting Data
 
   Insert_user_type_details() {
-    if (this.user_type_title == '') {
+    if (this.user_type_title.trim() == '') {
       //alert("Please enter the user type")
       this.showWarning("Please enter the user type");
     } else {
@@ -117,7 +117,7 @@ export class UserTypeComponent implements OnInit {
   }
   Edit_user_type_details() {
 
-    if (this.user_type_title == '') {
+    if (this.user_type_title.trim() == '') {
       //alert("Please enter the user type")
       this.showWarning("Please enter the user type");
     } else {

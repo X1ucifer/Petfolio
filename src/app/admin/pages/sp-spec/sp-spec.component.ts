@@ -84,7 +84,7 @@ export class SpSpecComponent implements OnInit {
   Insert_pet_type_details() {
 
 
-    if(this.specialzation == ''){
+    if(this.specialzation.trim() == ''){
       // alert("Please enter the pet type")
       this.showWarning("Please enter the pet type");
     }else{
@@ -111,7 +111,7 @@ export class SpSpecComponent implements OnInit {
 
 
   Edit_pet_type_details(){
-    if(this.specialzation == ''){
+    if(this.specialzation.trim() == ''){
       // alert("Please enter the pet type")
       this.showWarning("Please enter the pet type");
     }else{

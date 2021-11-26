@@ -80,7 +80,7 @@ export class HealthissueComponent implements OnInit {
   Insert_pet_type_details() {
 
 
-    if(this.health_issue_title == ''){
+    if(this.health_issue_title.trim() == ''){
       //alert("Please enter the pet type")
       this.showWarning("Please enter the pet type")
     }else{
@@ -109,7 +109,7 @@ export class HealthissueComponent implements OnInit {
 
 
   Edit_pet_type_details(){
-    if(this.health_issue_title == ''){
+    if(this.health_issue_title.trim() == ''){
       //alert("Please enter the pet type")
       this.showWarning("Please enter the pet type")
     }else{
@@ -183,7 +183,7 @@ export class HealthissueComponent implements OnInit {
           let width = img.width;
           let height = img.height;
           console.log('ADfad',width,height);
-          if(width == 100 && height == 100){
+          if(width == 200 && height == 200){
             let d = this.selectedimgae.size / 100000 ;
             console.log(d);
             if(d < 10){

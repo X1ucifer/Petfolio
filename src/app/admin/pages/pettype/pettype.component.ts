@@ -81,7 +81,7 @@ export class PettypeComponent implements OnInit {
   Insert_pet_type_details() {
 
 
-    if(this.pet_type_title == ''){
+    if(this.pet_type_title.trim() == ''){
       //alert("Please enter the pet type")
       this.showWarning("Please enter the pet type")
     }else{
@@ -111,7 +111,7 @@ export class PettypeComponent implements OnInit {
 
 
   Edit_pet_type_details(){
-    if(this.pet_type_title == ''){
+    if(this.pet_type_title.trim() == ''){
       //alert("Please enter the pet type")
       this.showWarning("Please enter the pet type")
     }else{

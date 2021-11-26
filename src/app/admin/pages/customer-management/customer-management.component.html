@@ -19,29 +19,25 @@
     <div class="card-body">
         <div class="card-item">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="search-hero">
-                        <div class="input-group mb-3">
-                           <div class="input-group-prepend">
-                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                           </div>
-                           <input class="form-control" type="text" name="search2"
-                       [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
-                         </div>
-                      </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" type="text" name="search2"
+                            [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                            </div>
+                    </div>
                 </div>
-                <div class="col-md-6 text-center">
-                    <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class=""></p-calendar>
-                    <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-1"></p-calendar>
-                    <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+                <div class="col-md-8 text-lg-right text-sm-left">
+                    <p-calendar placeholder="Start Date" [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" class="mr-2"></p-calendar>
+                    <p-calendar placeholder="End Date" [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" class="mr-3"></p-calendar>
+                    <button type="button" class="btn btn-primary mr-2"
+                        (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+                        <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
                 </div>
-                <div class="col-md-3 text-right">
-                    <button type="button" class="btn btn-secondary mr-2" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
-                    <button type="button" class="btn btn-secondary mr-0" (click)="service_form()"><i class="fas fa-plus-circle"></i> Add</button>
-                </div>
-
-
-
+            
             </div>
 
 
@@ -85,9 +81,9 @@
             <th>
               Profile Status
             </th>
-            <th>
+            <!-- <th>
               Delete Status
-            </th>
+            </th> -->
             <th>
               email Status
             </th>
@@ -142,7 +138,7 @@
                 <i style="color: #31ccfc;" class="fas fa-info-circle" aria-hidden="true" (click)="view_details(item)"  pTooltip="View Details"></i>
                 <!-- <i style="color: #1b1b1b;" class="fa fa-ban" aria-hidden="true"  pTooltip="Block"></i> -->
                 <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="edit_details(item)" pTooltip="Edit"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i>
+                <!-- <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" (click)="Delete(item._id)"  pTooltip="Delete"></i> -->
             </td>
         </tr>
     </ng-template>

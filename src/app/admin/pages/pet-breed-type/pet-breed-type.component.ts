@@ -89,7 +89,7 @@ export class PetBreedTypeComponent implements OnInit {
 
   ////// Inserting Data ///
   Insert_pet_breed_details() {
-    if (this.pet_breed == '') {
+    if (this.pet_breed.trim() == '') {
       // alert("Please enter the pet breed");
       this.showWarning("Please enter the pet breed")
     } else {
@@ -123,7 +123,7 @@ export class PetBreedTypeComponent implements OnInit {
   }
 
   Edit_pet_breed_details() {
-    if (this.pet_breed == '') {
+    if (this.pet_breed.trim() == '') {
       //alert("Please enter the pet breed");
       this.showWarning("Please enter the pet breed")
     } else {

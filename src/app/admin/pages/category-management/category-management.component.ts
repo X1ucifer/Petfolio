@@ -79,9 +79,9 @@ export class CategoryManagementComponent implements OnInit {
 
   create() {
 
-    if ( this.Category_name == '' || this.Category_name == undefined || this.img_path == undefined) {
+    if ( this.Category_name.trim() == '' || this.Category_name == undefined || this.img_path == undefined) {
       //alert("Please enter the pet type");
-      this.showWarning("Please enter the pet type")
+      this.showWarning("Please enter the category name")
     } else {
       let a = {
         "img_path": this.img_path,

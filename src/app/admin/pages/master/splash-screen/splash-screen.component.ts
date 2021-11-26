@@ -54,7 +54,7 @@ export class SplashScreenComponent implements OnInit {
     );
   }
   validation() {
-    if (this.Tittle == undefined || this.Tittle == '' || this.img_path == undefined) {
+    if (this.Tittle.trim() == undefined || this.Tittle.trim() == '' || this.img_path == undefined) {
       this.Validation = false;
       console.log(this.Validation)
     }

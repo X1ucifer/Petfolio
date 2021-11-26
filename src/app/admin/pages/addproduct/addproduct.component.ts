@@ -172,6 +172,16 @@ export class AddproductComponent implements OnInit {
     if ( this.Thmp_list.length == 0  || this.Category == undefined || this.pettype == undefined || this.Age == undefined || this.Product_Name == undefined || this.Product_Name == '' || this.Description == undefined || this.Description == '') {
       this.Validation = false;
       console.log(this.Validation)
+    }else if(!this.Description.trim()){
+      this.Validation = false;
+    }else if(!this.Category.trim()){
+      this.Validation = false;
+    }else if(!this.pettype.trim()){
+      this.Validation = false;
+    }else if(!this.Age.trim()){
+      this.Validation = false;
+    }else if(!this.Product_Name.trim()){
+      this.Validation = false;
     }
     else {
       this.Validation = true;
