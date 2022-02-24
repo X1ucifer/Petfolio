@@ -256,7 +256,7 @@ import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.comp
     CheckboxModule,
     NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
+      apiKey: 'AIzaSyDap8qav1flUsql0VWUYkjgB0noN0o_U1Y'
     }),
     GooglePlaceModule,
     FilterPipeModule,

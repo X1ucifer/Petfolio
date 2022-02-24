@@ -1,7 +1,7 @@
 <h4 class="title">Vendor Create</h4>
 
 <div class="card-box">
-    <form [formGroup]="userForm">
+    <!-- <form [formGroup]="userForm">
         <div class="form-row">
             <div class="form-group col-3">
                 <label for="">First Name</label>
@@ -20,12 +20,61 @@
                 <input type="number" class="form-control" formControlName="user_phone">
             </div>
         </div>
-    </form>
+    </form> -->
+
+    <!-- Testing -->
+
+    <div class="form-row">
+
+
+        <div class="form-group col-3">
+            <h5 class="form-lable">First Name:</h5>
+            <input type="text" class="input" pInputText [(ngModel)]="tittle" placeholder="First Name" />
+        </div>
+        <div class="form-group col-3">
+            <h5 class="form-lable">Last Name:</h5>
+            <input type="text" pInputText [(ngModel)]="Name" placeholder="Last Name" />
+        </div>
+        <div class="form-group col-3">
+            <h5 class="form-lable">Email ID:</h5>
+            <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
+                placeholder="Email ID" />
+            <div *ngIf="Email_idError" class="mt-1 error">
+                <div class="text-danger">Valid Email Address Required.</div>
+            </div>
+            <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
+                <div class="text-danger">Valid Email Address Required.</div>
+            </div>
+        </div>
+        <div class="form-group col-3">
+            <h5 class="form-lable">Phone Number:</h5>
+            <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10"
+                (keypress)="_keyPress($event)" />
+            <div *ngIf="
+        Validation == false &&
+        (Phone == undefined || Phone == '' || Phone.length != 10)
+        " class="mt-1 error">
+                <div class="text-danger">Phone Number is Required.</div>
+            </div>
+        </div>
+
         <div class="row">
+
             <div class="col-12 d-flex justify-content-end">
                 <button class="btn btn-sm btn-primary" (click)="addUser()">ADD</button>
             </div>
+
         </div>
+
+    </div>
+    <!-- Testing -->
+
+
+    <!-- <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+            <button class="btn btn-sm btn-primary" (click)="addUser()">ADD</button>
+        </div>
+    </div> -->
 </div>
 
 <div class="card-box" *ngIf="addmore">
@@ -52,28 +101,128 @@
                 <textarea cols="30" rows="10" class="form-control" formControlName="business_reg"></textarea>
             </div>
         </div>
-        <div class="row">
+
+        <!-- Update New Form Fields -->
+
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 py-7">
+                    <h4 class="form-lable title-box" style="font-weight: 600;">
+                        Add Your Services
+                    </h4>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="form-lable" style="font-weight: 600;">
+                                Add Service
+                            </h5>
+                            <select [(ngModel)]="serviceData" [ngModelOptions]="{standalone: true}">
+                                <option value="undefined" style="display: none">
+                                    Select Services
+                                </option>
+                                <option *ngFor="
+                              let arr of Services.service_list;
+                              let i = index
+                            ">
+                                    {{ arr.service_list }}
+                                </option>
+                            </select>
+                            <!-- <input type="text" pInputText [(ngModel)]="Specialization" placeholder="Specialization"> -->
+                        </div>
+
+                        <!-- <div class="col-md-2 text-center">
+                            <i class="fa fa-plus add-icon" (click)="addSpecialization()" aria-hidden="true"
+                                pTooltip="Add"></i>
+                        </div> -->
+                    </div>
+                
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="form-lable" style="font-weight: 600">
+                                Add time:
+                            </h5>
+                            <select [(ngModel)]="timeData" [ngModelOptions]="{standalone: true}">
+                                <option value="undefined" style="display: none">
+                                    Select time
+                                </option>
+                                <option *ngFor="let arr of Services.time; let i = index">
+                                    {{ arr.time }}
+                                </option>
+                            </select>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group col-3">
+                    <h5 class="form-lable">Amount:</h5>
+                    <input type="number" pInputText [(ngModel)]="Amount" placeholder="Amount..."[ngModelOptions]="{standalone: true}" />
+                </div>
+
+                <div class="col-md-1 text-right">
+                    <i class="fa fa-plus add-icon" 
+                    (click)="addcompletion()"
+                    aria-hidden="true" pTooltip="Add"></i>
+                </div>
+
+            </div>
+
+            <table *ngIf="Completionarray.length > 0" class="spec-table">
+                <thead>
+                    <th>S.No</th>
+                    <th>Service</th>
+                    <th>Time</th>
+                    <th>Amount</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let arr of Completionarray; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ arr.services }}</td>
+                        <td>{{ arr.time }}</td>
+                        <td>{{ arr.amount }}</td>
+                        <td>
+                            <i style="color: #fd2c3a" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                                (click)="remove_completion(i)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <!-- Update New Form Fields -->
+
+        <div class="row" style="margin-top:30px">
             <div class="col-12">
                 <h5 class="form-lable">Business Location:</h5>
-                <input class="form-control" [(ngModel)]="address" style="padding:10px; width:75%" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+                <input class="form-control" [(ngModel)]="address" style="padding:10px; width:75%"
+                    ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                    (onAddressChange)="handleAddressChange($event)" />
             </div>
             <div class="map">
-                <agm-map 
-                    [latitude]="base_lat"
-                    [longitude]="base_lng"
-                    [zoom]="zoom"
-                    [disableDefaultUI]="false"
+                <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
                     [zoomControl]="false">
-    
-                    <agm-marker 
-                        [latitude]="location_lat"
-                        [longitude]="location_lng"
-                        [markerDraggable]="true"
+
+                    <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
                         (dragEnd)="markerDragEnd($event)">
-                        
+
                         <agm-info-window>
-                        <strong>{{address}}</strong>
-                        </agm-info-window>                       
+                            <strong>{{address}}</strong>
+                        </agm-info-window>
                     </agm-marker>
                 </agm-map>
             </div>

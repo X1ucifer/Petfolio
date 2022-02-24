@@ -414,7 +414,7 @@ export class DoctorRegisterComponent implements OnInit {
         "user_status": "complete",
         "ref_code" : ""
       };
-      console.log(a);
+      console.log("doc",a);
       this._api.user_create(a).subscribe(
         (response: any) => {
           console.log(response.Data);

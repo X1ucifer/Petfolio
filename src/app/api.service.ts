@@ -12,6 +12,17 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
+
+  // AddService in Vendor form
+
+  dropdown_service(){
+    return this.http.get(this.apiUrl + 'service_provider/sp_dropdown');
+  }
+
+  // AddService in Vendor form
+
+
+
   CreateDoctor(data) {
     return this.http.post(this.apiUrl + 'user/register', data);
   }
@@ -150,23 +161,23 @@ export class ApiService {
   //////////////
 
 
-    ////doctor_spec_API//////
-    sp_spec_list() {
-      return this.http.get(this.apiUrl + 'sp_spec/getlist');
-    }
-    sp_spec_insert(data) {
-      return this.http.post(this.apiUrl + 'sp_spec/create', data);
-    }
-    sp_spec_edit(data) {
-      return this.http.post(this.apiUrl + 'sp_spec/edit', data);
-    }
-    sp_spec_delete(data) {
-      return this.http.post(this.apiUrl + 'sp_spec/delete', data);
-    }
-    sp_spec_filter_date(data) {
-      return this.http.post(this.apiUrl + 'sp_spec/filter_date', data);
-    }
-    //////////////
+  ////doctor_spec_API//////
+  sp_spec_list() {
+    return this.http.get(this.apiUrl + 'sp_spec/getlist');
+  }
+  sp_spec_insert(data) {
+    return this.http.post(this.apiUrl + 'sp_spec/create', data);
+  }
+  sp_spec_edit(data) {
+    return this.http.post(this.apiUrl + 'sp_spec/edit', data);
+  }
+  sp_spec_delete(data) {
+    return this.http.post(this.apiUrl + 'sp_spec/delete', data);
+  }
+  sp_spec_filter_date(data) {
+    return this.http.post(this.apiUrl + 'sp_spec/filter_date', data);
+  }
+  //////////////
 
 
 
@@ -671,7 +682,7 @@ export class ApiService {
 
 
   location_details(lat, lng) {
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48');
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyDap8qav1flUsql0VWUYkjgB0noN0o_U1Y');
   }
 
 
@@ -730,11 +741,11 @@ export class ApiService {
   diagnosis_getlist() {
     return this.http.get(this.apiUrl + 'diagnosis/getlist');
   }
-  diagnosis_delete(data){
+  diagnosis_delete(data) {
     return this.http.post(this.apiUrl + 'diagnosis/delete', data);
   }
 
-  diagnosis_filter(data){
+  diagnosis_filter(data) {
     return this.http.post(this.apiUrl + 'diagnosis/filter_date', data);
   }
   sub_diagnosis_create(data) {
@@ -794,26 +805,26 @@ export class ApiService {
   }
 
 
-    ////Health Issue type API//////
-    health_issue_type_list() {
-      return this.http.get(this.apiUrl + 'healthissue/getlist');
-    }
-    health_issue_type_insert(data) {
-      return this.http.post(this.apiUrl + 'healthissue/create', data);
-    }
-    health_issue_type_edit(data) {
-      return this.http.post(this.apiUrl + 'healthissue/edit', data);
-    }
-    health_issue_type_delete(data) {
-      return this.http.post(this.apiUrl + 'healthissue/delete', data);
-    }
-    health_issue_type_filter_date(data) {
-      return this.http.post(this.apiUrl + 'healthissue/filter_date', data);
-    }
-    //////////////
+  ////Health Issue type API//////
+  health_issue_type_list() {
+    return this.http.get(this.apiUrl + 'healthissue/getlist');
+  }
+  health_issue_type_insert(data) {
+    return this.http.post(this.apiUrl + 'healthissue/create', data);
+  }
+  health_issue_type_edit(data) {
+    return this.http.post(this.apiUrl + 'healthissue/edit', data);
+  }
+  health_issue_type_delete(data) {
+    return this.http.post(this.apiUrl + 'healthissue/delete', data);
+  }
+  health_issue_type_filter_date(data) {
+    return this.http.post(this.apiUrl + 'healthissue/filter_date', data);
+  }
+  //////////////
 
 
-      ////pet lover mini banner API//////
+  ////pet lover mini banner API//////
   mini_banner_list() {
     return this.http.get(this.apiUrl + 'minibanner/getlist');
   }

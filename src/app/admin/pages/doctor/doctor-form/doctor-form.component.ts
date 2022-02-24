@@ -431,7 +431,7 @@ export class DoctorFormComponent implements OnInit {
         "user_email": this.Email,
         "user_email_verification" : false,
         "ref_code":"",
-        "user_phone": this.Phone,
+          "user_phone": this.Phone,
         "otp": 123456,
         "user_type": 4,
         "date_of_reg": ""+this.datepipe.transform(new Date(), 'dd-MM-yyyy hh:mm:ss'),

@@ -68,7 +68,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     MatButtonModule,
     RadioButtonModule, TableModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD9sxe06VnCg13SIyxJjTxq0gd4vj4bA48'
+      apiKey: 'AIzaSyDap8qav1flUsql0VWUYkjgB0noN0o_U1Y'
     }),
     GooglePlaceModule,
     MatStepperModule,

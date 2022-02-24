@@ -7,37 +7,37 @@
             <input type="text" pInputText [(ngModel)]="Tittle" placeholder="Enter Service Type">
         </div>
         <div class="col-md-3">
-          <h5 class="form-lable">Sub_title:</h5>
-          <input type="text" pInputText [(ngModel)]="subtitle" placeholder="Enter Service subtitle">
-      </div>
+            <h5 class="form-lable">Sub_title:</h5>
+            <input type="text" pInputText [(ngModel)]="subtitle" placeholder="Enter Service subtitle">
+        </div>
 
-      <div class="col-md-3">
-        <h5 class="form-lable">Icon Image:</h5>
-        <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
-            class="form-control" id="city" placeholder="User type icon">
-        <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-            80 * 80 (Max 64 kB)</div>
-        <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
-    </div>
+        <div class="col-md-3">
+            <h5 class="form-lable">Icon Image:</h5>
+            <input type="file" #imgType (change)="fileupload($event)" id="imgfile" accept=".png, .jpg, .jpeg"
+                class="form-control" id="city" placeholder="User type icon">
+            <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
+                80 * 80 (Max 64 kB)</div>
+            <img *ngIf="img_path != undefined" src="{{img_path}}" style="width: 20px;">
+        </div>
 
-    <div class="col-md-3">
-      <h5 class="form-lable">Banner Image:</h5>
-      <input type="file" #imgType (change)="fileupload1($event)" id="imgfile" accept=".png, .jpg, .jpeg"
-          class="form-control" id="city" placeholder="User type icon">
-      <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
-        800 * 350 (Max 400 kB)</div>
-      <img *ngIf="img_path != undefined" src="{{banner_img}}" style="width: 20px;">
+        <div class="col-md-3">
+            <h5 class="form-lable">Banner Image:</h5>
+            <input type="file" #imgType (change)="fileupload1($event)" id="imgfile" accept=".png, .jpg, .jpeg"
+                class="form-control" id="city" placeholder="User type icon">
+            <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with
+                800 * 350 (Max 400 kB)</div>
+            <img *ngIf="img_path != undefined" src="{{banner_img}}" style="width: 20px;">
 
-  </div>
+        </div>
 
 
         <div class="col-md-2">
-            <button type="button" *ngIf="edit_t == false" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                (click)="create()">Add</button>
-                <button *ngIf="edit_t == true" type="button" class="btn btn-primary" style="margin-left: 10px;margin-top: 24px;"
-                (click)="update()">Update</button>
-                <button *ngIf="edit_t == true" type="button" class="btn btn-danger mt-4" (click)="cancel()">
-                    Cancel</button>
+            <button type="button" *ngIf="edit_t == false" class="btn btn-primary"
+                style="margin-left: 10px;margin-top: 24px;" (click)="create()">Add</button>
+            <button *ngIf="edit_t == true" type="button" class="btn btn-primary"
+                style="margin-left: 10px;margin-top: 24px;" (click)="update()">Update</button>
+            <button *ngIf="edit_t == true" type="button" class="btn btn-danger mt-4" (click)="cancel()">
+                Cancel</button>
         </div>
 
     </div>
@@ -76,28 +76,32 @@
 <div class="row">
     <div class="col-md-4">
         <div class="search-hero">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input class="form-control" type="text" name="search2"
-                [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
                 </div>
+                <input class="form-control" type="text" name="search2" [(ngModel)]="searchQR" autocomplete="off"
+                    placeholder="Search...">
+            </div>
         </div>
     </div>
     <div class="col-md-8 text-lg-right text-sm-left">
-        <p-calendar placeholder="Start Date" [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" class="mr-2"></p-calendar>
-        <p-calendar placeholder="End Date" [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" class="mr-3"></p-calendar>
-        <button type="button" class="btn btn-primary mr-2"
-            (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
-            <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+        <p-calendar placeholder="Start Date" [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" class="mr-2">
+        </p-calendar>
+        <p-calendar placeholder="End Date" [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" class="mr-3">
+        </p-calendar>
+        <button type="button" class="btn btn-primary mr-2" (click)="filter_date()"><i class="fas fa-search"></i>
+            Search</button>
+        <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i>
+            Refresh</button>
     </div>
 
 </div>
 
 <p-table [value]="list | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
     [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']"
+      [scrollable]="true">
     <!-- <ng-template pTemplate="caption">
         <div fxLayout="row" fxLayoutAlign="space-around center">
             <div fxFlex="50">
@@ -123,14 +127,14 @@
                 Image
             </th>
             <th>
-              Banner
-          </th>
+                Banner
+            </th>
             <th>
                 Service Type
             </th>
             <th>
-              Service sub title
-          </th>
+                Service sub title
+            </th>
             <th>Created by</th>
             <!-- <th>Modified by</th>
             <th>Created at</th> -->
@@ -144,25 +148,29 @@
         <tr class="tdrow">
             <td>{{i+1}}</td>
             <td>
-                <img src="{{item.img_path}}" alt=""style="width: 50px;height:50px">
+                <img src="{{item.img_path}}" alt="" style="width: 50px;height:50px">
             </td>
             <td>
-              <img src="{{item.img_banner}}" alt=""style="width: 50px;height:50px">
-          </td>
+                <img src="{{item.img_banner}}" alt="" style="width: 50px;height:50px">
+            </td>
             <td>
                 {{item.img_title}}
             </td>
             <td>
-              {{item.img_subtitle}}
-          </td>
+                {{item.img_subtitle}}
+            </td>
             <td>
                 {{item.date_and_time}}
             </td>
             <td class="act">
-                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit" (click)="edit(item)"></i>
-                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="delete(item._id)"></i>
+                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" pTooltip="Edit"
+                    (click)="edit(item)"></i>
+                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete"
+                    (click)="delete(item._id)"></i>
                 <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> -->
             </td>
         </tr>
     </ng-template>
 </p-table>
+
+
