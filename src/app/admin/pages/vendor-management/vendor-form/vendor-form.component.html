@@ -138,7 +138,7 @@
                                 pTooltip="Add"></i>
                         </div> -->
                     </div>
-                
+
                 </div>
 
                 <div class="col-md-4">
@@ -168,13 +168,12 @@
 
                 <div class="form-group col-3">
                     <h5 class="form-lable">Amount:</h5>
-                    <input type="number" pInputText [(ngModel)]="Amount" placeholder="Amount..."[ngModelOptions]="{standalone: true}" />
+                    <input type="number" pInputText [(ngModel)]="Amount" placeholder="Amount..."
+                        [ngModelOptions]="{standalone: true}" />
                 </div>
 
                 <div class="col-md-1 text-right">
-                    <i class="fa fa-plus add-icon" 
-                    (click)="addcompletion()"
-                    aria-hidden="true" pTooltip="Add"></i>
+                    <i class="fa fa-plus add-icon" (click)="addcompletion()" aria-hidden="true" pTooltip="Add"></i>
                 </div>
 
             </div>
@@ -202,6 +201,46 @@
             </table>
 
         </div>
+
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 py-7">
+                    <h4 class="form-lable title-box" style="font-weight: 600;">
+                        Add Specialization
+                    </h4>
+                </div>
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="form-lable" style="font-weight: 600;">
+                                Add Specialization
+                            </h5>
+                            <select [(ngModel)]="specializationData" [ngModelOptions]="{standalone: true}">
+                                <option value="undefined" style="display: none">
+                                    Select Specialization
+                                </option>
+                                <option *ngFor="
+                              let arr of Services.Specialization;
+                              let i = index
+                            ">
+                                    {{ arr.Specialization }}
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-1 text-right">
+                    <i class="fa fa-plus add-icon" (click)="addcompletion()" aria-hidden="true" pTooltip="Add"></i>
+                </div>
+            </div>
+
+        </div>
+
 
 
         <!-- Update New Form Fields -->

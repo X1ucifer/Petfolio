@@ -30,6 +30,7 @@ export class VendorFormComponent implements OnInit {
   radioItems: Array<string>;
   model   = {option: 'option3'};
   Services: any;
+  specializationData:any;
   timeData: any;
   Amount:number;
   serviceData:any;
