@@ -11,7 +11,7 @@ export const environment = {
     //Dev URL///
 
   apiUrl: 'http://54.212.108.156:3000/api/',
-  imageURL: 'http://54.212.108.156:3000/upload'
+  imageURL: 'http://54.212.108.156:3000/api/upload'
 
 
   //Live URL//
