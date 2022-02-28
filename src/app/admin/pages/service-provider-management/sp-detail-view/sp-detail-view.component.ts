@@ -21,6 +21,7 @@ export class SpDetailViewComponent implements OnInit {
   selectedimgae : any;
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
+  
 
 
   @ViewChild('imgType', { static: false }) imgType: ElementRef;

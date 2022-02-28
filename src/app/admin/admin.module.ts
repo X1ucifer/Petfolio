@@ -133,6 +133,7 @@ import { WalkinnewComponent } from './pages/walkinnew/walkinnew.component';
 import { ViewcustomerdetailComponent } from './pages/viewcustomerdetail/viewcustomerdetail.component';
 import { DoctorEditCalendarFulltimeComponent } from './doctor/doctor-edit-calendar-fulltime/doctor-edit-calendar-fulltime.component';
 import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 @NgModule({
   declarations: [AdminHeaderComponent,
@@ -226,6 +227,7 @@ import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.comp
     ViewcustomerdetailComponent,
     DoctorEditCalendarFulltimeComponent,
     AddnewproductComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule,

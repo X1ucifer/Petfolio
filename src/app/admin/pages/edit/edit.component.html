@@ -1,96 +1,21 @@
-<h4 class="title">Vendor Create</h4>
-
-<div class="card-box" style="margin-bottom: 20px;">
-    <!-- <form [formGroup]="userForm">
-        <div class="form-row">
-            <div class="form-group col-3">
-                <label for="">First Name</label>
-                <input type="text" class="form-control" formControlName="first_name">
-            </div>
-            <div class="form-group col-3">
-                <label for="">Last Name</label>
-                <input type="text" class="form-control" formControlName="last_name">
-            </div>
-            <div class="form-group col-3">
-                <label for="">Email</label>
-                <input type="text" class="form-control" formControlName="user_email">
-            </div>
-            <div class="form-group col-3">
-                <label for="">Mobile</label>
-                <input type="number" class="form-control" formControlName="user_phone">
-            </div>
-        </div>
-    </form> -->
-
-    <!-- Testing -->
-
-    <div class="form-row">
+<h4 class="title">Vendor Edit</h4>
 
 
-        <div class="form-group col-3">
-            <h5 class="form-lable">First Name:</h5>
-            <input type="text" class="input" pInputText [(ngModel)]="tittle" placeholder="First Name" />
-        </div>
-        <div class="form-group col-3">
-            <h5 class="form-lable">Last Name:</h5>
-            <input type="text" pInputText [(ngModel)]="Name" placeholder="Last Name" />
-        </div>
-        <div class="form-group col-3">
-            <h5 class="form-lable">Email ID:</h5>
-            <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
-                placeholder="Email ID" />
-            <div *ngIf="Email_idError" class="mt-1 error">
-                <div class="text-danger">Valid Email Address Required.</div>
-            </div>
-            <div *ngIf="Validation == false && Email_id == undefined" class="mt-1 error">
-                <div class="text-danger">Valid Email Address Required.</div>
-            </div>
-        </div>
-        <div class="form-group col-3">
-            <h5 class="form-lable">Phone Number:</h5>
-            <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10"
-                (keypress)="_keyPress($event)" />
-            <div *ngIf="
-        Validation == false &&
-        (Phone == undefined || Phone == '' || Phone.length != 10)
-        " class="mt-1 error">
-                <div class="text-danger">Phone Number is Required.</div>
-            </div>
-        </div>
 
-        <div class="row">
-
-            <div class="col-12 d-flex justify-content-end">
-                <button class="btn btn-sm btn-primary" (click)="addUser()">ADD</button>
-            </div>
-
-        </div>
-
-    </div>
-    <!-- Testing -->
-
-
-    <!-- <div class="row">
-        <div class="col-12 d-flex justify-content-end">
-            <button class="btn btn-sm btn-primary" (click)="addUser()">ADD</button>
-        </div>
-    </div> -->
-</div>
-
-<div class="card-box" *ngIf="addmore">
+<div class="card-box" >
     <!-- <form [formGroup]="addVendorForm"> -->
     <div class="form-row">
         <div class="form-group col-6">
             <label for="">Business Name</label>
             <!-- <input type="text" pInputText [(ngModel)]="businessName" class="form-control" formControlName="business_name"> -->
-            <input type="text" class="input" pInputText [(ngModel)]="businessname" placeholder="business name" />
+            <input type="text" class="input" pInputText [(ngModel)]="view_detail_data.bussiness_name" placeholder="business name" />
 
         </div>
         <div class="form-group col-6">
             <label for="">Business Email</label>
             <!-- <input type="text" pInputText [(ngModel)]="businessemail" class="form-control" formControlName="business_email"> -->
 
-            <input type="email" class="input" pInputText [(ngModel)]="businessemail" placeholder="business email" />
+            <input type="email" class="input" pInputText [(ngModel)]="view_detail_data.bus_user_email" placeholder="business email" />
         </div>
         <!-- <div class="form-group col-6">
                 <label for="">Business</label>
@@ -391,7 +316,7 @@
     <div class="row" style="margin-top:30px">
         <div class="col-12" style="margin-bottom: 30px;">
             <h5 class="form-lable">Business Location:</h5>
-            <input class="form-control" [(ngModel)]="address" style="padding:10px; width:75%"
+            <input class="form-control" [(ngModel)]="view_detail_data.city_name" style="padding:10px; width:75%"
                 ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
                 (onAddressChange)="handleAddressChange($event)" [ngModelOptions]="{standalone: true}" />
         </div>
@@ -412,7 +337,7 @@
     <!-- </form> -->
     <div class="row">
         <div class="col-12 d-flex justify-content-end" style="margin-bottom: 30px;">
-            <button class="btn btn-sm btn-primary" (click)="addVendor()">ADD</button>
+            <button class="btn btn-sm btn-primary" (click)="addVendor()">Update</button>
         </div>
     </div>
 </div>

@@ -89,10 +89,12 @@ import { WalkinnewComponent } from './pages/walkinnew/walkinnew.component';
 import { ViewcustomerdetailComponent } from './pages/viewcustomerdetail/viewcustomerdetail.component';
 import { DoctorEditCalendarFulltimeComponent } from './doctor/doctor-edit-calendar-fulltime/doctor-edit-calendar-fulltime.component';
 import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.component';
+import { EditComponent } from "./pages/edit/edit.component"
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'editvendor', component: EditComponent },
   { path: 'dashboard/:name', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },
   { path: 'healthissue', component: HealthissueComponent },

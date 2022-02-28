@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef } from '@angular/core'; import { Router } from '@angular/router';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef } from '@angular/core'; 
+import { Router } from '@angular/router';
 import { ApiService } from '../../../api.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -6,6 +7,8 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { DatePipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 import { ToastrManager } from 'ng6-toastr-notifications';
+
+
 
 @Component({
   selector: 'app-serviceprovider-details',
@@ -31,10 +34,13 @@ export class ServiceproviderDetailsComponent implements OnInit {
   specialzation_list: any;
   specialzation_f: any;
   Main_list: any;
+  editOpen: boolean;
+  
+
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   constructor(
-    private toastr:ToastrManager,
+    private toastr: ToastrManager,
     private router: Router,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private http: HttpClient,
@@ -45,11 +51,11 @@ export class ServiceproviderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.editOpen = false
     let login_check = this.storage.get("login_cache");
     console.log(login_check);
-    if(login_check == true){
-    }else{
+    if (login_check == true) {
+    } else {
       this.router.navigateByUrl('/');
     }
 
@@ -206,9 +212,12 @@ export class ServiceproviderDetailsComponent implements OnInit {
 
 
   edit(item) {
-    this.saveInLocal('view_detail_data', item);
-    this.saveInLocal('fun_type', 'edit');
-    this.router.navigateByUrl('/admin/Doctor_form')
+    this.editOpen = true
+    // this.saveInLocal('view_detail_data', item);
+    // this.saveInLocal('fun_type', 'edit');
+    // this.router.navigateByUrl('/admin/Doctor_form')
+    this.router.navigateByUrl('/admin/editvendor')
+    console.log("edit-->",this.editOpen)
 
   }
 
@@ -220,7 +229,7 @@ export class ServiceproviderDetailsComponent implements OnInit {
     console.log(this.rows)
 
   }
-  Refresh(){
+  Refresh() {
     this.specialzation_f = undefined;
     this.rows = this.Main_list;
   }
@@ -288,14 +297,14 @@ export class ServiceproviderDetailsComponent implements OnInit {
   }
 
   filter_date() {
-    if ( this.E_Date != undefined && this.S_Date != undefined) {
+    if (this.E_Date != undefined && this.S_Date != undefined) {
       // let yourDate = new Date(this.E_Date.getTime() + (1000 * 60 * 60 * 24));
-      let yourDate= this.E_Date.setDate(this.E_Date.getDate() + 1);
+      let yourDate = this.E_Date.setDate(this.E_Date.getDate() + 1);
 
       let a = {
-        "fromdate":this.datePipe.transform(new Date(this.S_Date),'yyyy-MM-dd'),
-        "todate" : this.datePipe.transform(new Date(yourDate),'yyyy-MM-dd')
-        }
+        "fromdate": this.datePipe.transform(new Date(this.S_Date), 'yyyy-MM-dd'),
+        "todate": this.datePipe.transform(new Date(yourDate), 'yyyy-MM-dd')
+      }
       console.log(a);
       this._api.service_providerfilter_date(a).subscribe(
         (response: any) => {
@@ -304,18 +313,18 @@ export class ServiceproviderDetailsComponent implements OnInit {
         }
       );
     }
-    else{
+    else {
       this.showWarning("Please select the startdate and enddate");
       //alert('Please select the startdate and enddate');
     }
 
   }
-  refersh(){
-    this.listpettype();this.E_Date = undefined ; this.S_Date = undefined;
+  refersh() {
+    this.listpettype(); this.E_Date = undefined; this.S_Date = undefined;
   }
 
 
-service_form() {
+  service_form() {
     this.router.navigateByUrl('/admin_panel/Service_Provider_form')
   }
 
@@ -324,10 +333,10 @@ service_form() {
   }
 
   showError(msg) {
-      this.toastr.errorToastr(msg);
+    this.toastr.errorToastr(msg);
   }
 
   showWarning(msg) {
-      this.toastr.warningToastr(msg);
+    this.toastr.warningToastr(msg);
   }
 }

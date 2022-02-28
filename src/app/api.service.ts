@@ -221,7 +221,7 @@ export class ApiService {
   }
   //////////////
   service_provider_list() {
-    return this.http.get(this.apiUrl + 'service_provider/getlist');
+    return this.get(this.apiUrl + 'service_provider/getlist');
   }
   service_provider_insert(data) {
     return this.http.post(this.apiUrl + 'service_provider/create', data);
