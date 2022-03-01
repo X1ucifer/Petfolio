@@ -379,7 +379,7 @@ export class VendorFormComponent implements OnInit {
         "last_name": this.Name,
         "user_email": this.Email,
         "user_phone": this.Phone,
-        "user_type": 3,
+        "user_type": 2,
         "date_of_reg": "17/05/2021 11:45 AM",
         "mobile_type": 'Adminpanel',
         "user_status": "complete",
@@ -447,6 +447,7 @@ export class VendorFormComponent implements OnInit {
       this._api.service_provider_create(a).subscribe(data => {
         if (data['Code'] == 200) {
           this.showSuccess(data['Message']);
+          this.router.navigateByUrl('/admin/serviceprovider_details')
         } else {
           this.showError(data['Message']);
         }

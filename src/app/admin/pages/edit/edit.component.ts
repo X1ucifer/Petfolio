@@ -132,7 +132,7 @@ export class EditComponent implements OnInit {
     this.view_detail = this.getFromLocal('view_detail');
     this.view_detail_data = this.getFromLocal('view_detail_data');
     console.log(this.view_detail);
-    console.log(this.view_detail_data)
+    console.log("sessiondata-->",this.view_detail_data)
 
     this._api.dropdown_service().subscribe(
       (response: any) => {
@@ -438,6 +438,7 @@ export class EditComponent implements OnInit {
       this._api.service_provider_edit(a).subscribe(data => {
         if (data['Code'] == 200) {
           this.showSuccess(data['Message']);
+          this.router.navigateByUrl('/admin/serviceprovider_details')
         } else {
           this.showError(data['Message']);
         }

@@ -212,12 +212,12 @@ export class ServiceproviderDetailsComponent implements OnInit {
 
 
   edit(item) {
-    this.editOpen = true
-    // this.saveInLocal('view_detail_data', item);
-    // this.saveInLocal('fun_type', 'edit');
+   
+    this.saveInLocal('view_detail_data', item);
+    this.saveInLocal('fun_type', 'edit');
     // this.router.navigateByUrl('/admin/Doctor_form')
     this.router.navigateByUrl('/admin/editvendor')
-    console.log("edit-->",this.editOpen)
+
 
   }
 
