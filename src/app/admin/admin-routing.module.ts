@@ -90,11 +90,14 @@ import { ViewcustomerdetailComponent } from './pages/viewcustomerdetail/viewcust
 import { DoctorEditCalendarFulltimeComponent } from './doctor/doctor-edit-calendar-fulltime/doctor-edit-calendar-fulltime.component';
 import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.component';
 import { EditComponent } from "./pages/edit/edit.component"
+import { AddVendorComponent } from "./pages/add-vendor/add-vendor.component"
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'editvendor', component: EditComponent },
+  { path: 'addvendor', component: AddVendorComponent },
+  { path: 'editprovider', component: EditComponent },
   { path: 'dashboard/:name', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },
   { path: 'healthissue', component: HealthissueComponent },

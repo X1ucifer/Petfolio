@@ -338,7 +338,7 @@
     <div class="row">
         <div class="col-12 d-flex justify-content-end" style="margin-bottom: 30px;">
             <button class="btn btn-sm btn-primary" 
-            [disabled]="!Completionarray.length > 0 || !Specarray.length > 0 || !govt_arr.length > 0 || !photo_arr.length > 0 || !certificate_arr > 0 || !serviceGallery_arr > 0 "
+            [disabled]="!(Completionarray.length > 0) || !(Specarray.length > 0) || !(govt_arr.length > 0) || !(photo_arr.length > 0) || !(certificate_arr > 0) || !(serviceGallery_arr > 0) "
             (click)="addVendor()">Update</button>
         </div>
     </div>
