@@ -36,6 +36,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { EditVendorComponent } from './admin/pages/edit-vendor/edit-vendor.component';
 
 
 
@@ -53,6 +54,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     DoctorInfoComponent,
     ServiceProviderComponent,
     LoginOtpComponent,
+    EditVendorComponent,
   ],
   imports: [
     BrowserModule,

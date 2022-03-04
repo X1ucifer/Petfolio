@@ -14,18 +14,19 @@ import { ActivatedRoute } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
-  selector: 'app-vendor-form',
-  templateUrl: './add-vendor.component.html',
-  styleUrls: ['./add-vendor.component.css']
+  selector: 'app-vendoredit-form',
+  templateUrl: './edit-vendor.component.html',
+  styleUrls: ['./edit-vendor.component.css']
 })
-export class AddVendorComponent implements OnInit {
+export class EditVendorComponent implements OnInit {
   @ViewChild("placesRef") placesRef: GooglePlaceDirective;
 
   @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
-
+  view_detail: any;
+  view_detail_data: any;
   Latitude: any;
   Longitude: any;
   address: any;
@@ -128,6 +129,10 @@ export class AddVendorComponent implements OnInit {
     //   user_id: [''],
     //   user_name: ['']
     // });
+    this.view_detail = this.getFromLocal('view_detail');
+    this.view_detail_data = this.getFromLocal('VendorData');
+    console.log(this.view_detail);
+    console.log("sessiondata-->",this.view_detail_data)
 
     this._api.dropdown_service().subscribe(
       (response: any) => {
@@ -148,8 +153,13 @@ export class AddVendorComponent implements OnInit {
     // });
   }
 
+  getFromLocal(key): any {
+    return this.storage.get(key);
+  }
+
+
   ngOnInit(): void {
-    this.addmore = false;
+    this.addmore = true;
     this.gTableOpen = false;
     this.pTableOpen = false;
     this.cTableOpen = false;
@@ -343,7 +353,7 @@ export class AddVendorComponent implements OnInit {
   }
 
   validation_1() {
-    if (this.tittle == undefined || this.tittle == '' || this.Name == undefined || this.Name == '' || this.Email == undefined || this.Phone == undefined || this.Email_idError == true || this.Phone == '' || this.Phone.length != 10) {
+    if (this.view_detail_data.bus_user_name == undefined || this.view_detail_data.bus_user_name == '' || this.Name == undefined || this.Name == '' || this.view_detail_data.bus_user_email == undefined || this.Phone == undefined || this.Email_idError == true || this.view_detail_data.bus_user_phone == '' || this.view_detail_data.bus_user_phone.length != 10) {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -369,40 +379,32 @@ export class AddVendorComponent implements OnInit {
 
   addUser() {
     // j
-    this.validation_1();
+    // this.validation_1();
     if (this.Validation == false) {
       // alert("Please enter valid inputs");
       this.showWarning("Please enter valid inputs");
     } else {
       let a = {
-        "first_name": this.tittle,
+        '_id': this.view_detail_data._id,
+        "first_name": this.view_detail_data.bus_user_name,
         "last_name": this.Name,
-        "user_email": this.Email,
-        "user_phone": this.Phone,
-        "user_type": 2,
-        "date_of_reg": "17/05/2021 11:45 AM",
+        "user_email": this.view_detail_data.bus_user_email,
+        "user_phone": this.view_detail_data.bus_user_phone,
+        "user_type": 3,
+        "date_of_reg": new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
         "mobile_type": 'Adminpanel',
         "user_status": "complete",
         "ref_code": ""
       };
       console.log("doc", a);
 
-      this._api.user_create(a).subscribe(data => {
-        if (data['Code'] == 200) {
-          this.addmore = true;
-          // this.addVendorForm.patchValue({
-          //   user_email: data['Data']['user_details']['user_email'],
-          //   user_id: data['Data']['user_details']['_id'],
-          //   user_name: data['Data']['user_details']['first_name']
-          // })
-          this.userId = data['Data']['user_details']['_id']
-
-          this.showSuccess(data['Message']);
-        } else {
-          this.showError(data['Message']);
-          this.addmore = false;
+      this._api.user_edit(a).subscribe(
+        (response: any) => {
+          console.log(response.Data);
+          //alert("Updated Successfully");
+          this.showSuccess("Updated Successfully")
         }
-      })
+      );
     }
 
     console.log("akhil-->", this.userId)
@@ -411,47 +413,32 @@ export class AddVendorComponent implements OnInit {
 
 
   addVendor() {
-    // if (this.addVendorForm.valid) {
-    //   console.log("-->", this.addVendorForm.value)
-    //   this._api.create_Vendor(this.addVendorForm.value).subscribe(data => {
-    //     if (data['Code'] == 200) {
-    //       this.showSuccess(data['Message']);
-    //     } else {
-    //       this.showError(data['Message']);
-    //     }
-    //   });
-    // } else {
-    //   this.showError("Please all fields");
-    // }
-
-    if (this.businessname != undefined && this.businessname != '' && this.businessemail != undefined && this.businessemail != '' || this.Completionarray || this.specializationData || this.address) {
+  
+    if (this.view_detail_data.bussiness_name != undefined && this.view_detail_data.bussiness_name != '' && this.view_detail_data.bus_user_email != undefined && this.view_detail_data.bus_user_email != '' || this.Completionarray || this.specializationData || this.view_detail_data.city_name) {
 
       var a = {
-        "bussiness_name": this.tittle,
-        "user_email": this.Email,
-        "user_name": this.tittle,
-        "bussiness_email": this.businessemail,
-        // "bus_service_list": this.Completionarray,
-        // "bus_spec_list": this.Specarray,
-        "city_name": this.address,
-        "bussiness_phone": this.Phone,
-        "bussiness_loc": this.address,
-        "bussiness": this.businessname,
-        "photo_id_proof": "http://54.212.108.156:3000/api/uploads/1632597323085.jpg",
-        "govt_id_proof": "http://54.212.108.156:3000/api/uploads/1632597294823.pdf",
-        "bussiness_gallery": this.photo_arr,
-        "certifi": this.certificate_arr,
+        '_id': this.view_detail_data._id,
+        "bussiness_name": this.view_detail_data.bussiness_name,
+        "bus_user_email": this.view_detail_data.bus_user_email,
+        "bus_user_name": this.tittle,
+        "bus_user_phone": this.Phone,
+        "bus_service_list": this.Completionarray,
+        "bus_spec_list": this.Specarray,
+        "city_name": this.view_detail_data.city_name,
+        "sp_loc": this.view_detail_data.city_name,
+        "bus_service_gall": this.img,
         "date_and_time": new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
         "mobile_type": 'Adminpanel',
-        "delete_status": false,
         "user_id": this.userId,
         "profile_verification_status": false,
+        "bus_certif": this.certificate_arr
+
       }
 
-      this._api.create_Vendor(a).subscribe(data => {
+      this._api.service_provider_edit(a).subscribe(data => {
         if (data['Code'] == 200) {
           this.showSuccess(data['Message']);
-          // this.router.navigateByUrl('/admin/serviceprovider_details')
+          this.router.navigateByUrl('/admin/serviceprovider_details')
         } else {
           this.showError(data['Message']);
         }

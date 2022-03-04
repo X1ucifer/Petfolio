@@ -91,12 +91,14 @@ import { DoctorEditCalendarFulltimeComponent } from './doctor/doctor-edit-calend
 import { AddnewproductComponent } from './pages/addnewproduct/addnewproduct.component';
 import { EditComponent } from "./pages/edit/edit.component"
 import { AddVendorComponent } from "./pages/add-vendor/add-vendor.component"
+import { EditVendorComponent } from "./pages/edit-vendor/edit-vendor.component"
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'addvendor', component: AddVendorComponent },
+  { path: 'editvendor', component: EditVendorComponent },
   { path: 'editprovider', component: EditComponent },
   { path: 'dashboard/:name', component: DashboardComponent },
   { path: 'Pet_type', component: PettypeComponent },

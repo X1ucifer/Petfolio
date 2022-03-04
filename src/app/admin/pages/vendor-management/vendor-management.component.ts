@@ -74,6 +74,17 @@ export class VendorManagementComponent implements OnInit {
       }
     );
   }
+
+  edit(item) {
+   
+    this.saveInLocal('VendorData', item);
+    this.saveInLocal('fun_type', 'edit');
+    // this.router.navigateByUrl('/admin/Doctor_form')
+    this.router.navigateByUrl('/admin/editvendor')
+
+
+  }
+
   vendor_form(){
     this.router.navigateByUrl('/admin_panel/Vendor_form')
   }
