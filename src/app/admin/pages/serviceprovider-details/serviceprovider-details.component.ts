@@ -212,6 +212,8 @@ export class ServiceproviderDetailsComponent implements OnInit {
 
 
   edit(item) {
+
+    console.log("edit-->",item)
    
     this.saveInLocal('view_detail_data', item);
     this.saveInLocal('fun_type', 'edit');

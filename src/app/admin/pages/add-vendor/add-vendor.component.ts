@@ -440,6 +440,8 @@ export class AddVendorComponent implements OnInit {
         "photo_id_proof": "http://54.212.108.156:3000/api/uploads/1632597323085.jpg",
         "govt_id_proof": "http://54.212.108.156:3000/api/uploads/1632597294823.pdf",
         "bussiness_gallery": this.photo_arr,
+        "bussiness_lat":this.base_lat,
+        "bussiness_long": this.base_lng,
         "certifi": this.certificate_arr,
         "date_and_time": new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
         "mobile_type": 'Adminpanel',
@@ -451,7 +453,7 @@ export class AddVendorComponent implements OnInit {
       this._api.create_Vendor(a).subscribe(data => {
         if (data['Code'] == 200) {
           this.showSuccess(data['Message']);
-          // this.router.navigateByUrl('/admin/serviceprovider_details')
+          this.router.navigateByUrl('/admin/Vendor_Management')
         } else {
           this.showError(data['Message']);
         }

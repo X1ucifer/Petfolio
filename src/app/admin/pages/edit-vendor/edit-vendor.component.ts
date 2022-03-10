@@ -389,7 +389,7 @@ export class EditVendorComponent implements OnInit {
         "first_name": this.view_detail_data.bus_user_name,
         "last_name": this.Name,
         "user_email": this.view_detail_data.bus_user_email,
-        "user_phone": this.view_detail_data.bus_user_phone,
+        "user_phone": this.view_detail_data,
         "user_type": 3,
         "date_of_reg": new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
         "mobile_type": 'Adminpanel',
@@ -419,26 +419,24 @@ export class EditVendorComponent implements OnInit {
       var a = {
         '_id': this.view_detail_data._id,
         "bussiness_name": this.view_detail_data.bussiness_name,
-        "bus_user_email": this.view_detail_data.bus_user_email,
-        "bus_user_name": this.tittle,
-        "bus_user_phone": this.Phone,
-        "bus_service_list": this.Completionarray,
-        "bus_spec_list": this.Specarray,
-        "city_name": this.view_detail_data.city_name,
-        "sp_loc": this.view_detail_data.city_name,
-        "bus_service_gall": this.img,
+        "bussiness_email": this.view_detail_data.bussiness_email,
+        "bussiness_phone": this.view_detail_data.bussiness_phone,
+        // "bus_service_list": this.Completionarray,
+        // "bus_spec_list": this.Specarray,
+        "bussiness_loc": this.view_detail_data.bussiness_loc,
+        "bussiness_gallery": this.photo_arr,
+        "certifi":this.certificate_arr,
         "date_and_time": new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
         "mobile_type": 'Adminpanel',
         "user_id": this.userId,
         "profile_verification_status": false,
-        "bus_certif": this.certificate_arr
 
       }
 
-      this._api.service_provider_edit(a).subscribe(data => {
+      this._api.vendor_details_edit(a).subscribe(data => {
         if (data['Code'] == 200) {
           this.showSuccess(data['Message']);
-          this.router.navigateByUrl('/admin/serviceprovider_details')
+          this.router.navigateByUrl('/admin/Vendor_Management')
         } else {
           this.showError(data['Message']);
         }

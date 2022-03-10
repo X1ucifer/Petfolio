@@ -29,12 +29,13 @@
 
         <div class="form-group col-4">
             <h5 class="form-lable">Business Name:</h5>
-            <input type="text" class="input" pInputText [(ngModel)]="view_detail_data.bussiness_name" placeholder="Business Name" />
+            <input type="text" class="input" pInputText [(ngModel)]="view_detail_data.bussiness_name"
+                placeholder="Business Name" />
         </div>
 
         <div class="form-group col-4">
             <h5 class="form-lable">Email ID:</h5>
-            <input type="text" pInputText [(ngModel)]="Email" (ngModelChange)="EmailidChange($event)"
+            <input type="text" pInputText [(ngModel)]="view_detail_data.bussiness_email" (ngModelChange)="EmailidChange($event)"
                 placeholder="Email ID" />
             <div *ngIf="Email_idError" class="mt-1 error">
                 <div class="text-danger">Valid Email Address Required.</div>
@@ -45,7 +46,7 @@
         </div>
         <div class="form-group col-4">
             <h5 class="form-lable">Phone Number:</h5>
-            <input type="text" pInputText [(ngModel)]="Phone" placeholder="Phone Number" maxlength="10"
+            <input type="text" pInputText [(ngModel)]="view_detail_data.bussiness_phone" placeholder="Phone Number" maxlength="10"
                 (keypress)="_keyPress($event)" />
             <div *ngIf="
         Validation == false &&
@@ -174,10 +175,32 @@
 
     <!-- Update New Form Fields -->
 
+    <div class="row" style="margin-top:30px">
+        <div class="col-12" style="margin-bottom: 30px;">
+            <h5 class="form-lable">Business Location:</h5>
+            <input class="form-control" [(ngModel)]="view_detail_data.bussiness_loc" style="padding:10px; width:75%"
+                ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                (onAddressChange)="handleAddressChange($event)" [ngModelOptions]="{standalone: true}" />
+        </div>
+        <div class="map" style="margin-bottom: 30px;">
+            <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+                [zoomControl]="false">
+
+                <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
+                    (dragEnd)="markerDragEnd($event)">
+
+                    <agm-info-window>
+                        <strong>{{address}}</strong>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+        </div>
+    </div>
+
     <!-- </form> -->
     <div class="row">
         <div class="col-12 d-flex justify-content-end" style="margin-bottom: 30px;">
-            <button class="btn btn-sm btn-primary" (click)="addVendor()">Update</button>
+            <button class="btn btn-sm btn-primary"  [disabled]="!(certificate_arr.length > 0)  || !(govt_arr.length > 0) || !(photo_arr.length > 0) "(click)="addVendor()">Update</button>
         </div>
     </div>
 </div>
