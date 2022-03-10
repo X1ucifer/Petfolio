@@ -424,7 +424,7 @@ export class VendorFormComponent implements OnInit {
     //   this.showError("Please all fields");
     // }
 
-    if (this.businessname != undefined && this.businessname != '' && this.businessemail != undefined && this.businessemail != '' || this.Completionarray || this.specializationData || this.address) {
+    if (this.businessname != undefined && this.businessname != '' && this.businessemail != undefined && this.businessemail != '' && this.Completionarray.length > 0 && this.Specarray.length  > 0 || this.address != undefined && this.address != '' && this.govt_arr.length > 0 && this.photo_arr.length && this.certificate_arr.length > 0 && this.serviceGallery_arr > 0) {
 
       var a = {
         "bussiness_name": this.businessname,
