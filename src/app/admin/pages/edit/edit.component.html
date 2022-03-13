@@ -107,7 +107,7 @@
 
         </div>
 
-        <table *ngIf="Completionarray.length > 0" class="spec-table">
+        <table *ngIf="view_detail_data.bus_service_list.length > 0" class="spec-table">
             <thead>
                 <th>S.No</th>
                 <th>Service</th>
@@ -116,7 +116,7 @@
                 <th>Delete</th>
             </thead>
             <tbody>
-                <tr *ngFor="let arr of Completionarray; let i = index">
+                <tr *ngFor="let arr of view_detail_data.bus_service_list; let i = index">
                     <td>{{ i + 1 }}</td>
                     <td>{{ arr.bus_service_list }}</td>
                     <td>{{ arr.time_slots }}</td>
@@ -167,14 +167,14 @@
             </div>
 
         </div>
-        <table *ngIf="Specarray.length > 0" class="spec-table">
+        <table *ngIf="view_detail_data.bus_spec_list.length > 0" class="spec-table">
             <thead>
                 <th>S.No</th>
                 <th>Specialization</th>
                 <th>Delete</th>
             </thead>
             <tbody>
-                <tr *ngFor="let arr of Specarray; let i = index">
+                <tr *ngFor="let arr of view_detail_data.bus_spec_list; let i = index">
                     <td>{{ i + 1 }}</td>
                     <td>{{ arr.bus_spec_list }}</td>
 
@@ -315,7 +315,7 @@
 
     <div class="row" style="margin-top:30px">
         <div class="col-12" style="margin-bottom: 30px;">
-            <h5 class="form-lable">Business Location:</h5>
+            <h5 class="form-lable">Bussiness Location:</h5>
             <input class="form-control" [(ngModel)]="view_detail_data.city_name" style="padding:10px; width:75%"
                 ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
                 (onAddressChange)="handleAddressChange($event)" [ngModelOptions]="{standalone: true}" />
@@ -338,7 +338,7 @@
     <div class="row">
         <div class="col-12 d-flex justify-content-end" style="margin-bottom: 30px;">
             <button class="btn btn-sm btn-primary" 
-            [disabled]="!(Completionarray.length > 0) || !(Specarray.length > 0) || !(govt_arr.length > 0) || !(photo_arr.length > 0) || !(certificate_arr > 0) || !(serviceGallery_arr > 0) "
+            
             (click)="addVendor()">Update</button>
         </div>
     </div>

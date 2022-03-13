@@ -26,6 +26,7 @@ export class EditVendorComponent implements OnInit {
   apiUrl = environment.apiUrl;
   imgUrl = environment.imageURL;
   view_detail: any;
+  VendorData: any;
   view_detail_data: any;
   Latitude: any;
   Longitude: any;
@@ -414,7 +415,7 @@ export class EditVendorComponent implements OnInit {
 
   addVendor() {
   
-    if (this.view_detail_data.bussiness_name != undefined && this.view_detail_data.bussiness_name != '' && this.view_detail_data.bus_user_email != undefined && this.view_detail_data.bus_user_email != '' || this.Completionarray || this.specializationData || this.view_detail_data.city_name) {
+    if (this.view_detail_data.bussiness_name != undefined && this.view_detail_data.bussiness_name != '' && this.view_detail_data.bussiness_email != undefined && this.view_detail_data.bussiness_email != '' && this.certificate_arr.length > 0 && this.govt_arr.length > 0 && this.photo_arr.length > 0 && this.view_detail_data.bussiness_loc && this.view_detail_data.bussiness_phone != undefined && this.view_detail_data.bussiness_phone != '') {
 
       var a = {
         '_id': this.view_detail_data._id,

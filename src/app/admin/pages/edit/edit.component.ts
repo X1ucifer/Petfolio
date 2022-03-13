@@ -311,7 +311,7 @@ export class EditComponent implements OnInit {
     if (this.Servicearray.length != undefined && this.bus_service_list != '' && this.time_slots != undefined && this.time_slots != '' && this.amount != undefined) {
       let obj = { "bus_service_list": this.bus_service_list, "time_slots": this.time_slots, "amount": this.amount }
       // this.serve = obj;
-      this.Completionarray.push(obj);
+      this.view_detail_data.bus_service_list.push(obj);
       this.bus_service_list = undefined;
       this.time_slots = undefined;
       this.amount = undefined;
@@ -326,7 +326,7 @@ export class EditComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   remove_completion(i) {
-    this.Completionarray.splice(i, 1);
+    this.view_detail_data.bus_service_list.splice(i, 1);
 
   }
 
@@ -335,7 +335,7 @@ export class EditComponent implements OnInit {
     if (this.Servicearray.length != undefined && this.specializationData != '' && this.specializationData != undefined) {
       let obj = { "bus_spec_list": this.specializationData }
       // this.serve = obj;
-      this.Specarray.push(obj);
+      this.view_detail_data.bus_spec_list.push(obj);
       this.specializationData = undefined;
 
       console.table("-->", this.Specarray)
@@ -348,12 +348,12 @@ export class EditComponent implements OnInit {
   }
 
   remove_completion1(i) {
-    this.Completionarray.splice(i, 1);
+    this.view_detail_data.bus_spec_list.splice(i, 1);
 
   }
 
   validation_1() {
-    if (this.view_detail_data.bus_user_name == undefined || this.view_detail_data.bus_user_name == '' || this.Name == undefined || this.Name == '' || this.view_detail_data.bus_user_email == undefined || this.Phone == undefined || this.Email_idError == true || this.view_detail_data.bus_user_phone == '' || this.view_detail_data.bus_user_phone.length != 10) {
+    if (this.view_detail_data.bus_user_name !== undefined && this.view_detail_data.bus_user_name !== '' &&  this.view_detail_data.bus_user_email !== undefined || this.view_detail_data.bus_user_email !== '' && this.view_detail_data.bus_user_phone == '' || this.view_detail_data.bus_user_phone.length != 10) {
       this.Validation = false;
       console.log(this.Validation)
     }
@@ -414,7 +414,7 @@ export class EditComponent implements OnInit {
 
   addVendor() {
   
-    if (this.view_detail_data.bussiness_name != undefined && this.view_detail_data.bussiness_name != '' && this.view_detail_data.bus_user_email != undefined && this.view_detail_data.bus_user_email != '' || this.Completionarray || this.specializationData || this.view_detail_data.city_name) {
+    if (this.view_detail_data.bussiness_name != undefined && this.view_detail_data.bussiness_name != '' && this.view_detail_data.bus_user_email != undefined && this.view_detail_data.bus_user_email != '' && this.img.length > 0 && this.view_detail_data.bus_service_list.length > 0 && this.view_detail_data.bus_spec_list.length > 0 && this.view_detail_data.city_name != undefined && this.view_detail_data.city_name != '') {
 
       var a = {
         '_id': this.view_detail_data._id,
@@ -422,8 +422,8 @@ export class EditComponent implements OnInit {
         "bus_user_email": this.view_detail_data.bus_user_email,
         "bus_user_name": this.tittle,
         "bus_user_phone": this.Phone,
-        "bus_service_list": this.Completionarray,
-        "bus_spec_list": this.Specarray,
+        "bus_service_list": this.view_detail_data.bus_service_list,
+        "bus_spec_list": this.view_detail_data.bus_spec_list,
         "city_name": this.view_detail_data.city_name,
         "sp_loc": this.view_detail_data.city_name,
         "bus_service_gall": this.img,
